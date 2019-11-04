@@ -5,6 +5,7 @@ class Shader;
 class VertexBuffer;
 class CGALPolyhedron;
 class ShaderScene;
+class RenderNode;
 class Workspace
 {
 public:
@@ -17,10 +18,11 @@ public:
 private:
 
 	std::shared_ptr<Camera> m_pCamera;
-	Shader* m_pDefaultShader;
+	std::shared_ptr<Shader> m_pDefaultShader;
 	ShaderScene* m_pShaderScene;
-	VertexBuffer* m_pAxis;
-	CGALPolyhedron* m_pPolyhedron;
+
+	std::vector<std::shared_ptr<RenderNode>> m_pRenderList;
+	
 };
 
 #endif WORKSPACE_H

@@ -1,13 +1,22 @@
 #ifndef SHADER_H
 #define SHADER_H
 
+struct ShaderBuildInfo
+{
+	std::string versionPath;
+	std::string vertexPath;
+	std::string vertexDefine;
+	std::string fragmentPath;
+	std::string fragementDefine;
+};
+
 class Shader
 {
 public:
 	Shader();
 	~Shader();
 
-	void BuildFromFile(const std::string& versionPath, const std::string& vertexShaderPath, const std::string& fragmentShaderPath);
+	void Build(const ShaderBuildInfo& buildInfo);
 	void BuildFromCode(const std::string& vertexShaderCode, const std::string& fragmentShader);
 	GLuint Program() { return m_programId; }
 	void Use();

@@ -8,7 +8,7 @@ public:
 	~ShaderScene();
 	void Generate();
 	void Set(const SceneData& data);
-	void Block(GLuint progmra);
+	void BindBlock(GLuint progmra);
 	void Use();
 private:
 	GLuint m_SceneId;

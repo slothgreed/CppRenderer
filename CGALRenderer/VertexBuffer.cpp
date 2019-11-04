@@ -1,5 +1,5 @@
 #include "VertexBuffer.h"
-VertexBuffer::VertexBuffer(VERTEX_LAYOUT layout)
+VertexBuffer::VertexBuffer()
 {
 	for (int i = 0; i < VERTEX_ATTRIB_NUM; i++)
 	{
@@ -7,7 +7,6 @@ VertexBuffer::VertexBuffer(VERTEX_LAYOUT layout)
 	}
 
 	m_vaoId = 0;
-	m_layout = layout;
 }
 
 VertexBuffer::~VertexBuffer()
@@ -15,10 +14,12 @@ VertexBuffer::~VertexBuffer()
 	Dispose();
 }
 
-void VertexBuffer::Generate()
+void VertexBuffer::Generate(VERTEX_LAYOUT layout)
 {
+	m_layout = layout;
 	GLuint* attrib = new GLuint[NumVertexAttrib()];
 	glGenBuffers(NumVertexAttrib(), attrib);
+
 
 	if (m_layout == VERTEX_LAYOUT_P)
 	{
@@ -54,24 +55,46 @@ void VertexBuffer::Generate()
 
 	delete attrib;
 	Logger::GLError();
+
+	GenerateVAO();
 }
 
 void VertexBuffer::SetPosition(GLuint primitiveType, const vector<vec3>& position)
 {
-	m_PrimitiveType = primitiveType;
 	glBindBuffer(GL_ARRAY_BUFFER, m_id[VERTEX_ATTRIB_POSITION]);
 	glBufferData(GL_ARRAY_BUFFER, position.size() * sizeof(vec3), position.data(), GL_STATIC_DRAW);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 
 	m_vertexNum = position.size();
+	m_PrimitiveType = primitiveType;
 	Logger::GLError();
 }
 
 void VertexBuffer::SetNormal(const vector<vec3>& normal)
 {
+	if (HasNormal() == false)
+	{
+		assert(0);
+		return;
+	}
+
 	glBindBuffer(GL_ARRAY_BUFFER, m_id[VERTEX_ATTRIB_NORMAL]);
 	glBufferData(GL_ARRAY_BUFFER, normal.size() * sizeof(vec3), normal.data(), GL_STATIC_DRAW);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
+}
+
+void VertexBuffer::SetColor(const vector<vec3>& color)
+{
+	if (HasColor() == false)
+	{
+		assert(0);
+		return;
+	}
+
+	glBindBuffer(GL_ARRAY_BUFFER, m_id[VERTEX_ATTRIB_COLOR]);
+	glBufferData(GL_ARRAY_BUFFER, color.size() * sizeof(vec3), color.data(), GL_STATIC_DRAW);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+
 }
 
 void VertexBuffer::GenerateVAO()
@@ -91,7 +114,9 @@ void VertexBuffer::GenerateVAO()
 
 	if (HasColor())
 	{
-
+		glEnableVertexAttribArray(VERTEX_ATTRIB_COLOR);
+		glBindBuffer(GL_ARRAY_BUFFER, m_id[VERTEX_ATTRIB_COLOR]);
+		glVertexAttribPointer(VERTEX_ATTRIB_COLOR, 3, GL_FLOAT, GL_FALSE, 0, NULL);
 	}
 
 	if (HasTexCoord())
@@ -105,9 +130,12 @@ void VertexBuffer::GenerateVAO()
 
 void VertexBuffer::Dispose()
 {
-	if (m_id != 0)
+	for (int i = 0; i < VERTEX_ATTRIB_NUM; i++)
 	{
-		glDeleteBuffers(VERTEX_ATTRIB_NUM, m_id);
+		if (m_id[i] != 0)
+		{
+			glDeleteBuffers(1, &m_id[i]);
+		}
 	}
 
 	if (m_vaoId != 0)

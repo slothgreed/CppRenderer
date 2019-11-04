@@ -6,17 +6,17 @@ Shader::~Shader()
 {
 }
 
-void Shader::BuildFromFile(const string& versionPath, const std::string& vertexPath, const std::string& fragmentPath)
+void Shader::Build(const ShaderBuildInfo& buildInfo)
 {
 	string vertexCode;
 	string fragCode;
 	string version;
-	FileIO::Load(versionPath, version);
-	FileIO::Load(vertexPath, vertexCode);
-	FileIO::Load(fragmentPath, fragCode);
+	FileIO::Load(buildInfo.versionPath, version);
+	FileIO::Load(buildInfo.vertexPath, vertexCode);
+	FileIO::Load(buildInfo.fragmentPath, fragCode);
 
-	vertexCode = version + vertexCode;
-	fragCode = version + fragCode;
+	vertexCode = version + buildInfo.vertexDefine + vertexCode;
+	fragCode = version + buildInfo.fragementDefine + fragCode;
 
 	BuildFromCode(vertexCode, fragCode);
 }

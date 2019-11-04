@@ -36,6 +36,7 @@
 // utility
 #include "MathHelper.h"
 #include "ShaderUtility.h"
+#include "ModelGenerator.h"
 
 // opengl
 #include "Shader.h"
@@ -46,6 +47,7 @@
 
 // asset
 #include "Camera.h"
+#include "RenderNode.h"
 #include "CGALModel.h"
 #include "CGALPolyhedron.h"
 

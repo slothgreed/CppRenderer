@@ -120,6 +120,12 @@
     <ClInclude Include="ShaderUtility.h">
       <Filter>ヘッダー ファイル\Utility</Filter>
     </ClInclude>
+    <ClInclude Include="ModelGenerator.h">
+      <Filter>ヘッダー ファイル\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderNode.h">
+      <Filter>ヘッダー ファイル\Asset</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -175,6 +181,12 @@
     </ClCompile>
     <ClCompile Include="ShaderUtility.cpp">
       <Filter>ソース ファイル\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelGenerator.cpp">
+      <Filter>ソース ファイル\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderNode.cpp">
+      <Filter>ソース ファイル\Asset</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

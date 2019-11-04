@@ -31,7 +31,7 @@ void ShaderScene::Set(const SceneData& data)
 	Logger::GLError();
 }
 
-void ShaderScene::Block(GLuint program)
+void ShaderScene::BindBlock(GLuint program)
 {
 	m_SceneBlockId = glGetUniformBlockIndex(program, "Scene");
 	glUniformBlockBinding(program, m_SceneBlockId, SCENE_DATA_LOCATION);

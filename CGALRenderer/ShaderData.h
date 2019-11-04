@@ -7,7 +7,6 @@ struct SceneData
 {
 	glm::mat4x4 Projection;
 	glm::mat4x4 ViewMatrix;
-	glm::vec4 color;
 };
 
 #endif SHADER_COMMON_H

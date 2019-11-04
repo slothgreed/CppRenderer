@@ -23,9 +23,9 @@ public:
 	~CGALPolyhedron();
 
 	virtual void Load(const std::string& filePath);
-	virtual void BuildDrawData();
-	virtual void Draw();
-
+	virtual void GetFacetList(std::vector<vec3>& position, std::vector<vec3>& normal);
+	virtual void GetEdgeList(std::vector<vec3>& edgeList);
+	virtual void GetVertexList(std::vector<vec3>& position);
 private:
 	void BuildFacet(const Facet_const_handle& facet, std::vector<glm::vec3>& position, std::vector<glm::vec3>& normal);
 	void BuildEdge(const Halfedge_const_handle& edge, std::vector<glm::vec3>& position);

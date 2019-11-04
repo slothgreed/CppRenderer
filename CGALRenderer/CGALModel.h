@@ -7,8 +7,6 @@ public:
 	~CGALModel();
 
 	virtual void Load(const std::string& filePath) = 0;
-	virtual void BuildDrawData() = 0;
-	virtual void Draw() = 0;
 private:
 
 };

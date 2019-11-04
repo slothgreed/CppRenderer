@@ -9,8 +9,6 @@ CGALPolyhedron::CGALPolyhedron()
 CGALPolyhedron::~CGALPolyhedron()
 {
 	RELEASE_INSTANCE(m_model);
-	RELEASE_INSTANCE(m_pFaceVBO);
-	RELEASE_INSTANCE(m_pEdgeVBO);
 }
 
 void CGALPolyhedron::Load(const string& filePath)
@@ -30,12 +28,8 @@ void CGALPolyhedron::Load(const string& filePath)
 
 }
 
-void CGALPolyhedron::BuildDrawData()
+void CGALPolyhedron::GetFacetList(vector<vec3>& facetList, vector<vec3>& normalList)
 {
-	vector<vec3> facetList;
-	vector<vec3> normalList;
-	vector<vec3> edgeList;
-
 	for (Polyhedron::Facet_const_iterator facet = m_model->facets_begin();
 		facet != m_model->facets_end(); facet++)
 	{
@@ -44,7 +38,10 @@ void CGALPolyhedron::BuildDrawData()
 			BuildFacet(facet, facetList, normalList);
 		}
 	}
+}
 
+void CGALPolyhedron::GetEdgeList(vector<vec3>& edgeList)
+{
 	for (Polyhedron::Halfedge_const_iterator edge = m_model->halfedges_begin();
 		edge != m_model->halfedges_end(); edge++)
 	{
@@ -53,23 +50,15 @@ void CGALPolyhedron::BuildDrawData()
 			BuildEdge(edge, edgeList);
 		}
 	}
+}
 
+void CGALPolyhedron::GetVertexList(vector<vec3>& vertex)
+{
 	for (Polyhedron::Vertex_const_iterator vertex = m_model->vertices_begin();
 		vertex != m_model->vertices_end(); vertex++)
 	{
 		BuildVertex(vertex);
 	}
-
-	m_pFaceVBO = new VertexBuffer(VERTEX_LAYOUT_PN);
-	m_pFaceVBO->Generate();
-	m_pFaceVBO->GenerateVAO();
-	m_pFaceVBO->SetPosition(GL_TRIANGLES, facetList);
-	m_pFaceVBO->SetNormal(normalList);
-
-	m_pEdgeVBO = new VertexBuffer(VERTEX_LAYOUT_P);
-	m_pEdgeVBO->Generate();
-	m_pEdgeVBO->GenerateVAO();
-	m_pEdgeVBO->SetPosition(GL_LINES, edgeList);
 }
 
 void CGALPolyhedron::BuildFacet(const Facet_const_handle& facet, vector<vec3>& position, vector<vec3> & normal)
@@ -159,12 +148,4 @@ void CGALPolyhedron::BuildEdge(const Halfedge_const_handle& edge, vector<vec3>& 
 void CGALPolyhedron::BuildVertex(const Vertex_const_handle& vertex)
 {
 	CGAL::Point_3<Kernel> p1 = vertex->point();
-}
-
-
-
-void CGALPolyhedron::Draw()
-{
-	m_pFaceVBO->Draw();
-	m_pEdgeVBO->Draw();
 }
