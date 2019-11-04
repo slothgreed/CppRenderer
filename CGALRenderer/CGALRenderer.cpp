@@ -169,6 +169,9 @@ bool CGALRenderer::Run()
 	glEnable(GL_DEPTH_TEST); // enable depth-testing
 	glDepthFunc(GL_LESS); // depth-testing interprets a smaller value as "closer"
 	glClearColor(1, 1, 1, 1);
+	glEnable(GL_CULL_FACE);
+	glCullFace(GL_BACK);
+
 	/* OTHER STUFF GOES HERE NEXT */
 
 	shared_ptr<IControllerArgs> args = make_shared<CameraControllerArgs>(

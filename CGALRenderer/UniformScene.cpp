@@ -1,22 +1,20 @@
 
-ShaderScene::ShaderScene()
+UniformScene::UniformScene()
 {
 	m_SceneId = 0;
-	m_SceneBlockId = 0;
 }
 
-ShaderScene::~ShaderScene()
+UniformScene::~UniformScene()
 {
 }
 
 
-void ShaderScene::Generate()
+void UniformScene::Generate()
 {
 	glGenBuffers(1, &m_SceneId);
-
 }
 
-void ShaderScene::Set(const SceneData& data)
+void UniformScene::Set(const SceneData& data)
 {
 	if (m_SceneId == 0)
 	{
@@ -31,14 +29,7 @@ void ShaderScene::Set(const SceneData& data)
 	Logger::GLError();
 }
 
-void ShaderScene::BindBlock(GLuint program)
-{
-	m_SceneBlockId = glGetUniformBlockIndex(program, "Scene");
-	glUniformBlockBinding(program, m_SceneBlockId, SCENE_DATA_LOCATION);
-	Logger::GLError();
-}
-
-void ShaderScene::Use()
+void UniformScene::Bind()
 {
 	if (m_SceneId == 0)
 	{
@@ -48,5 +39,11 @@ void ShaderScene::Use()
 	}
 
 	glBindBufferBase(GL_UNIFORM_BUFFER, SCENE_DATA_LOCATION, m_SceneId);
+	Logger::GLError();
+}
+
+void UniformScene::UnBind()
+{
+	glBindBufferBase(GL_UNIFORM_BUFFER, SCENE_DATA_LOCATION, 0);
 	Logger::GLError();
 }

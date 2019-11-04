@@ -40,8 +40,8 @@
 
 // opengl
 #include "Shader.h"
-#include "ShaderData.h"
-#include "ShaderScene.h"
+#include "UniformBuffer.h"
+#include "UniformScene.h"
 #include "VertexBuffer.h"
 #include "Viewport.h"
 

@@ -6,7 +6,6 @@ Workspace::Workspace()
 
 Workspace::~Workspace()
 {
-	RELEASE_INSTANCE(m_pShaderScene);
 }
 
 void Workspace::Initialize(Project* m_pProject)
@@ -27,13 +26,12 @@ void Workspace::Initialize(Project* m_pProject)
 	m_pCamera->LookAt(vec3(0, 0, -2), vec3(0, 0, 0), vec3(0, 1, 0));
 	m_pCamera->Perspective(glm::radians(60.0f), 1, 0.01, 100);
 
-	m_pShaderScene = new ShaderScene();
-	m_pShaderScene->Generate();
+	m_pUniformScene = make_shared<UniformScene>();
+	m_pUniformScene->Generate();
 	SceneData sceneData;
 	sceneData.ViewMatrix = m_pCamera->ViewMatrix();
 	sceneData.Projection = m_pCamera->Projection();
-	m_pShaderScene->Set(sceneData);
-	m_pShaderScene->BindBlock(m_pDefaultShader->Program());
+	m_pUniformScene->Set(sceneData);
 
 	shared_ptr<CGALPolyhedron> polyhedron = make_shared<CGALPolyhedron>();
 	polyhedron->Load("E:\\Tools\\CGAL-5.0-beta1\\build\\examples\\Polygon_mesh_processing\\Debug\\data\\blobby.off");
@@ -43,7 +41,7 @@ void Workspace::Initialize(Project* m_pProject)
 	vector<vec3> facet;
 	vector<vec3> normal;
 	polyhedron->GetFacetList(facet, normal);
-	shared_ptr<VertexBuffer> facetBuffer = make_shared<VertexBuffer>();
+	auto facetBuffer = make_shared<VertexBuffer>();
 	facetBuffer->Generate(VERTEX_LAYOUT_PN);
 	facetBuffer->SetPosition(GL_TRIANGLES, facet);
 	facetBuffer->SetNormal(normal);
@@ -55,16 +53,15 @@ void Workspace::Initialize(Project* m_pProject)
 	facetShaderInfo.vertexPath = m_pProject->ProjectDir() + "\\Resource\\default.vert";
 	facetShaderInfo.vertexDefine = facetVertexDefine;
 	facetShaderInfo.fragmentPath = m_pProject->ProjectDir() + "\\Resource\\default.frag";
-	shared_ptr<Shader> facetShader = make_shared<Shader>();
+	auto facetShader = make_shared<Shader>();
 	facetShader->Build(facetShaderInfo);
-	m_pShaderScene->BindBlock(facetShader->Program());
 
-	shared_ptr<RenderNode> facetNode = make_shared<RenderNode>(facetShader, facetBuffer);
+	auto facetNode = make_shared<RenderNode>(facetShader, facetBuffer);
 	m_pRenderList.push_back(facetNode);
 
 	vector<vec3> edge;
 	polyhedron->GetEdgeList(edge);
-	shared_ptr<VertexBuffer> edgeBuffer = make_shared<VertexBuffer>();
+	auto edgeBuffer = make_shared<VertexBuffer>();
 	edgeBuffer->Generate(VERTEX_LAYOUT_P);
 	edgeBuffer->SetPosition(GL_LINES, edge);
 	
@@ -77,14 +74,13 @@ void Workspace::Initialize(Project* m_pProject)
 	edgeShaderInfo.fragmentPath = m_pProject->ProjectDir() + "\\Resource\\default.frag";
 	shared_ptr<Shader> edgeShader = make_shared<Shader>();
 	edgeShader->Build(edgeShaderInfo);
-	m_pShaderScene->BindBlock(edgeShader->Program());
 
-	shared_ptr<RenderNode> edgeNode = make_shared<RenderNode>(edgeShader, edgeBuffer);
+	auto edgeNode = make_shared<RenderNode>(edgeShader, edgeBuffer);
 	m_pRenderList.push_back(edgeNode);
 
-	shared_ptr<VertexBuffer> axis = make_shared<VertexBuffer>();
+	auto axis = make_shared<VertexBuffer>();
 	ModelGenerator::Axis(axis.get());
-	shared_ptr<RenderNode> axisNode = make_shared<RenderNode>(m_pDefaultShader, axis);
+	auto axisNode = make_shared<RenderNode>(m_pDefaultShader, axis);
 	m_pRenderList.push_back(axisNode);
 
 }
@@ -96,12 +92,13 @@ void Workspace::Invoke()
 	SceneData sceneData;
 	sceneData.ViewMatrix = m_pCamera->ViewMatrix();
 	sceneData.Projection = m_pCamera->Projection();
-	m_pShaderScene->Set(sceneData);
-	m_pShaderScene->Use();
+	m_pUniformScene->Set(sceneData);
+	m_pUniformScene->Bind();
 
 	for (int i = 0; i < m_pRenderList.size(); i++)
 	{
 		m_pRenderList[i]->Draw();
 	}
 	
+	m_pUniformScene->UnBind();
 }

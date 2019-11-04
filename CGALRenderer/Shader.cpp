@@ -30,6 +30,7 @@ void Shader::BuildFromCode(const std::string& vertexShaderCode, const std::strin
 	m_fragShader =  Compile(fragmentShader, GL_FRAGMENT_SHADER);
 
 	Link(m_vertexShader, m_fragShader);
+	BindScene();
 }
 
 GLuint Shader::Compile(const std::string& code, GLuint shaderType)
@@ -80,6 +81,13 @@ void Shader::Link(GLuint vertexId, GLuint fragId)
 		glGetShaderInfoLog(m_programId, maxLength, &maxLength, errorLog);
 		Logger::Output(LOG_LEVEL::ERROR, "Shader Link Error");
 	}
+}
+
+void Shader::BindScene()
+{
+	GLint sceneBlock = glGetUniformBlockIndex(m_programId, "Scene");
+	glUniformBlockBinding(m_programId, sceneBlock, SCENE_DATA_LOCATION);
+	Logger::GLError();
 }
 
 void Shader::Use()

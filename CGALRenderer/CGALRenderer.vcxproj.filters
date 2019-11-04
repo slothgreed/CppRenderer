@@ -84,12 +84,6 @@
     <ClInclude Include="CGALPolyhedron.h">
       <Filter>ヘッダー ファイル\Asset</Filter>
     </ClInclude>
-    <ClInclude Include="ShaderData.h">
-      <Filter>ヘッダー ファイル\OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="ShaderScene.h">
-      <Filter>ヘッダー ファイル\OpenGL</Filter>
-    </ClInclude>
     <ClInclude Include="CameraController.h">
       <Filter>ヘッダー ファイル\Logic</Filter>
     </ClInclude>
@@ -125,6 +119,12 @@
     </ClInclude>
     <ClInclude Include="RenderNode.h">
       <Filter>ヘッダー ファイル\Asset</Filter>
+    </ClInclude>
+    <ClInclude Include="UniformScene.h">
+      <Filter>ヘッダー ファイル\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="UniformBuffer.h">
+      <Filter>ヘッダー ファイル\OpenGL</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -164,9 +164,6 @@
     <ClCompile Include="CGALPolyhedron.cpp">
       <Filter>ソース ファイル\Asset</Filter>
     </ClCompile>
-    <ClCompile Include="ShaderScene.cpp">
-      <Filter>ソース ファイル\OpenGL</Filter>
-    </ClCompile>
     <ClCompile Include="CameraController.cpp">
       <Filter>ソース ファイル\Logic</Filter>
     </ClCompile>
@@ -187,6 +184,9 @@
     </ClCompile>
     <ClCompile Include="RenderNode.cpp">
       <Filter>ソース ファイル\Asset</Filter>
+    </ClCompile>
+    <ClCompile Include="UniformScene.cpp">
+      <Filter>ソース ファイル\OpenGL</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

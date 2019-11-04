@@ -24,6 +24,7 @@ public:
 private:
 	GLuint Compile(const std::string& code, GLuint shaderType);
 	void Link(GLuint vertexId, GLuint fragId);
+	void BindScene();
 	GLuint m_vertexShader;
 	GLuint m_fragShader;
 	GLuint m_programId;

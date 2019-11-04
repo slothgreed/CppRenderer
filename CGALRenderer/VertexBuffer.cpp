@@ -207,4 +207,7 @@ int VertexBuffer::NumVertexAttrib()
 	{
 		return 4;
 	}
+
+	assert(0);
+	return 1;
 }

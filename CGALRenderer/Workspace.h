@@ -4,7 +4,8 @@ class Camera;
 class Shader;
 class VertexBuffer;
 class CGALPolyhedron;
-class ShaderScene;
+class UniformScene;
+class UniformBuffer;
 class RenderNode;
 class Workspace
 {
@@ -19,8 +20,8 @@ private:
 
 	std::shared_ptr<Camera> m_pCamera;
 	std::shared_ptr<Shader> m_pDefaultShader;
-	ShaderScene* m_pShaderScene;
-
+	std::shared_ptr<UniformScene> m_pUniformScene;
+	
 	std::vector<std::shared_ptr<RenderNode>> m_pRenderList;
 	
 };

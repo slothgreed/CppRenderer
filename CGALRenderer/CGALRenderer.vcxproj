@@ -178,8 +178,8 @@
     <ClInclude Include="Project.h" />
     <ClInclude Include="RenderNode.h" />
     <ClInclude Include="Shader.h" />
-    <ClInclude Include="ShaderData.h" />
-    <ClInclude Include="ShaderScene.h" />
+    <ClInclude Include="UniformBuffer.h" />
+    <ClInclude Include="UniformScene.h" />
     <ClInclude Include="ShaderUtility.h" />
     <ClInclude Include="SystemTypes.h" />
     <ClInclude Include="VertexBuffer.h" />
@@ -208,7 +208,7 @@
     <ClCompile Include="Project.cpp" />
     <ClCompile Include="RenderNode.cpp" />
     <ClCompile Include="Shader.cpp" />
-    <ClCompile Include="ShaderScene.cpp" />
+    <ClCompile Include="UniformScene.cpp" />
     <ClCompile Include="ShaderUtility.cpp" />
     <ClCompile Include="VertexBuffer.cpp" />
     <ClCompile Include="Viewport.cpp" />
