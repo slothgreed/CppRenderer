@@ -1,0 +1,13 @@
+Resource/Model
+Resource/Texture
+bin/
+obj/
+packages/
+x64/
+extlibs/
+Debug/
+*.vs
+*.suo
+*.Cache
+*.opendb
+RenderApp.v12.suo
