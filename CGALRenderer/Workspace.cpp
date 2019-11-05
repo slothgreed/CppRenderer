@@ -10,15 +10,13 @@ Workspace::~Workspace()
 
 void Workspace::Initialize(Project* m_pProject)
 {
-	m_pDefaultShader = make_shared<Shader>();
+	ShaderUtility::SetShaderDirectory(m_pProject->ProjectDir() + "\\Resource");
+	m_pDefaultShader = make_shared<DefaultShader>();
 	string vertexDefine;
-	ShaderUtility::GetVertexShaderDefine(VERTEX_LAYOUT::VERTEX_LAYOUT_PC, vertexDefine);
+	DefaultShader::GetVertexShaderDefine(VERTEX_LAYOUT::VERTEX_LAYOUT_PC, vertexDefine);
 
 	ShaderBuildInfo buildInfo;
-	buildInfo.versionPath	= m_pProject->ProjectDir() + "\\Resource\\version.txt";
-	buildInfo.vertexPath	= m_pProject->ProjectDir() + "\\Resource\\default.vert";
 	buildInfo.vertexDefine	= vertexDefine;
-	buildInfo.fragmentPath	= m_pProject->ProjectDir() + "\\Resource\\default.frag";
 		
 	m_pDefaultShader->Build(buildInfo);
 	
@@ -48,12 +46,9 @@ void Workspace::Initialize(Project* m_pProject)
 
 	ShaderBuildInfo facetShaderInfo;
 	string facetVertexDefine;
-	ShaderUtility::GetVertexShaderDefine(VERTEX_LAYOUT::VERTEX_LAYOUT_PN, facetVertexDefine);
-	facetShaderInfo.versionPath = m_pProject->ProjectDir() + "\\Resource\\version.txt";
-	facetShaderInfo.vertexPath = m_pProject->ProjectDir() + "\\Resource\\default.vert";
+	DefaultShader::GetVertexShaderDefine(VERTEX_LAYOUT::VERTEX_LAYOUT_PN, facetVertexDefine);
 	facetShaderInfo.vertexDefine = facetVertexDefine;
-	facetShaderInfo.fragmentPath = m_pProject->ProjectDir() + "\\Resource\\default.frag";
-	auto facetShader = make_shared<Shader>();
+	auto facetShader = make_shared<DefaultShader>();
 	facetShader->Build(facetShaderInfo);
 
 	auto facetNode = make_shared<RenderNode>(facetShader, facetBuffer);
@@ -67,12 +62,9 @@ void Workspace::Initialize(Project* m_pProject)
 	
 	ShaderBuildInfo edgeShaderInfo;
 	string edgeVertexDefine;
-	ShaderUtility::GetVertexShaderDefine(VERTEX_LAYOUT::VERTEX_LAYOUT_PN, edgeVertexDefine);
-	edgeShaderInfo.versionPath = m_pProject->ProjectDir() + "\\Resource\\version.txt";
-	edgeShaderInfo.vertexPath = m_pProject->ProjectDir() + "\\Resource\\default.vert";
+	DefaultShader::GetVertexShaderDefine(VERTEX_LAYOUT::VERTEX_LAYOUT_PN, edgeVertexDefine);
 	edgeShaderInfo.vertexDefine = facetVertexDefine;
-	edgeShaderInfo.fragmentPath = m_pProject->ProjectDir() + "\\Resource\\default.frag";
-	shared_ptr<Shader> edgeShader = make_shared<Shader>();
+	shared_ptr<IShader> edgeShader = make_shared<DefaultShader>();
 	edgeShader->Build(edgeShaderInfo);
 
 	auto edgeNode = make_shared<RenderNode>(edgeShader, edgeBuffer);

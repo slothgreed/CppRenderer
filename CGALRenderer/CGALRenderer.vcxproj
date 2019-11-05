@@ -169,6 +169,7 @@
     <ClInclude Include="FileIO.h" />
     <ClInclude Include="IController.h" />
     <ClInclude Include="IControllerArgs.h" />
+    <ClInclude Include="IShader.h" />
     <ClInclude Include="Logger.h" />
     <ClInclude Include="MathHelper.h" />
     <ClInclude Include="ModelGenerator.h" />
@@ -177,7 +178,7 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="Project.h" />
     <ClInclude Include="RenderNode.h" />
-    <ClInclude Include="Shader.h" />
+    <ClInclude Include="DefaultShader.h" />
     <ClInclude Include="UniformBuffer.h" />
     <ClInclude Include="UniformScene.h" />
     <ClInclude Include="ShaderUtility.h" />
@@ -194,6 +195,7 @@
     <ClCompile Include="CGALPolyhedron.cpp" />
     <ClCompile Include="CGALRenderer.cpp" />
     <ClCompile Include="FileIO.cpp" />
+    <ClCompile Include="IShader.cpp" />
     <ClCompile Include="Logger.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MathHelper.cpp" />
@@ -207,7 +209,7 @@
     </ClCompile>
     <ClCompile Include="Project.cpp" />
     <ClCompile Include="RenderNode.cpp" />
-    <ClCompile Include="Shader.cpp" />
+    <ClCompile Include="DefaultShader.cpp" />
     <ClCompile Include="UniformScene.cpp" />
     <ClCompile Include="ShaderUtility.cpp" />
     <ClCompile Include="VertexBuffer.cpp" />

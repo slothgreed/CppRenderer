@@ -39,10 +39,11 @@
 #include "ModelGenerator.h"
 
 // opengl
-#include "Shader.h"
+#include "VertexBuffer.h"
+#include "IShader.h"
+#include "DefaultShader.h"
 #include "UniformBuffer.h"
 #include "UniformScene.h"
-#include "VertexBuffer.h"
 #include "Viewport.h"
 
 // asset

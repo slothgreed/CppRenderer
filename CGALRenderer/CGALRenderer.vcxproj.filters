@@ -69,9 +69,6 @@
     <ClInclude Include="CGALRenderer.h">
       <Filter>ヘッダー ファイル\Application</Filter>
     </ClInclude>
-    <ClInclude Include="Shader.h">
-      <Filter>ヘッダー ファイル\OpenGL</Filter>
-    </ClInclude>
     <ClInclude Include="Workspace.h">
       <Filter>ヘッダー ファイル\Application</Filter>
     </ClInclude>
@@ -126,6 +123,12 @@
     <ClInclude Include="UniformBuffer.h">
       <Filter>ヘッダー ファイル\OpenGL</Filter>
     </ClInclude>
+    <ClInclude Include="DefaultShader.h">
+      <Filter>ヘッダー ファイル\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="IShader.h">
+      <Filter>ヘッダー ファイル\OpenGL</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -148,9 +151,6 @@
     </ClCompile>
     <ClCompile Include="CGALRenderer.cpp">
       <Filter>ソース ファイル\Application</Filter>
-    </ClCompile>
-    <ClCompile Include="Shader.cpp">
-      <Filter>ソース ファイル\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="Workspace.cpp">
       <Filter>ソース ファイル\Application</Filter>
@@ -186,6 +186,12 @@
       <Filter>ソース ファイル\Asset</Filter>
     </ClCompile>
     <ClCompile Include="UniformScene.cpp">
+      <Filter>ソース ファイル\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="DefaultShader.cpp">
+      <Filter>ソース ファイル\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="IShader.cpp">
       <Filter>ソース ファイル\OpenGL</Filter>
     </ClCompile>
   </ItemGroup>

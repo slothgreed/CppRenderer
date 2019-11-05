@@ -1,3 +1,6 @@
+
+std::string ShaderUtility::m_shaderDirectory;
+
 ShaderUtility::ShaderUtility()
 {
 }
@@ -6,30 +9,64 @@ ShaderUtility::~ShaderUtility()
 {
 }
 
-void ShaderUtility::GetVertexShaderDefine(VERTEX_LAYOUT layout, string & shaderDefine)
+GLuint ShaderUtility::Compile(const std::string& code, GLuint shaderType)
 {
-	switch (layout)
+	GLuint id = glCreateShader(shaderType);
+
+	const GLchar* sourceCode = code.c_str();
+	GLint size = (GLint)code.size();
+	glShaderSource(id, 1, &sourceCode, &size);
+
+	glCompileShader(id);
+	GLint result;
+	glGetShaderiv(id, GL_COMPILE_STATUS, &result);
+	if (result == GL_FALSE)
 	{
-	case VERTEX_LAYOUT_P:
-		break;
-	case VERTEX_LAYOUT_PN:
-		shaderDefine += VERTEX_SHADER_USE_NORMAL;
-		break;
-	case VERTEX_LAYOUT_PC:
-		shaderDefine += VERTEX_SHADER_USE_COLOR;
-		break;
-	case VERTEX_LAYOUT_PNC:
-		shaderDefine += VERTEX_SHADER_USE_NORMAL;
-		shaderDefine += VERTEX_SHADER_USE_COLOR;
-		break;
-	case VERTEX_LAYOUT_PNCT:
-		shaderDefine += VERTEX_SHADER_USE_NORMAL;
-		shaderDefine += VERTEX_SHADER_USE_COLOR;
-		shaderDefine += VERTEX_SHADER_USE_TEXCOORD;
-		break;
-	default:
-		break;
+		GLint maxLength = 0;
+		// The maxLength includes the NULL character
+		glGetShaderiv(id, GL_INFO_LOG_LENGTH, &maxLength);
+
+		GLchar* errorLog = new GLchar[maxLength];
+		glGetShaderInfoLog(id, maxLength, &maxLength, errorLog);
+		Logger::Output(LOG_LEVEL::ERROR, "DefaultShader Compile Error");
 	}
+
+	return id;
 }
 
+GLuint ShaderUtility::Link(GLuint vertexId, GLuint fragId)
+{
+	GLuint programId = glCreateProgram();
+	glAttachShader(programId, vertexId);
+	glAttachShader(programId, fragId);
 
+	glDeleteShader(vertexId);
+	glDeleteShader(fragId);
+
+	glLinkProgram(programId);
+
+	GLint result;
+	glGetProgramiv(programId, GL_LINK_STATUS, &result);
+	if (result == GL_FALSE)
+	{
+		GLint maxLength = 0;
+		// The maxLength includes the NULL character
+		glGetShaderiv(programId, GL_INFO_LOG_LENGTH, &maxLength);
+
+		GLchar* errorLog = new GLchar[maxLength];
+		glGetShaderInfoLog(programId, maxLength, &maxLength, errorLog);
+		Logger::Output(LOG_LEVEL::ERROR, "DefaultShader Link Error");
+	}
+
+	return programId;
+}
+
+const std::string& ShaderUtility::ShaderDirectory()
+{
+	if (m_shaderDirectory.size() == 0)
+	{
+		assert(0);
+	}
+
+	return m_shaderDirectory;
+}

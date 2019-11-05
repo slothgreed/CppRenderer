@@ -4,20 +4,21 @@
 #include<CGAL/Exact_predicates_inexact_constructions_kernel.h>
 #include <CGAL/Simple_cartesian.h>
 #include <CGAL/Polyhedron_3.h>
-typedef CGAL::Exact_predicates_inexact_constructions_kernel Local_Kernel;
-typedef Local_Kernel::Point_3 Local_Point;
-typedef Local_Kernel::Vector_3 Local_Vector;
-typedef CGAL::Simple_cartesian<double> Kernel;
-typedef CGAL::Polyhedron_3<Kernel> Polyhedron;
-typedef Polyhedron::Halfedge_handle HalfEdge_handle;
-typedef typename Polyhedron::Traits Traits;
-typedef typename Polyhedron::Halfedge_const_handle Halfedge_const_handle;
-typedef typename Polyhedron::Vertex_const_handle Vertex_const_handle;
-typedef typename Polyhedron::Facet_const_handle Facet_const_handle;
 
 class VertexBuffer;
 class CGALPolyhedron : CGALModel
 {
+	typedef CGAL::Exact_predicates_inexact_constructions_kernel Local_Kernel;
+	typedef Local_Kernel::Point_3 Local_Point;
+	typedef Local_Kernel::Vector_3 Local_Vector;
+	typedef CGAL::Simple_cartesian<double> Kernel;
+	typedef CGAL::Polyhedron_3<Kernel> Polyhedron;
+	typedef Polyhedron::Halfedge_handle HalfEdge_handle;
+	typedef typename Polyhedron::Traits Traits;
+	typedef typename Polyhedron::Halfedge_const_handle Halfedge_const_handle;
+	typedef typename Polyhedron::Vertex_const_handle Vertex_const_handle;
+	typedef typename Polyhedron::Facet_const_handle Facet_const_handle;
+
 public:
 	CGALPolyhedron();
 	~CGALPolyhedron();
@@ -35,8 +36,6 @@ private:
 
 	Polyhedron* m_model;
 	HalfEdge_handle* m_halfEdge;
-	VertexBuffer* m_pFaceVBO;
-	VertexBuffer* m_pEdgeVBO;
 };
 
 #endif CGAL_POLYHEDRAL_SURFACE_H

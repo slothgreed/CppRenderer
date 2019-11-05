@@ -1,4 +1,4 @@
-RenderNode::RenderNode(std::shared_ptr<Shader> shader, std::shared_ptr<VertexBuffer> vertexBuffer)
+RenderNode::RenderNode(std::shared_ptr<IShader> shader, std::shared_ptr<VertexBuffer> vertexBuffer)
 {
 	m_pShader = shader;
 	m_pVertexBuffer = vertexBuffer;

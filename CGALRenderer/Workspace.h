@@ -1,7 +1,7 @@
 #ifndef WORKSPACE_H
 #define WORKSPACE_H
 class Camera;
-class Shader;
+class IShader;
 class VertexBuffer;
 class CGALPolyhedron;
 class UniformScene;
@@ -19,7 +19,7 @@ public:
 private:
 
 	std::shared_ptr<Camera> m_pCamera;
-	std::shared_ptr<Shader> m_pDefaultShader;
+	std::shared_ptr<IShader> m_pDefaultShader;
 	std::shared_ptr<UniformScene> m_pUniformScene;
 	
 	std::vector<std::shared_ptr<RenderNode>> m_pRenderList;

@@ -85,7 +85,7 @@ void CGALPolyhedron::BuildFacet(const Facet_const_handle& facet, vector<vec3>& p
 
 }
 
-Local_Vector CGALPolyhedron::CalculateFaceNormal(const Halfedge_const_handle& halfEdge)
+CGALPolyhedron::Local_Vector CGALPolyhedron::CalculateFaceNormal(const Halfedge_const_handle& halfEdge)
 {
 	Local_Vector normal = CGAL::NULL_VECTOR;
 	Halfedge_const_handle itr = halfEdge;
@@ -109,7 +109,7 @@ Local_Vector CGALPolyhedron::CalculateFaceNormal(const Halfedge_const_handle& ha
 	return Local_Kernel::Construct_scaled_vector_3()(normal, 1.0 / count);
 }
 
-Local_Vector CGALPolyhedron::CalculateVertexNormal(const Halfedge_const_handle& halfEdge)
+CGALPolyhedron::Local_Vector CGALPolyhedron::CalculateVertexNormal(const Halfedge_const_handle& halfEdge)
 {
 	Local_Vector normal = CGAL::NULL_VECTOR;
 	Halfedge_const_handle itr = halfEdge;
