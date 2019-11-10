@@ -180,10 +180,22 @@ bool CGALRenderer::Run()
 
 	m_pController[CONTROLER_TYPE::CAMERA_CONTROLER]->SetArgs(args);
 
+	ImGui::CreateContext();
+	ImGui_ImplGlfw_InitForOpenGL(m_window, true);
+	ImGui_ImplOpenGL3_Init("#version 400 core");
 
 	while (!glfwWindowShouldClose(m_window))
 	{
+		
 		m_pWorkspace->Invoke();
+
+		ImGui_ImplOpenGL3_NewFrame();
+		ImGui_ImplGlfw_NewFrame();
+		ImGui::NewFrame();
+		m_pWorkspace->ShowProperty();
+		ImGui::Render();
+		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
 		glfwPollEvents();
 		glfwSwapBuffers(m_window);
 

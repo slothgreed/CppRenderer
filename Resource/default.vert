@@ -20,12 +20,12 @@ void main()
 {
 	mat4 vp = Projection * ViewMatrix;
 	gl_Position = vp * vec4(position,1.0);
-#ifdef USE_NORMAL
-	v_color = vec4(normal,1.0);
-#elif defined(USE_COLOR)
+#ifdef USE_COLOR
 	v_color = vec4(color,1.0);
+#elif defined(USE_NORMAL)
+	v_color = vec4(normal,1.0);
 #else
-	v_color = vec4(0,0,0);
+	v_color = vec4(1,0,0);
 #endif
 
 }

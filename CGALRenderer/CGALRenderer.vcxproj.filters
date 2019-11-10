@@ -49,6 +49,15 @@
     <Filter Include="ソース ファイル\Utility">
       <UniqueIdentifier>{8489b4f0-3bba-43a3-b33e-e652b110718f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ImGui">
+      <UniqueIdentifier>{656166a6-9f61-46fb-a7c1-0f7601e5fe62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Foundation">
+      <UniqueIdentifier>{552c0eb7-b7d2-43f4-a694-5a23d988e4f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Foundation">
+      <UniqueIdentifier>{c46505b3-a9aa-4bf7-9cf0-8ec1c7e7669a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -129,6 +138,33 @@
     <ClInclude Include="IShader.h">
       <Filter>ヘッダー ファイル\OpenGL</Filter>
     </ClInclude>
+    <ClInclude Include="ImGui\imconfig.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imgui.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imgui_internal.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imstb_rectpack.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imstb_textedit.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imstb_truetype.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imgui_impl_glfw.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imgui_impl_opengl3.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="BDB.h">
+      <Filter>ヘッダー ファイル\Foundation</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -193,6 +229,27 @@
     </ClCompile>
     <ClCompile Include="IShader.cpp">
       <Filter>ソース ファイル\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui.cpp">
+      <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui_demo.cpp">
+      <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui_draw.cpp">
+      <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui_widgets.cpp">
+      <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui_impl_glfw.cpp">
+      <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui_impl_opengl3.cpp">
+      <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="BDB.cpp">
+      <Filter>ソース ファイル\Foundation</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

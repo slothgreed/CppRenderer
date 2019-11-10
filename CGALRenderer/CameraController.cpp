@@ -13,7 +13,7 @@ void CameraController::SetArgs(shared_ptr<IControllerArgs> pArgs)
 }
 bool CameraController::Move(const Mouse& mouse)
 {
-	if (mouse.Press(MOUSE_BUTTON::MOUSE_BUTTON_LEFT))
+	if (mouse.Press(MOUSE_BUTTON::MOUSE_BUTTON_RIGHT))
 	{
 		Camera* pCamera = m_pArgs->GetCamera().get();
 		vec2 move = mouse.Delta();
@@ -43,12 +43,10 @@ bool CameraController::Wheel(const Mouse&  mouse)
 void CameraController::Zoom(float ratio)
 {
 	Camera* pCamera = m_pArgs->GetCamera().get();
-	vec3 eyeDirect = pCamera->Eye() - pCamera->Center();
-	float len = glm::length(eyeDirect);
-	
-	len *= ratio;
+	vec3 eyeDirect = pCamera->Direction();
+	float len = pCamera->LookAtDistance() * ratio;
 
-	vec3 newEye = glm::normalize(eyeDirect) * len;
+	vec3 newEye = eyeDirect * len + pCamera->Center();
 
 	pCamera->LookAt(newEye, pCamera->Center(), pCamera->Up());
 }

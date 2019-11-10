@@ -7,18 +7,16 @@ int main()
 {
     std::cout << "Hello World!\n"; 
 	std::unique_ptr<CGALRenderer> renderer(new CGALRenderer());
-	Project* pProject = new Project();
-	shared_ptr<Workspace> pWorkspace(new Workspace());
+	auto pProject = make_shared<Project>();
+	auto pWorkspace = make_shared<Workspace>();
 
-	renderer.get()->Initialize();
-	renderer.get()->SetWorkspace(pWorkspace);
+	renderer->Initialize();
+	renderer->SetWorkspace(pWorkspace);
 	pProject->Initialize();
-	pWorkspace->Initialize(pProject);
+	pWorkspace->Initialize(pProject.get());
 
-	renderer.get()->Run();
+	renderer->Run();
 	
-
-	RELEASE_INSTANCE(pProject);
 	return 0;
 }
 

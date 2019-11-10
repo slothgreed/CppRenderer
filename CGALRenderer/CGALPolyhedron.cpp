@@ -52,12 +52,12 @@ void CGALPolyhedron::GetEdgeList(vector<vec3>& edgeList)
 	}
 }
 
-void CGALPolyhedron::GetVertexList(vector<vec3>& vertex)
+void CGALPolyhedron::GetVertexList(vector<vec3>& vertexList)
 {
 	for (Polyhedron::Vertex_const_iterator vertex = m_model->vertices_begin();
 		vertex != m_model->vertices_end(); vertex++)
 	{
-		BuildVertex(vertex);
+		BuildVertex(vertex, vertexList);
 	}
 }
 
@@ -145,7 +145,24 @@ void CGALPolyhedron::BuildEdge(const Halfedge_const_handle& edge, vector<vec3>& 
 	position.push_back(vec3(p2.x(), p2.y(), p2.z()));
 }
 
-void CGALPolyhedron::BuildVertex(const Vertex_const_handle& vertex)
+void CGALPolyhedron::BuildVertex(const Vertex_const_handle& vertex, vector<vec3>& position)
 {
 	CGAL::Point_3<Kernel> p1 = vertex->point();
+	position.push_back(vec3(p1.x(),p1.y(),p1.z()));
+}
+
+
+void CGALPolyhedron::GetBDB(BDB& bdb)
+{
+	CGAL::Bbox_3 cgalBDB;
+	for (Polyhedron::Vertex_const_iterator vertex = m_model->vertices_begin();
+		vertex != m_model->vertices_end(); vertex++)
+	{
+		cgalBDB += vertex->point().bbox();
+	}
+	
+	bdb.Set(
+		vec3(cgalBDB.xmin(), cgalBDB.ymin(), cgalBDB.zmin()),
+		vec3(cgalBDB.xmax(), cgalBDB.ymax(), cgalBDB.zmax())
+	);
 }

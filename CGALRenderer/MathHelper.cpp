@@ -17,3 +17,15 @@ void MathHelper::CartesianToSpherical(const glm::vec3& position, float& radian, 
 	phi = glm::acos(position.z / radian);
 	theta = glm::atan(position.y / position.x);
 }
+
+std::string MathHelper::ToString(const vec3& value)
+{
+	// (x, y, z)
+	string str;
+	str += "(";
+	str += to_string(value.x) + ", ";
+	str += to_string(value.y) + ", ";
+	str += to_string(value.z) + ")";
+
+	return str;
+}

@@ -15,10 +15,13 @@ public:
 	const vec3& Eye() { return m_eye; };
 	const vec3& Center() { return m_center; };
 	const vec3& Up() { return m_up; };
+	const vec3& Direction() { return m_direction; }
 
 	const float Phi() const { return m_phi; }
 	const float Theta() const { return m_theta; }
 	const float LookAtDistance() const { return m_distance; }
+
+	void FitToBDB(const BDB& bdb);
 private:
 
 	void SetTheta(float value);
@@ -30,6 +33,7 @@ private:
 	vec3 m_eye;
 	vec3 m_center;
 	vec3 m_up;
+	vec3 m_direction;
 
 	float m_fov;
 	float m_aspect;

@@ -9,6 +9,7 @@ public:
 
 	static void SphericalToCartesian(float x, float y, glm::vec3& result);
 	static void CartesianToSpherical(const glm::vec3& position, float& radian, float& theta, float& phi);
+	static std::string ToString(const glm::vec3& value);
 private:
 
 };

@@ -11,6 +11,7 @@
 
 // TODO: ここでプリコンパイルするヘッダーを追加します
 
+
 #include<memory>
 #include<string>
 #include <iostream>
@@ -24,6 +25,15 @@
 #include <GL/GLU.h>
 #include <glm/glm.hpp>
 #include <glm/gtx/transform.hpp>
+
+#include "ImGui/imgui.h"
+#include "ImGui/imgui_impl_glfw.h"
+#include "ImGui/imgui_impl_opengl3.h"
+
+using namespace std;
+using namespace glm;
+// Foundation
+#include "BDB.h"
 
 // system
 #include "SystemTypes.h"

@@ -22,7 +22,7 @@ void Workspace::Initialize(Project* m_pProject)
 	
 	m_pCamera = make_shared<Camera>();
 	m_pCamera->LookAt(vec3(0, 0, -2), vec3(0, 0, 0), vec3(0, 1, 0));
-	m_pCamera->Perspective(glm::radians(60.0f), 1, 0.01, 100);
+	m_pCamera->Perspective(glm::radians(60.0f), 1, 0.01, 1000);
 
 	m_pUniformScene = make_shared<UniformScene>();
 	m_pUniformScene->Generate();
@@ -32,7 +32,7 @@ void Workspace::Initialize(Project* m_pProject)
 	m_pUniformScene->Set(sceneData);
 
 	shared_ptr<CGALPolyhedron> polyhedron = make_shared<CGALPolyhedron>();
-	polyhedron->Load("E:\\Tools\\CGAL-5.0-beta1\\build\\examples\\Polygon_mesh_processing\\Debug\\data\\blobby.off");
+	polyhedron->Load("E:\\cgModel\\StanfordBunny.off");
 	//m_pPolyhedron->Load("E:\\Tools\\CGAL-5.0-beta1\\build\\examples\\Polygon_mesh_processing\\Debug\\data\\eight.off");
 	//m_pPolyhedron->Load("E:\\cgModel\\model\\fandisk\\fandisk.off");
 
@@ -50,9 +50,13 @@ void Workspace::Initialize(Project* m_pProject)
 	facetShaderInfo.vertexDefine = facetVertexDefine;
 	auto facetShader = make_shared<DefaultShader>();
 	facetShader->Build(facetShaderInfo);
+	BDB bdb;
+	polyhedron->GetBDB(bdb);
+	m_pCamera->FitToBDB(bdb);
 
 	auto facetNode = make_shared<RenderNode>(facetShader, facetBuffer);
 	m_pRenderList.push_back(facetNode);
+	facetNode->SetBDB(bdb);
 
 	vector<vec3> edge;
 	polyhedron->GetEdgeList(edge);
@@ -93,4 +97,12 @@ void Workspace::Invoke()
 	}
 	
 	m_pUniformScene->UnBind();
+}
+
+void Workspace::ShowProperty()
+{
+	for (int i = 0; i < m_pRenderList.size(); i++)
+	{
+		m_pRenderList[i]->ShowProperty();
+	}
 }

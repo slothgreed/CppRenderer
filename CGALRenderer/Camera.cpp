@@ -14,6 +14,7 @@ void Camera::LookAt(const vec3& eye, const vec3& center, const vec3& up)
 	m_eye = eye;
 	m_center = center;
 	m_up = up;
+	m_direction = glm::normalize(m_eye - m_center);
 	m_distance = glm::length(m_eye - m_center);
 }
 
@@ -23,7 +24,7 @@ void Camera::Perspective(float fov, float aspect, float _near, float _far)
 	m_fov = fov;
 	m_aspect = aspect;
 	m_near = _near;
-	m_far = m_far;
+	m_far = _far;
 }
 
 void Camera::MoveWithSpherical(const vec2& move)
@@ -35,7 +36,7 @@ void Camera::MoveWithSpherical(const vec2& move)
 	MathHelper::SphericalToCartesian(glm::radians(Theta()), glm::radians(Phi()), sphericalPos);
 	sphericalPos = glm::normalize(sphericalPos);
 	sphericalPos *= LookAtDistance();
-
+	sphericalPos += Center();
 	LookAt(sphericalPos, Center(), Up());
 }
 
@@ -70,4 +71,15 @@ void Camera::SetTheta(float value)
 	{
 		m_theta += value;
 	}
+}
+
+void Camera::FitToBDB(const BDB& bdb)
+{
+	float lookAtDistance = glm::length(bdb.Max() - bdb.Center()) / sin(m_fov / 2.0);
+	lookAtDistance *= 1.2 / m_aspect;
+
+	vec3 eyeDirection = glm::normalize(m_eye - m_center);
+	vec3 newPosition = bdb.Center() + eyeDirection * lookAtDistance;
+
+	LookAt(newPosition, bdb.Center(), m_up);
 }

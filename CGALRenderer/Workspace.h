@@ -14,6 +14,7 @@ public:
 	~Workspace();
 	void Initialize(Project* m_pProject);
 	void Invoke();
+	void ShowProperty();
 
 	std::shared_ptr<Camera> MainCamera() { return m_pCamera; }
 private:

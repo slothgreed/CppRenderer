@@ -18,7 +18,7 @@ void UniformScene::Set(const SceneData& data)
 {
 	if (m_SceneId == 0)
 	{
-		Logger::Output(LOG_LEVEL::ERROR, "not initialized");
+		Logger::Output(LOG_LEVEL::ERROR, "not Generated");
 		assert(0);
 		return;
 	}
@@ -33,7 +33,7 @@ void UniformScene::Bind()
 {
 	if (m_SceneId == 0)
 	{
-		Logger::Output(LOG_LEVEL::ERROR, "not initialized");
+		Logger::Output(LOG_LEVEL::ERROR, "not Generated");
 		assert(0);
 		return;
 	}
