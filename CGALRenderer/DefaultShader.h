@@ -8,7 +8,7 @@ class DefaultShader : public IShader
 public:
 	DefaultShader();
 	~DefaultShader();
-	static void GetVertexShaderDefine(VERTEX_LAYOUT layout, std::string& vertexFilePath);
+	static void GetVertexShaderDefine(VERTEX_LAYOUT layout, ShaderBuildInfo& buildInfo);
 
 	virtual SHADER_TYPE Type() override { return SHADER_TYPE::SHADER_TYPE_DEFAULT; }
 

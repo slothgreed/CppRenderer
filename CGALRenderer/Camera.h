@@ -22,11 +22,13 @@ public:
 	const float LookAtDistance() const { return m_distance; }
 
 	void FitToBDB(const BDB& bdb);
+	void ShowProperty();
 private:
 
 	void SetTheta(float value);
 	void SetPhi(float value);
 
+	string m_name;
 	mat4x4 m_View;
 	mat4x4 m_Project;
 
@@ -35,6 +37,7 @@ private:
 	vec3 m_up;
 	vec3 m_direction;
 
+	
 	float m_fov;
 	float m_aspect;
 	float m_near;

@@ -1,5 +1,6 @@
 #ifndef CGAL_RENDERER_H
 #define CGAL_RENDERER_H
+class ShaderManager;
 class Workspace;
 class Mouse;
 class MouseInput;
@@ -25,5 +26,6 @@ private:
 };
 
 static CGALRenderer* TheApp();
+
 
 #endif CGAL_RENDERER_H

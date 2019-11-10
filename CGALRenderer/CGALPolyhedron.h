@@ -28,6 +28,7 @@ public:
 	virtual void GetEdgeList(std::vector<vec3>& edgeList);
 	virtual void GetVertexList(std::vector<vec3>& position);
 	virtual void GetBDB(BDB& bdb);
+	virtual void GenSampleModel();
 
 private:
 	void BuildFacet(const Facet_const_handle& facet, std::vector<glm::vec3>& position, std::vector<glm::vec3>& normal);

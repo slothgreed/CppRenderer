@@ -165,6 +165,15 @@
     <ClInclude Include="BDB.h">
       <Filter>ヘッダー ファイル\Foundation</Filter>
     </ClInclude>
+    <ClInclude Include="IModelProperty.h">
+      <Filter>ヘッダー ファイル\Asset</Filter>
+    </ClInclude>
+    <ClInclude Include="BDBProperty.h">
+      <Filter>ヘッダー ファイル\Asset</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderManager.h">
+      <Filter>ヘッダー ファイル\OpenGL</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -250,6 +259,12 @@
     </ClCompile>
     <ClCompile Include="BDB.cpp">
       <Filter>ソース ファイル\Foundation</Filter>
+    </ClCompile>
+    <ClCompile Include="BDBProperty.cpp">
+      <Filter>ソース ファイル\Asset</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderManager.cpp">
+      <Filter>ソース ファイル\OpenGL</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

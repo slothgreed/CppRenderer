@@ -2,6 +2,7 @@ Camera::Camera()
 {
 	m_theta = 0;
 	m_phi = 0;
+	m_name = "Camera";
 }
 
 Camera::~Camera()
@@ -82,4 +83,19 @@ void Camera::FitToBDB(const BDB& bdb)
 	vec3 newPosition = bdb.Center() + eyeDirection * lookAtDistance;
 
 	LookAt(newPosition, bdb.Center(), m_up);
+}
+
+void Camera::ShowProperty()
+{
+	ImGui::Begin(m_name.data());
+	string eyeStr = "Eye" + MathHelper::ToString(m_eye) + "\n";
+	ImGui::Text(eyeStr.data());
+
+	string centerStr = "Center" + MathHelper::ToString(m_center) + "\n";
+	ImGui::Text(centerStr.data());
+
+	string upStr = "Up" + MathHelper::ToString(m_up) + "\n";
+	ImGui::Text(upStr.data());
+
+	ImGui::End();
 }

@@ -2,15 +2,15 @@ void IShader::Build(const ShaderBuildInfo& buildInfo)
 {
 	string vertexCode;
 	string fragCode;
-	string version;
-	FileIO::Load(m_versionPath, version);
 	FileIO::Load(m_vertexPath, vertexCode);
 	FileIO::Load(m_fragPath, fragCode);
 
-	vertexCode = version + buildInfo.vertexDefine + vertexCode;
-	fragCode = version + buildInfo.fragDefine + fragCode;
+	vertexCode = m_version + buildInfo.vertexDefine + vertexCode;
+	fragCode = m_version + buildInfo.fragDefine + fragCode;
 
 	BuildFromCode(vertexCode, fragCode);
+
+	m_buildInfo = buildInfo;
 }
 
 void IShader::BuildFromCode(const std::string& vertexShaderCode, const std::string& fragmentShader)
@@ -37,3 +37,24 @@ void IShader::UnUse()
 {
 	glUseProgram(0);
 }
+
+void IShader::Dispose()
+{
+	if (m_programId == 0)
+	{
+		glDeleteProgram(m_programId);
+	}
+}
+bool IShader::Compare(const ShaderBuildInfo& buildInfo)
+{
+	if (m_buildInfo.shaderType == buildInfo.shaderType &&
+		m_buildInfo.vertexDefine == buildInfo.vertexDefine &&
+		m_buildInfo.fragDefine == buildInfo.fragDefine) {
+		return true;
+	}
+	else {
+		return false;
+	}
+
+}
+

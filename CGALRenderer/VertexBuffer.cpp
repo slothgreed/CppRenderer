@@ -121,7 +121,7 @@ void VertexBuffer::GenerateVAO()
 
 	if (HasTexCoord())
 	{
-
+		assert(0);
 	}
 
 	glBindVertexArray(0);

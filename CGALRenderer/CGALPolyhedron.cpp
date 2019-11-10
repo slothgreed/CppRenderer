@@ -28,6 +28,11 @@ void CGALPolyhedron::Load(const string& filePath)
 
 }
 
+void CGALPolyhedron::GenSampleModel()
+{
+
+}
+
 void CGALPolyhedron::GetFacetList(vector<vec3>& facetList, vector<vec3>& normalList)
 {
 	for (Polyhedron::Facet_const_iterator facet = m_model->facets_begin();

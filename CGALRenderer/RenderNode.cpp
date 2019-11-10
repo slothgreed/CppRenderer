@@ -13,6 +13,11 @@ void RenderNode::Draw()
 {
 	m_pShader->Use();
 	m_pVertexBuffer->Draw();
+	for (int i = 0; i < m_pProperty.size(); i++)
+	{
+		m_pProperty[i]->Draw();
+	}
+
 	m_pShader->UnUse();
 }
 
@@ -26,4 +31,6 @@ void RenderNode::ShowProperty()
 void RenderNode::SetBDB(BDB bdb)
 {
 	m_bdb = bdb;
+	m_pProperty.push_back(make_shared<BDBProperty>(m_bdb));
 }
+

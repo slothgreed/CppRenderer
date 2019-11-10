@@ -49,6 +49,7 @@ using namespace glm;
 #include "ModelGenerator.h"
 
 // opengl
+#include "ShaderManager.h"
 #include "VertexBuffer.h"
 #include "IShader.h"
 #include "DefaultShader.h"
@@ -59,6 +60,8 @@ using namespace glm;
 // asset
 #include "Camera.h"
 #include "RenderNode.h"
+#include "IModelProperty.h"
+#include "BDBProperty.h"
 #include "CGALModel.h"
 #include "CGALPolyhedron.h"
 

@@ -10,6 +10,10 @@ void Logger::Output(LOG_LEVEL level, string message)
 {
 	USE_VAR(level);
 	printf(message.data());
+	if (level == LOG_LEVEL::ERROR)
+	{
+		assert(0);
+	}
 }
 
 void Logger::GLError()

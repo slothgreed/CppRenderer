@@ -1,6 +1,6 @@
 DefaultShader::DefaultShader()
 {
-	SetVersionPath(ShaderUtility::ShaderDirectory() + "\\version.txt");
+	SetVersion(GLSL_VERSION_400_CORE);
 	SetVertexPath(ShaderUtility::ShaderDirectory() + "\\default.vert");
 	SetFragPath(ShaderUtility::ShaderDirectory() + "\\default.frag");
 }
@@ -22,26 +22,27 @@ void DefaultShader::BindScene()
 	Logger::GLError();
 }
 
-void DefaultShader::GetVertexShaderDefine(VERTEX_LAYOUT layout, string & shaderDefine)
+void DefaultShader::GetVertexShaderDefine(VERTEX_LAYOUT layout, ShaderBuildInfo& shaderDefine)
 {
+	shaderDefine.shaderType = SHADER_TYPE::SHADER_TYPE_DEFAULT;
 	switch (layout)
 	{
 	case VERTEX_LAYOUT_P:
 		break;
 	case VERTEX_LAYOUT_PN:
-		shaderDefine += VERTEX_SHADER_USE_NORMAL;
+		shaderDefine.vertexDefine += VERTEX_SHADER_USE_NORMAL;
 		break;
 	case VERTEX_LAYOUT_PC:
-		shaderDefine += VERTEX_SHADER_USE_COLOR;
+		shaderDefine.vertexDefine += VERTEX_SHADER_USE_COLOR;
 		break;
 	case VERTEX_LAYOUT_PNC:
-		shaderDefine += VERTEX_SHADER_USE_NORMAL;
-		shaderDefine += VERTEX_SHADER_USE_COLOR;
+		shaderDefine.vertexDefine += VERTEX_SHADER_USE_NORMAL;
+		shaderDefine.vertexDefine += VERTEX_SHADER_USE_COLOR;
 		break;
 	case VERTEX_LAYOUT_PNCT:
-		shaderDefine += VERTEX_SHADER_USE_NORMAL;
-		shaderDefine += VERTEX_SHADER_USE_COLOR;
-		shaderDefine += VERTEX_SHADER_USE_TEXCOORD;
+		shaderDefine.vertexDefine += VERTEX_SHADER_USE_NORMAL;
+		shaderDefine.vertexDefine += VERTEX_SHADER_USE_COLOR;
+		shaderDefine.vertexDefine += VERTEX_SHADER_USE_TEXCOORD;
 		break;
 	default:
 		break;

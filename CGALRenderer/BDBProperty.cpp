@@ -1,0 +1,39 @@
+BDBProperty::BDBProperty(BDB& bdb)
+{
+	m_bdb = bdb;
+	GenVBO();
+}
+
+BDBProperty::~BDBProperty()
+{
+	RELEASE_INSTANCE(m_pVertexBuffer);
+}
+
+void BDBProperty::GenVBO()
+{
+	m_pVertexBuffer = new VertexBuffer();
+	m_pVertexBuffer->Generate(VERTEX_LAYOUT::VERTEX_LAYOUT_P);
+
+	vector<vec3> position;
+	position.push_back(m_bdb.Min());
+	position.push_back(vec3(m_bdb.Max().x, m_bdb.Min().y, m_bdb.Min().z));
+	position.push_back(vec3(m_bdb.Max().x, m_bdb.Max().y, m_bdb.Min().z));
+	position.push_back(vec3(m_bdb.Min().x, m_bdb.Max().y, m_bdb.Min().z));
+	position.push_back(vec3(m_bdb.Max().x, m_bdb.Min().y, m_bdb.Max().z));
+	position.push_back(vec3(m_bdb.Max().x, m_bdb.Max().y, m_bdb.Max().z));
+	position.push_back(vec3(m_bdb.Min().x, m_bdb.Max().y, m_bdb.Max().z));
+	position.push_back(m_bdb.Max());
+
+	m_pVertexBuffer->SetPosition(GL_POINTS, position);
+
+	ShaderBuildInfo buildInfo;
+	DefaultShader::GetVertexShaderDefine(VERTEX_LAYOUT_P, buildInfo);
+	m_pShader = ShaderManager::Instance()->FindOrNew(buildInfo).get();
+}
+
+void BDBProperty::Draw()
+{
+	m_pShader->Use();
+	m_pVertexBuffer->Draw();
+	m_pShader->UnUse();
+}

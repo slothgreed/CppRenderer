@@ -25,7 +25,7 @@ void main()
 #elif defined(USE_NORMAL)
 	v_color = vec4(normal,1.0);
 #else
-	v_color = vec4(1,0,0);
+	v_color = vec4(1,0,0,1.0);
 #endif
 
 }

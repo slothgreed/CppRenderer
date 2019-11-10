@@ -11,14 +11,9 @@ Workspace::~Workspace()
 void Workspace::Initialize(Project* m_pProject)
 {
 	ShaderUtility::SetShaderDirectory(m_pProject->ProjectDir() + "\\Resource");
-	m_pDefaultShader = make_shared<DefaultShader>();
-	string vertexDefine;
-	DefaultShader::GetVertexShaderDefine(VERTEX_LAYOUT::VERTEX_LAYOUT_PC, vertexDefine);
-
 	ShaderBuildInfo buildInfo;
-	buildInfo.vertexDefine	= vertexDefine;
-		
-	m_pDefaultShader->Build(buildInfo);
+	DefaultShader::GetVertexShaderDefine(VERTEX_LAYOUT::VERTEX_LAYOUT_PC, buildInfo);
+	m_pDefaultShader = ShaderManager::Instance()->FindOrNew(buildInfo);
 	
 	m_pCamera = make_shared<Camera>();
 	m_pCamera->LookAt(vec3(0, 0, -2), vec3(0, 0, 0), vec3(0, 1, 0));
@@ -45,11 +40,9 @@ void Workspace::Initialize(Project* m_pProject)
 	facetBuffer->SetNormal(normal);
 
 	ShaderBuildInfo facetShaderInfo;
-	string facetVertexDefine;
-	DefaultShader::GetVertexShaderDefine(VERTEX_LAYOUT::VERTEX_LAYOUT_PN, facetVertexDefine);
-	facetShaderInfo.vertexDefine = facetVertexDefine;
-	auto facetShader = make_shared<DefaultShader>();
-	facetShader->Build(facetShaderInfo);
+	DefaultShader::GetVertexShaderDefine(VERTEX_LAYOUT::VERTEX_LAYOUT_PN, facetShaderInfo);
+	auto facetShader = ShaderManager::Instance()->FindOrNew(facetShaderInfo);
+
 	BDB bdb;
 	polyhedron->GetBDB(bdb);
 	m_pCamera->FitToBDB(bdb);
@@ -65,11 +58,8 @@ void Workspace::Initialize(Project* m_pProject)
 	edgeBuffer->SetPosition(GL_LINES, edge);
 	
 	ShaderBuildInfo edgeShaderInfo;
-	string edgeVertexDefine;
-	DefaultShader::GetVertexShaderDefine(VERTEX_LAYOUT::VERTEX_LAYOUT_PN, edgeVertexDefine);
-	edgeShaderInfo.vertexDefine = facetVertexDefine;
-	shared_ptr<IShader> edgeShader = make_shared<DefaultShader>();
-	edgeShader->Build(edgeShaderInfo);
+	DefaultShader::GetVertexShaderDefine(VERTEX_LAYOUT::VERTEX_LAYOUT_PN, edgeShaderInfo);
+	shared_ptr<IShader> edgeShader = ShaderManager::Instance()->FindOrNew(edgeShaderInfo);
 
 	auto edgeNode = make_shared<RenderNode>(edgeShader, edgeBuffer);
 	m_pRenderList.push_back(edgeNode);
@@ -101,6 +91,8 @@ void Workspace::Invoke()
 
 void Workspace::ShowProperty()
 {
+	m_pCamera->ShowProperty();
+
 	for (int i = 0; i < m_pRenderList.size(); i++)
 	{
 		m_pRenderList[i]->ShowProperty();
