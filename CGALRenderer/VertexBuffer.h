@@ -41,6 +41,7 @@ public:
 	void SetPosition(GLuint primitiveTypem, const std::vector<glm::vec3>& position);
 	void SetNormal(const std::vector<glm::vec3>& normal);
 	void SetColor(const std::vector<glm::vec3>& color);
+	void SetIndex(const std::vector<int>& index);
 	void Dispose();
 	VERTEX_LAYOUT Layout() { return m_layout; };
 	virtual void Draw() override;
@@ -50,10 +51,14 @@ private:
 	bool HasNormal();
 	bool HasColor();
 	bool HasTexCoord();
+	bool HasIndex();
 	int NumVertexAttrib();
 
 	GLuint m_id[VERTEX_ATTRIB_NUM];
 	GLuint m_vaoId;
+	GLuint m_indexId;
+	GLuint m_indexSize;
+	
 	GLuint m_PrimitiveType;
 	GLuint m_vertexNum;
 	VERTEX_LAYOUT m_layout;

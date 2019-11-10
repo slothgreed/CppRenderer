@@ -7,6 +7,7 @@ VertexBuffer::VertexBuffer()
 	}
 
 	m_vaoId = 0;
+	m_indexId = 0;
 }
 
 VertexBuffer::~VertexBuffer()
@@ -19,7 +20,6 @@ void VertexBuffer::Generate(VERTEX_LAYOUT layout)
 	m_layout = layout;
 	GLuint* attrib = new GLuint[NumVertexAttrib()];
 	glGenBuffers(NumVertexAttrib(), attrib);
-
 
 	if (m_layout == VERTEX_LAYOUT_P)
 	{
@@ -81,6 +81,7 @@ void VertexBuffer::SetNormal(const vector<vec3>& normal)
 	glBindBuffer(GL_ARRAY_BUFFER, m_id[VERTEX_ATTRIB_NORMAL]);
 	glBufferData(GL_ARRAY_BUFFER, normal.size() * sizeof(vec3), normal.data(), GL_STATIC_DRAW);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	Logger::GLError();
 }
 
 void VertexBuffer::SetColor(const vector<vec3>& color)
@@ -94,7 +95,22 @@ void VertexBuffer::SetColor(const vector<vec3>& color)
 	glBindBuffer(GL_ARRAY_BUFFER, m_id[VERTEX_ATTRIB_COLOR]);
 	glBufferData(GL_ARRAY_BUFFER, color.size() * sizeof(vec3), color.data(), GL_STATIC_DRAW);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	Logger::GLError();
+}
 
+void VertexBuffer::SetIndex(const vector<int>& index)
+{
+	if (m_indexId == 0)
+	{
+		glGenBuffers(1, &m_indexId);
+	}
+
+	glBindVertexArray(m_vaoId);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_indexId);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, index.size() * sizeof(int), index.data(), GL_STATIC_DRAW);
+	glBindVertexArray(0);
+	m_indexSize = index.size();
+	Logger::GLError();
 }
 
 void VertexBuffer::GenerateVAO()
@@ -142,12 +158,24 @@ void VertexBuffer::Dispose()
 	{
 		glDeleteVertexArrays(1, &m_vaoId);
 	}
+
+	if (m_indexId != 0)
+	{
+		glDeleteBuffers(1, &m_indexId);
+	}
 }
 
 void VertexBuffer::Draw()
 {
 	glBindVertexArray(m_vaoId);
-	glDrawArrays(m_PrimitiveType, 0, m_vertexNum);
+	if (HasIndex())
+	{
+		glDrawElements(m_PrimitiveType, m_indexSize, GL_UNSIGNED_INT, 0);
+	}
+	else
+	{
+		glDrawArrays(m_PrimitiveType, 0, m_vertexNum);
+	}
 	glBindVertexArray(0);
 }
 
@@ -178,6 +206,16 @@ bool VertexBuffer::HasColor()
 bool VertexBuffer::HasTexCoord()
 {
 	if (m_layout == VERTEX_LAYOUT_PNCT)
+	{
+		return true;
+	}
+
+	return false;
+}
+
+bool VertexBuffer::HasIndex()
+{
+	if (m_indexId != 0)
 	{
 		return true;
 	}
