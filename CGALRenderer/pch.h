@@ -59,9 +59,6 @@ using namespace glm;
 
 // asset
 #include "Camera.h"
-#include "RenderNode.h"
-#include "IModelProperty.h"
-#include "BDBProperty.h"
 #include "CGALModel.h"
 #include "CGALPolyhedron.h"
 
@@ -69,6 +66,11 @@ using namespace glm;
 #include "IController.h"
 #include "IControllerArgs.h"
 #include "CameraController.h"
+
+// model (mvc)
+#include "ModelNode.h"
+#include "IModelProperty.h"
+#include "BDBProperty.h"
 
 // application
 #include "CGALRenderer.h"

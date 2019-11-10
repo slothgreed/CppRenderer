@@ -188,7 +188,7 @@
     <ClInclude Include="MouseInput.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Project.h" />
-    <ClInclude Include="RenderNode.h" />
+    <ClInclude Include="ModelNode.h" />
     <ClInclude Include="DefaultShader.h" />
     <ClInclude Include="ShaderManager.h" />
     <ClInclude Include="UniformBuffer.h" />
@@ -228,7 +228,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Project.cpp" />
-    <ClCompile Include="RenderNode.cpp" />
+    <ClCompile Include="ModelNode.cpp" />
     <ClCompile Include="DefaultShader.cpp" />
     <ClCompile Include="ShaderManager.cpp" />
     <ClCompile Include="UniformScene.cpp" />

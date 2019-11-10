@@ -47,7 +47,7 @@ void Workspace::Initialize(Project* m_pProject)
 	polyhedron->GetBDB(bdb);
 	m_pCamera->FitToBDB(bdb);
 
-	auto facetNode = make_shared<RenderNode>(facetShader, facetBuffer);
+	auto facetNode = make_shared<ModelNode>(facetShader, facetBuffer);
 	m_pRenderList.push_back(facetNode);
 	facetNode->SetBDB(bdb);
 
@@ -61,12 +61,12 @@ void Workspace::Initialize(Project* m_pProject)
 	DefaultShader::GetVertexShaderDefine(VERTEX_LAYOUT::VERTEX_LAYOUT_PN, edgeShaderInfo);
 	shared_ptr<IShader> edgeShader = ShaderManager::Instance()->FindOrNew(edgeShaderInfo);
 
-	auto edgeNode = make_shared<RenderNode>(edgeShader, edgeBuffer);
+	auto edgeNode = make_shared<ModelNode>(edgeShader, edgeBuffer);
 	m_pRenderList.push_back(edgeNode);
 
 	auto axis = make_shared<VertexBuffer>();
 	ModelGenerator::Axis(axis.get());
-	auto axisNode = make_shared<RenderNode>(m_pDefaultShader, axis);
+	auto axisNode = make_shared<ModelNode>(m_pDefaultShader, axis);
 	m_pRenderList.push_back(axisNode);
 
 }

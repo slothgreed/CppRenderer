@@ -1,14 +1,14 @@
-#ifndef RENDER_NODE_H
-#define RENDER_NODE_H
+#ifndef MODEL_NODE_H
+#define MODEL_NODE_H
 
 class IShader;
 class VertexBuffer;
 class IModelProperty;
-class RenderNode
+class ModelNode
 {
 public:
-	RenderNode(std::shared_ptr<IShader> shader, std::shared_ptr<VertexBuffer> buffer);
-	~RenderNode();
+	ModelNode(std::shared_ptr<IShader> shader, std::shared_ptr<VertexBuffer> buffer);
+	~ModelNode();
 	void Draw();
 	void SetBDB(BDB bdb);
 	void ShowProperty();
@@ -23,4 +23,4 @@ private:
 
 
 
-#endif RENDER_NODE_H
+#endif MODEL_NODE_H

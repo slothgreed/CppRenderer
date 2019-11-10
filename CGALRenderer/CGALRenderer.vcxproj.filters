@@ -123,9 +123,6 @@
     <ClInclude Include="ModelGenerator.h">
       <Filter>ヘッダー ファイル\Utility</Filter>
     </ClInclude>
-    <ClInclude Include="RenderNode.h">
-      <Filter>ヘッダー ファイル\Asset</Filter>
-    </ClInclude>
     <ClInclude Include="UniformScene.h">
       <Filter>ヘッダー ファイル\OpenGL</Filter>
     </ClInclude>
@@ -173,6 +170,9 @@
     </ClInclude>
     <ClInclude Include="ShaderManager.h">
       <Filter>ヘッダー ファイル\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelNode.h">
+      <Filter>ヘッダー ファイル\Asset</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -227,9 +227,6 @@
     <ClCompile Include="ModelGenerator.cpp">
       <Filter>ソース ファイル\Utility</Filter>
     </ClCompile>
-    <ClCompile Include="RenderNode.cpp">
-      <Filter>ソース ファイル\Asset</Filter>
-    </ClCompile>
     <ClCompile Include="UniformScene.cpp">
       <Filter>ソース ファイル\OpenGL</Filter>
     </ClCompile>
@@ -265,6 +262,9 @@
     </ClCompile>
     <ClCompile Include="ShaderManager.cpp">
       <Filter>ソース ファイル\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelNode.cpp">
+      <Filter>ソース ファイル\Asset</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
