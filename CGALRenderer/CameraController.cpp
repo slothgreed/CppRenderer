@@ -15,12 +15,11 @@ bool CameraController::Move(const Mouse& mouse)
 {
 	if (mouse.Press(MOUSE_BUTTON::MOUSE_BUTTON_RIGHT))
 	{
-		Camera* pCamera = m_pArgs->GetCamera().get();
 		vec2 move = mouse.Delta();
 		move.x *= 0.3;
 		move.y *= -0.3;
 
-		pCamera->MoveWithSpherical(move);
+		m_pArgs->m_pCamera->MoveWithSpherical(move);
 	}
 
 	return true;
@@ -42,7 +41,7 @@ bool CameraController::Wheel(const Mouse&  mouse)
 
 void CameraController::Zoom(float ratio)
 {
-	Camera* pCamera = m_pArgs->GetCamera().get();
+	Camera* pCamera = m_pArgs->m_pCamera.get();
 	vec3 eyeDirect = pCamera->Direction();
 	float len = pCamera->LookAtDistance() * ratio;
 

@@ -165,12 +165,16 @@
     <ClInclude Include="BDBProperty.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CameraController.h" />
+    <ClInclude Include="CGALGeneralizedMaps.h" />
+    <ClInclude Include="CGALLinearCellComplex.h" />
     <ClInclude Include="CGALModel.h" />
     <ClInclude Include="CGALPolyhedron.h" />
     <ClInclude Include="CGALRenderer.h" />
+    <ClInclude Include="CommandManager.h" />
+    <ClInclude Include="EventArgs.h" />
     <ClInclude Include="FileIO.h" />
+    <ClInclude Include="ICommand.h" />
     <ClInclude Include="IController.h" />
-    <ClInclude Include="IControllerArgs.h" />
     <ClInclude Include="ImGui\imconfig.h" />
     <ClInclude Include="ImGui\imgui.h" />
     <ClInclude Include="ImGui\imgui_impl_glfw.h" />
@@ -179,7 +183,10 @@
     <ClInclude Include="ImGui\imstb_rectpack.h" />
     <ClInclude Include="ImGui\imstb_textedit.h" />
     <ClInclude Include="ImGui\imstb_truetype.h" />
+    <ClInclude Include="IModel.h" />
     <ClInclude Include="IModelProperty.h" />
+    <ClInclude Include="PrimitiveNode.h" />
+    <ClInclude Include="Observer.h" />
     <ClInclude Include="IShader.h" />
     <ClInclude Include="Logger.h" />
     <ClInclude Include="MathHelper.h" />
@@ -188,9 +195,11 @@
     <ClInclude Include="MouseInput.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Project.h" />
-    <ClInclude Include="ModelNode.h" />
+    <ClInclude Include="CGALModelNode.h" />
     <ClInclude Include="DefaultShader.h" />
+    <ClInclude Include="IModelNode.h" />
     <ClInclude Include="ShaderManager.h" />
+    <ClInclude Include="SubdivisionCommand.h" />
     <ClInclude Include="UniformBuffer.h" />
     <ClInclude Include="UniformScene.h" />
     <ClInclude Include="ShaderUtility.h" />
@@ -205,9 +214,12 @@
     <ClCompile Include="BDBProperty.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CameraController.cpp" />
+    <ClCompile Include="CGALGeneralizedMaps.cpp" />
+    <ClCompile Include="CGALLinearCellComplex.cpp" />
     <ClCompile Include="CGALModel.cpp" />
     <ClCompile Include="CGALPolyhedron.cpp" />
     <ClCompile Include="CGALRenderer.cpp" />
+    <ClCompile Include="CommandManager.cpp" />
     <ClCompile Include="FileIO.cpp" />
     <ClCompile Include="ImGui\imgui.cpp" />
     <ClCompile Include="ImGui\imgui_demo.cpp" />
@@ -215,6 +227,8 @@
     <ClCompile Include="ImGui\imgui_impl_glfw.cpp" />
     <ClCompile Include="ImGui\imgui_impl_opengl3.cpp" />
     <ClCompile Include="ImGui\imgui_widgets.cpp" />
+    <ClCompile Include="PrimitiveNode.cpp" />
+    <ClCompile Include="Observer.cpp" />
     <ClCompile Include="IShader.cpp" />
     <ClCompile Include="Logger.cpp" />
     <ClCompile Include="main.cpp" />
@@ -228,9 +242,10 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Project.cpp" />
-    <ClCompile Include="ModelNode.cpp" />
+    <ClCompile Include="CGALModelNode.cpp" />
     <ClCompile Include="DefaultShader.cpp" />
     <ClCompile Include="ShaderManager.cpp" />
+    <ClCompile Include="SubdivisionCommand.cpp" />
     <ClCompile Include="UniformScene.cpp" />
     <ClCompile Include="ShaderUtility.cpp" />
     <ClCompile Include="VertexBuffer.cpp" />

@@ -1,6 +1,7 @@
 #include <CGAL/normal_vector_newell_3.h>
-
 #include <fstream>
+
+
 CGALPolyhedron::CGALPolyhedron()
 	: CGALModel()
 {
@@ -9,6 +10,21 @@ CGALPolyhedron::CGALPolyhedron()
 CGALPolyhedron::~CGALPolyhedron()
 {
 	RELEASE_INSTANCE(m_model);
+}
+
+void CGALPolyhedron::GenSampleModel()
+{
+	typedef CGAL::Simple_cartesian<double> Kernel;
+	typedef Kernel::Point_3				Kernel_Point;
+
+	Kernel_Point p(1.0, 0.0, 0.0);
+	Kernel_Point q(0.0, 1.0, 0.0);
+	Kernel_Point r(0.0, 0.0, 1.0);
+	Kernel_Point s(0.0, 0.0, 0.0);
+
+	m_model = new Polyhedron();
+	m_model->make_tetrahedron(p, q, r, s);
+	CGAL::set_ascii_mode(std::cout);
 }
 
 void CGALPolyhedron::Load(const string& filePath)
@@ -28,10 +44,6 @@ void CGALPolyhedron::Load(const string& filePath)
 
 }
 
-void CGALPolyhedron::GenSampleModel()
-{
-
-}
 
 void CGALPolyhedron::GetFacetList(vector<vec3>& facetList, vector<vec3>& normalList)
 {

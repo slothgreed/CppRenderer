@@ -6,7 +6,7 @@
 #include <CGAL/Polyhedron_3.h>
 
 class VertexBuffer;
-class CGALPolyhedron : CGALModel
+class CGALPolyhedron : public CGALModel
 {
 	typedef CGAL::Exact_predicates_inexact_constructions_kernel Local_Kernel;
 	typedef Local_Kernel::Point_3 Local_Point;
@@ -30,6 +30,7 @@ public:
 	virtual void GetBDB(BDB& bdb);
 	virtual void GenSampleModel();
 
+	Polyhedron* GetModel() { return m_model; }
 private:
 	void BuildFacet(const Facet_const_handle& facet, std::vector<glm::vec3>& position, std::vector<glm::vec3>& normal);
 	void BuildEdge(const Halfedge_const_handle& edge, std::vector<glm::vec3>& position);

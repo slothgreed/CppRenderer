@@ -4,10 +4,18 @@
 enum CONTROLER_TYPE : unsigned int
 {
 	CAMERA_CONTROLER,
-	CAMERA_CONTROLER_NUM
+	CONTROLER_TYPE_NUM
 };
 
-class IControllerArgs;
+class IControllerArgs
+{
+public:
+	IControllerArgs() {};
+	~IControllerArgs() {};
+
+private:
+
+};
 class Mouse;
 class IController
 {

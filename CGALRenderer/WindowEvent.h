@@ -9,7 +9,7 @@ public:
 
 	void SetEvent(WINDOW_EVENT windowEvent) { m_event = windowEvent; }
 	WINDOW_EVENT Event() { return m_event; }
-	void SetSize(double x, double y) { m_size.x = x; m_size.y = y; }
+	void SetSize(int x, int y) { m_size.x = x; m_size.y = y; }
 	const glm::vec2&  Size() const { return m_size; } 
 private:
 	WINDOW_EVENT m_event;

@@ -7,18 +7,19 @@ class Viewport;
 class CameraControllerArgs : public IControllerArgs
 {
 public:
+
+	friend class CameraController;
+
 	CameraControllerArgs(std::shared_ptr<Viewport> viewport, std::shared_ptr<Camera> camera) {
-		m_viewport = viewport;
-		m_camera = camera;
+		m_pViewport = viewport;
+		m_pCamera = camera;
 	};
 
 	~CameraControllerArgs() {};
 
-	std::shared_ptr<Viewport> GetViewport() { return m_viewport; }
-	std::shared_ptr<Camera> GetCamera() { return m_camera; }
 private:
-	std::shared_ptr<Viewport> m_viewport;
-	std::shared_ptr<Camera> m_camera;
+	std::shared_ptr<Viewport> m_pViewport;
+	std::shared_ptr<Camera> m_pCamera;
 };
 
 class CameraController : public IController

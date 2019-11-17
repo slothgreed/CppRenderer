@@ -1,6 +1,6 @@
 #ifndef CGAL_MODEL_H
 #define CGAL_MODEL_H
-class CGALModel
+class CGALModel : public IModel
 {
 public:
 	CGALModel();

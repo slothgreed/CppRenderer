@@ -9,11 +9,11 @@ private:
 	~ShaderManager();
 public:
 	static ShaderManager* Instance();
-	std::shared_ptr<IShader> FindOrNew(const ShaderBuildInfo& buildInfo);
+	shared_ptr<IShader> FindOrNew(const ShaderBuildInfo& buildInfo);
 	void Dispose();
 private:
-	std::shared_ptr<IShader> Generate(const ShaderBuildInfo& buildInfo);
-	std::vector<std::shared_ptr<IShader>> m_pShaderList;
+	shared_ptr<IShader> Generate(const ShaderBuildInfo& buildInfo);
+	vector<shared_ptr<IShader>> m_pShaderList;
 	static ShaderManager* m_Instance;
 };
 

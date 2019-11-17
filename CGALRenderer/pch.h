@@ -18,6 +18,7 @@
 #include <vector>
 #include<iostream>
 #include<fstream>
+#include <stack>
 
 #include <GL\glew.h>
 #include <GLFW/glfw3.h>
@@ -42,6 +43,8 @@ using namespace glm;
 #include "Mouse.h"
 #include "MouseInput.h"
 #include "WindowEvent.h"
+#include "EventArgs.h"
+#include "Observer.h"
 
 // utility
 #include "MathHelper.h"
@@ -59,16 +62,25 @@ using namespace glm;
 
 // asset
 #include "Camera.h"
+#include "IModel.h"
 #include "CGALModel.h"
 #include "CGALPolyhedron.h"
+#include "CGALLinearCellComplex.h"
+#include "CGALGeneralizedMaps.h"
+#include "PrimitiveNode.h"
 
 // logic
 #include "IController.h"
-#include "IControllerArgs.h"
 #include "CameraController.h"
 
+#include "ICommand.h"
+#include "CommandManager.h"
+#include "SubdivisionCommand.h"
+
 // model (mvc)
-#include "ModelNode.h"
+#include "IModelNode.h"
+#include "PrimitiveNode.h"
+#include "CGALModelNode.h"
 #include "IModelProperty.h"
 #include "BDBProperty.h"
 
@@ -83,6 +95,13 @@ using namespace glm;
 
 #define USE_VAR(x) (void)x;
 #define RELEASE_INSTANCE(x) if(x != NULL) { delete x; x = NULL;}
+
+template<class T, class U>
+weak_ptr<T>
+static_pointer_cast(std::weak_ptr<U> const& r)
+{
+	return static_pointer_cast<T>(shared_ptr<U>(r));
+}
 
 
 #endif //PCH_H

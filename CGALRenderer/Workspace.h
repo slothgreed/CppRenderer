@@ -5,7 +5,8 @@ class IShader;
 class VertexBuffer;
 class UniformScene;
 class UniformBuffer;
-class ModelNode;
+class CGALModelNode;
+class CommandManager;
 class Workspace
 {
 public:
@@ -15,14 +16,14 @@ public:
 	void Invoke();
 	void ShowProperty();
 
-	std::shared_ptr<Camera> MainCamera() { return m_pCamera; }
+	shared_ptr<Camera> MainCamera() { return m_pCamera; }
 private:
 
-	std::shared_ptr<Camera> m_pCamera;
-	std::shared_ptr<IShader> m_pDefaultShader;
-	std::shared_ptr<UniformScene> m_pUniformScene;
-	std::vector<std::shared_ptr<ModelNode>> m_pRenderList;
-	
+	shared_ptr<Camera> m_pCamera;
+	shared_ptr<IShader> m_pDefaultShader;
+	shared_ptr<UniformScene> m_pUniformScene;
+	vector<shared_ptr<IModelNode>> m_pRenderList;
+	unique_ptr<CommandManager> m_pCommandManager;
 };
 
 #endif WORKSPACE_H

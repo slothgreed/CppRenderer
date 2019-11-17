@@ -58,6 +58,18 @@
     <Filter Include="ヘッダー ファイル\Foundation">
       <UniqueIdentifier>{c46505b3-a9aa-4bf7-9cf0-8ec1c7e7669a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\Logic\Controller">
+      <UniqueIdentifier>{889ae879-9fe0-4f3f-91bd-21555781077d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Logic\Controller">
+      <UniqueIdentifier>{58f66475-93b9-4ff2-ae92-99191381b19d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Logic\Command">
+      <UniqueIdentifier>{d409e089-79cf-419d-8704-b2f369f49683}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Logic\Command">
+      <UniqueIdentifier>{11f506ae-202b-4fe6-b6c8-7d0af1ae3547}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -90,14 +102,8 @@
     <ClInclude Include="CGALPolyhedron.h">
       <Filter>ヘッダー ファイル\Asset</Filter>
     </ClInclude>
-    <ClInclude Include="CameraController.h">
-      <Filter>ヘッダー ファイル\Logic</Filter>
-    </ClInclude>
     <ClInclude Include="Mouse.h">
       <Filter>ヘッダー ファイル\System</Filter>
-    </ClInclude>
-    <ClInclude Include="IController.h">
-      <Filter>ヘッダー ファイル\Logic</Filter>
     </ClInclude>
     <ClInclude Include="MouseInput.h">
       <Filter>ヘッダー ファイル\System</Filter>
@@ -113,9 +119,6 @@
     </ClInclude>
     <ClInclude Include="Viewport.h">
       <Filter>ヘッダー ファイル\OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="IControllerArgs.h">
-      <Filter>ヘッダー ファイル\Logic</Filter>
     </ClInclude>
     <ClInclude Include="ShaderUtility.h">
       <Filter>ヘッダー ファイル\Utility</Filter>
@@ -162,16 +165,52 @@
     <ClInclude Include="BDB.h">
       <Filter>ヘッダー ファイル\Foundation</Filter>
     </ClInclude>
-    <ClInclude Include="IModelProperty.h">
-      <Filter>ヘッダー ファイル\Asset</Filter>
-    </ClInclude>
-    <ClInclude Include="BDBProperty.h">
-      <Filter>ヘッダー ファイル\Asset</Filter>
-    </ClInclude>
     <ClInclude Include="ShaderManager.h">
       <Filter>ヘッダー ファイル\OpenGL</Filter>
     </ClInclude>
-    <ClInclude Include="ModelNode.h">
+    <ClInclude Include="BDBProperty.h">
+      <Filter>ヘッダー ファイル\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="IModelProperty.h">
+      <Filter>ヘッダー ファイル\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="CGALLinearCellComplex.h">
+      <Filter>ヘッダー ファイル\Asset</Filter>
+    </ClInclude>
+    <ClInclude Include="CGALGeneralizedMaps.h">
+      <Filter>ヘッダー ファイル\Asset</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraController.h">
+      <Filter>ヘッダー ファイル\Logic\Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="IController.h">
+      <Filter>ヘッダー ファイル\Logic\Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="SubdivisionCommand.h">
+      <Filter>ヘッダー ファイル\Logic\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="ICommand.h">
+      <Filter>ヘッダー ファイル\Logic\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="IModel.h">
+      <Filter>ヘッダー ファイル\Asset</Filter>
+    </ClInclude>
+    <ClInclude Include="CommandManager.h">
+      <Filter>ヘッダー ファイル\Logic\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="Observer.h">
+      <Filter>ヘッダー ファイル\System</Filter>
+    </ClInclude>
+    <ClInclude Include="EventArgs.h">
+      <Filter>ヘッダー ファイル\System</Filter>
+    </ClInclude>
+    <ClInclude Include="CGALModelNode.h">
+      <Filter>ヘッダー ファイル\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="PrimitiveNode.h">
+      <Filter>ヘッダー ファイル\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="IModelNode.h">
       <Filter>ヘッダー ファイル\Asset</Filter>
     </ClInclude>
   </ItemGroup>
@@ -208,9 +247,6 @@
     </ClCompile>
     <ClCompile Include="CGALPolyhedron.cpp">
       <Filter>ソース ファイル\Asset</Filter>
-    </ClCompile>
-    <ClCompile Include="CameraController.cpp">
-      <Filter>ソース ファイル\Logic</Filter>
     </ClCompile>
     <ClCompile Include="Mouse.cpp">
       <Filter>ソース ファイル\System</Filter>
@@ -257,14 +293,35 @@
     <ClCompile Include="BDB.cpp">
       <Filter>ソース ファイル\Foundation</Filter>
     </ClCompile>
-    <ClCompile Include="BDBProperty.cpp">
-      <Filter>ソース ファイル\Asset</Filter>
-    </ClCompile>
     <ClCompile Include="ShaderManager.cpp">
       <Filter>ソース ファイル\OpenGL</Filter>
     </ClCompile>
-    <ClCompile Include="ModelNode.cpp">
+    <ClCompile Include="BDBProperty.cpp">
+      <Filter>ソース ファイル\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="CGALLinearCellComplex.cpp">
       <Filter>ソース ファイル\Asset</Filter>
+    </ClCompile>
+    <ClCompile Include="CGALGeneralizedMaps.cpp">
+      <Filter>ソース ファイル\Asset</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraController.cpp">
+      <Filter>ソース ファイル\Logic\Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="SubdivisionCommand.cpp">
+      <Filter>ソース ファイル\Logic\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="CommandManager.cpp">
+      <Filter>ソース ファイル\Logic\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="Observer.cpp">
+      <Filter>ソース ファイル\System</Filter>
+    </ClCompile>
+    <ClCompile Include="CGALModelNode.cpp">
+      <Filter>ソース ファイル\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="PrimitiveNode.cpp">
+      <Filter>ソース ファイル\Application</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
