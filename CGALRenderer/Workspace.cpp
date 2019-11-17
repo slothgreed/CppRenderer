@@ -49,9 +49,9 @@ void Workspace::Initialize(Project* m_pProject)
 	auto axisNode = make_shared<PrimitiveNode>(m_pDefaultShader, axis);
 	m_pRenderList.push_back(axisNode);
 
-	auto subdivArgs = make_shared<SubdivisionCommandArgs>(polyhedron);
-	auto subdivCommand = make_shared<SubdivisionCommand>(subdivArgs);
-	m_pCommandManager->Execute(subdivCommand);
+	//auto subdivArgs = make_shared<SubdivisionCommandArgs>(polyhedron);
+	//auto subdivCommand = make_shared<SubdivisionCommand>(subdivArgs);
+	//m_pCommandManager->Execute(subdivCommand);
 }
 
 void Workspace::Invoke()

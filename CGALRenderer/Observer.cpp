@@ -13,7 +13,8 @@ void ISubject::AddObserver(IObserver* observer)
 
 void ISubject::RemoveObserver(IObserver* observer)
 {
-
+	auto itr = find(m_observer.begin(), m_observer.end(), observer);
+	m_observer.erase(itr);
 }
 
 void ISubject::Update()
