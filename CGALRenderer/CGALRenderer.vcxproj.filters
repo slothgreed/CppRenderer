@@ -78,9 +78,6 @@
     <ClInclude Include="VertexBuffer.h">
       <Filter>ヘッダー ファイル\OpenGL</Filter>
     </ClInclude>
-    <ClInclude Include="FileIO.h">
-      <Filter>ヘッダー ファイル\System</Filter>
-    </ClInclude>
     <ClInclude Include="Logger.h">
       <Filter>ヘッダー ファイル\System</Filter>
     </ClInclude>
@@ -198,12 +195,6 @@
     <ClInclude Include="CommandManager.h">
       <Filter>ヘッダー ファイル\Logic\Command</Filter>
     </ClInclude>
-    <ClInclude Include="Observer.h">
-      <Filter>ヘッダー ファイル\System</Filter>
-    </ClInclude>
-    <ClInclude Include="EventArgs.h">
-      <Filter>ヘッダー ファイル\System</Filter>
-    </ClInclude>
     <ClInclude Include="CGALModelNode.h">
       <Filter>ヘッダー ファイル\Application</Filter>
     </ClInclude>
@@ -211,6 +202,18 @@
       <Filter>ヘッダー ファイル\Application</Filter>
     </ClInclude>
     <ClInclude Include="IModelNode.h">
+      <Filter>ヘッダー ファイル\Asset</Filter>
+    </ClInclude>
+    <ClInclude Include="EventArgs.h">
+      <Filter>ヘッダー ファイル\Foundation</Filter>
+    </ClInclude>
+    <ClInclude Include="Observer.h">
+      <Filter>ヘッダー ファイル\Foundation</Filter>
+    </ClInclude>
+    <ClInclude Include="FileIO.h">
+      <Filter>ヘッダー ファイル\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="HalfEdgeModel.h">
       <Filter>ヘッダー ファイル\Asset</Filter>
     </ClInclude>
   </ItemGroup>
@@ -240,9 +243,6 @@
       <Filter>ソース ファイル\Application</Filter>
     </ClCompile>
     <ClCompile Include="Camera.cpp">
-      <Filter>ソース ファイル\Asset</Filter>
-    </ClCompile>
-    <ClCompile Include="CGALModel.cpp">
       <Filter>ソース ファイル\Asset</Filter>
     </ClCompile>
     <ClCompile Include="CGALPolyhedron.cpp">
@@ -314,14 +314,20 @@
     <ClCompile Include="CommandManager.cpp">
       <Filter>ソース ファイル\Logic\Command</Filter>
     </ClCompile>
-    <ClCompile Include="Observer.cpp">
-      <Filter>ソース ファイル\System</Filter>
-    </ClCompile>
     <ClCompile Include="CGALModelNode.cpp">
       <Filter>ソース ファイル\Application</Filter>
     </ClCompile>
     <ClCompile Include="PrimitiveNode.cpp">
       <Filter>ソース ファイル\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="Observer.cpp">
+      <Filter>ソース ファイル\Foundation</Filter>
+    </ClCompile>
+    <ClCompile Include="HalfEdgeModel.cpp">
+      <Filter>ソース ファイル\Asset</Filter>
+    </ClCompile>
+    <ClCompile Include="IModel.cpp">
+      <Filter>ソース ファイル\Asset</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

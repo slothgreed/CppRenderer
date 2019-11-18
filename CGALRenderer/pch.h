@@ -67,7 +67,7 @@ using namespace glm;
 #include "CGALPolyhedron.h"
 #include "CGALLinearCellComplex.h"
 #include "CGALGeneralizedMaps.h"
-#include "PrimitiveNode.h"
+#include "HalfEdgeModel.h"
 
 // logic
 #include "IController.h"

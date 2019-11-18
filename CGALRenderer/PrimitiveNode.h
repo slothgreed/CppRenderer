@@ -1,6 +1,5 @@
 #ifndef PRIMITIVE_NODE_H
 #define PRIMITIVE_NODE_H
-#include "IModelNode.h"
 class PrimitiveNode : public IModelNode
 {
 public:

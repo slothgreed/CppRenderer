@@ -173,6 +173,7 @@
     <ClInclude Include="CommandManager.h" />
     <ClInclude Include="EventArgs.h" />
     <ClInclude Include="FileIO.h" />
+    <ClInclude Include="HalfEdgeModel.h" />
     <ClInclude Include="ICommand.h" />
     <ClInclude Include="IController.h" />
     <ClInclude Include="ImGui\imconfig.h" />
@@ -216,17 +217,18 @@
     <ClCompile Include="CameraController.cpp" />
     <ClCompile Include="CGALGeneralizedMaps.cpp" />
     <ClCompile Include="CGALLinearCellComplex.cpp" />
-    <ClCompile Include="CGALModel.cpp" />
     <ClCompile Include="CGALPolyhedron.cpp" />
     <ClCompile Include="CGALRenderer.cpp" />
     <ClCompile Include="CommandManager.cpp" />
     <ClCompile Include="FileIO.cpp" />
+    <ClCompile Include="HalfEdgeModel.cpp" />
     <ClCompile Include="ImGui\imgui.cpp" />
     <ClCompile Include="ImGui\imgui_demo.cpp" />
     <ClCompile Include="ImGui\imgui_draw.cpp" />
     <ClCompile Include="ImGui\imgui_impl_glfw.cpp" />
     <ClCompile Include="ImGui\imgui_impl_opengl3.cpp" />
     <ClCompile Include="ImGui\imgui_widgets.cpp" />
+    <ClCompile Include="IModel.cpp" />
     <ClCompile Include="PrimitiveNode.cpp" />
     <ClCompile Include="Observer.cpp" />
     <ClCompile Include="IShader.cpp" />
