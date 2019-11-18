@@ -11,8 +11,7 @@ class CGALPolyhedron : public CGALModel
 	typedef CGAL::Exact_predicates_inexact_constructions_kernel Local_Kernel;
 	typedef Local_Kernel::Point_3 Local_Point;
 	typedef Local_Kernel::Vector_3 Local_Vector;
-	typedef CGAL::Simple_cartesian<double> Kernel;
-	typedef CGAL::Polyhedron_3<Kernel> Polyhedron;
+	typedef CGAL::Polyhedron_3<Local_Kernel> Polyhedron;
 	typedef Polyhedron::Halfedge_handle HalfEdge_handle;
 	typedef typename Polyhedron::Traits Traits;
 	typedef typename Polyhedron::Halfedge_const_handle Halfedge_const_handle;

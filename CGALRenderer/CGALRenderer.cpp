@@ -171,6 +171,8 @@ bool CGALRenderer::Run()
 	glClearColor(1, 1, 1, 1);
 	glEnable(GL_CULL_FACE);
 	glCullFace(GL_BACK);
+	glEnable(GL_POLYGON_OFFSET_FILL);
+	glPolygonOffset(1.0, 1.0);
 
 	/* OTHER STUFF GOES HERE NEXT */
 

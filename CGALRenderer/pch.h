@@ -39,7 +39,6 @@ using namespace glm;
 // system
 #include "SystemTypes.h"
 #include "Logger.h"
-#include "FileIO.h"
 #include "Mouse.h"
 #include "MouseInput.h"
 #include "WindowEvent.h"
@@ -50,6 +49,8 @@ using namespace glm;
 #include "MathHelper.h"
 #include "ShaderUtility.h"
 #include "ModelGenerator.h"
+#include "FileUtility.h"
+
 
 // opengl
 #include "ShaderManager.h"

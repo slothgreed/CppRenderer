@@ -14,6 +14,7 @@ public:
 	virtual void GetBDB(BDB& bdb);
 
 private:
+	void LoadInternal(const string& filePath);
 
 };
 

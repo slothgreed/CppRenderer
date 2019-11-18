@@ -210,11 +210,11 @@
     <ClInclude Include="Observer.h">
       <Filter>ヘッダー ファイル\Foundation</Filter>
     </ClInclude>
-    <ClInclude Include="FileIO.h">
-      <Filter>ヘッダー ファイル\Application</Filter>
-    </ClInclude>
     <ClInclude Include="HalfEdgeModel.h">
       <Filter>ヘッダー ファイル\Asset</Filter>
+    </ClInclude>
+    <ClInclude Include="FileUtility.h">
+      <Filter>ヘッダー ファイル\Utility</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -226,9 +226,6 @@
     </ClCompile>
     <ClCompile Include="VertexBuffer.cpp">
       <Filter>ソース ファイル\OpenGL</Filter>
-    </ClCompile>
-    <ClCompile Include="FileIO.cpp">
-      <Filter>ソース ファイル\System</Filter>
     </ClCompile>
     <ClCompile Include="Logger.cpp">
       <Filter>ソース ファイル\System</Filter>
@@ -328,6 +325,9 @@
     </ClCompile>
     <ClCompile Include="IModel.cpp">
       <Filter>ソース ファイル\Asset</Filter>
+    </ClCompile>
+    <ClCompile Include="FileUtility.cpp">
+      <Filter>ソース ファイル\Utility</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

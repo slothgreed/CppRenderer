@@ -14,7 +14,7 @@ CGALPolyhedron::~CGALPolyhedron()
 
 void CGALPolyhedron::GenSampleModel()
 {
-	typedef CGAL::Simple_cartesian<double> Kernel;
+	typedef CGAL::Exact_predicates_inexact_constructions_kernel Kernel;
 	typedef Kernel::Point_3				Kernel_Point;
 
 	Kernel_Point p(1.0, 0.0, 0.0);
@@ -156,15 +156,15 @@ CGALPolyhedron::Local_Vector CGALPolyhedron::CalculateVertexNormal(const Halfedg
 
 void CGALPolyhedron::BuildEdge(const Halfedge_const_handle& edge, vector<vec3>& position)
 {
-	CGAL::Point_3<Kernel>  p1 = edge->vertex()->point();
-	CGAL::Point_3<Kernel>  p2 = edge->opposite()->vertex()->point();
+	CGAL::Point_3<Local_Kernel>  p1 = edge->vertex()->point();
+	CGAL::Point_3<Local_Kernel>  p2 = edge->opposite()->vertex()->point();
 	position.push_back(vec3(p1.x(), p1.y(), p1.z()));
 	position.push_back(vec3(p2.x(), p2.y(), p2.z()));
 }
 
 void CGALPolyhedron::BuildVertex(const Vertex_const_handle& vertex, vector<vec3>& position)
 {
-	CGAL::Point_3<Kernel> p1 = vertex->point();
+	CGAL::Point_3<Local_Kernel> p1 = vertex->point();
 	position.push_back(vec3(p1.x(),p1.y(),p1.z()));
 }
 

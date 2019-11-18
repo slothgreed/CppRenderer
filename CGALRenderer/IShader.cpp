@@ -2,8 +2,8 @@ void IShader::Build(const ShaderBuildInfo& buildInfo)
 {
 	string vertexCode;
 	string fragCode;
-	FileIO::Load(m_vertexPath, vertexCode);
-	FileIO::Load(m_fragPath, fragCode);
+	FileUtility::Load(m_vertexPath, vertexCode);
+	FileUtility::Load(m_fragPath, fragCode);
 
 	vertexCode = m_version + buildInfo.vertexDefine + vertexCode;
 	fragCode = m_version + buildInfo.fragDefine + fragCode;
