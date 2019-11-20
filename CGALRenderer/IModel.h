@@ -10,6 +10,8 @@ public:
 	virtual void GetFacetList(std::vector<vec3>& position, std::vector<vec3>& normal) = 0;
 	virtual void GetEdgeList(std::vector<vec3>& edgeList) = 0;
 	virtual void GetVertexList(std::vector<vec3>& position) = 0;
+	virtual void GetEdgeIndexList(std::vector<int>& index) {};
+	virtual void GetFaceIndexList(std::vector<int>& index) {};
 	virtual void GetBDB(BDB& bdb) = 0;
 
 protected:

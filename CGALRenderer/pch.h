@@ -44,6 +44,7 @@ using namespace glm;
 #include "WindowEvent.h"
 #include "EventArgs.h"
 #include "Observer.h"
+#include "Interface.h"
 
 // utility
 #include "MathHelper.h"
@@ -60,6 +61,11 @@ using namespace glm;
 #include "UniformBuffer.h"
 #include "UniformScene.h"
 #include "Viewport.h"
+
+// topology
+#include "HalfEdge.h"
+#include "HalfEdgeFace.h"
+#include "HalfEdgeVertex.h"
 
 // asset
 #include "Camera.h"

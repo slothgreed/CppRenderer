@@ -7,6 +7,7 @@ public:
 	BDB();
 	BDB(glm::vec3 min, glm::vec3 max);
 	void Set(glm::vec3 min, glm::vec3 max);
+	void Apply(vec3 position);
 	const glm::vec3& Min() const { return m_min; }
 	const glm::vec3& Max() const { return m_max; }
 	const glm::vec3& Center() const { return m_center; }

@@ -8,12 +8,13 @@ class IModelProperty;
 class CGALModelNode : public IModelNode
 {
 public:
-	CGALModelNode(shared_ptr<CGALModel> model);
+	CGALModelNode(shared_ptr<IModel> model);
 	~CGALModelNode();
 	virtual void Draw();
-	void SetBDB(BDB bdb);
-	void ShowProperty();
+	virtual void ShowProperty();
 	virtual void Update(void* sender, shared_ptr<EventArgs> args);
+
+	void SetBDB(BDB bdb);
 private:
 	string m_name;
 	shared_ptr<IShader> m_pFaceShader;
@@ -21,10 +22,9 @@ private:
 
 	shared_ptr<IShader> m_pEdgeShader;
 	shared_ptr<VertexBuffer> m_pEdgeBuffer;
-	shared_ptr<CGALModel> m_pModel;
+	shared_ptr<IModel> m_pModel;
 	vector<shared_ptr<IModelProperty>> m_pProperty;
 	BDB m_bdb;
-	bool m_showBDB;
 	void SetRenderData();
 };
 

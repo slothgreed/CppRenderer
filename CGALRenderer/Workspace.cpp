@@ -28,8 +28,12 @@ void Workspace::Initialize(Project* m_pProject)
 	sceneData.Projection = m_pCamera->Projection();
 	m_pUniformScene->Set(sceneData);
 
-	shared_ptr<CGALModel> polyhedron = make_shared<CGALPolyhedron>();
-	polyhedron->Load("E:\\cgModel\\StanfordBunny.off");
+	//shared_ptr<CGALModel> polyhedron = make_shared<CGALPolyhedron>();
+	//polyhedron->Load("E:\\cgModel\\StanfordBunny.off");
+
+	shared_ptr<IModel> polyhedron = make_shared<HalfEdgeModel>();
+	polyhedron->Load("E:\\cgModel\\bunny6000.half");
+
 	//polyhedron->GenSampleModel();
 
 	//shared_ptr<CGALModel> polyhedron = make_shared<CGALGeneralizedMaps>();

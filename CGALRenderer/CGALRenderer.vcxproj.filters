@@ -70,6 +70,12 @@
     <Filter Include="ソース ファイル\Logic\Command">
       <UniqueIdentifier>{11f506ae-202b-4fe6-b6c8-7d0af1ae3547}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Topology">
+      <UniqueIdentifier>{488b12fc-6e1c-4206-b5dd-b4701209b847}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Topology">
+      <UniqueIdentifier>{0483854e-d0d6-42da-a3f0-403b588be2c8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -216,6 +222,18 @@
     <ClInclude Include="FileUtility.h">
       <Filter>ヘッダー ファイル\Utility</Filter>
     </ClInclude>
+    <ClInclude Include="HalfEdgeVertex.h">
+      <Filter>ヘッダー ファイル\Topology</Filter>
+    </ClInclude>
+    <ClInclude Include="HalfEdge.h">
+      <Filter>ヘッダー ファイル\Topology</Filter>
+    </ClInclude>
+    <ClInclude Include="HalfEdgeFace.h">
+      <Filter>ヘッダー ファイル\Topology</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface.h">
+      <Filter>ヘッダー ファイル\Foundation</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -328,6 +346,15 @@
     </ClCompile>
     <ClCompile Include="FileUtility.cpp">
       <Filter>ソース ファイル\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="HalfEdge.cpp">
+      <Filter>ソース ファイル\Topology</Filter>
+    </ClCompile>
+    <ClCompile Include="HalfEdgeFace.cpp">
+      <Filter>ソース ファイル\Topology</Filter>
+    </ClCompile>
+    <ClCompile Include="HalfEdgeVertex.cpp">
+      <Filter>ソース ファイル\Topology</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,4 +1,4 @@
-CGALModelNode::CGALModelNode(shared_ptr<CGALModel> model)
+CGALModelNode::CGALModelNode(shared_ptr<IModel> model)
 {
 	m_name = "CGALModelNode";
 	m_pModel = model;
