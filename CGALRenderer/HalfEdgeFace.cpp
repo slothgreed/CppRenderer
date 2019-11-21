@@ -1,3 +1,5 @@
+namespace KI
+{
 HalfEdgeFace::HalfEdgeFace(int index)
 {
 	m_Index = index;
@@ -51,4 +53,5 @@ void FaceAroundEdgeIterator::Next()
 HalfEdge* FaceAroundEdgeIterator::Current()
 {
 	return m_pEdgeItr;
+}
 }

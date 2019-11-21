@@ -1,6 +1,7 @@
 #ifndef VIEWPORT_H
 #define VIEWPORT_H
-
+namespace KI
+{
 class Viewport
 {
 public:
@@ -17,5 +18,5 @@ private:
 	glm::ivec2 m_position;
 	glm::ivec2 m_size;
 };
-
+}
 #endif VIEWPORT_H

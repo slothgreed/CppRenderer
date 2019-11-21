@@ -1,4 +1,6 @@
 #include "CGAL/Linear_cell_complex_for_combinatorial_map.h"
+namespace KI
+{
 
 CGALLinearCellComplex::CGALLinearCellComplex()
 {
@@ -52,4 +54,5 @@ void CGALLinearCellComplex::GetVertexList(std::vector<vec3>& position)
 void CGALLinearCellComplex::GetBDB(BDB& bdb)
 {
 
+}
 }

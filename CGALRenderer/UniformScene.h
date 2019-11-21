@@ -1,7 +1,8 @@
 #ifndef UNIFORM_SCENE_H
 #define UNIFORM_SCENE_H
 
-
+namespace KI
+{
 #define SCENE_DATA_LOCATION 5
 struct SceneData
 {
@@ -21,5 +22,5 @@ public:
 private:
 	GLuint m_SceneId;
 };
-
+}
 #endif UNIFORM_SCENE_H

@@ -1,6 +1,7 @@
 #ifndef HALFEDGE_FACE_H
 #define	HALFEDGE_FACE_H
-
+namespace KI
+{
 class HalfEdgeVertex;
 class HalfEdge;
 
@@ -40,5 +41,5 @@ private:
 };
 
 
-
+}
 #endif // HALFEDGE_FACE_H

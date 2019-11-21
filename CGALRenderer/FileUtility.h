@@ -1,5 +1,7 @@
 #ifndef FILE_UTILITY_H
 #define FILE_UTILITY_H
+namespace KI
+{
 class FileUtility
 {
 public:
@@ -12,5 +14,5 @@ public:
 private:
 
 };
-
+}
 #endif FILE_UTILITY_H

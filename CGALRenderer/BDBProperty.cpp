@@ -1,3 +1,5 @@
+namespace KI
+{
 BDBProperty::BDBProperty(BDB& bdb)
 {
 	m_bdb = bdb;
@@ -59,4 +61,5 @@ void BDBProperty::Draw()
 	m_pShader->Use();
 	m_pVertexBuffer->Draw();
 	m_pShader->UnUse();
+}
 }

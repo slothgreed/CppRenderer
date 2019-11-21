@@ -1,3 +1,5 @@
+namespace KI
+{
 HalfEdge::HalfEdge(int index)
 {
 	m_Index = index;
@@ -35,4 +37,5 @@ string HalfEdge::ToString()
 	str += ")";
 
 	return str;
+}
 }

@@ -1,3 +1,5 @@
+namespace KI
+{
 
 std::string ShaderUtility::m_shaderDirectory;
 
@@ -69,4 +71,5 @@ const std::string& ShaderUtility::ShaderDirectory()
 	}
 
 	return m_shaderDirectory;
+}
 }

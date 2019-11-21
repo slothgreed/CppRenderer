@@ -1,6 +1,7 @@
 #ifndef IMODEL_PROPERTY_H
 #define IMODEL_PROPERTY_H
-
+namespace KI
+{
 enum PROPERTY_TYPE
 {
 	PROPERTY_TYPE_BDB
@@ -19,7 +20,7 @@ public:
 private:
 	bool m_visible;
 };
-
+}
 #endif // !IMODEL_PROPERTY_H
 
 

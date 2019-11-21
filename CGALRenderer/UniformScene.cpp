@@ -1,3 +1,5 @@
+namespace KI
+{
 
 UniformScene::UniformScene()
 {
@@ -46,4 +48,5 @@ void UniformScene::UnBind()
 {
 	glBindBufferBase(GL_UNIFORM_BUFFER, SCENE_DATA_LOCATION, 0);
 	Logger::GLError();
+}
 }

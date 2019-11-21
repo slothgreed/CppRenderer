@@ -1,5 +1,7 @@
 #ifndef CGAL_RENDERER_H
 #define CGAL_RENDERER_H
+namespace KI
+{
 class ShaderManager;
 class Workspace;
 class Mouse;
@@ -27,5 +29,6 @@ private:
 
 static CGALRenderer* TheApp();
 
+}
 
 #endif CGAL_RENDERER_H

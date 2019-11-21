@@ -1,6 +1,9 @@
 #ifndef CAMERA_H
 #define CAMERA_H
+namespace KI
+{
 using namespace glm;
+
 class Camera
 {
 public:
@@ -47,5 +50,5 @@ private:
 	float m_phi;
 	float m_distance;
 };
-
+}
 #endif CAMERA_H

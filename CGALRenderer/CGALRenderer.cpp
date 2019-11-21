@@ -1,3 +1,5 @@
+namespace KI
+{
 void ScrollCallBack(GLFWwindow* window, double x, double y)
 {
 	MouseInput input;
@@ -223,4 +225,5 @@ void CGALRenderer::ProcessMouseEvent(const MouseInput& input)
 void CGALRenderer::ProcessWindowEvent(const WindowEvent& winEvent)
 {
 	m_pViewport->Resize(winEvent.Size().x, winEvent.Size().y);
+}
 }

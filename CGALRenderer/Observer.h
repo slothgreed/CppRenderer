@@ -1,7 +1,8 @@
 #ifndef IOBSERVER_H
 #define IOBSERVER_H
 
-
+namespace KI
+{
 class IObserver
 {
 public:
@@ -28,5 +29,5 @@ private:
 	vector<IObserver*> m_observer;
 
 };
-
+}
 #endif IOBSERVER_H

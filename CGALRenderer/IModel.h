@@ -1,6 +1,7 @@
 #ifndef IMODEL_H
 #define IMODEL_H
-
+namespace KI
+{
 class IModel : public ISubject
 {
 public:
@@ -19,5 +20,5 @@ protected:
 private:
 	BDB m_bdb;
 };
-
+}
 #endif IMODEL_H

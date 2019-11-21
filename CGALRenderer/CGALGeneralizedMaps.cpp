@@ -1,4 +1,6 @@
 #include "CGAL/Generalized_map.h"
+namespace KI
+{
 
 CGALGeneralizedMaps::CGALGeneralizedMaps()
 {
@@ -74,4 +76,5 @@ void CGALGeneralizedMaps::GetVertexList(std::vector<vec3>& position)
 void CGALGeneralizedMaps::GetBDB(BDB& bdb)
 {
 
+}
 }

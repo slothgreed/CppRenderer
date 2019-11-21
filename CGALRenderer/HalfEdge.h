@@ -1,6 +1,7 @@
 #ifndef HALFEDGE_H
 #define	 HALFEDGE_H
-
+namespace KI
+{
 class HalfEdgeVertex;
 class HalfEdgeFace;
 class HalfEdge : public IToString
@@ -37,5 +38,5 @@ private:
 	int m_Index;
 };
 
-
+}
 #endif // HALFEDGE_H

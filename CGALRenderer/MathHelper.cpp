@@ -1,3 +1,5 @@
+namespace KI
+{
 
 void MathHelper::SphericalToCartesian(float x, float y, vec3& result)
 {
@@ -28,4 +30,5 @@ std::string MathHelper::ToString(const vec3& value)
 	str += to_string(value.z) + ")";
 
 	return str;
+}
 }

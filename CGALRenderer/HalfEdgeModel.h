@@ -1,6 +1,7 @@
 #ifndef HALFEDGE_MODEL_H
 #define HALFEDGE_MODEL_H
-
+namespace KI
+{
 class HalfEdgeModel : public IModel
 {
 public:
@@ -22,5 +23,5 @@ private:
 	vector<shared_ptr<HalfEdgeVertex>> m_VertexList;
 };
 
-
+}
 #endif

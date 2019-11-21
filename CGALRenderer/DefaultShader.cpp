@@ -1,3 +1,5 @@
+namespace KI
+{
 DefaultShader::DefaultShader()
 {
 	SetVersion(GLSL_VERSION_400_CORE);
@@ -47,4 +49,5 @@ void DefaultShader::GetVertexShaderDefine(VERTEX_LAYOUT layout, ShaderBuildInfo&
 	default:
 		break;
 	}
+}
 }

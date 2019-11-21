@@ -1,6 +1,7 @@
 #ifndef WINDOW_EVENT_H
 #define WINDOW_EVENT_H
-
+namespace KI
+{
 class WindowEvent
 {
 public:
@@ -15,6 +16,6 @@ private:
 	WINDOW_EVENT m_event;
 	glm::vec2 m_size;
 };
-
+}
 
 #endif WINDOW_EVENT_H

@@ -1,5 +1,7 @@
 #ifndef CGAL_LINEAR_CELL_COMPLEX_H
 #define CGAL_LINEAR_CELL_COMPLEX_H
+namespace KI
+{
 class CGALLinearCellComplex : public CGALModel
 {
 public:
@@ -15,5 +17,5 @@ public:
 private:
 
 };
-
+}
 #endif CGAL_LINEAR_CELL_COMPLEX_H

@@ -1,3 +1,5 @@
+namespace KI
+{
 
 CommandManager::CommandManager()
 {
@@ -70,4 +72,5 @@ CommandResult CommandManager::Redo()
 int CommandManager::CommandNum()
 {
 	return m_pCommandStack.size();
+}
 }

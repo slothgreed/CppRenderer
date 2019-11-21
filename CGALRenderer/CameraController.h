@@ -1,6 +1,7 @@
 #ifndef CAMERA_CONTROLLER_H
 #define CAMERA_CONTROLLER_H
-
+namespace KI
+{
 class Mouse;
 class Camera;
 class Viewport;
@@ -40,5 +41,5 @@ private:
 	float m_ZoomRatio;
 };
 
-
+}
 #endif CAMERA_CONTROLLER_H

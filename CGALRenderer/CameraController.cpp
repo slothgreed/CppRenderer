@@ -1,3 +1,5 @@
+namespace KI
+{
 CameraController::CameraController()
 {
 	m_ZoomRatio = 1.0f;
@@ -57,4 +59,5 @@ void CameraController::Rotate(vec2 move)
 
 void CameraController::Translate(vec2 move)
 {
+}
 }

@@ -1,5 +1,7 @@
 #ifndef WORKSPACE_H
 #define WORKSPACE_H
+namespace KI
+{
 class Camera;
 class IShader;
 class VertexBuffer;
@@ -25,5 +27,5 @@ private:
 	vector<shared_ptr<IModelNode>> m_pRenderList;
 	unique_ptr<CommandManager> m_pCommandManager;
 };
-
+}
 #endif WORKSPACE_H

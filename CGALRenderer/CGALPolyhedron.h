@@ -4,7 +4,8 @@
 #include<CGAL/Exact_predicates_inexact_constructions_kernel.h>
 #include <CGAL/Simple_cartesian.h>
 #include <CGAL/Polyhedron_3.h>
-
+namespace KI
+{
 class VertexBuffer;
 class CGALPolyhedron : public CGALModel
 {
@@ -41,5 +42,5 @@ private:
 	Polyhedron* m_model;
 	HalfEdge_handle* m_halfEdge;
 };
-
+}
 #endif CGAL_POLYHEDRAL_SURFACE_H

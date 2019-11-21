@@ -1,3 +1,6 @@
+namespace KI
+{
+
 IModel::IModel()
 {
 	SetBDB(BDB());
@@ -6,4 +9,5 @@ IModel::IModel()
 void IModel::SetBDB(BDB bdb)
 {
 	m_bdb = bdb;
+}
 }

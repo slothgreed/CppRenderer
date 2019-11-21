@@ -1,3 +1,5 @@
+namespace KI
+{
 BDB::BDB()
 {
 	Set(vec3(numeric_limits<float>::infinity()),
@@ -44,4 +46,5 @@ std::string BDB::ToString()
 	str += "max " + MathHelper::ToString(m_max) + ";";
 
 	return str;
+}
 }

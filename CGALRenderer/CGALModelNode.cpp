@@ -1,3 +1,5 @@
+namespace KI
+{
 CGALModelNode::CGALModelNode(shared_ptr<IModel> model)
 {
 	m_name = "CGALModelNode";
@@ -73,4 +75,5 @@ void CGALModelNode::SetRenderData()
 void CGALModelNode::Update(void* sender, shared_ptr<EventArgs> args)
 {
 	SetRenderData();
+}
 }

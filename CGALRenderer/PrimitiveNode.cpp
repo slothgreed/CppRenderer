@@ -1,4 +1,5 @@
-
+namespace KI
+{
 PrimitiveNode::PrimitiveNode(shared_ptr<IShader> shader, shared_ptr<VertexBuffer> buffer)
 {
 	m_name = "Primitive";
@@ -25,4 +26,5 @@ void PrimitiveNode::Update(void* sender, shared_ptr<EventArgs> args)
 void PrimitiveNode::ShowProperty()
 {
 
+}
 }

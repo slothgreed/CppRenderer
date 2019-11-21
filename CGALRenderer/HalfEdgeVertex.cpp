@@ -1,4 +1,7 @@
 #include "HalfEdgeVertex.h"
+namespace KI
+{
+
 HalfEdgeVertex::HalfEdgeVertex(int index)
 {
 	m_Index = index;
@@ -57,4 +60,5 @@ void VertexAroundEdgeIterator::Next()
 HalfEdge* VertexAroundEdgeIterator::Current()
 {
 	return m_pEdgeItr;
+}
 }

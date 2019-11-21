@@ -1,3 +1,5 @@
+namespace KI
+{
 
 ModelGenerator::ModelGenerator()
 {
@@ -36,4 +38,5 @@ void ModelGenerator::Axis(VertexBuffer* vertexBuffer)
 	vertexBuffer->Generate(VERTEX_LAYOUT_PC);
 	vertexBuffer->SetPosition(GL_LINES, position);
 	vertexBuffer->SetColor(color);
+}
 }

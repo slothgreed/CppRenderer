@@ -1,6 +1,7 @@
 #ifndef CGAL_MODEL_NODE_H
 #define CGAL_MODEL_NODE_H
-
+namespace KI
+{
 class IModelNode;
 class IShader;
 class VertexBuffer;
@@ -28,6 +29,6 @@ private:
 	void SetRenderData();
 };
 
-
+}
 
 #endif CGAL_MODEL_NODE_H

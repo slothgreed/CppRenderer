@@ -1,6 +1,7 @@
 #ifndef BOUNDING_BOX_H
 #define BOUNDING_BOX_H
-
+namespace KI
+{
 class BDB
 {
 public:
@@ -20,5 +21,5 @@ private:
 	glm::vec3 m_center;
 	
 };
-
+}
 #endif

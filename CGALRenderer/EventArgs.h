@@ -1,7 +1,8 @@
 #ifndef EVENTARGS_H
 #define EVENTARGS_H
 
-
+namespace KI
+{
 class IEventArgs
 {
 public:
@@ -23,5 +24,5 @@ public:
 private:
 
 };
-
+}
 #endif

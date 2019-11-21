@@ -1,3 +1,5 @@
+namespace KI
+{
 ISubject::ISubject()
 {
 }
@@ -28,4 +30,5 @@ void ISubject::Update()
 void ISubject::Clear()
 {
 	m_observer.clear();
+}
 }

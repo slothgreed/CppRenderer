@@ -1,3 +1,5 @@
+namespace KI
+{
 
 HalfEdgeModel::HalfEdgeModel()
 {
@@ -183,4 +185,5 @@ void HalfEdgeModel::GetBDB(BDB& bdb)
 	{
 		bdb.Apply(m_VertexList[i]->Position());
 	}
+}
 }

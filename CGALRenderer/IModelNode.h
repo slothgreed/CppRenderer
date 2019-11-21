@@ -1,6 +1,7 @@
 #ifndef IMODEL_NODE_H
 #define IMODEL_NODE_H
-
+namespace KI
+{
 class IObserver;
 class IModelNode : public IObserver
 {
@@ -14,5 +15,5 @@ public:
 	
 private:
 };
-
+}
 #endif IMODEL_NODE_H

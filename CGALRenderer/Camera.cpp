@@ -1,4 +1,6 @@
-Camera::Camera()
+namespace KI
+{
+	Camera::Camera()
 {
 	m_theta = 0;
 	m_phi = 0;
@@ -98,4 +100,5 @@ void Camera::ShowProperty()
 	ImGui::Text(upStr.data());
 
 	ImGui::End();
+}
 }

@@ -1,3 +1,5 @@
+namespace KI
+{
 Viewport::Viewport()
 {
 	m_position = ivec2();
@@ -30,4 +32,5 @@ void Viewport::ConvertWindowToScreenCoordinate(const vec2& position, vec2& resul
 	result.x = 2 * position.x * width - 1.0f;
 	result.y = 2 * position.y * height - 1.0f;
 	result.y *= -1;
+}
 }

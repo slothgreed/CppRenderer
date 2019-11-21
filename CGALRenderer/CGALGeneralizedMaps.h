@@ -1,5 +1,7 @@
 #ifndef CGAL_GENERALIZED_MAPS_H
 #define CGAL_GENERALIZED_MAPS_H
+namespace KI
+{
 class CGALGeneralizedMaps : public CGALModel
 {
 public:
@@ -15,5 +17,5 @@ public:
 private:
 
 };
-
+}
 #endif CGAL_GENERALIZED_MAPS_H

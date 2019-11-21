@@ -1,3 +1,5 @@
+namespace KI
+{
 
 Workspace::Workspace()
 {
@@ -84,4 +86,5 @@ void Workspace::ShowProperty()
 	{
 		m_pRenderList[i]->ShowProperty();
 	}
+}
 }

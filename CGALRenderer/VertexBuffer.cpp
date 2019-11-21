@@ -1,4 +1,7 @@
 #include "VertexBuffer.h"
+namespace KI
+{
+
 VertexBuffer::VertexBuffer()
 {
 	for (int i = 0; i < VERTEX_ATTRIB_NUM; i++)
@@ -248,4 +251,5 @@ int VertexBuffer::NumVertexAttrib()
 
 	assert(0);
 	return 1;
+}
 }

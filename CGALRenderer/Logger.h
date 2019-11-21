@@ -1,6 +1,7 @@
 #ifndef LOGGER_H
 #define LOGGER_H
-
+namespace KI
+{
 enum LOG_LEVEL
 {
 	DEBUG,
@@ -20,5 +21,5 @@ public:
 private:
 
 };
-
+}
 #endif LOGGER_H

@@ -1,6 +1,7 @@
 #ifndef ICONTROLLER_H
 #define ICONTROLLER_H
-
+namespace KI
+{
 enum CONTROLER_TYPE : unsigned int
 {
 	CAMERA_CONTROLER,
@@ -31,6 +32,6 @@ public:
 private:
 
 };
-
+}
 
 #endif ICONTROLLER_H

@@ -1,3 +1,5 @@
+namespace KI
+{
 void IShader::Build(const ShaderBuildInfo& buildInfo)
 {
 	string vertexCode;
@@ -58,3 +60,4 @@ bool IShader::Compare(const ShaderBuildInfo& buildInfo)
 
 }
 
+}

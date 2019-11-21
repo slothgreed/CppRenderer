@@ -1,6 +1,7 @@
 #ifndef INTERFACE_H
 #define	INTERFACE_H
-
+namespace KI
+{
 class IToString
 {
 public:
@@ -16,5 +17,5 @@ public:
 	virtual void Next() = 0;
 };
 
-
+}
 #endif // HALFEDGE_FACE_H

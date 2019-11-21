@@ -1,3 +1,6 @@
+namespace KI
+{
+
 FileUtility::FileUtility()
 {
 }
@@ -45,3 +48,4 @@ bool FileUtility::CheckExtension(const std::string& filePath, const std::string&
 	}
 }
 
+}

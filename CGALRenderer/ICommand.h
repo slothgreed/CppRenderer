@@ -1,6 +1,7 @@
 #ifndef ICOMMAND_H
 #define ICOMMAND_H
-
+namespace KI
+{
 enum CommandResult
 {
 	None,
@@ -51,6 +52,6 @@ protected:
 	shared_ptr<ICommandArgs> m_pArgs;
 
 };
-
+}
 #endif ICOMMAND_H
 

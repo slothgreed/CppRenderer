@@ -3,6 +3,7 @@
 
 #include "pch.h"
 
+using namespace KI;
 int main()
 {
     std::cout << "Hello World!\n"; 

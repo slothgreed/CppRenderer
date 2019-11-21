@@ -1,5 +1,6 @@
 #ifndef SHADER_MANAGER_H
-
+namespace KI
+{
 struct ShaderBuildInfo;
 class IShader;
 class ShaderManager
@@ -16,5 +17,5 @@ private:
 	vector<shared_ptr<IShader>> m_pShaderList;
 	static ShaderManager* m_Instance;
 };
-
+}
 #endif // !SHADER_MANAGER_H

@@ -1,6 +1,7 @@
 #ifndef VERTEX_BUFFER_H
 #define VERTEX_BUFFER_H
-
+namespace KI
+{
 enum VERTEX_ATTRIB
 {
 	VERTEX_ATTRIB_POSITION = 0,
@@ -65,5 +66,5 @@ private:
 	bool elements;
 };
 
-
+}
 #endif VERTEX_BUFFER_H

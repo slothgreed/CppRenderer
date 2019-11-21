@@ -1,6 +1,7 @@
 #ifndef MATH_HELPER_H
 #define MATH_HELPER_H
-
+namespace KI
+{
 class MathHelper
 {
 public:
@@ -13,5 +14,5 @@ public:
 private:
 
 };
-
+}
 #endif MATH_HELPER_H

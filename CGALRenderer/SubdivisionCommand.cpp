@@ -4,6 +4,9 @@
 #include <CGAL/Polygon_mesh_processing/fair.h>
 #include <fstream>
 #include <map>
+namespace KI
+{
+
 SubdivisionCommand::SubdivisionCommand(shared_ptr<ICommandArgs> args)
 	: ICommand(args)
 {
@@ -49,3 +52,4 @@ CommandResult SubdivisionCommand::Execute()
 	return CommandResult::Success;
 }
 
+}

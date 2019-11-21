@@ -1,6 +1,7 @@
 #ifndef HALFEDGE_VERTEX_H
 #define	 HALFEDGE_VERTEX_H
-
+namespace KI
+{
 class HalfEdge;
 class VertexAroundEdgeIterator : public IIterator<HalfEdge*>
 {
@@ -36,7 +37,7 @@ private:
 	vec3 m_position;
 	int m_Index;
 };
-
+}
 
 #endif // HALFEDGE_VERTEX_H
 

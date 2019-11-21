@@ -1,3 +1,5 @@
+namespace KI
+{
 Logger::Logger()
 {
 }
@@ -22,4 +24,5 @@ void Logger::GLError()
 	if (result != GL_NO_ERROR) {
 		assert(0);
 	}
+}
 }

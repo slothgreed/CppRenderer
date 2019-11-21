@@ -1,5 +1,7 @@
 #ifndef PRIMITIVE_NODE_H
 #define PRIMITIVE_NODE_H
+namespace KI
+{
 class PrimitiveNode : public IModelNode
 {
 public:
@@ -15,6 +17,6 @@ private:
 	shared_ptr<IShader> m_pShader;
 	shared_ptr<VertexBuffer> m_pVertexBuffer;
 };
-
+}
 
 #endif PRIMITIVE_NODE_H

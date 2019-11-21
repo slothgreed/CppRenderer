@@ -1,7 +1,8 @@
 #ifndef DEFAULT_SHADER_H
 #define DEFAULT_SHADER_H
 
-
+namespace KI
+{
 class IShader;
 class DefaultShader : public IShader
 {
@@ -24,5 +25,5 @@ private:
 #define VERTEX_SHADER_USE_NORMAL	"#define USE_NORMAL\n"
 #define VERTEX_SHADER_USE_COLOR		"#define USE_COLOR\n"
 #define VERTEX_SHADER_USE_TEXCOORD	"#define USE_TEXCOORD\n"
-
+}
 #endif DEFAULT_SHADER_H

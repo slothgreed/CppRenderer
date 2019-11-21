@@ -1,6 +1,7 @@
 #ifndef ISHADER_H
 #define ISHADER_H
-
+namespace KI
+{
 enum SHADER_TYPE
 {
 	SHADER_TYPE_DEFAULT = 1,
@@ -46,4 +47,5 @@ protected:
 private:
 	ShaderBuildInfo m_buildInfo;
 };
+}
 #endif ISHADER_H

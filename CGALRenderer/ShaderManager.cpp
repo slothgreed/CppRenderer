@@ -1,3 +1,5 @@
+namespace KI
+{
 
 ShaderManager* ShaderManager::m_Instance = NULL;
 
@@ -63,3 +65,4 @@ void ShaderManager::Dispose()
 	RELEASE_INSTANCE(m_Instance);
 }
 
+}

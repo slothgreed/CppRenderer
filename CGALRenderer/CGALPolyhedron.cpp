@@ -1,6 +1,8 @@
 #include <CGAL/normal_vector_newell_3.h>
 #include <fstream>
 
+namespace KI
+{
 
 CGALPolyhedron::CGALPolyhedron()
 	: CGALModel()
@@ -182,4 +184,5 @@ void CGALPolyhedron::GetBDB(BDB& bdb)
 		vec3(cgalBDB.xmin(), cgalBDB.ymin(), cgalBDB.zmin()),
 		vec3(cgalBDB.xmax(), cgalBDB.ymax(), cgalBDB.zmax())
 	);
+}
 }

@@ -1,6 +1,8 @@
 #ifndef BDB_PROPERTY_H
 #define BDB_PROEPRTY_H
 
+namespace KI
+{
 class VertexBuffer;
 class DefaultShader;
 class BDBProperty : public IModelProperty
@@ -19,5 +21,6 @@ private:
 	BDB m_bdb;
 };
 
+}
 
 #endif // !BDB_PROPERTY_H

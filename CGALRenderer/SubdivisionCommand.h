@@ -1,6 +1,7 @@
 #ifndef SUBDIVISION_COMMAND_H
 #define SUBDIVISION_COMMAND_H
-
+namespace KI
+{
 class SubdivisionCommandArgs : public ICommandArgs
 {
 	friend class SubdivisionCommand;
@@ -31,6 +32,6 @@ private:
 };
 
 
-
+}
 #endif // !SUBDIVISION_COMMAND_H
 
