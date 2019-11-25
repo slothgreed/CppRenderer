@@ -62,6 +62,7 @@ void VertexBuffer::Generate(VERTEX_LAYOUT layout)
 	GenerateVAO();
 }
 
+
 void VertexBuffer::SetPosition(GLuint primitiveType, const vector<vec3>& position)
 {
 	glBindBuffer(GL_ARRAY_BUFFER, m_id[VERTEX_ATTRIB_POSITION]);

@@ -18,8 +18,8 @@ bool CameraController::Move(const Mouse& mouse)
 	if (mouse.Press(MOUSE_BUTTON::MOUSE_BUTTON_RIGHT))
 	{
 		vec2 move = mouse.Delta();
-		move.x *= 0.3;
-		move.y *= -0.3;
+		move.x *= 0.3f;
+		move.y *= -0.3f;
 
 		m_pArgs->m_pCamera->MoveWithSpherical(move);
 	}

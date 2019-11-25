@@ -79,7 +79,7 @@ void Camera::SetTheta(float value)
 void Camera::FitToBDB(const BDB& bdb)
 {
 	float lookAtDistance = glm::length(bdb.Max() - bdb.Center()) / sin(m_fov / 2.0);
-	lookAtDistance *= 1.2 / m_aspect;
+	lookAtDistance *= 1.2f / m_aspect;
 
 	vec3 eyeDirection = glm::normalize(m_eye - m_center);
 	vec3 newPosition = bdb.Center() + eyeDirection * lookAtDistance;

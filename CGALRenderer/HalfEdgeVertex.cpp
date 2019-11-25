@@ -54,7 +54,7 @@ vec3 HalfEdgeVertex::CalcNormal()
 		num++;
 	}
 
-	double denom = 1.0f / num;
+	float denom = 1.0f / num;
 	vec3 normal;
 	normal.x = sum.x * denom;
 	normal.y = sum.y * denom;

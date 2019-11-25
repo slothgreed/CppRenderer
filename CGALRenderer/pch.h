@@ -57,6 +57,7 @@ using namespace glm;
 
 
 // opengl
+#include "GLObject.h"
 #include "ShaderManager.h"
 #include "VertexBuffer.h"
 #include "IShader.h"
@@ -64,6 +65,11 @@ using namespace glm;
 #include "UniformBuffer.h"
 #include "UniformScene.h"
 #include "Viewport.h"
+#include "FrameBuffer.h"
+#include "RenderBuffer.h"
+#include "Texture.h"
+#include "Sampler.h"
+#include "RenderTarget.h"
 
 // topology
 #include "Vertex.h"

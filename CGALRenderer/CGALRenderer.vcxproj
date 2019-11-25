@@ -171,6 +171,7 @@
     <ClInclude Include="CGALPolyhedron.h" />
     <ClInclude Include="CGALRenderer.h" />
     <ClInclude Include="CommandManager.h" />
+    <ClInclude Include="FrameBuffer.h" />
     <ClInclude Include="HalfEdge.h" />
     <ClInclude Include="EventArgs.h" />
     <ClInclude Include="HalfEdgeFace.h" />
@@ -178,6 +179,7 @@
     <ClInclude Include="HalfEdgeModel.h" />
     <ClInclude Include="ICommand.h" />
     <ClInclude Include="IController.h" />
+    <ClInclude Include="GLObject.h" />
     <ClInclude Include="Interface.h" />
     <ClInclude Include="ImGui\imconfig.h" />
     <ClInclude Include="ImGui\imgui.h" />
@@ -190,6 +192,10 @@
     <ClInclude Include="IModel.h" />
     <ClInclude Include="IModelProperty.h" />
     <ClInclude Include="HalfEdgeDS.h" />
+    <ClInclude Include="RenderBuffer.h" />
+    <ClInclude Include="RenderTarget.h" />
+    <ClInclude Include="Sampler.h" />
+    <ClInclude Include="Texture.h" />
     <ClInclude Include="Vertex.h" />
     <ClInclude Include="PrimitiveNode.h" />
     <ClInclude Include="Observer.h" />
@@ -227,6 +233,7 @@
     <ClCompile Include="CGALPolyhedron.cpp" />
     <ClCompile Include="CGALRenderer.cpp" />
     <ClCompile Include="CommandManager.cpp" />
+    <ClCompile Include="FrameBuffer.cpp" />
     <ClCompile Include="HalfEdge.cpp" />
     <ClCompile Include="HalfEdgeFace.cpp" />
     <ClCompile Include="FileUtility.cpp" />
@@ -256,8 +263,12 @@
     <ClCompile Include="Project.cpp" />
     <ClCompile Include="ModelNode.cpp" />
     <ClCompile Include="DefaultShader.cpp" />
+    <ClCompile Include="RenderBuffer.cpp" />
+    <ClCompile Include="RenderTarget.cpp" />
+    <ClCompile Include="Sampler.cpp" />
     <ClCompile Include="ShaderManager.cpp" />
     <ClCompile Include="SubdivisionCommand.cpp" />
+    <ClCompile Include="Texture.cpp" />
     <ClCompile Include="UniformScene.cpp" />
     <ClCompile Include="ShaderUtility.cpp" />
     <ClCompile Include="HalfEdgeVertex.cpp" />
