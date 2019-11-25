@@ -17,10 +17,7 @@ public:
 	virtual void GetBDB(BDB& bdb);
 
 private:
-	void LoadInternal(const string& filePath);
-	vector<shared_ptr<HalfEdge>> m_EdgeList;
-	vector<shared_ptr<HalfEdgeFace>> m_FaceList;
-	vector<shared_ptr<HalfEdgeVertex>> m_VertexList;
+	shared_ptr<HalfEdgeDS> m_HalfEdgeDS;
 };
 
 }

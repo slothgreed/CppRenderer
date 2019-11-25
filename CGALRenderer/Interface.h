@@ -9,6 +9,21 @@ public:
 };
 
 template<typename T>
+class IElement
+{
+public:
+	IElement<T>(string key, T value) { m_key = key, m_value = value; }
+
+	virtual string Key() { return m_key; }
+	virtual T Value() { return m_value; }
+
+private:
+	string m_key;
+	T m_value;
+};
+
+
+template<typename T>
 class IIterator
 {
 public:

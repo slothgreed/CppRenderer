@@ -66,6 +66,7 @@ using namespace glm;
 #include "HalfEdge.h"
 #include "HalfEdgeFace.h"
 #include "HalfEdgeVertex.h"
+#include "HalfEdgeDS.h"
 
 // asset
 #include "Camera.h"
@@ -87,9 +88,10 @@ using namespace glm;
 // model (mvc)
 #include "IModelNode.h"
 #include "PrimitiveNode.h"
-#include "CGALModelNode.h"
+#include "ModelNode.h"
 #include "IModelProperty.h"
 #include "BDBProperty.h"
+#include "VectorProperty.h"
 
 // application
 #include "CGALRenderer.h"

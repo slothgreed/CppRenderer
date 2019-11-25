@@ -17,6 +17,52 @@ void HalfEdgeVertex::SetPosition(float x, float y, float z)
 	m_position.z = z;
 }
 
+void HalfEdgeVertex::CalcElement()
+{
+	m_normal = CalcNormal();
+	m_area = CalcArea();
+}
+
+float HalfEdgeVertex::CalcArea()
+{
+	float area = 0;
+	auto itr = VertexAroundEdgeIterator(this);
+	HalfEdge* before = itr.Current();
+	itr.Next();
+
+	for (itr; itr.HasNext(); itr.Next())
+	{
+		area = MathHelper::CalcTriangleArea(
+			before->Start()->Position(),
+			before->End()->Position(),
+			itr.Current()->End()->Position());
+		area++;
+	}
+
+	return area;
+}
+
+vec3 HalfEdgeVertex::CalcNormal()
+{
+	HalfEdgeFace* face;
+	vec3 sum = vec3(0);
+	int num = 0;
+	for (auto itr = VertexAroundEdgeIterator(this); itr.HasNext(); itr.Next())
+	{
+		face = itr.Current()->Face().get();
+		sum += face->Normal();
+		num++;
+	}
+
+	double denom = 1.0f / num;
+	vec3 normal;
+	normal.x = sum.x * denom;
+	normal.y = sum.y * denom;
+	normal.z = sum.z * denom;
+
+	return normal;
+}
+
 string HalfEdgeVertex::ToString()
 {
 	string str;

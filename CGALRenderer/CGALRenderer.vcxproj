@@ -189,6 +189,7 @@
     <ClInclude Include="ImGui\imstb_truetype.h" />
     <ClInclude Include="IModel.h" />
     <ClInclude Include="IModelProperty.h" />
+    <ClInclude Include="HalfEdgeDS.h" />
     <ClInclude Include="PrimitiveNode.h" />
     <ClInclude Include="Observer.h" />
     <ClInclude Include="IShader.h" />
@@ -199,7 +200,7 @@
     <ClInclude Include="MouseInput.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Project.h" />
-    <ClInclude Include="CGALModelNode.h" />
+    <ClInclude Include="ModelNode.h" />
     <ClInclude Include="DefaultShader.h" />
     <ClInclude Include="IModelNode.h" />
     <ClInclude Include="ShaderManager.h" />
@@ -209,6 +210,7 @@
     <ClInclude Include="ShaderUtility.h" />
     <ClInclude Include="SystemTypes.h" />
     <ClInclude Include="HalfEdgeVertex.h" />
+    <ClInclude Include="VectorProperty.h" />
     <ClInclude Include="VertexBuffer.h" />
     <ClInclude Include="Viewport.h" />
     <ClInclude Include="WindowEvent.h" />
@@ -235,6 +237,7 @@
     <ClCompile Include="ImGui\imgui_impl_opengl3.cpp" />
     <ClCompile Include="ImGui\imgui_widgets.cpp" />
     <ClCompile Include="IModel.cpp" />
+    <ClCompile Include="HalfEdgeDS.cpp" />
     <ClCompile Include="PrimitiveNode.cpp" />
     <ClCompile Include="Observer.cpp" />
     <ClCompile Include="IShader.cpp" />
@@ -250,13 +253,14 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Project.cpp" />
-    <ClCompile Include="CGALModelNode.cpp" />
+    <ClCompile Include="ModelNode.cpp" />
     <ClCompile Include="DefaultShader.cpp" />
     <ClCompile Include="ShaderManager.cpp" />
     <ClCompile Include="SubdivisionCommand.cpp" />
     <ClCompile Include="UniformScene.cpp" />
     <ClCompile Include="ShaderUtility.cpp" />
     <ClCompile Include="HalfEdgeVertex.cpp" />
+    <ClCompile Include="VectorProperty.cpp" />
     <ClCompile Include="VertexBuffer.cpp" />
     <ClCompile Include="Viewport.cpp" />
     <ClCompile Include="Workspace.cpp" />

@@ -180,7 +180,8 @@ bool CGALRenderer::Run()
 
 	shared_ptr<IControllerArgs> args = make_shared<CameraControllerArgs>(
 		m_pViewport,
-		m_pWorkspace->MainCamera());
+		m_pWorkspace->MainCamera()
+	);
 
 	m_pController[CONTROLER_TYPE::CAMERA_CONTROLER]->SetArgs(args);
 
@@ -190,7 +191,6 @@ bool CGALRenderer::Run()
 
 	while (!glfwWindowShouldClose(m_window))
 	{
-		
 		m_pWorkspace->Invoke();
 
 		ImGui_ImplOpenGL3_NewFrame();

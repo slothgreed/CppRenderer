@@ -6,16 +6,17 @@ class IModelNode;
 class IShader;
 class VertexBuffer;
 class IModelProperty;
-class CGALModelNode : public IModelNode
+class ModelNode : public IModelNode
 {
 public:
-	CGALModelNode(shared_ptr<IModel> model);
-	~CGALModelNode();
+	ModelNode(shared_ptr<IModel> model);
+	~ModelNode();
 	virtual void Draw();
 	virtual void ShowProperty();
 	virtual void Update(void* sender, shared_ptr<EventArgs> args);
 
 	void SetBDB(BDB bdb);
+	void VisibleNormal(bool visibility);
 private:
 	string m_name;
 	shared_ptr<IShader> m_pFaceShader;

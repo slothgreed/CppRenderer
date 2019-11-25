@@ -27,15 +27,22 @@ public:
 
 	virtual string ToString();
 
+	void CalcElement();
 	int Index() { return m_Index; }
+	float Length() { return m_length; }
+	float Angle() { return m_angle; }
 private:
 
+	float CalcAngle();
+	float CalcLength();
 	shared_ptr<HalfEdgeVertex> m_End;
 	shared_ptr<HalfEdge> m_Next;
 	shared_ptr<HalfEdge> m_Before;
 	shared_ptr<HalfEdge> m_Opposite;
 	shared_ptr<HalfEdgeFace> m_Face;
 	int m_Index;
+	float m_angle;
+	float m_length;
 };
 
 }

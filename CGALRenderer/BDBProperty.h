@@ -12,12 +12,12 @@ public:
 	~BDBProperty();
 
 	virtual PROPERTY_TYPE Type() override { return PROPERTY_TYPE_BDB; }
-	void GenVBO();
 	virtual void Draw();
 
 private:
-	IShader* m_pShader;
-	VertexBuffer* m_pVertexBuffer;
+	void GenVBO();
+	shared_ptr<IShader> m_pShader;
+	shared_ptr<VertexBuffer> m_pVertexBuffer;
 	BDB m_bdb;
 };
 

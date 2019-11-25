@@ -4,6 +4,7 @@ namespace KI
 {
 enum PROPERTY_TYPE
 {
+	PROPERTY_TYPE_VECTOR,
 	PROPERTY_TYPE_BDB
 };
 

@@ -47,7 +47,7 @@ void Workspace::Initialize(Project* m_pProject)
 	polyhedron->GetBDB(bdb);
 	m_pCamera->FitToBDB(bdb);
 
-	auto cgalNode = make_shared<CGALModelNode>(polyhedron);
+	auto cgalNode = make_shared<ModelNode>(polyhedron);
 	m_pRenderList.push_back(cgalNode);
 
 	auto axis = make_shared<VertexBuffer>();

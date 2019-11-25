@@ -8,12 +8,11 @@ BDBProperty::BDBProperty(BDB& bdb)
 
 BDBProperty::~BDBProperty()
 {
-	RELEASE_INSTANCE(m_pVertexBuffer);
 }
 
 void BDBProperty::GenVBO()
 {
-	m_pVertexBuffer = new VertexBuffer();
+	m_pVertexBuffer = make_shared<VertexBuffer>();
 	m_pVertexBuffer->Generate(VERTEX_LAYOUT::VERTEX_LAYOUT_P);
 
 	vector<vec3> position;
@@ -53,7 +52,7 @@ void BDBProperty::GenVBO()
 
 	ShaderBuildInfo buildInfo;
 	DefaultShader::GetVertexShaderDefine(VERTEX_LAYOUT_P, buildInfo);
-	m_pShader = ShaderManager::Instance()->FindOrNew(buildInfo).get();
+	m_pShader = ShaderManager::Instance()->FindOrNew(buildInfo);
 }
 
 void BDBProperty::Draw()

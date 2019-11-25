@@ -20,6 +20,36 @@ void MathHelper::CartesianToSpherical(const glm::vec3& position, float& radian, 
 	theta = glm::atan(position.y / position.x);
 }
 
+float MathHelper::CalcTriangleArea(const vec3& v1, const vec3& v2, const vec3& v3)
+{
+	vec3 vector1 = v2 - v1;
+	vec3 vector2 = v3 - v1;
+
+	vec3 exterior = cross(vector1, vector2);
+
+	float area = length(exterior) / 2;
+
+	return area;
+}
+
+void MathHelper::CalcNormal(const vec3& v1, const vec3& v2, const vec3& v3, vec3& normal)
+{
+	vec3 vector1 = normalize(v2 - v1);
+	vec3 vector2 = normalize(v3 - v1);
+
+	normal = cross(vector1,vector2);
+}
+
+float MathHelper::CalcRadian(const vec3& v1, const vec3& v2) 
+{
+	vec3 vector1 = normalize(v1);
+	vec3 vector2 = normalize(v2);
+
+	float rad = dot(vector1, vector2);
+
+	return acos(rad);
+}
+
 std::string MathHelper::ToString(const vec3& value)
 {
 	// (x, y, z)

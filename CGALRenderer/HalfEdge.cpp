@@ -23,6 +23,28 @@ void HalfEdge::Set(
 	m_Face = face;
 }
 
+void HalfEdge::CalcElement()
+{
+	m_angle = CalcAngle();
+	m_length = CalcLength();
+}
+
+float HalfEdge::CalcAngle()
+{
+	auto before = Before()->Opposite();
+	float angle = MathHelper::CalcRadian(
+		Start()->Position() - End()->Position(),
+		before->End()->Position() - End()->Position()
+	);
+
+	return angle;
+}
+
+float HalfEdge::CalcLength()
+{
+	return length(Start()->Position() - End()->Position());
+}
+
 string HalfEdge::ToString()
 {
 	string str;
@@ -38,4 +60,5 @@ string HalfEdge::ToString()
 
 	return str;
 }
+
 }

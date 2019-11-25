@@ -31,10 +31,20 @@ public:
 	int Index() { return m_Index; }
 
 	virtual string ToString();
+	void CalcElement();
+
+	vec3 Normal() { return m_normal; }
+	float Area() { return m_area; }
 private:
+
+	float CalcArea();
+	vec3 CalcNormal();
 
 	shared_ptr<HalfEdge> m_Edge;
 	vec3 m_position;
+	vec3 m_normal;
+	float m_area;
+
 	int m_Index;
 };
 }

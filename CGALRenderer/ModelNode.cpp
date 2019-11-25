@@ -1,19 +1,19 @@
 namespace KI
 {
-CGALModelNode::CGALModelNode(shared_ptr<IModel> model)
+ModelNode::ModelNode(shared_ptr<IModel> model)
 {
-	m_name = "CGALModelNode";
+	m_name = "ModelNode";
 	m_pModel = model;
 	m_pModel->AddObserver(this);
 	SetRenderData();
 }
 
-CGALModelNode::~CGALModelNode()
+ModelNode::~ModelNode()
 {
 	m_pModel->RemoveObserver(this);
 }
 
-void CGALModelNode::Draw()
+void ModelNode::Draw()
 {
 	m_pFaceShader->Use();
 	m_pFaceBuffer->Draw();
@@ -30,20 +30,25 @@ void CGALModelNode::Draw()
 
 }
 
-void CGALModelNode::ShowProperty()
+void ModelNode::ShowProperty()
 {
 	ImGui::Begin(m_name.data());
 	ImGui::Text(m_bdb.ToString().data());
 	ImGui::End();
 }
 
-void CGALModelNode::SetBDB(BDB bdb)
+void ModelNode::SetBDB(BDB bdb)
 {
 	m_bdb = bdb;
 	m_pProperty.push_back(make_shared<BDBProperty>(m_bdb));
 }
 
-void CGALModelNode::SetRenderData()
+void ModelNode::VisibleNormal(bool visibility)
+{
+	m_pProperty.push_back(make_shared<VectorProperty>());
+}
+
+void ModelNode::SetRenderData()
 {
 	vector<vec3> facet;
 	vector<vec3> normal;
@@ -72,7 +77,7 @@ void CGALModelNode::SetRenderData()
 	SetBDB(bdb);
 }
 
-void CGALModelNode::Update(void* sender, shared_ptr<EventArgs> args)
+void ModelNode::Update(void* sender, shared_ptr<EventArgs> args)
 {
 	SetRenderData();
 }

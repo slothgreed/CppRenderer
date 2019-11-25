@@ -26,17 +26,30 @@ public:
 	HalfEdgeFace(int index);
 	~HalfEdgeFace();
 
-	vec3 Normal();
 	void SetEdge(shared_ptr<HalfEdge> edge) { m_Edge = edge; };
 	shared_ptr<HalfEdge> Edge() { return m_Edge; }
 
 	int Index() { return m_Index; }
 
 	virtual string ToString();
+	void CalcElement();
+
+	vec3 Centroid() { return m_centroid; }
+	vec3 Normal() { return m_normal; }
+	float Area() { return m_area; }
 private:
+
+	vec3 CalcNormal();
+	float CalcArea();
+	vec3 CalcCentroid();
+	
 
 	shared_ptr<HalfEdge> m_Edge;
 	int m_Index;
+
+	vec3 m_centroid;
+	float m_area;
+	vec3 m_normal;
 
 };
 
