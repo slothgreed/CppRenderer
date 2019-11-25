@@ -59,7 +59,7 @@ void HalfEdgeModel::GetEdgeList(vector<vec3>& edgeList)
 	};
 }
 
-void HalfEdgeModel::GetVertexList(vector<vec3>& vertexList)
+void HalfEdgeModel::GetPositionList(vector<vec3>& vertexList)
 {
 	auto halfVertexList = m_HalfEdgeDS->VertexList();
 	for (int i = 0; i < halfVertexList.size(); i++)
@@ -98,6 +98,19 @@ void HalfEdgeModel::GetFaceIndexList(vector<int>& index)
 
 			itr.Next();
 		}
+	}
+}
+
+
+void HalfEdgeModel::GetVertexList(vector<Vertex>& vertex)
+{
+	auto halfVertexList = m_HalfEdgeDS->VertexList();
+	for (int i = 0; i < halfVertexList.size(); i++)
+	{
+		auto halfVertex = halfVertexList[i];
+		vertex.push_back(
+			Vertex(halfVertex->Position(),halfVertex->Normal())
+		);
 	}
 }
 

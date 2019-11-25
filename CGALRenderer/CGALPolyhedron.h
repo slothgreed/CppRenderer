@@ -26,7 +26,7 @@ public:
 	virtual void Load(const std::string& filePath);
 	virtual void GetFacetList(std::vector<vec3>& position, std::vector<vec3>& normal);
 	virtual void GetEdgeList(std::vector<vec3>& edgeList);
-	virtual void GetVertexList(std::vector<vec3>& position);
+	virtual void GetPositionList(std::vector<vec3>& position);
 	virtual void GetBDB(BDB& bdb);
 	virtual void GenSampleModel();
 

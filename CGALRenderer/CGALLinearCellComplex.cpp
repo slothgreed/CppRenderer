@@ -46,7 +46,7 @@ void CGALLinearCellComplex::GetEdgeList(std::vector<vec3>& edgeList)
 
 }
 
-void CGALLinearCellComplex::GetVertexList(std::vector<vec3>& position)
+void CGALLinearCellComplex::GetPositionList(std::vector<vec3>& position)
 {
 
 }

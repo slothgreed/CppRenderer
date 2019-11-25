@@ -35,6 +35,12 @@ using namespace std;
 using namespace glm;
 // Foundation
 #include "BDB.h"
+#include "IController.h"
+#include "ICommand.h"
+#include "CommandManager.h"
+#include "EventArgs.h"
+#include "Observer.h"
+#include "Interface.h"
 
 // system
 #include "SystemTypes.h"
@@ -42,9 +48,6 @@ using namespace glm;
 #include "Mouse.h"
 #include "MouseInput.h"
 #include "WindowEvent.h"
-#include "EventArgs.h"
-#include "Observer.h"
-#include "Interface.h"
 
 // utility
 #include "MathHelper.h"
@@ -63,6 +66,7 @@ using namespace glm;
 #include "Viewport.h"
 
 // topology
+#include "Vertex.h"
 #include "HalfEdge.h"
 #include "HalfEdgeFace.h"
 #include "HalfEdgeVertex.h"
@@ -78,11 +82,7 @@ using namespace glm;
 #include "HalfEdgeModel.h"
 
 // logic
-#include "IController.h"
 #include "CameraController.h"
-
-#include "ICommand.h"
-#include "CommandManager.h"
 #include "SubdivisionCommand.h"
 
 // model (mvc)

@@ -190,6 +190,7 @@
     <ClInclude Include="IModel.h" />
     <ClInclude Include="IModelProperty.h" />
     <ClInclude Include="HalfEdgeDS.h" />
+    <ClInclude Include="Vertex.h" />
     <ClInclude Include="PrimitiveNode.h" />
     <ClInclude Include="Observer.h" />
     <ClInclude Include="IShader.h" />

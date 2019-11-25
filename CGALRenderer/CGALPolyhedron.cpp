@@ -71,7 +71,7 @@ void CGALPolyhedron::GetEdgeList(vector<vec3>& edgeList)
 	}
 }
 
-void CGALPolyhedron::GetVertexList(vector<vec3>& vertexList)
+void CGALPolyhedron::GetPositionList(vector<vec3>& vertexList)
 {
 	for (Polyhedron::Vertex_const_iterator vertex = m_model->vertices_begin();
 		vertex != m_model->vertices_end(); vertex++)

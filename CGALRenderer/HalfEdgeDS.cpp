@@ -96,10 +96,7 @@ void HalfEdgeDS::Load(const string& filePath)
 
 void HalfEdgeDS::CalcElement()
 {
-	for (int i = 0; i < m_VertexList.size(); i++)
-	{
-		m_VertexList[i]->CalcElement();
-	}
+	// TODO : CalcElement ‚ª‚Ù‚©‚Ì‚à‚Ì‚ÉˆË‘¶‚·‚éê‡‚ª‚ ‚é‚Ì‚Å‡”Ô‚ğ§Œä‚·‚é•K—v‚ª‚ ‚è‚»‚¤B
 
 	for (int i = 0; i < m_EdgeList.size(); i++)
 	{
@@ -109,6 +106,11 @@ void HalfEdgeDS::CalcElement()
 	for (int i = 0; i < m_FaceList.size(); i++)
 	{
 		m_FaceList[i]->CalcElement();
+	}
+
+	for (int i = 0; i < m_VertexList.size(); i++)
+	{
+		m_VertexList[i]->CalcElement();
 	}
 
 	m_allEdgeLength = CalcAllEdgeLength();

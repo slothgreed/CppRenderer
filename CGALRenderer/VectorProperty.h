@@ -4,13 +4,14 @@
 namespace KI
 {
 
-class VectorProperty : IModelProperty
+class VectorProperty : public IModelProperty
 {
 public:
 	VectorProperty(const vector<vec3>& vectorList, const vec3& color);
 	~VectorProperty();
 
 	virtual PROPERTY_TYPE Type() override { return PROPERTY_TYPE_VECTOR; }
+	virtual void Draw();
 private:
 	void GenVBO(const vector<vec3>& vertexList, const vec3& color);
 	shared_ptr<IShader> m_pShader;

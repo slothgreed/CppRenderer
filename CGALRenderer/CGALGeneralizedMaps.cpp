@@ -68,7 +68,7 @@ void CGALGeneralizedMaps::GetEdgeList(std::vector<vec3>& edgeList)
 
 }
 
-void CGALGeneralizedMaps::GetVertexList(std::vector<vec3>& position)
+void CGALGeneralizedMaps::GetPositionList(std::vector<vec3>& position)
 {
 
 }
