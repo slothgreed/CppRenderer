@@ -76,6 +76,12 @@
     <Filter Include="ヘッダー ファイル\Topology">
       <UniqueIdentifier>{0483854e-d0d6-42da-a3f0-403b588be2c8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\OpenGL\GLObject">
+      <UniqueIdentifier>{84187dd4-77ba-4c78-b6fc-4570c1795434}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\OpenGL\GLObject">
+      <UniqueIdentifier>{90ebf0f0-9cbd-4c3c-81ac-43d016b054f6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -243,23 +249,23 @@
     <ClInclude Include="Vertex.h">
       <Filter>ヘッダー ファイル\Topology</Filter>
     </ClInclude>
-    <ClInclude Include="FrameBuffer.h">
-      <Filter>ヘッダー ファイル\OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="RenderBuffer.h">
-      <Filter>ヘッダー ファイル\OpenGL</Filter>
-    </ClInclude>
     <ClInclude Include="RenderTarget.h">
       <Filter>ヘッダー ファイル\OpenGL</Filter>
     </ClInclude>
-    <ClInclude Include="Texture.h">
-      <Filter>ヘッダー ファイル\OpenGL</Filter>
+    <ClInclude Include="FrameBuffer.h">
+      <Filter>ヘッダー ファイル\OpenGL\GLObject</Filter>
     </ClInclude>
     <ClInclude Include="GLObject.h">
-      <Filter>ヘッダー ファイル\OpenGL</Filter>
+      <Filter>ヘッダー ファイル\OpenGL\GLObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>ヘッダー ファイル\OpenGL\GLObject</Filter>
     </ClInclude>
     <ClInclude Include="Sampler.h">
-      <Filter>ヘッダー ファイル\OpenGL</Filter>
+      <Filter>ヘッダー ファイル\OpenGL\GLObject</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderBuffer.h">
+      <Filter>ヘッダー ファイル\OpenGL\GLObject</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -389,20 +395,20 @@
     <ClCompile Include="VectorProperty.cpp">
       <Filter>ソース ファイル\Application</Filter>
     </ClCompile>
-    <ClCompile Include="FrameBuffer.cpp">
-      <Filter>ソース ファイル\OpenGL</Filter>
-    </ClCompile>
-    <ClCompile Include="RenderBuffer.cpp">
-      <Filter>ソース ファイル\OpenGL</Filter>
-    </ClCompile>
     <ClCompile Include="RenderTarget.cpp">
       <Filter>ソース ファイル\OpenGL</Filter>
     </ClCompile>
-    <ClCompile Include="Texture.cpp">
-      <Filter>ソース ファイル\OpenGL</Filter>
+    <ClCompile Include="FrameBuffer.cpp">
+      <Filter>ソース ファイル\OpenGL\GLObject</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderBuffer.cpp">
+      <Filter>ソース ファイル\OpenGL\GLObject</Filter>
     </ClCompile>
     <ClCompile Include="Sampler.cpp">
-      <Filter>ソース ファイル\OpenGL</Filter>
+      <Filter>ソース ファイル\OpenGL\GLObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>ソース ファイル\OpenGL\GLObject</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

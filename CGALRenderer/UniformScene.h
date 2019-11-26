@@ -19,6 +19,7 @@ public:
 	void Set(const SceneData& data);
 	void Bind();
 	void UnBind();
+	void Dispose();
 private:
 	GLuint m_SceneId;
 };

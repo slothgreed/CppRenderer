@@ -49,4 +49,13 @@ void UniformScene::UnBind()
 	glBindBufferBase(GL_UNIFORM_BUFFER, SCENE_DATA_LOCATION, 0);
 	Logger::GLError();
 }
+
+void UniformScene::Dispose()
+{
+	if (m_SceneId != 0)
+	{
+		glDeleteBuffers(1, &m_SceneId);
+		m_SceneId = 0;
+	}
+}
 }
