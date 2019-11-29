@@ -16,6 +16,7 @@ struct ShaderBuildInfo
 };
 
 #define GLSL_VERSION_400_CORE "#version 400 core\n"
+#define SHADER_DEBUG
 
 class IShader
 {
@@ -46,6 +47,11 @@ protected:
 	SHADER_TYPE m_shaderType;
 private:
 	ShaderBuildInfo m_buildInfo;
+
+#ifdef SHADER_DEBUG
+	string debug_vertexShader;
+	string debug_fragShader;
+#endif // SHADER_DEBUG
 };
 }
 #endif ISHADER_H

@@ -175,6 +175,7 @@ bool CGALRenderer::Run()
 	glCullFace(GL_BACK);
 	glEnable(GL_POLYGON_OFFSET_FILL);
 	glPolygonOffset(1.0, 1.0);
+	glEnable(GL_TEXTURE_2D);
 
 	/* OTHER STUFF GOES HERE NEXT */
 

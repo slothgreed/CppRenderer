@@ -194,6 +194,7 @@
     <ClInclude Include="HalfEdgeDS.h" />
     <ClInclude Include="RenderBuffer.h" />
     <ClInclude Include="RenderTarget.h" />
+    <ClInclude Include="RenderTexture.h" />
     <ClInclude Include="Sampler.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Vertex.h" />
@@ -265,6 +266,7 @@
     <ClCompile Include="DefaultShader.cpp" />
     <ClCompile Include="RenderBuffer.cpp" />
     <ClCompile Include="RenderTarget.cpp" />
+    <ClCompile Include="RenderTexture.cpp" />
     <ClCompile Include="Sampler.cpp" />
     <ClCompile Include="ShaderManager.cpp" />
     <ClCompile Include="SubdivisionCommand.cpp" />

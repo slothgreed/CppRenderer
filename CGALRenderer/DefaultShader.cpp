@@ -1,5 +1,6 @@
 namespace KI
 {
+
 DefaultShader::DefaultShader()
 {
 	SetVersion(GLSL_VERSION_400_CORE);
@@ -37,6 +38,9 @@ void DefaultShader::GetVertexShaderDefine(VERTEX_LAYOUT layout, ShaderBuildInfo&
 	case VERTEX_LAYOUT_PC:
 		shaderDefine.vertexDefine += VERTEX_SHADER_USE_COLOR;
 		break;
+	case VERTEX_LAYOUT_PT:
+		shaderDefine.vertexDefine += VERTEX_SHADER_USE_TEXCOORD;
+		break;
 	case VERTEX_LAYOUT_PNC:
 		shaderDefine.vertexDefine += VERTEX_SHADER_USE_NORMAL;
 		shaderDefine.vertexDefine += VERTEX_SHADER_USE_COLOR;
@@ -45,6 +49,21 @@ void DefaultShader::GetVertexShaderDefine(VERTEX_LAYOUT layout, ShaderBuildInfo&
 		shaderDefine.vertexDefine += VERTEX_SHADER_USE_NORMAL;
 		shaderDefine.vertexDefine += VERTEX_SHADER_USE_COLOR;
 		shaderDefine.vertexDefine += VERTEX_SHADER_USE_TEXCOORD;
+		break;
+	default:
+		break;
+	}
+}
+
+void DefaultShader::GetFragShaderDefine(VERTEX_LAYOUT layout, ShaderBuildInfo& shaderDefine)
+{
+	shaderDefine.shaderType = SHADER_TYPE::SHADER_TYPE_DEFAULT;
+	switch (layout)
+	{
+	case VERTEX_LAYOUT_PT:
+	case VERTEX_LAYOUT_PNCT:
+		shaderDefine.fragDefine += FRAG_SHADER_USE_TECOORD;
+		shaderDefine.fragDefine += FRAG_SHADER_USE_TEXTURE0;
 		break;
 	default:
 		break;

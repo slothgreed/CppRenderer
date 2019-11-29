@@ -10,6 +10,11 @@ void IShader::Build(const ShaderBuildInfo& buildInfo)
 	vertexCode = m_version + buildInfo.vertexDefine + vertexCode;
 	fragCode = m_version + buildInfo.fragDefine + fragCode;
 
+#ifdef SHADER_DEBUG
+	debug_vertexShader = vertexCode;
+	debug_fragShader = fragCode;
+#endif
+
 	BuildFromCode(vertexCode, fragCode);
 
 	m_buildInfo = buildInfo;
