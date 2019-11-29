@@ -38,6 +38,11 @@ void VertexBuffer::Generate(VERTEX_LAYOUT layout)
 		m_id[VERTEX_ATTRIB_POSITION]	= attrib[0];
 		m_id[VERTEX_ATTRIB_COLOR]		= attrib[1];
 	}
+	else if (m_layout == VERTEX_LAYOUT_PT)
+	{
+		m_id[VERTEX_ATTRIB_POSITION]	= attrib[0];
+		m_id[VERTEX_ATTRIB_TEXCOORD]	= attrib[1];
+	}
 	else if (m_layout == VERTEX_LAYOUT_PNC)
 	{
 		m_id[VERTEX_ATTRIB_POSITION]	= attrib[0];
@@ -102,6 +107,20 @@ void VertexBuffer::SetColor(const vector<vec3>& color)
 	Logger::GLError();
 }
 
+void VertexBuffer::SetTexcoord(const vector<vec2>& texcoord)
+{
+	if (HasTexCoord() == false)
+	{
+		assert(0);
+		return;
+	}
+
+	glBindBuffer(GL_ARRAY_BUFFER, m_id[VERTEX_ATTRIB_TEXCOORD]);
+	glBufferData(GL_ARRAY_BUFFER, texcoord.size() * sizeof(vec2), texcoord.data(), GL_STATIC_DRAW);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	Logger::GLError();
+}
+
 void VertexBuffer::SetIndex(const vector<int>& index)
 {
 	if (m_indexId == 0)
@@ -141,7 +160,9 @@ void VertexBuffer::GenerateVAO()
 
 	if (HasTexCoord())
 	{
-		assert(0);
+		glEnableVertexAttribArray(VERTEX_ATTRIB_TEXCOORD);
+		glBindBuffer(GL_ARRAY_BUFFER, m_id[VERTEX_ATTRIB_TEXCOORD]);
+		glVertexAttribPointer(VERTEX_ATTRIB_TEXCOORD, 2, GL_FLOAT, GL_FALSE, 0,NULL);
 	}
 
 	glBindVertexArray(0);
@@ -181,6 +202,7 @@ void VertexBuffer::Draw()
 		glDrawArrays(m_PrimitiveType, 0, m_vertexNum);
 	}
 	glBindVertexArray(0);
+	Logger::GLError();
 }
 
 bool VertexBuffer::HasNormal()
@@ -209,7 +231,8 @@ bool VertexBuffer::HasColor()
 
 bool VertexBuffer::HasTexCoord()
 {
-	if (m_layout == VERTEX_LAYOUT_PNCT)
+	if (m_layout == VERTEX_LAYOUT_PT ||
+		m_layout == VERTEX_LAYOUT_PNCT)
 	{
 		return true;
 	}
@@ -235,7 +258,8 @@ int VertexBuffer::NumVertexAttrib()
 	}
 
 	if (m_layout == VERTEX_LAYOUT_PC || 
-		m_layout == VERTEX_LAYOUT_PN)
+		m_layout == VERTEX_LAYOUT_PN ||
+		m_layout == VERTEX_LAYOUT_PT)
 	{
 		return 2;
 	}

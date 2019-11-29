@@ -55,6 +55,18 @@ void Workspace::Initialize(Project* m_pProject)
 	auto axisNode = make_shared<PrimitiveNode>(m_pDefaultShader, axis);
 	m_pRenderList.push_back(axisNode);
 
+	//ShaderBuildInfo info;
+	//info.shaderType = SHADER_TYPE_DEFAULT;
+	//DefaultShader::GetVertexShaderDefine(VERTEX_LAYOUT::VERTEX_LAYOUT_PC, info);
+	//DefaultShader::GetFragShaderDefine(VERTEX_LAYOUT::VERTEX_LAYOUT_PC, info);
+
+	//auto shader = ShaderManager::Instance()->FindOrNew(info);
+
+	//auto plane = make_shared<VertexBuffer>();
+	//ModelGenerator::Axis(plane.get());
+	//auto planeNode = make_shared<PrimitiveNode>(shader, plane);
+	//m_pRenderList.push_back(planeNode);
+
 	//auto subdivArgs = make_shared<SubdivisionCommandArgs>(polyhedron);
 	//auto subdivCommand = make_shared<SubdivisionCommand>(subdivArgs);
 	//m_pCommandManager->Execute(subdivCommand);

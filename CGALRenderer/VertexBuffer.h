@@ -17,6 +17,7 @@ enum VERTEX_LAYOUT
 	VERTEX_LAYOUT_P,	// Point
 	VERTEX_LAYOUT_PN,	// Point Normal
 	VERTEX_LAYOUT_PC,	// Point Color
+	VERTEX_LAYOUT_PT,	// Point Texcoord
 	VERTEX_LAYOUT_PNC,	// Point Normal Color
 	VERTEX_LAYOUT_PNCT,	// Point Normal Color Texcoord
 	VERTEX_LAYOUT_NUM,	
@@ -42,6 +43,7 @@ public:
 	void SetPosition(GLuint primitiveTypem, const std::vector<glm::vec3>& position);
 	void SetNormal(const std::vector<glm::vec3>& normal);
 	void SetColor(const std::vector<glm::vec3>& color);
+	void SetTexcoord(const vector<vec2>& texcoord);
 	void SetIndex(const std::vector<int>& index);
 	void Dispose();
 	VERTEX_LAYOUT Layout() { return m_layout; };
