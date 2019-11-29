@@ -68,6 +68,7 @@ using namespace glm;
 #include "FrameBuffer.h"
 #include "RenderBuffer.h"
 #include "Texture.h"
+#include "RenderTexture.h"
 #include "Sampler.h"
 #include "RenderTarget.h"
 

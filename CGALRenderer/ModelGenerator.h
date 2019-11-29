@@ -10,6 +10,8 @@ public:
 	~ModelGenerator();
 
 	static void Axis(VertexBuffer* vertexBuffer);
+	static void RenderPlane(VertexBuffer* vertexBuffer); // ƒŒƒ“ƒ_ƒŠƒ“ƒO—p‚Ì•½–Ê
+
 private:
 };
 }

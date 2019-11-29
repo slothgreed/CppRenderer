@@ -1,5 +1,5 @@
-#ifndef TEXTUREBUFFER_H
-#define TEXTUREBUFFER_H
+#ifndef TEXTURE_H
+#define TEXTURE_H
 
 namespace KI
 {
@@ -14,10 +14,9 @@ public:
 	virtual void Generate();
 	virtual void UnBind();
 	virtual void Dispose();
-
 private:
 
 };
 }
 
-#endif
+#endif	// ! TEXTURE_H

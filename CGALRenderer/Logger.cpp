@@ -21,8 +21,33 @@ void Logger::Output(LOG_LEVEL level, string message)
 void Logger::GLError()
 {
 	GLenum result = glGetError();
-	if (result != GL_NO_ERROR) {
+	if (result == GL_NO_ERROR) {
+		return;
+	}
+
+	switch (result)
+	{
+	case GL_INVALID_ENUM:
 		assert(0);
+		break;
+	case GL_INVALID_VALUE:
+		assert(0);
+		break;
+	case GL_INVALID_OPERATION:
+		assert(0);
+		break;
+	case GL_STACK_OVERFLOW:
+		assert(0);
+		break;
+	case GL_STACK_UNDERFLOW:
+		assert(0);
+		break;
+	case GL_OUT_OF_MEMORY:
+		assert(0);
+		break;
+	default:
+		assert(0);
+		break;
 	}
 }
 }

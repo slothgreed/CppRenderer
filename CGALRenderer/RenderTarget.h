@@ -9,11 +9,11 @@ class RenderTarget
 public:
 	RenderTarget();
 	~RenderTarget();
-
+	void Resize(int width, int height);
 private:
 	shared_ptr<FrameBuffer> m_pFrameBuffer;
-	shared_ptr<RenderBuffer> m_pOutputBuffer;
-
+	vector<shared_ptr<RenderTexture>> m_pOutputBuffer;
+	shared_ptr<RenderTexture> m_pDepthBuffer;
 };
 
 }

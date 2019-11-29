@@ -16,6 +16,7 @@ void PrimitiveNode::Draw()
 	m_pShader->Use();
 	m_pVertexBuffer->Draw();
 	m_pShader->UnUse();
+	Logger::GLError();
 }
 
 void PrimitiveNode::Update(void* sender, shared_ptr<EventArgs> args)
