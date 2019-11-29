@@ -33,8 +33,8 @@ void Workspace::Initialize(Project* m_pProject)
 	//shared_ptr<CGALModel> polyhedron = make_shared<CGALPolyhedron>();
 	//polyhedron->Load("E:\\cgModel\\StanfordBunny.off");
 
-	shared_ptr<IModel> polyhedron = make_shared<HalfEdgeModel>();
-	polyhedron->Load("E:\\cgModel\\bunny6000.half");
+	//shared_ptr<IModel> polyhedron = make_shared<HalfEdgeModel>();
+	//polyhedron->Load("E:\\cgModel\\bunny6000.half");
 
 	//polyhedron->GenSampleModel();
 
@@ -43,29 +43,35 @@ void Workspace::Initialize(Project* m_pProject)
 	//polyhedron->GenSampleModel();
 
 
-	BDB bdb;
-	polyhedron->GetBDB(bdb);
+	BDB bdb(vec3(0,0,0),vec3(1,1,1));
+	//polyhedron->GetBDB(bdb);
 	m_pCamera->FitToBDB(bdb);
 
-	auto cgalNode = make_shared<ModelNode>(polyhedron);
-	m_pRenderList.push_back(cgalNode);
+	//auto cgalNode = make_shared<ModelNode>(polyhedron);
+	//m_pRenderList.push_back(cgalNode);
 
-	auto axis = make_shared<VertexBuffer>();
+	auto axis = make_shared<DefaultVertexBuffer>();
 	ModelGenerator::Axis(axis.get());
 	auto axisNode = make_shared<PrimitiveNode>(m_pDefaultShader, axis);
 	m_pRenderList.push_back(axisNode);
 
-	//ShaderBuildInfo info;
-	//info.shaderType = SHADER_TYPE_DEFAULT;
-	//DefaultShader::GetVertexShaderDefine(VERTEX_LAYOUT::VERTEX_LAYOUT_PC, info);
-	//DefaultShader::GetFragShaderDefine(VERTEX_LAYOUT::VERTEX_LAYOUT_PC, info);
+	ShaderBuildInfo info;
+	info.shaderType = SHADER_TYPE_DEFAULT;
+	DefaultShader::GetVertexShaderDefine(VERTEX_LAYOUT::VERTEX_LAYOUT_PT, info);
+	DefaultShader::GetFragShaderDefine(VERTEX_LAYOUT::VERTEX_LAYOUT_PT, info);
 
-	//auto shader = ShaderManager::Instance()->FindOrNew(info);
+	auto shader = ShaderManager::Instance()->FindOrNew(info);
 
-	//auto plane = make_shared<VertexBuffer>();
-	//ModelGenerator::Axis(plane.get());
-	//auto planeNode = make_shared<PrimitiveNode>(shader, plane);
-	//m_pRenderList.push_back(planeNode);
+	auto plane = make_shared<DefaultVertexBuffer>();
+	ModelGenerator::RenderPlane(plane.get());
+	auto planeNode = make_shared<PrimitiveNode>(shader, plane);
+	TextureData data;
+	TextureGenerator::UVTexture(8, data);
+	auto texture = make_shared<Texture>();
+	texture->Set(data);
+	planeNode->AddTexture(texture);
+
+	m_pRenderList.push_back(planeNode);
 
 	//auto subdivArgs = make_shared<SubdivisionCommandArgs>(polyhedron);
 	//auto subdivCommand = make_shared<SubdivisionCommand>(subdivArgs);

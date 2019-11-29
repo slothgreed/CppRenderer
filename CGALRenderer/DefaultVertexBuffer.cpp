@@ -1,8 +1,7 @@
-#include "VertexBuffer.h"
 namespace KI
 {
 
-VertexBuffer::VertexBuffer()
+DefaultVertexBuffer::DefaultVertexBuffer()
 {
 	for (int i = 0; i < VERTEX_ATTRIB_NUM; i++)
 	{
@@ -13,12 +12,12 @@ VertexBuffer::VertexBuffer()
 	m_indexId = 0;
 }
 
-VertexBuffer::~VertexBuffer()
+DefaultVertexBuffer::~DefaultVertexBuffer()
 {
 	Dispose();
 }
 
-void VertexBuffer::Generate(VERTEX_LAYOUT layout)
+void DefaultVertexBuffer::Generate(VERTEX_LAYOUT layout)
 {
 	m_layout = layout;
 	GLuint* attrib = new GLuint[NumVertexAttrib()];
@@ -68,7 +67,7 @@ void VertexBuffer::Generate(VERTEX_LAYOUT layout)
 }
 
 
-void VertexBuffer::SetPosition(GLuint primitiveType, const vector<vec3>& position)
+void DefaultVertexBuffer::SetPosition(GLuint primitiveType, const vector<vec3>& position)
 {
 	glBindBuffer(GL_ARRAY_BUFFER, m_id[VERTEX_ATTRIB_POSITION]);
 	glBufferData(GL_ARRAY_BUFFER, position.size() * sizeof(vec3), position.data(), GL_STATIC_DRAW);
@@ -79,7 +78,7 @@ void VertexBuffer::SetPosition(GLuint primitiveType, const vector<vec3>& positio
 	Logger::GLError();
 }
 
-void VertexBuffer::SetNormal(const vector<vec3>& normal)
+void DefaultVertexBuffer::SetNormal(const vector<vec3>& normal)
 {
 	if (HasNormal() == false)
 	{
@@ -93,7 +92,7 @@ void VertexBuffer::SetNormal(const vector<vec3>& normal)
 	Logger::GLError();
 }
 
-void VertexBuffer::SetColor(const vector<vec3>& color)
+void DefaultVertexBuffer::SetColor(const vector<vec3>& color)
 {
 	if (HasColor() == false)
 	{
@@ -107,7 +106,7 @@ void VertexBuffer::SetColor(const vector<vec3>& color)
 	Logger::GLError();
 }
 
-void VertexBuffer::SetTexcoord(const vector<vec2>& texcoord)
+void DefaultVertexBuffer::SetTexcoord(const vector<vec2>& texcoord)
 {
 	if (HasTexCoord() == false)
 	{
@@ -121,7 +120,7 @@ void VertexBuffer::SetTexcoord(const vector<vec2>& texcoord)
 	Logger::GLError();
 }
 
-void VertexBuffer::SetIndex(const vector<int>& index)
+void DefaultVertexBuffer::SetIndex(const vector<int>& index)
 {
 	if (m_indexId == 0)
 	{
@@ -136,7 +135,7 @@ void VertexBuffer::SetIndex(const vector<int>& index)
 	Logger::GLError();
 }
 
-void VertexBuffer::GenerateVAO()
+void DefaultVertexBuffer::GenerateVAO()
 {
 	glGenVertexArrays(1, &m_vaoId);
 	glBindVertexArray(m_vaoId);
@@ -169,7 +168,7 @@ void VertexBuffer::GenerateVAO()
 	Logger::GLError();
 }
 
-void VertexBuffer::Dispose()
+void DefaultVertexBuffer::Dispose()
 {
 	for (int i = 0; i < VERTEX_ATTRIB_NUM; i++)
 	{
@@ -190,7 +189,7 @@ void VertexBuffer::Dispose()
 	}
 }
 
-void VertexBuffer::Draw()
+void DefaultVertexBuffer::Draw()
 {
 	glBindVertexArray(m_vaoId);
 	if (HasIndex())
@@ -205,7 +204,7 @@ void VertexBuffer::Draw()
 	Logger::GLError();
 }
 
-bool VertexBuffer::HasNormal()
+bool DefaultVertexBuffer::HasNormal()
 {
 	if (m_layout == VERTEX_LAYOUT_PN ||
 		m_layout == VERTEX_LAYOUT_PNC ||
@@ -217,7 +216,7 @@ bool VertexBuffer::HasNormal()
 	return false;
 }
 
-bool VertexBuffer::HasColor()
+bool DefaultVertexBuffer::HasColor()
 {
 	if (m_layout == VERTEX_LAYOUT_PC ||
 		m_layout == VERTEX_LAYOUT_PNC ||
@@ -229,7 +228,7 @@ bool VertexBuffer::HasColor()
 	return false;
 }
 
-bool VertexBuffer::HasTexCoord()
+bool DefaultVertexBuffer::HasTexCoord()
 {
 	if (m_layout == VERTEX_LAYOUT_PT ||
 		m_layout == VERTEX_LAYOUT_PNCT)
@@ -240,7 +239,7 @@ bool VertexBuffer::HasTexCoord()
 	return false;
 }
 
-bool VertexBuffer::HasIndex()
+bool DefaultVertexBuffer::HasIndex()
 {
 	if (m_indexId != 0)
 	{
@@ -250,7 +249,7 @@ bool VertexBuffer::HasIndex()
 	return false;
 }
 
-int VertexBuffer::NumVertexAttrib()
+int DefaultVertexBuffer::NumVertexAttrib()
 {
 	if (m_layout == VERTEX_LAYOUT_P)
 	{

@@ -2,15 +2,15 @@
 #define MODEL_GENERATOR_H
 namespace KI
 {
-class VertexBuffer;
+class DefaultVertexBuffer;
 class ModelGenerator
 {
 public:
 	ModelGenerator();
 	~ModelGenerator();
 
-	static void Axis(VertexBuffer* vertexBuffer);
-	static void RenderPlane(VertexBuffer* vertexBuffer); // レンダリング用の平面
+	static void Axis(DefaultVertexBuffer* vertexBuffer);
+	static void RenderPlane(DefaultVertexBuffer* vertexBuffer); // レンダリング用の平面
 
 private:
 };

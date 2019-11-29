@@ -82,13 +82,46 @@
     <Filter Include="ソース ファイル\OpenGL\GLObject">
       <UniqueIdentifier>{90ebf0f0-9cbd-4c3c-81ac-43d016b054f6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Application\Node">
+      <UniqueIdentifier>{d3157a13-966b-4bc9-ae1d-68a8a3a13336}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Application\Property">
+      <UniqueIdentifier>{4f1bb258-d428-4acd-80a1-d8f7959a29ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Asset\Model">
+      <UniqueIdentifier>{91b48c6e-684b-4aa3-ace7-e22700310366}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Asset\Model">
+      <UniqueIdentifier>{15297073-dfeb-4c8a-8618-ef4af01cd201}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Application\Node">
+      <UniqueIdentifier>{0801c496-2132-4217-aba6-bcf1a97358f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Application\Property">
+      <UniqueIdentifier>{80b8da82-a341-4ede-9246-ee8786962710}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Asset\Material">
+      <UniqueIdentifier>{d3bef993-63a8-4016-87de-92a7bddfdefc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Asset\Material">
+      <UniqueIdentifier>{2edff9f8-43f5-4208-8521-b26c0090a015}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Asset\Shader">
+      <UniqueIdentifier>{ff806b1f-5c08-4d9a-8801-07061191c5f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Asset\VertexBuffer">
+      <UniqueIdentifier>{b1b4ae2f-6b97-4dbe-a37a-87824a31b0c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Asset\VertexBuffer">
+      <UniqueIdentifier>{0dd8a6e6-be55-4c9d-b1f7-a60a42d2b11f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Asset\Shader">
+      <UniqueIdentifier>{333fbf8d-8ee3-4d1d-aa2d-57b8af26b47f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
       <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="VertexBuffer.h">
-      <Filter>ヘッダー ファイル\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="Logger.h">
       <Filter>ヘッダー ファイル\System</Filter>
@@ -103,12 +136,6 @@
       <Filter>ヘッダー ファイル\Application</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
-      <Filter>ヘッダー ファイル\Asset</Filter>
-    </ClInclude>
-    <ClInclude Include="CGALModel.h">
-      <Filter>ヘッダー ファイル\Asset</Filter>
-    </ClInclude>
-    <ClInclude Include="CGALPolyhedron.h">
       <Filter>ヘッダー ファイル\Asset</Filter>
     </ClInclude>
     <ClInclude Include="Mouse.h">
@@ -141,12 +168,6 @@
     <ClInclude Include="UniformBuffer.h">
       <Filter>ヘッダー ファイル\OpenGL</Filter>
     </ClInclude>
-    <ClInclude Include="DefaultShader.h">
-      <Filter>ヘッダー ファイル\OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="IShader.h">
-      <Filter>ヘッダー ファイル\OpenGL</Filter>
-    </ClInclude>
     <ClInclude Include="ImGui\imconfig.h">
       <Filter>ImGui</Filter>
     </ClInclude>
@@ -177,41 +198,17 @@
     <ClInclude Include="ShaderManager.h">
       <Filter>ヘッダー ファイル\OpenGL</Filter>
     </ClInclude>
-    <ClInclude Include="BDBProperty.h">
-      <Filter>ヘッダー ファイル\Application</Filter>
-    </ClInclude>
-    <ClInclude Include="IModelProperty.h">
-      <Filter>ヘッダー ファイル\Application</Filter>
-    </ClInclude>
-    <ClInclude Include="CGALLinearCellComplex.h">
-      <Filter>ヘッダー ファイル\Asset</Filter>
-    </ClInclude>
-    <ClInclude Include="CGALGeneralizedMaps.h">
-      <Filter>ヘッダー ファイル\Asset</Filter>
-    </ClInclude>
     <ClInclude Include="CameraController.h">
       <Filter>ヘッダー ファイル\Logic\Controller</Filter>
     </ClInclude>
     <ClInclude Include="SubdivisionCommand.h">
       <Filter>ヘッダー ファイル\Logic\Command</Filter>
     </ClInclude>
-    <ClInclude Include="IModel.h">
-      <Filter>ヘッダー ファイル\Asset</Filter>
-    </ClInclude>
-    <ClInclude Include="PrimitiveNode.h">
-      <Filter>ヘッダー ファイル\Application</Filter>
-    </ClInclude>
-    <ClInclude Include="IModelNode.h">
-      <Filter>ヘッダー ファイル\Asset</Filter>
-    </ClInclude>
     <ClInclude Include="EventArgs.h">
       <Filter>ヘッダー ファイル\Foundation</Filter>
     </ClInclude>
     <ClInclude Include="Observer.h">
       <Filter>ヘッダー ファイル\Foundation</Filter>
-    </ClInclude>
-    <ClInclude Include="HalfEdgeModel.h">
-      <Filter>ヘッダー ファイル\Asset</Filter>
     </ClInclude>
     <ClInclude Include="FileUtility.h">
       <Filter>ヘッダー ファイル\Utility</Filter>
@@ -240,12 +237,6 @@
     <ClInclude Include="HalfEdgeDS.h">
       <Filter>ヘッダー ファイル\Topology</Filter>
     </ClInclude>
-    <ClInclude Include="ModelNode.h">
-      <Filter>ヘッダー ファイル\Application</Filter>
-    </ClInclude>
-    <ClInclude Include="VectorProperty.h">
-      <Filter>ヘッダー ファイル\Application</Filter>
-    </ClInclude>
     <ClInclude Include="Vertex.h">
       <Filter>ヘッダー ファイル\Topology</Filter>
     </ClInclude>
@@ -270,6 +261,63 @@
     <ClInclude Include="RenderTexture.h">
       <Filter>ヘッダー ファイル\OpenGL\GLObject</Filter>
     </ClInclude>
+    <ClInclude Include="TextureGenerator.h">
+      <Filter>ヘッダー ファイル\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="CGALGeneralizedMaps.h">
+      <Filter>ヘッダー ファイル\Asset\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="CGALLinearCellComplex.h">
+      <Filter>ヘッダー ファイル\Asset\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="CGALModel.h">
+      <Filter>ヘッダー ファイル\Asset\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="CGALPolyhedron.h">
+      <Filter>ヘッダー ファイル\Asset\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="HalfEdgeModel.h">
+      <Filter>ヘッダー ファイル\Asset\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="IModel.h">
+      <Filter>ヘッダー ファイル\Asset\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="IModelNode.h">
+      <Filter>ヘッダー ファイル\Asset\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="VectorProperty.h">
+      <Filter>ヘッダー ファイル\Application\Property</Filter>
+    </ClInclude>
+    <ClInclude Include="IModelProperty.h">
+      <Filter>ヘッダー ファイル\Application\Property</Filter>
+    </ClInclude>
+    <ClInclude Include="BDBProperty.h">
+      <Filter>ヘッダー ファイル\Application\Property</Filter>
+    </ClInclude>
+    <ClInclude Include="PrimitiveNode.h">
+      <Filter>ヘッダー ファイル\Application\Node</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelNode.h">
+      <Filter>ヘッダー ファイル\Application\Node</Filter>
+    </ClInclude>
+    <ClInclude Include="IMaterial.h">
+      <Filter>ヘッダー ファイル\Asset\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="DefaultMaterial.h">
+      <Filter>ヘッダー ファイル\Asset\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="DefaultShader.h">
+      <Filter>ヘッダー ファイル\Asset\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="IShader.h">
+      <Filter>ヘッダー ファイル\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="IVertexBuffer.h">
+      <Filter>ヘッダー ファイル\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="DefaultVertexBuffer.h">
+      <Filter>ヘッダー ファイル\Asset\VertexBuffer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -277,9 +325,6 @@
     </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="VertexBuffer.cpp">
-      <Filter>ソース ファイル\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="Logger.cpp">
       <Filter>ソース ファイル\System</Filter>
@@ -294,9 +339,6 @@
       <Filter>ソース ファイル\Application</Filter>
     </ClCompile>
     <ClCompile Include="Camera.cpp">
-      <Filter>ソース ファイル\Asset</Filter>
-    </ClCompile>
-    <ClCompile Include="CGALPolyhedron.cpp">
       <Filter>ソース ファイル\Asset</Filter>
     </ClCompile>
     <ClCompile Include="Mouse.cpp">
@@ -315,9 +357,6 @@
       <Filter>ソース ファイル\Utility</Filter>
     </ClCompile>
     <ClCompile Include="UniformScene.cpp">
-      <Filter>ソース ファイル\OpenGL</Filter>
-    </ClCompile>
-    <ClCompile Include="DefaultShader.cpp">
       <Filter>ソース ファイル\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="IShader.cpp">
@@ -347,32 +386,14 @@
     <ClCompile Include="ShaderManager.cpp">
       <Filter>ソース ファイル\OpenGL</Filter>
     </ClCompile>
-    <ClCompile Include="BDBProperty.cpp">
-      <Filter>ソース ファイル\Application</Filter>
-    </ClCompile>
-    <ClCompile Include="CGALLinearCellComplex.cpp">
-      <Filter>ソース ファイル\Asset</Filter>
-    </ClCompile>
-    <ClCompile Include="CGALGeneralizedMaps.cpp">
-      <Filter>ソース ファイル\Asset</Filter>
-    </ClCompile>
     <ClCompile Include="CameraController.cpp">
       <Filter>ソース ファイル\Logic\Controller</Filter>
     </ClCompile>
     <ClCompile Include="SubdivisionCommand.cpp">
       <Filter>ソース ファイル\Logic\Command</Filter>
     </ClCompile>
-    <ClCompile Include="PrimitiveNode.cpp">
-      <Filter>ソース ファイル\Application</Filter>
-    </ClCompile>
     <ClCompile Include="Observer.cpp">
       <Filter>ソース ファイル\Foundation</Filter>
-    </ClCompile>
-    <ClCompile Include="HalfEdgeModel.cpp">
-      <Filter>ソース ファイル\Asset</Filter>
-    </ClCompile>
-    <ClCompile Include="IModel.cpp">
-      <Filter>ソース ファイル\Asset</Filter>
     </ClCompile>
     <ClCompile Include="FileUtility.cpp">
       <Filter>ソース ファイル\Utility</Filter>
@@ -392,12 +413,6 @@
     <ClCompile Include="HalfEdgeDS.cpp">
       <Filter>ソース ファイル\Topology</Filter>
     </ClCompile>
-    <ClCompile Include="ModelNode.cpp">
-      <Filter>ソース ファイル\Application</Filter>
-    </ClCompile>
-    <ClCompile Include="VectorProperty.cpp">
-      <Filter>ソース ファイル\Application</Filter>
-    </ClCompile>
     <ClCompile Include="RenderTarget.cpp">
       <Filter>ソース ファイル\OpenGL</Filter>
     </ClCompile>
@@ -415,6 +430,45 @@
     </ClCompile>
     <ClCompile Include="RenderTexture.cpp">
       <Filter>ソース ファイル\OpenGL\GLObject</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureGenerator.cpp">
+      <Filter>ソース ファイル\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelNode.cpp">
+      <Filter>ソース ファイル\Application\Node</Filter>
+    </ClCompile>
+    <ClCompile Include="PrimitiveNode.cpp">
+      <Filter>ソース ファイル\Application\Node</Filter>
+    </ClCompile>
+    <ClCompile Include="BDBProperty.cpp">
+      <Filter>ソース ファイル\Application\Property</Filter>
+    </ClCompile>
+    <ClCompile Include="VectorProperty.cpp">
+      <Filter>ソース ファイル\Application\Property</Filter>
+    </ClCompile>
+    <ClCompile Include="CGALGeneralizedMaps.cpp">
+      <Filter>ソース ファイル\Asset\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="CGALLinearCellComplex.cpp">
+      <Filter>ソース ファイル\Asset\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="CGALPolyhedron.cpp">
+      <Filter>ソース ファイル\Asset\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="IModel.cpp">
+      <Filter>ソース ファイル\Asset\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="HalfEdgeModel.cpp">
+      <Filter>ソース ファイル\Asset\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="DefaultMaterial.cpp">
+      <Filter>ソース ファイル\Asset\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="DefaultShader.cpp">
+      <Filter>ソース ファイル\Asset\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="DefaultVertexBuffer.cpp">
+      <Filter>ソース ファイル\Asset\VertexBuffer</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

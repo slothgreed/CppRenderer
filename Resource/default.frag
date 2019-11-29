@@ -15,7 +15,7 @@ out vec4 outputColor;
 void main()
 {
 #ifdef USE_TEXTURE0
-	outputColor = vec4(v_texcoord.x,v_texcoord.y,0.0,1.0);//texture2D(uTexcoord0,v_texcoord);
+	outputColor = vec4(1.0,1.0,0.0,1.0);//texture2D(uTexcoord0,v_texcoord);
 #else
 	outputColor = v_color;//vec4(0.5,0.5,0.5,1.0);
 #endif

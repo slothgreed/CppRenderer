@@ -15,7 +15,7 @@ public:
 private:
 	void GenVBO(const vector<vec3>& vertexList, const vec3& color);
 	shared_ptr<IShader> m_pShader;
-	shared_ptr<VertexBuffer> m_pVertexBuffer;
+	shared_ptr<DefaultVertexBuffer> m_pVertexBuffer;
 	
 };
 

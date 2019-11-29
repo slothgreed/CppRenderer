@@ -4,7 +4,7 @@ namespace KI
 {
 class IModelNode;
 class IShader;
-class VertexBuffer;
+class DefaultVertexBuffer;
 class IModelProperty;
 class ModelNode : public IModelNode
 {
@@ -20,10 +20,10 @@ public:
 private:
 	string m_name;
 	shared_ptr<IShader> m_pFaceShader;
-	shared_ptr<VertexBuffer> m_pFaceBuffer;
+	shared_ptr<DefaultVertexBuffer> m_pFaceBuffer;
 
 	shared_ptr<IShader> m_pEdgeShader;
-	shared_ptr<VertexBuffer> m_pEdgeBuffer;
+	shared_ptr<DefaultVertexBuffer> m_pEdgeBuffer;
 	shared_ptr<IModel> m_pModel;
 	vector<shared_ptr<IModelProperty>> m_pProperty;
 	BDB m_bdb;

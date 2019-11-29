@@ -73,7 +73,7 @@ void ModelNode::SetRenderData()
 		vector<vec3> facet;
 		vector<vec3> normal;
 		m_pModel->GetFacetList(facet, normal);
-		m_pFaceBuffer = make_shared<VertexBuffer>();
+		m_pFaceBuffer = make_shared<DefaultVertexBuffer>();
 		m_pFaceBuffer->Generate(VERTEX_LAYOUT_PN);
 		m_pFaceBuffer->SetPosition(GL_TRIANGLES, facet);
 		m_pFaceBuffer->SetNormal(normal);
@@ -84,7 +84,7 @@ void ModelNode::SetRenderData()
 
 		vector<vec3> edge;
 		m_pModel->GetEdgeList(edge);
-		m_pEdgeBuffer = make_shared<VertexBuffer>();
+		m_pEdgeBuffer = make_shared<DefaultVertexBuffer>();
 		m_pEdgeBuffer->Generate(VERTEX_LAYOUT_P);
 		m_pEdgeBuffer->SetPosition(GL_LINES, edge);
 
@@ -98,7 +98,7 @@ void ModelNode::SetRenderData()
 		vector<int> index;
 		m_pModel->GetVertexList(vertex);
 		m_pModel->GetFaceIndexList(index);
-		m_pFaceBuffer = make_shared<VertexBuffer>();
+		m_pFaceBuffer = make_shared<DefaultVertexBuffer>();
 
 		vector<vec3> position;
 		vector<vec3> normal;
@@ -119,7 +119,7 @@ void ModelNode::SetRenderData()
 
 		vector<vec3> edge;
 		m_pModel->GetEdgeList(edge);
-		m_pEdgeBuffer = make_shared<VertexBuffer>();
+		m_pEdgeBuffer = make_shared<DefaultVertexBuffer>();
 		m_pEdgeBuffer->Generate(VERTEX_LAYOUT_P);
 		m_pEdgeBuffer->SetPosition(GL_LINES, edge);
 

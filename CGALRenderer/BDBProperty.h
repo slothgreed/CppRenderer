@@ -3,7 +3,7 @@
 
 namespace KI
 {
-class VertexBuffer;
+class DefaultVertexBuffer;
 class DefaultShader;
 class BDBProperty : public IModelProperty
 {
@@ -17,7 +17,7 @@ public:
 private:
 	void GenVBO();
 	shared_ptr<IShader> m_pShader;
-	shared_ptr<VertexBuffer> m_pVertexBuffer;
+	shared_ptr<DefaultVertexBuffer> m_pVertexBuffer;
 	BDB m_bdb;
 };
 

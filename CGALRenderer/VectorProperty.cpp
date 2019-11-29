@@ -11,7 +11,7 @@ VectorProperty::~VectorProperty()
 
 void VectorProperty::GenVBO(const vector<vec3>& vertexList, const vec3& color)
 {
-	m_pVertexBuffer = make_shared<VertexBuffer>();
+	m_pVertexBuffer = make_shared<DefaultVertexBuffer>();
 	m_pVertexBuffer->Generate(VERTEX_LAYOUT::VERTEX_LAYOUT_P);
 
 	m_pVertexBuffer->SetPosition(GL_LINES, vertexList);

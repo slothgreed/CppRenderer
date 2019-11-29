@@ -171,6 +171,7 @@
     <ClInclude Include="CGALPolyhedron.h" />
     <ClInclude Include="CGALRenderer.h" />
     <ClInclude Include="CommandManager.h" />
+    <ClInclude Include="DefaultMaterial.h" />
     <ClInclude Include="FrameBuffer.h" />
     <ClInclude Include="HalfEdge.h" />
     <ClInclude Include="EventArgs.h" />
@@ -192,11 +193,14 @@
     <ClInclude Include="IModel.h" />
     <ClInclude Include="IModelProperty.h" />
     <ClInclude Include="HalfEdgeDS.h" />
+    <ClInclude Include="IMaterial.h" />
+    <ClInclude Include="IVertexBuffer.h" />
     <ClInclude Include="RenderBuffer.h" />
     <ClInclude Include="RenderTarget.h" />
     <ClInclude Include="RenderTexture.h" />
     <ClInclude Include="Sampler.h" />
     <ClInclude Include="Texture.h" />
+    <ClInclude Include="TextureGenerator.h" />
     <ClInclude Include="Vertex.h" />
     <ClInclude Include="PrimitiveNode.h" />
     <ClInclude Include="Observer.h" />
@@ -219,7 +223,7 @@
     <ClInclude Include="SystemTypes.h" />
     <ClInclude Include="HalfEdgeVertex.h" />
     <ClInclude Include="VectorProperty.h" />
-    <ClInclude Include="VertexBuffer.h" />
+    <ClInclude Include="DefaultVertexBuffer.h" />
     <ClInclude Include="Viewport.h" />
     <ClInclude Include="WindowEvent.h" />
     <ClInclude Include="Workspace.h" />
@@ -234,6 +238,7 @@
     <ClCompile Include="CGALPolyhedron.cpp" />
     <ClCompile Include="CGALRenderer.cpp" />
     <ClCompile Include="CommandManager.cpp" />
+    <ClCompile Include="DefaultMaterial.cpp" />
     <ClCompile Include="FrameBuffer.cpp" />
     <ClCompile Include="HalfEdge.cpp" />
     <ClCompile Include="HalfEdgeFace.cpp" />
@@ -271,11 +276,12 @@
     <ClCompile Include="ShaderManager.cpp" />
     <ClCompile Include="SubdivisionCommand.cpp" />
     <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="TextureGenerator.cpp" />
     <ClCompile Include="UniformScene.cpp" />
     <ClCompile Include="ShaderUtility.cpp" />
     <ClCompile Include="HalfEdgeVertex.cpp" />
     <ClCompile Include="VectorProperty.cpp" />
-    <ClCompile Include="VertexBuffer.cpp" />
+    <ClCompile Include="DefaultVertexBuffer.cpp" />
     <ClCompile Include="Viewport.cpp" />
     <ClCompile Include="Workspace.cpp" />
   </ItemGroup>

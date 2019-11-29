@@ -52,16 +52,12 @@ using namespace glm;
 // utility
 #include "MathHelper.h"
 #include "ShaderUtility.h"
-#include "ModelGenerator.h"
 #include "FileUtility.h"
 
 
 // opengl
 #include "GLObject.h"
 #include "ShaderManager.h"
-#include "VertexBuffer.h"
-#include "IShader.h"
-#include "DefaultShader.h"
 #include "UniformBuffer.h"
 #include "UniformScene.h"
 #include "Viewport.h"
@@ -71,6 +67,9 @@ using namespace glm;
 #include "RenderTexture.h"
 #include "Sampler.h"
 #include "RenderTarget.h"
+#include "IShader.h"
+#include "IVertexBuffer.h"
+
 
 // topology
 #include "Vertex.h"
@@ -87,6 +86,11 @@ using namespace glm;
 #include "CGALLinearCellComplex.h"
 #include "CGALGeneralizedMaps.h"
 #include "HalfEdgeModel.h"
+#include "IMaterial.h"
+#include "DefaultMaterial.h"
+#include "DefaultShader.h"
+#include "DefaultVertexBuffer.h"
+
 
 // logic
 #include "CameraController.h"
@@ -100,11 +104,14 @@ using namespace glm;
 #include "BDBProperty.h"
 #include "VectorProperty.h"
 
+// application utility
+#include "ModelGenerator.h"
+#include "TextureGenerator.h"
+
 // application
 #include "CGALRenderer.h"
 #include "Project.h"
 #include "Workspace.h"
-
 
 using namespace std;
 using namespace glm;

@@ -47,5 +47,4 @@ bool FileUtility::CheckExtension(const std::string& filePath, const std::string&
 		return false;
 	}
 }
-
 }

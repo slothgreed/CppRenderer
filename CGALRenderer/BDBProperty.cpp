@@ -12,7 +12,7 @@ BDBProperty::~BDBProperty()
 
 void BDBProperty::GenVBO()
 {
-	m_pVertexBuffer = make_shared<VertexBuffer>();
+	m_pVertexBuffer = make_shared<DefaultVertexBuffer>();
 	m_pVertexBuffer->Generate(VERTEX_LAYOUT::VERTEX_LAYOUT_P);
 
 	vector<vec3> position;

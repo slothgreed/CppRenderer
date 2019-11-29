@@ -4,7 +4,7 @@ namespace KI
 {
 class Camera;
 class IShader;
-class VertexBuffer;
+class DefaultVertexBuffer;
 class UniformScene;
 class UniformBuffer;
 class CGALModelNode;

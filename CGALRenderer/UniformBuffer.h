@@ -11,6 +11,7 @@ public:
 	virtual void Generate() {};
 	virtual void Bind() {};
 	virtual void UnBind() {};
+	virtual void Dispose() {};
 
 private:
 

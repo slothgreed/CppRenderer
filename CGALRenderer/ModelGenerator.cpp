@@ -9,7 +9,7 @@ ModelGenerator::~ModelGenerator()
 {
 }
 
-void ModelGenerator::Axis(VertexBuffer* vertexBuffer)
+void ModelGenerator::Axis(DefaultVertexBuffer* vertexBuffer)
 {
 	if (vertexBuffer == NULL)
 	{
@@ -40,7 +40,7 @@ void ModelGenerator::Axis(VertexBuffer* vertexBuffer)
 	vertexBuffer->SetColor(color);
 }
 
-void ModelGenerator::RenderPlane(VertexBuffer* vertexBuffer)
+void ModelGenerator::RenderPlane(DefaultVertexBuffer* vertexBuffer)
 {
 	if (vertexBuffer == NULL)
 	{
@@ -52,17 +52,17 @@ void ModelGenerator::RenderPlane(VertexBuffer* vertexBuffer)
 	position.reserve(4);
 	position.push_back(vec3(-1, -1, 0));
 	position.push_back(vec3(1, -1, 0));
-	position.push_back(vec3(1, 1, 0));
 	position.push_back(vec3(-1, 1, 0));
+	position.push_back(vec3(1, 1, 0));
 
 	vector<vec2> texcoord;
 	texcoord.push_back(vec2(0, 0));
 	texcoord.push_back(vec2(1, 0));
-	texcoord.push_back(vec2(1, 1));
 	texcoord.push_back(vec2(0, 1));
+	texcoord.push_back(vec2(1, 1));
 
-	vertexBuffer->Generate(VERTEX_LAYOUT_P);
-	vertexBuffer->SetPosition(GL_LINES, position);
-	//vertexBuffer->SetTexcoord(texcoord);
+	vertexBuffer->Generate(VERTEX_LAYOUT_PT);
+	vertexBuffer->SetPosition(GL_TRIANGLE_STRIP, position);
+	vertexBuffer->SetTexcoord(texcoord);
 }
 }

@@ -31,6 +31,25 @@ void Texture::UnBind()
 	Logger::GLError();
 }
 
+void Texture::Active(GLint active) 
+{
+	glActiveTexture(active);
+}
+void Texture::Set(const TextureData& data)
+{
+	glTexImage2D(
+		data.target, 
+		data.level,
+		data.internalformat,
+		data.width,
+		data.height,
+		data.border, 
+		data.format,
+		data.type,
+		data.pixels
+	);
+}
+
 void Texture::Dispose()
 {
 	if (m_Id != 0)

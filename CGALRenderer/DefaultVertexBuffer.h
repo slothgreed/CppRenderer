@@ -1,5 +1,5 @@
-#ifndef VERTEX_BUFFER_H
-#define VERTEX_BUFFER_H
+#ifndef DEFAULT_VERTEX_BUFFER_H
+#define DEFAULT_VERTEX_BUFFER_H
 namespace KI
 {
 enum VERTEX_ATTRIB
@@ -23,22 +23,12 @@ enum VERTEX_LAYOUT
 	VERTEX_LAYOUT_NUM,	
 };
 
-class IVertexBuffer
+
+class DefaultVertexBuffer : public IVertexBuffer
 {
 public:
-	IVertexBuffer() {};
-	~IVertexBuffer() {};
-
-	virtual void Draw() = 0;
-private:
-
-};
-
-class VertexBuffer : IVertexBuffer
-{
-public:
-	VertexBuffer();
-	~VertexBuffer();
+	DefaultVertexBuffer();
+	~DefaultVertexBuffer();
 	void Generate(VERTEX_LAYOUT layout);
 	void SetPosition(GLuint primitiveTypem, const std::vector<glm::vec3>& position);
 	void SetNormal(const std::vector<glm::vec3>& normal);
