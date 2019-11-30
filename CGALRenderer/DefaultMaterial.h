@@ -9,10 +9,12 @@ public:
 	DefaultMaterial();
 	~DefaultMaterial();
 
-	virtual void Bind() {};
-	virtual void UnBind() {};
+	virtual const MATERIAL_TYPE Type() const { return MATERIAL_TYPE_DEFAULT; }
+	virtual void Bind();
+	virtual void UnBind();
 	virtual void CompileShader();
-	virtual void Draw();
+	virtual bool Compare(const IMaterial& material);
+
 	void AddTexture(shared_ptr<Texture> texture);
 private:
 	shared_ptr<Texture> m_pTexture;

@@ -11,9 +11,10 @@ public:
 	virtual void Draw();
 	virtual void ShowProperty();
 	virtual void Update(void* sender, shared_ptr<EventArgs> args);
+	shared_ptr<DefaultMaterial> GetMaterial() { return m_pMaterial; }
 private:
 	string m_name;
-	shared_ptr<IMaterial> m_pMaterial;
+	shared_ptr<DefaultMaterial> m_pMaterial;
 };
 }
 

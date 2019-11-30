@@ -15,6 +15,8 @@ public:
 	void SetTexcoord(const vector<vec2>& texcoord);
 	void SetIndex(const std::vector<int>& index);
 	void Dispose();
+
+	GLuint PrimitiveType() { return m_PrimitiveType; }
 	VERTEX_LAYOUT Layout() { return m_layout; };
 	virtual void Draw() override;
 	virtual string Type() { return DefaultVertexBufferTypeStr; }

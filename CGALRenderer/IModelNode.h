@@ -12,7 +12,6 @@ public:
 	virtual void ShowProperty() = 0;
 	virtual void Draw() = 0;
 	virtual void Update(void* sender, shared_ptr<EventArgs> args) {};
-	virtual void AddTexture(shared_ptr<Texture> texture) {};
 
 private:
 };

@@ -37,16 +37,16 @@ void Workspace::Initialize(Project* m_pProject)
 	//polyhedron->Load("E:\\cgModel\\StanfordBunny.off");
 	//polyhedron->GenSampleModel();
 
-	shared_ptr<IModel> polyhedron = make_shared<HalfEdgeModel>();
-	polyhedron->Load("E:\\cgModel\\bunny6000.half");
+	//shared_ptr<IModel> polyhedron = make_shared<HalfEdgeModel>();
+	//polyhedron->Load("E:\\cgModel\\bunny6000.half");
 
 
 	BDB bdb(vec3(0,0,0),vec3(1,1,1));
-	polyhedron->GetBDB(bdb);
-	m_pCamera->FitToBDB(bdb);
+	//polyhedron->GetBDB(bdb);
+	//m_pCamera->FitToBDB(bdb);
 
-	auto cgalNode = make_shared<ModelNode>(polyhedron);
-	m_pRenderList.push_back(cgalNode);
+	//auto cgalNode = make_shared<ModelNode>(polyhedron);
+	//m_pRenderList.push_back(cgalNode);
 
 	auto axis = make_shared<DefaultVertexBuffer>();
 	ModelGenerator::Axis(axis.get());
@@ -66,8 +66,9 @@ void Workspace::Initialize(Project* m_pProject)
 	TextureData data;
 	TextureGenerator::UVTexture(8, data);
 	auto texture = make_shared<Texture>();
+	texture->Generate();
 	texture->Set(data);
-	//planeNode->AddTexture(texture);
+	planeNode->GetMaterial()->AddTexture(texture);
 
 	m_pRenderList.push_back(planeNode);
 

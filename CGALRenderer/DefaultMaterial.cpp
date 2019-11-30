@@ -22,6 +22,7 @@ void DefaultMaterial::CompileShader()
 		auto pDefaultBuffer = static_pointer_cast<DefaultVertexBuffer>(m_pVertexBuffer);
 		ShaderBuildInfo shaderInfo;
 		DefaultShader::GetVertexShaderDefine(pDefaultBuffer->Layout(), shaderInfo);
+		DefaultShader::GetFragShaderDefine(pDefaultBuffer->Layout(), shaderInfo);
 		m_pShader = ShaderManager::Instance()->FindOrNew(shaderInfo);
 	}
 	else
@@ -30,18 +31,32 @@ void DefaultMaterial::CompileShader()
 	}
 }
 
-void DefaultMaterial::Draw()
+void DefaultMaterial::Bind()
 {
-	if (m_pShader == nullptr ||
-		m_pVertexBuffer == nullptr)
+	if (m_pTexture != nullptr)
+	{
+		m_pTexture->Active(GL_TEXTURE0);
+		m_pTexture->Bind();
+	}
+}
+
+void DefaultMaterial::UnBind()
+{
+	if (m_pTexture != nullptr)
+	{
+		m_pTexture->Active(GL_TEXTURE0);
+		m_pTexture->UnBind();
+	}
+}
+
+bool DefaultMaterial::Compare(const IMaterial& material)
+{
+	if (material.Type() == MATERIAL_TYPE_DEFAULT)
 	{
 		assert(0);
+		// todo : compare;
 	}
 
-	Bind();
-	m_pShader->Use();
-	m_pVertexBuffer->Draw();
-	m_pShader->UnUse();
-	UnBind();
+	return false;
 }
 }

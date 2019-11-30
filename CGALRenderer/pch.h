@@ -88,8 +88,11 @@ using namespace glm;
 #include "HalfEdgeModel.h"
 #include "IMaterial.h"
 #include "DefaultMaterial.h"
+#include "LineMaterial.h"
+#include "PointMaterial.h"
 #include "DefaultShader.h"
 #include "DefaultVertexBuffer.h"
+
 
 
 // logic

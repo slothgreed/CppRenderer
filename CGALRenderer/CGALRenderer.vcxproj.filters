@@ -321,6 +321,12 @@
     <ClInclude Include="AssetTypes.h">
       <Filter>ヘッダー ファイル\Asset</Filter>
     </ClInclude>
+    <ClInclude Include="LineMaterial.h">
+      <Filter>ヘッダー ファイル\Asset\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="PointMaterial.h">
+      <Filter>ヘッダー ファイル\Asset\Material</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -474,6 +480,12 @@
       <Filter>ソース ファイル\Asset\VertexBuffer</Filter>
     </ClCompile>
     <ClCompile Include="IMaterial.cpp">
+      <Filter>ソース ファイル\Asset\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="LineMaterial.cpp">
+      <Filter>ソース ファイル\Asset\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="PointMaterial.cpp">
       <Filter>ソース ファイル\Asset\Material</Filter>
     </ClCompile>
   </ItemGroup>

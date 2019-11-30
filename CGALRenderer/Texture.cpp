@@ -21,6 +21,11 @@ void Texture::Generate()
 
 void Texture::Bind()
 {
+	if (m_Id == 0)
+	{
+		assert(0);
+	}
+
 	glBindTexture(GL_TEXTURE_2D, m_Id);
 	Logger::GLError();
 }
@@ -34,6 +39,7 @@ void Texture::UnBind()
 void Texture::Active(GLint active) 
 {
 	glActiveTexture(active);
+	Logger::GLError();
 }
 void Texture::Set(const TextureData& data)
 {

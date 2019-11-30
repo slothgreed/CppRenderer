@@ -196,6 +196,8 @@
     <ClInclude Include="HalfEdgeDS.h" />
     <ClInclude Include="IMaterial.h" />
     <ClInclude Include="IVertexBuffer.h" />
+    <ClInclude Include="LineMaterial.h" />
+    <ClInclude Include="PointMaterial.h" />
     <ClInclude Include="RenderBuffer.h" />
     <ClInclude Include="RenderTarget.h" />
     <ClInclude Include="RenderTexture.h" />
@@ -254,6 +256,8 @@
     <ClCompile Include="ImGui\imgui_widgets.cpp" />
     <ClCompile Include="IModel.cpp" />
     <ClCompile Include="HalfEdgeDS.cpp" />
+    <ClCompile Include="LineMaterial.cpp" />
+    <ClCompile Include="PointMaterial.cpp" />
     <ClCompile Include="PrimitiveNode.cpp" />
     <ClCompile Include="Observer.cpp" />
     <ClCompile Include="IShader.cpp" />
