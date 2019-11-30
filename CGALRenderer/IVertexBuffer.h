@@ -8,7 +8,8 @@ public:
 	IVertexBuffer() {};
 	~IVertexBuffer() {};
 
-	virtual void Draw() = 0;
+	virtual string Type() = 0;
+	virtual void Draw() = 0;	// need call glDrawArrays or glDrawElements
 private:
 
 };

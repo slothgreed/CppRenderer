@@ -37,6 +37,7 @@ void Texture::Active(GLint active)
 }
 void Texture::Set(const TextureData& data)
 {
+	Bind();
 	glTexImage2D(
 		data.target, 
 		data.level,
@@ -48,6 +49,9 @@ void Texture::Set(const TextureData& data)
 		data.type,
 		data.pixels
 	);
+	UnBind();
+
+	Logger::GLError();
 }
 
 void Texture::Dispose()

@@ -15,11 +15,12 @@ class UniformScene : public UniformBuffer
 public:
 	UniformScene();
 	~UniformScene();
-	void Generate();
+	virtual void Generate() override;
+	virtual void Bind() override;
+	virtual void UnBind() override;
+	virtual void Dispose() override;
 	void Set(const SceneData& data);
-	void Bind();
-	void UnBind();
-	void Dispose();
+
 private:
 	GLuint m_SceneId;
 };

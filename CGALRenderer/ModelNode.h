@@ -4,8 +4,9 @@ namespace KI
 {
 class IModelNode;
 class IShader;
-class DefaultVertexBuffer;
+class IVertexBuffer;
 class IModelProperty;
+class IMaterial;
 class ModelNode : public IModelNode
 {
 public:
@@ -19,11 +20,9 @@ public:
 	void VisibleNormal(bool visibility);
 private:
 	string m_name;
-	shared_ptr<IShader> m_pFaceShader;
-	shared_ptr<DefaultVertexBuffer> m_pFaceBuffer;
+	shared_ptr<IMaterial> m_pFaceMaterial;
+	shared_ptr<IMaterial> m_pEdgeMaterial;
 
-	shared_ptr<IShader> m_pEdgeShader;
-	shared_ptr<DefaultVertexBuffer> m_pEdgeBuffer;
 	shared_ptr<IModel> m_pModel;
 	vector<shared_ptr<IModelProperty>> m_pProperty;
 	BDB m_bdb;

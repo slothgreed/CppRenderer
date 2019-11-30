@@ -15,13 +15,8 @@ ModelNode::~ModelNode()
 
 void ModelNode::Draw()
 {
-	m_pFaceShader->Use();
-	m_pFaceBuffer->Draw();
-	m_pFaceShader->UnUse();
-
-	m_pEdgeShader->Use();
-	m_pEdgeBuffer->Draw();
-	m_pEdgeShader->UnUse();
+	m_pFaceMaterial->Draw();
+	m_pEdgeMaterial->Draw();
 
 	for (int i = 0; i < m_pProperty.size(); i++)
 	{
@@ -73,24 +68,24 @@ void ModelNode::SetRenderData()
 		vector<vec3> facet;
 		vector<vec3> normal;
 		m_pModel->GetFacetList(facet, normal);
-		m_pFaceBuffer = make_shared<DefaultVertexBuffer>();
-		m_pFaceBuffer->Generate(VERTEX_LAYOUT_PN);
-		m_pFaceBuffer->SetPosition(GL_TRIANGLES, facet);
-		m_pFaceBuffer->SetNormal(normal);
+		auto pFaceBuffer = make_shared<DefaultVertexBuffer>();
+		pFaceBuffer->Generate(VERTEX_LAYOUT_PN);
+		pFaceBuffer->SetPosition(GL_TRIANGLES, facet);
+		pFaceBuffer->SetNormal(normal);
 
-		ShaderBuildInfo facetShaderInfo;
-		DefaultShader::GetVertexShaderDefine(VERTEX_LAYOUT::VERTEX_LAYOUT_PN, facetShaderInfo);
-		m_pFaceShader = ShaderManager::Instance()->FindOrNew(facetShaderInfo);
+		m_pFaceMaterial = make_shared<DefaultMaterial>();
+		m_pFaceMaterial->SetVertexBuffer(pFaceBuffer);
+		m_pFaceMaterial->CompileShader();
 
 		vector<vec3> edge;
 		m_pModel->GetEdgeList(edge);
-		m_pEdgeBuffer = make_shared<DefaultVertexBuffer>();
-		m_pEdgeBuffer->Generate(VERTEX_LAYOUT_P);
-		m_pEdgeBuffer->SetPosition(GL_LINES, edge);
+		auto pEdgeBuffer = make_shared<DefaultVertexBuffer>();
+		pEdgeBuffer->Generate(VERTEX_LAYOUT_P);
+		pEdgeBuffer->SetPosition(GL_LINES, edge);
 
-		ShaderBuildInfo edgeShaderInfo;
-		DefaultShader::GetVertexShaderDefine(VERTEX_LAYOUT::VERTEX_LAYOUT_PN, edgeShaderInfo);
-		m_pEdgeShader = ShaderManager::Instance()->FindOrNew(edgeShaderInfo);
+		m_pEdgeMaterial = make_shared<DefaultMaterial>();
+		m_pEdgeMaterial->SetVertexBuffer(pEdgeBuffer);
+		m_pEdgeMaterial->CompileShader();
 	}
 	else
 	{
@@ -98,7 +93,7 @@ void ModelNode::SetRenderData()
 		vector<int> index;
 		m_pModel->GetVertexList(vertex);
 		m_pModel->GetFaceIndexList(index);
-		m_pFaceBuffer = make_shared<DefaultVertexBuffer>();
+		auto pFaceBuffer = make_shared<DefaultVertexBuffer>();
 
 		vector<vec3> position;
 		vector<vec3> normal;
@@ -108,24 +103,27 @@ void ModelNode::SetRenderData()
 			normal.push_back(vertex[i].Normal());
 		}
 
-		m_pFaceBuffer->Generate(VERTEX_LAYOUT_PN);
-		m_pFaceBuffer->SetPosition(GL_TRIANGLES, position);
-		m_pFaceBuffer->SetNormal(normal);
-		m_pFaceBuffer->SetIndex(index);
+		pFaceBuffer->Generate(VERTEX_LAYOUT_PN);
+		pFaceBuffer->SetPosition(GL_TRIANGLES, position);
+		pFaceBuffer->SetNormal(normal);
+		pFaceBuffer->SetIndex(index);
 
-		ShaderBuildInfo facetShaderInfo;
-		DefaultShader::GetVertexShaderDefine(VERTEX_LAYOUT::VERTEX_LAYOUT_PN, facetShaderInfo);
-		m_pFaceShader = ShaderManager::Instance()->FindOrNew(facetShaderInfo);
+		m_pFaceMaterial = make_shared<DefaultMaterial>();
+		m_pFaceMaterial->SetVertexBuffer(pFaceBuffer);
+		m_pFaceMaterial->CompileShader();
 
 		vector<vec3> edge;
 		m_pModel->GetEdgeList(edge);
-		m_pEdgeBuffer = make_shared<DefaultVertexBuffer>();
-		m_pEdgeBuffer->Generate(VERTEX_LAYOUT_P);
-		m_pEdgeBuffer->SetPosition(GL_LINES, edge);
+		auto pEdgeBuffer = make_shared<DefaultVertexBuffer>();
+		pEdgeBuffer->Generate(VERTEX_LAYOUT_P);
+		pEdgeBuffer->SetPosition(GL_LINES, edge);
 
-		ShaderBuildInfo edgeShaderInfo;
-		DefaultShader::GetVertexShaderDefine(VERTEX_LAYOUT::VERTEX_LAYOUT_PN, edgeShaderInfo);
-		m_pEdgeShader = ShaderManager::Instance()->FindOrNew(edgeShaderInfo);
+		pEdgeBuffer->Generate(VERTEX_LAYOUT_P);
+		pEdgeBuffer->SetPosition(GL_LINES, edge);
+
+		m_pEdgeMaterial = make_shared<DefaultMaterial>();
+		m_pEdgeMaterial->SetVertexBuffer(pEdgeBuffer);
+		m_pEdgeMaterial->CompileShader();
 	}
 
 	BDB bdb;

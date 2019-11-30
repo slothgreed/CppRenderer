@@ -70,7 +70,6 @@ using namespace glm;
 #include "IShader.h"
 #include "IVertexBuffer.h"
 
-
 // topology
 #include "Vertex.h"
 #include "HalfEdge.h"

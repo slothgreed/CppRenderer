@@ -3,7 +3,6 @@
 namespace KI
 {
 
-
 class DefaultVertexBuffer : public IVertexBuffer
 {
 public:
@@ -18,7 +17,8 @@ public:
 	void Dispose();
 	VERTEX_LAYOUT Layout() { return m_layout; };
 	virtual void Draw() override;
-
+	virtual string Type() { return DefaultVertexBufferTypeStr; }
+	static string DefaultVertexBufferTypeStr;
 private:
 	void GenerateVAO();
 	bool HasNormal();

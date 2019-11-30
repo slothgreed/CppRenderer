@@ -24,5 +24,6 @@ enum VERTEX_LAYOUT
 	VERTEX_LAYOUT_PNCT,	// Point Normal Color Texcoord
 	VERTEX_LAYOUT_NUM,
 };
+
 }
 #endif ASSET_TYPES_H

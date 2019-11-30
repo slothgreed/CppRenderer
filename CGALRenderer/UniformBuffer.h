@@ -7,12 +7,6 @@ class UniformBuffer : public GLObject
 public:
 	UniformBuffer() {};
 	~UniformBuffer() {};
-
-	virtual void Generate() {};
-	virtual void Bind() {};
-	virtual void UnBind() {};
-	virtual void Dispose() {};
-
 private:
 
 };

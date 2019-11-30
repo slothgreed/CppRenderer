@@ -2,6 +2,7 @@
 #define IMODEL_H
 namespace KI
 {
+class IMaterial;
 class IModel : public ISubject
 {
 public:
@@ -16,11 +17,13 @@ public:
 	virtual void GetEdgeIndexList(std::vector<int>& index) {};
 	virtual void GetFaceIndexList(std::vector<int>& index) {};
 	virtual void GetBDB(BDB& bdb) = 0;
-
+	virtual void SetMaterial(shared_ptr<IMaterial> material) { m_pMaterial = material; };
+	shared_ptr<IMaterial> GetMaterial() { return m_pMaterial; };
 protected:
 	void SetBDB(BDB bdb);
 private:
 	BDB m_bdb;
+	shared_ptr<IMaterial> m_pMaterial;
 };
 }
 #endif IMODEL_H

@@ -11,12 +11,9 @@ public:
 	virtual void Draw();
 	virtual void ShowProperty();
 	virtual void Update(void* sender, shared_ptr<EventArgs> args);
-	virtual void AddTexture(shared_ptr<Texture> texture);
 private:
 	string m_name;
-	shared_ptr<Texture> m_pTexture;
-	shared_ptr<IShader> m_pShader;
-	shared_ptr<DefaultVertexBuffer> m_pVertexBuffer;
+	shared_ptr<IMaterial> m_pMaterial;
 };
 }
 

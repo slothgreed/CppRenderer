@@ -473,5 +473,8 @@
     <ClCompile Include="DefaultVertexBuffer.cpp">
       <Filter>ソース ファイル\Asset\VertexBuffer</Filter>
     </ClCompile>
+    <ClCompile Include="IMaterial.cpp">
+      <Filter>ソース ファイル\Asset\Material</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

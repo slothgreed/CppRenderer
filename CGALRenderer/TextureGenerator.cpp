@@ -18,7 +18,6 @@ void TextureGenerator::UVTexture(int size, TextureData& texture)
 	texture.format = GL_RGBA;
 	texture.type = GL_UNSIGNED_BYTE;
 
-	texture.format = GL_TEXTURE_2D;
 	GLuint* pixel = new GLuint[size * size * 4];
 	texture.pixels = pixel;
 	int halfSize = size / 2;
