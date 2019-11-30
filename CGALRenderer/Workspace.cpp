@@ -21,7 +21,7 @@ void Workspace::Initialize(Project* m_pProject)
 
 	m_pCamera = make_shared<Camera>();
 	m_pCamera->LookAt(vec3(0, 0, -2), vec3(0, 0, 0), vec3(0, 1, 0));
-	m_pCamera->Perspective(glm::radians(60.0f), 1, 0.01, 1000);
+	m_pCamera->Perspective(glm::radians(60.0f), 1, 0.01f, 1000);
 
 	m_pUniformScene = make_shared<UniformScene>();
 	m_pUniformScene->Generate();

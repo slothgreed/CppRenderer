@@ -6,8 +6,8 @@ namespace KI
 class IMaterial
 {
 public:
-	IMaterial();
-	~IMaterial();
+	IMaterial() {};
+	~IMaterial() {};
 
 private:
 

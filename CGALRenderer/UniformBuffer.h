@@ -2,7 +2,7 @@
 #define UNIFORM_BUFFER_H
 namespace KI
 {
-class UniformBuffer
+class UniformBuffer : public GLObject
 {
 public:
 	UniformBuffer() {};

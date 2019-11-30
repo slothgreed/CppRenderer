@@ -318,6 +318,9 @@
     <ClInclude Include="DefaultVertexBuffer.h">
       <Filter>ヘッダー ファイル\Asset\VertexBuffer</Filter>
     </ClInclude>
+    <ClInclude Include="AssetTypes.h">
+      <Filter>ヘッダー ファイル\Asset</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">

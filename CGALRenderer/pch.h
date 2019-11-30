@@ -79,6 +79,7 @@ using namespace glm;
 #include "HalfEdgeDS.h"
 
 // asset
+#include "AssetTypes.h"
 #include "Camera.h"
 #include "IModel.h"
 #include "CGALModel.h"
