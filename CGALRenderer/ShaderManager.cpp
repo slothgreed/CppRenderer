@@ -19,6 +19,10 @@ ShaderManager::ShaderManager()
 
 ShaderManager::~ShaderManager()
 {
+	if (m_pShaderList.size() != 0)
+	{
+		assert(0);
+	}
 }
 
 shared_ptr<IShader> ShaderManager::Generate(const ShaderBuildInfo& buildInfo)

@@ -13,11 +13,11 @@ void IMaterial::Draw()
 	{
 		assert(0);
 	}
-
-	Bind();
+	
 	m_pShader->Use();
+	Bind();
 	m_pVertexBuffer->Draw();
-	m_pShader->UnUse();
 	UnBind();
+	m_pShader->UnUse();
 }
 }

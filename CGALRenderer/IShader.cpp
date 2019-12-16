@@ -38,6 +38,8 @@ void IShader::Use()
 	}
 
 	glUseProgram(m_programId);
+	Logger::GLError();
+
 }
 
 void IShader::UnUse()
@@ -51,6 +53,9 @@ void IShader::Dispose()
 	{
 		glDeleteProgram(m_programId);
 	}
+
+	Logger::GLError();
+
 }
 bool IShader::Compare(const ShaderBuildInfo& buildInfo)
 {
@@ -62,7 +67,5 @@ bool IShader::Compare(const ShaderBuildInfo& buildInfo)
 	else {
 		return false;
 	}
-
 }
-
 }

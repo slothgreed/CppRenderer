@@ -31,6 +31,9 @@ public:
 	virtual SHADER_TYPE Type() = 0;
 	
 	virtual void Initialize() = 0;
+	virtual void FetchUniformLocation() = 0;
+	virtual void BindTexture(GLint activeNumber, GLint textureId) = 0;
+
 	GLuint Program() { return m_programId; }
 	bool Compare(const ShaderBuildInfo& buildInfo);
 

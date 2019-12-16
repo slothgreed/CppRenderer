@@ -35,16 +35,16 @@ void DefaultMaterial::Bind()
 {
 	if (m_pTexture != nullptr)
 	{
-		m_pTexture->Active(GL_TEXTURE0);
 		m_pTexture->Bind();
+		m_pShader->BindTexture(GL_TEXTURE0, m_pTexture->ID());
 	}
+
 }
 
 void DefaultMaterial::UnBind()
 {
 	if (m_pTexture != nullptr)
 	{
-		m_pTexture->Active(GL_TEXTURE0);
 		m_pTexture->UnBind();
 	}
 }

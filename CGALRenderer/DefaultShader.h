@@ -3,10 +3,14 @@
 
 namespace KI
 {
-
 class IShader;
 class DefaultShader : public IShader
 {
+	enum UNIFORM_LOCATION : unsigned short
+	{
+		UNIFORM_LOCATION_COLOR_TEXTURE,
+		UNIFORM_LOCATION_NUM
+	};
 public:
 	DefaultShader();
 	~DefaultShader();
@@ -16,10 +20,12 @@ public:
 	virtual SHADER_TYPE Type() override { return SHADER_TYPE::SHADER_TYPE_DEFAULT; }
 
 	virtual void Initialize() override;
+	virtual void FetchUniformLocation() override;
 
+	GLint m_uniformLocation[UNIFORM_LOCATION_NUM];
 private:
 	void BindScene();
-
+	void BindTexture(GLint activeNumber, GLint textureId);
 
 };
 

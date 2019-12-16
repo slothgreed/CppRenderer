@@ -12,16 +12,42 @@ DefaultShader::~DefaultShader()
 {
 }
 
-
 void DefaultShader::Initialize()
 {
 	BindScene();
+	FetchUniformLocation();
 }
 
 void DefaultShader::BindScene()
 {
 	GLint sceneBlock = glGetUniformBlockIndex(m_programId, "Scene");
 	glUniformBlockBinding(m_programId, sceneBlock, SCENE_DATA_LOCATION);
+	Logger::GLError();
+}
+
+void DefaultShader::FetchUniformLocation()
+{
+	m_uniformLocation[UNIFORM_LOCATION_COLOR_TEXTURE] = glGetUniformLocation(m_programId, "uTexture0");
+
+	Logger::GLError();
+}
+
+void DefaultShader::BindTexture(GLint activeNumber, GLint textureId)
+{
+	if (m_programId == 0)
+	{
+		assert(0);
+	}
+
+	if (m_uniformLocation[UNIFORM_LOCATION_COLOR_TEXTURE] == -1)
+	{
+		assert(0);
+	}
+
+	glActiveTexture(activeNumber);
+	Logger::GLError();
+
+	glUniform1i(m_uniformLocation[UNIFORM_LOCATION_COLOR_TEXTURE], activeNumber - GL_TEXTURE0);
 	Logger::GLError();
 }
 

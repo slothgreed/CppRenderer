@@ -49,10 +49,12 @@ public:
 	virtual void UnBind();
 	virtual void Dispose();
 	
-	void Active(GLint i);
 	void Set(const TextureData& data);
-private:
+protected:
+	TextureData m_data;	// pixelî•ñ‚Íd‚­‚È‚é‚Ì‚Å‚½‚È‚¢B
 
+private:
+	void CopyTextureData(const TextureData& data);
 };
 }
 

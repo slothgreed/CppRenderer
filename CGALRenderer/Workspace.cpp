@@ -41,7 +41,7 @@ void Workspace::Initialize(Project* m_pProject)
 	//polyhedron->Load("E:\\cgModel\\bunny6000.half");
 
 
-	BDB bdb(vec3(0,0,0),vec3(1,1,1));
+	BDB bdb(vec3(0, 0, 0), vec3(1, 1, 1));
 	//polyhedron->GetBDB(bdb);
 	//m_pCamera->FitToBDB(bdb);
 
@@ -61,10 +61,11 @@ void Workspace::Initialize(Project* m_pProject)
 	auto shader = ShaderManager::Instance()->FindOrNew(info);
 
 	auto plane = make_shared<DefaultVertexBuffer>();
-	ModelGenerator::RenderPlane(plane.get());
+	//ModelGenerator::RenderPlane(plane.get());
+	SpecialUtility::LoadVectorFieldSphere(plane.get());
 	auto planeNode = make_shared<PrimitiveNode>(shader, plane);
 	TextureData data;
-	TextureGenerator::UVTexture(8, data);
+	TextureGenerator::RamdomTexture(8, 15, data);
 	auto texture = make_shared<Texture>();
 	texture->Generate();
 	texture->Set(data);
@@ -72,6 +73,10 @@ void Workspace::Initialize(Project* m_pProject)
 
 	m_pRenderList.push_back(planeNode);
 
+	m_pRenderTarget = make_shared<RenderTarget>();
+	m_pRenderTarget->Initialize(1, 640, 480);
+
+	m_pBackTarget = make_shared<SymbolicRenderTarget>(GL_BACK);
 	//auto subdivArgs = make_shared<SubdivisionCommandArgs>(polyhedron);
 	//auto subdivCommand = make_shared<SubdivisionCommand>(subdivArgs);
 	//m_pCommandManager->Execute(subdivCommand);
@@ -79,20 +84,26 @@ void Workspace::Initialize(Project* m_pProject)
 
 void Workspace::Invoke()
 {
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	
+	m_pBackTarget->Bind();
 	SceneData sceneData;
 	sceneData.ViewMatrix = m_pCamera->ViewMatrix();
 	sceneData.Projection = m_pCamera->Projection();
 	m_pUniformScene->Set(sceneData);
 	m_pUniformScene->Bind();
 
+	m_pRenderTarget->Bind();
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
 	for (int i = 0; i < m_pRenderList.size(); i++)
 	{
 		m_pRenderList[i]->Draw();
 	}
 	
+	m_pRenderTarget->UnBind();
+	m_pBackTarget->Bind();
+
 	m_pUniformScene->UnBind();
+
 }
 
 void Workspace::ShowProperty()

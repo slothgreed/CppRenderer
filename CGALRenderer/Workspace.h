@@ -25,6 +25,8 @@ private:
 	shared_ptr<IShader> m_pDefaultShader;
 	shared_ptr<UniformScene> m_pUniformScene;
 	vector<shared_ptr<IModelNode>> m_pRenderList;
+	shared_ptr<IRenderTarget> m_pBackTarget;
+	shared_ptr<RenderTarget> m_pRenderTarget;
 	unique_ptr<CommandManager> m_pCommandManager;
 };
 }

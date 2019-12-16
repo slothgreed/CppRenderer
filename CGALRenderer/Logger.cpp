@@ -45,6 +45,9 @@ void Logger::GLError()
 	case GL_OUT_OF_MEMORY:
 		assert(0);
 		break;
+	case GL_INVALID_FRAMEBUFFER_OPERATION:
+		assert(0);
+		break;
 	default:
 		assert(0);
 		break;

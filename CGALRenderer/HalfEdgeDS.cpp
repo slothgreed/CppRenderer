@@ -92,6 +92,8 @@ void HalfEdgeDS::Load(const string& filePath)
 			m_EdgeList[edge]
 		);
 	}
+
+	binaryStream.close();
 }
 
 void HalfEdgeDS::CalcElement()

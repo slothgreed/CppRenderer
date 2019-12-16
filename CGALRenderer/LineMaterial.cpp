@@ -14,7 +14,7 @@ LineMaterial::~LineMaterial()
 void LineMaterial::Bind()
 {
 	DefaultMaterial::Bind();
-	// NotSupported:
+	// NotSupported: on opengl4.0
 	//glLineWidth(m_lineWidth);
 	Logger::GLError();
 

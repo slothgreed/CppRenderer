@@ -192,7 +192,6 @@ bool CGALRenderer::Run()
 
 	while (!glfwWindowShouldClose(m_window))
 	{
-		m_pWorkspace->Invoke();
 
 		ImGui_ImplOpenGL3_NewFrame();
 		ImGui_ImplGlfw_NewFrame();
@@ -200,6 +199,7 @@ bool CGALRenderer::Run()
 		m_pWorkspace->ShowProperty();
 		ImGui::Render();
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+		m_pWorkspace->Invoke();
 
 		glfwPollEvents();
 		glfwSwapBuffers(m_window);

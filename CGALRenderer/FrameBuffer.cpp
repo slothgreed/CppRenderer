@@ -22,6 +22,11 @@ void FrameBuffer::Generate()
 
 void FrameBuffer::Bind()
 {
+	if (m_Id == 0)
+	{
+		assert(0);
+	}
+
 	glBindFramebuffer(GL_FRAMEBUFFER, m_Id);
 	Logger::GLError();
 }

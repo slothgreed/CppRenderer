@@ -6,6 +6,7 @@ public:
 	GLObject() { m_Id = 0; };
 	~GLObject() {};
 
+	GLuint ID() { return m_Id; }
 	virtual void Generate() = 0;
 	virtual void Bind() = 0;
 	virtual void UnBind() = 0;

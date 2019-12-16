@@ -31,16 +31,18 @@
 #include "ImGui/imgui_impl_glfw.h"
 #include "ImGui/imgui_impl_opengl3.h"
 
+#include "Random.h"
+
 using namespace std;
 using namespace glm;
 // Foundation
+#include "Interface.h"
 #include "BDB.h"
 #include "IController.h"
 #include "ICommand.h"
 #include "CommandManager.h"
 #include "EventArgs.h"
 #include "Observer.h"
-#include "Interface.h"
 
 // system
 #include "SystemTypes.h"
@@ -67,6 +69,7 @@ using namespace glm;
 #include "RenderTexture.h"
 #include "Sampler.h"
 #include "RenderTarget.h"
+#include "SymbolicRenderTarget.h"
 #include "IShader.h"
 #include "IVertexBuffer.h"
 
@@ -115,6 +118,7 @@ using namespace glm;
 #include "CGALRenderer.h"
 #include "Project.h"
 #include "Workspace.h"
+#include "SpecialUtility.h"
 
 using namespace std;
 using namespace glm;

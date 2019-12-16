@@ -41,5 +41,6 @@ private:
 	float m_ZoomRatio;
 };
 
+
 }
 #endif CAMERA_CONTROLLER_H

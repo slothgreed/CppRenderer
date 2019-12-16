@@ -16,6 +16,14 @@ void Texture::Generate()
 	}
 
 	glGenTextures(1, &m_Id);
+	glBindTexture(GL_TEXTURE_2D, m_Id);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+
+	glBindTexture(GL_TEXTURE_2D, 0);
+
 	Logger::GLError();
 }
 
@@ -36,14 +44,10 @@ void Texture::UnBind()
 	Logger::GLError();
 }
 
-void Texture::Active(GLint active) 
-{
-	glActiveTexture(active);
-	Logger::GLError();
-}
 void Texture::Set(const TextureData& data)
 {
 	Bind();
+
 	glTexImage2D(
 		data.target, 
 		data.level,
@@ -55,9 +59,26 @@ void Texture::Set(const TextureData& data)
 		data.type,
 		data.pixels
 	);
+
+
 	UnBind();
 
+	CopyTextureData(data);
+
 	Logger::GLError();
+}
+
+void Texture::CopyTextureData(const TextureData& data)
+{
+	// pixel èÓïÒÇÕèdÇ≠Ç»ÇÈÇÃÇ≈ï€éùÇµÇ»Ç¢ÅB
+	m_data.target	= data.target;
+	m_data.level	= data.level;
+	m_data.internalformat = data.internalformat;
+	m_data.width	= data.width;
+	m_data.height	= data.height;
+	m_data.border	= data.border;
+	m_data.format	= data.format;
+	m_data.type		= data.type;
 }
 
 void Texture::Dispose()

@@ -198,10 +198,13 @@
     <ClInclude Include="IVertexBuffer.h" />
     <ClInclude Include="LineMaterial.h" />
     <ClInclude Include="PointMaterial.h" />
+    <ClInclude Include="Random.h" />
     <ClInclude Include="RenderBuffer.h" />
     <ClInclude Include="RenderTarget.h" />
     <ClInclude Include="RenderTexture.h" />
     <ClInclude Include="Sampler.h" />
+    <ClInclude Include="SpecialUtility.h" />
+    <ClInclude Include="SymbolicRenderTarget.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TextureGenerator.h" />
     <ClInclude Include="Vertex.h" />
@@ -280,7 +283,9 @@
     <ClCompile Include="RenderTexture.cpp" />
     <ClCompile Include="Sampler.cpp" />
     <ClCompile Include="ShaderManager.cpp" />
+    <ClCompile Include="SpecialUtility.cpp" />
     <ClCompile Include="SubdivisionCommand.cpp" />
+    <ClCompile Include="SymbolicRenderTarget.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TextureGenerator.cpp" />
     <ClCompile Include="UniformScene.cpp" />
