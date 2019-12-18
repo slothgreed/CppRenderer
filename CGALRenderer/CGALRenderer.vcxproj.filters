@@ -339,6 +339,15 @@
     <ClInclude Include="SymbolicRenderTarget.h">
       <Filter>ヘッダー ファイル\OpenGL</Filter>
     </ClInclude>
+    <ClInclude Include="OutputShader.h">
+      <Filter>ヘッダー ファイル\Asset\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="OutputMaterial.h">
+      <Filter>ヘッダー ファイル\Asset\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="PfxPlane.h">
+      <Filter>ヘッダー ファイル\Asset\Model</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -505,6 +514,15 @@
     </ClCompile>
     <ClCompile Include="SymbolicRenderTarget.cpp">
       <Filter>ソース ファイル\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="OutputShader.cpp">
+      <Filter>ソース ファイル\Asset\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="OutputMaterial.cpp">
+      <Filter>ソース ファイル\Asset\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="PfxPlane.cpp">
+      <Filter>ソース ファイル\Asset\Model</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

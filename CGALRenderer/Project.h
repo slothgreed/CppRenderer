@@ -2,18 +2,18 @@
 #define PROJECT_H
 namespace KI
 {
-	class Project
-	{
-	public:
-		Project();
-		~Project();
+class Project
+{
+public:
+	Project();
+	~Project();
 
-		void Initialize();
+	void Initialize();
 
-		const std::string& ProjectDir() const { return m_projectDir; }
-	private:
-		std::string m_projectDir;
-	};
+	const std::string& ProjectDir() const { return m_projectDir; }
+private:
+	std::string m_projectDir;
+};
 }
 #endif // !PROJECT_H
 

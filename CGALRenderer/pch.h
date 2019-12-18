@@ -91,10 +91,13 @@ using namespace glm;
 #include "HalfEdgeModel.h"
 #include "IMaterial.h"
 #include "DefaultMaterial.h"
+#include "OutputMaterial.h"
 #include "LineMaterial.h"
 #include "PointMaterial.h"
 #include "DefaultShader.h"
+#include "OutputShader.h"
 #include "DefaultVertexBuffer.h"
+#include "PfxPlane.h"
 
 
 

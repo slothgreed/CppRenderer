@@ -27,6 +27,7 @@ private:
 	vector<shared_ptr<IModelNode>> m_pRenderList;
 	shared_ptr<IRenderTarget> m_pBackTarget;
 	shared_ptr<RenderTarget> m_pRenderTarget;
+	shared_ptr<PfxPlane> m_pOutputPlane;
 	unique_ptr<CommandManager> m_pCommandManager;
 };
 }

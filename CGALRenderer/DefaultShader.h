@@ -22,11 +22,10 @@ public:
 	virtual void Initialize() override;
 	virtual void FetchUniformLocation() override;
 
-	GLint m_uniformLocation[UNIFORM_LOCATION_NUM];
 private:
 	void BindScene();
 	void BindTexture(GLint activeNumber, GLint textureId);
-
+	GLint m_uniformLocation[UNIFORM_LOCATION_NUM];
 };
 
 

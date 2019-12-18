@@ -80,6 +80,13 @@ void Workspace::Initialize(Project* m_pProject)
 	//auto subdivArgs = make_shared<SubdivisionCommandArgs>(polyhedron);
 	//auto subdivCommand = make_shared<SubdivisionCommand>(subdivArgs);
 	//m_pCommandManager->Execute(subdivCommand);
+
+
+
+	auto outputMaterial = make_shared<OutputMaterial>();
+	outputMaterial->AddColorTexture(m_pRenderTarget->ColorTexture(0));
+	m_pOutputPlane = make_shared<PfxPlane>(outputMaterial);
+	m_pOutputPlane->Initialize();
 }
 
 void Workspace::Invoke()
@@ -101,6 +108,8 @@ void Workspace::Invoke()
 	
 	m_pRenderTarget->UnBind();
 	m_pBackTarget->Bind();
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	m_pOutputPlane->Draw();
 
 	m_pUniformScene->UnBind();
 

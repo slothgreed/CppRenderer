@@ -5,6 +5,7 @@ namespace KI
 enum SHADER_TYPE
 {
 	SHADER_TYPE_DEFAULT = 1,
+	SHADER_TYPE_OUTPUT	= 2
 };
 
 

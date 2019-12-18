@@ -197,6 +197,9 @@
     <ClInclude Include="IMaterial.h" />
     <ClInclude Include="IVertexBuffer.h" />
     <ClInclude Include="LineMaterial.h" />
+    <ClInclude Include="OutputMaterial.h" />
+    <ClInclude Include="OutputShader.h" />
+    <ClInclude Include="PfxPlane.h" />
     <ClInclude Include="PointMaterial.h" />
     <ClInclude Include="Random.h" />
     <ClInclude Include="RenderBuffer.h" />
@@ -260,6 +263,9 @@
     <ClCompile Include="IModel.cpp" />
     <ClCompile Include="HalfEdgeDS.cpp" />
     <ClCompile Include="LineMaterial.cpp" />
+    <ClCompile Include="OutputMaterial.cpp" />
+    <ClCompile Include="OutputShader.cpp" />
+    <ClCompile Include="PfxPlane.cpp" />
     <ClCompile Include="PointMaterial.cpp" />
     <ClCompile Include="PrimitiveNode.cpp" />
     <ClCompile Include="Observer.cpp" />

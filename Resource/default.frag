@@ -17,6 +17,6 @@ void main()
 #ifdef USE_TEXTURE0
 	outputColor = texture2D(uTexture0,v_texcoord);
 #else
-	outputColor = v_color;//vec4(0.5,0.5,0.5,1.0);
+	outputColor = v_color;
 #endif
 }

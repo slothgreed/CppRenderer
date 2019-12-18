@@ -108,4 +108,9 @@ void RenderTarget::Dispose()
 
 	m_pDepthBuffer->Dispose();
 }
+
+shared_ptr<RenderTexture> RenderTarget::ColorTexture(int index)
+{
+	return m_pOutputBuffer[index];
+}
 };
