@@ -97,7 +97,13 @@ using namespace glm;
 #include "DefaultShader.h"
 #include "OutputShader.h"
 #include "DefaultVertexBuffer.h"
+#include "CompositShader.h"
+
+
+// Renderer
 #include "PfxPlane.h"
+#include "IPfxEffect.h"
+#include "GrayScaleEffect.h"
 
 
 

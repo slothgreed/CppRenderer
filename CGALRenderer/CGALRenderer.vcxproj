@@ -172,8 +172,10 @@
     <ClInclude Include="CGALPolyhedron.h" />
     <ClInclude Include="CGALRenderer.h" />
     <ClInclude Include="CommandManager.h" />
+    <ClInclude Include="CompositShader.h" />
     <ClInclude Include="DefaultMaterial.h" />
     <ClInclude Include="FrameBuffer.h" />
+    <ClInclude Include="GrayScaleEffect.h" />
     <ClInclude Include="HalfEdge.h" />
     <ClInclude Include="EventArgs.h" />
     <ClInclude Include="HalfEdgeFace.h" />
@@ -195,6 +197,7 @@
     <ClInclude Include="IModelProperty.h" />
     <ClInclude Include="HalfEdgeDS.h" />
     <ClInclude Include="IMaterial.h" />
+    <ClInclude Include="IPfxEffect.h" />
     <ClInclude Include="IVertexBuffer.h" />
     <ClInclude Include="LineMaterial.h" />
     <ClInclude Include="OutputMaterial.h" />
@@ -247,8 +250,10 @@
     <ClCompile Include="CGALPolyhedron.cpp" />
     <ClCompile Include="CGALRenderer.cpp" />
     <ClCompile Include="CommandManager.cpp" />
+    <ClCompile Include="CompositShader.cpp" />
     <ClCompile Include="DefaultMaterial.cpp" />
     <ClCompile Include="FrameBuffer.cpp" />
+    <ClCompile Include="GrayScaleEffect.cpp" />
     <ClCompile Include="HalfEdge.cpp" />
     <ClCompile Include="HalfEdgeFace.cpp" />
     <ClCompile Include="FileUtility.cpp" />

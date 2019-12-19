@@ -6,10 +6,10 @@ namespace KI
 
 class OutputShader : public IShader
 {
-	enum UNIFORM_LOCATION : unsigned short
+	enum OUTPUT_UNIFORM : unsigned short
 	{
-		UNIFORM_LOCATION_COLOR_TEXTURE,
-		UNIFORM_LOCATION_NUM
+		OUTPUT_UNIFORM_COLOR_TEXTURE,
+		OUTPUT_UNIFORM_NUM
 	};
 public:
 	OutputShader();
@@ -21,7 +21,7 @@ public:
 private:
 	void BindTexture(GLint activeNumber, GLint textureId);
 
-	GLint m_uniformLocation[UNIFORM_LOCATION_NUM];
+	GLint m_uniformLocation[OUTPUT_UNIFORM_NUM];
 
 };
 

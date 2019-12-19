@@ -121,6 +121,18 @@
     <Filter Include="ExtLibs">
       <UniqueIdentifier>{7fb2b786-836f-4d5b-b898-cd1dca0b7485}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Renderer">
+      <UniqueIdentifier>{0e1f3009-e8c9-4116-854b-31675b92838e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Renderer">
+      <UniqueIdentifier>{b57e33a3-c0f7-4c87-b7e7-222196084e15}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Renderer\Pfx">
+      <UniqueIdentifier>{82f89b27-a91d-4f42-9a70-e65e17a83dcd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Renderer\Pfx">
+      <UniqueIdentifier>{26a6c7c0-ce91-41a4-8645-5f8d5b4d6975}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -345,8 +357,17 @@
     <ClInclude Include="OutputMaterial.h">
       <Filter>ヘッダー ファイル\Asset\Material</Filter>
     </ClInclude>
+    <ClInclude Include="GrayScaleEffect.h">
+      <Filter>ヘッダー ファイル\Renderer\Pfx</Filter>
+    </ClInclude>
+    <ClInclude Include="IPfxEffect.h">
+      <Filter>ヘッダー ファイル\Renderer\Pfx</Filter>
+    </ClInclude>
     <ClInclude Include="PfxPlane.h">
-      <Filter>ヘッダー ファイル\Asset\Model</Filter>
+      <Filter>ヘッダー ファイル\Renderer\Pfx</Filter>
+    </ClInclude>
+    <ClInclude Include="CompositShader.h">
+      <Filter>ヘッダー ファイル\Asset\Shader</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -521,8 +542,14 @@
     <ClCompile Include="OutputMaterial.cpp">
       <Filter>ソース ファイル\Asset\Material</Filter>
     </ClCompile>
+    <ClCompile Include="GrayScaleEffect.cpp">
+      <Filter>ソース ファイル\Renderer\Pfx</Filter>
+    </ClCompile>
     <ClCompile Include="PfxPlane.cpp">
-      <Filter>ソース ファイル\Asset\Model</Filter>
+      <Filter>ソース ファイル\Renderer\Pfx</Filter>
+    </ClCompile>
+    <ClCompile Include="CompositShader.cpp">
+      <Filter>ソース ファイル\Asset\Shader</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
