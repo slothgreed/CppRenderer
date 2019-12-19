@@ -35,8 +35,12 @@ void DefaultMaterial::Bind()
 {
 	if (m_pTexture != nullptr)
 	{
-		m_pTexture->Bind();
-		m_pShader->BindTexture(GL_TEXTURE0, m_pTexture->ID());
+		if (m_pShader->Type() == SHADER_TYPE::SHADER_TYPE_DEFAULT)
+		{
+			auto pOutputShader = static_pointer_cast<DefaultShader>(m_pShader);
+			m_pTexture->Bind();
+			pOutputShader->BindColorTexture();
+		}
 	}
 
 }

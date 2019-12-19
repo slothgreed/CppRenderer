@@ -19,28 +19,21 @@ void OutputShader::Initialize()
 
 void OutputShader::FetchUniformLocation()
 {
+	m_uniformLocation.resize(OUTPUT_UNIFORM_NUM);
 	m_uniformLocation[OUTPUT_UNIFORM_COLOR_TEXTURE] = glGetUniformLocation(m_programId, "uTexture0");
 	Logger::GLError();
 
 }
 
-void OutputShader::BindTexture(GLint activeNumber, GLint textureId)
+void OutputShader::BindOutputTexture()
 {
-	if (m_programId == 0)
-	{
-		assert(0);
-	}
 
 	if (m_uniformLocation[OUTPUT_UNIFORM_COLOR_TEXTURE] == -1)
 	{
 		assert(0);
 	}
 
+	IShader::BindTexture(GL_TEXTURE0, m_uniformLocation[OUTPUT_UNIFORM_COLOR_TEXTURE]);
 
-	glActiveTexture(activeNumber);
-	Logger::GLError();
-
-	glUniform1i(m_uniformLocation[OUTPUT_UNIFORM_COLOR_TEXTURE], activeNumber - GL_TEXTURE0);
-	Logger::GLError();
 }
 }

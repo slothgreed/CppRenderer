@@ -55,8 +55,23 @@ void IShader::Dispose()
 	}
 
 	Logger::GLError();
-
 }
+
+void IShader::BindTexture(GLint activeNumber, GLint uniformId)
+{
+	if (m_programId == 0)
+	{
+		assert(0);
+	}
+
+
+	glActiveTexture(activeNumber);
+	Logger::GLError();
+
+	glUniform1i(uniformId, activeNumber - GL_TEXTURE0);
+	Logger::GLError();
+}
+
 bool IShader::Compare(const ShaderBuildInfo& buildInfo)
 {
 	if (m_buildInfo.shaderType == buildInfo.shaderType &&

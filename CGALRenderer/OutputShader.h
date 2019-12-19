@@ -17,11 +17,9 @@ public:
 	virtual SHADER_TYPE Type() override { return SHADER_TYPE::SHADER_TYPE_OUTPUT; }
 	virtual void Initialize() override;
 	virtual void FetchUniformLocation() override;
+	void BindOutputTexture();
 
 private:
-	void BindTexture(GLint activeNumber, GLint textureId);
-
-	GLint m_uniformLocation[OUTPUT_UNIFORM_NUM];
 
 };
 

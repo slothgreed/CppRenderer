@@ -29,12 +29,10 @@ public:
 	virtual void FetchUniformLocation();
 	virtual void SetSourceTexture(shared_ptr<Texture> source);
 	virtual void SetTargetTexture(shared_ptr<Texture> target);
-	virtual void BindTexture(GLint activeNumber, GLint textureId);
 	static void GetFragShaderDefine(COMPOSIT_TYPE layout, ShaderBuildInfo& shaderDefine);
 
 
 private:
-	GLint m_uniformLocation[COMPOSIT_UNIFORM_NUM];
 	shared_ptr<Texture> m_pSource;
 	shared_ptr<Texture> m_pTarget;
 };

@@ -19,6 +19,7 @@ void CompositShader::Initialize()
 
 void CompositShader::FetchUniformLocation()
 {
+	m_uniformLocation.resize(COMPOSIT_UNIFORM_NUM);
 	m_uniformLocation[COMPOSIT_UNIFORM_SOURCE_TEXTURE] = glGetUniformLocation(m_programId, "uTexture0");
 	m_uniformLocation[COMPOSIT_UNIFORM_TARGET_TEXTURE] = glGetUniformLocation(m_programId, "uTexture1");
 	Logger::GLError();

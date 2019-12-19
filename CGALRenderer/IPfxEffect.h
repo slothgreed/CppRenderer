@@ -3,8 +3,8 @@
 class IPfxEffect
 {
 public:
-	IPfxEffect();
-	~IPfxEffect();
+	IPfxEffect() {};
+	~IPfxEffect() {};
 
 	virtual void Initialize() = 0;
 	virtual void Draw() = 0;

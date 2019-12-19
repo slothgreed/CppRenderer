@@ -27,28 +27,20 @@ void DefaultShader::BindScene()
 
 void DefaultShader::FetchUniformLocation()
 {
-	m_uniformLocation[UNIFORM_LOCATION_COLOR_TEXTURE] = glGetUniformLocation(m_programId, "uTexture0");
+	m_uniformLocation.resize(DEFAULT_UNIFORM_NUM);
+	m_uniformLocation[DEFAULT_UNIFORM_COLOR_TEXTURE] = glGetUniformLocation(m_programId, "uTexture0");
 
 	Logger::GLError();
 }
 
-void DefaultShader::BindTexture(GLint activeNumber, GLint textureId)
+void DefaultShader::BindColorTexture()
 {
-	if (m_programId == 0)
+	if (m_uniformLocation[DEFAULT_UNIFORM_COLOR_TEXTURE] == -1)
 	{
 		assert(0);
 	}
 
-	if (m_uniformLocation[UNIFORM_LOCATION_COLOR_TEXTURE] == -1)
-	{
-		assert(0);
-	}
-
-	glActiveTexture(activeNumber);
-	Logger::GLError();
-
-	glUniform1i(m_uniformLocation[UNIFORM_LOCATION_COLOR_TEXTURE], activeNumber - GL_TEXTURE0);
-	Logger::GLError();
+	IShader::BindTexture(GL_TEXTURE0, m_uniformLocation[DEFAULT_UNIFORM_COLOR_TEXTURE]);
 }
 
 void DefaultShader::GetVertexShaderDefine(VERTEX_LAYOUT layout, ShaderBuildInfo& shaderDefine)

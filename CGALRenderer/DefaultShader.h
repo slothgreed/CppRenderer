@@ -8,8 +8,8 @@ class DefaultShader : public IShader
 {
 	enum UNIFORM_LOCATION : unsigned short
 	{
-		UNIFORM_LOCATION_COLOR_TEXTURE,
-		UNIFORM_LOCATION_NUM
+		DEFAULT_UNIFORM_COLOR_TEXTURE,
+		DEFAULT_UNIFORM_NUM
 	};
 public:
 	DefaultShader();
@@ -21,11 +21,10 @@ public:
 
 	virtual void Initialize() override;
 	virtual void FetchUniformLocation() override;
+	void BindColorTexture();
 
 private:
 	void BindScene();
-	void BindTexture(GLint activeNumber, GLint textureId);
-	GLint m_uniformLocation[UNIFORM_LOCATION_NUM];
 };
 
 

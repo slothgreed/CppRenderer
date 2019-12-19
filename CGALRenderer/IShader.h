@@ -34,14 +34,13 @@ public:
 	
 	virtual void Initialize() = 0;
 	virtual void FetchUniformLocation() = 0;
-	virtual void BindTexture(GLint activeNumber, GLint textureId) = 0;
 
 	GLuint Program() { return m_programId; }
 	bool Compare(const ShaderBuildInfo& buildInfo);
 
 	
 protected:
-	
+	virtual void BindTexture(GLint activeNumber, GLint uniformId);
 	void SetVersion(std::string version) { m_version = version; }
 	void SetVertexPath(std::string filePath) { m_vertexPath = filePath; }
 	void SetFragPath(std::string filePath) { m_fragPath = filePath; }
@@ -50,6 +49,7 @@ protected:
 	std::string m_fragPath;
 	GLuint m_programId;
 	SHADER_TYPE m_shaderType;
+	vector<GLint> m_uniformLocation;
 private:
 	ShaderBuildInfo m_buildInfo;
 
