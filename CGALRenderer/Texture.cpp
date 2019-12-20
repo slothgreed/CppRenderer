@@ -27,13 +27,9 @@ void Texture::Generate()
 	Logger::GLError();
 }
 
+
 void Texture::Bind()
 {
-	if (m_Id == 0)
-	{
-		assert(0);
-	}
-
 	glBindTexture(GL_TEXTURE_2D, m_Id);
 	Logger::GLError();
 }
@@ -46,29 +42,51 @@ void Texture::UnBind()
 
 void Texture::Set(const TextureData& data)
 {
-	Bind();
+	if (m_modifing == false)
+	{
+		assert(0);
+	}
 
-	glTexImage2D(
-		data.target, 
-		data.level,
-		data.internalformat,
-		data.width,
-		data.height,
-		data.border, 
-		data.format,
-		data.type,
-		data.pixels
-	);
+	if (data.width == 0 || data.height == 0) {
+		assert(0);
+	}
+
+	if (data.width == m_data.width &&
+		data.height == m_data.height)
+	{
+		glTexSubImage2D(
+			data.target,
+			data.level,
+			0, 0,
+			data.width,
+			data.height,
+			data.format,
+			data.type,
+			data.pixels
+		);
+	}
+	else
+	{
+		glTexImage2D(
+			data.target,
+			data.level,
+			data.internalformat,
+			data.width,
+			data.height,
+			data.border,
+			data.format,
+			data.type,
+			data.pixels
+		);
+	}
 
 
-	UnBind();
-
-	CopyTextureData(data);
+	SetTextureData(data);
 
 	Logger::GLError();
 }
 
-void Texture::CopyTextureData(const TextureData& data)
+void Texture::SetTextureData(const TextureData& data)
 {
 	// pixel èÓïÒÇÕèdÇ≠Ç»ÇÈÇÃÇ≈ï€éùÇµÇ»Ç¢ÅB
 	m_data.target	= data.target;

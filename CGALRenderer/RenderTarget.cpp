@@ -32,6 +32,7 @@ void RenderTarget::Initialize(int outputBufferNum, int width, int height)
 	{
 		m_pOutputBuffer.push_back(make_shared<RenderTexture>());
 		m_pOutputBuffer[i]->Generate();
+		m_pOutputBuffer[i]->Begin();
 		m_pOutputBuffer[i]->SetAttachment(GL_COLOR_ATTACHMENT0 + i);
 		TextureData data;
 		data.target = GL_TEXTURE_2D;
@@ -44,10 +45,12 @@ void RenderTarget::Initialize(int outputBufferNum, int width, int height)
 		data.type = GL_UNSIGNED_BYTE;
 		data.pixels = 0;
 		m_pOutputBuffer[i]->Set(data);
+		m_pOutputBuffer[i]->End();
 	}
 
 	m_pDepthBuffer = make_shared<RenderTexture>();
 	m_pDepthBuffer->Generate();
+	m_pDepthBuffer->Begin();
 	m_pDepthBuffer->SetAttachment(GL_DEPTH_ATTACHMENT);
 	TextureData data;
 	data.target = GL_TEXTURE_2D;
@@ -60,6 +63,7 @@ void RenderTarget::Initialize(int outputBufferNum, int width, int height)
 	data.type = GL_UNSIGNED_BYTE;
 	data.pixels = 0;
 	m_pDepthBuffer->Set(data);
+	m_pDepthBuffer->End();
 
 	for (int i = 0; i < m_pOutputBuffer.size(); i++)
 	{
@@ -98,6 +102,8 @@ void RenderTarget::UnBind()
 	Logger::GLError();
 }
 
+
+
 void RenderTarget::Dispose()
 {
 	m_pFrameBuffer->Dispose();
@@ -113,4 +119,52 @@ shared_ptr<RenderTexture> RenderTarget::ColorTexture(int index)
 {
 	return m_pOutputBuffer[index];
 }
+
+void RenderTarget::CopyColorBuffer(int index, Texture* texture)
+{
+	if (m_pOutputBuffer.size() <= index)
+	{
+		assert(0);
+	}
+
+	m_pFrameBuffer->Begin();
+	glReadBuffer(m_pOutputBuffer[index]->Attachment());
+	glActiveTexture(GL_TEXTURE0);
+
+	TextureData data;
+	data.width = m_pOutputBuffer[0]->Width();
+	data.height = m_pOutputBuffer[0]->Height();
+	texture->Begin();
+	texture->Set(data);
+	glCopyTexSubImage2D(
+		data.target,
+		data.level,
+		0, 0, 0, 0,
+		data.width,
+		data.height);
+	texture->End();
+	m_pFrameBuffer->End();
+}
+
+void RenderTarget::CopyDepthBuffer(Texture* texture)
+{
+	m_pFrameBuffer->Begin();
+	glReadBuffer(GL_DEPTH_COMPONENT);
+	glActiveTexture(GL_TEXTURE0);
+
+	TextureData data;
+	data.width = m_pOutputBuffer[0]->Width();
+	data.height = m_pOutputBuffer[0]->Height();
+	texture->Begin();
+	texture->Set(data);
+	glCopyTexSubImage2D(
+		data.target,
+		data.level,
+		0, 0, 0, 0,
+		data.width,
+		data.height);
+	texture->End();
+	m_pFrameBuffer->End();
+}
+
 };

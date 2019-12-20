@@ -68,6 +68,7 @@ using namespace glm;
 #include "Texture.h"
 #include "RenderTexture.h"
 #include "Sampler.h"
+#include "IRenderTarget.h"
 #include "RenderTarget.h"
 #include "SymbolicRenderTarget.h"
 #include "IShader.h"
@@ -98,12 +99,13 @@ using namespace glm;
 #include "OutputShader.h"
 #include "DefaultVertexBuffer.h"
 #include "CompositShader.h"
-
+#include "SSLICShader.h"
 
 // Renderer
 #include "PfxPlane.h"
 #include "IPfxEffect.h"
 #include "GrayScaleEffect.h"
+#include "SSLICEffect.h"
 
 
 

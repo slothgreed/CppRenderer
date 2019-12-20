@@ -10,10 +10,12 @@ public:
 	SymbolicRenderTarget(GLenum drawBuffer);
 	~SymbolicRenderTarget();
 
-	virtual void Bind();
-	virtual void UnBind();
 	virtual void Resize(int width, int height);
 	virtual void Dispose();
+protected:
+	virtual void Bind();
+	virtual void UnBind();
+
 private:
 	GLenum m_drawBuffer;
 

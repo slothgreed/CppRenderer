@@ -51,7 +51,7 @@ void TextureGenerator::UVTexture(int size, TextureData& texture)
 	}
 }
 
-void TextureGenerator::RamdomTexture(int size, int alpha, TextureData& texture)
+void TextureGenerator::RandomTexture(int size, int alpha, TextureData& texture)
 {
 	texture.target = GL_TEXTURE_2D;
 	texture.internalformat = GL_RGBA;

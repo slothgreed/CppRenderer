@@ -39,9 +39,12 @@ void FrameBuffer::UnBind()
 
 void FrameBuffer::Clear()
 {
-	Bind();
+	if (m_modifing == false)
+	{
+		assert(0);
+	}
+
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	UnBind();
 	Logger::GLError();
 }
 
@@ -54,4 +57,5 @@ void FrameBuffer::Dispose()
 	}
 	Logger::GLError();
 }
+
 }

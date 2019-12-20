@@ -38,7 +38,7 @@ void DefaultMaterial::Bind()
 		if (m_pShader->Type() == SHADER_TYPE::SHADER_TYPE_DEFAULT)
 		{
 			auto pOutputShader = static_pointer_cast<DefaultShader>(m_pShader);
-			m_pTexture->Bind();
+			m_pTexture->Begin();
 			pOutputShader->BindColorTexture();
 		}
 	}
@@ -49,7 +49,7 @@ void DefaultMaterial::UnBind()
 {
 	if (m_pTexture != nullptr)
 	{
-		m_pTexture->UnBind();
+		m_pTexture->End();
 	}
 }
 

@@ -198,6 +198,7 @@
     <ClInclude Include="HalfEdgeDS.h" />
     <ClInclude Include="IMaterial.h" />
     <ClInclude Include="IPfxEffect.h" />
+    <ClInclude Include="IRenderTarget.h" />
     <ClInclude Include="IVertexBuffer.h" />
     <ClInclude Include="LineMaterial.h" />
     <ClInclude Include="OutputMaterial.h" />
@@ -210,6 +211,8 @@
     <ClInclude Include="RenderTexture.h" />
     <ClInclude Include="Sampler.h" />
     <ClInclude Include="SpecialUtility.h" />
+    <ClInclude Include="SSLICEffect.h" />
+    <ClInclude Include="SSLICShader.h" />
     <ClInclude Include="SymbolicRenderTarget.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TextureGenerator.h" />
@@ -253,6 +256,7 @@
     <ClCompile Include="CompositShader.cpp" />
     <ClCompile Include="DefaultMaterial.cpp" />
     <ClCompile Include="FrameBuffer.cpp" />
+    <ClCompile Include="GLObject.cpp" />
     <ClCompile Include="GrayScaleEffect.cpp" />
     <ClCompile Include="HalfEdge.cpp" />
     <ClCompile Include="HalfEdgeFace.cpp" />
@@ -267,6 +271,7 @@
     <ClCompile Include="ImGui\imgui_widgets.cpp" />
     <ClCompile Include="IModel.cpp" />
     <ClCompile Include="HalfEdgeDS.cpp" />
+    <ClCompile Include="IRenderTarget.cpp" />
     <ClCompile Include="LineMaterial.cpp" />
     <ClCompile Include="OutputMaterial.cpp" />
     <ClCompile Include="OutputShader.cpp" />
@@ -295,6 +300,8 @@
     <ClCompile Include="Sampler.cpp" />
     <ClCompile Include="ShaderManager.cpp" />
     <ClCompile Include="SpecialUtility.cpp" />
+    <ClCompile Include="SSLICEffect.cpp" />
+    <ClCompile Include="SSLICShader.cpp" />
     <ClCompile Include="SubdivisionCommand.cpp" />
     <ClCompile Include="SymbolicRenderTarget.cpp" />
     <ClCompile Include="Texture.cpp" />

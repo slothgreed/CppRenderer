@@ -369,6 +369,15 @@
     <ClInclude Include="CompositShader.h">
       <Filter>ヘッダー ファイル\Asset\Shader</Filter>
     </ClInclude>
+    <ClInclude Include="SSLICEffect.h">
+      <Filter>ヘッダー ファイル\Renderer\Pfx</Filter>
+    </ClInclude>
+    <ClInclude Include="SSLICShader.h">
+      <Filter>ヘッダー ファイル\Asset\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="IRenderTarget.h">
+      <Filter>ヘッダー ファイル\OpenGL</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -550,6 +559,18 @@
     </ClCompile>
     <ClCompile Include="CompositShader.cpp">
       <Filter>ソース ファイル\Asset\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="SSLICEffect.cpp">
+      <Filter>ソース ファイル\Renderer\Pfx</Filter>
+    </ClCompile>
+    <ClCompile Include="SSLICShader.cpp">
+      <Filter>ソース ファイル\Asset\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="GLObject.cpp">
+      <Filter>ソース ファイル\OpenGL\GLObject</Filter>
+    </ClCompile>
+    <ClCompile Include="IRenderTarget.cpp">
+      <Filter>ソース ファイル\OpenGL</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

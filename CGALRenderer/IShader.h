@@ -6,7 +6,8 @@ enum SHADER_TYPE
 {
 	SHADER_TYPE_DEFAULT		= 1,
 	SHADER_TYPE_OUTPUT		= 2,
-	SHADER_TYPE_COMPOSIT	= 3
+	SHADER_TYPE_COMPOSIT	= 3,
+	SHADER_TYPE_SSLIC
 };
 
 
@@ -51,6 +52,7 @@ protected:
 	SHADER_TYPE m_shaderType;
 	vector<GLint> m_uniformLocation;
 private:
+	bool UniformValidation();
 	ShaderBuildInfo m_buildInfo;
 
 #ifdef SHADER_DEBUG

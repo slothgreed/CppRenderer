@@ -65,10 +65,12 @@ void Workspace::Initialize(Project* m_pProject)
 	SpecialUtility::LoadVectorFieldSphere(plane.get());
 	auto planeNode = make_shared<PrimitiveNode>(shader, plane);
 	TextureData data;
-	TextureGenerator::RamdomTexture(8, 15, data);
+	TextureGenerator::RandomTexture(8, 15, data);
 	auto texture = make_shared<Texture>();
 	texture->Generate();
+	texture->Begin();
 	texture->Set(data);
+	texture->End();
 	planeNode->GetMaterial()->AddTexture(texture);
 
 	m_pRenderList.push_back(planeNode);
@@ -91,14 +93,14 @@ void Workspace::Initialize(Project* m_pProject)
 
 void Workspace::Invoke()
 {
-	m_pBackTarget->Bind();
+	m_pBackTarget->Begin();
 	SceneData sceneData;
 	sceneData.ViewMatrix = m_pCamera->ViewMatrix();
 	sceneData.Projection = m_pCamera->Projection();
 	m_pUniformScene->Set(sceneData);
 	m_pUniformScene->Bind();
 
-	m_pRenderTarget->Bind();
+	m_pRenderTarget->Begin();
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	for (int i = 0; i < m_pRenderList.size(); i++)
@@ -106,8 +108,8 @@ void Workspace::Invoke()
 		m_pRenderList[i]->Draw();
 	}
 	
-	m_pRenderTarget->UnBind();
-	m_pBackTarget->Bind();
+	m_pRenderTarget->End();
+	m_pBackTarget->Begin();
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	m_pOutputPlane->Draw();
 

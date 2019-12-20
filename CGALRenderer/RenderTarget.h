@@ -4,32 +4,22 @@
 namespace KI
 {
 
-class IRenderTarget
-{
-public:
-	IRenderTarget() {};
-	~IRenderTarget() {};
-
-	virtual void Bind() = 0;
-	virtual void UnBind() = 0;
-	virtual void Resize(int width, int height) = 0;
-	virtual void Dispose() = 0;
-private:
-
-};
-
 class RenderTarget : public IRenderTarget
 {
 public:
 	RenderTarget();
 	~RenderTarget();
 	void Initialize(int outputBufferNum, int width, int height);
-	virtual void Bind();
-	virtual void UnBind();
 	virtual void Resize(int width, int height);
 	virtual void Dispose();
 	shared_ptr<RenderTexture> ColorTexture(int index);
-	
+	void CopyColorBuffer(int index, Texture* texture);
+	void CopyDepthBuffer(Texture* texture);
+
+protected:
+	virtual void Bind();
+	virtual void UnBind();
+
 private:
 	shared_ptr<FrameBuffer> m_pFrameBuffer;
 	vector<shared_ptr<RenderTexture>> m_pOutputBuffer;

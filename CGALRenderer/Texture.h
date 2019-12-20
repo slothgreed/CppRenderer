@@ -21,8 +21,8 @@ public:
 		target(GL_TEXTURE_2D),
 		level(0),
 		internalformat(GL_RGBA),
-		width(1),
-		height(1),
+		width(0),
+		height(0),
 		border(0),
 		format(GL_RGBA),
 		type(GL_UNSIGNED_BYTE),
@@ -44,17 +44,21 @@ public:
 	Texture();
 	~Texture();
 
-	virtual void Bind();
-	virtual void Generate();
-	virtual void UnBind();
-	virtual void Dispose();
-	
+	virtual void Generate() override;
+	virtual void Dispose() override;
+
+	int Width() { return m_data.width; };
+	int Height() { return m_data.height; };
+
 	void Set(const TextureData& data);
 protected:
+
+	virtual void Bind();
+	virtual void UnBind();
 	TextureData m_data;	// pixelèÓïÒÇÕèdÇ≠Ç»ÇÈÇÃÇ≈éùÇΩÇ»Ç¢ÅB
 
 private:
-	void CopyTextureData(const TextureData& data);
+	void SetTextureData(const TextureData& data);
 };
 }
 

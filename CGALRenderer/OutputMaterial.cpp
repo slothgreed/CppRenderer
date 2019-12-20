@@ -46,7 +46,7 @@ void OutputMaterial::Bind()
 		if (m_pShader->Type() == SHADER_TYPE::SHADER_TYPE_OUTPUT)
 		{
 			auto pOutputShader = static_pointer_cast<OutputShader>(m_pShader);
-			m_pColorTexture->Bind();
+			m_pColorTexture->Begin();
 			pOutputShader->BindOutputTexture();
 		}
 	}
@@ -56,7 +56,7 @@ void OutputMaterial::UnBind()
 {
 	if (m_pColorTexture != nullptr)
 	{
-		m_pColorTexture->UnBind();
+		m_pColorTexture->End();
 	}
 }
 

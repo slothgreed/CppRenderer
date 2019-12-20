@@ -27,13 +27,6 @@ void OutputShader::FetchUniformLocation()
 
 void OutputShader::BindOutputTexture()
 {
-
-	if (m_uniformLocation[OUTPUT_UNIFORM_COLOR_TEXTURE] == -1)
-	{
-		assert(0);
-	}
-
 	IShader::BindTexture(GL_TEXTURE0, m_uniformLocation[OUTPUT_UNIFORM_COLOR_TEXTURE]);
-
 }
 }

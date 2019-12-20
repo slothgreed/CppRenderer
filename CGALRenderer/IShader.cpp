@@ -27,8 +27,23 @@ void IShader::BuildFromCode(const std::string& vertexShaderCode, const std::stri
 
 	m_programId = ShaderUtility::Link(vertId, fragId);
 	Initialize();
+	//UniformValidation();
 }
 
+bool IShader::UniformValidation()
+{
+	// define‚É‚æ‚Á‚Ä’è‹`‚³‚ê‚È‚¢uniform‚à‚ ‚éB
+	for (int i = 0; i < m_uniformLocation.size(); i++)
+	{
+		if (m_uniformLocation[i] == -1)
+		{
+			Logger::Output(LOG_LEVEL::ERROR, "Need Call FetchUniformLocation on Initialize. And Set UniformParameter");
+			return false;
+		}
+	}
+
+	return true;
+}
 
 void IShader::Use()
 {
