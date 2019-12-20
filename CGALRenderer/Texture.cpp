@@ -64,6 +64,8 @@ void Texture::Set(const TextureData& data)
 			data.type,
 			data.pixels
 		);
+
+		Logger::GLError();
 	}
 	else
 	{
@@ -78,12 +80,11 @@ void Texture::Set(const TextureData& data)
 			data.type,
 			data.pixels
 		);
+
+		Logger::GLError();
 	}
 
-
 	SetTextureData(data);
-
-	Logger::GLError();
 }
 
 void Texture::SetTextureData(const TextureData& data)
