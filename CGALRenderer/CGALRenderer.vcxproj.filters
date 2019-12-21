@@ -133,6 +133,12 @@
     <Filter Include="ヘッダー ファイル\Renderer\Pfx">
       <UniqueIdentifier>{26a6c7c0-ce91-41a4-8645-5f8d5b4d6975}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\OpenGL\GLState">
+      <UniqueIdentifier>{6f11e5f2-98b2-4a26-8741-da08c7f63033}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\OpenGL\GLState">
+      <UniqueIdentifier>{e2d2aed3-78e5-4f07-95b5-c89096582c22}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -336,12 +342,6 @@
     <ClInclude Include="AssetTypes.h">
       <Filter>ヘッダー ファイル\Asset</Filter>
     </ClInclude>
-    <ClInclude Include="LineMaterial.h">
-      <Filter>ヘッダー ファイル\Asset\Material</Filter>
-    </ClInclude>
-    <ClInclude Include="PointMaterial.h">
-      <Filter>ヘッダー ファイル\Asset\Material</Filter>
-    </ClInclude>
     <ClInclude Include="Random.h">
       <Filter>ExtLibs</Filter>
     </ClInclude>
@@ -377,6 +377,18 @@
     </ClInclude>
     <ClInclude Include="IRenderTarget.h">
       <Filter>ヘッダー ファイル\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="GLState.h">
+      <Filter>ヘッダー ファイル\OpenGL\GLState</Filter>
+    </ClInclude>
+    <ClInclude Include="GLTypes.h">
+      <Filter>ヘッダー ファイル\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="LineState.h">
+      <Filter>ヘッダー ファイル\OpenGL\GLState</Filter>
+    </ClInclude>
+    <ClInclude Include="PointState.h">
+      <Filter>ヘッダー ファイル\OpenGL\GLState</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -533,12 +545,6 @@
     <ClCompile Include="IMaterial.cpp">
       <Filter>ソース ファイル\Asset\Material</Filter>
     </ClCompile>
-    <ClCompile Include="LineMaterial.cpp">
-      <Filter>ソース ファイル\Asset\Material</Filter>
-    </ClCompile>
-    <ClCompile Include="PointMaterial.cpp">
-      <Filter>ソース ファイル\Asset\Material</Filter>
-    </ClCompile>
     <ClCompile Include="SpecialUtility.cpp">
       <Filter>ソース ファイル\Application</Filter>
     </ClCompile>
@@ -571,6 +577,12 @@
     </ClCompile>
     <ClCompile Include="IRenderTarget.cpp">
       <Filter>ソース ファイル\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="LineState.cpp">
+      <Filter>ソース ファイル\OpenGL\GLState</Filter>
+    </ClCompile>
+    <ClCompile Include="PointState.cpp">
+      <Filter>ソース ファイル\OpenGL\GLState</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

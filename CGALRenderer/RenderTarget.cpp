@@ -135,7 +135,7 @@ void RenderTarget::CopyColorBuffer(int index, Texture* texture)
 	data.width = m_pOutputBuffer[0]->Width();
 	data.height = m_pOutputBuffer[0]->Height();
 	texture->Begin();
-	texture->Set(data);
+	//texture->Set(data);
 	glCopyTexSubImage2D(
 		data.target,
 		data.level,

@@ -12,6 +12,7 @@ public:
 
 	static void UVTexture(int size, TextureData& data);
 	static void RandomTexture(int size, int alpha, TextureData& data);
+
 private:
 
 };

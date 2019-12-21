@@ -3,8 +3,8 @@ namespace KI
 SSLICShader::SSLICShader()
 {
 	SetVersion(GLSL_VERSION_400_CORE);
-	SetVertexPath(ShaderUtility::ShaderDirectory() + "\\sslic.vert");
-	SetFragPath(ShaderUtility::ShaderDirectory() + "\\sslic.frag");
+	SetVertexPath(ShaderUtility::ShaderDirectory() + "\\output.vert");
+	SetFragPath(ShaderUtility::ShaderDirectory() + "\\output.frag");
 }
 
 SSLICShader::~SSLICShader()

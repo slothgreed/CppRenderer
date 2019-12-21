@@ -21,12 +21,14 @@ public:
 	virtual void Draw() override;
 	virtual string Type() { return DefaultVertexBufferTypeStr; }
 	static string DefaultVertexBufferTypeStr;
-private:
-	void GenerateVAO();
+
 	bool HasNormal();
 	bool HasColor();
 	bool HasTexCoord();
 	bool HasIndex();
+
+private:
+	void GenerateVAO();
 	int NumVertexAttrib();
 
 	GLuint m_id[VERTEX_ATTRIB_NUM];

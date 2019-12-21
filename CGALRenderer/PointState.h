@@ -3,21 +3,21 @@
 namespace KI
 {
 
-class PointMaterial : public DefaultMaterial
+class PointState : public IRasterState
 {
 public:
-	PointMaterial();
-	~PointMaterial();
+	PointState();
+	~PointState();
 
-	virtual const MATERIAL_TYPE Type() const { return MATERIAL_TYPE_POINTMATERIAL; }
+	virtual const STATE_TYPE Type() const { return STATE_TYPE_POINT; }
 	void SetPointSize(GLuint value) { m_pointSize = value; }
 	GLuint GetPointSize() { return m_pointSize; }
 	GLuint const GetPointSize() const { return m_pointSize; }
 
-	virtual void Bind();
-	virtual void UnBind();
+	virtual void Bind() override;
+	virtual void UnBind() override;
 
-	virtual bool Compare(const IMaterial& material);
+	virtual bool Compare(const IGLState& state) override;
 
 private:
 	GLuint m_pointSize;

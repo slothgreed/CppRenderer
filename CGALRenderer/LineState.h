@@ -4,21 +4,21 @@
 namespace KI
 {
 
-class LineMaterial : public DefaultMaterial
+class LineState : public IRasterState
 {
 public:
-	LineMaterial();
-	~LineMaterial();
+	LineState();
+	~LineState();
 
-	virtual const MATERIAL_TYPE Type() const { return MATERIAL_TYPE_LINEMATERIAL; }
+	virtual const STATE_TYPE Type() const { return STATE_TYPE_LINE; }
 
 	void SetLineWidth(GLfloat value) { m_lineWidth = value; }
 	GLfloat GetLineWidth() { return m_lineWidth; }
 	GLfloat const GetLineWidth() const { return m_lineWidth; }
 
-	virtual void Bind();
-	virtual void UnBind();
-	virtual bool Compare(const IMaterial& material);
+	virtual void Bind() override;
+	virtual void UnBind() override;
+	virtual bool Compare(const IGLState& state) override;
 private:
 	GLfloat m_lineWidth;
 };

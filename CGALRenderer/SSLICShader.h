@@ -4,7 +4,7 @@
 namespace KI
 {
 
-class SSLICShader : IShader
+class SSLICShader : public IShader
 {
 public:
 	enum SSLIC_UNIFORM : unsigned short

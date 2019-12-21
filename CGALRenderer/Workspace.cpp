@@ -60,10 +60,10 @@ void Workspace::Initialize(Project* m_pProject)
 
 	auto shader = ShaderManager::Instance()->FindOrNew(info);
 
-	auto plane = make_shared<DefaultVertexBuffer>();
+	auto model = make_shared<DefaultVertexBuffer>();
 	//ModelGenerator::RenderPlane(plane.get());
-	SpecialUtility::LoadVectorFieldSphere(plane.get());
-	auto planeNode = make_shared<PrimitiveNode>(shader, plane);
+	SpecialUtility::LoadVectorFieldSphere(model.get());
+	auto modelNode = make_shared<PrimitiveNode>(shader, model);
 	TextureData data;
 	TextureGenerator::RandomTexture(8, 15, data);
 	auto texture = make_shared<Texture>();
@@ -71,9 +71,9 @@ void Workspace::Initialize(Project* m_pProject)
 	texture->Begin();
 	texture->Set(data);
 	texture->End();
-	planeNode->GetMaterial()->AddTexture(texture);
+	modelNode->GetMaterial()->AddTexture(texture);
 
-	m_pRenderList.push_back(planeNode);
+	m_pRenderList.push_back(modelNode);
 
 	m_pRenderTarget = make_shared<RenderTarget>();
 	m_pRenderTarget->Initialize(1, 640, 480);
@@ -83,6 +83,9 @@ void Workspace::Initialize(Project* m_pProject)
 	//auto subdivCommand = make_shared<SubdivisionCommand>(subdivArgs);
 	//m_pCommandManager->Execute(subdivCommand);
 
+	m_pSSLIC = make_shared<SSLICEffect>();
+	m_pSSLIC->Initialize();
+	m_pSSLIC->SetDrawModel(model);
 
 
 	auto outputMaterial = make_shared<OutputMaterial>();
@@ -110,6 +113,8 @@ void Workspace::Invoke()
 	
 	m_pRenderTarget->End();
 	m_pBackTarget->Begin();
+	m_pSSLIC->Draw();
+
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	m_pOutputPlane->Draw();
 

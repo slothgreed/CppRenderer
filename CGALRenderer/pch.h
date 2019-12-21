@@ -58,7 +58,11 @@ using namespace glm;
 
 
 // opengl
+#include "GLTypes.h"
 #include "GLObject.h"
+#include "GLState.h"
+#include "LineState.h"
+#include "PointState.h"
 #include "ShaderManager.h"
 #include "UniformBuffer.h"
 #include "UniformScene.h"
@@ -93,8 +97,6 @@ using namespace glm;
 #include "IMaterial.h"
 #include "DefaultMaterial.h"
 #include "OutputMaterial.h"
-#include "LineMaterial.h"
-#include "PointMaterial.h"
 #include "DefaultShader.h"
 #include "OutputShader.h"
 #include "DefaultVertexBuffer.h"

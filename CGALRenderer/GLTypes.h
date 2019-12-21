@@ -1,0 +1,10 @@
+#ifndef GL_TYPES_H
+#define GL_TYPES_H
+
+enum STATE_TYPE
+{
+	STATE_TYPE_POINT,
+	STATE_TYPE_LINE,
+};
+
+#endif GL_TYPES_H
