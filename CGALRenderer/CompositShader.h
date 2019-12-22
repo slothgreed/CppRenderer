@@ -4,6 +4,12 @@
 namespace KI
 {
 
+class CompositUniform : public IUniform
+{
+	SHADER_TYPE Type() { return SHADER_TYPE::SHADER_TYPE_COMPOSIT; }
+	shared_ptr<Texture> m_pSource;
+	shared_ptr<Texture> m_pDestination;
+};
 class CompositShader : public IShader
 {
 	enum COMPOSIT_TYPE
@@ -25,16 +31,14 @@ public:
 	~CompositShader();
 	virtual SHADER_TYPE Type() { return SHADER_TYPE::SHADER_TYPE_COMPOSIT; }
 
-	virtual void Initialize();
-	virtual void FetchUniformLocation();
-	virtual void SetSourceTexture(shared_ptr<Texture> source);
-	virtual void SetTargetTexture(shared_ptr<Texture> target);
+	virtual void Initialize() override;
+	virtual void FetchUniformLocation() override;
 	static void GetFragShaderDefine(COMPOSIT_TYPE layout, ShaderBuildInfo& shaderDefine);
-
+	virtual void Bind(shared_ptr<IUniform> uniform) override;
+	virtual void UnBind() override;
 
 private:
-	shared_ptr<Texture> m_pSource;
-	shared_ptr<Texture> m_pTarget;
+	shared_ptr<CompositUniform> m_uniformParameter;
 };
 
 #define FRAG_SHADER_COMPOSIT_ADD		"#define COMPOSIT_ADD\n"

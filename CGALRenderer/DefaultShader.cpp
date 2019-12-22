@@ -33,6 +33,42 @@ void DefaultShader::FetchUniformLocation()
 	Logger::GLError();
 }
 
+void DefaultShader::Bind(shared_ptr<IUniform> uniform)
+{
+	if (uniform == nullptr)
+	{
+		return;
+	}
+
+	if (uniform->Type() != SHADER_TYPE::SHADER_TYPE_DEFAULT)
+	{
+		assert(0);
+	}
+	else
+	{
+		m_uniformParameter = static_pointer_cast<DefaultUniform>(uniform);
+	}
+
+	if (m_uniformParameter->pTexture != nullptr)
+	{
+		m_uniformParameter->pTexture->Begin();
+		BindColorTexture();
+	}
+}
+
+void DefaultShader::UnBind()
+{
+	if (m_uniformParameter == nullptr)
+	{
+		return;
+	}
+
+	if (m_uniformParameter->pTexture != nullptr)
+	{
+		m_uniformParameter->pTexture->End();
+	}
+}
+
 void DefaultShader::BindColorTexture()
 {
 	if (m_uniformLocation[DEFAULT_UNIFORM_COLOR_TEXTURE] == -1)

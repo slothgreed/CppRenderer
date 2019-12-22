@@ -177,6 +177,7 @@
     <ClInclude Include="FrameBuffer.h" />
     <ClInclude Include="GLTypes.h" />
     <ClInclude Include="GrayScaleEffect.h" />
+    <ClInclude Include="GrayScaleShader.h" />
     <ClInclude Include="HalfEdge.h" />
     <ClInclude Include="EventArgs.h" />
     <ClInclude Include="HalfEdgeFace.h" />
@@ -201,6 +202,7 @@
     <ClInclude Include="IPfxEffect.h" />
     <ClInclude Include="GLState.h" />
     <ClInclude Include="IRenderTarget.h" />
+    <ClInclude Include="IUniform.h" />
     <ClInclude Include="IVertexBuffer.h" />
     <ClInclude Include="LineState.h" />
     <ClInclude Include="OutputMaterial.h" />
@@ -260,6 +262,7 @@
     <ClCompile Include="FrameBuffer.cpp" />
     <ClCompile Include="GLObject.cpp" />
     <ClCompile Include="GrayScaleEffect.cpp" />
+    <ClCompile Include="GrayScaleShader.cpp" />
     <ClCompile Include="HalfEdge.cpp" />
     <ClCompile Include="HalfEdgeFace.cpp" />
     <ClCompile Include="FileUtility.cpp" />

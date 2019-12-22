@@ -4,6 +4,13 @@
 namespace KI
 {
 
+class OutputUniform : public IUniform
+{
+public:
+	virtual SHADER_TYPE Type() override { return SHADER_TYPE::SHADER_TYPE_OUTPUT; }
+	shared_ptr<Texture> pTexture;
+};
+
 class OutputShader : public IShader
 {
 	enum OUTPUT_UNIFORM : unsigned short
@@ -17,10 +24,11 @@ public:
 	virtual SHADER_TYPE Type() override { return SHADER_TYPE::SHADER_TYPE_OUTPUT; }
 	virtual void Initialize() override;
 	virtual void FetchUniformLocation() override;
-	void BindOutputTexture();
-
+	virtual void Bind(shared_ptr<IUniform> uniform) override;
+	virtual void UnBind() override;
 private:
-
+	void BindOutputTexture();
+	shared_ptr<OutputUniform> m_uniformParameter;
 };
 
 }

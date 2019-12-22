@@ -5,14 +5,14 @@ namespace KI
 class IRenderTarget
 {
 public:
-	IRenderTarget() {};
-	~IRenderTarget() {};
+	IRenderTarget();
+	~IRenderTarget();
 
 	void Begin();
 	void End();
 	virtual void Resize(int width, int height) = 0;
 	virtual void Dispose() = 0;
-	virtual void Clear();
+	virtual void Clear(GLbitfield clear = GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	void SetClearColor(vec4 color) { m_pClearColor = color; }
 protected:
 	virtual void Bind() = 0;

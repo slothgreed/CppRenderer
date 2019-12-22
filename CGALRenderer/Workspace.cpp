@@ -87,11 +87,14 @@ void Workspace::Initialize(Project* m_pProject)
 	m_pSSLIC->Initialize();
 	m_pSSLIC->SetDrawModel(model);
 
+	m_pGrayScale = make_shared<GrayScaleEffect>();
+	m_pGrayScale->Initialize();
+	m_pGrayScale->SetTexture(m_pRenderTarget->ColorTexture(0));
 
 	auto outputMaterial = make_shared<OutputMaterial>();
-	outputMaterial->AddColorTexture(m_pRenderTarget->ColorTexture(0));
 	m_pOutputPlane = make_shared<PfxPlane>(outputMaterial);
 	m_pOutputPlane->Initialize();
+	outputMaterial->AddColorTexture(m_pRenderTarget->ColorTexture(0));
 }
 
 void Workspace::Invoke()
@@ -104,7 +107,7 @@ void Workspace::Invoke()
 	m_pUniformScene->Bind();
 
 	m_pRenderTarget->Begin();
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	m_pRenderTarget->Clear();
 
 	for (int i = 0; i < m_pRenderList.size(); i++)
 	{
@@ -113,9 +116,11 @@ void Workspace::Invoke()
 	
 	m_pRenderTarget->End();
 	m_pBackTarget->Begin();
-	m_pSSLIC->Draw();
+	m_pBackTarget->Clear();
+	//m_pSSLIC->Draw();
 
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	//m_pGrayScale->Draw();
+
 	m_pOutputPlane->Draw();
 
 	m_pUniformScene->UnBind();

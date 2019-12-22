@@ -2,13 +2,10 @@
 #define ISHADER_H
 namespace KI
 {
-enum SHADER_TYPE
-{
-	SHADER_TYPE_DEFAULT		= 1,
-	SHADER_TYPE_OUTPUT		= 2,
-	SHADER_TYPE_COMPOSIT	= 3,
-	SHADER_TYPE_SSLIC
-};
+
+
+#define GLSL_VERSION_400_CORE "#version 400 core\n"
+#define SHADER_DEBUG
 
 
 struct ShaderBuildInfo
@@ -17,10 +14,6 @@ struct ShaderBuildInfo
 	std::string vertexDefine;
 	std::string fragDefine;
 };
-
-#define GLSL_VERSION_400_CORE "#version 400 core\n"
-#define SHADER_DEBUG
-
 class IShader
 {
 public:
@@ -35,7 +28,8 @@ public:
 	
 	virtual void Initialize() = 0;
 	virtual void FetchUniformLocation() = 0;
-
+	virtual void Bind(shared_ptr<IUniform> uniform) = 0;
+	virtual void UnBind() = 0;
 	GLuint Program() { return m_programId; }
 	bool Compare(const ShaderBuildInfo& buildInfo);
 

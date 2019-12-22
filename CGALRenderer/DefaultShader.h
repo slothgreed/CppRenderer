@@ -4,6 +4,15 @@
 namespace KI
 {
 class IShader;
+
+class DefaultUniform : public IUniform
+{
+public:
+	DefaultUniform() :pTexture(nullptr) {}
+	SHADER_TYPE Type() { return SHADER_TYPE::SHADER_TYPE_DEFAULT; }
+	shared_ptr<Texture> pTexture;
+};
+
 class DefaultShader : public IShader
 {
 	enum UNIFORM_LOCATION : unsigned short
@@ -21,10 +30,12 @@ public:
 
 	virtual void Initialize() override;
 	virtual void FetchUniformLocation() override;
-	void BindColorTexture();
-
+	virtual void Bind(shared_ptr<IUniform> uniform) override;
+	virtual void UnBind() override;
 private:
+	void BindColorTexture();
 	void BindScene();
+	shared_ptr<DefaultUniform> m_uniformParameter;
 };
 
 

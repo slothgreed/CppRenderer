@@ -43,6 +43,12 @@ void SSLICEffect::Initialize()
 	m_pBlendTexture->Begin();
 	m_pBlendTexture->Set(blendTexture);
 	m_pBlendTexture->End();
+
+	m_pModelUniform = make_shared<DefaultUniform>();
+	m_pModelUniform->pTexture = m_pBlendTexture;
+
+	m_pSSLICUniform = make_shared<SSLICUniform>();
+	m_pSSLICUniform->pTexture = m_pBlendTexture;
 }
 void SSLICEffect::SetDrawModel(shared_ptr<DefaultVertexBuffer> model)
 {
@@ -56,21 +62,19 @@ void SSLICEffect::SetDrawModel(shared_ptr<DefaultVertexBuffer> model)
 void SSLICEffect::Draw()
 {
 	m_pModelShader->Use();
-	m_pBlendTexture->Begin();
-	m_pModelShader->BindColorTexture();
+	m_pModelShader->Bind(m_pModelUniform);
 
 	m_pModel->Draw();
-	
-	m_pBlendTexture->End();
+
+	m_pModelShader->UnBind();
 	m_pModelShader->UnUse();
 
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC1_ALPHA);
 	m_pSSLICShader->Use();
-	m_pNoizeTexture->Begin();
-	m_pSSLICShader->BindColorTexture();
+	m_pSSLICShader->Bind(m_pSSLICUniform);
 	m_pPlaneBuffer->Draw();
-	m_pNoizeTexture->End();
+	m_pSSLICShader->UnBind();
 	m_pSSLICShader->UnUse();
 	glDisable(GL_BLEND);
 

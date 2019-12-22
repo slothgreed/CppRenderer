@@ -17,7 +17,7 @@ public:
 
 	void AddTexture(shared_ptr<Texture> texture);
 private:
-	shared_ptr<Texture> m_pTexture;
+	shared_ptr<DefaultUniform> m_pUniform;
 };
 }
 

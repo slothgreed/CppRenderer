@@ -25,14 +25,21 @@ void CompositShader::FetchUniformLocation()
 	Logger::GLError();
 }
 
-void CompositShader::SetSourceTexture(shared_ptr<Texture> source)
+void CompositShader::Bind(shared_ptr<IUniform> uniform)
 {
-	m_pSource = source;
+	if (uniform->Type() != SHADER_TYPE::SHADER_TYPE_COMPOSIT)
+	{
+		assert(0);
+	}
+	else
+	{
+		m_uniformParameter = static_pointer_cast<CompositUniform>(uniform);
+	}
 }
 
-void CompositShader::SetTargetTexture(shared_ptr<Texture> target)
+void CompositShader::UnBind()
 {
-	m_pTarget = target;
+
 }
 
 void CompositShader::GetFragShaderDefine(COMPOSIT_TYPE type, ShaderBuildInfo& shaderDefine)

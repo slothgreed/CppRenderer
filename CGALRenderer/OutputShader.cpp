@@ -25,6 +25,31 @@ void OutputShader::FetchUniformLocation()
 
 }
 
+void OutputShader::Bind(shared_ptr<IUniform> uniform)
+{
+	if (uniform->Type() != SHADER_TYPE::SHADER_TYPE_OUTPUT)
+	{
+		assert(0);
+	}
+	else
+	{
+		m_uniformParameter = static_pointer_cast<OutputUniform>(uniform);
+	}
+
+	if (m_uniformParameter->pTexture == nullptr)
+	{
+		assert(0);
+	}
+
+	m_uniformParameter->pTexture->Begin();
+	BindOutputTexture();
+}
+
+void OutputShader::UnBind()
+{
+	m_uniformParameter->pTexture->End();
+}
+
 void OutputShader::BindOutputTexture()
 {
 	IShader::BindTexture(GL_TEXTURE0, m_uniformLocation[OUTPUT_UNIFORM_COLOR_TEXTURE]);

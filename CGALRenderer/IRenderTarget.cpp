@@ -1,5 +1,15 @@
 namespace KI
 {
+
+IRenderTarget::IRenderTarget()
+{
+	m_pClearColor = vec4(1);
+}
+
+IRenderTarget::~IRenderTarget()
+{
+}
+
 void IRenderTarget::Begin()
 {
 	Bind();
@@ -14,7 +24,7 @@ void IRenderTarget::End()
 	m_modifing = false;
 }
 
-void IRenderTarget::Clear()
+void IRenderTarget::Clear(GLbitfield clear)
 {
 	if (Modifing() == false)
 	{
@@ -22,6 +32,6 @@ void IRenderTarget::Clear()
 	}
 
 	glClearColor(m_pClearColor.r, m_pClearColor.g, m_pClearColor.b, m_pClearColor.a);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glClear(clear);
 }
 }

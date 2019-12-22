@@ -42,6 +42,10 @@ shared_ptr<IShader> ShaderManager::Generate(const ShaderBuildInfo& buildInfo)
 		shader = make_shared<SSLICShader>();
 		shader->Build(buildInfo);
 		break;
+	case SHADER_TYPE_GRAYSCALE:
+		shader = make_shared<GrayScaleShader>();
+		shader->Build(buildInfo);
+		break;
 	default:
 		assert(0);
 		break;

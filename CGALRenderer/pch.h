@@ -75,6 +75,7 @@ using namespace glm;
 #include "IRenderTarget.h"
 #include "RenderTarget.h"
 #include "SymbolicRenderTarget.h"
+#include "IUniform.h"
 #include "IShader.h"
 #include "IVertexBuffer.h"
 
@@ -95,13 +96,14 @@ using namespace glm;
 #include "CGALGeneralizedMaps.h"
 #include "HalfEdgeModel.h"
 #include "IMaterial.h"
+#include "DefaultShader.h"
+#include "DefaultVertexBuffer.h"
 #include "DefaultMaterial.h"
 #include "OutputMaterial.h"
-#include "DefaultShader.h"
 #include "OutputShader.h"
-#include "DefaultVertexBuffer.h"
 #include "CompositShader.h"
 #include "SSLICShader.h"
+#include "GrayScaleShader.h"
 
 // Renderer
 #include "PfxPlane.h"

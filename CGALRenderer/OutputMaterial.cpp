@@ -33,31 +33,19 @@ void OutputMaterial::CompileShader()
 void OutputMaterial::AddColorTexture(shared_ptr<Texture> colorTexture)
 {
 	m_pColorTexture = colorTexture;
+
 }
 
 void OutputMaterial::Bind()
 {
-	if (m_pColorTexture == nullptr)
-	{
-		assert(0);
-	}
-	else
-	{
-		if (m_pShader->Type() == SHADER_TYPE::SHADER_TYPE_OUTPUT)
-		{
-			auto pOutputShader = static_pointer_cast<OutputShader>(m_pShader);
-			m_pColorTexture->Begin();
-			pOutputShader->BindOutputTexture();
-		}
-	}
+	auto pUniform = make_shared<OutputUniform>();
+	pUniform->pTexture = m_pColorTexture;
+	m_pShader->Bind(pUniform);
 }
 
 void OutputMaterial::UnBind()
 {
-	if (m_pColorTexture != nullptr)
-	{
-		m_pColorTexture->End();
-	}
+	m_pShader->UnBind();
 }
 
 bool OutputMaterial::Compare(const IMaterial& material)

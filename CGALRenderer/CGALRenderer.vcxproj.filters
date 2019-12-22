@@ -390,6 +390,12 @@
     <ClInclude Include="PointState.h">
       <Filter>ヘッダー ファイル\OpenGL\GLState</Filter>
     </ClInclude>
+    <ClInclude Include="GrayScaleShader.h">
+      <Filter>ヘッダー ファイル\Asset\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="IUniform.h">
+      <Filter>ヘッダー ファイル\OpenGL</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -583,6 +589,9 @@
     </ClCompile>
     <ClCompile Include="PointState.cpp">
       <Filter>ソース ファイル\OpenGL\GLState</Filter>
+    </ClCompile>
+    <ClCompile Include="GrayScaleShader.cpp">
+      <Filter>ソース ファイル\Asset\Shader</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

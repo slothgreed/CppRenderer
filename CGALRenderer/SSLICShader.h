@@ -4,6 +4,14 @@
 namespace KI
 {
 
+class SSLICUniform : public IUniform
+{
+public:
+	virtual SHADER_TYPE Type() override { return SHADER_TYPE::SHADER_TYPE_SSLIC; }
+	shared_ptr<Texture> pTexture;
+};
+
+
 class SSLICShader : public IShader
 {
 public:
@@ -19,9 +27,12 @@ public:
 	virtual SHADER_TYPE Type() override { return SHADER_TYPE::SHADER_TYPE_SSLIC; }
 	virtual void Initialize() override;
 	virtual void FetchUniformLocation() override;
-	void BindColorTexture();
-private:
+	virtual void Bind(shared_ptr<IUniform> uniform) override;
+	virtual void UnBind() override;
 
+private:
+	void BindColorTexture();
+	shared_ptr<SSLICUniform> m_uniformParameter;
 };
 
 }

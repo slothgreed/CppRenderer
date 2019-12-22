@@ -12,7 +12,11 @@ DefaultMaterial::~DefaultMaterial()
 
 void DefaultMaterial::AddTexture(shared_ptr<Texture> texture)
 {
-	m_pTexture = texture;
+	if (m_pUniform == nullptr)
+	{
+		m_pUniform = make_shared<DefaultUniform>();
+	}
+	m_pUniform->pTexture = texture;
 }
 
 void DefaultMaterial::CompileShader()
@@ -33,24 +37,12 @@ void DefaultMaterial::CompileShader()
 
 void DefaultMaterial::Bind()
 {
-	if (m_pTexture != nullptr)
-	{
-		if (m_pShader->Type() == SHADER_TYPE::SHADER_TYPE_DEFAULT)
-		{
-			auto pOutputShader = static_pointer_cast<DefaultShader>(m_pShader);
-			m_pTexture->Begin();
-			pOutputShader->BindColorTexture();
-		}
-	}
-
+	m_pShader->Bind(m_pUniform);
 }
 
 void DefaultMaterial::UnBind()
 {
-	if (m_pTexture != nullptr)
-	{
-		m_pTexture->End();
-	}
+	m_pShader->UnBind();
 }
 
 bool DefaultMaterial::Compare(const IMaterial& material)
