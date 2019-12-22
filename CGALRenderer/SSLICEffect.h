@@ -3,12 +3,13 @@
 
 namespace KI
 {
-class SSLICEffect : IPfxEffect
+class SSLICEffect : public IPostEffect
 {
 public:
 	SSLICEffect();
 	~SSLICEffect();
 
+	virtual PFX_TYPE Type() { return PFX_TYPE::PFX_TYPE_SSLIC; }
 	virtual void Initialize() override;
 	virtual void Draw() override;
 	virtual void Resize(int width, int height) override;

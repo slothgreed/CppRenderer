@@ -107,11 +107,11 @@ using namespace glm;
 
 // Renderer
 #include "PfxPlane.h"
-#include "IPfxEffect.h"
+#include "IPostEffect.h"
 #include "GrayScaleEffect.h"
 #include "SSLICEffect.h"
-
-
+#include "Renderer.h"
+#include "PfxRenderer.h"
 
 // logic
 #include "CameraController.h"

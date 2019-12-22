@@ -360,9 +360,6 @@
     <ClInclude Include="GrayScaleEffect.h">
       <Filter>ヘッダー ファイル\Renderer\Pfx</Filter>
     </ClInclude>
-    <ClInclude Include="IPfxEffect.h">
-      <Filter>ヘッダー ファイル\Renderer\Pfx</Filter>
-    </ClInclude>
     <ClInclude Include="PfxPlane.h">
       <Filter>ヘッダー ファイル\Renderer\Pfx</Filter>
     </ClInclude>
@@ -395,6 +392,15 @@
     </ClInclude>
     <ClInclude Include="IUniform.h">
       <Filter>ヘッダー ファイル\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer.h">
+      <Filter>ヘッダー ファイル\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="IPostEffect.h">
+      <Filter>ヘッダー ファイル\Renderer\Pfx</Filter>
+    </ClInclude>
+    <ClInclude Include="PfxRenderer.h">
+      <Filter>ヘッダー ファイル\Renderer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -592,6 +598,12 @@
     </ClCompile>
     <ClCompile Include="GrayScaleShader.cpp">
       <Filter>ソース ファイル\Asset\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer.cpp">
+      <Filter>ソース ファイル\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="PfxRenderer.cpp">
+      <Filter>ソース ファイル\Renderer</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

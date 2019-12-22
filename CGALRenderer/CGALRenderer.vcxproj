@@ -199,7 +199,7 @@
     <ClInclude Include="IModelProperty.h" />
     <ClInclude Include="HalfEdgeDS.h" />
     <ClInclude Include="IMaterial.h" />
-    <ClInclude Include="IPfxEffect.h" />
+    <ClInclude Include="IPostEffect.h" />
     <ClInclude Include="GLState.h" />
     <ClInclude Include="IRenderTarget.h" />
     <ClInclude Include="IUniform.h" />
@@ -208,9 +208,11 @@
     <ClInclude Include="OutputMaterial.h" />
     <ClInclude Include="OutputShader.h" />
     <ClInclude Include="PfxPlane.h" />
+    <ClInclude Include="PfxRenderer.h" />
     <ClInclude Include="PointState.h" />
     <ClInclude Include="Random.h" />
     <ClInclude Include="RenderBuffer.h" />
+    <ClInclude Include="Renderer.h" />
     <ClInclude Include="RenderTarget.h" />
     <ClInclude Include="RenderTexture.h" />
     <ClInclude Include="Sampler.h" />
@@ -281,6 +283,7 @@
     <ClCompile Include="OutputMaterial.cpp" />
     <ClCompile Include="OutputShader.cpp" />
     <ClCompile Include="PfxPlane.cpp" />
+    <ClCompile Include="PfxRenderer.cpp" />
     <ClCompile Include="PointState.cpp" />
     <ClCompile Include="PrimitiveNode.cpp" />
     <ClCompile Include="Observer.cpp" />
@@ -300,6 +303,7 @@
     <ClCompile Include="ModelNode.cpp" />
     <ClCompile Include="DefaultShader.cpp" />
     <ClCompile Include="RenderBuffer.cpp" />
+    <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="RenderTarget.cpp" />
     <ClCompile Include="RenderTexture.cpp" />
     <ClCompile Include="Sampler.cpp" />

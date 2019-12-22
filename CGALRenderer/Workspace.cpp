@@ -83,13 +83,17 @@ void Workspace::Initialize(Project* m_pProject)
 	//auto subdivCommand = make_shared<SubdivisionCommand>(subdivArgs);
 	//m_pCommandManager->Execute(subdivCommand);
 
-	m_pSSLIC = make_shared<SSLICEffect>();
-	m_pSSLIC->Initialize();
-	m_pSSLIC->SetDrawModel(model);
+	auto pSSLIC = make_shared<SSLICEffect>();
+	pSSLIC->Initialize();
+	pSSLIC->SetDrawModel(model);
 
-	m_pGrayScale = make_shared<GrayScaleEffect>();
-	m_pGrayScale->Initialize();
-	m_pGrayScale->SetTexture(m_pRenderTarget->ColorTexture(0));
+	auto pGrayScale = make_shared<GrayScaleEffect>();
+	pGrayScale->Initialize();
+	pGrayScale->SetTexture(m_pRenderTarget->ColorTexture(0));
+
+	m_pPfxRenderer->AddPostEffect(pSSLIC);
+	m_pPfxRenderer->AddPostEffect(pGrayScale);
+
 
 	auto outputMaterial = make_shared<OutputMaterial>();
 	m_pOutputPlane = make_shared<PfxPlane>(outputMaterial);
@@ -115,12 +119,10 @@ void Workspace::Invoke()
 	}
 	
 	m_pRenderTarget->End();
+	m_pPfxRenderer->Draw();
+
 	m_pBackTarget->Begin();
 	m_pBackTarget->Clear();
-	//m_pSSLIC->Draw();
-
-	//m_pGrayScale->Draw();
-
 	m_pOutputPlane->Draw();
 
 	m_pUniformScene->UnBind();

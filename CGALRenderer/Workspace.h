@@ -28,8 +28,7 @@ private:
 	shared_ptr<IRenderTarget> m_pBackTarget;
 	shared_ptr<RenderTarget> m_pRenderTarget;
 	shared_ptr<PfxPlane> m_pOutputPlane;
-	shared_ptr<GrayScaleEffect> m_pGrayScale;
-	shared_ptr<SSLICEffect> m_pSSLIC;
+	shared_ptr<PfxRenderer> m_pPfxRenderer;
 	unique_ptr<CommandManager> m_pCommandManager;
 };
 }

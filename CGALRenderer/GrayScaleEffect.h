@@ -4,12 +4,13 @@
 namespace KI
 {
 
-class GrayScaleEffect : public IPfxEffect
+class GrayScaleEffect : public IPostEffect
 {
 public:
 	GrayScaleEffect();
 	~GrayScaleEffect();
 
+	virtual PFX_TYPE Type() { return PFX_TYPE::PFX_TYPE_GRAYSCALE; }
 	virtual void Initialize() override;
 	virtual void Draw() override;
 	void Resize(int width, int height) override;
