@@ -33,4 +33,5 @@ void Viewport::ConvertWindowToScreenCoordinate(const vec2& position, vec2& resul
 	result.y = 2 * position.y * height - 1.0f;
 	result.y *= -1;
 }
+
 }

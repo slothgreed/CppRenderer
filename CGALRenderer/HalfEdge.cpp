@@ -23,6 +23,16 @@ void HalfEdge::Set(
 	m_Face = face;
 }
 
+void HalfEdge::SetBefore(shared_ptr<HalfEdge> edge)
+{
+	m_Before = edge;
+}
+
+void HalfEdge::SetNext(shared_ptr<HalfEdge> edge)
+{
+	m_Next = edge;
+}
+
 void HalfEdge::CalcElement()
 {
 	m_angle = CalcAngle();

@@ -94,6 +94,12 @@ void HalfEdgeDS::Load(const string& filePath)
 	}
 
 	binaryStream.close();
+
+	//HalfEdgeOperator halfEdgeOperator;
+	//for (int i = 0; i < m_EdgeList.size(); i++)
+	//{
+	//	halfEdgeOperator.EdgeFlips(this, m_EdgeList[i]);
+	//}
 }
 
 void HalfEdgeDS::CalcElement()
@@ -128,5 +134,21 @@ float HalfEdgeDS::CalcAllEdgeLength()
 
 	return edgeSum / 2; // opposite ‚Ì‚à‚Ì‚àŠÜ‚Ü‚ê‚Ä‚¢‚é‚Ì‚Å/2
 }
+
+void HalfEdgeDS::RemoveVertex(int index)
+{
+
+}
+
+void HalfEdgeDS::RemoveMesh(int index)
+{
+
+}
+
+void HalfEdgeDS::RemoveEdge(int index)
+{
+
+}
+
 
 }

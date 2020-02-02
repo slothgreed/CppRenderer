@@ -5,18 +5,18 @@ namespace KI
 class HalfEdgeVertex;
 class HalfEdge;
 
-class FaceAroundEdgeIterator : IIterator<HalfEdge*>
+class FaceAroundEdgeIterator : IIterator<shared_ptr<HalfEdge>>
 {
 public:
 	FaceAroundEdgeIterator(HalfEdgeFace* pFace);
 
 	virtual bool HasNext();
 	virtual void Next();
-	virtual HalfEdge* Current();
+	virtual shared_ptr<HalfEdge> Current();
 
 private:
 	HalfEdgeFace*	m_pFace;
-	HalfEdge* m_pEdgeItr;
+	shared_ptr<HalfEdge> m_pEdgeItr;
 	bool m_init; // ‰‰ñ‚©‚Ç‚¤‚© next ‚ğŒÄ‚ñ‚¾‚ç false
 };
 

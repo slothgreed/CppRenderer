@@ -25,7 +25,9 @@ public:
 	~HalfEdgeVertex();
 
 	void SetEdge(shared_ptr<HalfEdge> edge) { m_Edge = edge; };
+
 	shared_ptr<HalfEdge> Edge() { return m_Edge; }
+	void SetPosition(vec3 position);
 	void SetPosition(float x, float y, float z);
 	vec3 Position() { return m_position; };
 	int Index() { return m_Index; }

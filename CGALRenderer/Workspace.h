@@ -9,19 +9,17 @@ class UniformScene;
 class UniformBuffer;
 class CGALModelNode;
 class CommandManager;
-class Workspace
+class Workspace : IWorkspace
 {
 public:
 	Workspace();
 	~Workspace();
-	void Initialize(Project* m_pProject);
-	void Invoke();
-	void ShowProperty();
+	virtual void Initialize(Project* m_pProject) override;
+	virtual void Invoke() override;
+	virtual void ShowProperty() override;
 
-	shared_ptr<Camera> MainCamera() { return m_pCamera; }
 private:
 
-	shared_ptr<Camera> m_pCamera;
 	shared_ptr<IShader> m_pDefaultShader;
 	shared_ptr<UniformScene> m_pUniformScene;
 	vector<shared_ptr<IModelNode>> m_pRenderList;

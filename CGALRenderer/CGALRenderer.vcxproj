@@ -106,7 +106,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>E:\MyProgram\KIProject\CGALRenderer\extlibs\glfw-3.3\include;E:\MyProgram\KIProject\CGALRenderer\extlibs\glm-0.9.9.6\glm;E:\MyProgram\KIProject\CGALRenderer\extlibs\glew-2.1.0\include;E:\Tools\CGAL4.11\include;E:\Tools\boost\boost_1_64_0;E:\Tools\CGAL4.11\build\include;E:\Tools\CGAL4.11\auxiliary\gmp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\MyProgram\KIProject\CGALRenderer\extlibs\glfw-3.3\include;E:\MyProgram\KIProject\CGALRenderer\extlibs\glm-0.9.9.6\glm;E:\MyProgram\KIProject\CGALRenderer\extlibs\glew-2.1.0\include;E:\Tools\CGAL4.11\include;E:\Tools\boost\boost_1_64_0;E:\Tools\CGAL4.11\build\include;E:\Tools\CGAL4.11\auxiliary\gmp\include;E:\Tools\boost\boost_1_64_0\boost;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>pch.h</ForcedIncludeFiles>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
@@ -164,6 +164,7 @@
     <ClInclude Include="AssetTypes.h" />
     <ClInclude Include="BDB.h" />
     <ClInclude Include="BDBProperty.h" />
+    <ClInclude Include="BunnyScene.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CameraController.h" />
     <ClInclude Include="CGALGeneralizedMaps.h" />
@@ -183,6 +184,8 @@
     <ClInclude Include="HalfEdgeFace.h" />
     <ClInclude Include="FileUtility.h" />
     <ClInclude Include="HalfEdgeModel.h" />
+    <ClInclude Include="HalfEdgeOperator.h" />
+    <ClInclude Include="IWorkspace.h" />
     <ClInclude Include="ICommand.h" />
     <ClInclude Include="IController.h" />
     <ClInclude Include="GLObject.h" />
@@ -209,6 +212,7 @@
     <ClInclude Include="OutputShader.h" />
     <ClInclude Include="PfxPlane.h" />
     <ClInclude Include="PfxRenderer.h" />
+    <ClInclude Include="PickCommand.h" />
     <ClInclude Include="PointState.h" />
     <ClInclude Include="Random.h" />
     <ClInclude Include="RenderBuffer.h" />
@@ -252,6 +256,7 @@
   <ItemGroup>
     <ClCompile Include="BDB.cpp" />
     <ClCompile Include="BDBProperty.cpp" />
+    <ClCompile Include="BunnyScene.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CameraController.cpp" />
     <ClCompile Include="CGALGeneralizedMaps.cpp" />
@@ -269,6 +274,7 @@
     <ClCompile Include="HalfEdgeFace.cpp" />
     <ClCompile Include="FileUtility.cpp" />
     <ClCompile Include="HalfEdgeModel.cpp" />
+    <ClCompile Include="HalfEdgeOperator.cpp" />
     <ClCompile Include="IMaterial.cpp" />
     <ClCompile Include="ImGui\imgui.cpp" />
     <ClCompile Include="ImGui\imgui_demo.cpp" />
@@ -284,6 +290,7 @@
     <ClCompile Include="OutputShader.cpp" />
     <ClCompile Include="PfxPlane.cpp" />
     <ClCompile Include="PfxRenderer.cpp" />
+    <ClCompile Include="PickCommand.cpp" />
     <ClCompile Include="PointState.cpp" />
     <ClCompile Include="PrimitiveNode.cpp" />
     <ClCompile Include="Observer.cpp" />

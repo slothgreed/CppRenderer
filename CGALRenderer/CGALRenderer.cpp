@@ -91,6 +91,14 @@ void MouseButtonCallBack(GLFWwindow* window, int button, int action, int mods)
 	TheApp()->ProcessMouseEvent(input);
 }
 
+void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
+{
+	if (key == GLFW_KEY_E && action == GLFW_PRESS)
+	{
+
+	}
+}
+
 CGALRenderer* theApp = NULL;
 CGALRenderer* TheApp()
 {
@@ -148,6 +156,7 @@ bool CGALRenderer::Initialize()
 	glfwSetMouseButtonCallback(m_window, MouseButtonCallBack);
 	glfwSetScrollCallback(m_window, ScrollCallBack);	// mouse wheel;
 	glfwSetWindowSizeCallback(m_window, WindowSizeCallBack);
+	glfwSetKeyCallback(m_window, KeyCallback);
 
 	m_pController[CONTROLER_TYPE::CAMERA_CONTROLER] = new CameraController();
 	m_pViewport = make_shared<Viewport>();
@@ -160,7 +169,7 @@ bool CGALRenderer::Initialize()
 	return true;
 }
 
-void CGALRenderer::SetWorkspace(shared_ptr<Workspace> pWorkspace)
+void CGALRenderer::SetWorkspace(shared_ptr<IWorkspace> pWorkspace)
 {
 	m_pWorkspace = pWorkspace;
 }

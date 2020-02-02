@@ -9,14 +9,14 @@ public:
 	~Viewport();
 	void SetPosition(int x, int y);
 	void Resize(int width, int height);
-	void ConvertWindowToScreenCoordinate(const glm::vec2& position, glm::vec2& result);
+	void ConvertWindowToScreenCoordinate(const vec2& position, vec2& result);
 
-	const glm::ivec2 Position() const { return m_position; }
-	const glm::ivec2 Size()  const { return m_size; }
-
+	const ivec2 Position() const { return m_position; }
+	const ivec2 Size()  const { return m_size; }
+	const ivec4 GetScreen() const {	return vec4(m_position.x, m_position.y, m_size.x, m_size.y);}
 private:
-	glm::ivec2 m_position;
-	glm::ivec2 m_size;
+	ivec2 m_position;
+	ivec2 m_size;
 };
 }
 #endif VIEWPORT_H

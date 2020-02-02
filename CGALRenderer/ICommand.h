@@ -12,13 +12,15 @@ enum CommandResult
 enum COMMAND_TYPE : unsigned int
 {
 	SUBDIVISION_COMMAND = 0,
-	COMMAND_TYPE_NUM	= 1
+	PICK_COMMAND		= 1,
+	COMMAND_TYPE_NUM	= 2
 };
 
 enum COMMAND_ARGS_TYPE : unsigned int
 {
 	SUBDIVISION_COMMAND_ARGS = 0,
-	COMMAND_ARGS_NUM		 = 1
+	PICK_COMMAND_ARGS		 = 1,
+	COMMAND_ARGS_NUM		 = 2
 };
 
 class ICommandArgs

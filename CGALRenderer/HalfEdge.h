@@ -17,6 +17,9 @@ public:
 		shared_ptr<HalfEdge> opposite,
 		shared_ptr<HalfEdgeFace> face );
 
+	void SetNext(shared_ptr<HalfEdge> end);
+	void SetBefore(shared_ptr<HalfEdge> end);
+
 	shared_ptr<HalfEdgeVertex> End() { return m_End; }
 	shared_ptr<HalfEdge> Next()		{ return m_Next; }
 	shared_ptr<HalfEdge> Before()	{ return m_Before; }

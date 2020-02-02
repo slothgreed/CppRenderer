@@ -10,6 +10,11 @@ HalfEdgeVertex::HalfEdgeVertex(int index)
 HalfEdgeVertex::~HalfEdgeVertex()
 {
 }
+void HalfEdgeVertex::SetPosition(vec3 position)
+{
+	m_position = position;
+}
+
 void HalfEdgeVertex::SetPosition(float x, float y, float z)
 {
 	m_position.x = x;
@@ -62,6 +67,7 @@ vec3 HalfEdgeVertex::CalcNormal()
 
 	return normal;
 }
+
 
 string HalfEdgeVertex::ToString()
 {

@@ -139,6 +139,15 @@
     <Filter Include="ソース ファイル\OpenGL\GLState">
       <UniqueIdentifier>{e2d2aed3-78e5-4f07-95b5-c89096582c22}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Topology\Operator">
+      <UniqueIdentifier>{5bdc9300-9914-4d5f-9f1a-b8dcf5188173}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Application\InitApp">
+      <UniqueIdentifier>{9147df9e-f48e-491c-92db-9b63b1b9ed9e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Application\InitApp">
+      <UniqueIdentifier>{19de7987-1a26-457e-82a7-84b5d081fc24}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -402,6 +411,18 @@
     <ClInclude Include="PfxRenderer.h">
       <Filter>ヘッダー ファイル\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="HalfEdgeOperator.h">
+      <Filter>ヘッダー ファイル\Topology</Filter>
+    </ClInclude>
+    <ClInclude Include="PickCommand.h">
+      <Filter>ヘッダー ファイル\Logic\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="BunnyScene.h">
+      <Filter>ヘッダー ファイル\Application\InitApp</Filter>
+    </ClInclude>
+    <ClInclude Include="IWorkspace.h">
+      <Filter>ヘッダー ファイル\Application\InitApp</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -604,6 +625,15 @@
     </ClCompile>
     <ClCompile Include="PfxRenderer.cpp">
       <Filter>ソース ファイル\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="HalfEdgeOperator.cpp">
+      <Filter>ソース ファイル\Topology\Operator</Filter>
+    </ClCompile>
+    <ClCompile Include="PickCommand.cpp">
+      <Filter>ソース ファイル\Logic\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="BunnyScene.cpp">
+      <Filter>ソース ファイル\Application\InitApp</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

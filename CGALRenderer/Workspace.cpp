@@ -37,16 +37,17 @@ void Workspace::Initialize(Project* m_pProject)
 	//polyhedron->Load("E:\\cgModel\\StanfordBunny.off");
 	//polyhedron->GenSampleModel();
 
-	//shared_ptr<IModel> polyhedron = make_shared<HalfEdgeModel>();
-	//polyhedron->Load("E:\\cgModel\\bunny6000.half");
+	{
+		shared_ptr<IModel> polyhedron = make_shared<HalfEdgeModel>();
+		polyhedron->Load("E:\\cgModel\\bunny6000.half");
 
+		BDB bdb(vec3(0, 0, 0), vec3(1, 1, 1));
+		polyhedron->GetBDB(bdb);
+		m_pCamera->FitToBDB(bdb);
 
-	BDB bdb(vec3(0, 0, 0), vec3(1, 1, 1));
-	//polyhedron->GetBDB(bdb);
-	//m_pCamera->FitToBDB(bdb);
-
-	//auto cgalNode = make_shared<ModelNode>(polyhedron);
-	//m_pRenderList.push_back(cgalNode);
+		auto polyNode = make_shared<ModelNode>(polyhedron);
+		m_pRenderList.push_back(polyNode);
+	}
 
 	auto axis = make_shared<DefaultVertexBuffer>();
 	ModelGenerator::Axis(axis.get());
@@ -91,6 +92,7 @@ void Workspace::Initialize(Project* m_pProject)
 	pGrayScale->Initialize();
 	pGrayScale->SetTexture(m_pRenderTarget->ColorTexture(0));
 
+	m_pPfxRenderer = make_shared<PfxRenderer>();
 	m_pPfxRenderer->AddPostEffect(pSSLIC);
 	m_pPfxRenderer->AddPostEffect(pGrayScale);
 

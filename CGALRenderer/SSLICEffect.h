@@ -8,12 +8,15 @@ class SSLICEffect : public IPostEffect
 public:
 	SSLICEffect();
 	~SSLICEffect();
-
+	
 	virtual PFX_TYPE Type() { return PFX_TYPE::PFX_TYPE_SSLIC; }
 	virtual void Initialize() override;
 	virtual void Draw() override;
 	virtual void Resize(int width, int height) override;
 	void SetDrawModel(shared_ptr<DefaultVertexBuffer> model);
+
+	virtual void ReadFromXML(const boost::property_tree::ptree& tree);
+	virtual void WriteToXML(const boost::property_tree::ptree& tree);
 
 private:
 	shared_ptr<Texture> m_pNoizeTexture;

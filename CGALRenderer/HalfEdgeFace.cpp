@@ -31,7 +31,7 @@ float HalfEdgeFace::CalcArea()
 {
 	float area = 0;
 	auto itr = FaceAroundEdgeIterator(this);
-	HalfEdge* before = itr.Current();
+	auto before = itr.Current();
 	itr.Next();
 
 	for (itr; itr.HasNext(); itr.Next())
@@ -78,13 +78,13 @@ string HalfEdgeFace::ToString()
 FaceAroundEdgeIterator::FaceAroundEdgeIterator(HalfEdgeFace* pFace)
 {
 	m_pFace = pFace;
-	m_pEdgeItr = m_pFace->Edge().get();
+	m_pEdgeItr = m_pFace->Edge();
 	m_init = true;
 }
 
 bool FaceAroundEdgeIterator::HasNext()
 {
-	if (m_pEdgeItr == m_pFace->Edge().get() && m_init == false)
+	if (m_pEdgeItr == m_pFace->Edge() && m_init == false)
 	{
 		return false;
 	}
@@ -96,11 +96,11 @@ bool FaceAroundEdgeIterator::HasNext()
 
 void FaceAroundEdgeIterator::Next()
 {
-	m_pEdgeItr = m_pEdgeItr->Next().get();
+	m_pEdgeItr = m_pEdgeItr->Next();
 	m_init = false;
 }
 
-HalfEdge* FaceAroundEdgeIterator::Current()
+shared_ptr<HalfEdge> FaceAroundEdgeIterator::Current()
 {
 	return m_pEdgeItr;
 }

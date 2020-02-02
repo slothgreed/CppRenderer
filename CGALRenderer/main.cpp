@@ -10,11 +10,11 @@ int main()
 	std::unique_ptr<CGALRenderer> renderer(new CGALRenderer());
 	auto pProject = make_shared<Project>();
 	auto pWorkspace = make_shared<Workspace>();
-
+	auto pBunnyScene = make_shared<BunnyScene>();
 	renderer->Initialize();
-	renderer->SetWorkspace(pWorkspace);
+	renderer->SetWorkspace(pBunnyScene);
 	pProject->Initialize();
-	pWorkspace->Initialize(pProject.get());
+	pBunnyScene->Initialize(pProject.get());
 
 	renderer->Run();
 	
