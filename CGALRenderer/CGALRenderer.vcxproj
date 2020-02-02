@@ -185,6 +185,7 @@
     <ClInclude Include="FileUtility.h" />
     <ClInclude Include="HalfEdgeModel.h" />
     <ClInclude Include="HalfEdgeOperator.h" />
+    <ClInclude Include="HalfEdgeProperty.h" />
     <ClInclude Include="IWorkspace.h" />
     <ClInclude Include="ICommand.h" />
     <ClInclude Include="IController.h" />
@@ -275,6 +276,7 @@
     <ClCompile Include="FileUtility.cpp" />
     <ClCompile Include="HalfEdgeModel.cpp" />
     <ClCompile Include="HalfEdgeOperator.cpp" />
+    <ClCompile Include="HalfEdgeProperty.cpp" />
     <ClCompile Include="IMaterial.cpp" />
     <ClCompile Include="ImGui\imgui.cpp" />
     <ClCompile Include="ImGui\imgui_demo.cpp" />

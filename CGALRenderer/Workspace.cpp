@@ -37,18 +37,6 @@ void Workspace::Initialize(Project* m_pProject)
 	//polyhedron->Load("E:\\cgModel\\StanfordBunny.off");
 	//polyhedron->GenSampleModel();
 
-	{
-		shared_ptr<IModel> polyhedron = make_shared<HalfEdgeModel>();
-		polyhedron->Load("E:\\cgModel\\bunny6000.half");
-
-		BDB bdb(vec3(0, 0, 0), vec3(1, 1, 1));
-		polyhedron->GetBDB(bdb);
-		m_pCamera->FitToBDB(bdb);
-
-		auto polyNode = make_shared<ModelNode>(polyhedron);
-		m_pRenderList.push_back(polyNode);
-	}
-
 	auto axis = make_shared<DefaultVertexBuffer>();
 	ModelGenerator::Axis(axis.get());
 	auto axisNode = make_shared<PrimitiveNode>(m_pDefaultShader, axis);

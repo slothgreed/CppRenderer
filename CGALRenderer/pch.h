@@ -126,6 +126,7 @@ using namespace glm;
 #include "IModelProperty.h"
 #include "BDBProperty.h"
 #include "VectorProperty.h"
+#include "HalfEdgeProperty.h"
 
 // application utility
 #include "ModelGenerator.h"

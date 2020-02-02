@@ -12,6 +12,7 @@ public:
 
 	virtual PROPERTY_TYPE Type() override { return PROPERTY_TYPE_VECTOR; }
 	virtual void Draw();
+	virtual void Update(void* model);
 private:
 	void GenVBO(const vector<vec3>& vertexList, const vec3& color);
 	shared_ptr<IShader> m_pShader;

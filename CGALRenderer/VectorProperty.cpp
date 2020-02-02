@@ -21,7 +21,10 @@ void VectorProperty::GenVBO(const vector<vec3>& vertexList, const vec3& color)
 	m_pShader = ShaderManager::Instance()->FindOrNew(buildInfo);
 }
 
-
+void VectorProperty::Update(void* model)
+{
+	return;
+}
 void VectorProperty::Draw()
 {
 	m_pShader->Use();

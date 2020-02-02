@@ -1,30 +1,23 @@
 namespace KI
 {
-BDBProperty::BDBProperty(BDB& bdb)
+BDBProperty::BDBProperty(const BDB& bdb)
 {
-	m_bdb = bdb;
-	GenVBO();
+	Build(bdb);
 }
 
 BDBProperty::~BDBProperty()
 {
 }
 
-void BDBProperty::GenVBO()
+void BDBProperty::Build(const BDB& bdb)
 {
 	m_pVertexBuffer = make_shared<DefaultVertexBuffer>();
 	m_pVertexBuffer->Generate(VERTEX_LAYOUT::VERTEX_LAYOUT_P);
 
+	
 	vector<vec3> position;
-	position.push_back(m_bdb.Min());
-	position.push_back(vec3(m_bdb.Max().x, m_bdb.Min().y, m_bdb.Min().z));
-	position.push_back(vec3(m_bdb.Max().x, m_bdb.Max().y, m_bdb.Min().z));
-	position.push_back(vec3(m_bdb.Min().x, m_bdb.Max().y, m_bdb.Min().z));
-
-	position.push_back(vec3(m_bdb.Min().x, m_bdb.Min().y, m_bdb.Max().z));
-	position.push_back(vec3(m_bdb.Max().x, m_bdb.Min().y, m_bdb.Max().z));
-	position.push_back(m_bdb.Max());
-	position.push_back(vec3(m_bdb.Min().x, m_bdb.Max().y, m_bdb.Max().z));
+	GetBDBPosition(bdb, position);
+	m_pVertexBuffer->SetPosition(GL_LINES, position);
 
 	vector<int> index;
 	index.resize(24);
@@ -47,12 +40,31 @@ void BDBProperty::GenVBO()
 	index[i] = 2; i++; index[i] = 6; i++;
 	index[i] = 3; i++; index[i] = 7;
 
-	m_pVertexBuffer->SetPosition(GL_LINES, position);
 	m_pVertexBuffer->SetIndex(index);
 
 	ShaderBuildInfo buildInfo;
 	DefaultShader::GetVertexShaderDefine(VERTEX_LAYOUT_P, buildInfo);
 	m_pShader = ShaderManager::Instance()->FindOrNew(buildInfo);
+}
+
+void BDBProperty::GetBDBPosition(const BDB& bdb, vector<vec3>& position)
+{
+	position.resize(8);
+	position[0] = bdb.Min();
+	position[1] = vec3(bdb.Max().x, bdb.Min().y, bdb.Min().z);
+	position[2] = vec3(bdb.Max().x, bdb.Max().y, bdb.Min().z);
+	position[3] = vec3(bdb.Min().x, bdb.Max().y, bdb.Min().z);
+			  
+	position[4] = vec3(bdb.Min().x, bdb.Min().y, bdb.Max().z);
+	position[5] = vec3(bdb.Max().x, bdb.Min().y, bdb.Max().z);
+	position[6] = bdb.Max();
+	position[7] = vec3(bdb.Min().x, bdb.Max().y, bdb.Max().z);
+}
+void BDBProperty::Update(void* bdb)
+{
+	vector<vec3> position;
+	GetBDBPosition((BDB&)bdb, position);
+	m_pVertexBuffer->SetPosition(GL_LINES, position);
 }
 
 void BDBProperty::Draw()

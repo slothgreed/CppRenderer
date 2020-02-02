@@ -9,7 +9,7 @@ class UniformScene;
 class UniformBuffer;
 class CGALModelNode;
 class CommandManager;
-class Workspace : IWorkspace
+class Workspace : public IWorkspace
 {
 public:
 	Workspace();

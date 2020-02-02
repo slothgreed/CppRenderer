@@ -6,15 +6,23 @@
 using namespace KI;
 int main()
 {
+	int NEW_SCENE = 2;
     std::cout << "Hello World!\n"; 
 	std::unique_ptr<CGALRenderer> renderer(new CGALRenderer());
 	auto pProject = make_shared<Project>();
-	auto pWorkspace = make_shared<Workspace>();
-	auto pBunnyScene = make_shared<BunnyScene>();
+	shared_ptr<IWorkspace> pWorkspace;
+	if (NEW_SCENE == 1)
+	{
+		pWorkspace = make_shared<Workspace>();
+	}
+	else
+	{
+		pWorkspace = make_shared<BunnyScene>();
+	}
 	renderer->Initialize();
-	renderer->SetWorkspace(pBunnyScene);
+	renderer->SetWorkspace(pWorkspace);
 	pProject->Initialize();
-	pBunnyScene->Initialize(pProject.get());
+	pWorkspace->Initialize(pProject.get());
 
 	renderer->Run();
 	

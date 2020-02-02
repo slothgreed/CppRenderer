@@ -8,17 +8,17 @@ class DefaultShader;
 class BDBProperty : public IModelProperty
 {
 public:
-	BDBProperty(BDB& bdb);
+	BDBProperty(const BDB& bdb);
 	~BDBProperty();
 
 	virtual PROPERTY_TYPE Type() override { return PROPERTY_TYPE_BDB; }
 	virtual void Draw();
-
+	virtual void Update(void* bdb) override;
 private:
-	void GenVBO();
+	void GetBDBPosition(const BDB& bdb, vector<vec3>& position);
+	void Build(const BDB& bdb);
 	shared_ptr<IShader> m_pShader;
 	shared_ptr<DefaultVertexBuffer> m_pVertexBuffer;
-	BDB m_bdb;
 };
 
 }
