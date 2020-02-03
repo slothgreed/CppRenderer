@@ -120,13 +120,14 @@ using namespace glm;
 #include "PickCommand.h"
 
 // model (mvc)
+#include "IModelProperty.h"
+#include "BDBProperty.h"
+#include "NormalProperty.h"
+#include "HalfEdgeProperty.h"
 #include "IModelNode.h"
 #include "PrimitiveNode.h"
 #include "ModelNode.h"
-#include "IModelProperty.h"
-#include "BDBProperty.h"
-#include "VectorProperty.h"
-#include "HalfEdgeProperty.h"
+#include "HalfEdgeDSNode.h"
 
 // application utility
 #include "ModelGenerator.h"

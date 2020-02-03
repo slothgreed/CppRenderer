@@ -1,21 +1,22 @@
 namespace KI
 {
-BDBProperty::BDBProperty(const BDB& bdb)
+BDBProperty::BDBProperty()
 {
-	Build(bdb);
 }
 
 BDBProperty::~BDBProperty()
 {
 }
 
-void BDBProperty::Build(const BDB& bdb)
+void BDBProperty::Build(IModel* pModel)
 {
 	m_pVertexBuffer = make_shared<DefaultVertexBuffer>();
 	m_pVertexBuffer->Generate(VERTEX_LAYOUT::VERTEX_LAYOUT_P);
 
 	
 	vector<vec3> position;
+	BDB bdb;
+	pModel->GetBDB(bdb);
 	GetBDBPosition(bdb, position);
 	m_pVertexBuffer->SetPosition(GL_LINES, position);
 
@@ -60,10 +61,12 @@ void BDBProperty::GetBDBPosition(const BDB& bdb, vector<vec3>& position)
 	position[6] = bdb.Max();
 	position[7] = vec3(bdb.Min().x, bdb.Max().y, bdb.Max().z);
 }
-void BDBProperty::Update(void* bdb)
+void BDBProperty::Update(IModel* pModel)
 {
 	vector<vec3> position;
-	GetBDBPosition((BDB&)bdb, position);
+	BDB bdb;
+	pModel->GetBDB(bdb);
+	GetBDBPosition(bdb, position);
 	m_pVertexBuffer->SetPosition(GL_LINES, position);
 }
 

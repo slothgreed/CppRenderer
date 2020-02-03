@@ -5,6 +5,8 @@ ModelNode::ModelNode(shared_ptr<IModel> model)
 	m_name = "ModelNode";
 	m_pModel = model;
 	m_pModel->AddObserver(this);
+	VisibleBDB(true);
+	VisibleNormal(true);
 	SetRenderData();
 }
 
@@ -18,10 +20,7 @@ void ModelNode::Draw()
 	m_pFaceMaterial->Draw();
 	m_pEdgeMaterial->Draw();
 
-	for (int i = 0; i < m_pProperty.size(); i++)
-	{
-		m_pProperty[i]->Draw();
-	}
+	DrawProperty();
 
 }
 
@@ -32,27 +31,17 @@ void ModelNode::ShowProperty()
 	ImGui::End();
 }
 
-void ModelNode::SetBDB(BDB bdb)
+void ModelNode::VisibleBDB(bool visibility)
 {
-	m_bdb = bdb;
-
-	m_pProperty.push_back(make_shared<BDBProperty>(m_bdb));
+	m_pModel->GetBDB(m_bdb);
+	AddProperty(make_shared<BDBProperty>());
 }
 
 void ModelNode::VisibleNormal(bool visibility)
 {
 	if (m_pModel->HasVertexList())
 	{
-		vector<Vertex> vertexList;
-		m_pModel->GetVertexList(vertexList);
-		vector<vec3> normalList;
-		for (int i = 0; i < vertexList.size(); i++)
-		{
-			normalList.push_back(vertexList[i].Position());
-			normalList.push_back(vertexList[i].Position() + vertexList[i].Normal());
-		}
-
-		m_pProperty.push_back(make_shared<VectorProperty>(normalList, vec3(1, 0, 0)));
+		AddProperty(make_shared<NormalProperty>());
 	}
 	else
 	{
@@ -126,10 +115,6 @@ void ModelNode::SetRenderData()
 		m_pEdgeMaterial->CompileShader();
 	}
 
-	BDB bdb;
-	m_pModel->GetBDB(bdb);
-	SetBDB(bdb);
-	VisibleNormal(true);
 }
 
 void ModelNode::Update(void* sender, shared_ptr<EventArgs> args)

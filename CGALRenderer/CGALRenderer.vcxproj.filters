@@ -312,9 +312,6 @@
     <ClInclude Include="IModelNode.h">
       <Filter>ヘッダー ファイル\Asset\Model</Filter>
     </ClInclude>
-    <ClInclude Include="VectorProperty.h">
-      <Filter>ヘッダー ファイル\Application\Property</Filter>
-    </ClInclude>
     <ClInclude Include="IModelProperty.h">
       <Filter>ヘッダー ファイル\Application\Property</Filter>
     </ClInclude>
@@ -424,6 +421,12 @@
       <Filter>ヘッダー ファイル\Application\InitApp</Filter>
     </ClInclude>
     <ClInclude Include="HalfEdgeProperty.h">
+      <Filter>ヘッダー ファイル\Application\Property</Filter>
+    </ClInclude>
+    <ClInclude Include="HalfEdgeDSNode.h">
+      <Filter>ヘッダー ファイル\Application\Node</Filter>
+    </ClInclude>
+    <ClInclude Include="NormalProperty.h">
       <Filter>ヘッダー ファイル\Application\Property</Filter>
     </ClInclude>
   </ItemGroup>
@@ -548,9 +551,6 @@
     <ClCompile Include="BDBProperty.cpp">
       <Filter>ソース ファイル\Application\Property</Filter>
     </ClCompile>
-    <ClCompile Include="VectorProperty.cpp">
-      <Filter>ソース ファイル\Application\Property</Filter>
-    </ClCompile>
     <ClCompile Include="CGALGeneralizedMaps.cpp">
       <Filter>ソース ファイル\Asset\Model</Filter>
     </ClCompile>
@@ -640,6 +640,15 @@
     </ClCompile>
     <ClCompile Include="HalfEdgeProperty.cpp">
       <Filter>ソース ファイル\Application\Property</Filter>
+    </ClCompile>
+    <ClCompile Include="HalfEdgeDSNode.cpp">
+      <Filter>ソース ファイル\Application\Node</Filter>
+    </ClCompile>
+    <ClCompile Include="NormalProperty.cpp">
+      <Filter>ソース ファイル\Application\Property</Filter>
+    </ClCompile>
+    <ClCompile Include="IModelNode.cpp">
+      <Filter>ソース ファイル\Application\Node</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

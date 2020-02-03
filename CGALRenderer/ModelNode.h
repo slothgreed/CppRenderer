@@ -1,5 +1,5 @@
-#ifndef CGAL_MODEL_NODE_H
-#define CGAL_MODEL_NODE_H
+#ifndef MODEL_NODE_H
+#define MODEL_NODE_H
 namespace KI
 {
 class IModelNode;
@@ -12,23 +12,22 @@ class ModelNode : public IModelNode
 public:
 	ModelNode(shared_ptr<IModel> model);
 	~ModelNode();
-	virtual void Draw();
-	virtual void ShowProperty();
-	virtual void Update(void* sender, shared_ptr<EventArgs> args);
+	virtual void Draw() override;
+	virtual void ShowProperty() override;
+	virtual void Update(void* sender, shared_ptr<EventArgs> args) override;
 
-	void SetBDB(BDB bdb);
+	void VisibleBDB(bool visibility);
 	void VisibleNormal(bool visibility);
-private:
+protected:
 	string m_name;
 	shared_ptr<IMaterial> m_pFaceMaterial;
 	shared_ptr<IMaterial> m_pEdgeMaterial;
 
-	shared_ptr<IModel> m_pModel;
-	vector<shared_ptr<IModelProperty>> m_pProperty;
+private:
 	BDB m_bdb;
 	void SetRenderData();
 };
 
 }
 
-#endif CGAL_MODEL_NODE_H
+#endif MODEL_NODE_H
