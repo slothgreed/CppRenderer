@@ -23,6 +23,7 @@ public:
 	CGALPolyhedron();
 	~CGALPolyhedron();
 
+	virtual MODEL_TYPE Type() override { return MODEL_TYPE::MODEL_TYPE_CGAL_POLYHEDRON; };
 	virtual void Load(const std::string& filePath);
 	virtual void GetFacetList(std::vector<vec3>& position, std::vector<vec3>& normal);
 	virtual void GetEdgeList(std::vector<vec3>& edgeList);

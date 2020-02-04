@@ -19,12 +19,10 @@ public:
 	void ProcessMouseEvent(const MouseInput& input);
 	void ProcessWindowEvent(const WindowEvent& winEvent);
 private:
-	CONTROLER_TYPE m_CurrentController;
-	std::map<CONTROLER_TYPE,IController*> m_pController;
+	
 	GLFWwindow* m_window;
-	std::shared_ptr<IWorkspace> m_pWorkspace;
-	std::shared_ptr<Viewport> m_pViewport;
-	std::shared_ptr<Mouse> m_pMouse;
+	shared_ptr<IWorkspace> m_pWorkspace;
+	shared_ptr<Viewport> m_pViewport;
 };
 
 static CGALRenderer* TheApp();

@@ -11,15 +11,13 @@ public:
 
 	friend class CameraController;
 
-	CameraControllerArgs(std::shared_ptr<Viewport> viewport, std::shared_ptr<Camera> camera) {
-		m_pViewport = viewport;
+	CameraControllerArgs( std::shared_ptr<Camera> camera) {
 		m_pCamera = camera;
 	};
 
 	~CameraControllerArgs() {};
 
 private:
-	std::shared_ptr<Viewport> m_pViewport;
 	std::shared_ptr<Camera> m_pCamera;
 };
 

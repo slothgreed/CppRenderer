@@ -2,12 +2,21 @@
 #define IMODEL_H
 namespace KI
 {
+
+enum MODEL_TYPE
+{
+	MODEL_TYPE_HALF_EDGE,
+	MODEL_TYPE_CGAL_POLYHEDRON,
+	MODEL_TYPE_CGAL_LINEARCELLCOMPLEX,
+	MODEL_TYPE_GENERALIZEDMAPS
+};
 class IMaterial;
 class IModel : public ISubject
 {
 public:
 	IModel();
 	~IModel() {};
+	virtual MODEL_TYPE Type() = 0;
 	virtual void Load(const std::string& filePath) = 0;
 	virtual void GetFacetList(std::vector<vec3>& position, std::vector<vec3>& normal) = 0;
 	virtual void GetEdgeList(std::vector<vec3>& edgeList) = 0;

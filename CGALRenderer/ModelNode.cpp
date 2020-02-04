@@ -47,7 +47,6 @@ void ModelNode::VisibleNormal(bool visibility)
 	{
 		Logger::Output(LOG_LEVEL::DEBUG, "don't have vertex list");
 	}
-	//m_pProperty.push_back(make_shared<VectorProperty>());
 }
 
 void ModelNode::SetRenderData()
@@ -120,5 +119,7 @@ void ModelNode::SetRenderData()
 void ModelNode::Update(void* sender, shared_ptr<EventArgs> args)
 {
 	SetRenderData();
+
+	IModelNode::Update(sender, args);
 }
 }

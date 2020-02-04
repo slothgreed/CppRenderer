@@ -8,11 +8,16 @@ Workspace::Workspace()
 
 Workspace::~Workspace()
 {
+	for (auto itr = m_pController.begin(); itr != m_pController.end(); itr++)
+	{
+		delete itr->second;
+	}
 }
 
 void Workspace::Initialize(Project* m_pProject)
 {
 	m_pCommandManager = make_unique<CommandManager>();
+	m_pMouse = make_shared<Mouse>();
 
 	ShaderUtility::SetShaderDirectory(m_pProject->ProjectDir() + "\\Resource");
 	ShaderBuildInfo buildInfo;
@@ -23,6 +28,10 @@ void Workspace::Initialize(Project* m_pProject)
 	m_pCamera->LookAt(vec3(0, 0, -2), vec3(0, 0, 0), vec3(0, 1, 0));
 	m_pCamera->Perspective(glm::radians(60.0f), 1, 0.01f, 1000);
 
+	m_pController[CONTROLER_TYPE::CAMERA_CONTROLER] = new CameraController();
+	m_CurrentController = CONTROLER_TYPE::CAMERA_CONTROLER;
+	shared_ptr<IControllerArgs> args = make_shared<CameraControllerArgs>(m_pCamera);
+	m_pController[CONTROLER_TYPE::CAMERA_CONTROLER]->SetArgs(args);
 	m_pUniformScene = make_shared<UniformScene>();
 	m_pUniformScene->Generate();
 	SceneData sceneData;
@@ -126,6 +135,18 @@ void Workspace::ShowProperty()
 	for (int i = 0; i < m_pRenderList.size(); i++)
 	{
 		m_pRenderList[i]->ShowProperty();
+	}
+}
+
+void Workspace::ProcessMouseEvent(const MouseInput& input)
+{
+	m_pMouse->ApplyMouseInput(input);
+	if (input.Event() == MOUSE_EVENT_WHEEL) {
+		m_pController[m_CurrentController]->Wheel(*m_pMouse.get());
+	}
+	else if (input.Event() == MOUSE_EVENT_MOVE)
+	{
+		m_pController[m_CurrentController]->Move(*m_pMouse.get());
 	}
 }
 }

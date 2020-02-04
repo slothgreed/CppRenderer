@@ -10,9 +10,9 @@ public:
 	void CalcElement();
 	float CalcAllEdgeLength();
 
-	const vector<shared_ptr<HalfEdge>> EdgeList() { return m_EdgeList; }
-	const vector<shared_ptr<HalfEdgeFace>> FaceList() { return m_FaceList; }
-	const vector<shared_ptr<HalfEdgeVertex>> VertexList() { return m_VertexList; }
+	const vector<shared_ptr<HalfEdge>>& EdgeList() { return m_EdgeList; }
+	const vector<shared_ptr<HalfEdgeFace>>& FaceList() { return m_FaceList; }
+	const vector<shared_ptr<HalfEdgeVertex>>& VertexList() { return m_VertexList; }
 
 	void RemoveMesh(int index);
 	void RemoveVertex(int index);

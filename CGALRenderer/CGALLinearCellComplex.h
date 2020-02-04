@@ -8,6 +8,7 @@ public:
 	CGALLinearCellComplex();
 	~CGALLinearCellComplex();
 
+	virtual MODEL_TYPE Type() override { return MODEL_TYPE::MODEL_TYPE_CGAL_LINEARCELLCOMPLEX; };
 	virtual void Load(const std::string& filePath);
 	virtual void GenSampleModel();
 	virtual void GetFacetList(std::vector<vec3>& position, std::vector<vec3>& normal);

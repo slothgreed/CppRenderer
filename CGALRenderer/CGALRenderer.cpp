@@ -115,10 +115,6 @@ CGALRenderer::CGALRenderer()
 
 CGALRenderer::~CGALRenderer()
 {
-	for (auto itr = m_pController.begin(); itr != m_pController.end(); itr++)
-	{
-		delete itr->second;
-	}
 }
 
 bool CGALRenderer::Initialize()
@@ -158,12 +154,10 @@ bool CGALRenderer::Initialize()
 	glfwSetWindowSizeCallback(m_window, WindowSizeCallBack);
 	glfwSetKeyCallback(m_window, KeyCallback);
 
-	m_pController[CONTROLER_TYPE::CAMERA_CONTROLER] = new CameraController();
 	m_pViewport = make_shared<Viewport>();
 	m_pViewport->SetPosition(0, 0);
 	m_pViewport->Resize(640, 480);
 
-	m_pMouse = make_shared<Mouse>();
 
 	theApp = this;
 	return true;
@@ -187,13 +181,6 @@ bool CGALRenderer::Run()
 	//glEnable(GL_TEXTURE_2D);
 
 	/* OTHER STUFF GOES HERE NEXT */
-
-	shared_ptr<IControllerArgs> args = make_shared<CameraControllerArgs>(
-		m_pViewport,
-		m_pWorkspace->MainCamera()
-	);
-
-	m_pController[CONTROLER_TYPE::CAMERA_CONTROLER]->SetArgs(args);
 
 	ImGui::CreateContext();
 	ImGui_ImplGlfw_InitForOpenGL(m_window, true);
@@ -222,14 +209,7 @@ bool CGALRenderer::Run()
 
 void CGALRenderer::ProcessMouseEvent(const MouseInput& input)
 {
-	m_pMouse->ApplyMouseInput(input);
-	if (input.Event() == MOUSE_EVENT_WHEEL) {
-		m_pController[m_CurrentController]->Wheel(*m_pMouse.get());
-	}
-	else if(input.Event() == MOUSE_EVENT_MOVE)
-	{
-		m_pController[m_CurrentController]->Move(*m_pMouse.get());
-	}
+	m_pWorkspace->ProcessMouseEvent(input);
 }
 
 void CGALRenderer::ProcessWindowEvent(const WindowEvent& winEvent)

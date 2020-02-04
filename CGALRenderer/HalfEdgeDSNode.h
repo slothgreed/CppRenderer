@@ -4,13 +4,15 @@
 namespace KI
 {
 
-//class HalfEdgeDSNode : public ModelNode
-//{
-//public :
-//	HalfEdgeDSNode(shared_ptr<HalfEdgeDS> model);
-//	~HalfEdgeDSNode();
-//
-//};
+class HalfEdgeDSNode : public ModelNode
+{
+public :
+	HalfEdgeDSNode(shared_ptr<HalfEdgeModel> model);
+	~HalfEdgeDSNode();
+private:
+	void VisibleHalfEdgeLine(bool visibility);
+
+};
 }
 
 
