@@ -76,6 +76,7 @@ using namespace glm;
 #include "RenderTarget.h"
 #include "SymbolicRenderTarget.h"
 #include "IUniform.h"
+#include "IShaderDefine.h"
 #include "IShader.h"
 #include "IVertexBuffer.h"
 

@@ -14,9 +14,8 @@ void GrayScaleEffect::Initialize()
 	m_pPlane = make_shared<DefaultVertexBuffer>();
 	ModelGenerator::RenderPlane(m_pPlane.get());
 
-	ShaderBuildInfo buildInfo;
-	buildInfo.shaderType = SHADER_TYPE::SHADER_TYPE_GRAYSCALE;
-	m_pGrayScaleShader = static_pointer_cast<GrayScaleShader>(ShaderManager::Instance()->FindOrNew(buildInfo));
+	auto shaderDefine = make_shared<GrayScaleShaderDefine>();
+	m_pGrayScaleShader = static_pointer_cast<GrayScaleShader>(ShaderManager::Instance()->FindOrNew(shaderDefine));
 	int size = 64;
 	m_pRenderTarget = make_shared<RenderTarget>();
 	m_pRenderTarget->Initialize(1, size, size);

@@ -37,23 +37,23 @@ void SSLICShader::Bind(shared_ptr<IUniform> uniform)
 		m_uniformParameter = static_pointer_cast<SSLICUniform>(uniform);
 	}
 
-	if (m_uniformParameter->pTexture == nullptr)
+	if (m_uniformParameter->GetTexture() == nullptr)
 	{
 		assert(0);
 	}
 
-	m_uniformParameter->pTexture->Begin();
+	m_uniformParameter->GetTexture()->Begin();
 	BindColorTexture();
 }
 
 void SSLICShader::UnBind()
 {
-	if (m_uniformParameter->pTexture == nullptr)
+	if (m_uniformParameter->GetTexture() == nullptr)
 	{
 		assert(0);
 	}
 
-	m_uniformParameter->pTexture->End();
+	m_uniformParameter->GetTexture()->End();
 
 }
 void SSLICShader::BindColorTexture()

@@ -26,14 +26,12 @@ void SSLICEffect::Initialize()
 	m_pPlaneBuffer = make_shared<DefaultVertexBuffer>();
 	ModelGenerator::RenderPlane(m_pPlaneBuffer.get());
 
-	ShaderBuildInfo buildInfo;
-	DefaultShader::GetVertexShaderDefine(VERTEX_LAYOUT::VERTEX_LAYOUT_PT, buildInfo);
-	DefaultShader::GetFragShaderDefine(VERTEX_LAYOUT::VERTEX_LAYOUT_PT, buildInfo);
-	m_pModelShader = static_pointer_cast<DefaultShader>(ShaderManager::Instance()->FindOrNew(buildInfo));
+	auto shaderDefine = make_shared<DefaultShaderDefine>();
+	shaderDefine->SetShaderDefine(VERTEX_LAYOUT_PT);
+	m_pModelShader = static_pointer_cast<DefaultShader>(ShaderManager::Instance()->FindOrNew(shaderDefine));
 
-	ShaderBuildInfo licbuildInfo;
-	licbuildInfo.shaderType = SHADER_TYPE_SSLIC;
-	m_pSSLICShader = static_pointer_cast<SSLICShader>(ShaderManager::Instance()->FindOrNew(licbuildInfo));
+	auto licshaderDefine = make_shared<SSLICShaderDefine>();
+	m_pSSLICShader = static_pointer_cast<SSLICShader>(ShaderManager::Instance()->FindOrNew(licshaderDefine));
 
 	TextureData blendTexture;
 	blendTexture.width = 256;
@@ -45,10 +43,10 @@ void SSLICEffect::Initialize()
 	m_pBlendTexture->End();
 
 	m_pModelUniform = make_shared<DefaultUniform>();
-	m_pModelUniform->pTexture = m_pBlendTexture;
+	m_pModelUniform->SetTexture(m_pBlendTexture);
 
 	m_pSSLICUniform = make_shared<SSLICUniform>();
-	m_pSSLICUniform->pTexture = m_pBlendTexture;
+	m_pSSLICUniform->SetTexture(m_pBlendTexture);
 }
 void SSLICEffect::SetDrawModel(shared_ptr<DefaultVertexBuffer> model)
 {

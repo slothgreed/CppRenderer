@@ -49,11 +49,12 @@ void DefaultShader::Bind(shared_ptr<IUniform> uniform)
 		m_uniformParameter = static_pointer_cast<DefaultUniform>(uniform);
 	}
 
-	if (m_uniformParameter->pTexture != nullptr)
+	if (m_uniformParameter->GetTexture() != nullptr)
 	{
-		m_uniformParameter->pTexture->Begin();
+		m_uniformParameter->GetTexture()->Begin();
 		BindColorTexture();
 	}
+
 }
 
 void DefaultShader::UnBind()
@@ -63,9 +64,9 @@ void DefaultShader::UnBind()
 		return;
 	}
 
-	if (m_uniformParameter->pTexture != nullptr)
+	if (m_uniformParameter->GetTexture() != nullptr)
 	{
-		m_uniformParameter->pTexture->End();
+		m_uniformParameter->GetTexture()->End();
 	}
 }
 
@@ -79,48 +80,72 @@ void DefaultShader::BindColorTexture()
 	IShader::BindTexture(GL_TEXTURE0, m_uniformLocation[DEFAULT_UNIFORM_COLOR_TEXTURE]);
 }
 
-void DefaultShader::GetVertexShaderDefine(VERTEX_LAYOUT layout, ShaderBuildInfo& shaderDefine)
+void DefaultShaderDefine::GetVertexDefine(string& define)
 {
-	shaderDefine.shaderType = SHADER_TYPE::SHADER_TYPE_DEFAULT;
+	if (m_useNormal)
+		define += VERTEX_SHADER_USE_NORMAL;
+
+	if (m_useColor)
+		define += VERTEX_SHADER_USE_COLOR;
+
+	if (m_useTexcoord)
+		define += VERTEX_SHADER_USE_TEXCOORD;
+}
+
+void DefaultShaderDefine::GetFragDefine(string& define)
+{
+	if (m_useTexcoord)
+		define += VERTEX_SHADER_USE_TEXCOORD;
+	if (m_useTexture0)
+		define += FRAG_SHADER_USE_TEXTURE0;
+}
+
+bool DefaultShaderDefine::Compare(shared_ptr<IShaderDefine> shaderDefine)
+{
+	if (shaderDefine->Type() == SHADER_TYPE_DEFAULT)
+	{
+		DefaultShaderDefine* pDefine = (DefaultShaderDefine*)(&shaderDefine);
+		if (m_useNormal == pDefine->m_useNormal &&
+			m_useColor == pDefine->m_useColor &&
+			m_useTexcoord == pDefine->m_useTexcoord &&
+			m_useTexture0 == pDefine->m_useTexture0)
+		{
+			return true;
+		}
+	}
+
+	return false;
+}
+
+void DefaultShaderDefine::SetShaderDefine(VERTEX_LAYOUT layout)
+{
 	switch (layout)
 	{
 	case VERTEX_LAYOUT_P:
 		break;
 	case VERTEX_LAYOUT_PN:
-		shaderDefine.vertexDefine += VERTEX_SHADER_USE_NORMAL;
+		m_useNormal = true;
 		break;
 	case VERTEX_LAYOUT_PC:
-		shaderDefine.vertexDefine += VERTEX_SHADER_USE_COLOR;
+		m_useColor = true;
 		break;
 	case VERTEX_LAYOUT_PT:
-		shaderDefine.vertexDefine += VERTEX_SHADER_USE_TEXCOORD;
+		m_useTexcoord = true;
+		m_useTexture0 = true;
 		break;
 	case VERTEX_LAYOUT_PNC:
-		shaderDefine.vertexDefine += VERTEX_SHADER_USE_NORMAL;
-		shaderDefine.vertexDefine += VERTEX_SHADER_USE_COLOR;
+		m_useNormal = true;
+		m_useColor = true;
 		break;
 	case VERTEX_LAYOUT_PNCT:
-		shaderDefine.vertexDefine += VERTEX_SHADER_USE_NORMAL;
-		shaderDefine.vertexDefine += VERTEX_SHADER_USE_COLOR;
-		shaderDefine.vertexDefine += VERTEX_SHADER_USE_TEXCOORD;
+		m_useNormal = true;
+		m_useColor = true;
+		m_useTexcoord = true;
+		m_useTexture0 = true;
 		break;
 	default:
 		break;
 	}
 }
 
-void DefaultShader::GetFragShaderDefine(VERTEX_LAYOUT layout, ShaderBuildInfo& shaderDefine)
-{
-	shaderDefine.shaderType = SHADER_TYPE::SHADER_TYPE_DEFAULT;
-	switch (layout)
-	{
-	case VERTEX_LAYOUT_PT:
-	case VERTEX_LAYOUT_PNCT:
-		shaderDefine.fragDefine += FRAG_SHADER_USE_TECOORD;
-		shaderDefine.fragDefine += FRAG_SHADER_USE_TEXTURE0;
-		break;
-	default:
-		break;
-	}
-}
 }

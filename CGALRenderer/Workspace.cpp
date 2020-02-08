@@ -20,9 +20,9 @@ void Workspace::Initialize(Project* m_pProject)
 	m_pMouse = make_shared<Mouse>();
 
 	ShaderUtility::SetShaderDirectory(m_pProject->ProjectDir() + "\\Resource");
-	ShaderBuildInfo buildInfo;
-	DefaultShader::GetVertexShaderDefine(VERTEX_LAYOUT::VERTEX_LAYOUT_PC, buildInfo);
-	m_pDefaultShader = ShaderManager::Instance()->FindOrNew(buildInfo);
+	auto shaderDefine = make_shared<DefaultShaderDefine>();
+	shaderDefine->SetShaderDefine(VERTEX_LAYOUT_PC);
+	m_pDefaultShader = ShaderManager::Instance()->FindOrNew(shaderDefine);
 
 	m_pCamera = make_shared<Camera>();
 	m_pCamera->LookAt(vec3(0, 0, -2), vec3(0, 0, 0), vec3(0, 1, 0));
@@ -51,12 +51,9 @@ void Workspace::Initialize(Project* m_pProject)
 	auto axisNode = make_shared<PrimitiveNode>(m_pDefaultShader, axis);
 	m_pRenderList.push_back(axisNode);
 
-	ShaderBuildInfo info;
-	info.shaderType = SHADER_TYPE_DEFAULT;
-	DefaultShader::GetVertexShaderDefine(VERTEX_LAYOUT::VERTEX_LAYOUT_PT, info);
-	DefaultShader::GetFragShaderDefine(VERTEX_LAYOUT::VERTEX_LAYOUT_PT, info);
-
-	auto shader = ShaderManager::Instance()->FindOrNew(info);
+	auto shaderDefinePT = make_shared<DefaultShaderDefine>();
+	shaderDefine->SetShaderDefine(VERTEX_LAYOUT_PT);
+	auto shader = ShaderManager::Instance()->FindOrNew(shaderDefinePT);
 
 	auto model = make_shared<DefaultVertexBuffer>();
 	//ModelGenerator::RenderPlane(plane.get());

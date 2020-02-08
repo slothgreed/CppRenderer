@@ -29,9 +29,10 @@ void HalfEdgeProperty::Build(IModel* model)
 	m_pVertexBuffer->SetPosition(GL_LINES, position);
 	m_pVertexBuffer->SetColor(color);
 
-	ShaderBuildInfo buildInfo;
-	DefaultShader::GetVertexShaderDefine(VERTEX_LAYOUT_PC, buildInfo);
-	m_pShader = ShaderManager::Instance()->FindOrNew(buildInfo);
+	auto shaderDefine = make_shared<DefaultShaderDefine>();
+	shaderDefine->SetShaderDefine(VERTEX_LAYOUT_PC);
+	m_pShader = ShaderManager::Instance()->FindOrNew(shaderDefine);
+
 }
 
 void HalfEdgeProperty::Update(IModel* model)

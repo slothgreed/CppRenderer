@@ -429,6 +429,9 @@
     <ClInclude Include="NormalProperty.h">
       <Filter>ヘッダー ファイル\Application\Property</Filter>
     </ClInclude>
+    <ClInclude Include="IShaderDefine.h">
+      <Filter>ヘッダー ファイル\OpenGL</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">

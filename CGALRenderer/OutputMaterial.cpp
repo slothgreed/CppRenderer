@@ -14,15 +14,13 @@ void OutputMaterial::CompileShader()
 	if (m_pVertexBuffer->Type() == DefaultVertexBuffer::DefaultVertexBufferTypeStr)
 	{
 		auto pDefaultBuffer = static_pointer_cast<DefaultVertexBuffer>(m_pVertexBuffer);
-		ShaderBuildInfo shaderInfo;
-		shaderInfo.shaderType = SHADER_TYPE::SHADER_TYPE_OUTPUT;
 		if (pDefaultBuffer->Layout() != VERTEX_LAYOUT::VERTEX_LAYOUT_PT)
 		{
 			assert(0);
 		}
 
-
-		m_pShader = ShaderManager::Instance()->FindOrNew(shaderInfo);
+		auto shaderDefine = make_shared<OutputShaderDefine>();
+		m_pShader = ShaderManager::Instance()->FindOrNew(shaderDefine);
 	}
 	else
 	{

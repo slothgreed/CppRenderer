@@ -4,14 +4,11 @@
 namespace KI
 {
 
-class CompositUniform : public IUniform
-{
-	SHADER_TYPE Type() { return SHADER_TYPE::SHADER_TYPE_COMPOSIT; }
-	shared_ptr<Texture> m_pSource;
-	shared_ptr<Texture> m_pDestination;
-};
+class CompositUniform;
+class CompositShaderDefine;
 class CompositShader : public IShader
 {
+public:
 	enum COMPOSIT_TYPE
 	{
 		COMPOSIT_TYPE_ADD,
@@ -26,20 +23,38 @@ class CompositShader : public IShader
 		COMPOSIT_UNIFORM_TARGET_TEXTURE,
 		COMPOSIT_UNIFORM_NUM
 	};
-public:
+
 	CompositShader();
 	~CompositShader();
 	virtual SHADER_TYPE Type() { return SHADER_TYPE::SHADER_TYPE_COMPOSIT; }
 
 	virtual void Initialize() override;
 	virtual void FetchUniformLocation() override;
-	static void GetFragShaderDefine(COMPOSIT_TYPE layout, ShaderBuildInfo& shaderDefine);
 	virtual void Bind(shared_ptr<IUniform> uniform) override;
 	virtual void UnBind() override;
 
 private:
 	shared_ptr<CompositUniform> m_uniformParameter;
 };
+
+class CompositUniform : public IUniform
+{
+	SHADER_TYPE Type() { return SHADER_TYPE::SHADER_TYPE_COMPOSIT; }
+	shared_ptr<Texture> m_pSource;
+	shared_ptr<Texture> m_pDestination;
+};
+
+class CompositShaderDefine : public IShaderDefine
+{
+	virtual SHADER_TYPE Type() { return SHADER_TYPE::SHADER_TYPE_COMPOSIT; };
+	void SetShaderDefine(CompositShader::COMPOSIT_TYPE type);
+	virtual void GetVertexDefine(string& define) {};
+	virtual void GetFragDefine(string& define);
+	virtual bool Compare(shared_ptr<IShaderDefine> shaderDefine);
+
+	CompositShader::COMPOSIT_TYPE m_CompositType;
+};
+
 
 #define FRAG_SHADER_COMPOSIT_ADD		"#define COMPOSIT_ADD\n"
 #define FRAG_SHADER_COMPOSIT_SUB		"#define COMPOSIT_SUB\n"

@@ -41,23 +41,41 @@ void CompositShader::UnBind()
 {
 
 }
-
-void CompositShader::GetFragShaderDefine(COMPOSIT_TYPE type, ShaderBuildInfo& shaderDefine)
+void CompositShaderDefine::SetShaderDefine(CompositShader::COMPOSIT_TYPE type)
 {
-	shaderDefine.shaderType = SHADER_TYPE::SHADER_TYPE_DEFAULT;
-	switch (type)
+	m_CompositType = type;
+}
+bool CompositShaderDefine::Compare(shared_ptr<IShaderDefine> shaderDefine)
+{
+	if (shaderDefine->Type() == SHADER_TYPE::SHADER_TYPE_COMPOSIT)
 	{
-	case COMPOSIT_TYPE_ADD:
-		shaderDefine.fragDefine += FRAG_SHADER_COMPOSIT_ADD;
+		CompositShaderDefine* pDefine = (CompositShaderDefine*)(&shaderDefine);
+		if (m_CompositType == pDefine->m_CompositType)
+		{
+			return true;
+		}
+	}
+
+	return false;
+}
+void CompositShaderDefine::GetFragDefine(string& define)
+{
+	switch (m_CompositType)
+	{
+	case KI::CompositShader::COMPOSIT_TYPE_ADD:
+		define += FRAG_SHADER_COMPOSIT_ADD;
 		break;
-	case COMPOSIT_TYPE_SUB:
-		shaderDefine.fragDefine += FRAG_SHADER_COMPOSIT_SUB; 
+	case KI::CompositShader::COMPOSIT_TYPE_SUB:
+		define += FRAG_SHADER_COMPOSIT_SUB;
 		break;
-	case COMPOSIT_TYPE_MULT:
-		shaderDefine.fragDefine += FRAG_SHADER_COMPOSIT_MULT; 
+	case KI::CompositShader::COMPOSIT_TYPE_MULT:
+		define += FRAG_SHADER_COMPOSIT_MULT;
 		break;
-	case COMPOSIT_TYPE_OVERWRITE:
-		shaderDefine.fragDefine += FRAG_SHADER_COMPOSIT_OVERWRITE; 
+	case KI::CompositShader::COMPOSIT_TYPE_OVERWRITE:
+		define += FRAG_SHADER_COMPOSIT_ADD;
+		break;
+	case KI::CompositShader::COMPOSIT_TYPE_NUM:
+		define += FRAG_SHADER_COMPOSIT_OVERWRITE;
 		break;
 	default:
 		assert(0);

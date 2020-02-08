@@ -10,9 +10,9 @@ NormalProperty::~NormalProperty()
 
 void NormalProperty::Build(IModel* pModel)
 {
-	ShaderBuildInfo buildInfo;
-	DefaultShader::GetVertexShaderDefine(VERTEX_LAYOUT_P, buildInfo);
-	m_pShader = ShaderManager::Instance()->FindOrNew(buildInfo);
+	auto shaderDefine = make_shared<DefaultShaderDefine>();
+	shaderDefine->SetShaderDefine(VERTEX_LAYOUT_P);
+	m_pShader = ShaderManager::Instance()->FindOrNew(shaderDefine);
 
 
 	m_pVertexBuffer = make_shared<DefaultVertexBuffer>();

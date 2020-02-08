@@ -8,7 +8,24 @@ class SSLICUniform : public IUniform
 {
 public:
 	virtual SHADER_TYPE Type() override { return SHADER_TYPE::SHADER_TYPE_SSLIC; }
-	shared_ptr<Texture> pTexture;
+	void SetTexture(shared_ptr<Texture> value) { m_pTexture = value; };
+	shared_ptr<Texture> GetTexture() { return m_pTexture; };
+private:
+	shared_ptr<Texture> m_pTexture;
+};
+
+
+class SSLICShaderDefine : public IShaderDefine
+{
+public:
+	SSLICShaderDefine() {};
+	~SSLICShaderDefine() {};
+
+	virtual SHADER_TYPE Type() { return SHADER_TYPE::SHADER_TYPE_SSLIC; };
+	virtual void GetVertexDefine(string& define) {};
+	virtual void GetFragDefine(string& define) {};
+	virtual bool Compare(shared_ptr<IShaderDefine> shaderDefine) { return true; };
+
 };
 
 

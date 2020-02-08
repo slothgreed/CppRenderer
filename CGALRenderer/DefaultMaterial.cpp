@@ -16,7 +16,7 @@ void DefaultMaterial::AddTexture(shared_ptr<Texture> texture)
 	{
 		m_pUniform = make_shared<DefaultUniform>();
 	}
-	m_pUniform->pTexture = texture;
+	m_pUniform->SetTexture(texture);
 }
 
 void DefaultMaterial::CompileShader()
@@ -24,10 +24,9 @@ void DefaultMaterial::CompileShader()
 	if (m_pVertexBuffer->Type() == DefaultVertexBuffer::DefaultVertexBufferTypeStr)
 	{
 		auto pDefaultBuffer = static_pointer_cast<DefaultVertexBuffer>(m_pVertexBuffer);
-		ShaderBuildInfo shaderInfo;
-		DefaultShader::GetVertexShaderDefine(pDefaultBuffer->Layout(), shaderInfo);
-		DefaultShader::GetFragShaderDefine(pDefaultBuffer->Layout(), shaderInfo);
-		m_pShader = ShaderManager::Instance()->FindOrNew(shaderInfo);
+		auto shaderDefine = make_shared<DefaultShaderDefine>();
+		shaderDefine->SetShaderDefine(pDefaultBuffer->Layout());
+		m_pShader = ShaderManager::Instance()->FindOrNew(shaderDefine);
 	}
 	else
 	{

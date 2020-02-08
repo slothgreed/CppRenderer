@@ -8,16 +8,10 @@ namespace KI
 #define SHADER_DEBUG
 
 
-struct ShaderBuildInfo
-{
-	SHADER_TYPE shaderType;
-	std::string vertexDefine;
-	std::string fragDefine;
-};
 class IShader
 {
 public:
-	void Build(const ShaderBuildInfo& buildInfo);
+	void Build(shared_ptr<IShaderDefine> shaderDefine);
 	void BuildFromCode(const std::string& vertexShaderCode, const std::string& fragmentShader);
 
 	void Use();
@@ -31,7 +25,7 @@ public:
 	virtual void Bind(shared_ptr<IUniform> uniform) = 0;
 	virtual void UnBind() = 0;
 	GLuint Program() { return m_programId; }
-	bool Compare(const ShaderBuildInfo& buildInfo);
+	bool Compare(shared_ptr<IShaderDefine> shaderDefine);
 
 	
 protected:
@@ -47,7 +41,7 @@ protected:
 	vector<GLint> m_uniformLocation;
 private:
 	bool UniformValidation();
-	ShaderBuildInfo m_buildInfo;
+	shared_ptr<IShaderDefine> m_shaderDefine;
 
 #ifdef SHADER_DEBUG
 	string debug_vertexShader;

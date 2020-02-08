@@ -1,7 +1,7 @@
 #ifndef SHADER_MANAGER_H
 namespace KI
 {
-struct ShaderBuildInfo;
+class IShaderDefine;
 class IShader;
 class ShaderManager
 {
@@ -10,10 +10,10 @@ private:
 	~ShaderManager();
 public:
 	static ShaderManager* Instance();
-	shared_ptr<IShader> FindOrNew(const ShaderBuildInfo& buildInfo);
+	shared_ptr<IShader> FindOrNew(shared_ptr<IShaderDefine> shaderDefine);
 	void Dispose();
 private:
-	shared_ptr<IShader> Generate(const ShaderBuildInfo& buildInfo);
+	shared_ptr<IShader> Generate(shared_ptr<IShaderDefine> shaderDefine);
 	vector<shared_ptr<IShader>> m_pShaderList;
 	static ShaderManager* m_Instance;
 };

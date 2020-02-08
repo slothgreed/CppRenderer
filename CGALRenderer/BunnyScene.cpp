@@ -12,9 +12,9 @@ BunnyScene::~BunnyScene()
 void BunnyScene::Initialize(Project* m_pProject)
 {
 	ShaderUtility::SetShaderDirectory(m_pProject->ProjectDir() + "\\Resource");
-	ShaderBuildInfo buildInfo;
-	DefaultShader::GetVertexShaderDefine(VERTEX_LAYOUT::VERTEX_LAYOUT_PC, buildInfo);
-	m_pDefaultShader = ShaderManager::Instance()->FindOrNew(buildInfo);
+	auto shaderDefine = make_shared<DefaultShaderDefine>();
+	shaderDefine->SetShaderDefine(VERTEX_LAYOUT_PC);
+	m_pDefaultShader = ShaderManager::Instance()->FindOrNew(shaderDefine);
 
 	m_pMouse = make_shared<Mouse>();
 
@@ -50,11 +50,6 @@ void BunnyScene::Initialize(Project* m_pProject)
 	ModelGenerator::Axis(axis.get());
 	auto axisNode = make_shared<PrimitiveNode>(m_pDefaultShader, axis);
 	m_pRenderList.push_back(axisNode);
-
-	ShaderBuildInfo info;
-	info.shaderType = SHADER_TYPE_DEFAULT;
-	DefaultShader::GetVertexShaderDefine(VERTEX_LAYOUT::VERTEX_LAYOUT_PT, info);
-	DefaultShader::GetFragShaderDefine(VERTEX_LAYOUT::VERTEX_LAYOUT_PT, info);
 
 	m_pBackTarget = make_shared<SymbolicRenderTarget>(GL_BACK);
 	

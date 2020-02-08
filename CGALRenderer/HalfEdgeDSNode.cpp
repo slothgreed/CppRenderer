@@ -15,5 +15,4 @@ void HalfEdgeDSNode::VisibleHalfEdgeLine(bool visibility)
 	AddProperty(make_shared<HalfEdgeProperty>());
 }
 
-
 }

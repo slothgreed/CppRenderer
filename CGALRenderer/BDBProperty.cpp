@@ -43,9 +43,10 @@ void BDBProperty::Build(IModel* pModel)
 
 	m_pVertexBuffer->SetIndex(index);
 
-	ShaderBuildInfo buildInfo;
-	DefaultShader::GetVertexShaderDefine(VERTEX_LAYOUT_P, buildInfo);
-	m_pShader = ShaderManager::Instance()->FindOrNew(buildInfo);
+	auto shaderDefine = make_shared<DefaultShaderDefine>();
+	shaderDefine->SetShaderDefine(VERTEX_LAYOUT_P);
+	m_pShader = ShaderManager::Instance()->FindOrNew(shaderDefine);
+
 }
 
 void BDBProperty::GetBDBPosition(const BDB& bdb, vector<vec3>& position)

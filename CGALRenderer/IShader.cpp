@@ -1,14 +1,19 @@
 namespace KI
 {
-void IShader::Build(const ShaderBuildInfo& buildInfo)
+void IShader::Build(shared_ptr<IShaderDefine> shaderDefine)
 {
 	string vertexCode;
 	string fragCode;
 	FileUtility::Load(m_vertexPath, vertexCode);
 	FileUtility::Load(m_fragPath, fragCode);
+	string vertexDefine;
+	string fragDefine;
 
-	vertexCode = m_version + buildInfo.vertexDefine + vertexCode;
-	fragCode = m_version + buildInfo.fragDefine + fragCode;
+	shaderDefine->GetVertexDefine(vertexDefine);
+	shaderDefine->GetFragDefine(fragDefine);
+
+	vertexCode = m_version + vertexDefine + vertexCode;
+	fragCode = m_version + fragDefine + fragCode;
 
 #ifdef SHADER_DEBUG
 	debug_vertexShader = vertexCode;
@@ -17,7 +22,7 @@ void IShader::Build(const ShaderBuildInfo& buildInfo)
 
 	BuildFromCode(vertexCode, fragCode);
 
-	m_buildInfo = buildInfo;
+	m_shaderDefine = shaderDefine;
 }
 
 void IShader::BuildFromCode(const std::string& vertexShaderCode, const std::string& fragmentShader)
@@ -87,11 +92,9 @@ void IShader::BindTexture(GLint activeNumber, GLint uniformId)
 	Logger::GLError();
 }
 
-bool IShader::Compare(const ShaderBuildInfo& buildInfo)
+bool IShader::Compare(shared_ptr<IShaderDefine> shaderDefine)
 {
-	if (m_buildInfo.shaderType == buildInfo.shaderType &&
-		m_buildInfo.vertexDefine == buildInfo.vertexDefine &&
-		m_buildInfo.fragDefine == buildInfo.fragDefine) {
+	if (m_shaderDefine->Compare(shaderDefine)) {
 		return true;
 	}
 	else {
