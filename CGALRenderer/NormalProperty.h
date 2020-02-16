@@ -19,6 +19,8 @@ private:
 	void SetVBOData(IModel* pModel);
 	shared_ptr<IShader> m_pShader;
 	shared_ptr<DefaultVertexBuffer> m_pVertexBuffer;
+	shared_ptr<DefaultUniform> m_pUniform;
+
 	
 };
 

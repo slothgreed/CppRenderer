@@ -26,10 +26,12 @@ public:
 	virtual void UnBind() = 0;
 	GLuint Program() { return m_programId; }
 	bool Compare(shared_ptr<IShaderDefine> shaderDefine);
-
+	shared_ptr<IShaderDefine> GetShaderDefine() { return m_shaderDefine; }
 	
 protected:
 	virtual void BindTexture(GLint activeNumber, GLint uniformId);
+	virtual void BindVector4(GLint uniformId, vec4 value);
+
 	void SetVersion(std::string version) { m_version = version; }
 	void SetVertexPath(std::string filePath) { m_vertexPath = filePath; }
 	void SetFragPath(std::string filePath) { m_fragPath = filePath; }

@@ -19,12 +19,12 @@ void ModelGenerator::Axis(DefaultVertexBuffer* vertexBuffer)
 
 	std::vector<vec3> position;
 	position.reserve(6);
-	position.push_back(vec3(-0.5, 0.0, 0.0));
-	position.push_back(vec3(0.5, 0.0, 0.0));
-	position.push_back(vec3(0.0, -0.5, 0.0));
-	position.push_back(vec3(0.0, 0.5, 0.0));
-	position.push_back(vec3(0.0, 0.0, -0.5));
-	position.push_back(vec3(0.0, 0.0, 0.5));
+	position.push_back(vec3(-1, 0.0, 0.0));
+	position.push_back(vec3(1, 0.0, 0.0));
+	position.push_back(vec3(0.0, -1, 0.0));
+	position.push_back(vec3(0.0, 1, 0.0));
+	position.push_back(vec3(0.0, 0.0, -1));
+	position.push_back(vec3(0.0, 0.0, 1));
 
 	std::vector<vec3> color;
 	color.reserve(6);

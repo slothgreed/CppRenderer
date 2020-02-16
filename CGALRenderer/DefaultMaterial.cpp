@@ -26,7 +26,9 @@ void DefaultMaterial::CompileShader()
 		auto pDefaultBuffer = static_pointer_cast<DefaultVertexBuffer>(m_pVertexBuffer);
 		auto shaderDefine = make_shared<DefaultShaderDefine>();
 		shaderDefine->SetShaderDefine(pDefaultBuffer->Layout());
+		//shaderDefine->SetUseGBuffer(true);
 		m_pShader = ShaderManager::Instance()->FindOrNew(shaderDefine);
+		m_pUniform = make_shared<DefaultUniform>();
 	}
 	else
 	{

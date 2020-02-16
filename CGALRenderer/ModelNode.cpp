@@ -106,9 +106,6 @@ void ModelNode::SetRenderData()
 		pEdgeBuffer->Generate(VERTEX_LAYOUT_P);
 		pEdgeBuffer->SetPosition(GL_LINES, edge);
 
-		pEdgeBuffer->Generate(VERTEX_LAYOUT_P);
-		pEdgeBuffer->SetPosition(GL_LINES, edge);
-
 		m_pEdgeMaterial = make_shared<DefaultMaterial>();
 		m_pEdgeMaterial->SetVertexBuffer(pEdgeBuffer);
 		m_pEdgeMaterial->CompileShader();

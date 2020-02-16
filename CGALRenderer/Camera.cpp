@@ -36,7 +36,7 @@ void Camera::MoveWithSpherical(const vec2& move)
 	SetPhi(move.y);
 
 	vec3 sphericalPos;
-	MathHelper::SphericalToCartesian(glm::radians(Theta()), glm::radians(Phi()), sphericalPos);
+	MathHelper::SphericalToCartesian(1.0f, glm::radians(Theta()), glm::radians(Phi()), sphericalPos);
 	sphericalPos = glm::normalize(sphericalPos);
 	sphericalPos *= LookAtDistance();
 	sphericalPos += Center();

@@ -12,6 +12,7 @@ class DefaultShader : public IShader
 	enum UNIFORM_LOCATION : unsigned short
 	{
 		DEFAULT_UNIFORM_COLOR_TEXTURE,
+		DEFAULT_UNIFORM_FIX_COLOR,
 		DEFAULT_UNIFORM_NUM
 	};
 public:
@@ -27,6 +28,7 @@ public:
 	
 private:
 	void BindColorTexture();
+	void BindFixColor();
 	void BindScene();
 	shared_ptr<DefaultUniform> m_uniformParameter;
 };
@@ -34,10 +36,11 @@ private:
 class DefaultUniform : public IUniform
 {
 public:
-	DefaultUniform() :m_pTexture(nullptr), m_FixColor(vec4(1, 0, 0, 0)) {}
+	DefaultUniform() :m_pTexture(nullptr), m_FixColor(vec4(0, 1, 0, 1)) {}
 	SHADER_TYPE Type() { return SHADER_TYPE::SHADER_TYPE_DEFAULT; }
 
 	void SetTexture(shared_ptr<Texture> value) { m_pTexture = value; };
+	void SetFixColor(vec4 value) { m_FixColor = value; };
 	shared_ptr<Texture> GetTexture() { return m_pTexture; }
 	vec4				FixColor() { return m_FixColor; }
 private:
@@ -48,7 +51,8 @@ private:
 class DefaultShaderDefine : public IShaderDefine
 {
 public:
-	DefaultShaderDefine() { 
+	DefaultShaderDefine() {
+		m_useGBuffer = false;
 		m_useNormal = false; m_useColor = false; 
 		m_useTexcoord = false; m_useTexture0 = false; };
 	~DefaultShaderDefine() {};
@@ -59,17 +63,29 @@ public:
 	void SetShaderDefine(VERTEX_LAYOUT layout);
 	virtual bool Compare(shared_ptr<IShaderDefine> shaderDefine) override;
 
+	bool SetUseGBuffer(float value) { m_useGBuffer = value; }
+	bool SetUseNormal(float value) { m_useNormal = value; };
+	bool SetUseColor(float value) { return m_useColor = value; };
+	bool SetUseTexcoord(float value) { return m_useTexcoord = value; };
+	bool SetUseTexture0(float value) { return m_useTexture0 = value; };
+
+	bool UseGBuffer() const { return m_useGBuffer; }
+	bool UseNormal() const { return m_useNormal; };
+	bool UseColor() const { return m_useColor; };
+	bool UseTexcoord() const { return m_useTexcoord; };
+	bool UseTexture0() const { return m_useTexture0; };
 private:
+	bool m_useGBuffer;
 	bool m_useNormal;
 	bool m_useColor;
 	bool m_useTexcoord;
 	bool m_useTexture0;
 };
 
-#define VERTEX_SHADER_USE_NORMAL	"#define USE_NORMAL\n"
-#define VERTEX_SHADER_USE_COLOR		"#define USE_COLOR\n"
-#define VERTEX_SHADER_USE_TEXCOORD	"#define USE_TEXCOORD\n"
-#define FRAG_SHADER_USE_TECOORD		"#define USE_TEXCOORD\n"
-#define FRAG_SHADER_USE_TEXTURE0	"#define USE_TEXTURE0\n"
+#define USE_NORMAL	 "#define USE_NORMAL\n"
+#define USE_COLOR	 "#define USE_COLOR\n"
+#define USE_TEXCOORD "#define USE_TEXCOORD\n"
+#define USE_TEXTURE0 "#define USE_TEXTURE0\n"
+#define USE_GBUFFER	 "#define USE_GBUFFER\n"
 }
 #endif DEFAULT_SHADER_H

@@ -1,11 +1,11 @@
 namespace KI
 {
 
-void MathHelper::SphericalToCartesian(float x, float y, vec3& result)
+void MathHelper::SphericalToCartesian(float radius, float x, float y, vec3& result)
 {
-	result.x = sin(y) * cos(x);
-	result.y = cos(y);
-	result.z = sin(y) * sin(x);
+	result.x = radius * sin(y) * cos(x);
+	result.y = radius * cos(y);
+	result.z = radius * sin(y) * sin(x);
 
 	//Logger::Output(LOG_LEVEL::DEBUG, to_string(x) + "," + to_string(y) + "\n");
 	//float rad = 0;
@@ -61,4 +61,5 @@ std::string MathHelper::ToString(const vec3& value)
 
 	return str;
 }
+
 }

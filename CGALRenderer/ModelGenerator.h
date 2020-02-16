@@ -11,7 +11,6 @@ public:
 
 	static void Axis(DefaultVertexBuffer* vertexBuffer);
 	static void RenderPlane(DefaultVertexBuffer* vertexBuffer); // ƒŒƒ“ƒ_ƒŠƒ“ƒO—p‚Ì•½–Ê
-
 private:
 };
 }

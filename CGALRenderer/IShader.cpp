@@ -1,3 +1,4 @@
+#include "glm/gtc/type_ptr.hpp"
 namespace KI
 {
 void IShader::Build(shared_ptr<IShaderDefine> shaderDefine)
@@ -89,6 +90,12 @@ void IShader::BindTexture(GLint activeNumber, GLint uniformId)
 	Logger::GLError();
 
 	glUniform1i(uniformId, activeNumber - GL_TEXTURE0);
+	Logger::GLError();
+}
+
+void IShader::BindVector4(GLint uniformId, vec4 value)
+{
+	glUniform4fv(uniformId, 1, glm::value_ptr(value));
 	Logger::GLError();
 }
 

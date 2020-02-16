@@ -8,7 +8,7 @@ public:
 	MathHelper() {};
 	~MathHelper() {};
 
-	static void SphericalToCartesian(float x, float y, glm::vec3& result);
+	static void SphericalToCartesian(float radius, float x, float y, glm::vec3& result);
 	static void CartesianToSpherical(const glm::vec3& position, float& radian, float& theta, float& phi);
 	static float CalcTriangleArea(const vec3& v1, const vec3& v2, const vec3& v3); // counter cloclk wise
 	static void CalcNormal(const vec3& v1, const vec3& v2, const vec3& v3, vec3& normal); // counter cloclk wise

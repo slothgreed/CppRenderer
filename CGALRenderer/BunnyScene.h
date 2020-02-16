@@ -15,7 +15,8 @@ public:
 
 private:
 	shared_ptr<Camera> m_pCamera;
-	std::shared_ptr<Mouse> m_pMouse;
+	shared_ptr<GeometryPass> m_pGeometryPass;
+	shared_ptr<Mouse> m_pMouse;
 	CONTROLER_TYPE m_CurrentController;
 	map<CONTROLER_TYPE, IController*> m_pController; 
 	shared_ptr<IShader> m_pDefaultShader;

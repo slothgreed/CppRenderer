@@ -22,6 +22,13 @@ out vec2 v_texcoord;
 out vec4 v_color;
 #endif
 
+#ifdef USE_GBUFFER
+out vec4 v_position;
+out vec4 v_normal;
+#endif
+
+uniform vec4 uFixColor;
+
 void main()
 {
 	mat4 vp = Projection * ViewMatrix;
@@ -32,8 +39,16 @@ void main()
 	v_color = vec4(normal,1.0);
 #elif defined(USE_TEXCOORD)
 	v_texcoord = texcoord;
-#else
-	v_color = vec4(1,0,0,1.0);
+#else 
+	v_color = uFixColor;
+#endif
+
+#if defined(USE_GBUFFER) && defined(USE_NORMAL)
+	v_position = gl_Position;
+	v_normal = vec4(normal,1);
+#elif defined(USE_GBUFFER)
+	v_position = gl_Position;
+	v_normal = vec4(1);
 #endif
 
 }

@@ -148,6 +148,36 @@
     <Filter Include="ヘッダー ファイル\Application\InitApp">
       <UniqueIdentifier>{19de7987-1a26-457e-82a7-84b5d081fc24}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Renderer\Lighting">
+      <UniqueIdentifier>{ccfc4058-2444-4622-ba4e-b3827e3a6740}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Renderer\Lighthing">
+      <UniqueIdentifier>{f1b2b734-2f4c-46d5-9fce-995391bce03e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Asset\Light">
+      <UniqueIdentifier>{87ad708b-46a3-4032-9ba8-bf2085f273bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Asset\Light">
+      <UniqueIdentifier>{db2ff2be-1b09-4c02-9489-26182f5b0df9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Renderer\Geometry">
+      <UniqueIdentifier>{1051bddf-959b-43c0-9f24-a36c14a47406}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Renderer\Geometry">
+      <UniqueIdentifier>{863f7fa7-283c-4c78-b9b5-3d96e83fb7a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Asset\Model\Manipulator">
+      <UniqueIdentifier>{d0ecf1ee-40c6-4bbc-bc39-bdc4fc35dee7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Asset\Model\Manipulator">
+      <UniqueIdentifier>{64ea997c-ce4a-4db1-9eca-a3d1c9671020}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Asset\Primitive">
+      <UniqueIdentifier>{4def95e8-576d-4360-9584-df4436488e38}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Asset\Model\Primitive">
+      <UniqueIdentifier>{f292c4a0-885c-4999-aba6-d8c5435e06db}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -432,6 +462,42 @@
     <ClInclude Include="IShaderDefine.h">
       <Filter>ヘッダー ファイル\OpenGL</Filter>
     </ClInclude>
+    <ClInclude Include="DirectionLight.h">
+      <Filter>ヘッダー ファイル\Asset\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="SpotLight.h">
+      <Filter>ヘッダー ファイル\Asset\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="PointLight.h">
+      <Filter>ヘッダー ファイル\Asset\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="ILight.h">
+      <Filter>ヘッダー ファイル\Asset\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="LighthingPass.h">
+      <Filter>ヘッダー ファイル\Renderer\Lighthing</Filter>
+    </ClInclude>
+    <ClInclude Include="GeometryPass.h">
+      <Filter>ヘッダー ファイル\Renderer\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="MoveManipulator.h">
+      <Filter>ヘッダー ファイル\Asset\Model\Manipulator</Filter>
+    </ClInclude>
+    <ClInclude Include="ScaleManipulator.h">
+      <Filter>ヘッダー ファイル\Asset\Model\Manipulator</Filter>
+    </ClInclude>
+    <ClInclude Include="RotateManipulator.h">
+      <Filter>ヘッダー ファイル\Asset\Model\Manipulator</Filter>
+    </ClInclude>
+    <ClInclude Include="IManipulator.h">
+      <Filter>ヘッダー ファイル\Asset\Model\Manipulator</Filter>
+    </ClInclude>
+    <ClInclude Include="Cone.h">
+      <Filter>ヘッダー ファイル\Asset\Primitive</Filter>
+    </ClInclude>
+    <ClInclude Include="IPrimitive.h">
+      <Filter>ヘッダー ファイル\Asset\Primitive</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -652,6 +718,36 @@
     </ClCompile>
     <ClCompile Include="IModelNode.cpp">
       <Filter>ソース ファイル\Application\Node</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectionLight.cpp">
+      <Filter>ソース ファイル\Asset\Light</Filter>
+    </ClCompile>
+    <ClCompile Include="SpotLight.cpp">
+      <Filter>ソース ファイル\Asset\Light</Filter>
+    </ClCompile>
+    <ClCompile Include="PointLight.cpp">
+      <Filter>ソース ファイル\Asset\Light</Filter>
+    </ClCompile>
+    <ClCompile Include="LighthingPass.cpp">
+      <Filter>ソース ファイル\Renderer\Lighting</Filter>
+    </ClCompile>
+    <ClCompile Include="GeometryPass.cpp">
+      <Filter>ソース ファイル\Renderer\Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="MoveManipulator.cpp">
+      <Filter>ソース ファイル\Asset\Model\Manipulator</Filter>
+    </ClCompile>
+    <ClCompile Include="ScaleManipulator.cpp">
+      <Filter>ソース ファイル\Asset\Model\Manipulator</Filter>
+    </ClCompile>
+    <ClCompile Include="RotateManipulator.cpp">
+      <Filter>ソース ファイル\Asset\Model\Manipulator</Filter>
+    </ClCompile>
+    <ClCompile Include="Cone.cpp">
+      <Filter>ソース ファイル\Asset\Model\Primitive</Filter>
+    </ClCompile>
+    <ClCompile Include="IPrimitive.cpp">
+      <Filter>ソース ファイル\Asset\Model\Primitive</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

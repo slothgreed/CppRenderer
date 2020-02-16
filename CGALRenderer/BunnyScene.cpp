@@ -52,17 +52,20 @@ void BunnyScene::Initialize(Project* m_pProject)
 	m_pRenderList.push_back(axisNode);
 
 	m_pBackTarget = make_shared<SymbolicRenderTarget>(GL_BACK);
-	
+	m_pGeometryPass = make_shared<GeometryPass>();
+	m_pGeometryPass->Initialize(640, 480);
 }
 void BunnyScene::Invoke()
 {
-	m_pBackTarget->Begin();
 	SceneData sceneData;
 	sceneData.ViewMatrix = m_pCamera->ViewMatrix();
 	sceneData.Projection = m_pCamera->Projection();
 	m_pUniformScene->Set(sceneData);
 	m_pUniformScene->Bind();
 
+	m_pGeometryPass->Draw(m_pRenderList);
+
+	m_pBackTarget->Begin();
 	m_pBackTarget->Clear();
 	for (int i = 0; i < m_pRenderList.size(); i++)
 	{

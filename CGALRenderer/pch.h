@@ -92,6 +92,8 @@ using namespace glm;
 #include "AssetTypes.h"
 #include "Camera.h"
 #include "IModel.h"
+#include "IModelProperty.h"
+#include "IModelNode.h"
 #include "CGALModel.h"
 #include "CGALPolyhedron.h"
 #include "CGALLinearCellComplex.h"
@@ -106,14 +108,26 @@ using namespace glm;
 #include "CompositShader.h"
 #include "SSLICShader.h"
 #include "GrayScaleShader.h"
+#include "ILight.h"
+#include "DirectionLight.h"
+#include "SpotLight.h"
+#include "PointLight.h"
+#include "IPrimitive.h"
+#include "Cone.h"
+#include "IManipulator.h"
+#include "MoveManipulator.h"
+#include "RotateManipulator.h"
+#include "ScaleManipulator.h"
 
 // Renderer
 #include "PfxPlane.h"
 #include "IPostEffect.h"
+#include "GeometryPass.h"
 #include "GrayScaleEffect.h"
 #include "SSLICEffect.h"
 #include "Renderer.h"
 #include "PfxRenderer.h"
+#include "LighthingPass.h"
 
 // logic
 #include "CameraController.h"
@@ -121,11 +135,9 @@ using namespace glm;
 #include "PickCommand.h"
 
 // model (mvc)
-#include "IModelProperty.h"
 #include "BDBProperty.h"
 #include "NormalProperty.h"
 #include "HalfEdgeProperty.h"
-#include "IModelNode.h"
 #include "PrimitiveNode.h"
 #include "ModelNode.h"
 #include "HalfEdgeDSNode.h"
