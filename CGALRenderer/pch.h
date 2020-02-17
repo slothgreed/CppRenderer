@@ -120,6 +120,7 @@ using namespace glm;
 #include "MoveManipulator.h"
 #include "RotateManipulator.h"
 #include "ScaleManipulator.h"
+#include "ManipulatorNode.h"
 
 // Renderer
 #include "PfxPlane.h"

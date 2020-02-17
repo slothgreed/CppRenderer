@@ -31,5 +31,3 @@ void PrimitiveNode::ShowProperty()
 
 }
 }
-
-

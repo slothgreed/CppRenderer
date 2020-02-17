@@ -20,4 +20,20 @@ void IMaterial::Draw()
 	UnBind();
 	m_pShader->UnUse();
 }
+
+void IMaterial::Draw(IVertexBuffer* pVertexBuffer)
+{
+	if (m_pShader == nullptr ||
+		pVertexBuffer == nullptr)
+	{
+		assert(0);
+	}
+
+	m_pShader->Use();
+	Bind();
+	pVertexBuffer->Draw();
+	UnBind();
+	m_pShader->UnUse();
+}
+
 }

@@ -4,15 +4,30 @@
 namespace KI
 {
 
-class MoveManipulator : IManipulatorModel
+
+class MoveManipulator : public IManipulatorModel
 {
 public:
+
+	virtual MODEL_TYPE Type() { return MODEL_TYPE::MODEL_TYPE_MOVE_MANIPULATOR; };
+	class ShapeData
+	{
+	public:
+		vector<vec3> position;
+		Cone cone;
+	};
+
 	MoveManipulator();
 	~MoveManipulator();
 
 	virtual void Build() override;
+	void GetFaceList(vector<vec3>& faceList, vector<int>& faceIndex, MANIPULATOR_HANDLE handle);
+	void GetEdgeList(vector<vec3>& edgeList, vector<int>& edgeIndex, MANIPULATOR_HANDLE handle);
 private:
-
+	ShapeData xDirection;
+	ShapeData yDirection;
+	ShapeData zDirection;
+	
 };
 
 }

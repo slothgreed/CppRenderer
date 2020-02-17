@@ -15,6 +15,7 @@ public:
 	virtual void CompileShader();
 	virtual bool Compare(const IMaterial& material);
 
+	void SetFixColor(vec4 color);
 	void AddTexture(shared_ptr<Texture> texture);
 private:
 	shared_ptr<DefaultUniform> m_pUniform;

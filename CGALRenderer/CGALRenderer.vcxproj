@@ -219,6 +219,7 @@
     <ClInclude Include="IVertexBuffer.h" />
     <ClInclude Include="LighthingPass.h" />
     <ClInclude Include="LineState.h" />
+    <ClInclude Include="ManipulatorNode.h" />
     <ClInclude Include="MoveManipulator.h" />
     <ClInclude Include="OutputMaterial.h" />
     <ClInclude Include="OutputShader.h" />
@@ -310,6 +311,7 @@
     <ClCompile Include="IRenderTarget.cpp" />
     <ClCompile Include="LighthingPass.cpp" />
     <ClCompile Include="LineState.cpp" />
+    <ClCompile Include="ManipulatorNode.cpp" />
     <ClCompile Include="MoveManipulator.cpp" />
     <ClCompile Include="OutputMaterial.cpp" />
     <ClCompile Include="OutputShader.cpp" />

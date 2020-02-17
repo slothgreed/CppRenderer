@@ -14,9 +14,16 @@ void DefaultMaterial::AddTexture(shared_ptr<Texture> texture)
 {
 	if (m_pUniform == nullptr)
 	{
+		assert(0);
 		m_pUniform = make_shared<DefaultUniform>();
 	}
+
 	m_pUniform->SetTexture(texture);
+}
+
+void DefaultMaterial::SetFixColor(vec4 color)
+{
+	m_pUniform->SetFixColor(color);
 }
 
 void DefaultMaterial::CompileShader()

@@ -35,15 +35,20 @@ void BunnyScene::Initialize(Project* m_pProject)
 	m_pUniformScene->Set(sceneData);
 
 	{
-		auto polyhedron = make_shared<HalfEdgeModel>();
-		polyhedron->Load("E:\\cgModel\\bunny6000.half");
+		//auto polyhedron = make_shared<HalfEdgeModel>();
+		//polyhedron->Load("E:\\cgModel\\bunny6000.half");
 
 		BDB bdb(vec3(0, 0, 0), vec3(1, 1, 1));
-		polyhedron->GetBDB(bdb);
+		//polyhedron->GetBDB(bdb);
 		m_pCamera->FitToBDB(bdb);
 
-		auto polyNode = make_shared<HalfEdgeDSNode>(polyhedron);
-		m_pRenderList.push_back(polyNode);
+		//auto polyNode = make_shared<HalfEdgeDSNode>(polyhedron);
+		//m_pRenderList.push_back(polyNode);
+	}
+
+	{
+		auto moveManipulator = make_shared<ManipulatorNode>();
+		m_pRenderList.push_back(moveManipulator);
 	}
 
 	auto axis = make_shared<DefaultVertexBuffer>();

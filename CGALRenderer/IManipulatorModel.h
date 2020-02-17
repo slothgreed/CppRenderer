@@ -4,13 +4,20 @@
 namespace KI
 {
 
-class IManipulatorModel : IModel
+enum MANIPULATOR_HANDLE
+{
+	MANIPULATOR_HANDLE_X,
+	MANIPULATOR_HANDLE_Y,
+	MANIPULATOR_HANDLE_Z
+};
+class IManipulatorModel : public IModel
 {
 public:
 	IManipulatorModel() {};
 	virtual ~IManipulatorModel() {};
 
 	virtual void Build() = 0;
+	virtual void GetBDB(BDB& bdb) override { assert(0); };
 
 private:
 
