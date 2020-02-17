@@ -1,21 +1,19 @@
 namespace KI
 {
-ModelNode::ModelNode(shared_ptr<IModel> model)
+PolygonModelNode::PolygonModelNode(shared_ptr<IModel> model)
+	: IModelNode(model)
 {
-	m_name = "ModelNode";
-	m_pModel = model;
-	m_pModel->AddObserver(this);
+	m_name = "PolygonModelNode";
 	VisibleBDB(true);
 	VisibleNormal(true);
 	SetRenderData();
 }
 
-ModelNode::~ModelNode()
+PolygonModelNode::~PolygonModelNode()
 {
-	m_pModel->RemoveObserver(this);
 }
 
-void ModelNode::Draw()
+void PolygonModelNode::Draw()
 {
 	m_pFaceMaterial->Draw();
 	m_pEdgeMaterial->Draw();
@@ -24,22 +22,35 @@ void ModelNode::Draw()
 
 }
 
-void ModelNode::ShowProperty()
+void PolygonModelNode::ShowProperty()
 {
 	ImGui::Begin(m_name.data());
 	ImGui::Text(m_bdb.ToString().data());
 	ImGui::End();
 }
 
-void ModelNode::VisibleBDB(bool visibility)
+IPolygonModel* PolygonModelNode::GetModel()
 {
-	m_pModel->GetBDB(m_bdb);
+	if (IPolygonModel::IsPolygonModel(m_pModel->Type()))
+	{
+		return (IPolygonModel*)(m_pModel.get());
+	}
+	else
+	{
+		assert(0);
+		return nullptr;
+	}
+}
+
+void PolygonModelNode::VisibleBDB(bool visibility)
+{
+	GetModel()->GetBDB(m_bdb);
 	AddProperty(make_shared<BDBProperty>());
 }
 
-void ModelNode::VisibleNormal(bool visibility)
+void PolygonModelNode::VisibleNormal(bool visibility)
 {
-	if (m_pModel->HasVertexList())
+	if (GetModel()->HasVertexList())
 	{
 		AddProperty(make_shared<NormalProperty>());
 	}
@@ -49,13 +60,13 @@ void ModelNode::VisibleNormal(bool visibility)
 	}
 }
 
-void ModelNode::SetRenderData()
+void PolygonModelNode::SetRenderData()
 {
-	if (m_pModel->HasVertexList() == false)
+	if (GetModel()->HasVertexList() == false)
 	{
 		vector<vec3> facet;
 		vector<vec3> normal;
-		m_pModel->GetFacetList(facet, normal);
+		GetModel()->GetFacetList(facet, normal);
 		auto pFaceBuffer = make_shared<DefaultVertexBuffer>();
 		pFaceBuffer->Generate(VERTEX_LAYOUT_PN);
 		pFaceBuffer->SetPosition(GL_TRIANGLES, facet);
@@ -66,7 +77,7 @@ void ModelNode::SetRenderData()
 		m_pFaceMaterial->CompileShader();
 
 		vector<vec3> edge;
-		m_pModel->GetEdgeList(edge);
+		GetModel()->GetEdgeList(edge);
 		auto pEdgeBuffer = make_shared<DefaultVertexBuffer>();
 		pEdgeBuffer->Generate(VERTEX_LAYOUT_P);
 		pEdgeBuffer->SetPosition(GL_LINES, edge);
@@ -79,8 +90,8 @@ void ModelNode::SetRenderData()
 	{
 		vector<Vertex> vertex;
 		vector<int> index;
-		m_pModel->GetVertexList(vertex);
-		m_pModel->GetFaceIndexList(index);
+		GetModel()->GetVertexList(vertex);
+		GetModel()->GetFaceIndexList(index);
 		auto pFaceBuffer = make_shared<DefaultVertexBuffer>();
 
 		vector<vec3> position;
@@ -101,7 +112,7 @@ void ModelNode::SetRenderData()
 		m_pFaceMaterial->CompileShader();
 
 		vector<vec3> edge;
-		m_pModel->GetEdgeList(edge);
+		GetModel()->GetEdgeList(edge);
 		auto pEdgeBuffer = make_shared<DefaultVertexBuffer>();
 		pEdgeBuffer->Generate(VERTEX_LAYOUT_P);
 		pEdgeBuffer->SetPosition(GL_LINES, edge);
@@ -113,7 +124,7 @@ void ModelNode::SetRenderData()
 
 }
 
-void ModelNode::Update(void* sender, shared_ptr<EventArgs> args)
+void PolygonModelNode::Update(void* sender, shared_ptr<EventArgs> args)
 {
 	SetRenderData();
 

@@ -88,12 +88,6 @@
     <Filter Include="ソース ファイル\Application\Property">
       <UniqueIdentifier>{4f1bb258-d428-4acd-80a1-d8f7959a29ee}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\Asset\Model">
-      <UniqueIdentifier>{91b48c6e-684b-4aa3-ace7-e22700310366}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\Asset\Model">
-      <UniqueIdentifier>{15297073-dfeb-4c8a-8618-ef4af01cd201}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ヘッダー ファイル\Application\Node">
       <UniqueIdentifier>{0801c496-2132-4217-aba6-bcf1a97358f4}</UniqueIdentifier>
     </Filter>
@@ -166,17 +160,29 @@
     <Filter Include="ヘッダー ファイル\Renderer\Geometry">
       <UniqueIdentifier>{863f7fa7-283c-4c78-b9b5-3d96e83fb7a8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\Asset\Model">
+      <UniqueIdentifier>{76ececcd-d8e9-4ca9-9b55-d1a80f150e0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Asset\Model">
+      <UniqueIdentifier>{2800f48d-8d73-4faf-9af9-3b310b60a387}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Asset\Model\PolygonModel">
+      <UniqueIdentifier>{91b48c6e-684b-4aa3-ace7-e22700310366}</UniqueIdentifier>
+    </Filter>
     <Filter Include="ソース ファイル\Asset\Model\Manipulator">
       <UniqueIdentifier>{d0ecf1ee-40c6-4bbc-bc39-bdc4fc35dee7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Asset\Model\Primitive">
+      <UniqueIdentifier>{f292c4a0-885c-4999-aba6-d8c5435e06db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Asset\Model\PolygonModel">
+      <UniqueIdentifier>{15297073-dfeb-4c8a-8618-ef4af01cd201}</UniqueIdentifier>
     </Filter>
     <Filter Include="ヘッダー ファイル\Asset\Model\Manipulator">
       <UniqueIdentifier>{64ea997c-ce4a-4db1-9eca-a3d1c9671020}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ヘッダー ファイル\Asset\Primitive">
+    <Filter Include="ヘッダー ファイル\Asset\Model\Primitive">
       <UniqueIdentifier>{4def95e8-576d-4360-9584-df4436488e38}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Asset\Model\Primitive">
-      <UniqueIdentifier>{f292c4a0-885c-4999-aba6-d8c5435e06db}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -322,25 +328,22 @@
       <Filter>ヘッダー ファイル\Utility</Filter>
     </ClInclude>
     <ClInclude Include="CGALGeneralizedMaps.h">
-      <Filter>ヘッダー ファイル\Asset\Model</Filter>
+      <Filter>ヘッダー ファイル\Asset\Model\PolygonModel</Filter>
     </ClInclude>
     <ClInclude Include="CGALLinearCellComplex.h">
-      <Filter>ヘッダー ファイル\Asset\Model</Filter>
+      <Filter>ヘッダー ファイル\Asset\Model\PolygonModel</Filter>
     </ClInclude>
     <ClInclude Include="CGALModel.h">
-      <Filter>ヘッダー ファイル\Asset\Model</Filter>
+      <Filter>ヘッダー ファイル\Asset\Model\PolygonModel</Filter>
     </ClInclude>
     <ClInclude Include="CGALPolyhedron.h">
-      <Filter>ヘッダー ファイル\Asset\Model</Filter>
+      <Filter>ヘッダー ファイル\Asset\Model\PolygonModel</Filter>
     </ClInclude>
     <ClInclude Include="HalfEdgeModel.h">
-      <Filter>ヘッダー ファイル\Asset\Model</Filter>
-    </ClInclude>
-    <ClInclude Include="IModel.h">
-      <Filter>ヘッダー ファイル\Asset\Model</Filter>
+      <Filter>ヘッダー ファイル\Asset\Model\PolygonModel</Filter>
     </ClInclude>
     <ClInclude Include="IModelNode.h">
-      <Filter>ヘッダー ファイル\Asset\Model</Filter>
+      <Filter>ヘッダー ファイル\Asset\Model\PolygonModel</Filter>
     </ClInclude>
     <ClInclude Include="IModelProperty.h">
       <Filter>ヘッダー ファイル\Application\Property</Filter>
@@ -349,9 +352,6 @@
       <Filter>ヘッダー ファイル\Application\Property</Filter>
     </ClInclude>
     <ClInclude Include="PrimitiveNode.h">
-      <Filter>ヘッダー ファイル\Application\Node</Filter>
-    </ClInclude>
-    <ClInclude Include="ModelNode.h">
       <Filter>ヘッダー ファイル\Application\Node</Filter>
     </ClInclude>
     <ClInclude Include="IMaterial.h">
@@ -489,14 +489,23 @@
     <ClInclude Include="RotateManipulator.h">
       <Filter>ヘッダー ファイル\Asset\Model\Manipulator</Filter>
     </ClInclude>
-    <ClInclude Include="IManipulator.h">
-      <Filter>ヘッダー ファイル\Asset\Model\Manipulator</Filter>
-    </ClInclude>
     <ClInclude Include="Cone.h">
-      <Filter>ヘッダー ファイル\Asset\Primitive</Filter>
+      <Filter>ヘッダー ファイル\Asset\Model\Primitive</Filter>
     </ClInclude>
     <ClInclude Include="IPrimitive.h">
-      <Filter>ヘッダー ファイル\Asset\Primitive</Filter>
+      <Filter>ヘッダー ファイル\Asset\Model\Primitive</Filter>
+    </ClInclude>
+    <ClInclude Include="IPolygonModel.h">
+      <Filter>ヘッダー ファイル\Asset\Model\PolygonModel</Filter>
+    </ClInclude>
+    <ClInclude Include="IModel.h">
+      <Filter>ヘッダー ファイル\Asset\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="PolygonModelNode.h">
+      <Filter>ヘッダー ファイル\Application\Node</Filter>
+    </ClInclude>
+    <ClInclude Include="IManipulatorModel.h">
+      <Filter>ヘッダー ファイル\Asset\Model\Manipulator</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -611,9 +620,6 @@
     <ClCompile Include="TextureGenerator.cpp">
       <Filter>ソース ファイル\Utility</Filter>
     </ClCompile>
-    <ClCompile Include="ModelNode.cpp">
-      <Filter>ソース ファイル\Application\Node</Filter>
-    </ClCompile>
     <ClCompile Include="PrimitiveNode.cpp">
       <Filter>ソース ファイル\Application\Node</Filter>
     </ClCompile>
@@ -621,19 +627,16 @@
       <Filter>ソース ファイル\Application\Property</Filter>
     </ClCompile>
     <ClCompile Include="CGALGeneralizedMaps.cpp">
-      <Filter>ソース ファイル\Asset\Model</Filter>
+      <Filter>ソース ファイル\Asset\Model\PolygonModel</Filter>
     </ClCompile>
     <ClCompile Include="CGALLinearCellComplex.cpp">
-      <Filter>ソース ファイル\Asset\Model</Filter>
+      <Filter>ソース ファイル\Asset\Model\PolygonModel</Filter>
     </ClCompile>
     <ClCompile Include="CGALPolyhedron.cpp">
-      <Filter>ソース ファイル\Asset\Model</Filter>
-    </ClCompile>
-    <ClCompile Include="IModel.cpp">
-      <Filter>ソース ファイル\Asset\Model</Filter>
+      <Filter>ソース ファイル\Asset\Model\PolygonModel</Filter>
     </ClCompile>
     <ClCompile Include="HalfEdgeModel.cpp">
-      <Filter>ソース ファイル\Asset\Model</Filter>
+      <Filter>ソース ファイル\Asset\Model\PolygonModel</Filter>
     </ClCompile>
     <ClCompile Include="DefaultMaterial.cpp">
       <Filter>ソース ファイル\Asset\Material</Filter>
@@ -748,6 +751,12 @@
     </ClCompile>
     <ClCompile Include="IPrimitive.cpp">
       <Filter>ソース ファイル\Asset\Model\Primitive</Filter>
+    </ClCompile>
+    <ClCompile Include="IPolygonModel.cpp">
+      <Filter>ソース ファイル\Asset\Model\PolygonModel</Filter>
+    </ClCompile>
+    <ClCompile Include="PolygonModelNode.cpp">
+      <Filter>ソース ファイル\Application\Node</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

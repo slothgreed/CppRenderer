@@ -2,7 +2,7 @@
 #define CGAL_MODEL_H
 namespace KI
 {
-class CGALModel : public IModel
+class CGALModel : public IPolygonModel
 {
 public:
 	CGALModel() {};

@@ -30,7 +30,16 @@ void NormalProperty::Update(IModel* pModel)
 void NormalProperty::SetVBOData(IModel* pModel)
 {
 	vector<Vertex> vertexList;
-	pModel->GetVertexList(vertexList);
+	IPolygonModel* pPolygonModel = nullptr;
+	if (IPolygonModel::IsPolygonModel(pModel->Type()))
+	{
+		pPolygonModel = (IPolygonModel*)pModel;
+	}
+	else
+	{
+		assert(0);
+	}
+
 	vector<vec3> normalList;
 	for (int i = 0; i < vertexList.size(); i++)
 	{

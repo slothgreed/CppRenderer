@@ -92,8 +92,11 @@ using namespace glm;
 #include "AssetTypes.h"
 #include "Camera.h"
 #include "IModel.h"
+#include "IPolygonModel.h"
+#include "IManipulatorModel.h"
 #include "IModelProperty.h"
 #include "IModelNode.h"
+#include "PolygonModelNode.h"
 #include "CGALModel.h"
 #include "CGALPolyhedron.h"
 #include "CGALLinearCellComplex.h"
@@ -114,7 +117,6 @@ using namespace glm;
 #include "PointLight.h"
 #include "IPrimitive.h"
 #include "Cone.h"
-#include "IManipulator.h"
 #include "MoveManipulator.h"
 #include "RotateManipulator.h"
 #include "ScaleManipulator.h"
@@ -139,7 +141,7 @@ using namespace glm;
 #include "NormalProperty.h"
 #include "HalfEdgeProperty.h"
 #include "PrimitiveNode.h"
-#include "ModelNode.h"
+#include "PolygonModelNode.h"
 #include "HalfEdgeDSNode.h"
 
 // application utility

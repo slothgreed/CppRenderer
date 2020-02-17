@@ -7,13 +7,13 @@ class SubdivisionCommandArgs : public ICommandArgs
 	friend class SubdivisionCommand;
 
 public:
-	SubdivisionCommandArgs(shared_ptr<IModel> model) { m_pModel = model; };
+	SubdivisionCommandArgs(shared_ptr<IPolygonModel> model) { m_pModel = model; };
 	~SubdivisionCommandArgs() {};
 
 	virtual COMMAND_ARGS_TYPE Type() { return SUBDIVISION_COMMAND_ARGS; }
 
 private:
-	shared_ptr<IModel> m_pModel;
+	shared_ptr<IPolygonModel> m_pModel;
 };
 
 

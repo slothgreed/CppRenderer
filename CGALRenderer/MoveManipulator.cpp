@@ -39,19 +39,4 @@ void MoveManipulator::Build()
 	zCone.Multi(zMatrix);
 }
 
-void MoveManipulator::GetVertexList(vector<Vertex>& vertex)
-{
-
-}
-
-void MoveManipulator::GetEdgeIndexList(vector<int>& index)
-{
-
-}
-
-void MoveManipulator::GetFaceIndexList(vector<int> & index)
-{
-
-}
-
 }

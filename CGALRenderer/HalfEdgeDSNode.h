@@ -4,7 +4,7 @@
 namespace KI
 {
 
-class HalfEdgeDSNode : public ModelNode
+class HalfEdgeDSNode : public PolygonModelNode
 {
 public :
 	HalfEdgeDSNode(shared_ptr<HalfEdgeModel> model);

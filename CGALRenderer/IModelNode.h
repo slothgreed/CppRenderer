@@ -8,7 +8,8 @@ class IModelNode : public IObserver
 {
 public:
 	IModelNode() {};
-	~IModelNode() {};
+	IModelNode(shared_ptr<IModel> model);
+	virtual ~IModelNode();
 
 	virtual void ShowProperty() = 0;
 	virtual void Draw() = 0;

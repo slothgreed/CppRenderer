@@ -2,7 +2,7 @@
 #define HALFEDGE_MODEL_H
 namespace KI
 {
-class HalfEdgeModel : public IModel
+class HalfEdgeModel : public IPolygonModel
 {
 public:
 	HalfEdgeModel();

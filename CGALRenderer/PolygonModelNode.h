@@ -7,14 +7,15 @@ class IShader;
 class IVertexBuffer;
 class IModelProperty;
 class IMaterial;
-class ModelNode : public IModelNode
+class PolygonModelNode : public IModelNode
 {
 public:
-	ModelNode(shared_ptr<IModel> model);
-	~ModelNode();
+	PolygonModelNode(shared_ptr<IModel> model);
+	~PolygonModelNode();
 	virtual void Draw() override;
 	virtual void ShowProperty() override;
 	virtual void Update(void* sender, shared_ptr<EventArgs> args) override;
+	IPolygonModel* GetModel();
 
 	void VisibleBDB(bool visibility);
 	void VisibleNormal(bool visibility);

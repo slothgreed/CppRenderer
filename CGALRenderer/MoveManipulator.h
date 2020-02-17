@@ -4,17 +4,13 @@
 namespace KI
 {
 
-class MoveManipulator : IModel
+class MoveManipulator : IManipulatorModel
 {
 public:
 	MoveManipulator();
 	~MoveManipulator();
 
 	virtual void Build() override;
-	virtual bool HasVertexList() override { return true; };
-	virtual void GetVertexList(vector<Vertex>& vertex);
-	virtual void GetEdgeIndexList(vector<int>& index);
-	virtual void GetFaceIndexList(vector<int>& index);
 private:
 
 };

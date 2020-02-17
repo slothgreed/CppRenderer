@@ -1,6 +1,20 @@
 namespace KI
 {
 
+IModelNode::IModelNode(shared_ptr<IModel> model)
+{
+	m_pModel = model;
+	m_pModel->AddObserver(this);
+}
+
+IModelNode::~IModelNode()
+{
+	if (m_pModel != nullptr)
+	{
+		m_pModel->RemoveObserver(this);
+	}
+}
+
 void IModelNode::AddProperty(shared_ptr<IModelProperty> prop)
 {
 	auto itr = std::find_if(m_pProperty.begin(), m_pProperty.end(), 
