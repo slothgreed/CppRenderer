@@ -116,6 +116,11 @@ void PolygonModelNode::SetRenderData()
 
 }
 
+void PolygonModelNode::Pick(const vec3& direction, PickResult& distance)
+{
+
+}
+
 void PolygonModelNode::Update(void* sender, shared_ptr<EventArgs> args)
 {
 	SetRenderData();

@@ -20,6 +20,9 @@ public:
 	virtual void GetBDB(BDB& bdb);
 
 	shared_ptr<HalfEdgeDS> GetHalfEdgeDS() { return m_HalfEdgeDS; };
+
+	float Intersection(const vec3& direction);
+
 private:
 	shared_ptr<HalfEdgeDS> m_HalfEdgeDS;
 };

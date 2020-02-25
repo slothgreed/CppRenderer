@@ -16,24 +16,29 @@ void MoveManipulator::Build()
 	xDirection.position.push_back(vec3(0, 0, 0));
 	xDirection.position.push_back(vec3(1, 0, 0));
 	xDirection.cone.Build(1, 1, 10);
-	mat4x4 identifier = mat4x4(1);
-	//mat4x4 xMatrix = glm::rotate(mat4x4(1), pi<float>(), vec3(0, 0, 1));
-	//xMatrix = glm::translate(xMatrix, vec3(0, 0, 1));
-	//xDirection.cone.Multi(xMatrix);
+	mat4x4 xMatrix = mat4x4(1);
+	xMatrix = glm::translate(xMatrix, vec3(1, 0, 0));
+	xMatrix = glm::scale(xMatrix, vec3(0.1));
+	xMatrix = glm::rotate(xMatrix, -pi<float>() / 2, vec3(0, 0, 1));
+	xDirection.cone.Multi(xMatrix);
 
 	// y axis
 	yDirection.position.push_back(vec3(0, 0, 0));
 	yDirection.position.push_back(vec3(0, 1, 0));
 	yDirection.cone.Build(1, 1, 10);
-	mat4x4 yMatrix = glm::translate(mat4x4(1), vec3(0, 1, 0));
+	mat4x4 yMatrix = mat4x4(1);
+	yMatrix = glm::translate(yMatrix, vec3(0, 1, 0));
+	yMatrix = glm::scale(yMatrix, vec3(0.1));
 	yDirection.cone.Multi(yMatrix);
 
 	// z axis
 	zDirection.position.push_back(vec3(0, 0, 0));
 	zDirection.position.push_back(vec3(0, 0, 1));
-	yDirection.cone.Build(1, 1, 10);
-	mat4x4 zMatrix = glm::rotate(mat4x4(1), pi<float>(), vec3(1, 0, 0));
-	zMatrix = glm::rotate(zMatrix, pi<float>(), vec3(1, 0, 0));
+	zDirection.cone.Build(1, 1, 10);
+	mat4x4 zMatrix = mat4x4(1);
+	zMatrix = glm::translate(zMatrix, vec3(0, 0, 1));
+	zMatrix = glm::scale(zMatrix, vec3(0.1));
+	zMatrix = glm::rotate(zMatrix, pi<float>() / 2, vec3(1, 0, 0));
 	zDirection.cone.Multi(zMatrix);
 }
 

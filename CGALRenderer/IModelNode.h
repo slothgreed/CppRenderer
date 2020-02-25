@@ -4,6 +4,17 @@ namespace KI
 {
 class IModelProperty;
 class IObserver;
+
+class PickResult
+{
+public:
+	PickResult() {};
+	~PickResult() {};
+
+private:
+
+};
+
 class IModelNode : public IObserver
 {
 public:
@@ -12,6 +23,7 @@ public:
 	virtual ~IModelNode();
 
 	virtual void ShowProperty() = 0;
+	virtual void Pick(const vec3& direction, PickResult& result) = 0;
 	virtual void Draw() = 0;
 	virtual void Update(void* sender, shared_ptr<EventArgs> args);
 

@@ -9,6 +9,7 @@ public:
 	~PrimitiveNode();
 
 	virtual void Draw();
+	virtual void Pick(const vec3& direction, PickResult& result) override {};
 	virtual void ShowProperty();
 	virtual void Update(void* sender, shared_ptr<EventArgs> args);
 	shared_ptr<DefaultMaterial> GetMaterial() { return m_pMaterial; }

@@ -9,8 +9,9 @@ public:
 	ManipulatorNode();
 	~ManipulatorNode();
 
-	virtual void ShowProperty();
-	virtual void Draw();
+	virtual void ShowProperty() override;
+	virtual void Draw() override;
+	virtual void Pick(const vec3& direction, PickResult& result) override;
 private:
 	void GenManipulatorHandleVBO(DefaultVertexBuffer* pFaceBuffer, DefaultVertexBuffer* pEdgeBuffer, MANIPULATOR_HANDLE handle);
 	void SetRenderData();

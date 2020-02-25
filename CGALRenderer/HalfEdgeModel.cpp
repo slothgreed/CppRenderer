@@ -9,7 +9,6 @@ HalfEdgeModel::~HalfEdgeModel()
 {
 }
 
-
 void HalfEdgeModel::Load(const string& filePath)
 {
 	if (FileUtility::CheckExtension(filePath, ".half") == false)
@@ -120,6 +119,16 @@ void HalfEdgeModel::GetBDB(BDB& bdb)
 	for (int i = 0; i < halfVertexList.size(); i++)
 	{
 		bdb.Apply(halfVertexList[i]->Position());
+	}
+}
+
+float HalfEdgeModel::Intersection(const vec3& direction)
+{
+	auto halfFaceList = m_HalfEdgeDS->FaceList();
+	for (int i = 0; i < halfFaceList.size(); i++)
+	{
+		auto face = halfFaceList[i];
+		face->Intersect(direction);
 	}
 }
 }

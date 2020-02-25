@@ -94,4 +94,8 @@ void ManipulatorNode::Draw()
 	m_pMaterial->Draw(m_pFaceBuffers[MANIPULATOR_HANDLE_Z]);
 }
 
+
+void ManipulatorNode::Pick(const vec3& direction, PickResult& result)
+{
+}
 }

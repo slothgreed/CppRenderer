@@ -64,6 +64,11 @@ vec3 HalfEdgeFace::CalcCentroid()
 	return centroid;
 }
 
+bool HalfEdgeFace::Intersection(const vec3& direction, float& distance)
+{
+
+}
+
 string HalfEdgeFace::ToString()
 {
 	string str;
@@ -104,4 +109,5 @@ shared_ptr<HalfEdge> FaceAroundEdgeIterator::Current()
 {
 	return m_pEdgeItr;
 }
+
 }

@@ -12,6 +12,7 @@ class PolygonModelNode : public IModelNode
 public:
 	PolygonModelNode(shared_ptr<IModel> model);
 	~PolygonModelNode();
+	virtual void Pick(const vec3& direction, PickResult& result) override;
 	virtual void Draw() override;
 	virtual void ShowProperty() override;
 	virtual void Update(void* sender, shared_ptr<EventArgs> args) override;
