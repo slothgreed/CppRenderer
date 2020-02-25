@@ -99,7 +99,7 @@ void IShader::BindVector4(GLint uniformId, vec4 value)
 	Logger::GLError();
 }
 
-bool IShader::Compare(shared_ptr<IShaderDefine> shaderDefine)
+bool IShader::Compare(IShaderDefine* shaderDefine)
 {
 	if (m_shaderDefine->Compare(shaderDefine)) {
 		return true;

@@ -60,7 +60,7 @@ shared_ptr<IShader> ShaderManager::FindOrNew(shared_ptr<IShaderDefine> shaderDef
 {
 	for (int i = 0; i < m_pShaderList.size(); i++)
 	{
-		if (m_pShaderList[i]->Compare(shaderDefine))
+		if (m_pShaderList[i]->Compare(shaderDefine.get()))
 		{
 			return m_pShaderList[i];
 		}

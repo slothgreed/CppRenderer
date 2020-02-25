@@ -136,11 +136,11 @@ void DefaultShaderDefine::GetFragDefine(string& define)
 		define += USE_GBUFFER;
 }
 
-bool DefaultShaderDefine::Compare(shared_ptr<IShaderDefine> shaderDefine)
+bool DefaultShaderDefine::Compare(IShaderDefine* shaderDefine)
 {
 	if (shaderDefine->Type() == SHADER_TYPE_DEFAULT)
 	{
-		DefaultShaderDefine* pDefine = (DefaultShaderDefine*)(&shaderDefine);
+		DefaultShaderDefine* pDefine = (DefaultShaderDefine*)(shaderDefine);
 		if (m_useGBuffer == pDefine->m_useGBuffer &&
 			m_useNormal == pDefine->m_useNormal &&
 			m_useColor == pDefine->m_useColor &&

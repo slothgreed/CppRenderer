@@ -25,7 +25,7 @@ public:
 	virtual void Bind(shared_ptr<IUniform> uniform) = 0;
 	virtual void UnBind() = 0;
 	GLuint Program() { return m_programId; }
-	bool Compare(shared_ptr<IShaderDefine> shaderDefine);
+	bool Compare(IShaderDefine* shaderDefine);
 	shared_ptr<IShaderDefine> GetShaderDefine() { return m_shaderDefine; }
 	
 protected:

@@ -50,7 +50,7 @@ class CompositShaderDefine : public IShaderDefine
 	void SetShaderDefine(CompositShader::COMPOSIT_TYPE type);
 	virtual void GetVertexDefine(string& define) {};
 	virtual void GetFragDefine(string& define);
-	virtual bool Compare(shared_ptr<IShaderDefine> shaderDefine);
+	virtual bool Compare(IShaderDefine* shaderDefine);
 
 	CompositShader::COMPOSIT_TYPE m_CompositType;
 };

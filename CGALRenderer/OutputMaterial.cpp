@@ -3,42 +3,42 @@ namespace KI
 
 OutputMaterial::OutputMaterial()
 {
+	m_pUniform = make_shared<OutputUniform>();
 }
 
 OutputMaterial::~OutputMaterial()
 {
 }
 
-void OutputMaterial::CompileShader()
+shared_ptr<IShader> OutputMaterial::CompileShader(IVertexBuffer* pVertexBuffer)
 {
-	if (m_pVertexBuffer->Type() == DefaultVertexBuffer::DefaultVertexBufferTypeStr)
+	if (pVertexBuffer->Type() == DefaultVertexBuffer::DefaultVertexBufferTypeStr)
 	{
-		auto pDefaultBuffer = static_pointer_cast<DefaultVertexBuffer>(m_pVertexBuffer);
+		auto pDefaultBuffer = (DefaultVertexBuffer*)(pVertexBuffer);
 		if (pDefaultBuffer->Layout() != VERTEX_LAYOUT::VERTEX_LAYOUT_PT)
 		{
 			assert(0);
 		}
 
 		auto shaderDefine = make_shared<OutputShaderDefine>();
-		m_pShader = ShaderManager::Instance()->FindOrNew(shaderDefine);
+		return ShaderManager::Instance()->FindOrNew(shaderDefine);
 	}
 	else
 	{
 		assert(0);
 	}
+
+	return nullptr;
 }
 
 void OutputMaterial::AddColorTexture(shared_ptr<Texture> colorTexture)
 {
-	m_pColorTexture = colorTexture;
-
+	m_pUniform->pTexture = colorTexture;
 }
 
 void OutputMaterial::Bind()
 {
-	auto pUniform = make_shared<OutputUniform>();
-	pUniform->pTexture = m_pColorTexture;
-	m_pShader->Bind(pUniform);
+	m_pShader->Bind(m_pUniform);
 }
 
 void OutputMaterial::UnBind()

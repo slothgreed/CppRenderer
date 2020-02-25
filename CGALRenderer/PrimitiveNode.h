@@ -15,6 +15,7 @@ public:
 private:
 	string m_name;
 	shared_ptr<DefaultMaterial> m_pMaterial;
+	shared_ptr<DefaultVertexBuffer> m_pVertexBuffer;
 };
 }
 

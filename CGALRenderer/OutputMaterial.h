@@ -17,12 +17,12 @@ public:
 	virtual const MATERIAL_TYPE Type() const { return MATERIAL_TYPE::MATERIAL_TYPE_OUTPUT_BUFFER; };
 	virtual void Bind();
 	virtual void UnBind();
-	virtual void CompileShader();
+	virtual shared_ptr<IShader> CompileShader(IVertexBuffer* pVertexBuffer) override;
 	virtual bool Compare(const IMaterial& material);
 	void AddColorTexture(shared_ptr<Texture> colorTexture);
 
 private:
-	shared_ptr<Texture> m_pColorTexture;
+	shared_ptr<OutputUniform> m_pUniform;
 
 };
 

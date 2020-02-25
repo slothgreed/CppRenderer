@@ -61,7 +61,7 @@ public:
 	void GetVertexDefine(string& define);
 	void GetFragDefine(string& define);
 	void SetShaderDefine(VERTEX_LAYOUT layout);
-	virtual bool Compare(shared_ptr<IShaderDefine> shaderDefine) override;
+	virtual bool Compare(IShaderDefine* shaderDefine) override;
 
 	bool SetUseGBuffer(float value) { m_useGBuffer = value; }
 	bool SetUseNormal(float value) { m_useNormal = value; };

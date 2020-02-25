@@ -7,7 +7,6 @@ ManipulatorNode::ManipulatorNode()
 
 ManipulatorNode::~ManipulatorNode()
 {
-	m_pMaterial->SetVertexBuffer(nullptr);
 	delete m_pFaceBuffers[MANIPULATOR_HANDLE_X];
 	delete m_pFaceBuffers[MANIPULATOR_HANDLE_Y];
 	delete m_pFaceBuffers[MANIPULATOR_HANDLE_Z];
@@ -50,9 +49,6 @@ void ManipulatorNode::SetRenderData()
 		MANIPULATOR_HANDLE::MANIPULATOR_HANDLE_Z);
 
 	m_pMaterial = new DefaultMaterial();
-	m_pMaterial->SetVertexBuffer(shared_ptr<DefaultVertexBuffer>(m_pFaceBuffers[MANIPULATOR_HANDLE_X]));
-	m_pMaterial->CompileShader();
-
 }
 
 void ManipulatorNode::GenManipulatorHandleVBO(

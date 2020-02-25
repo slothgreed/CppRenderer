@@ -3,6 +3,7 @@ namespace KI
 
 DefaultMaterial::DefaultMaterial()
 {
+	m_pUniform = make_shared<DefaultUniform>();
 }
 
 DefaultMaterial::~DefaultMaterial()
@@ -12,12 +13,6 @@ DefaultMaterial::~DefaultMaterial()
 
 void DefaultMaterial::AddTexture(shared_ptr<Texture> texture)
 {
-	if (m_pUniform == nullptr)
-	{
-		assert(0);
-		m_pUniform = make_shared<DefaultUniform>();
-	}
-
 	m_pUniform->SetTexture(texture);
 }
 
@@ -26,21 +21,22 @@ void DefaultMaterial::SetFixColor(vec4 color)
 	m_pUniform->SetFixColor(color);
 }
 
-void DefaultMaterial::CompileShader()
+shared_ptr<IShader> DefaultMaterial::CompileShader(IVertexBuffer* pVertexBuffer)
 {
-	if (m_pVertexBuffer->Type() == DefaultVertexBuffer::DefaultVertexBufferTypeStr)
+	if (pVertexBuffer->Type() == DefaultVertexBuffer::DefaultVertexBufferTypeStr)
 	{
-		auto pDefaultBuffer = static_pointer_cast<DefaultVertexBuffer>(m_pVertexBuffer);
+		auto pDefaultBuffer = (DefaultVertexBuffer*)(pVertexBuffer);
 		auto shaderDefine = make_shared<DefaultShaderDefine>();
 		shaderDefine->SetShaderDefine(pDefaultBuffer->Layout());
 		//shaderDefine->SetUseGBuffer(true);
-		m_pShader = ShaderManager::Instance()->FindOrNew(shaderDefine);
-		m_pUniform = make_shared<DefaultUniform>();
+		return ShaderManager::Instance()->FindOrNew(shaderDefine);
 	}
 	else
 	{
 		assert(0);
 	}
+
+	return nullptr;
 }
 
 void DefaultMaterial::Bind()
@@ -63,4 +59,7 @@ bool DefaultMaterial::Compare(const IMaterial& material)
 
 	return false;
 }
+
+
+
 }

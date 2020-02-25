@@ -45,11 +45,11 @@ void CompositShaderDefine::SetShaderDefine(CompositShader::COMPOSIT_TYPE type)
 {
 	m_CompositType = type;
 }
-bool CompositShaderDefine::Compare(shared_ptr<IShaderDefine> shaderDefine)
+bool CompositShaderDefine::Compare(IShaderDefine* shaderDefine)
 {
 	if (shaderDefine->Type() == SHADER_TYPE::SHADER_TYPE_COMPOSIT)
 	{
-		CompositShaderDefine* pDefine = (CompositShaderDefine*)(&shaderDefine);
+		CompositShaderDefine* pDefine = (CompositShaderDefine*)(shaderDefine);
 		if (m_CompositType == pDefine->m_CompositType)
 		{
 			return true;

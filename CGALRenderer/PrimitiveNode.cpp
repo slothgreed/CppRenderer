@@ -4,9 +4,8 @@ namespace KI
 PrimitiveNode::PrimitiveNode(shared_ptr<IShader> shader, shared_ptr<DefaultVertexBuffer> buffer)
 {
 	m_name = "Primitive";
+	m_pVertexBuffer = buffer;
 	m_pMaterial = make_shared<DefaultMaterial>();
-	m_pMaterial->SetVertexBuffer(buffer);
-	m_pMaterial->CompileShader();
 }
 
 PrimitiveNode::~PrimitiveNode()
@@ -15,7 +14,7 @@ PrimitiveNode::~PrimitiveNode()
 
 void PrimitiveNode::Draw()
 {
-	m_pMaterial->Draw();
+	m_pMaterial->Draw(m_pVertexBuffer.get());
 
 	Logger::GLError();
 }

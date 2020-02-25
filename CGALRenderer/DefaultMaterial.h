@@ -12,7 +12,7 @@ public:
 	virtual const MATERIAL_TYPE Type() const { return MATERIAL_TYPE_DEFAULT; }
 	virtual void Bind();
 	virtual void UnBind();
-	virtual void CompileShader();
+	virtual shared_ptr<IShader> CompileShader(IVertexBuffer* pVertexBuffer) override;
 	virtual bool Compare(const IMaterial& material);
 
 	void SetFixColor(vec4 color);
