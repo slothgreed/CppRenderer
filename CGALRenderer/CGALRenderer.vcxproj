@@ -106,7 +106,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>E:\MyProgram\KIProject\CGALRenderer\extlibs\glfw-3.3\include;E:\MyProgram\KIProject\CGALRenderer\extlibs\glm-0.9.9.6\glm;E:\MyProgram\KIProject\CGALRenderer\extlibs\glew-2.1.0\include;E:\Tools\CGAL4.11\include;E:\Tools\boost\boost_1_64_0;E:\Tools\CGAL4.11\build\include;E:\Tools\CGAL4.11\auxiliary\gmp\include;E:\Tools\boost\boost_1_64_0\boost;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\MyProgram\KIProject\CGALRenderer\extlibs\glfw-3.3\include;E:\MyProgram\KIProject\CGALRenderer\extlibs\glm-0.9.9.6\glm;E:\MyProgram\KIProject\CGALRenderer\extlibs\glew-2.1.0\include;E:\Tools\CGAL4.11\include;E:\Tools\boost\boost_1_64_0;E:\Tools\CGAL4.11\build\include;E:\Tools\CGAL4.11\auxiliary\gmp\include;E:\Tools\boost\boost_1_64_0\boost;E:\MyProgram\KIProject\CGALRenderer\extlibs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>pch.h</ForcedIncludeFiles>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
@@ -161,6 +161,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\extlibs\imgui\imconfig.h" />
+    <ClInclude Include="..\extlibs\imgui\imgui.h" />
+    <ClInclude Include="..\extlibs\imgui\imgui_internal.h" />
+    <ClInclude Include="..\extlibs\imgui\imstb_rectpack.h" />
+    <ClInclude Include="..\extlibs\imgui\imstb_textedit.h" />
+    <ClInclude Include="..\extlibs\imgui\imstb_truetype.h" />
     <ClInclude Include="AssetTypes.h" />
     <ClInclude Include="BDB.h" />
     <ClInclude Include="BDBProperty.h" />
@@ -201,14 +207,6 @@
     <ClInclude Include="IController.h" />
     <ClInclude Include="GLObject.h" />
     <ClInclude Include="Interface.h" />
-    <ClInclude Include="ImGui\imconfig.h" />
-    <ClInclude Include="ImGui\imgui.h" />
-    <ClInclude Include="ImGui\imgui_impl_glfw.h" />
-    <ClInclude Include="ImGui\imgui_impl_opengl3.h" />
-    <ClInclude Include="ImGui\imgui_internal.h" />
-    <ClInclude Include="ImGui\imstb_rectpack.h" />
-    <ClInclude Include="ImGui\imstb_textedit.h" />
-    <ClInclude Include="ImGui\imstb_truetype.h" />
     <ClInclude Include="IPolygonModel.h" />
     <ClInclude Include="IModelProperty.h" />
     <ClInclude Include="HalfEdgeDS.h" />
@@ -275,6 +273,10 @@
     <ClInclude Include="Workspace.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\extlibs\imgui\imgui.cpp" />
+    <ClCompile Include="..\extlibs\imgui\imgui_demo.cpp" />
+    <ClCompile Include="..\extlibs\imgui\imgui_draw.cpp" />
+    <ClCompile Include="..\extlibs\imgui\imgui_widgets.cpp" />
     <ClCompile Include="BDB.cpp" />
     <ClCompile Include="BDBProperty.cpp" />
     <ClCompile Include="BunnyScene.cpp" />
@@ -303,12 +305,6 @@
     <ClCompile Include="HalfEdgeOperator.cpp" />
     <ClCompile Include="HalfEdgeProperty.cpp" />
     <ClCompile Include="IMaterial.cpp" />
-    <ClCompile Include="ImGui\imgui.cpp" />
-    <ClCompile Include="ImGui\imgui_demo.cpp" />
-    <ClCompile Include="ImGui\imgui_draw.cpp" />
-    <ClCompile Include="ImGui\imgui_impl_glfw.cpp" />
-    <ClCompile Include="ImGui\imgui_impl_opengl3.cpp" />
-    <ClCompile Include="ImGui\imgui_widgets.cpp" />
     <ClCompile Include="IPolygonModel.cpp" />
     <ClCompile Include="HalfEdgeDS.cpp" />
     <ClCompile Include="IModelNode.cpp" />

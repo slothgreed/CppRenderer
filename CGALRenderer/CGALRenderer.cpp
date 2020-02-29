@@ -182,19 +182,19 @@ bool CGALRenderer::Run()
 
 	/* OTHER STUFF GOES HERE NEXT */
 
-	ImGui::CreateContext();
-	ImGui_ImplGlfw_InitForOpenGL(m_window, true);
-	ImGui_ImplOpenGL3_Init("#version 400 core");
+	//ImGui::CreateContext();
+	//ImGui_ImplGlfw_InitForOpenGL(m_window, true);
+	//ImGui_ImplOpenGL3_Init("#version 400 core");
 
 	while (!glfwWindowShouldClose(m_window))
 	{
 
-		ImGui_ImplOpenGL3_NewFrame();
-		ImGui_ImplGlfw_NewFrame();
-		ImGui::NewFrame();
-		m_pWorkspace->ShowProperty();
-		ImGui::Render();
-		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+		//ImGui_ImplOpenGL3_NewFrame();
+		//ImGui_ImplGlfw_NewFrame();
+		//ImGui::NewFrame();
+		//m_pWorkspace->ShowProperty();
+		//ImGui::Render();
+		//ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 		m_pWorkspace->Invoke();
 
 		glfwPollEvents();

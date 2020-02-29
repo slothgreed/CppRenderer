@@ -7,8 +7,8 @@ class VoxelCommandArgs : public ICommandArgs
 	friend class VoxelCommand;
 
 public:
-	VoxelCommandArgs(IWorkspace* pWorkspace, IPolygonModel* model, const vec3& origin, int partition)
-		: m_pWorkspace(pWorkspace), m_pModel(model), m_origin(origin), m_partition(partition) {};
+	VoxelCommandArgs(IWorkspace* pWorkspace, IPolygonModel* model, int partition)
+		: m_pWorkspace(pWorkspace), m_pModel(model), m_partition(partition) {};
 	~VoxelCommandArgs() {};
 
 	virtual COMMAND_TYPE Type() { return VOXEL_COMMAND; }
@@ -16,7 +16,6 @@ public:
 private:
 	IWorkspace* m_pWorkspace;
 	IPolygonModel* m_pModel;
-	vec3 m_origin;
 	int m_partition;
 };
 

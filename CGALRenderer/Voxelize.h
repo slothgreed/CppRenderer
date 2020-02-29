@@ -27,14 +27,15 @@ class Voxelize
 public:
 	Voxelize();
 	~Voxelize();
-	void Create(const vector<vec3>& positions, const vec3& origin, int partition);
+	void Create(const vector<vec3>& positions, const BDB& bdb, int partition);
 	void GetVertexList(vector<vec3>& position, vector<int>& index);
 private:
 	void GetIndex(const vec3& position, int& i, int& j, int& k);
 	void GetPosition(int i, int j, int k, vec3& min, vec3& max);
 	void Dispose();
 	int m_partition;
-	vec3 m_origin;
+	BDB m_bdb;
+	vec3 m_length;
 	Voxel**** m_pVoxelSpace; // ‚RŽŸŒ³”z—ñ
 };
 

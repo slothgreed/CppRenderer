@@ -11,6 +11,7 @@ BunnyScene::~BunnyScene()
 
 void BunnyScene::Initialize(Project* m_pProject)
 {
+	m_pCommandManager = make_unique<CommandManager>();
 	ShaderUtility::SetShaderDirectory(m_pProject->ProjectDir() + "\\Resource");
 	auto shaderDefine = make_shared<DefaultShaderDefine>();
 	shaderDefine->SetShaderDefine(VERTEX_LAYOUT_PC);
@@ -35,15 +36,22 @@ void BunnyScene::Initialize(Project* m_pProject)
 	m_pUniformScene->Set(sceneData);
 
 	{
-		//auto polyhedron = make_shared<HalfEdgeModel>();
-		//polyhedron->Load("E:\\cgModel\\bunny6000.half");
+		auto polyhedron = make_shared<HalfEdgeModel>();
+		polyhedron->Load("E:\\cgModel\\bunny6000.half");
 
 		BDB bdb(vec3(0, 0, 0), vec3(1, 1, 1));
 		//polyhedron->GetBDB(bdb);
 		m_pCamera->FitToBDB(bdb);
 
-		//auto polyNode = make_shared<HalfEdgeDSNode>(polyhedron);
-		//m_pRenderList.push_back(polyNode);
+		auto polyNode = make_shared<HalfEdgeDSNode>(polyhedron);
+
+		auto voxelCommandArgs = make_shared<VoxelCommandArgs>(
+			this, polyNode->GetModel(), 2);
+		
+		auto voxelCommand = make_shared<VoxelCommand>(voxelCommandArgs);
+
+		m_pCommandManager->Execute(voxelCommand);
+		m_pRenderList.push_back(polyNode);
 	}
 
 	{

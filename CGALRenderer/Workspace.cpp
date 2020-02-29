@@ -135,7 +135,7 @@ void Workspace::ShowProperty()
 	}
 }
 
-void BunnyScene::AddModelNode(shared_ptr<IModelNode> pModelNode)
+void Workspace::AddModelNode(shared_ptr<IModelNode> pModelNode)
 {
 	m_pRenderList.push_back(pModelNode);
 }

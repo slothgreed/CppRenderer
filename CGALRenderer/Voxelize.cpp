@@ -10,11 +10,16 @@ Voxelize::~Voxelize()
 	Dispose();
 }
 
-void Voxelize::Create(const vector<vec3>& positions, const vec3& origin, int partition)
+void Voxelize::Create(const vector<vec3>& positions, const BDB& bdb, int partition)
 {
 	m_pVoxelSpace = new Voxel***[partition];
 	m_partition = partition;
-	m_origin = origin;
+	m_length = m_bdb.Max() - m_bdb.Min();
+	m_length.x /= m_partition;
+	m_length.y /= m_partition;
+	m_length.z /= m_partition;
+
+	m_bdb = bdb;
 	for (int i = 0; i < partition; i++)
 	{
 		m_pVoxelSpace[i] = new Voxel**[partition];
@@ -41,14 +46,19 @@ void Voxelize::Create(const vector<vec3>& positions, const vec3& origin, int par
 
 void Voxelize::GetIndex(const vec3& position, int& i, int& j, int& k)
 {
-	vec3 voxelPosition = (position - m_origin);
-	i = voxelPosition.x / m_partition;
-	j = voxelPosition.y / m_partition;
-	k = voxelPosition.z / m_partition;
+	vec3 voxelPosition = (position - m_bdb.Min());
+	i = voxelPosition.x / m_length.x;
+	j = voxelPosition.y / m_length.y;
+	k = voxelPosition.z / m_length.z;
 }
+
 void Voxelize::GetPosition(int i, int j, int k, vec3& min, vec3& max)
 {
+	vec3 voxelPosition = m_bdb.Min();
 
+	vec3 position = vec3(i, j, k);
+	min = position * m_length + m_bdb.Min();
+	max = (position + vec3(1)) * m_length + m_bdb.Min();
 }
 
 void Voxelize::GetVertexList(vector<vec3>& position, vector<int>& index)
@@ -71,6 +81,7 @@ void Voxelize::GetVertexList(vector<vec3>& position, vector<int>& index)
 		cube.Build(min, max);
 		position.insert(position.end(), cube.Position().begin(), cube.Position().end());
 		index.insert(index.end(), cube.Index().begin(), cube.Index().end());
+		counter++;
 	}
 }
 

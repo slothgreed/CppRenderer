@@ -28,8 +28,8 @@
 #include <glm/gtx/transform.hpp>
 
 #include "ImGui/imgui.h"
-#include "ImGui/imgui_impl_glfw.h"
-#include "ImGui/imgui_impl_opengl3.h"
+#include "ImGui/examples/imgui_impl_glfw.h"
+#include "ImGui/examples/imgui_impl_opengl3.h"
 
 #include "Random.h"
 

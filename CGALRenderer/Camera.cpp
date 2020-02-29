@@ -89,16 +89,16 @@ void Camera::FitToBDB(const BDB& bdb)
 
 void Camera::ShowProperty()
 {
-	ImGui::Begin(m_name.data());
-	string eyeStr = "Eye" + MathHelper::ToString(m_eye) + "\n";
-	ImGui::Text(eyeStr.data());
+	//ImGui::Begin(m_name.data());
+	//string eyeStr = "Eye" + MathHelper::ToString(m_eye) + "\n";
+	//ImGui::Text(eyeStr.data());
 
-	string centerStr = "Center" + MathHelper::ToString(m_center) + "\n";
-	ImGui::Text(centerStr.data());
+	//string centerStr = "Center" + MathHelper::ToString(m_center) + "\n";
+	//ImGui::Text(centerStr.data());
 
-	string upStr = "Up" + MathHelper::ToString(m_up) + "\n";
-	ImGui::Text(upStr.data());
+	//string upStr = "Up" + MathHelper::ToString(m_up) + "\n";
+	//ImGui::Text(upStr.data());
 
-	ImGui::End();
+	//ImGui::End();
 }
 }

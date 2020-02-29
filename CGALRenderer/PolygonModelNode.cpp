@@ -24,9 +24,9 @@ void PolygonModelNode::Draw()
 
 void PolygonModelNode::ShowProperty()
 {
-	ImGui::Begin(m_name.data());
-	ImGui::Text(m_bdb.ToString().data());
-	ImGui::End();
+	//ImGui::Begin(m_name.data());
+	//ImGui::Text(m_bdb.ToString().data());
+	//ImGui::End();
 }
 
 IPolygonModel* PolygonModelNode::GetModel()
@@ -81,6 +81,9 @@ void PolygonModelNode::SetRenderData()
 
 		m_pFaceMaterial = make_shared<DefaultMaterial>();
 		m_pEdgeMaterial = make_shared<DefaultMaterial>();
+
+		m_pFaceBuffer = pFaceBuffer;
+		m_pEdgeBuffer = pEdgeBuffer;
 	}
 	else
 	{
@@ -112,6 +115,9 @@ void PolygonModelNode::SetRenderData()
 
 		m_pFaceMaterial = make_shared<DefaultMaterial>();
 		m_pEdgeMaterial = make_shared<DefaultMaterial>();
+
+		m_pFaceBuffer = pFaceBuffer;
+		m_pEdgeBuffer = pEdgeBuffer;
 	}
 
 }

@@ -28,9 +28,10 @@ CommandResult VoxelCommand::Execute()
 	Voxelize pVoxelize;
 	vector<vec3> position;
 	args->m_pModel->GetPositionList(position);
-	pVoxelize.Create(position, args->m_origin, args->m_partition);
+	BDB bdb;
+	args->m_pModel->GetBDB(bdb);
+	pVoxelize.Create(position, bdb, args->m_partition);
 	
-
 	vector<vec3> voxelPosition;
 	vector<int> indexBuffer;
 	pVoxelize.GetVertexList(voxelPosition, indexBuffer);
