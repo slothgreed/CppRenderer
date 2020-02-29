@@ -66,7 +66,7 @@ vec3 HalfEdgeFace::CalcCentroid()
 
 bool HalfEdgeFace::Intersection(const vec3& direction, float& distance)
 {
-
+	return true;
 }
 
 string HalfEdgeFace::ToString()

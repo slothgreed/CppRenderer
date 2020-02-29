@@ -4,6 +4,14 @@
 namespace KI
 {
 
+enum PICK_TARGET
+{
+	PICK_TARGET_POINT,
+	PICK_TARGET_LINE,
+	PICK_TARGET_FACE,
+	PICK_TARGET_MANIPULATOR,
+};
+
 class PickCommandArgs : public ICommandArgs
 {
 	friend class PickCommand;
@@ -22,7 +30,7 @@ public:
 	};
 	~PickCommandArgs() {};
 
-	virtual COMMAND_ARGS_TYPE Type() { return SUBDIVISION_COMMAND_ARGS; }
+	virtual COMMAND_TYPE Type() { return SUBDIVISION_COMMAND; }
 
 private:
 	shared_ptr<Viewport> m_pViewport;

@@ -78,7 +78,11 @@ void BunnyScene::Invoke()
 	}
 
 	m_pUniformScene->UnBind();
+}
 
+void BunnyScene::AddModelNode(shared_ptr<IModelNode> pModelNode)
+{
+	m_pRenderList.push_back(pModelNode);
 }
 
 void BunnyScene::ShowProperty()

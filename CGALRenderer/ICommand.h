@@ -13,14 +13,8 @@ enum COMMAND_TYPE : unsigned int
 {
 	SUBDIVISION_COMMAND = 0,
 	PICK_COMMAND		= 1,
-	COMMAND_TYPE_NUM	= 2
-};
-
-enum COMMAND_ARGS_TYPE : unsigned int
-{
-	SUBDIVISION_COMMAND_ARGS = 0,
-	PICK_COMMAND_ARGS		 = 1,
-	COMMAND_ARGS_NUM		 = 2
+	VOXEL_COMMAND		= 2,
+	COMMAND_TYPE_NUM	= 3
 };
 
 class ICommandArgs
@@ -29,7 +23,7 @@ public:
 	ICommandArgs() {};
 	~ICommandArgs() {};
 
-	virtual COMMAND_ARGS_TYPE Type() = 0;
+	virtual COMMAND_TYPE Type() = 0;
 	
 private:
 

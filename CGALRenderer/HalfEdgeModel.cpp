@@ -125,10 +125,14 @@ void HalfEdgeModel::GetBDB(BDB& bdb)
 float HalfEdgeModel::Intersection(const vec3& direction)
 {
 	auto halfFaceList = m_HalfEdgeDS->FaceList();
+	float distance = numeric_limits<float>::infinity();
 	for (int i = 0; i < halfFaceList.size(); i++)
 	{
 		auto face = halfFaceList[i];
-		face->Intersect(direction);
+		face->Intersection(direction, distance);
 	}
+
+	assert(0);
+	return true;
 }
 }

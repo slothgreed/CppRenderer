@@ -14,7 +14,7 @@ PickCommand::~PickCommand()
 
 CommandResult PickCommand::CanExecute()
 {
-	if (m_pArgs->Type() != PICK_COMMAND_ARGS)
+	if (m_pArgs->Type() != PICK_COMMAND)
 	{
 		return CommandResult::Failed;
 	}

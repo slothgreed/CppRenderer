@@ -9,7 +9,7 @@ public:
 	IObserver() {};
 	~IObserver() {};
 
-	virtual void Update(void* sender, shared_ptr<EventArgs> args) = 0;
+	virtual void Update(void* sender, IEventArgs* args) = 0;
 private:
 
 }; 
@@ -23,6 +23,7 @@ public:
 	virtual void AddObserver(IObserver* observer);
 	virtual void RemoveObserver(IObserver* observer);
 	virtual void Update();
+	virtual void Update(IEventArgs* pEventArgs);
 	virtual void Clear();
 private:
 

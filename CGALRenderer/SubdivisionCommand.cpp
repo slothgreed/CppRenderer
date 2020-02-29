@@ -19,7 +19,7 @@ SubdivisionCommand::~SubdivisionCommand()
 
 CommandResult SubdivisionCommand::CanExecute()
 {
-	if (m_pArgs->Type() != SUBDIVISION_COMMAND_ARGS)
+	if (m_pArgs->Type() != SUBDIVISION_COMMAND)
 	{
 		return CommandResult::Failed;
 	}
@@ -47,7 +47,7 @@ CommandResult SubdivisionCommand::Execute()
 		std::back_inserter(VertexHandle),
 		CGAL::Polygon_mesh_processing::parameters::density_control_factor(2.));
 
-	args->m_pModel->Update();
+	args->m_pModel->Update(make_shared<TopologyModifiedEventArgs>().get());
 
 	return CommandResult::Success;
 }

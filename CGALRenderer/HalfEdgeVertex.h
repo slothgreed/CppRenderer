@@ -37,6 +37,7 @@ public:
 
 	vec3 Normal() { return m_normal; }
 	float Area() { return m_area; }
+	bool Pick(const vec3& direction, float range, float& distance);
 private:
 
 	float CalcArea();

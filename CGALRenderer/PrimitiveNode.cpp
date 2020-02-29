@@ -20,7 +20,7 @@ void PrimitiveNode::Draw()
 }
 
 
-void PrimitiveNode::Update(void* sender, shared_ptr<EventArgs> args)
+void PrimitiveNode::Update(void* sender, IEventArgs* args)
 {
 
 }

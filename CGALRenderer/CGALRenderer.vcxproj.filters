@@ -184,6 +184,18 @@
     <Filter Include="ヘッダー ファイル\Asset\Model\Primitive">
       <UniqueIdentifier>{4def95e8-576d-4360-9584-df4436488e38}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\Topology\Operator">
+      <UniqueIdentifier>{8dab5afe-72f4-4a42-8946-1b57411f515c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Algorithm">
+      <UniqueIdentifier>{dd7977e7-d291-43ef-a152-e9ab9a250c2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Algorithm">
+      <UniqueIdentifier>{c5f20f57-df0c-4d9b-892a-3306065f0c05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Logic\EventArgs">
+      <UniqueIdentifier>{333ef0a2-1522-409b-83d0-8ebf0864a42f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -266,9 +278,6 @@
     </ClInclude>
     <ClInclude Include="SubdivisionCommand.h">
       <Filter>ヘッダー ファイル\Logic\Command</Filter>
-    </ClInclude>
-    <ClInclude Include="EventArgs.h">
-      <Filter>ヘッダー ファイル\Foundation</Filter>
     </ClInclude>
     <ClInclude Include="Observer.h">
       <Filter>ヘッダー ファイル\Foundation</Filter>
@@ -435,9 +444,6 @@
     <ClInclude Include="PfxRenderer.h">
       <Filter>ヘッダー ファイル\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="HalfEdgeOperator.h">
-      <Filter>ヘッダー ファイル\Topology</Filter>
-    </ClInclude>
     <ClInclude Include="PickCommand.h">
       <Filter>ヘッダー ファイル\Logic\Command</Filter>
     </ClInclude>
@@ -509,6 +515,24 @@
     </ClInclude>
     <ClInclude Include="ManipulatorNode.h">
       <Filter>ヘッダー ファイル\Application\Node</Filter>
+    </ClInclude>
+    <ClInclude Include="HalfEdgeOperator.h">
+      <Filter>ヘッダー ファイル\Topology\Operator</Filter>
+    </ClInclude>
+    <ClInclude Include="Voxelize.h">
+      <Filter>ヘッダー ファイル\Algorithm</Filter>
+    </ClInclude>
+    <ClInclude Include="Cube.h">
+      <Filter>ヘッダー ファイル\Asset\Model\Primitive</Filter>
+    </ClInclude>
+    <ClInclude Include="VoxelCommand.h">
+      <Filter>ヘッダー ファイル\Logic\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="IEventArgs.h">
+      <Filter>ヘッダー ファイル\Foundation</Filter>
+    </ClInclude>
+    <ClInclude Include="LogicEventArgs.h">
+      <Filter>ヘッダー ファイル\Logic\EventArgs</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -763,6 +787,15 @@
     </ClCompile>
     <ClCompile Include="ManipulatorNode.cpp">
       <Filter>ソース ファイル\Application\Node</Filter>
+    </ClCompile>
+    <ClCompile Include="Voxelize.cpp">
+      <Filter>ソース ファイル\Algorithm</Filter>
+    </ClCompile>
+    <ClCompile Include="Cube.cpp">
+      <Filter>ソース ファイル\Asset\Model\Primitive</Filter>
+    </ClCompile>
+    <ClCompile Include="VoxelCommand.cpp">
+      <Filter>ソース ファイル\Logic\Command</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

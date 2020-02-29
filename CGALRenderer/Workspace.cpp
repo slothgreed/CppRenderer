@@ -135,6 +135,11 @@ void Workspace::ShowProperty()
 	}
 }
 
+void BunnyScene::AddModelNode(shared_ptr<IModelNode> pModelNode)
+{
+	m_pRenderList.push_back(pModelNode);
+}
+
 void Workspace::ProcessMouseEvent(const MouseInput& input)
 {
 	m_pMouse->ApplyMouseInput(input);

@@ -13,7 +13,7 @@ private:
 
 };
 
-class EventArgs : IEventArgs
+class EventArgs : public IEventArgs
 {
 public:
 	

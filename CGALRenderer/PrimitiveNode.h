@@ -11,7 +11,7 @@ public:
 	virtual void Draw();
 	virtual void Pick(const vec3& direction, PickResult& result) override {};
 	virtual void ShowProperty();
-	virtual void Update(void* sender, shared_ptr<EventArgs> args);
+	virtual void Update(void* sender, IEventArgs* args);
 	shared_ptr<DefaultMaterial> GetMaterial() { return m_pMaterial; }
 private:
 	string m_name;

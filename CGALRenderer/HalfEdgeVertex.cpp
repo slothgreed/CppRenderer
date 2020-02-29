@@ -83,6 +83,11 @@ string HalfEdgeVertex::ToString()
 	return str;
 }
 
+bool HalfEdgeVertex::Pick(const vec3& direction, float range, float& distance)
+{
+	return true;
+}
+
 VertexAroundEdgeIterator::VertexAroundEdgeIterator(HalfEdgeVertex* pVertex)
 {
 	m_pVertex = pVertex;

@@ -25,7 +25,7 @@ public:
 	virtual void ShowProperty() = 0;
 	virtual void Pick(const vec3& direction, PickResult& result) = 0;
 	virtual void Draw() = 0;
-	virtual void Update(void* sender, shared_ptr<EventArgs> args);
+	virtual void Update(void* sender, IEventArgs* args);
 
 protected:
 	void AddProperty(shared_ptr<IModelProperty> prop);

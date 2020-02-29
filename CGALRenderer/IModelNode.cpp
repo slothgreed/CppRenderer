@@ -45,7 +45,7 @@ void IModelNode::DrawProperty()
 	}
 }
 
-void IModelNode::Update(void* sender, shared_ptr<EventArgs> args)
+void IModelNode::Update(void* sender, IEventArgs* args)
 {
 	UpdateProperty();
 }

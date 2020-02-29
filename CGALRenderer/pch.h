@@ -41,7 +41,7 @@ using namespace glm;
 #include "IController.h"
 #include "ICommand.h"
 #include "CommandManager.h"
-#include "EventArgs.h"
+#include "IEventArgs.h"
 #include "Observer.h"
 
 // system
@@ -117,10 +117,14 @@ using namespace glm;
 #include "PointLight.h"
 #include "IPrimitive.h"
 #include "Cone.h"
+#include "Cube.h"
 #include "MoveManipulator.h"
 #include "RotateManipulator.h"
 #include "ScaleManipulator.h"
 #include "ManipulatorNode.h"
+
+// Algorithm
+#include "Voxelize.h"
 
 // Renderer
 #include "PfxPlane.h"
@@ -132,10 +136,6 @@ using namespace glm;
 #include "PfxRenderer.h"
 #include "LighthingPass.h"
 
-// logic
-#include "CameraController.h"
-#include "SubdivisionCommand.h"
-#include "PickCommand.h"
 
 // model (mvc)
 #include "BDBProperty.h"
@@ -156,6 +156,15 @@ using namespace glm;
 #include "Project.h"
 #include "Workspace.h"
 #include "SpecialUtility.h"
+
+// logic
+#include "CameraController.h"
+#include "SubdivisionCommand.h"
+#include "PickCommand.h"
+#include "VoxelCommand.h"
+#include "LogicEventArgs.h"
+
+
 
 using namespace std;
 using namespace glm;

@@ -10,7 +10,7 @@ public:
 	SubdivisionCommandArgs(shared_ptr<IPolygonModel> model) { m_pModel = model; };
 	~SubdivisionCommandArgs() {};
 
-	virtual COMMAND_ARGS_TYPE Type() { return SUBDIVISION_COMMAND_ARGS; }
+	virtual COMMAND_TYPE Type() { return SUBDIVISION_COMMAND; }
 
 private:
 	shared_ptr<IPolygonModel> m_pModel;
