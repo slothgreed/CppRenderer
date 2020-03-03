@@ -2,6 +2,8 @@
 #define LOGGER_H
 namespace KI
 {
+namespace Foundation
+{
 enum LOG_LEVEL
 {
 	DEBUG,
@@ -10,7 +12,7 @@ enum LOG_LEVEL
 };
 
 
-class Logger
+class DLL_EXPORT Logger
 {
 public:
 	Logger();
@@ -21,5 +23,6 @@ public:
 private:
 
 };
+}
 }
 #endif LOGGER_H

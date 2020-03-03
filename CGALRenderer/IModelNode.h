@@ -3,7 +3,6 @@
 namespace KI
 {
 class IModelProperty;
-class IObserver;
 
 class PickResult
 {

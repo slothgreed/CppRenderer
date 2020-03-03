@@ -3,7 +3,7 @@ namespace KI
 void ScrollCallBack(GLFWwindow* window, double x, double y)
 {
 	MouseInput input;
-	input.SetWheel(y);
+	input.SetWheel((int)y);
 	input.SetEvent(MOUSE_EVENT::MOUSE_EVENT_WHEEL);
 	TheApp()->ProcessMouseEvent(input);
 }
@@ -11,7 +11,7 @@ void ScrollCallBack(GLFWwindow* window, double x, double y)
 void CursorPosCallBack(GLFWwindow* window, double xpos, double ypos)
 {
 	MouseInput input;
-	input.SetPosition(xpos, ypos);
+	input.SetPosition((float)xpos, (float)ypos);
 
 	input.SetEvent(MOUSE_EVENT::MOUSE_EVENT_MOVE);
 
@@ -76,7 +76,7 @@ void MouseButtonCallBack(GLFWwindow* window, int button, int action, int mods)
 	glfwGetCursorPos(window, &posX, &posY);
 
 	MouseInput input;
-	input.SetPosition(posX, posY);
+	input.SetPosition((float)posX, (float)posY);
 	if (action == GLFW_PRESS)
 	{
 		input.SetEvent(MOUSE_EVENT_DOWN);

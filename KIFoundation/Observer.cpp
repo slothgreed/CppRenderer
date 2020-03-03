@@ -1,5 +1,7 @@
 namespace KI
 {
+namespace Foundation
+{
 ISubject::ISubject()
 {
 }
@@ -38,5 +40,6 @@ void ISubject::Update(IEventArgs* pEventArgs)
 void ISubject::Clear()
 {
 	m_observer.clear();
+}
 }
 }

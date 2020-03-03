@@ -31,15 +31,16 @@ float HalfEdgeFace::CalcArea()
 {
 	float area = 0;
 	auto itr = FaceAroundEdgeIterator(this);
-	auto before = itr.Current();
+	auto before = (HalfEdge*)itr.Current();
 	itr.Next();
 
 	for (itr; itr.HasNext(); itr.Next())
 	{
+		HalfEdge* current = (HalfEdge*)itr.Current();
 		area += MathHelper::CalcTriangleArea(
 			before->Start()->Position(),
 			before->End()->Position(),
-			itr.Current()->End()->Position());
+			current->End()->Position());
 	}
 
 	return area;
@@ -51,7 +52,7 @@ vec3 HalfEdgeFace::CalcCentroid()
 	int m_num = 0;
 	for (auto itr = FaceAroundEdgeIterator(this); itr.HasNext(); itr.Next())
 	{
-		centroid += itr.Current()->End()->Position();
+		centroid += ((HalfEdge*)itr.Current())->End()->Position();
 		m_num++;
 	}
 
@@ -105,9 +106,9 @@ void FaceAroundEdgeIterator::Next()
 	m_init = false;
 }
 
-shared_ptr<HalfEdge> FaceAroundEdgeIterator::Current()
+HalfEdge* FaceAroundEdgeIterator::Current()
 {
-	return m_pEdgeItr;
+	return m_pEdgeItr.get();
 }
 
 }

@@ -11,6 +11,7 @@
 
 // TODO: ここでプリコンパイルするヘッダーを追加します
 
+#define DLL_EXPORT  //__declspec(dllimport)
 
 #include<memory>
 #include<string>
@@ -33,23 +34,13 @@
 
 #include "Random.h"
 
+// Foundation
+#include "../KIFoundation/pch.h"
+using namespace KI::Foundation;
 using namespace std;
 using namespace glm;
-// Foundation
-#include "Interface.h"
-#include "BDB.h"
-#include "IController.h"
-#include "ICommand.h"
-#include "CommandManager.h"
-#include "IEventArgs.h"
-#include "Observer.h"
 
-// system
-#include "SystemTypes.h"
-#include "Logger.h"
-#include "Mouse.h"
-#include "MouseInput.h"
-#include "WindowEvent.h"
+#include "BDB.h"
 
 // utility
 #include "MathHelper.h"
@@ -169,7 +160,6 @@ using namespace glm;
 using namespace std;
 using namespace glm;
 
-#define USE_VAR(x) (void)x;
 #define RELEASE_INSTANCE(x) if(x != NULL) { delete x; x = NULL;}
 
 template<class T, class U>

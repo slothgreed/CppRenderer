@@ -8,7 +8,7 @@ class DefaultVertexBuffer;
 class UniformScene;
 class UniformBuffer;
 class CGALModelNode;
-class CommandManager;
+class Foundation::CommandManager;
 class Workspace : public IWorkspace
 {
 public:

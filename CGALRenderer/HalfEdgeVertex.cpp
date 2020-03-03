@@ -32,15 +32,16 @@ float HalfEdgeVertex::CalcArea()
 {
 	float area = 0;
 	auto itr = VertexAroundEdgeIterator(this);
-	HalfEdge* before = itr.Current();
+	HalfEdge* before = (HalfEdge*)itr.Current();
 	itr.Next();
 
 	for (itr; itr.HasNext(); itr.Next())
 	{
+		HalfEdge* current = (HalfEdge*)itr.Current();
 		area = MathHelper::CalcTriangleArea(
 			before->Start()->Position(),
 			before->End()->Position(),
-			itr.Current()->End()->Position());
+			current->End()->Position());
 		area++;
 	}
 
@@ -54,7 +55,7 @@ vec3 HalfEdgeVertex::CalcNormal()
 	int num = 0;
 	for (auto itr = VertexAroundEdgeIterator(this); itr.HasNext(); itr.Next())
 	{
-		face = itr.Current()->Face().get();
+		face = ((HalfEdge*)itr.Current())->Face().get();
 		sum += face->Normal();
 		num++;
 	}

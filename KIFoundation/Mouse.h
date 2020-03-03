@@ -2,8 +2,10 @@
 #define MOUSE_H
 namespace KI
 {
+namespace Foundation
+{
 class MouseInput;
-class Mouse
+class DLL_EXPORT Mouse
 {
 public:
 	Mouse();
@@ -26,5 +28,6 @@ private:
 	MOUSE_BUTTON m_press;
 	int m_wheel;
 };
+}
 }
 #endif MOUSE_H

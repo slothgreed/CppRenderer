@@ -8,8 +8,8 @@ class Voxel
 class VoxelIterator : public IIterator<Voxel*>
 {
 public:
-	VoxelIterator(Voxel**** voxelSpace, int partition)
-		: m_pVoxelSpace(voxelSpace), m_partition(partition), m_Index(0) {};
+	VoxelIterator(vector<vector<vector<Voxel*>>>& voxelSpace, int partition)
+		: m_VoxelSpace(voxelSpace), m_partition(partition), m_Index(0) {};
 	~VoxelIterator() {};
 
 	virtual bool HasNext() override;
@@ -19,7 +19,7 @@ public:
 private:
 	int m_partition;
 	ivec3 m_Index;
-	Voxel**** m_pVoxelSpace;
+	vector<vector<vector<Voxel*>>> m_VoxelSpace;
 };
 
 class Voxelize
@@ -36,7 +36,7 @@ private:
 	int m_partition;
 	BDB m_bdb;
 	vec3 m_length;
-	Voxel**** m_pVoxelSpace; // ‚RŽŸŒ³”z—ñ
+	vector<vector<vector<Voxel*>>> m_VoxelSpace;
 };
 
 }

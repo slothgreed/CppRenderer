@@ -2,7 +2,10 @@
 #define COMMAND_MANAGER_H
 namespace KI
 {
-class CommandManager
+namespace Foundation
+{
+
+class DLL_EXPORT CommandManager
 {
 public:
 	CommandManager();
@@ -16,5 +19,6 @@ private:
 	stack<shared_ptr<ICommand>> m_pCommandStack;	// for undo.
 	stack<shared_ptr<ICommand>> m_pUndoStack;		// for redo.
 };
+}
 }
 #endif

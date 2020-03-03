@@ -201,9 +201,6 @@
     <ClInclude Include="pch.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="Logger.h">
-      <Filter>ヘッダー ファイル\System</Filter>
-    </ClInclude>
     <ClInclude Include="Project.h">
       <Filter>ヘッダー ファイル\Application</Filter>
     </ClInclude>
@@ -212,18 +209,6 @@
     </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>ヘッダー ファイル\Asset</Filter>
-    </ClInclude>
-    <ClInclude Include="Mouse.h">
-      <Filter>ヘッダー ファイル\System</Filter>
-    </ClInclude>
-    <ClInclude Include="MouseInput.h">
-      <Filter>ヘッダー ファイル\System</Filter>
-    </ClInclude>
-    <ClInclude Include="SystemTypes.h">
-      <Filter>ヘッダー ファイル\System</Filter>
-    </ClInclude>
-    <ClInclude Include="WindowEvent.h">
-      <Filter>ヘッダー ファイル\System</Filter>
     </ClInclude>
     <ClInclude Include="MathHelper.h">
       <Filter>ヘッダー ファイル\Utility</Filter>
@@ -255,9 +240,6 @@
     <ClInclude Include="SubdivisionCommand.h">
       <Filter>ヘッダー ファイル\Application\Logic\Command</Filter>
     </ClInclude>
-    <ClInclude Include="Observer.h">
-      <Filter>ヘッダー ファイル\Foundation</Filter>
-    </ClInclude>
     <ClInclude Include="FileUtility.h">
       <Filter>ヘッダー ファイル\Utility</Filter>
     </ClInclude>
@@ -269,18 +251,6 @@
     </ClInclude>
     <ClInclude Include="HalfEdgeFace.h">
       <Filter>ヘッダー ファイル\Topology</Filter>
-    </ClInclude>
-    <ClInclude Include="Interface.h">
-      <Filter>ヘッダー ファイル\Foundation</Filter>
-    </ClInclude>
-    <ClInclude Include="ICommand.h">
-      <Filter>ヘッダー ファイル\Foundation</Filter>
-    </ClInclude>
-    <ClInclude Include="CommandManager.h">
-      <Filter>ヘッダー ファイル\Foundation</Filter>
-    </ClInclude>
-    <ClInclude Include="IController.h">
-      <Filter>ヘッダー ファイル\Foundation</Filter>
     </ClInclude>
     <ClInclude Include="HalfEdgeDS.h">
       <Filter>ヘッダー ファイル\Topology</Filter>
@@ -504,9 +474,6 @@
     <ClInclude Include="VoxelCommand.h">
       <Filter>ヘッダー ファイル\Application\Logic\Command</Filter>
     </ClInclude>
-    <ClInclude Include="IEventArgs.h">
-      <Filter>ヘッダー ファイル\Foundation</Filter>
-    </ClInclude>
     <ClInclude Include="LogicEventArgs.h">
       <Filter>ヘッダー ファイル\Application\Logic\EventArgs</Filter>
     </ClInclude>
@@ -536,9 +503,6 @@
     <ClCompile Include="main.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="Logger.cpp">
-      <Filter>ソース ファイル\System</Filter>
-    </ClCompile>
     <ClCompile Include="Project.cpp">
       <Filter>ソース ファイル\Application</Filter>
     </ClCompile>
@@ -547,9 +511,6 @@
     </ClCompile>
     <ClCompile Include="Camera.cpp">
       <Filter>ソース ファイル\Asset</Filter>
-    </ClCompile>
-    <ClCompile Include="Mouse.cpp">
-      <Filter>ソース ファイル\System</Filter>
     </ClCompile>
     <ClCompile Include="MathHelper.cpp">
       <Filter>ソース ファイル\Utility</Filter>
@@ -581,9 +542,6 @@
     <ClCompile Include="SubdivisionCommand.cpp">
       <Filter>ソース ファイル\Application\Logic\Command</Filter>
     </ClCompile>
-    <ClCompile Include="Observer.cpp">
-      <Filter>ソース ファイル\Foundation</Filter>
-    </ClCompile>
     <ClCompile Include="FileUtility.cpp">
       <Filter>ソース ファイル\Utility</Filter>
     </ClCompile>
@@ -595,9 +553,6 @@
     </ClCompile>
     <ClCompile Include="HalfEdgeVertex.cpp">
       <Filter>ソース ファイル\Topology</Filter>
-    </ClCompile>
-    <ClCompile Include="CommandManager.cpp">
-      <Filter>ソース ファイル\Foundation</Filter>
     </ClCompile>
     <ClCompile Include="HalfEdgeDS.cpp">
       <Filter>ソース ファイル\Topology</Filter>

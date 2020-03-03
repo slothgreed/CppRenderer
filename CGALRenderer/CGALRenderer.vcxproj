@@ -106,15 +106,15 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>E:\MyProgram\KIProject\CGALRenderer\extlibs\glfw-3.3\include;E:\MyProgram\KIProject\CGALRenderer\extlibs\glm-0.9.9.6\glm;E:\MyProgram\KIProject\CGALRenderer\extlibs\glew-2.1.0\include;E:\Tools\CGAL4.11\include;E:\Tools\boost\boost_1_64_0;E:\Tools\CGAL4.11\build\include;E:\Tools\CGAL4.11\auxiliary\gmp\include;E:\Tools\boost\boost_1_64_0\boost;E:\MyProgram\KIProject\CGALRenderer\extlibs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)extlibs\glfw-3.3\include;$(SolutionDir)extlibs\glm-0.9.9.6\glm;$(SolutionDir)extlibs\glew-2.1.0\include;E:\Tools\CGAL4.11\include;E:\Tools\boost\boost_1_64_0;E:\Tools\CGAL4.11\build\include;E:\Tools\CGAL4.11\auxiliary\gmp\include;E:\Tools\boost\boost_1_64_0\boost;E:\MyProgram\KIProject\CGALRenderer\extlibs;%(AdditionalIncludeDirectories);$(SolutionDir)KIFoundation</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>pch.h</ForcedIncludeFiles>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>E:\MyProgram\KIProject\CGALRenderer\extlibs\glfw-3.3\lib-vc2017;E:\MyProgram\KIProject\CGALRenderer\extlibs\glew-2.1.0\lib\Release\x64;E:\Tools\CGAL4.11\build\lib;E:\Tools\CGAL4.11\auxiliary\gmp\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3.lib;glew32.lib;opengl32.lib;CGAL-vc140-mt-gd-4.11.lib;CGAL_ImageIO-vc140-mt-gd-4.11.lib;CGAL_Core-vc140-mt-gd-4.11.lib;CGAL_Qt5-vc140-mt-gd-4.11.lib;libgmp-10.lib;libmpfr-4.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)extlibs\glfw-3.3\lib-vc2017;$(SolutionDir)extlibs\glew-2.1.0\lib\Release\x64;E:\Tools\CGAL4.11\build\lib;E:\Tools\CGAL4.11\auxiliary\gmp\lib\;$(SolutionDir)$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib;glew32.lib;opengl32.lib;CGAL-vc140-mt-gd-4.11.lib;CGAL_ImageIO-vc140-mt-gd-4.11.lib;CGAL_Core-vc140-mt-gd-4.11.lib;CGAL_Qt5-vc140-mt-gd-4.11.lib;libgmp-10.lib;libmpfr-4.lib;KIFoundation.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -147,7 +147,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>E:\MyProgram\KIProject\CGALRenderer\extlibs\glfw-3.3\include;E:\MyProgram\KIProject\CGALRenderer\extlibs\glm-0.9.9.6\glm;E:\MyProgram\KIProject\CGALRenderer\extlibs\glew-2.1.0\include;E:\Tools\CGAL4.11\include;E:\Tools\boost\boost_1_64_0;E:\Tools\CGAL4.11\build\include;E:\Tools\CGAL4.11\auxiliary\gmp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)extlibs\glfw-3.3\include;$(SolutionDir)extlibs\glm-0.9.9.6\glm;$(SolutionDir)extlibs\glew-2.1.0\include;E:\Tools\CGAL4.11\include;E:\Tools\boost\boost_1_64_0;E:\Tools\CGAL4.11\build\include;E:\Tools\CGAL4.11\auxiliary\gmp\include;%(AdditionalIncludeDirectories);$(SolutionDir)KIFoundation</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>pch.h</ForcedIncludeFiles>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
@@ -156,8 +156,8 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>E:\MyProgram\KIProject\CGALRenderer\extlibs\glfw-3.3\lib-vc2017;E:\MyProgram\KIProject\CGALRenderer\extlibs\glew-2.1.0\lib\Release\x64;E:\Tools\CGAL4.11\build\lib;E:\Tools\CGAL4.11\auxiliary\gmp\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3.lib;glew32.lib;opengl32.lib;CGAL-vc140-mt-gd-4.11.lib;CGAL_ImageIO-vc140-mt-gd-4.11.lib;CGAL_Core-vc140-mt-gd-4.11.lib;CGAL_Qt5-vc140-mt-gd-4.11.lib;libgmp-10.lib;libmpfr-4.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)extlibs\glfw-3.3\lib-vc2017;$(SolutionDir)extlibs\glew-2.1.0\lib\Release\x64;E:\Tools\CGAL4.11\build\lib;E:\Tools\CGAL4.11\auxiliary\gmp\lib\;$(SolutionDir)$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib;glew32.lib;opengl32.lib;CGAL-vc140-mt-gd-4.11.lib;CGAL_ImageIO-vc140-mt-gd-4.11.lib;CGAL_Core-vc140-mt-gd-4.11.lib;CGAL_Qt5-vc140-mt-gd-4.11.lib;libgmp-10.lib;libmpfr-4.lib;KIFoundation.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -178,7 +178,6 @@
     <ClInclude Include="CGALModel.h" />
     <ClInclude Include="CGALPolyhedron.h" />
     <ClInclude Include="CGALRenderer.h" />
-    <ClInclude Include="CommandManager.h" />
     <ClInclude Include="CompositShader.h" />
     <ClInclude Include="Cone.h" />
     <ClInclude Include="Cube.h" />
@@ -190,7 +189,6 @@
     <ClInclude Include="GrayScaleEffect.h" />
     <ClInclude Include="GrayScaleShader.h" />
     <ClInclude Include="HalfEdge.h" />
-    <ClInclude Include="IEventArgs.h" />
     <ClInclude Include="HalfEdgeDSNode.h" />
     <ClInclude Include="HalfEdgeFace.h" />
     <ClInclude Include="FileUtility.h" />
@@ -203,10 +201,7 @@
     <ClInclude Include="IPrimitive.h" />
     <ClInclude Include="IShaderDefine.h" />
     <ClInclude Include="IWorkspace.h" />
-    <ClInclude Include="ICommand.h" />
-    <ClInclude Include="IController.h" />
     <ClInclude Include="GLObject.h" />
-    <ClInclude Include="Interface.h" />
     <ClInclude Include="IPolygonModel.h" />
     <ClInclude Include="IModelProperty.h" />
     <ClInclude Include="HalfEdgeDS.h" />
@@ -245,13 +240,9 @@
     <ClInclude Include="TextureGenerator.h" />
     <ClInclude Include="Vertex.h" />
     <ClInclude Include="PrimitiveNode.h" />
-    <ClInclude Include="Observer.h" />
     <ClInclude Include="IShader.h" />
-    <ClInclude Include="Logger.h" />
     <ClInclude Include="MathHelper.h" />
     <ClInclude Include="ModelGenerator.h" />
-    <ClInclude Include="Mouse.h" />
-    <ClInclude Include="MouseInput.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Project.h" />
     <ClInclude Include="PolygonModelNode.h" />
@@ -262,14 +253,12 @@
     <ClInclude Include="UniformBuffer.h" />
     <ClInclude Include="UniformScene.h" />
     <ClInclude Include="ShaderUtility.h" />
-    <ClInclude Include="SystemTypes.h" />
     <ClInclude Include="HalfEdgeVertex.h" />
     <ClInclude Include="NormalProperty.h" />
     <ClInclude Include="DefaultVertexBuffer.h" />
     <ClInclude Include="Viewport.h" />
     <ClInclude Include="VoxelCommand.h" />
     <ClInclude Include="Voxelize.h" />
-    <ClInclude Include="WindowEvent.h" />
     <ClInclude Include="Workspace.h" />
   </ItemGroup>
   <ItemGroup>
@@ -286,7 +275,6 @@
     <ClCompile Include="CGALLinearCellComplex.cpp" />
     <ClCompile Include="CGALPolyhedron.cpp" />
     <ClCompile Include="CGALRenderer.cpp" />
-    <ClCompile Include="CommandManager.cpp" />
     <ClCompile Include="CompositShader.cpp" />
     <ClCompile Include="Cone.cpp" />
     <ClCompile Include="Cube.cpp" />
@@ -322,13 +310,10 @@
     <ClCompile Include="PointLight.cpp" />
     <ClCompile Include="PointState.cpp" />
     <ClCompile Include="PrimitiveNode.cpp" />
-    <ClCompile Include="Observer.cpp" />
     <ClCompile Include="IShader.cpp" />
-    <ClCompile Include="Logger.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MathHelper.cpp" />
     <ClCompile Include="ModelGenerator.cpp" />
-    <ClCompile Include="Mouse.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

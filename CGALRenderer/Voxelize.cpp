@@ -2,7 +2,6 @@ namespace KI
 {
 Voxelize::Voxelize()
 {
-	m_pVoxelSpace = nullptr;
 }
 
 Voxelize::~Voxelize()
@@ -12,23 +11,23 @@ Voxelize::~Voxelize()
 
 void Voxelize::Create(const vector<vec3>& positions, const BDB& bdb, int partition)
 {
-	m_pVoxelSpace = new Voxel***[partition];
 	m_partition = partition;
+	m_bdb = bdb;
 	m_length = m_bdb.Max() - m_bdb.Min();
 	m_length.x /= m_partition;
 	m_length.y /= m_partition;
 	m_length.z /= m_partition;
 
-	m_bdb = bdb;
+	m_VoxelSpace.resize(partition);
 	for (int i = 0; i < partition; i++)
 	{
-		m_pVoxelSpace[i] = new Voxel**[partition];
+		m_VoxelSpace[i].resize(partition);
 		for (int j = 0; j < partition; j++)
 		{
-			m_pVoxelSpace[i][j] = new Voxel*[partition];
+			m_VoxelSpace[i][j].resize(partition);
 			for (int k = 0; k < partition; k++)
 			{
-				m_pVoxelSpace[i][j][k] = nullptr;
+				m_VoxelSpace[i][j][k] = nullptr;
 			}
 		}
 	}
@@ -37,9 +36,11 @@ void Voxelize::Create(const vector<vec3>& positions, const BDB& bdb, int partiti
 	{
 		int x, y, z;
 		GetIndex(positions[i], x, y, z);
-		if (m_pVoxelSpace[x][y][z] == nullptr)
+		vec3 voxelIndex(x, y, z);
+		//Logger::Output(KI::LOG_LEVEL::DEBUG, MathHelper::ToString(voxelIndex) + "\n");
+		if (m_VoxelSpace[x][y][z] == nullptr)
 		{
-			m_pVoxelSpace[x][y][z] = new Voxel();
+			m_VoxelSpace[x][y][z] = new Voxel();
 		}
 	}
 }
@@ -50,21 +51,42 @@ void Voxelize::GetIndex(const vec3& position, int& i, int& j, int& k)
 	i = voxelPosition.x / m_length.x;
 	j = voxelPosition.y / m_length.y;
 	k = voxelPosition.z / m_length.z;
+
+	if (i >= m_partition)
+		i = m_partition - 1;
+
+	if (j >= m_partition)
+		j = m_partition - 1;
+	
+	if (k >= m_partition)
+		k = m_partition - 1;
+
+	if (i >= m_partition ||
+		j >= m_partition ||
+		k >= m_partition)
+	{
+		assert(0);
+	}
 }
 
 void Voxelize::GetPosition(int i, int j, int k, vec3& min, vec3& max)
 {
 	vec3 voxelPosition = m_bdb.Min();
+	vec3 cellSize = m_length;
+	//cellSize.x /= m_partition;
+	//cellSize.y /= m_partition;
+	//cellSize.z /= m_partition;
 
 	vec3 position = vec3(i, j, k);
-	min = position * m_length + m_bdb.Min();
-	max = (position + vec3(1)) * m_length + m_bdb.Min();
+	min = position * cellSize + m_bdb.Min();
+	max = (position + vec3(1)) * cellSize + m_bdb.Min();
 }
 
 void Voxelize::GetVertexList(vector<vec3>& position, vector<int>& index)
 {
-	VoxelIterator itr = VoxelIterator(m_pVoxelSpace, m_partition);
+	VoxelIterator itr = VoxelIterator(m_VoxelSpace, m_partition);
 	int counter = 0;
+	int counter2 = 0;
 	Cube cube;
 	for (; itr.HasNext(); itr.Next())
 	{
@@ -77,7 +99,7 @@ void Voxelize::GetVertexList(vector<vec3>& position, vector<int>& index)
 		vec3 min;
 		vec3 max;
 		GetPosition(voxelIndex.x, voxelIndex.y, voxelIndex.z, min, max);
-		cube.SetIndexOffset(counter * 36);
+		cube.SetIndexOffset(counter * 8);
 		cube.Build(min, max);
 		position.insert(position.end(), cube.Position().begin(), cube.Position().end());
 		index.insert(index.end(), cube.Index().begin(), cube.Index().end());
@@ -87,27 +109,16 @@ void Voxelize::GetVertexList(vector<vec3>& position, vector<int>& index)
 
 void Voxelize::Dispose()
 {
-	if (m_pVoxelSpace == nullptr)
+	for (int i = 0; i < m_VoxelSpace.size(); i++)
 	{
-		return;
-	}
-
-	for (int i = 0; i < m_partition; i++) 
-	{
-		for (int j = 0; j < m_partition; j++)
+		for (int j = 0; j < m_VoxelSpace[i].size(); j++)
 		{
-			for (int k = 0; k < m_partition; k++)
+			for (int k = 0; k < m_VoxelSpace[i][j].size(); k++)
 			{
-				delete m_pVoxelSpace[i][j][k];
+				delete m_VoxelSpace[i][j][k];
 			}
-
-			delete[] m_pVoxelSpace[i][j];
 		}
-
-		delete[] m_pVoxelSpace[i];
 	}
-
-	delete[] m_pVoxelSpace;
 }
 
 
@@ -145,6 +156,6 @@ void VoxelIterator::Next()
 
 Voxel* VoxelIterator::Current()
 {
-	return m_pVoxelSpace[m_Index.x][m_Index.y][m_Index.z];
+	return m_VoxelSpace[m_Index.x][m_Index.y][m_Index.z];
 }
 }

@@ -31,7 +31,7 @@ void HalfEdgeModel::GetFacetList(vector<vec3>& facetList, vector<vec3>& normalLi
 		while (itr.HasNext()) 
 		{
 			facetList.push_back(
-				itr.Current()->Start()->Position()
+				((HalfEdge*)itr.Current())->Start()->Position()
 			);
 
 			normalList.push_back(
@@ -92,7 +92,7 @@ void HalfEdgeModel::GetFaceIndexList(vector<int>& index)
 		while (itr.HasNext())
 		{
 			index.push_back(
-				itr.Current()->Start()->Index()
+				((HalfEdge*)itr.Current())->Start()->Index()
 			);
 
 			itr.Next();

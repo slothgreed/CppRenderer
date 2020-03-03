@@ -3,7 +3,9 @@
 
 namespace KI
 {
-class IObserver
+namespace Foundation
+{
+class DLL_EXPORT IObserver
 {
 public:
 	IObserver() {};
@@ -14,7 +16,7 @@ private:
 
 }; 
 
-class ISubject
+class DLL_EXPORT ISubject
 {
 public:
 	ISubject();
@@ -30,5 +32,6 @@ private:
 	vector<IObserver*> m_observer;
 
 };
+}
 }
 #endif IOBSERVER_H

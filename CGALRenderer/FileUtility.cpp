@@ -29,7 +29,7 @@ bool FileUtility::Load(const std::string& filePath, std::string& contents)
 
 void FileUtility::GetExtension(const std::string& filePath, std::string& ext)
 {
-	int index = filePath.find_last_of(".");
+	int index = (int)filePath.find_last_of(".");
 	ext = filePath.substr(index, filePath.size() - index);
 }
 

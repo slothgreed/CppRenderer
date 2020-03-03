@@ -47,6 +47,8 @@ CommandResult VoxelCommand::Execute()
 	auto pShader = ShaderManager::Instance()->FindOrNew(pShaderDefine);
 
 	auto pModelNode = make_shared<PrimitiveNode>(pShader, pVertexBuffer);
+	pModelNode->GetMaterial()->SetFixColor(vec4(1, 0, 0, 1));
+	
 	args->m_pWorkspace->AddModelNode(pModelNode);
 	
 	return CommandResult::Success;

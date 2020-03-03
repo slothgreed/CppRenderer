@@ -47,15 +47,15 @@ void GrayScaleEffect::Draw()
 	m_pRenderTarget->End();
 }
 
-void GrayScaleEffect::ReadFromXML(const boost::property_tree::ptree& tree)
-{
-
-}
-
-
-void GrayScaleEffect::WriteToXML(const boost::property_tree::ptree& tree)
-{
-
-}
+//void GrayScaleEffect::ReadFromXML(const boost::property_tree::ptree& tree)
+//{
+//
+//}
+//
+//
+//void GrayScaleEffect::WriteToXML(const boost::property_tree::ptree& tree)
+//{
+//
+//}
 
 }

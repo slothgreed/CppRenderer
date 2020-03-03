@@ -46,7 +46,7 @@ void BunnyScene::Initialize(Project* m_pProject)
 		auto polyNode = make_shared<HalfEdgeDSNode>(polyhedron);
 
 		auto voxelCommandArgs = make_shared<VoxelCommandArgs>(
-			this, polyNode->GetModel(), 2);
+			this, polyNode->GetModel(), 100);
 		
 		auto voxelCommand = make_shared<VoxelCommand>(voxelCommandArgs);
 

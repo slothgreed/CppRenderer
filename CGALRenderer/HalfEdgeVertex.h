@@ -8,9 +8,9 @@ class VertexAroundEdgeIterator : public IIterator<HalfEdge*>
 public:
 	VertexAroundEdgeIterator(HalfEdgeVertex* pVertex);
 
-	virtual bool HasNext();
-	virtual void Next();
-	virtual HalfEdge* Current();
+	virtual bool HasNext() override;
+	virtual void Next() override;
+	virtual HalfEdge* Current() override;
 
 private:
 	HalfEdgeVertex*	m_pVertex;

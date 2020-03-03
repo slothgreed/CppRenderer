@@ -10,7 +10,7 @@ PointState::~PointState()
 
 void PointState::Bind()
 {
-	glPointSize(m_pointSize);
+	glPointSize((GLfloat)m_pointSize);
 }
 
 void PointState::UnBind()

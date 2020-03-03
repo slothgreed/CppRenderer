@@ -4,6 +4,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.28307.645
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CGALRenderer", "CGALRenderer\CGALRenderer.vcxproj", "{1C525E0F-D28F-498E-9418-0063A1120555}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C42EA358-67E0-4C80-A8EB-451881F2EB13} = {C42EA358-67E0-4C80-A8EB-451881F2EB13}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "KIFoundation", "KIFoundation\KIFoundation.vcxproj", "{C42EA358-67E0-4C80-A8EB-451881F2EB13}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +26,14 @@ Global
 		{1C525E0F-D28F-498E-9418-0063A1120555}.Release|x64.Build.0 = Release|x64
 		{1C525E0F-D28F-498E-9418-0063A1120555}.Release|x86.ActiveCfg = Release|Win32
 		{1C525E0F-D28F-498E-9418-0063A1120555}.Release|x86.Build.0 = Release|Win32
+		{C42EA358-67E0-4C80-A8EB-451881F2EB13}.Debug|x64.ActiveCfg = Debug|x64
+		{C42EA358-67E0-4C80-A8EB-451881F2EB13}.Debug|x64.Build.0 = Debug|x64
+		{C42EA358-67E0-4C80-A8EB-451881F2EB13}.Debug|x86.ActiveCfg = Debug|Win32
+		{C42EA358-67E0-4C80-A8EB-451881F2EB13}.Debug|x86.Build.0 = Debug|Win32
+		{C42EA358-67E0-4C80-A8EB-451881F2EB13}.Release|x64.ActiveCfg = Release|x64
+		{C42EA358-67E0-4C80-A8EB-451881F2EB13}.Release|x64.Build.0 = Release|x64
+		{C42EA358-67E0-4C80-A8EB-451881F2EB13}.Release|x86.ActiveCfg = Release|Win32
+		{C42EA358-67E0-4C80-A8EB-451881F2EB13}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

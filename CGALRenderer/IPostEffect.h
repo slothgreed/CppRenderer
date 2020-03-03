@@ -21,8 +21,8 @@ public:
 	void SetApply(bool value) { m_apply = value; }
 	bool Apply() { return m_apply; }
 
-	virtual void ReadFromXML(const boost::property_tree::ptree& tree) = 0;
-	virtual void WriteToXML(const boost::property_tree::ptree& tree) = 0;
+	//virtual void ReadFromXML(const boost::property_tree::ptree& tree) = 0;
+	//virtual void WriteToXML(const boost::property_tree::ptree& tree) = 0;
 private:
 	bool m_apply;
 

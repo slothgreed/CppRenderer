@@ -74,7 +74,7 @@ void DefaultVertexBuffer::SetPosition(GLuint primitiveType, const vector<vec3>& 
 	glBufferData(GL_ARRAY_BUFFER, position.size() * sizeof(vec3), position.data(), GL_STATIC_DRAW);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 
-	m_vertexNum = position.size();
+	m_vertexNum = (GLuint)position.size();
 	m_PrimitiveType = primitiveType;
 	Logger::GLError();
 }
@@ -132,8 +132,9 @@ void DefaultVertexBuffer::SetIndex(const vector<int>& index)
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_indexId);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, index.size() * sizeof(int), index.data(), GL_STATIC_DRAW);
 	glBindVertexArray(0);
-	m_indexSize = index.size();
+	m_indexSize = (GLuint)index.size();
 	Logger::GLError();
+
 }
 
 void DefaultVertexBuffer::GenerateVAO()

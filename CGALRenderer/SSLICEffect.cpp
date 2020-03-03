@@ -85,15 +85,15 @@ void SSLICEffect::Resize(int width, int height)
 }
 
 
-void SSLICEffect::ReadFromXML(const boost::property_tree::ptree& tree)
-{
-
-}
-
-
-void SSLICEffect::WriteToXML(const boost::property_tree::ptree& tree)
-{
-
-}
+//void SSLICEffect::ReadFromXML(const boost::property_tree::ptree& tree)
+//{
+//
+//}
+//
+//
+//void SSLICEffect::WriteToXML(const boost::property_tree::ptree& tree)
+//{
+//
+//}
 
 }

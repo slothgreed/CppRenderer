@@ -1,5 +1,8 @@
 namespace KI
 {
+namespace Foundation
+{
+
 Logger::Logger()
 {
 }
@@ -52,5 +55,6 @@ void Logger::GLError()
 		assert(0);
 		break;
 	}
+}
 }
 }

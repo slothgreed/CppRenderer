@@ -2,13 +2,15 @@
 #define ICONTROLLER_H
 namespace KI
 {
+namespace Foundation
+{
 enum CONTROLER_TYPE : unsigned int
 {
 	CAMERA_CONTROLER,
 	CONTROLER_TYPE_NUM
 };
 
-class IControllerArgs
+class DLL_EXPORT IControllerArgs
 {
 public:
 	IControllerArgs() {};
@@ -18,7 +20,7 @@ private:
 
 };
 class Mouse;
-class IController
+class DLL_EXPORT IController
 {
 public:
 	IController() {};
@@ -33,5 +35,5 @@ private:
 
 };
 }
-
+}
 #endif ICONTROLLER_H

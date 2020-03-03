@@ -1,5 +1,7 @@
 namespace KI
 {
+namespace Foundation
+{
 Mouse::Mouse()
 {
 }
@@ -35,5 +37,6 @@ void Mouse::ApplyMouseInput(const MouseInput& input)
 	}
 
 	m_delta = m_current - m_before;
+}
 }
 }

@@ -2,11 +2,9 @@
 #define CGAL_RENDERER_H
 namespace KI
 {
+class Foundation::WindowEvent;
 class ShaderManager;
 class Workspace;
-class Mouse;
-class MouseInput;
-class WindowEvent;
 class Viewport;
 class CGALRenderer
 {

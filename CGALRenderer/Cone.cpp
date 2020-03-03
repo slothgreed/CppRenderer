@@ -19,7 +19,6 @@ void Cone::Build(float radius, float height, int partition)
 	for (int i = 0; i <= partition; i++)
 	{
 		vec3 position;
-		vec3 position2;
 		MathHelper::SphericalToCartesian(radius, -(i * rad), pi<float>()/2, position);
 		m_position.push_back(position);
 		Logger::Output(LOG_LEVEL::DEBUG, (MathHelper::ToString(position)+"\n").data() );

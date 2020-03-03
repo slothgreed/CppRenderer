@@ -2,6 +2,8 @@
 #define SYSTEM_TYPES_H
 namespace KI
 {
+namespace Foundation
+{
 enum MOUSE_BUTTON : unsigned int
 {
 	MOUSE_BUTTON_LEFT = 1,
@@ -22,5 +24,6 @@ enum WINDOW_EVENT
 {
 	WINDOW_EVENT_RESIZE
 };
+}
 }
 #endif SYSTEM_TYPES_H

@@ -68,7 +68,7 @@ void HalfEdgeProperty::GetVBOData(HalfEdgeDS* model, vector<vec3>& position, vec
 
 		while (itr.HasNext())
 		{
-			auto edge = itr.Current();
+			auto edge = (HalfEdge*)itr.Current();
 			vec3 start = edge->Start()->Position();
 			vec3 end = edge->End()->Position();
 			vec3 centroid = edge->Face()->Centroid();

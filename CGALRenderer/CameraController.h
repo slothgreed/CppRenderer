@@ -2,7 +2,7 @@
 #define CAMERA_CONTROLLER_H
 namespace KI
 {
-class Mouse;
+class KI::Foundation::Mouse;
 class Camera;
 class Viewport;
 class CameraControllerArgs : public IControllerArgs

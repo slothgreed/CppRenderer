@@ -1,5 +1,7 @@
 namespace KI
 {
+namespace Foundation
+{
 
 CommandManager::CommandManager()
 {
@@ -71,6 +73,7 @@ CommandResult CommandManager::Redo()
 
 int CommandManager::CommandNum()
 {
-	return m_pCommandStack.size();
+	return (int)m_pCommandStack.size();
+}
 }
 }

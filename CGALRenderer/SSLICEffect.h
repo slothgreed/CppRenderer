@@ -15,8 +15,8 @@ public:
 	virtual void Resize(int width, int height) override;
 	void SetDrawModel(shared_ptr<DefaultVertexBuffer> model);
 
-	virtual void ReadFromXML(const boost::property_tree::ptree& tree);
-	virtual void WriteToXML(const boost::property_tree::ptree& tree);
+	//virtual void ReadFromXML(const boost::property_tree::ptree& tree);
+	//virtual void WriteToXML(const boost::property_tree::ptree& tree);
 
 private:
 	shared_ptr<Texture> m_pNoizeTexture;

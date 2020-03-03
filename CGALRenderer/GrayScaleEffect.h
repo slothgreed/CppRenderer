@@ -16,8 +16,8 @@ public:
 	void Resize(int width, int height) override;
 
 	void SetTexture(shared_ptr<Texture> texture);
-	virtual void ReadFromXML(const boost::property_tree::ptree& tree);
-	virtual void WriteToXML(const boost::property_tree::ptree& tree);
+	//virtual void ReadFromXML(const boost::property_tree::ptree& tree);
+	//virtual void WriteToXML(const boost::property_tree::ptree& tree);
 
 private:
 	shared_ptr<RenderTarget> m_pRenderTarget;

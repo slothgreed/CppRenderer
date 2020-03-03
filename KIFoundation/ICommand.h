@@ -2,6 +2,9 @@
 #define ICOMMAND_H
 namespace KI
 {
+namespace Foundation
+{
+
 enum CommandResult
 {
 	None,
@@ -17,7 +20,7 @@ enum COMMAND_TYPE : unsigned int
 	COMMAND_TYPE_NUM	= 3
 };
 
-class ICommandArgs
+class DLL_EXPORT ICommandArgs
 {
 public:
 	ICommandArgs() {};
@@ -48,6 +51,7 @@ protected:
 	shared_ptr<ICommandArgs> m_pArgs;
 
 };
+}
 }
 #endif ICOMMAND_H
 

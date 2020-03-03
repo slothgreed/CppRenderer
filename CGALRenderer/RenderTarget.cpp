@@ -89,7 +89,7 @@ void RenderTarget::Bind()
 		attachment.push_back(m_pOutputBuffer[i]->Attachment());
 	}
 
-	glDrawBuffers(m_pOutputBuffer.size(), attachment.data());
+	glDrawBuffers((GLsizei)m_pOutputBuffer.size(), attachment.data());
 
 	Logger::GLError();
 

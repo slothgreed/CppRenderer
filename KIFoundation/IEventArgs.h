@@ -3,7 +3,9 @@
 
 namespace KI
 {
-class IEventArgs
+namespace Foundation
+{
+class DLL_EXPORT IEventArgs
 {
 public:
 	IEventArgs() {};
@@ -13,7 +15,7 @@ private:
 
 };
 
-class EventArgs : public IEventArgs
+class DLL_EXPORT EventArgs : public IEventArgs
 {
 public:
 	
@@ -24,5 +26,6 @@ public:
 private:
 
 };
+}
 }
 #endif
