@@ -19,12 +19,6 @@
     <Filter Include="ヘッダー ファイル\OpenGL">
       <UniqueIdentifier>{fcad7b93-0ce4-486f-980c-e9fdbc6cc867}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\System">
-      <UniqueIdentifier>{c9d50fab-8f9b-44d5-a625-c78b7efd1b6c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\System">
-      <UniqueIdentifier>{1b1c4762-94f2-4939-9e3a-9c4895d75e1e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ソース ファイル\Application">
       <UniqueIdentifier>{15110f68-edde-44c2-b0f2-e9629ac92aa0}</UniqueIdentifier>
     </Filter>
