@@ -2,11 +2,6 @@
 #define MODEL_NODE_H
 namespace KI
 {
-class IModelNode;
-class IShader;
-class IVertexBuffer;
-class IModelProperty;
-class IMaterial;
 class PolygonModelNode : public IModelNode
 {
 public:

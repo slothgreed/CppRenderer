@@ -2,10 +2,7 @@
 #define CGAL_RENDERER_H
 namespace KI
 {
-class Foundation::WindowEvent;
-class ShaderManager;
 class Workspace;
-class Viewport;
 class CGALRenderer
 {
 public:

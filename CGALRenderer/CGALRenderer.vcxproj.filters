@@ -13,12 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="ソース ファイル\OpenGL">
-      <UniqueIdentifier>{71ee8697-b376-4bb5-b46b-6d8da4f8d088}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\OpenGL">
-      <UniqueIdentifier>{fcad7b93-0ce4-486f-980c-e9fdbc6cc867}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ソース ファイル\Application">
       <UniqueIdentifier>{15110f68-edde-44c2-b0f2-e9629ac92aa0}</UniqueIdentifier>
     </Filter>
@@ -31,32 +25,14 @@
     <Filter Include="ヘッダー ファイル\Asset">
       <UniqueIdentifier>{582bcf33-ede6-48fe-af85-4e7b54e9a08a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ヘッダー ファイル\Utility">
-      <UniqueIdentifier>{876c80e4-6a5c-45ce-a8ec-06dc25a8c05c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Utility">
-      <UniqueIdentifier>{8489b4f0-3bba-43a3-b33e-e652b110718f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ImGui">
       <UniqueIdentifier>{656166a6-9f61-46fb-a7c1-0f7601e5fe62}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Foundation">
-      <UniqueIdentifier>{552c0eb7-b7d2-43f4-a694-5a23d988e4f1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\Foundation">
-      <UniqueIdentifier>{c46505b3-a9aa-4bf7-9cf0-8ec1c7e7669a}</UniqueIdentifier>
     </Filter>
     <Filter Include="ソース ファイル\Topology">
       <UniqueIdentifier>{488b12fc-6e1c-4206-b5dd-b4701209b847}</UniqueIdentifier>
     </Filter>
     <Filter Include="ヘッダー ファイル\Topology">
       <UniqueIdentifier>{0483854e-d0d6-42da-a3f0-403b588be2c8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\OpenGL\GLObject">
-      <UniqueIdentifier>{84187dd4-77ba-4c78-b6fc-4570c1795434}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\OpenGL\GLObject">
-      <UniqueIdentifier>{90ebf0f0-9cbd-4c3c-81ac-43d016b054f6}</UniqueIdentifier>
     </Filter>
     <Filter Include="ソース ファイル\Application\Node">
       <UniqueIdentifier>{d3157a13-966b-4bc9-ae1d-68a8a3a13336}</UniqueIdentifier>
@@ -76,39 +52,6 @@
     <Filter Include="ソース ファイル\Asset\Material">
       <UniqueIdentifier>{2edff9f8-43f5-4208-8521-b26c0090a015}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\Asset\Shader">
-      <UniqueIdentifier>{ff806b1f-5c08-4d9a-8801-07061191c5f1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Asset\VertexBuffer">
-      <UniqueIdentifier>{b1b4ae2f-6b97-4dbe-a37a-87824a31b0c0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\Asset\VertexBuffer">
-      <UniqueIdentifier>{0dd8a6e6-be55-4c9d-b1f7-a60a42d2b11f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\Asset\Shader">
-      <UniqueIdentifier>{333fbf8d-8ee3-4d1d-aa2d-57b8af26b47f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ExtLibs">
-      <UniqueIdentifier>{7fb2b786-836f-4d5b-b898-cd1dca0b7485}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Renderer">
-      <UniqueIdentifier>{0e1f3009-e8c9-4116-854b-31675b92838e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\Renderer">
-      <UniqueIdentifier>{b57e33a3-c0f7-4c87-b7e7-222196084e15}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Renderer\Pfx">
-      <UniqueIdentifier>{82f89b27-a91d-4f42-9a70-e65e17a83dcd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\Renderer\Pfx">
-      <UniqueIdentifier>{26a6c7c0-ce91-41a4-8645-5f8d5b4d6975}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\OpenGL\GLState">
-      <UniqueIdentifier>{6f11e5f2-98b2-4a26-8741-da08c7f63033}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\OpenGL\GLState">
-      <UniqueIdentifier>{e2d2aed3-78e5-4f07-95b5-c89096582c22}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ソース ファイル\Topology\Operator">
       <UniqueIdentifier>{5bdc9300-9914-4d5f-9f1a-b8dcf5188173}</UniqueIdentifier>
     </Filter>
@@ -118,23 +61,11 @@
     <Filter Include="ヘッダー ファイル\Application\InitApp">
       <UniqueIdentifier>{19de7987-1a26-457e-82a7-84b5d081fc24}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\Renderer\Lighting">
-      <UniqueIdentifier>{ccfc4058-2444-4622-ba4e-b3827e3a6740}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\Renderer\Lighthing">
-      <UniqueIdentifier>{f1b2b734-2f4c-46d5-9fce-995391bce03e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ソース ファイル\Asset\Light">
       <UniqueIdentifier>{87ad708b-46a3-4032-9ba8-bf2085f273bc}</UniqueIdentifier>
     </Filter>
     <Filter Include="ヘッダー ファイル\Asset\Light">
       <UniqueIdentifier>{db2ff2be-1b09-4c02-9489-26182f5b0df9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Renderer\Geometry">
-      <UniqueIdentifier>{1051bddf-959b-43c0-9f24-a36c14a47406}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\Renderer\Geometry">
-      <UniqueIdentifier>{863f7fa7-283c-4c78-b9b5-3d96e83fb7a8}</UniqueIdentifier>
     </Filter>
     <Filter Include="ヘッダー ファイル\Asset\Model">
       <UniqueIdentifier>{76ececcd-d8e9-4ca9-9b55-d1a80f150e0d}</UniqueIdentifier>
@@ -201,41 +132,11 @@
     <ClInclude Include="CGALRenderer.h">
       <Filter>ヘッダー ファイル\Application</Filter>
     </ClInclude>
-    <ClInclude Include="Camera.h">
-      <Filter>ヘッダー ファイル\Asset</Filter>
-    </ClInclude>
-    <ClInclude Include="MathHelper.h">
-      <Filter>ヘッダー ファイル\Utility</Filter>
-    </ClInclude>
-    <ClInclude Include="Viewport.h">
-      <Filter>ヘッダー ファイル\OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="ShaderUtility.h">
-      <Filter>ヘッダー ファイル\Utility</Filter>
-    </ClInclude>
-    <ClInclude Include="ModelGenerator.h">
-      <Filter>ヘッダー ファイル\Utility</Filter>
-    </ClInclude>
-    <ClInclude Include="UniformScene.h">
-      <Filter>ヘッダー ファイル\OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="UniformBuffer.h">
-      <Filter>ヘッダー ファイル\OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="BDB.h">
-      <Filter>ヘッダー ファイル\Foundation</Filter>
-    </ClInclude>
-    <ClInclude Include="ShaderManager.h">
-      <Filter>ヘッダー ファイル\OpenGL</Filter>
-    </ClInclude>
     <ClInclude Include="CameraController.h">
       <Filter>ヘッダー ファイル\Application\Logic\Controller</Filter>
     </ClInclude>
     <ClInclude Include="SubdivisionCommand.h">
       <Filter>ヘッダー ファイル\Application\Logic\Command</Filter>
-    </ClInclude>
-    <ClInclude Include="FileUtility.h">
-      <Filter>ヘッダー ファイル\Utility</Filter>
     </ClInclude>
     <ClInclude Include="HalfEdgeVertex.h">
       <Filter>ヘッダー ファイル\Topology</Filter>
@@ -252,30 +153,6 @@
     <ClInclude Include="Vertex.h">
       <Filter>ヘッダー ファイル\Topology</Filter>
     </ClInclude>
-    <ClInclude Include="RenderTarget.h">
-      <Filter>ヘッダー ファイル\OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="FrameBuffer.h">
-      <Filter>ヘッダー ファイル\OpenGL\GLObject</Filter>
-    </ClInclude>
-    <ClInclude Include="GLObject.h">
-      <Filter>ヘッダー ファイル\OpenGL\GLObject</Filter>
-    </ClInclude>
-    <ClInclude Include="Texture.h">
-      <Filter>ヘッダー ファイル\OpenGL\GLObject</Filter>
-    </ClInclude>
-    <ClInclude Include="Sampler.h">
-      <Filter>ヘッダー ファイル\OpenGL\GLObject</Filter>
-    </ClInclude>
-    <ClInclude Include="RenderBuffer.h">
-      <Filter>ヘッダー ファイル\OpenGL\GLObject</Filter>
-    </ClInclude>
-    <ClInclude Include="RenderTexture.h">
-      <Filter>ヘッダー ファイル\OpenGL\GLObject</Filter>
-    </ClInclude>
-    <ClInclude Include="TextureGenerator.h">
-      <Filter>ヘッダー ファイル\Utility</Filter>
-    </ClInclude>
     <ClInclude Include="CGALGeneralizedMaps.h">
       <Filter>ヘッダー ファイル\Asset\Model\PolygonModel</Filter>
     </ClInclude>
@@ -291,98 +168,23 @@
     <ClInclude Include="HalfEdgeModel.h">
       <Filter>ヘッダー ファイル\Asset\Model\PolygonModel</Filter>
     </ClInclude>
-    <ClInclude Include="IModelNode.h">
-      <Filter>ヘッダー ファイル\Asset\Model\PolygonModel</Filter>
-    </ClInclude>
-    <ClInclude Include="IModelProperty.h">
-      <Filter>ヘッダー ファイル\Application\Property</Filter>
-    </ClInclude>
     <ClInclude Include="BDBProperty.h">
       <Filter>ヘッダー ファイル\Application\Property</Filter>
     </ClInclude>
     <ClInclude Include="PrimitiveNode.h">
       <Filter>ヘッダー ファイル\Application\Node</Filter>
     </ClInclude>
-    <ClInclude Include="IMaterial.h">
-      <Filter>ヘッダー ファイル\Asset\Material</Filter>
-    </ClInclude>
     <ClInclude Include="DefaultMaterial.h">
       <Filter>ヘッダー ファイル\Asset\Material</Filter>
-    </ClInclude>
-    <ClInclude Include="DefaultShader.h">
-      <Filter>ヘッダー ファイル\Asset\Shader</Filter>
-    </ClInclude>
-    <ClInclude Include="IShader.h">
-      <Filter>ヘッダー ファイル\OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="IVertexBuffer.h">
-      <Filter>ヘッダー ファイル\OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="DefaultVertexBuffer.h">
-      <Filter>ヘッダー ファイル\Asset\VertexBuffer</Filter>
     </ClInclude>
     <ClInclude Include="AssetTypes.h">
       <Filter>ヘッダー ファイル\Asset</Filter>
     </ClInclude>
-    <ClInclude Include="Random.h">
-      <Filter>ExtLibs</Filter>
-    </ClInclude>
     <ClInclude Include="SpecialUtility.h">
       <Filter>ヘッダー ファイル\Application</Filter>
     </ClInclude>
-    <ClInclude Include="SymbolicRenderTarget.h">
-      <Filter>ヘッダー ファイル\OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="OutputShader.h">
-      <Filter>ヘッダー ファイル\Asset\Shader</Filter>
-    </ClInclude>
     <ClInclude Include="OutputMaterial.h">
       <Filter>ヘッダー ファイル\Asset\Material</Filter>
-    </ClInclude>
-    <ClInclude Include="GrayScaleEffect.h">
-      <Filter>ヘッダー ファイル\Renderer\Pfx</Filter>
-    </ClInclude>
-    <ClInclude Include="PfxPlane.h">
-      <Filter>ヘッダー ファイル\Renderer\Pfx</Filter>
-    </ClInclude>
-    <ClInclude Include="CompositShader.h">
-      <Filter>ヘッダー ファイル\Asset\Shader</Filter>
-    </ClInclude>
-    <ClInclude Include="SSLICEffect.h">
-      <Filter>ヘッダー ファイル\Renderer\Pfx</Filter>
-    </ClInclude>
-    <ClInclude Include="SSLICShader.h">
-      <Filter>ヘッダー ファイル\Asset\Shader</Filter>
-    </ClInclude>
-    <ClInclude Include="IRenderTarget.h">
-      <Filter>ヘッダー ファイル\OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="GLState.h">
-      <Filter>ヘッダー ファイル\OpenGL\GLState</Filter>
-    </ClInclude>
-    <ClInclude Include="GLTypes.h">
-      <Filter>ヘッダー ファイル\OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="LineState.h">
-      <Filter>ヘッダー ファイル\OpenGL\GLState</Filter>
-    </ClInclude>
-    <ClInclude Include="PointState.h">
-      <Filter>ヘッダー ファイル\OpenGL\GLState</Filter>
-    </ClInclude>
-    <ClInclude Include="GrayScaleShader.h">
-      <Filter>ヘッダー ファイル\Asset\Shader</Filter>
-    </ClInclude>
-    <ClInclude Include="IUniform.h">
-      <Filter>ヘッダー ファイル\OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="Renderer.h">
-      <Filter>ヘッダー ファイル\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="IPostEffect.h">
-      <Filter>ヘッダー ファイル\Renderer\Pfx</Filter>
-    </ClInclude>
-    <ClInclude Include="PfxRenderer.h">
-      <Filter>ヘッダー ファイル\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="PickCommand.h">
       <Filter>ヘッダー ファイル\Application\Logic\Command</Filter>
@@ -405,9 +207,6 @@
     <ClInclude Include="NormalProperty.h">
       <Filter>ヘッダー ファイル\Application\Property</Filter>
     </ClInclude>
-    <ClInclude Include="IShaderDefine.h">
-      <Filter>ヘッダー ファイル\OpenGL</Filter>
-    </ClInclude>
     <ClInclude Include="DirectionLight.h">
       <Filter>ヘッダー ファイル\Asset\Light</Filter>
     </ClInclude>
@@ -419,12 +218,6 @@
     </ClInclude>
     <ClInclude Include="ILight.h">
       <Filter>ヘッダー ファイル\Asset\Light</Filter>
-    </ClInclude>
-    <ClInclude Include="LighthingPass.h">
-      <Filter>ヘッダー ファイル\Renderer\Lighthing</Filter>
-    </ClInclude>
-    <ClInclude Include="GeometryPass.h">
-      <Filter>ヘッダー ファイル\Renderer\Geometry</Filter>
     </ClInclude>
     <ClInclude Include="MoveManipulator.h">
       <Filter>ヘッダー ファイル\Asset\Model\Manipulator</Filter>
@@ -443,9 +236,6 @@
     </ClInclude>
     <ClInclude Include="IPolygonModel.h">
       <Filter>ヘッダー ファイル\Asset\Model\PolygonModel</Filter>
-    </ClInclude>
-    <ClInclude Include="IModel.h">
-      <Filter>ヘッダー ファイル\Asset\Model</Filter>
     </ClInclude>
     <ClInclude Include="PolygonModelNode.h">
       <Filter>ヘッダー ファイル\Application\Node</Filter>
@@ -503,41 +293,11 @@
     <ClCompile Include="CGALRenderer.cpp">
       <Filter>ソース ファイル\Application</Filter>
     </ClCompile>
-    <ClCompile Include="Camera.cpp">
-      <Filter>ソース ファイル\Asset</Filter>
-    </ClCompile>
-    <ClCompile Include="MathHelper.cpp">
-      <Filter>ソース ファイル\Utility</Filter>
-    </ClCompile>
-    <ClCompile Include="Viewport.cpp">
-      <Filter>ソース ファイル\OpenGL</Filter>
-    </ClCompile>
-    <ClCompile Include="ShaderUtility.cpp">
-      <Filter>ソース ファイル\Utility</Filter>
-    </ClCompile>
-    <ClCompile Include="ModelGenerator.cpp">
-      <Filter>ソース ファイル\Utility</Filter>
-    </ClCompile>
-    <ClCompile Include="UniformScene.cpp">
-      <Filter>ソース ファイル\OpenGL</Filter>
-    </ClCompile>
-    <ClCompile Include="IShader.cpp">
-      <Filter>ソース ファイル\OpenGL</Filter>
-    </ClCompile>
-    <ClCompile Include="BDB.cpp">
-      <Filter>ソース ファイル\Foundation</Filter>
-    </ClCompile>
-    <ClCompile Include="ShaderManager.cpp">
-      <Filter>ソース ファイル\OpenGL</Filter>
-    </ClCompile>
     <ClCompile Include="CameraController.cpp">
       <Filter>ソース ファイル\Application\Logic\Controller</Filter>
     </ClCompile>
     <ClCompile Include="SubdivisionCommand.cpp">
       <Filter>ソース ファイル\Application\Logic\Command</Filter>
-    </ClCompile>
-    <ClCompile Include="FileUtility.cpp">
-      <Filter>ソース ファイル\Utility</Filter>
     </ClCompile>
     <ClCompile Include="HalfEdge.cpp">
       <Filter>ソース ファイル\Topology</Filter>
@@ -550,27 +310,6 @@
     </ClCompile>
     <ClCompile Include="HalfEdgeDS.cpp">
       <Filter>ソース ファイル\Topology</Filter>
-    </ClCompile>
-    <ClCompile Include="RenderTarget.cpp">
-      <Filter>ソース ファイル\OpenGL</Filter>
-    </ClCompile>
-    <ClCompile Include="FrameBuffer.cpp">
-      <Filter>ソース ファイル\OpenGL\GLObject</Filter>
-    </ClCompile>
-    <ClCompile Include="RenderBuffer.cpp">
-      <Filter>ソース ファイル\OpenGL\GLObject</Filter>
-    </ClCompile>
-    <ClCompile Include="Sampler.cpp">
-      <Filter>ソース ファイル\OpenGL\GLObject</Filter>
-    </ClCompile>
-    <ClCompile Include="Texture.cpp">
-      <Filter>ソース ファイル\OpenGL\GLObject</Filter>
-    </ClCompile>
-    <ClCompile Include="RenderTexture.cpp">
-      <Filter>ソース ファイル\OpenGL\GLObject</Filter>
-    </ClCompile>
-    <ClCompile Include="TextureGenerator.cpp">
-      <Filter>ソース ファイル\Utility</Filter>
     </ClCompile>
     <ClCompile Include="PrimitiveNode.cpp">
       <Filter>ソース ファイル\Application\Node</Filter>
@@ -593,62 +332,11 @@
     <ClCompile Include="DefaultMaterial.cpp">
       <Filter>ソース ファイル\Asset\Material</Filter>
     </ClCompile>
-    <ClCompile Include="DefaultShader.cpp">
-      <Filter>ソース ファイル\Asset\Shader</Filter>
-    </ClCompile>
-    <ClCompile Include="DefaultVertexBuffer.cpp">
-      <Filter>ソース ファイル\Asset\VertexBuffer</Filter>
-    </ClCompile>
-    <ClCompile Include="IMaterial.cpp">
-      <Filter>ソース ファイル\Asset\Material</Filter>
-    </ClCompile>
     <ClCompile Include="SpecialUtility.cpp">
       <Filter>ソース ファイル\Application</Filter>
     </ClCompile>
-    <ClCompile Include="SymbolicRenderTarget.cpp">
-      <Filter>ソース ファイル\OpenGL</Filter>
-    </ClCompile>
-    <ClCompile Include="OutputShader.cpp">
-      <Filter>ソース ファイル\Asset\Shader</Filter>
-    </ClCompile>
     <ClCompile Include="OutputMaterial.cpp">
       <Filter>ソース ファイル\Asset\Material</Filter>
-    </ClCompile>
-    <ClCompile Include="GrayScaleEffect.cpp">
-      <Filter>ソース ファイル\Renderer\Pfx</Filter>
-    </ClCompile>
-    <ClCompile Include="PfxPlane.cpp">
-      <Filter>ソース ファイル\Renderer\Pfx</Filter>
-    </ClCompile>
-    <ClCompile Include="CompositShader.cpp">
-      <Filter>ソース ファイル\Asset\Shader</Filter>
-    </ClCompile>
-    <ClCompile Include="SSLICEffect.cpp">
-      <Filter>ソース ファイル\Renderer\Pfx</Filter>
-    </ClCompile>
-    <ClCompile Include="SSLICShader.cpp">
-      <Filter>ソース ファイル\Asset\Shader</Filter>
-    </ClCompile>
-    <ClCompile Include="GLObject.cpp">
-      <Filter>ソース ファイル\OpenGL\GLObject</Filter>
-    </ClCompile>
-    <ClCompile Include="IRenderTarget.cpp">
-      <Filter>ソース ファイル\OpenGL</Filter>
-    </ClCompile>
-    <ClCompile Include="LineState.cpp">
-      <Filter>ソース ファイル\OpenGL\GLState</Filter>
-    </ClCompile>
-    <ClCompile Include="PointState.cpp">
-      <Filter>ソース ファイル\OpenGL\GLState</Filter>
-    </ClCompile>
-    <ClCompile Include="GrayScaleShader.cpp">
-      <Filter>ソース ファイル\Asset\Shader</Filter>
-    </ClCompile>
-    <ClCompile Include="Renderer.cpp">
-      <Filter>ソース ファイル\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="PfxRenderer.cpp">
-      <Filter>ソース ファイル\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="HalfEdgeOperator.cpp">
       <Filter>ソース ファイル\Topology\Operator</Filter>
@@ -671,9 +359,6 @@
     <ClCompile Include="NormalProperty.cpp">
       <Filter>ソース ファイル\Application\Property</Filter>
     </ClCompile>
-    <ClCompile Include="IModelNode.cpp">
-      <Filter>ソース ファイル\Application\Node</Filter>
-    </ClCompile>
     <ClCompile Include="DirectionLight.cpp">
       <Filter>ソース ファイル\Asset\Light</Filter>
     </ClCompile>
@@ -682,12 +367,6 @@
     </ClCompile>
     <ClCompile Include="PointLight.cpp">
       <Filter>ソース ファイル\Asset\Light</Filter>
-    </ClCompile>
-    <ClCompile Include="LighthingPass.cpp">
-      <Filter>ソース ファイル\Renderer\Lighting</Filter>
-    </ClCompile>
-    <ClCompile Include="GeometryPass.cpp">
-      <Filter>ソース ファイル\Renderer\Geometry</Filter>
     </ClCompile>
     <ClCompile Include="MoveManipulator.cpp">
       <Filter>ソース ファイル\Asset\Model\Manipulator</Filter>

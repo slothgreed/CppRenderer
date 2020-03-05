@@ -1,0 +1,32 @@
+#ifndef IRENDERTARGET_H
+#define	IRENDERTARGET_H
+namespace KI
+{
+namespace Gfx
+{
+class DLL_EXPORT IRenderTarget
+{
+public:
+	IRenderTarget();
+	~IRenderTarget();
+
+	void Begin();
+	void End();
+	virtual void Resize(int width, int height) = 0;
+	virtual void Dispose() = 0;
+	virtual void Clear(GLbitfield clear = GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	void SetClearColor(vec4 color) { m_pClearColor = color; }
+protected:
+	virtual void Bind() = 0;
+	virtual void UnBind() = 0;
+	bool Modifing() { return m_modifing; }
+
+	vec4 m_pClearColor;
+
+private:
+	bool m_modifing;
+
+};
+}
+}
+#endif // !IRENDERTARGET_H

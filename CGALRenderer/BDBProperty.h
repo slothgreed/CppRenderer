@@ -3,8 +3,6 @@
 
 namespace KI
 {
-class DefaultVertexBuffer;
-class DefaultShader;
 class BDBProperty : public IModelProperty
 {
 public:

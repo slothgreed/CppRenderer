@@ -2,13 +2,7 @@
 #define WORKSPACE_H
 namespace KI
 {
-class Camera;
-class IShader;
-class DefaultVertexBuffer;
-class UniformScene;
-class UniformBuffer;
 class CGALModelNode;
-class Foundation::CommandManager;
 class Workspace : public IWorkspace
 {
 public:

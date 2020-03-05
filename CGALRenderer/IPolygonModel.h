@@ -3,7 +3,6 @@
 namespace KI
 {
 
-class IMaterial;
 class IPolygonModel : public IModel
 {
 public:

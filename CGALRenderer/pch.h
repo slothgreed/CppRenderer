@@ -44,32 +44,12 @@ using namespace glm;
 
 // utility
 #include "MathHelper.h"
-#include "ShaderUtility.h"
-#include "FileUtility.h"
 
+#include "../KIGfx/pch.h"
+using namespace KI::Gfx;
 
-// opengl
-#include "GLTypes.h"
-#include "GLObject.h"
-#include "GLState.h"
-#include "LineState.h"
-#include "PointState.h"
-#include "ShaderManager.h"
-#include "UniformBuffer.h"
-#include "UniformScene.h"
-#include "Viewport.h"
-#include "FrameBuffer.h"
-#include "RenderBuffer.h"
-#include "Texture.h"
-#include "RenderTexture.h"
-#include "Sampler.h"
-#include "IRenderTarget.h"
-#include "RenderTarget.h"
-#include "SymbolicRenderTarget.h"
-#include "IUniform.h"
-#include "IShaderDefine.h"
-#include "IShader.h"
-#include "IVertexBuffer.h"
+#include "../KIRenderer/pch.h"
+using namespace KI::Renderer;
 
 // topology
 #include "Vertex.h"
@@ -79,29 +59,19 @@ using namespace glm;
 #include "HalfEdgeDS.h"
 #include "HalfEdgeOperator.h"
 
+
 // asset
 #include "AssetTypes.h"
-#include "Camera.h"
-#include "IModel.h"
 #include "IPolygonModel.h"
 #include "IManipulatorModel.h"
-#include "IModelProperty.h"
-#include "IModelNode.h"
 #include "PolygonModelNode.h"
 #include "CGALModel.h"
 #include "CGALPolyhedron.h"
 #include "CGALLinearCellComplex.h"
 #include "CGALGeneralizedMaps.h"
 #include "HalfEdgeModel.h"
-#include "IMaterial.h"
-#include "DefaultShader.h"
-#include "DefaultVertexBuffer.h"
 #include "DefaultMaterial.h"
-#include "OutputShader.h"
 #include "OutputMaterial.h"
-#include "CompositShader.h"
-#include "SSLICShader.h"
-#include "GrayScaleShader.h"
 #include "ILight.h"
 #include "DirectionLight.h"
 #include "SpotLight.h"
@@ -117,17 +87,6 @@ using namespace glm;
 // Algorithm
 #include "Voxelize.h"
 
-// Renderer
-#include "PfxPlane.h"
-#include "IPostEffect.h"
-#include "GeometryPass.h"
-#include "GrayScaleEffect.h"
-#include "SSLICEffect.h"
-#include "Renderer.h"
-#include "PfxRenderer.h"
-#include "LighthingPass.h"
-
-
 // model (mvc)
 #include "BDBProperty.h"
 #include "NormalProperty.h"
@@ -135,10 +94,6 @@ using namespace glm;
 #include "PrimitiveNode.h"
 #include "PolygonModelNode.h"
 #include "HalfEdgeDSNode.h"
-
-// application utility
-#include "ModelGenerator.h"
-#include "TextureGenerator.h"
 
 // application
 #include "IWorkspace.h"
@@ -160,7 +115,6 @@ using namespace glm;
 using namespace std;
 using namespace glm;
 
-#define RELEASE_INSTANCE(x) if(x != NULL) { delete x; x = NULL;}
 
 template<class T, class U>
 weak_ptr<T>

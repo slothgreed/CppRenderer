@@ -1,0 +1,39 @@
+#ifndef RENDER_TYPE_H
+#define RENDER_TYPE_H
+namespace KI
+{
+namespace Renderer
+{
+// Point Normal Color Texcoord ˆÈŠO‚Í•ÊƒNƒ‰ƒX‚ÅŽÀ‘•
+enum VERTEX_LAYOUT
+{
+	VERTEX_LAYOUT_P,	// Point
+	VERTEX_LAYOUT_PN,	// Point Normal
+	VERTEX_LAYOUT_PC,	// Point Color
+	VERTEX_LAYOUT_PT,	// Point Texcoord
+	VERTEX_LAYOUT_PNC,	// Point Normal Color
+	VERTEX_LAYOUT_PNCT,	// Point Normal Color Texcoord
+	VERTEX_LAYOUT_NUM,
+};
+
+enum VERTEX_ATTRIB
+{
+	VERTEX_ATTRIB_POSITION = 0,
+	VERTEX_ATTRIB_NORMAL = 1,
+	VERTEX_ATTRIB_COLOR = 2,
+	VERTEX_ATTRIB_TEXCOORD = 3,
+	VERTEX_ATTRIB_NUM = 4
+};
+
+
+enum MATERIAL_TYPE
+{
+	MATERIAL_TYPE_DEFAULT,
+	MATERIAL_TYPE_POINTMATERIAL,
+	MATERIAL_TYPE_LINEMATERIAL,
+	MATERIAL_TYPE_OUTPUT_BUFFER
+};
+}
+}
+
+#endif RENDER_TYPE_H

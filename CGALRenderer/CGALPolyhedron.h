@@ -6,7 +6,6 @@
 #include <CGAL/Polyhedron_3.h>
 namespace KI
 {
-class DefaultVertexBuffer;
 class CGALPolyhedron : public CGALModel
 {
 	typedef CGAL::Exact_predicates_inexact_constructions_kernel Local_Kernel;

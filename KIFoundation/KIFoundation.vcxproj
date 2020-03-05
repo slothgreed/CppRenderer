@@ -157,26 +157,33 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BDB.h" />
     <ClInclude Include="CommandManager.h" />
+    <ClInclude Include="FileUtility.h" />
     <ClInclude Include="ICommand.h" />
     <ClInclude Include="IController.h" />
     <ClInclude Include="IEventArgs.h" />
     <ClInclude Include="Interface.h" />
     <ClInclude Include="IObserver.h" />
     <ClInclude Include="Logger.h" />
+    <ClInclude Include="MathHelper.h" />
     <ClInclude Include="Mouse.h" />
     <ClInclude Include="MouseInput.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Random.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="SystemTypes.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="WindowEvent.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BDB.cpp" />
     <ClCompile Include="CommandManager.cpp" />
     <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="FileUtility.cpp" />
     <ClCompile Include="KIFoundation.cpp" />
     <ClCompile Include="Logger.cpp" />
+    <ClCompile Include="MathHelper.cpp" />
     <ClCompile Include="Mouse.cpp" />
     <ClCompile Include="Observer.cpp" />
     <ClCompile Include="stdafx.cpp">

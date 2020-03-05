@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="ソース ファイル">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="ヘッダー ファイル">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="リソース ファイル">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="ソース ファイル\GeometryPass">
+      <UniqueIdentifier>{310c0009-1e2d-4893-b574-5f7146af5e3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\LithingPass">
+      <UniqueIdentifier>{15cbb6b4-9d87-4e18-9e99-474a2c9130a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Pfx">
+      <UniqueIdentifier>{262e248b-a6b1-4710-86fa-0f9bb2ac8767}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\GeometryPass">
+      <UniqueIdentifier>{1edded72-4f99-4a21-ac21-9d22eb346b95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\LightingPass">
+      <UniqueIdentifier>{5bfb11c7-31fe-4252-b942-3cd476f8a8b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Pfx">
+      <UniqueIdentifier>{635ddab1-d2f7-49c4-afdf-ed6b86ec1adb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Shader">
+      <UniqueIdentifier>{4b329bef-98ee-4ec3-bb06-d959c2f2649a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Shader">
+      <UniqueIdentifier>{1846ca08-c67c-444e-975b-cf9b23a2872b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\VertexBuffer">
+      <UniqueIdentifier>{2c719dbe-f652-4405-87e2-f651b5245831}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\VertexBuffer">
+      <UniqueIdentifier>{d05b78f2-694c-4213-b20c-433d2d635419}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Utility">
+      <UniqueIdentifier>{fcf80d6c-0fb2-461e-8df1-8a0ce6c347d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Utility">
+      <UniqueIdentifier>{0c0fb3c2-0e2a-456a-b789-820004a224c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Uniform">
+      <UniqueIdentifier>{854495d0-0aa9-4a72-9b1e-78b75347a189}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Uniform">
+      <UniqueIdentifier>{8104edc0-d200-49dd-94ec-18b1e7e6cda1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="GeometryPass.h">
+      <Filter>ヘッダー ファイル\GeometryPass</Filter>
+    </ClInclude>
+    <ClInclude Include="LighthingPass.h">
+      <Filter>ヘッダー ファイル\LightingPass</Filter>
+    </ClInclude>
+    <ClInclude Include="GrayScaleEffect.h">
+      <Filter>ヘッダー ファイル\Pfx</Filter>
+    </ClInclude>
+    <ClInclude Include="IPostEffect.h">
+      <Filter>ヘッダー ファイル\Pfx</Filter>
+    </ClInclude>
+    <ClInclude Include="PfxPlane.h">
+      <Filter>ヘッダー ファイル\Pfx</Filter>
+    </ClInclude>
+    <ClInclude Include="SSLICEffect.h">
+      <Filter>ヘッダー ファイル\Pfx</Filter>
+    </ClInclude>
+    <ClInclude Include="PfxRenderer.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="GrayScaleShader.h">
+      <Filter>ヘッダー ファイル\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="OutputShader.h">
+      <Filter>ヘッダー ファイル\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="SSLICShader.h">
+      <Filter>ヘッダー ファイル\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="CompositShader.h">
+      <Filter>ヘッダー ファイル\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="DefaultShader.h">
+      <Filter>ヘッダー ファイル\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="DefaultVertexBuffer.h">
+      <Filter>ヘッダー ファイル\VertexBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="RendererTypes.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="IMaterial.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="IModelNode.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="IModelProperty.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="IModel.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderSystem.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelGenerator.h">
+      <Filter>ヘッダー ファイル\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureGenerator.h">
+      <Filter>ヘッダー ファイル\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderManager.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="UniformScene.h">
+      <Filter>ヘッダー ファイル\Uniform</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="GeometryPass.cpp">
+      <Filter>ソース ファイル\GeometryPass</Filter>
+    </ClCompile>
+    <ClCompile Include="LighthingPass.cpp">
+      <Filter>ソース ファイル\LithingPass</Filter>
+    </ClCompile>
+    <ClCompile Include="GrayScaleEffect.cpp">
+      <Filter>ソース ファイル\Pfx</Filter>
+    </ClCompile>
+    <ClCompile Include="PfxRenderer.cpp">
+      <Filter>ソース ファイル\Pfx</Filter>
+    </ClCompile>
+    <ClCompile Include="SSLICEffect.cpp">
+      <Filter>ソース ファイル\Pfx</Filter>
+    </ClCompile>
+    <ClCompile Include="PfxPlane.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="GrayScaleShader.cpp">
+      <Filter>ソース ファイル\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="OutputShader.cpp">
+      <Filter>ソース ファイル\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="SSLICShader.cpp">
+      <Filter>ソース ファイル\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="CompositShader.cpp">
+      <Filter>ソース ファイル\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="DefaultShader.cpp">
+      <Filter>ソース ファイル\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="DefaultVertexBuffer.cpp">
+      <Filter>ソース ファイル\VertexBuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderSystem.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="IMaterial.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="IModelNode.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureGenerator.cpp">
+      <Filter>ソース ファイル\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelGenerator.cpp">
+      <Filter>ソース ファイル\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderManager.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="UniformScene.cpp">
+      <Filter>ソース ファイル\Uniform</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

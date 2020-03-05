@@ -1,4 +1,7 @@
-void SpecialUtility::LoadVectorFieldSphere(KI::DefaultVertexBuffer* vertexBuffer)
+namespace KI
+{
+
+void SpecialUtility::LoadVectorFieldSphere(DefaultVertexBuffer* vertexBuffer)
 {
 	string filePath = "E:\\MyProgram\\KIProject\\renderapp\\application\\ViewerTest\\vectorfield.txt_b";
 	ifstream binaryStream(filePath, ios::in | ios::binary);
@@ -28,7 +31,8 @@ void SpecialUtility::LoadVectorFieldSphere(KI::DefaultVertexBuffer* vertexBuffer
 
 	binaryStream.close();
 
-	vertexBuffer->Generate(KI::VERTEX_LAYOUT_PT);
+	vertexBuffer->Generate(VERTEX_LAYOUT_PT);
 	vertexBuffer->SetPosition(GL_TRIANGLES, position);
 	vertexBuffer->SetTexcoord(texcoord);
+}
 }

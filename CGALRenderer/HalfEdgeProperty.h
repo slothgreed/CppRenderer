@@ -3,8 +3,6 @@
 
 namespace KI
 {
-class DefaultVertexBuffer;
-class DefaultShader;
 class HalfEdgeProperty : public IModelProperty
 {
 public:

@@ -25,6 +25,10 @@
 #include <glm/gtx/transform.hpp>
 
 using namespace std;
+using namespace glm;
+
+#include "Random.h"
+#include "MathHelper.h"
 
 #include "Interface.h"
 #include "IController.h"
@@ -33,10 +37,16 @@ using namespace std;
 #include "IEventArgs.h"
 #include "IObserver.h"
 
+#include "BDB.h"
+
 #include "SystemTypes.h"
 #include "Logger.h"
 #include "Mouse.h"
 #include "MouseInput.h"
 #include "WindowEvent.h"
+
+#include "FileUtility.h"
+
+#define RELEASE_INSTANCE(x) if(x != NULL) { delete x; x = NULL;}
 
 #endif //KI_FOUNDATION_PCH_H

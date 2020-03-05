@@ -22,6 +22,9 @@
     <Filter Include="ヘッダー ファイル\Core">
       <UniqueIdentifier>{dd4e0950-991c-4b0d-a94f-ceefd482b738}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\Extlibs">
+      <UniqueIdentifier>{083920dd-10fc-4146-87eb-a0cda312299c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -66,6 +69,18 @@
     <ClInclude Include="WindowEvent.h">
       <Filter>ヘッダー ファイル\Core</Filter>
     </ClInclude>
+    <ClInclude Include="FileUtility.h">
+      <Filter>ヘッダー ファイル\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="BDB.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="MathHelper.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Random.h">
+      <Filter>ヘッダー ファイル\Extlibs</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -88,6 +103,15 @@
     </ClCompile>
     <ClCompile Include="Mouse.cpp">
       <Filter>ソース ファイル\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="FileUtility.cpp">
+      <Filter>ソース ファイル\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="BDB.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="MathHelper.cpp">
+      <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

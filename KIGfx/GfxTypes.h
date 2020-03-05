@@ -1,0 +1,27 @@
+#ifndef KI_GFX_TYPES_H
+#define KI_GFX_TYPES_H
+
+namespace KI
+{
+namespace Gfx
+{
+enum STATE_TYPE
+{
+	STATE_TYPE_POINT,
+	STATE_TYPE_LINE,
+};
+
+
+enum SHADER_TYPE
+{
+	SHADER_TYPE_DEFAULT = 1,
+	SHADER_TYPE_OUTPUT = 2,
+	SHADER_TYPE_COMPOSIT = 3,
+	SHADER_TYPE_GRAYSCALE = 4,
+	SHADER_TYPE_SSLIC = 5,
+};
+
+}
+}
+
+#endif KI_GFX_TYPES_H
