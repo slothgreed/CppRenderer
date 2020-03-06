@@ -4,7 +4,7 @@ namespace KI
 {
 namespace Asset
 {
-class HalfEdgeModel : public IPolygonModel
+class DLL_EXPORT HalfEdgeModel : public IPolygonModel
 {
 public:
 	HalfEdgeModel();

@@ -11,7 +11,7 @@ enum MANIPULATOR_HANDLE
 	MANIPULATOR_HANDLE_Y,
 	MANIPULATOR_HANDLE_Z
 };
-class IManipulatorModel : public IModel
+class DLL_EXPORT IManipulatorModel : public IModel
 {
 public:
 	IManipulatorModel() {};

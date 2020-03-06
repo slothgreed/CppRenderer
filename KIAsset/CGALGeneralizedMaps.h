@@ -4,7 +4,7 @@ namespace KI
 {
 namespace Asset
 {
-class CGALGeneralizedMaps : public CGALModel
+class DLL_EXPORT CGALGeneralizedMaps : public CGALModel
 {
 public:
 	CGALGeneralizedMaps();

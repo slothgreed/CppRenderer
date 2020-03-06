@@ -4,7 +4,7 @@ namespace KI
 {
 namespace Asset
 {
-class CGALModel : public IPolygonModel
+class DLL_EXPORT CGALModel : public IPolygonModel
 {
 public:
 	CGALModel() {};

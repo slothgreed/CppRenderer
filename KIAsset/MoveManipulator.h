@@ -5,7 +5,7 @@ namespace KI
 {
 namespace Asset
 {
-class MoveManipulator : public IManipulatorModel
+class DLL_EXPORT MoveManipulator : public IManipulatorModel
 {
 public:
 

@@ -8,7 +8,7 @@ namespace KI
 {
 namespace Asset
 {
-class CGALPolyhedron : public CGALModel
+class DLL_EXPORT CGALPolyhedron : public CGALModel
 {
 	typedef CGAL::Exact_predicates_inexact_constructions_kernel Local_Kernel;
 	typedef Local_Kernel::Point_3 Local_Point;

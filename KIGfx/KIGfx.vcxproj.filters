@@ -25,24 +25,15 @@
     <Filter Include="ヘッダー ファイル\GLObject">
       <UniqueIdentifier>{9704c5bd-f65c-4eca-b83c-c76657114818}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\Interface">
+      <UniqueIdentifier>{467bf899-c403-4f5a-80d1-fc7c82763a11}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="targetver.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="IUniform.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="IShaderDefine.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="IShader.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="IRenderTarget.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="GLTypes.h">
@@ -61,9 +52,6 @@
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Viewport.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="IVertexBuffer.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="LineState.h">
@@ -98,6 +86,21 @@
     </ClInclude>
     <ClInclude Include="ShaderUtility.h">
       <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="IRenderTarget.h">
+      <Filter>ヘッダー ファイル\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="IShader.h">
+      <Filter>ヘッダー ファイル\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="IShaderDefine.h">
+      <Filter>ヘッダー ファイル\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="IUniform.h">
+      <Filter>ヘッダー ファイル\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="IVertexBuffer.h">
+      <Filter>ヘッダー ファイル\Interface</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

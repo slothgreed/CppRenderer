@@ -6,7 +6,7 @@ class Voxel
 {
 };
 
-class VoxelIterator : public IIterator<Voxel*>
+class DLL_EXPORT VoxelIterator : public IIterator<Voxel*>
 {
 public:
 	VoxelIterator(vector<vector<vector<Voxel*>>>& voxelSpace, int partition)

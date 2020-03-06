@@ -5,7 +5,7 @@ namespace KI
 {
 namespace Topology
 {
-class Cone : public IPrimitive
+class DLL_EXPORT Cone : public IPrimitive
 {
 public:
 	Cone();

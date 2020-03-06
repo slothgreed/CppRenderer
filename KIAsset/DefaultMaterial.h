@@ -5,7 +5,7 @@ namespace KI
 {
 namespace Asset
 {
-class DefaultMaterial : public IMaterial
+class DLL_EXPORT DefaultMaterial : public IMaterial
 {
 public:
 	DefaultMaterial();

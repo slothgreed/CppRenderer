@@ -4,7 +4,7 @@ namespace KI
 {
 namespace Asset
 {
-class CGALLinearCellComplex : public CGALModel
+class DLL_EXPORT CGALLinearCellComplex : public CGALModel
 {
 public:
 	CGALLinearCellComplex();

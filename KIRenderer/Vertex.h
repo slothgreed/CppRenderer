@@ -4,7 +4,7 @@ namespace KI
 {
 namespace Renderer
 {
-class Vertex
+class DLL_EXPORT Vertex
 {
 public:
 	Vertex(vec3 position, vec3 normal) { m_position = position, m_normal = normal; }

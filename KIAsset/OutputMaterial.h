@@ -5,7 +5,7 @@ namespace KI
 {
 namespace Asset
 {
-class OutputMaterial : public IMaterial
+class DLL_EXPORT OutputMaterial : public IMaterial
 {
 	enum UNIFORM_LOCATION : unsigned short
 	{

@@ -40,13 +40,13 @@
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -97,6 +97,8 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)extlibs\glfw-3.3\lib-vc2017;$(SolutionDir)extlibs\glew-2.1.0\lib\Release\x64;$(SolutionDir)$(Platform)\$(Configuration)\;E:\Tools\CGAL4.11\build\lib;E:\Tools\CGAL4.11\auxiliary\gmp\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib;glew32.lib;opengl32.lib;CGAL-vc140-mt-gd-4.11.lib;CGAL_ImageIO-vc140-mt-gd-4.11.lib;CGAL_Core-vc140-mt-gd-4.11.lib;CGAL_Qt5-vc140-mt-gd-4.11.lib;libgmp-10.lib;libmpfr-4.lib;KIFoundation.lib;KIGfx.lib;KITopology.lib;KIRenderer.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Lib>
       <AdditionalLibraryDirectories>$(SolutionDir)extlibs\glfw-3.3\lib-vc2017;$(SolutionDir)extlibs\glew-2.1.0\lib\Release\x64;E:\Tools\CGAL4.11\build\lib;E:\Tools\CGAL4.11\auxiliary\gmp\lib\;$(SolutionDir)$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -154,6 +156,8 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)extlibs\glfw-3.3\lib-vc2017;$(SolutionDir)extlibs\glew-2.1.0\lib\Release\x64;$(SolutionDir)$(Platform)\$(Configuration)\;E:\Tools\CGAL4.11\build\lib;E:\Tools\CGAL4.11\auxiliary\gmp\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib;glew32.lib;opengl32.lib;CGAL-vc140-mt-gd-4.11.lib;CGAL_ImageIO-vc140-mt-gd-4.11.lib;CGAL_Core-vc140-mt-gd-4.11.lib;CGAL_Qt5-vc140-mt-gd-4.11.lib;libgmp-10.lib;libmpfr-4.lib;KIFoundation.lib;KIGfx.lib;KITopology.lib;KIRenderer.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Lib>
       <AdditionalLibraryDirectories>$(SolutionDir)extlibs\glfw-3.3\lib-vc2017;$(SolutionDir)extlibs\glew-2.1.0\lib\Release\x64;E:\Tools\CGAL4.11\build\lib;E:\Tools\CGAL4.11\auxiliary\gmp\lib\;$(SolutionDir)$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>

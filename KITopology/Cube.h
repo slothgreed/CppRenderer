@@ -2,7 +2,7 @@ namespace KI
 {
 namespace Topology
 {
-class Cube : public IPrimitive
+class DLL_EXPORT Cube : public IPrimitive
 {
 public:
 	Cube(int indexOffset);

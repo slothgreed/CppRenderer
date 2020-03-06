@@ -4,7 +4,7 @@ namespace KI
 {
 namespace Asset
 {
-class IPolygonModel : public IModel
+class DLL_EXPORT IPolygonModel : public IModel
 {
 public:
 	IPolygonModel() {};
