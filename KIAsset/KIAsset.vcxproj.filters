@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="ソース ファイル">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="ヘッダー ファイル">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="リソース ファイル">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Material">
+      <UniqueIdentifier>{6a8545eb-0366-4875-855e-344c8b905438}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Model">
+      <UniqueIdentifier>{1968049d-aaf8-4d9e-8bf5-475e1dc2c249}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Model\Manipulator">
+      <UniqueIdentifier>{a4292c58-b227-4da8-ae27-f5fabf4a6306}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Model\PolygonModel">
+      <UniqueIdentifier>{d135b4a4-691f-4d6e-9cdd-085b38e6a6ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Material">
+      <UniqueIdentifier>{26222bc2-e434-4adf-a309-3344e9ec795e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Model">
+      <UniqueIdentifier>{b8b99cdf-f747-4146-89e0-7a4c4b652479}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Model\Manipulator">
+      <UniqueIdentifier>{403a815e-be7c-4cf9-afc1-980c4480faa3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Model\PolygonModel">
+      <UniqueIdentifier>{c044d6be-b1f0-4557-ad19-ebf195c7c3a2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="AssetTypes.h">
+      <Filter>ヘッダー ファイル\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="CGALGeneralizedMaps.h">
+      <Filter>ヘッダー ファイル\Model\PolygonModel</Filter>
+    </ClInclude>
+    <ClInclude Include="CGALLinearCellComplex.h">
+      <Filter>ヘッダー ファイル\Model\PolygonModel</Filter>
+    </ClInclude>
+    <ClInclude Include="CGALPolyhedron.h">
+      <Filter>ヘッダー ファイル\Model\PolygonModel</Filter>
+    </ClInclude>
+    <ClInclude Include="IPolygonModel.h">
+      <Filter>ヘッダー ファイル\Model\PolygonModel</Filter>
+    </ClInclude>
+    <ClInclude Include="IManipulatorModel.h">
+      <Filter>ヘッダー ファイル\Model\Manipulator</Filter>
+    </ClInclude>
+    <ClInclude Include="MoveManipulator.h">
+      <Filter>ヘッダー ファイル\Model\Manipulator</Filter>
+    </ClInclude>
+    <ClInclude Include="RotateManipulator.h">
+      <Filter>ヘッダー ファイル\Model\Manipulator</Filter>
+    </ClInclude>
+    <ClInclude Include="ScaleManipulator.h">
+      <Filter>ヘッダー ファイル\Model\Manipulator</Filter>
+    </ClInclude>
+    <ClInclude Include="DefaultMaterial.h">
+      <Filter>ヘッダー ファイル\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="OutputMaterial.h">
+      <Filter>ヘッダー ファイル\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="HalfEdgeModel.h">
+      <Filter>ヘッダー ファイル\Model\PolygonModel</Filter>
+    </ClInclude>
+    <ClInclude Include="CGALModel.h">
+      <Filter>ヘッダー ファイル\Model\PolygonModel</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="CGALGeneralizedMaps.cpp">
+      <Filter>ソース ファイル\Model\PolygonModel</Filter>
+    </ClCompile>
+    <ClCompile Include="CGALPolyhedron.cpp">
+      <Filter>ソース ファイル\Model\PolygonModel</Filter>
+    </ClCompile>
+    <ClCompile Include="CGALLinearCellComplex.cpp">
+      <Filter>ソース ファイル\Model\PolygonModel</Filter>
+    </ClCompile>
+    <ClCompile Include="MoveManipulator.cpp">
+      <Filter>ソース ファイル\Model\Manipulator</Filter>
+    </ClCompile>
+    <ClCompile Include="RotateManipulator.cpp">
+      <Filter>ソース ファイル\Model\Manipulator</Filter>
+    </ClCompile>
+    <ClCompile Include="ScaleManipulator.cpp">
+      <Filter>ソース ファイル\Model\Manipulator</Filter>
+    </ClCompile>
+    <ClCompile Include="DefaultMaterial.cpp">
+      <Filter>ソース ファイル\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="OutputMaterial.cpp">
+      <Filter>ソース ファイル\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="HalfEdgeModel.cpp">
+      <Filter>ソース ファイル\Model\PolygonModel</Filter>
+    </ClCompile>
+    <ClCompile Include="IPolygonModel.cpp">
+      <Filter>ソース ファイル\Model\PolygonModel</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

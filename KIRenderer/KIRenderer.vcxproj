@@ -165,9 +165,11 @@
     <ClInclude Include="CompositShader.h" />
     <ClInclude Include="DefaultShader.h" />
     <ClInclude Include="DefaultVertexBuffer.h" />
+    <ClInclude Include="DirectionLight.h" />
     <ClInclude Include="GeometryPass.h" />
     <ClInclude Include="GrayScaleEffect.h" />
     <ClInclude Include="GrayScaleShader.h" />
+    <ClInclude Include="ILight.h" />
     <ClInclude Include="IMaterial.h" />
     <ClInclude Include="IModel.h" />
     <ClInclude Include="IModelNode.h" />
@@ -179,21 +181,25 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="PfxPlane.h" />
     <ClInclude Include="PfxRenderer.h" />
+    <ClInclude Include="PointLight.h" />
     <ClInclude Include="RenderSystem.h" />
     <ClInclude Include="RendererTypes.h" />
     <ClInclude Include="ShaderManager.h" />
+    <ClInclude Include="SpotLight.h" />
     <ClInclude Include="SSLICEffect.h" />
     <ClInclude Include="SSLICShader.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="TextureGenerator.h" />
     <ClInclude Include="UniformScene.h" />
+    <ClInclude Include="Vertex.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CompositShader.cpp" />
     <ClCompile Include="DefaultShader.cpp" />
     <ClCompile Include="DefaultVertexBuffer.cpp" />
+    <ClCompile Include="DirectionLight.cpp" />
     <ClCompile Include="GeometryPass.cpp" />
     <ClCompile Include="GrayScaleEffect.cpp" />
     <ClCompile Include="GrayScaleShader.cpp" />
@@ -204,8 +210,10 @@
     <ClCompile Include="OutputShader.cpp" />
     <ClCompile Include="PfxPlane.cpp" />
     <ClCompile Include="PfxRenderer.cpp" />
+    <ClCompile Include="PointLight.cpp" />
     <ClCompile Include="RenderSystem.cpp" />
     <ClCompile Include="ShaderManager.cpp" />
+    <ClCompile Include="SpotLight.cpp" />
     <ClCompile Include="SSLICEffect.cpp" />
     <ClCompile Include="SSLICShader.cpp" />
     <ClCompile Include="stdafx.cpp">

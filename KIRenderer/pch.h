@@ -1,5 +1,10 @@
 #ifndef KI_RENDERER_PCH_H
 #define KI_RENDERER_PCH_H
+
+#ifndef DLL_EXPORT
+#define DLL_EXPORT  //__declspec(dllexport)
+#endif
+
 #include<memory>
 #include<string>
 #include<algorithm>
@@ -31,6 +36,12 @@ using namespace KI::Gfx;
 #include "IModelProperty.h"
 #include "IModelNode.h"
 #include "IMaterial.h"
+#include "ILight.h"
+
+#include "Vertex.h"
+#include "DirectionLight.h"
+#include "SpotLight.h"
+#include "PointLight.h"
 
 #include "ModelGenerator.h"
 #include "TextureGenerator.h"

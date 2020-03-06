@@ -1,0 +1,6 @@
+namespace KI
+{
+namespace Asset
+{
+}
+}

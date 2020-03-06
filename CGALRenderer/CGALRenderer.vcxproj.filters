@@ -19,20 +19,8 @@
     <Filter Include="ヘッダー ファイル\Application">
       <UniqueIdentifier>{1afcbafc-87d6-4dee-8e21-ce5e8dbd2e29}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\Asset">
-      <UniqueIdentifier>{d92a2196-3b04-4b38-887a-51f5470a88ab}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\Asset">
-      <UniqueIdentifier>{582bcf33-ede6-48fe-af85-4e7b54e9a08a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ImGui">
       <UniqueIdentifier>{656166a6-9f61-46fb-a7c1-0f7601e5fe62}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Topology">
-      <UniqueIdentifier>{488b12fc-6e1c-4206-b5dd-b4701209b847}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\Topology">
-      <UniqueIdentifier>{0483854e-d0d6-42da-a3f0-403b588be2c8}</UniqueIdentifier>
     </Filter>
     <Filter Include="ソース ファイル\Application\Node">
       <UniqueIdentifier>{d3157a13-966b-4bc9-ae1d-68a8a3a13336}</UniqueIdentifier>
@@ -46,59 +34,11 @@
     <Filter Include="ヘッダー ファイル\Application\Property">
       <UniqueIdentifier>{80b8da82-a341-4ede-9246-ee8786962710}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ヘッダー ファイル\Asset\Material">
-      <UniqueIdentifier>{d3bef993-63a8-4016-87de-92a7bddfdefc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Asset\Material">
-      <UniqueIdentifier>{2edff9f8-43f5-4208-8521-b26c0090a015}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Topology\Operator">
-      <UniqueIdentifier>{5bdc9300-9914-4d5f-9f1a-b8dcf5188173}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ソース ファイル\Application\InitApp">
       <UniqueIdentifier>{9147df9e-f48e-491c-92db-9b63b1b9ed9e}</UniqueIdentifier>
     </Filter>
     <Filter Include="ヘッダー ファイル\Application\InitApp">
       <UniqueIdentifier>{19de7987-1a26-457e-82a7-84b5d081fc24}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Asset\Light">
-      <UniqueIdentifier>{87ad708b-46a3-4032-9ba8-bf2085f273bc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\Asset\Light">
-      <UniqueIdentifier>{db2ff2be-1b09-4c02-9489-26182f5b0df9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\Asset\Model">
-      <UniqueIdentifier>{76ececcd-d8e9-4ca9-9b55-d1a80f150e0d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Asset\Model">
-      <UniqueIdentifier>{2800f48d-8d73-4faf-9af9-3b310b60a387}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Asset\Model\PolygonModel">
-      <UniqueIdentifier>{91b48c6e-684b-4aa3-ace7-e22700310366}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Asset\Model\Manipulator">
-      <UniqueIdentifier>{d0ecf1ee-40c6-4bbc-bc39-bdc4fc35dee7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Asset\Model\Primitive">
-      <UniqueIdentifier>{f292c4a0-885c-4999-aba6-d8c5435e06db}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\Asset\Model\PolygonModel">
-      <UniqueIdentifier>{15297073-dfeb-4c8a-8618-ef4af01cd201}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\Asset\Model\Manipulator">
-      <UniqueIdentifier>{64ea997c-ce4a-4db1-9eca-a3d1c9671020}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\Asset\Model\Primitive">
-      <UniqueIdentifier>{4def95e8-576d-4360-9584-df4436488e38}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\Topology\Operator">
-      <UniqueIdentifier>{8dab5afe-72f4-4a42-8946-1b57411f515c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\Algorithm">
-      <UniqueIdentifier>{dd7977e7-d291-43ef-a152-e9ab9a250c2a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Algorithm">
-      <UniqueIdentifier>{c5f20f57-df0c-4d9b-892a-3306065f0c05}</UniqueIdentifier>
     </Filter>
     <Filter Include="ヘッダー ファイル\Application\Logic">
       <UniqueIdentifier>{b221a6b8-5aa9-4643-9e55-f2c7eb1e8688}</UniqueIdentifier>
@@ -138,53 +78,14 @@
     <ClInclude Include="SubdivisionCommand.h">
       <Filter>ヘッダー ファイル\Application\Logic\Command</Filter>
     </ClInclude>
-    <ClInclude Include="HalfEdgeVertex.h">
-      <Filter>ヘッダー ファイル\Topology</Filter>
-    </ClInclude>
-    <ClInclude Include="HalfEdge.h">
-      <Filter>ヘッダー ファイル\Topology</Filter>
-    </ClInclude>
-    <ClInclude Include="HalfEdgeFace.h">
-      <Filter>ヘッダー ファイル\Topology</Filter>
-    </ClInclude>
-    <ClInclude Include="HalfEdgeDS.h">
-      <Filter>ヘッダー ファイル\Topology</Filter>
-    </ClInclude>
-    <ClInclude Include="Vertex.h">
-      <Filter>ヘッダー ファイル\Topology</Filter>
-    </ClInclude>
-    <ClInclude Include="CGALGeneralizedMaps.h">
-      <Filter>ヘッダー ファイル\Asset\Model\PolygonModel</Filter>
-    </ClInclude>
-    <ClInclude Include="CGALLinearCellComplex.h">
-      <Filter>ヘッダー ファイル\Asset\Model\PolygonModel</Filter>
-    </ClInclude>
-    <ClInclude Include="CGALModel.h">
-      <Filter>ヘッダー ファイル\Asset\Model\PolygonModel</Filter>
-    </ClInclude>
-    <ClInclude Include="CGALPolyhedron.h">
-      <Filter>ヘッダー ファイル\Asset\Model\PolygonModel</Filter>
-    </ClInclude>
-    <ClInclude Include="HalfEdgeModel.h">
-      <Filter>ヘッダー ファイル\Asset\Model\PolygonModel</Filter>
-    </ClInclude>
     <ClInclude Include="BDBProperty.h">
       <Filter>ヘッダー ファイル\Application\Property</Filter>
     </ClInclude>
     <ClInclude Include="PrimitiveNode.h">
       <Filter>ヘッダー ファイル\Application\Node</Filter>
     </ClInclude>
-    <ClInclude Include="DefaultMaterial.h">
-      <Filter>ヘッダー ファイル\Asset\Material</Filter>
-    </ClInclude>
-    <ClInclude Include="AssetTypes.h">
-      <Filter>ヘッダー ファイル\Asset</Filter>
-    </ClInclude>
     <ClInclude Include="SpecialUtility.h">
       <Filter>ヘッダー ファイル\Application</Filter>
-    </ClInclude>
-    <ClInclude Include="OutputMaterial.h">
-      <Filter>ヘッダー ファイル\Asset\Material</Filter>
     </ClInclude>
     <ClInclude Include="PickCommand.h">
       <Filter>ヘッダー ファイル\Application\Logic\Command</Filter>
@@ -207,53 +108,11 @@
     <ClInclude Include="NormalProperty.h">
       <Filter>ヘッダー ファイル\Application\Property</Filter>
     </ClInclude>
-    <ClInclude Include="DirectionLight.h">
-      <Filter>ヘッダー ファイル\Asset\Light</Filter>
-    </ClInclude>
-    <ClInclude Include="SpotLight.h">
-      <Filter>ヘッダー ファイル\Asset\Light</Filter>
-    </ClInclude>
-    <ClInclude Include="PointLight.h">
-      <Filter>ヘッダー ファイル\Asset\Light</Filter>
-    </ClInclude>
-    <ClInclude Include="ILight.h">
-      <Filter>ヘッダー ファイル\Asset\Light</Filter>
-    </ClInclude>
-    <ClInclude Include="MoveManipulator.h">
-      <Filter>ヘッダー ファイル\Asset\Model\Manipulator</Filter>
-    </ClInclude>
-    <ClInclude Include="ScaleManipulator.h">
-      <Filter>ヘッダー ファイル\Asset\Model\Manipulator</Filter>
-    </ClInclude>
-    <ClInclude Include="RotateManipulator.h">
-      <Filter>ヘッダー ファイル\Asset\Model\Manipulator</Filter>
-    </ClInclude>
-    <ClInclude Include="Cone.h">
-      <Filter>ヘッダー ファイル\Asset\Model\Primitive</Filter>
-    </ClInclude>
-    <ClInclude Include="IPrimitive.h">
-      <Filter>ヘッダー ファイル\Asset\Model\Primitive</Filter>
-    </ClInclude>
-    <ClInclude Include="IPolygonModel.h">
-      <Filter>ヘッダー ファイル\Asset\Model\PolygonModel</Filter>
-    </ClInclude>
     <ClInclude Include="PolygonModelNode.h">
       <Filter>ヘッダー ファイル\Application\Node</Filter>
     </ClInclude>
-    <ClInclude Include="IManipulatorModel.h">
-      <Filter>ヘッダー ファイル\Asset\Model\Manipulator</Filter>
-    </ClInclude>
     <ClInclude Include="ManipulatorNode.h">
       <Filter>ヘッダー ファイル\Application\Node</Filter>
-    </ClInclude>
-    <ClInclude Include="HalfEdgeOperator.h">
-      <Filter>ヘッダー ファイル\Topology\Operator</Filter>
-    </ClInclude>
-    <ClInclude Include="Voxelize.h">
-      <Filter>ヘッダー ファイル\Algorithm</Filter>
-    </ClInclude>
-    <ClInclude Include="Cube.h">
-      <Filter>ヘッダー ファイル\Asset\Model\Primitive</Filter>
     </ClInclude>
     <ClInclude Include="VoxelCommand.h">
       <Filter>ヘッダー ファイル\Application\Logic\Command</Filter>
@@ -299,47 +158,14 @@
     <ClCompile Include="SubdivisionCommand.cpp">
       <Filter>ソース ファイル\Application\Logic\Command</Filter>
     </ClCompile>
-    <ClCompile Include="HalfEdge.cpp">
-      <Filter>ソース ファイル\Topology</Filter>
-    </ClCompile>
-    <ClCompile Include="HalfEdgeFace.cpp">
-      <Filter>ソース ファイル\Topology</Filter>
-    </ClCompile>
-    <ClCompile Include="HalfEdgeVertex.cpp">
-      <Filter>ソース ファイル\Topology</Filter>
-    </ClCompile>
-    <ClCompile Include="HalfEdgeDS.cpp">
-      <Filter>ソース ファイル\Topology</Filter>
-    </ClCompile>
     <ClCompile Include="PrimitiveNode.cpp">
       <Filter>ソース ファイル\Application\Node</Filter>
     </ClCompile>
     <ClCompile Include="BDBProperty.cpp">
       <Filter>ソース ファイル\Application\Property</Filter>
     </ClCompile>
-    <ClCompile Include="CGALGeneralizedMaps.cpp">
-      <Filter>ソース ファイル\Asset\Model\PolygonModel</Filter>
-    </ClCompile>
-    <ClCompile Include="CGALLinearCellComplex.cpp">
-      <Filter>ソース ファイル\Asset\Model\PolygonModel</Filter>
-    </ClCompile>
-    <ClCompile Include="CGALPolyhedron.cpp">
-      <Filter>ソース ファイル\Asset\Model\PolygonModel</Filter>
-    </ClCompile>
-    <ClCompile Include="HalfEdgeModel.cpp">
-      <Filter>ソース ファイル\Asset\Model\PolygonModel</Filter>
-    </ClCompile>
-    <ClCompile Include="DefaultMaterial.cpp">
-      <Filter>ソース ファイル\Asset\Material</Filter>
-    </ClCompile>
     <ClCompile Include="SpecialUtility.cpp">
       <Filter>ソース ファイル\Application</Filter>
-    </ClCompile>
-    <ClCompile Include="OutputMaterial.cpp">
-      <Filter>ソース ファイル\Asset\Material</Filter>
-    </ClCompile>
-    <ClCompile Include="HalfEdgeOperator.cpp">
-      <Filter>ソース ファイル\Topology\Operator</Filter>
     </ClCompile>
     <ClCompile Include="PickCommand.cpp">
       <Filter>ソース ファイル\Application\Logic\Command</Filter>
@@ -359,44 +185,11 @@
     <ClCompile Include="NormalProperty.cpp">
       <Filter>ソース ファイル\Application\Property</Filter>
     </ClCompile>
-    <ClCompile Include="DirectionLight.cpp">
-      <Filter>ソース ファイル\Asset\Light</Filter>
-    </ClCompile>
-    <ClCompile Include="SpotLight.cpp">
-      <Filter>ソース ファイル\Asset\Light</Filter>
-    </ClCompile>
-    <ClCompile Include="PointLight.cpp">
-      <Filter>ソース ファイル\Asset\Light</Filter>
-    </ClCompile>
-    <ClCompile Include="MoveManipulator.cpp">
-      <Filter>ソース ファイル\Asset\Model\Manipulator</Filter>
-    </ClCompile>
-    <ClCompile Include="ScaleManipulator.cpp">
-      <Filter>ソース ファイル\Asset\Model\Manipulator</Filter>
-    </ClCompile>
-    <ClCompile Include="RotateManipulator.cpp">
-      <Filter>ソース ファイル\Asset\Model\Manipulator</Filter>
-    </ClCompile>
-    <ClCompile Include="Cone.cpp">
-      <Filter>ソース ファイル\Asset\Model\Primitive</Filter>
-    </ClCompile>
-    <ClCompile Include="IPrimitive.cpp">
-      <Filter>ソース ファイル\Asset\Model\Primitive</Filter>
-    </ClCompile>
-    <ClCompile Include="IPolygonModel.cpp">
-      <Filter>ソース ファイル\Asset\Model\PolygonModel</Filter>
-    </ClCompile>
     <ClCompile Include="PolygonModelNode.cpp">
       <Filter>ソース ファイル\Application\Node</Filter>
     </ClCompile>
     <ClCompile Include="ManipulatorNode.cpp">
       <Filter>ソース ファイル\Application\Node</Filter>
-    </ClCompile>
-    <ClCompile Include="Voxelize.cpp">
-      <Filter>ソース ファイル\Algorithm</Filter>
-    </ClCompile>
-    <ClCompile Include="Cube.cpp">
-      <Filter>ソース ファイル\Asset\Model\Primitive</Filter>
     </ClCompile>
     <ClCompile Include="VoxelCommand.cpp">
       <Filter>ソース ファイル\Application\Logic\Command</Filter>

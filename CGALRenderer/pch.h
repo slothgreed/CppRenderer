@@ -32,18 +32,12 @@
 #include "ImGui/examples/imgui_impl_glfw.h"
 #include "ImGui/examples/imgui_impl_opengl3.h"
 
-#include "Random.h"
+using namespace std;
+using namespace glm;
 
 // Foundation
 #include "../KIFoundation/pch.h"
 using namespace KI::Foundation;
-using namespace std;
-using namespace glm;
-
-#include "BDB.h"
-
-// utility
-#include "MathHelper.h"
 
 #include "../KIGfx/pch.h"
 using namespace KI::Gfx;
@@ -51,41 +45,14 @@ using namespace KI::Gfx;
 #include "../KIRenderer/pch.h"
 using namespace KI::Renderer;
 
-// topology
-#include "Vertex.h"
-#include "HalfEdge.h"
-#include "HalfEdgeFace.h"
-#include "HalfEdgeVertex.h"
-#include "HalfEdgeDS.h"
-#include "HalfEdgeOperator.h"
+#include "../KITopology/pch.h"
+using namespace KI::Topology;
 
+#include "../KIAlgorithm/pch.h"
+using namespace KI::Algorithm;
 
-// asset
-#include "AssetTypes.h"
-#include "IPolygonModel.h"
-#include "IManipulatorModel.h"
-#include "PolygonModelNode.h"
-#include "CGALModel.h"
-#include "CGALPolyhedron.h"
-#include "CGALLinearCellComplex.h"
-#include "CGALGeneralizedMaps.h"
-#include "HalfEdgeModel.h"
-#include "DefaultMaterial.h"
-#include "OutputMaterial.h"
-#include "ILight.h"
-#include "DirectionLight.h"
-#include "SpotLight.h"
-#include "PointLight.h"
-#include "IPrimitive.h"
-#include "Cone.h"
-#include "Cube.h"
-#include "MoveManipulator.h"
-#include "RotateManipulator.h"
-#include "ScaleManipulator.h"
-#include "ManipulatorNode.h"
-
-// Algorithm
-#include "Voxelize.h"
+#include "../KIAsset/pch.h"
+using namespace KI::Asset;
 
 // model (mvc)
 #include "BDBProperty.h"
@@ -94,6 +61,7 @@ using namespace KI::Renderer;
 #include "PrimitiveNode.h"
 #include "PolygonModelNode.h"
 #include "HalfEdgeDSNode.h"
+#include "ManipulatorNode.h"
 
 // application
 #include "IWorkspace.h"
@@ -109,12 +77,6 @@ using namespace KI::Renderer;
 #include "PickCommand.h"
 #include "VoxelCommand.h"
 #include "LogicEventArgs.h"
-
-
-
-using namespace std;
-using namespace glm;
-
 
 template<class T, class U>
 weak_ptr<T>
