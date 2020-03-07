@@ -11,7 +11,6 @@ DefaultVertexBuffer::DefaultVertexBuffer()
 	}
 
 	m_vaoId = 0;
-	m_indexId = 0;
 }
 
 DefaultVertexBuffer::~DefaultVertexBuffer()
@@ -122,18 +121,16 @@ void DefaultVertexBuffer::SetTexcoord(const vector<vec2>& texcoord)
 	Logger::GLError();
 }
 
-void DefaultVertexBuffer::SetIndex(const vector<int>& index)
+void DefaultVertexBuffer::SetIndex(GLuint primitiveType, const vector<int>& index)
 {
-	if (m_indexId == 0)
+	if (m_indexBuffer.IsGenerated() == false)
 	{
-		glGenBuffers(1, &m_indexId);
+		m_indexBuffer.Generate();
 	}
 
 	glBindVertexArray(m_vaoId);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_indexId);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, index.size() * sizeof(int), index.data(), GL_STATIC_DRAW);
+	m_indexBuffer.Set(primitiveType, index);
 	glBindVertexArray(0);
-	m_indexSize = (GLuint)index.size();
 	Logger::GLError();
 
 }
@@ -186,10 +183,7 @@ void DefaultVertexBuffer::Dispose()
 		glDeleteVertexArrays(1, &m_vaoId);
 	}
 
-	if (m_indexId != 0)
-	{
-		glDeleteBuffers(1, &m_indexId);
-	}
+	m_indexBuffer.Dispose();
 }
 
 void DefaultVertexBuffer::Draw()
@@ -197,7 +191,7 @@ void DefaultVertexBuffer::Draw()
 	glBindVertexArray(m_vaoId);
 	if (HasIndex())
 	{
-		glDrawElements(m_PrimitiveType, m_indexSize, GL_UNSIGNED_INT, 0);
+		m_indexBuffer.Draw();
 	}
 	else
 	{
@@ -244,7 +238,7 @@ bool DefaultVertexBuffer::HasTexCoord()
 
 bool DefaultVertexBuffer::HasIndex()
 {
-	if (m_indexId != 0)
+	if (m_indexBuffer.IsGenerated())
 	{
 		return true;
 	}

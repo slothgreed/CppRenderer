@@ -102,6 +102,9 @@
     <ClInclude Include="IVertexBuffer.h">
       <Filter>ヘッダー ファイル\Interface</Filter>
     </ClInclude>
+    <ClInclude Include="IndexBuffer.h">
+      <Filter>ヘッダー ファイル\GLObject</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -148,6 +151,9 @@
     </ClCompile>
     <ClCompile Include="ShaderUtility.cpp">
       <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="IndexBuffer.cpp">
+      <Filter>ソース ファイル\GLObject</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -5,7 +5,7 @@ namespace KI
 class PrimitiveNode : public IModelNode
 {
 public:
-	PrimitiveNode(shared_ptr<IShader> shader, shared_ptr<DefaultVertexBuffer> buffer);
+	PrimitiveNode(shared_ptr<DefaultVertexBuffer> buffer);
 	~PrimitiveNode();
 
 	virtual void Draw();

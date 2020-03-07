@@ -48,17 +48,13 @@ void Workspace::Initialize(Project* m_pProject)
 
 	auto axis = make_shared<DefaultVertexBuffer>();
 	ModelGenerator::Axis(axis.get());
-	auto axisNode = make_shared<PrimitiveNode>(m_pDefaultShader, axis);
+	auto axisNode = make_shared<PrimitiveNode>(axis);
 	m_pRenderList.push_back(axisNode);
-
-	auto shaderDefinePT = make_shared<DefaultShaderDefine>();
-	shaderDefine->SetShaderDefine(VERTEX_LAYOUT_PT);
-	auto shader = ShaderManager::Instance()->FindOrNew(shaderDefinePT);
 
 	auto model = make_shared<DefaultVertexBuffer>();
 	//ModelGenerator::RenderPlane(plane.get());
 	SpecialUtility::LoadVectorFieldSphere(model.get());
-	auto modelNode = make_shared<PrimitiveNode>(shader, model);
+	auto modelNode = make_shared<PrimitiveNode>(model);
 	TextureData data;
 	TextureGenerator::RandomTexture(8, 15, data);
 	auto texture = make_shared<Texture>();

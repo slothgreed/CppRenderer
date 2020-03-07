@@ -39,14 +39,9 @@ CommandResult VoxelCommand::Execute()
 	auto pVertexBuffer = make_shared<DefaultVertexBuffer>();
 	pVertexBuffer->Generate(VERTEX_LAYOUT::VERTEX_LAYOUT_P);
 	pVertexBuffer->SetPosition(GL_TRIANGLES, voxelPosition);
-	pVertexBuffer->SetIndex(indexBuffer);
+	pVertexBuffer->SetIndex(GL_TRIANGLES, indexBuffer);
 
-	auto pShaderDefine = make_shared<DefaultShaderDefine>();
-	pShaderDefine->SetShaderDefine(pVertexBuffer->Layout());
-	pShaderDefine->SetUseColor(true);
-	auto pShader = ShaderManager::Instance()->FindOrNew(pShaderDefine);
-
-	auto pModelNode = make_shared<PrimitiveNode>(pShader, pVertexBuffer);
+	auto pModelNode = make_shared<PrimitiveNode>(pVertexBuffer);
 	pModelNode->GetMaterial()->SetFixColor(vec4(1, 0, 0, 1));
 	
 	args->m_pWorkspace->AddModelNode(pModelNode);

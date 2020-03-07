@@ -41,7 +41,7 @@ void BDBProperty::Build(IModel* pModel)
 	index[i] = 2; i++; index[i] = 6; i++;
 	index[i] = 3; i++; index[i] = 7;
 
-	m_pVertexBuffer->SetIndex(index);
+	m_pVertexBuffer->SetIndex(GL_LINES, index);
 
 	auto shaderDefine = make_shared<DefaultShaderDefine>();
 	shaderDefine->SetShaderDefine(VERTEX_LAYOUT_P);

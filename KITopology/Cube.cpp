@@ -14,18 +14,18 @@ Cube::~Cube()
 {
 }
 
-void Cube::Build(const vec3& min, const vec3& max)
+void Cube::Build(const CubeArgs& args)
 {
 	m_position.resize(8);
-	m_position[0] = (min);
-	m_position[1] = (vec3(max.x, min.y, min.z));
-	m_position[2] = (vec3(max.x, max.y, min.z));
-	m_position[3] = (vec3(min.x, max.y, min.z));
-			  	   
-	m_position[4] = (vec3(min.x, min.y, max.z));
-	m_position[5] = (vec3(max.x, min.y, max.z));
-	m_position[6] = (max);
-	m_position[7] = (vec3(min.x, max.y, max.z));
+	m_position[0] = (args.min);
+	m_position[1] = (vec3(args.max.x, args.min.y, args.min.z));
+	m_position[2] = (vec3(args.max.x, args.max.y, args.min.z));
+	m_position[3] = (vec3(args.min.x, args.max.y, args.min.z));
+
+	m_position[4] = (vec3(args.min.x, args.min.y, args.max.z));
+	m_position[5] = (vec3(args.max.x, args.min.y, args.max.z));
+	m_position[6] = (args.max);
+	m_position[7] = (vec3(args.min.x, args.max.y, args.max.z));
 
 	m_index.resize(36);
 	AddTrianlgeIndexFromRectangle(0, 0 + IndexOffset(), 3 + IndexOffset(), 2 + IndexOffset(), 1 + IndexOffset());

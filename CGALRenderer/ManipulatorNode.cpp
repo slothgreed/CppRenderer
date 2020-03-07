@@ -68,14 +68,14 @@ void ManipulatorNode::GenManipulatorHandleVBO(
 	manipulator.GetFaceList(facet, faceIndex, handle);
 	pFaceBuffer->Generate(VERTEX_LAYOUT_P);
 	pFaceBuffer->SetPosition(GL_TRIANGLES, facet);
-	pFaceBuffer->SetIndex(faceIndex);
+	pFaceBuffer->SetIndex(GL_TRIANGLES, faceIndex);
 
 	vector<vec3> edge;
 	vector<int> edgeIndex;
 	manipulator.GetEdgeList(edge, edgeIndex, handle);
 	pEdgeBuffer->Generate(VERTEX_LAYOUT_P);
 	pEdgeBuffer->SetPosition(GL_LINES, edge);
-	pEdgeBuffer->SetIndex(edgeIndex);
+	pEdgeBuffer->SetIndex(GL_LINES, edgeIndex);
 
 }
 

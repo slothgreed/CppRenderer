@@ -49,4 +49,5 @@ using namespace glm;
 #include "IShaderDefine.h"
 #include "IShader.h"
 #include "IVertexBuffer.h"
+#include "IndexBuffer.h"
 #endif KI_GFX_PCH_H

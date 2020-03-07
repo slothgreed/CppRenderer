@@ -35,13 +35,12 @@ void BunnyScene::Initialize(Project* m_pProject)
 	sceneData.Projection = m_pCamera->Projection();
 	m_pUniformScene->Set(sceneData);
 
+	BDB modelSpace(vec3(0), vec3(1));
 	{
 		auto polyhedron = make_shared<HalfEdgeModel>();
 		polyhedron->Load("E:\\cgModel\\bunny6000.half");
 
-		BDB bdb(vec3(0, 0, 0), vec3(1, 1, 1));
-		//polyhedron->GetBDB(bdb);
-		m_pCamera->FitToBDB(bdb);
+		polyhedron->GetBDB(modelSpace);
 
 		auto polyNode = make_shared<HalfEdgeDSNode>(polyhedron);
 
@@ -53,6 +52,25 @@ void BunnyScene::Initialize(Project* m_pProject)
 		m_pCommandManager->Execute(voxelCommand);
 		m_pRenderList.push_back(polyNode);
 	}
+	m_pCamera->FitToBDB(modelSpace);
+
+	{
+		modelSpace.Set(vec3(-200), vec3(200));
+		auto pVertexBuffer = make_shared<DefaultVertexBuffer>();
+		ModelGenerator::CubeSpace(modelSpace, pVertexBuffer.get());
+		auto cubeNode = make_shared<PrimitiveNode>(pVertexBuffer);
+		auto texture = make_shared<Texture>();
+		texture->Generate();
+		TextureData textureData;
+		TextureGenerator::Load("E:\\cgModel\\texture\\SkyBox\\skybox-texture800x600.png", textureData);
+		texture->Begin();
+		texture->Set(textureData);
+		texture->End();
+		cubeNode->GetMaterial()->AddTexture(texture);
+
+		m_pRenderList.push_back(cubeNode);
+	}
+
 
 	{
 		auto moveManipulator = make_shared<ManipulatorNode>();
@@ -61,7 +79,7 @@ void BunnyScene::Initialize(Project* m_pProject)
 
 	auto axis = make_shared<DefaultVertexBuffer>();
 	ModelGenerator::Axis(axis.get());
-	auto axisNode = make_shared<PrimitiveNode>(m_pDefaultShader, axis);
+	auto axisNode = make_shared<PrimitiveNode>(axis);
 	m_pRenderList.push_back(axisNode);
 
 	m_pBackTarget = make_shared<SymbolicRenderTarget>(GL_BACK);

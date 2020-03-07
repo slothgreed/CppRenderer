@@ -10,11 +10,11 @@ public:
 	DefaultVertexBuffer();
 	~DefaultVertexBuffer();
 	void Generate(VERTEX_LAYOUT layout);
-	void SetPosition(GLuint primitiveTypem, const std::vector<glm::vec3>& position);
+	void SetPosition(GLuint primitiveType, const std::vector<glm::vec3>& position);
 	void SetNormal(const std::vector<glm::vec3>& normal);
 	void SetColor(const std::vector<glm::vec3>& color);
 	void SetTexcoord(const vector<vec2>& texcoord);
-	void SetIndex(const std::vector<int>& index);
+	void SetIndex(GLuint primitiveType, const std::vector<int>& index);
 	void Dispose();
 
 	GLuint PrimitiveType() { return m_PrimitiveType; }
@@ -34,8 +34,7 @@ private:
 
 	GLuint m_id[VERTEX_ATTRIB_NUM];
 	GLuint m_vaoId;
-	GLuint m_indexId;
-	GLuint m_indexSize;
+	IndexBuffer m_indexBuffer;
 	
 	GLuint m_PrimitiveType;
 	GLuint m_vertexNum;

@@ -104,8 +104,7 @@ void PolygonModelNode::SetRenderData()
 		pFaceBuffer->Generate(VERTEX_LAYOUT_PN);
 		pFaceBuffer->SetPosition(GL_TRIANGLES, position);
 		pFaceBuffer->SetNormal(normal);
-		pFaceBuffer->SetIndex(index);
-
+		pFaceBuffer->SetIndex(GL_TRIANGLES, index);
 
 		vector<vec3> edge;
 		GetModel()->GetEdgeList(edge);

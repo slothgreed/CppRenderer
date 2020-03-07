@@ -1,3 +1,5 @@
+#define STB_IMAGE_IMPLEMENTATION
+#include "stb_image.h"
 namespace KI
 {
 namespace Renderer
@@ -53,6 +55,35 @@ void TextureGenerator::UVTexture(int size, TextureData& texture)
 	}
 }
 
+void TextureGenerator::Load(const string& filePath, TextureData& texture)
+{
+	if (FileUtility::CheckExtension(filePath, ".png"))
+	{
+		texture.target = GL_TEXTURE_2D;
+		texture.border = 0;
+		texture.type = GL_UNSIGNED_BYTE;
+		int channel;
+		texture.pixels = stbi_load(filePath.c_str(), &texture.width, &texture.height, &channel, 0);
+		if (channel == 3)
+		{
+			texture.internalformat = GL_RGB;
+			texture.format = GL_RGB;
+		}
+		else if (channel == 4)
+		{
+			texture.internalformat = GL_RGBA;
+			texture.format = GL_RGBA;
+		}
+		else
+		{
+			assert(0);
+		}
+	}
+	else
+	{
+		assert(0);
+	}
+}
 void TextureGenerator::RandomTexture(int size, int alpha, TextureData& texture)
 {
 	texture.target = GL_TEXTURE_2D;

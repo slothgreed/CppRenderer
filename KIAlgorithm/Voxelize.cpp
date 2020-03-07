@@ -90,6 +90,9 @@ void Voxelize::GetVertexList(vector<vec3>& position, vector<int>& index)
 	int counter = 0;
 	int counter2 = 0;
 	Cube cube;
+	CubeArgs args;
+	vec3 min;
+	vec3 max;
 	for (; itr.HasNext(); itr.Next())
 	{
 		vec3 voxelIndex = itr.CurrentIndex();
@@ -98,11 +101,9 @@ void Voxelize::GetVertexList(vector<vec3>& position, vector<int>& index)
 			continue;
 		}
 
-		vec3 min;
-		vec3 max;
-		GetPosition(voxelIndex.x, voxelIndex.y, voxelIndex.z, min, max);
+		GetPosition(voxelIndex.x, voxelIndex.y, voxelIndex.z, args.min, args.max);
 		cube.SetIndexOffset(counter * 8);
-		cube.Build(min, max);
+		cube.Build(args);
 		position.insert(position.end(), cube.Position().begin(), cube.Position().end());
 		index.insert(index.end(), cube.Index().begin(), cube.Index().end());
 		counter++;

@@ -1,7 +1,7 @@
 
 namespace KI
 {
-PrimitiveNode::PrimitiveNode(shared_ptr<IShader> shader, shared_ptr<DefaultVertexBuffer> buffer)
+PrimitiveNode::PrimitiveNode(shared_ptr<DefaultVertexBuffer> buffer)
 {
 	m_name = "Primitive";
 	m_pVertexBuffer = buffer;
