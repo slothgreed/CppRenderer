@@ -1,10 +1,9 @@
 
-layout (std140) uniform Scene
+layout (std140) uniform SceneData
 {
 	mat4 Projection;
 	mat4 ViewMatrix;
-};
-
+}scene;
 
 layout(location = 0) in vec3 position;
 #ifdef USE_NORMAL
@@ -31,7 +30,7 @@ uniform vec4 uFixColor;
 
 void main()
 {
-	mat4 vp = Projection * ViewMatrix;
+	mat4 vp = scene.Projection * scene.ViewMatrix;
 	gl_Position = vp * vec4(position,1.0);
 #ifdef USE_COLOR
 	v_color = vec4(color,1.0);

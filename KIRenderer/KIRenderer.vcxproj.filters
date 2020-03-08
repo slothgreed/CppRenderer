@@ -162,6 +162,12 @@
     <ClInclude Include="IModelProperty.h">
       <Filter>ヘッダー ファイル\Interface</Filter>
     </ClInclude>
+    <ClInclude Include="UniformLight.h">
+      <Filter>ヘッダー ファイル\Uniform</Filter>
+    </ClInclude>
+    <ClInclude Include="Define.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -235,6 +241,9 @@
     </ClCompile>
     <ClCompile Include="SpotLight.cpp">
       <Filter>ソース ファイル\Light</Filter>
+    </ClCompile>
+    <ClCompile Include="UniformLight.cpp">
+      <Filter>ソース ファイル\Uniform</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -169,6 +169,7 @@
     <ClInclude Include="CompositShader.h" />
     <ClInclude Include="DefaultShader.h" />
     <ClInclude Include="DefaultVertexBuffer.h" />
+    <ClInclude Include="Define.h" />
     <ClInclude Include="DirectionLight.h" />
     <ClInclude Include="GeometryPass.h" />
     <ClInclude Include="GrayScaleEffect.h" />
@@ -195,6 +196,7 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="TextureGenerator.h" />
+    <ClInclude Include="UniformLight.h" />
     <ClInclude Include="UniformScene.h" />
     <ClInclude Include="Vertex.h" />
   </ItemGroup>
@@ -227,6 +229,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="TextureGenerator.cpp" />
+    <ClCompile Include="UniformLight.cpp" />
     <ClCompile Include="UniformScene.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

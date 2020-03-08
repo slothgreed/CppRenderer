@@ -30,10 +30,12 @@ void BunnyScene::Initialize(Project* m_pProject)
 
 	m_pUniformScene = make_shared<UniformScene>();
 	m_pUniformScene->Generate();
-	SceneData sceneData;
-	sceneData.ViewMatrix = m_pCamera->ViewMatrix();
-	sceneData.Projection = m_pCamera->Projection();
-	m_pUniformScene->Set(sceneData);
+	m_pUniformLight = make_shared<UniformLight>();
+	m_pUniformLight->Generate();
+	
+	auto directionLight = make_shared<DirectionLight>();
+	directionLight->Direction(vec3(0, 1, 0));
+	m_pLights.push_back(directionLight);
 
 	BDB modelSpace(vec3(0), vec3(1));
 	{
@@ -47,9 +49,9 @@ void BunnyScene::Initialize(Project* m_pProject)
 		auto voxelCommandArgs = make_shared<VoxelCommandArgs>(
 			this, polyNode->GetModel(), 100);
 		
-		auto voxelCommand = make_shared<VoxelCommand>(voxelCommandArgs);
+		//auto voxelCommand = make_shared<VoxelCommand>(voxelCommandArgs);
 
-		m_pCommandManager->Execute(voxelCommand);
+		//m_pCommandManager->Execute(voxelCommand);
 		m_pRenderList.push_back(polyNode);
 	}
 	m_pCamera->FitToBDB(modelSpace);
@@ -89,12 +91,18 @@ void BunnyScene::Initialize(Project* m_pProject)
 void BunnyScene::Invoke()
 {
 	SceneData sceneData;
-	sceneData.ViewMatrix = m_pCamera->ViewMatrix();
-	sceneData.Projection = m_pCamera->Projection();
+	sceneData.viewMatrix = m_pCamera->ViewMatrix();
+	sceneData.projection = m_pCamera->Projection();
 	m_pUniformScene->Set(sceneData);
 	m_pUniformScene->Bind();
+	
+	for (int i = 0; i < m_pLights.size(); i++)
+	{
+		m_pUniformLight->Set(m_pLights[i].get());
+	}
+	m_pUniformLight->Bind();
 
-	m_pGeometryPass->Draw(m_pRenderList);
+	//m_pGeometryPass->Draw(m_pRenderList);
 
 	m_pBackTarget->Begin();
 	m_pBackTarget->Clear();
@@ -103,6 +111,7 @@ void BunnyScene::Invoke()
 		m_pRenderList[i]->Draw();
 	}
 
+	m_pUniformLight->UnBind();
 	m_pUniformScene->UnBind();
 }
 

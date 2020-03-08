@@ -13,6 +13,14 @@ out vec4 outputColor;
 in vec4 v_normal;
 #endif
 
+layout (std140) uniform LightData
+{
+	vec4 Direction;
+	vec4 Ambient;
+	vec4 Diffuse;
+	vec4 Specular;
+}light;
+
 #ifdef USE_GBUFFER
 out vec4 OutputColor0;
 out vec4 OutputColor1;
@@ -21,30 +29,53 @@ out vec4 OutputColor3;
 in vec4 v_position;
 #endif
 
-void main()
+void OutputGBuffer()
 {
-#if defined(USE_GBUFFER) && defined(USE_NORMAL) && defined(USE_TEXTURE0)
+#if defined(USE_GBUFFER)
+#if defined(USE_NORMAL) && defined(USE_TEXTURE0)
 	vec4 position = v_position / v_position.w;
 	OutputColor0 = (position + 1) * 0.5;
 	OutputColor1 = vec4((normalize(v_normal)+1.0)*0.5,1);
 	OutputColor2 = vec4(uTexture0, v_texcoord);
 	OutputColor3 = vec4(1);
-#elif defined(USE_GBUFFER) && defined(USE_NORMAL)
+#elif defined(USE_NORMAL)
 	vec4 position = v_position / v_position.w;
 	OutputColor0 = (position + 1) * 0.5;
 	OutputColor1 = vec4((normalize(v_normal)+1.0)*0.5,1);
 	OutputColor2 = v_color;
 	OutputColor3 = vec4(1);
-#elif defined(USE_GBUFFER) && defined(USE_TEXTURE0)
+#elif defined(USE_TEXTURE0)
 	vec4 position = v_position / v_position.w;
 	OutputColor0 = (position + 1) * 0.5;
 	OutputColor1 = vec4(1);
 	OutputColor2 = vec4(uTexture0, v_texcoord);
 	OutputColor3 = vec4(1);
+#endif
+#endif
+}
 
+vec4 Shading()
+{
+#if defined(USE_SHADING)
+#if defined(USE_TEXTURE0)
+	return vec4(0,0,1,1) * texture2D(uTexture0,v_texcoord);
+#elif defined (USE_NORMAL)
+	return normalize(dot(light.Direction,v_color)) * vec4(1.0);
+#else
+	return v_color * vec4(0,0.7,0.7,1.0);
+#endif
+#endif
+}
+
+void main()
+{
+#if defined(USE_GBUFFER)
+	OutputGBuffer()
+#elif defined(USE_SHADING)
+	outputColor = Shading();
 #elif defined(USE_TEXTURE0)
 	outputColor = texture2D(uTexture0,v_texcoord);
 #else
-	outputColor = v_color;
+	outputColor = v_color * vec4(0,0.7,0.7,1.0);
 #endif
 }

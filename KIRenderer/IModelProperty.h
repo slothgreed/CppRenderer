@@ -21,7 +21,7 @@ public:
 	void SetVisible(bool value) { m_visible = value; }
 	bool Visible() { return m_visible; }
 	virtual void Draw() = 0;
-	virtual void Update(IModel* model) = 0;
+	virtual void Update(IModel* pModel) = 0;
 	virtual void Build(IModel* pModel) = 0;
 private:
 	bool m_visible;

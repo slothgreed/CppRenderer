@@ -5,11 +5,10 @@ namespace KI
 {
 namespace Renderer
 {
-#define SCENE_DATA_LOCATION 5
 struct SceneData
 {
-	glm::mat4x4 Projection;
-	glm::mat4x4 ViewMatrix;
+	mat4x4 projection;
+	mat4x4 viewMatrix;
 };
 
 class DLL_EXPORT UniformScene : public UniformBuffer
@@ -22,9 +21,6 @@ public:
 	virtual void UnBind() override;
 	virtual void Dispose() override;
 	void Set(const SceneData& data);
-
-private:
-	GLuint m_SceneId;
 };
 }
 }

@@ -31,6 +31,7 @@ private:
 	void BindColorTexture();
 	void BindFixColor();
 	void BindScene();
+	void BindLight();
 	shared_ptr<DefaultUniform> m_uniformParameter;
 };
 
@@ -55,7 +56,8 @@ public:
 	DefaultShaderDefine() {
 		m_useGBuffer = false;
 		m_useNormal = false; m_useColor = false; 
-		m_useTexcoord = false; m_useTexture0 = false; };
+		m_useTexcoord = false; m_useTexture0 = false;
+		m_useShading = true;};
 	~DefaultShaderDefine() {};
 
 	virtual SHADER_TYPE Type() { return SHADER_TYPE::SHADER_TYPE_DEFAULT; };
@@ -69,18 +71,21 @@ public:
 	bool SetUseColor(bool value) { return m_useColor = value; };
 	bool SetUseTexcoord(bool value) { return m_useTexcoord = value; };
 	bool SetUseTexture0(bool value) { return m_useTexture0 = value; };
+	bool SetShading(bool value) { return m_useShading = value; }
 
 	bool UseGBuffer() const { return m_useGBuffer; }
 	bool UseNormal() const { return m_useNormal; };
 	bool UseColor() const { return m_useColor; };
 	bool UseTexcoord() const { return m_useTexcoord; };
 	bool UseTexture0() const { return m_useTexture0; };
+	bool UseShading() const { return m_useShading; }
 private:
 	bool m_useGBuffer;
 	bool m_useNormal;
 	bool m_useColor;
 	bool m_useTexcoord;
 	bool m_useTexture0;
+	bool m_useShading;
 };
 
 #define USE_NORMAL	 "#define USE_NORMAL\n"
@@ -88,6 +93,7 @@ private:
 #define USE_TEXCOORD "#define USE_TEXCOORD\n"
 #define USE_TEXTURE0 "#define USE_TEXTURE0\n"
 #define USE_GBUFFER	 "#define USE_GBUFFER\n"
+#define USE_SHADING	 "#define USE_SHADING\n"
 }
 }
 #endif DEFAULT_SHADER_H

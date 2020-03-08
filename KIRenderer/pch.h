@@ -29,6 +29,7 @@ using namespace KI::Foundation;
 #include "../KIGfx/pch.h"
 using namespace KI::Gfx;
 
+#include "Define.h"
 #include "RendererTypes.h"
 
 #include "IModel.h"
@@ -47,6 +48,7 @@ using namespace KI::Gfx;
 #include "TextureGenerator.h"
 
 #include "UniformScene.h"
+#include "UniformLight.h"
 #include "DefaultShader.h"
 #include "DefaultVertexBuffer.h"
 #include "OutputShader.h"

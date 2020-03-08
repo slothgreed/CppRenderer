@@ -15,6 +15,8 @@ public:
 
 	void VisibleBDB(bool visibility);
 	void VisibleNormal(bool visibility);
+	void VisibleFace(bool visibility);
+	void VisibleEdge(bool visibility);
 protected:
 	string m_name;
 	shared_ptr<IMaterial> m_pFaceMaterial;

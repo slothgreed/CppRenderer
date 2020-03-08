@@ -16,13 +16,21 @@ DefaultShader::~DefaultShader()
 void DefaultShader::Initialize()
 {
 	BindScene();
+	BindLight();
 	FetchUniformLocation();
 }
 
 void DefaultShader::BindScene()
 {
-	GLint sceneBlock = glGetUniformBlockIndex(m_programId, "Scene");
+	GLint sceneBlock = glGetUniformBlockIndex(m_programId, "SceneData");
 	glUniformBlockBinding(m_programId, sceneBlock, SCENE_DATA_LOCATION);
+	Logger::GLError();
+}
+
+void DefaultShader::BindLight()
+{
+	GLint lightBlock = glGetUniformBlockIndex(m_programId, "LightData");
+	glUniformBlockBinding(m_programId, lightBlock, LIGHT_DATA_LOCATION);
 	Logger::GLError();
 }
 
@@ -48,6 +56,7 @@ void DefaultShader::Bind(shared_ptr<IUniform> uniform)
 	else
 	{
 		assert(0);
+		return;
 	}
 
 	DefaultShaderDefine* pDefine = nullptr;
@@ -58,6 +67,7 @@ void DefaultShader::Bind(shared_ptr<IUniform> uniform)
 	else
 	{
 		assert(0);
+		return;
 	}
 
 	if (pDefine->UseColor() == false &&
@@ -72,6 +82,7 @@ void DefaultShader::Bind(shared_ptr<IUniform> uniform)
 		if (m_uniformParameter->GetTexture() == nullptr)
 		{
 			assert(0);
+			return;
 		}
 		else
 		{
@@ -100,6 +111,7 @@ void DefaultShader::BindColorTexture()
 	if (m_uniformLocation[DEFAULT_UNIFORM_COLOR_TEXTURE] == -1)
 	{
 		assert(0);
+		return;
 	}
 
 	IShader::BindTexture(GL_TEXTURE0, m_uniformLocation[DEFAULT_UNIFORM_COLOR_TEXTURE]);
@@ -110,6 +122,7 @@ void DefaultShader::BindFixColor()
 	if (m_uniformLocation[DEFAULT_UNIFORM_FIX_COLOR] == -1)
 	{
 		assert(0);
+		return;
 	}
 
 	IShader::BindVector4(m_uniformLocation[DEFAULT_UNIFORM_FIX_COLOR], m_uniformParameter->FixColor());
@@ -129,12 +142,18 @@ void DefaultShaderDefine::GetVertexDefine(string& define)
 
 void DefaultShaderDefine::GetFragDefine(string& define)
 {
+	if (m_useNormal)
+		define += USE_NORMAL;
+	if (m_useColor)
+		define += USE_COLOR;
 	if (m_useTexcoord)
 		define += USE_TEXCOORD;
 	if (m_useTexture0)
 		define += USE_TEXTURE0;
 	if (m_useGBuffer)
 		define += USE_GBUFFER;
+	if (m_useShading)
+		define += USE_SHADING;
 }
 
 bool DefaultShaderDefine::Compare(IShaderDefine* shaderDefine)
@@ -146,7 +165,8 @@ bool DefaultShaderDefine::Compare(IShaderDefine* shaderDefine)
 			m_useNormal == pDefine->m_useNormal &&
 			m_useColor == pDefine->m_useColor &&
 			m_useTexcoord == pDefine->m_useTexcoord &&
-			m_useTexture0 == pDefine->m_useTexture0)
+			m_useTexture0 == pDefine->m_useTexture0 &&
+			m_useShading == pDefine->m_useShading)
 		{
 			return true;
 		}

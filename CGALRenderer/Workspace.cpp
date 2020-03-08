@@ -34,10 +34,7 @@ void Workspace::Initialize(Project* m_pProject)
 	m_pController[CONTROLER_TYPE::CAMERA_CONTROLER]->SetArgs(args);
 	m_pUniformScene = make_shared<UniformScene>();
 	m_pUniformScene->Generate();
-	SceneData sceneData;
-	sceneData.ViewMatrix = m_pCamera->ViewMatrix();
-	sceneData.Projection = m_pCamera->Projection();
-	m_pUniformScene->Set(sceneData);
+	
 
 	//shared_ptr<CGALModel> polyhedron = make_shared<CGALPolyhedron>();
 	//polyhedron->Load("E:\\cgModel\\StanfordBunny.off");
@@ -97,8 +94,8 @@ void Workspace::Invoke()
 {
 	m_pBackTarget->Begin();
 	SceneData sceneData;
-	sceneData.ViewMatrix = m_pCamera->ViewMatrix();
-	sceneData.Projection = m_pCamera->Projection();
+	sceneData.viewMatrix = m_pCamera->ViewMatrix();
+	sceneData.projection = m_pCamera->Projection();
 	m_pUniformScene->Set(sceneData);
 	m_pUniformScene->Bind();
 
