@@ -1,3 +1,6 @@
+#ifndef CUBE_H
+#define CUBE_H
+
 namespace KI
 {
 namespace Topology
@@ -24,3 +27,4 @@ private:
 };
 }
 }
+#endif CUBE_H

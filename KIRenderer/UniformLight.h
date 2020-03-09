@@ -18,10 +18,6 @@ class DLL_EXPORT UniformLight : public UniformBuffer
 public:
 	UniformLight();
 	~UniformLight();
-	virtual void Generate() override;
-	virtual void Bind() override;
-	virtual void UnBind() override;
-	virtual void Dispose() override;
 	void Set(const LightData& data);
 	void Set(ILight* pLight);
 };

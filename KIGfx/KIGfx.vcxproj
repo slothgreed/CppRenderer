@@ -216,6 +216,7 @@
     </ClCompile>
     <ClCompile Include="SymbolicRenderTarget.cpp" />
     <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="UniformBuffer.cpp" />
     <ClCompile Include="Viewport.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

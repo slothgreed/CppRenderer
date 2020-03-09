@@ -197,6 +197,8 @@
     <ClInclude Include="targetver.h" />
     <ClInclude Include="TextureGenerator.h" />
     <ClInclude Include="UniformLight.h" />
+    <ClInclude Include="UniformMaterial.h" />
+    <ClInclude Include="UniformModel.h" />
     <ClInclude Include="UniformScene.h" />
     <ClInclude Include="Vertex.h" />
   </ItemGroup>
@@ -230,6 +232,8 @@
     </ClCompile>
     <ClCompile Include="TextureGenerator.cpp" />
     <ClCompile Include="UniformLight.cpp" />
+    <ClCompile Include="UniformMaterial.cpp" />
+    <ClCompile Include="UniformModel.cpp" />
     <ClCompile Include="UniformScene.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

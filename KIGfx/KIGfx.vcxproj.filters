@@ -155,5 +155,8 @@
     <ClCompile Include="IndexBuffer.cpp">
       <Filter>ソース ファイル\GLObject</Filter>
     </ClCompile>
+    <ClCompile Include="UniformBuffer.cpp">
+      <Filter>ソース ファイル\GLObject</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

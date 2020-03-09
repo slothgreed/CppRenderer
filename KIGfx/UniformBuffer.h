@@ -7,10 +7,14 @@ namespace Gfx
 class DLL_EXPORT UniformBuffer : public GLObject
 {
 public:
-	UniformBuffer() {};
-	~UniformBuffer() {};
+	UniformBuffer(GLuint dataLocation);
+	~UniformBuffer();
+	virtual void Generate() override;
+	virtual void Bind() override;
+	virtual void UnBind() override;
+	virtual void Dispose() override;
 private:
-
+	GLuint m_dataLocation;
 };
 }
 }

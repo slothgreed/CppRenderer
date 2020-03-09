@@ -34,7 +34,7 @@ void BunnyScene::Initialize(Project* m_pProject)
 	m_pUniformLight->Generate();
 	
 	auto directionLight = make_shared<DirectionLight>();
-	directionLight->Direction(vec3(0, 1, 0));
+	directionLight->Direction(vec3(1, 1, 1));
 	m_pLights.push_back(directionLight);
 
 	BDB modelSpace(vec3(0), vec3(1));

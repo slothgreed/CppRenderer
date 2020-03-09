@@ -3,18 +3,14 @@ namespace KI
 namespace Renderer
 {
 UniformLight::UniformLight()
+	:UniformBuffer(LIGHT_DATA_LOCATION)
 {
-	m_Id = 0;
+
 }
 
 UniformLight::~UniformLight()
 {
-}
 
-
-void UniformLight::Generate()
-{
-	glGenBuffers(1, &m_Id);
 }
 
 void UniformLight::Set(const LightData& data)
@@ -45,33 +41,6 @@ void UniformLight::Set(ILight* pLight)
 	}
 
 	Set(light);
-}
-void UniformLight::Bind()
-{
-	if (m_Id == 0)
-	{
-		Logger::Output(LOG_LEVEL::ERROR, "not Generated");
-		assert(0);
-		return;
-	}
-
-	glBindBufferBase(GL_UNIFORM_BUFFER, LIGHT_DATA_LOCATION, m_Id);
-	Logger::GLError();
-}
-
-void UniformLight::UnBind()
-{
-	glBindBufferBase(GL_UNIFORM_BUFFER, LIGHT_DATA_LOCATION, 0);
-	Logger::GLError();
-}
-
-void UniformLight::Dispose()
-{
-	if (m_Id != 0)
-	{
-		glDeleteBuffers(1, &m_Id);
-		m_Id = 0;
-	}
 }
 }
 }

@@ -58,9 +58,10 @@ vec4 Shading()
 {
 #if defined(USE_SHADING)
 #if defined(USE_TEXTURE0)
-	return vec4(0,0,1,1) * texture2D(uTexture0,v_texcoord);
+	return texture2D(uTexture0,v_texcoord);
 #elif defined (USE_NORMAL)
-	return normalize(dot(light.Direction,v_color)) * vec4(1.0);
+	//return v_color;
+	return dot(normalize(light.Direction),v_color) * vec4(1.0);
 #else
 	return v_color * vec4(0,0.7,0.7,1.0);
 #endif

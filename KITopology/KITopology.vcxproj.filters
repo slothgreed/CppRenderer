@@ -66,6 +66,9 @@
     <ClInclude Include="IPrimitive.h">
       <Filter>ヘッダー ファイル\Primitive</Filter>
     </ClInclude>
+    <ClInclude Include="Sphere.h">
+      <Filter>ヘッダー ファイル\Primitive</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -93,6 +96,9 @@
       <Filter>ソース ファイル\Primitive</Filter>
     </ClCompile>
     <ClCompile Include="IPrimitive.cpp">
+      <Filter>ソース ファイル\Primitive</Filter>
+    </ClCompile>
+    <ClCompile Include="Sphere.cpp">
       <Filter>ソース ファイル\Primitive</Filter>
     </ClCompile>
   </ItemGroup>

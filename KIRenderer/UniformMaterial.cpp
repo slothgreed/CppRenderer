@@ -2,17 +2,18 @@ namespace KI
 {
 namespace Renderer
 {
-UniformScene::UniformScene()
-	: UniformBuffer(SCENE_DATA_LOCATION)
+UniformMaterial::UniformMaterial()
+	:UniformBuffer(MATERIAL_DATA_LOCATION)
 {
+
 }
 
-UniformScene::~UniformScene()
+UniformMaterial::~UniformMaterial()
 {
+
 }
 
-
-void UniformScene::Set(const SceneData& data)
+void UniformMaterial::Set(const MaterialData& data)
 {
 	if (m_Id == 0)
 	{
@@ -22,7 +23,7 @@ void UniformScene::Set(const SceneData& data)
 	}
 
 	glBindBuffer(GL_UNIFORM_BUFFER, m_Id);
-	glBufferData(GL_UNIFORM_BUFFER, sizeof(SceneData), &data, GL_STATIC_DRAW);
+	glBufferData(GL_UNIFORM_BUFFER, sizeof(MaterialData), &data, GL_STATIC_DRAW);
 	glBindBuffer(GL_UNIFORM_BUFFER, 0);
 	Logger::GLError();
 }

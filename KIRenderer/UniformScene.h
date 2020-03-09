@@ -16,10 +16,6 @@ class DLL_EXPORT UniformScene : public UniformBuffer
 public:
 	UniformScene();
 	~UniformScene();
-	virtual void Generate() override;
-	virtual void Bind() override;
-	virtual void UnBind() override;
-	virtual void Dispose() override;
 	void Set(const SceneData& data);
 };
 }

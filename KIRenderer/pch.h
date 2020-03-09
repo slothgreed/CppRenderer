@@ -47,10 +47,14 @@ using namespace KI::Gfx;
 #include "ModelGenerator.h"
 #include "TextureGenerator.h"
 
+#include "UniformMaterial.h"
+#include "UniformModel.h"
 #include "UniformScene.h"
 #include "UniformLight.h"
+
 #include "DefaultShader.h"
 #include "DefaultVertexBuffer.h"
+
 #include "OutputShader.h"
 #include "CompositShader.h"
 #include "SSLICShader.h"
