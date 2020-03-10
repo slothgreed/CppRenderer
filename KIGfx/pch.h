@@ -2,7 +2,7 @@
 #define KI_GFX_PCH_H
 
 #ifndef DLL_EXPORT
-#define DLL_EXPORT  //__declspec(dllexport)
+#define DLL_EXPORT  __declspec(dllexport)
 #endif
 
 #pragma warning( disable : 4251 )

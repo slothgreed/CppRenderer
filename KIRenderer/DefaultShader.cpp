@@ -5,8 +5,8 @@ namespace Renderer
 DefaultShader::DefaultShader()
 {
 	SetVersion(GLSL_VERSION_400_CORE);
-	SetVertexPath(ShaderUtility::ShaderDirectory() + "\\default.vert");
-	SetFragPath(ShaderUtility::ShaderDirectory() + "\\default.frag");
+	SetVertexPath(string(SHADER_DIRECTORY) + "\\default.vert");
+	SetFragPath(string(SHADER_DIRECTORY) + "\\default.frag");
 }
 
 DefaultShader::~DefaultShader()

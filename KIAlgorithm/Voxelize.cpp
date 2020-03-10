@@ -50,9 +50,9 @@ void Voxelize::Create(const vector<vec3>& positions, const BDB& bdb, int partiti
 void Voxelize::GetIndex(const vec3& position, int& i, int& j, int& k)
 {
 	vec3 voxelPosition = (position - m_bdb.Min());
-	i = voxelPosition.x / m_length.x;
-	j = voxelPosition.y / m_length.y;
-	k = voxelPosition.z / m_length.z;
+	i = (int)(voxelPosition.x / m_length.x);
+	j = (int)(voxelPosition.y / m_length.y);
+	k = (int)(voxelPosition.z / m_length.z);
 
 	if (i >= m_partition)
 		i = m_partition - 1;
@@ -91,11 +91,9 @@ void Voxelize::GetVertexList(vector<vec3>& position, vector<int>& index)
 	int counter2 = 0;
 	Cube cube;
 	CubeArgs args;
-	vec3 min;
-	vec3 max;
 	for (; itr.HasNext(); itr.Next())
 	{
-		vec3 voxelIndex = itr.CurrentIndex();
+		ivec3 voxelIndex = itr.CurrentIndex();
 		if (itr.Current() == nullptr)
 		{
 			continue;

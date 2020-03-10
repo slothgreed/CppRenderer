@@ -10,15 +10,12 @@ public:
 	ShaderUtility();
 	~ShaderUtility();
 	
-
-	static GLuint Compile(const std::string& code, GLuint shaderType);
+	static GLuint Compile(const string& code, GLuint shaderType);
 	static GLuint Link(GLuint vertexId, GLuint fragId);
-	
-	static void SetShaderDirectory(std::string directoryPath) { m_shaderDirectory = directoryPath; }
-	static const std::string& ShaderDirectory();
+
 private:
 
-	static std::string m_shaderDirectory;
+	static string m_shaderDirectory;
 
 };
 }

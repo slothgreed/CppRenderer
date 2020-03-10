@@ -5,8 +5,8 @@ namespace Renderer
 OutputShader::OutputShader()
 {
 	SetVersion(GLSL_VERSION_400_CORE);
-	SetVertexPath(ShaderUtility::ShaderDirectory() + "\\output.vert");
-	SetFragPath(ShaderUtility::ShaderDirectory() + "\\output.frag");
+	SetVertexPath(string(SHADER_DIRECTORY) + "\\output.vert");
+	SetFragPath(string(SHADER_DIRECTORY) + "\\output.frag");
 }
 
 OutputShader::~OutputShader()

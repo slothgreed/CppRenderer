@@ -5,7 +5,7 @@ namespace KI
 {
 namespace Topology
 {
-class IPrimitive
+class DLL_EXPORT IPrimitive
 {
 public:
 	IPrimitive(int indexOffset = 0) { m_indexOffset = indexOffset; };

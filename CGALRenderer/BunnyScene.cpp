@@ -12,7 +12,6 @@ BunnyScene::~BunnyScene()
 void BunnyScene::Initialize(Project* m_pProject)
 {
 	m_pCommandManager = make_unique<CommandManager>();
-	ShaderUtility::SetShaderDirectory(m_pProject->ProjectDir() + "\\Resource");
 	auto shaderDefine = make_shared<DefaultShaderDefine>();
 	shaderDefine->SetShaderDefine(VERTEX_LAYOUT_PC);
 	m_pDefaultShader = ShaderManager::Instance()->FindOrNew(shaderDefine);

@@ -66,12 +66,12 @@ public:
 	void SetShaderDefine(VERTEX_LAYOUT layout);
 	virtual bool Compare(IShaderDefine* shaderDefine) override;
 
-	bool SetUseGBuffer(bool value) { m_useGBuffer = value; }
-	bool SetUseNormal(bool value) { m_useNormal = value; };
-	bool SetUseColor(bool value) { return m_useColor = value; };
-	bool SetUseTexcoord(bool value) { return m_useTexcoord = value; };
-	bool SetUseTexture0(bool value) { return m_useTexture0 = value; };
-	bool SetShading(bool value) { return m_useShading = value; }
+	void SetUseGBuffer(bool value) { m_useGBuffer = value; }
+	void SetUseNormal(bool value) { m_useNormal = value; };
+	void SetUseColor(bool value) { m_useColor = value; };
+	void SetUseTexcoord(bool value) { m_useTexcoord = value; };
+	void SetUseTexture0(bool value) { m_useTexture0 = value; };
+	void SetShading(bool value) { m_useShading = value; }
 
 	bool UseGBuffer() const { return m_useGBuffer; }
 	bool UseNormal() const { return m_useNormal; };

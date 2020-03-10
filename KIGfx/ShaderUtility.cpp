@@ -3,7 +3,7 @@ namespace KI
 
 namespace Gfx
 {
-std::string ShaderUtility::m_shaderDirectory;
+string ShaderUtility::m_shaderDirectory;
 
 ShaderUtility::ShaderUtility()
 {
@@ -13,7 +13,7 @@ ShaderUtility::~ShaderUtility()
 {
 }
 
-GLuint ShaderUtility::Compile(const std::string& code, GLuint shaderType)
+GLuint ShaderUtility::Compile(const string& code, GLuint shaderType)
 {
 	GLuint id = glCreateShader(shaderType);
 
@@ -69,14 +69,5 @@ GLuint ShaderUtility::Link(GLuint vertexId, GLuint fragId)
 	return programId;
 }
 
-const std::string& ShaderUtility::ShaderDirectory()
-{
-	if (m_shaderDirectory.size() == 0)
-	{
-		assert(0);
-	}
-
-	return m_shaderDirectory;
-}
 }
 }

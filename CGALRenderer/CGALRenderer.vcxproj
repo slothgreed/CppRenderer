@@ -91,6 +91,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -106,7 +107,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)extlibs\glfw-3.3\include;$(SolutionDir)extlibs\glm-0.9.9.6\glm;$(SolutionDir)extlibs\glew-2.1.0\include;E:\Tools\CGAL4.11\include;E:\Tools\CGAL4.11\build\include;E:\Tools\CGAL4.11\auxiliary\gmp\include;E:\Tools\boost\boost_1_64_0;E:\Tools\boost\boost_1_64_0\boost;E:\MyProgram\KIProject\CGALRenderer\extlibs;%(AdditionalIncludeDirectories);$(SolutionDir)KIFoundation</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)extlibs\glfw-3.3\include;$(SolutionDir)extlibs\glm-0.9.9.6\glm;$(SolutionDir)extlibs\glew-2.1.0\include;E:\Tools\boost\boost_1_64_0;E:\Tools\boost\boost_1_64_0\boost;$(SolutionDir)extlibs;E:\Tools\CGAL4.11\include;E:\Tools\CGAL4.11\build\include;E:\Tools\CGAL4.11\auxiliary\gmp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>pch.h</ForcedIncludeFiles>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
@@ -114,7 +115,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)extlibs\glfw-3.3\lib-vc2017;$(SolutionDir)extlibs\glew-2.1.0\lib\Release\x64;E:\Tools\CGAL4.11\build\lib;E:\Tools\CGAL4.11\auxiliary\gmp\lib\;$(SolutionDir)$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3.lib;glew32.lib;opengl32.lib;CGAL-vc140-mt-gd-4.11.lib;CGAL_ImageIO-vc140-mt-gd-4.11.lib;CGAL_Core-vc140-mt-gd-4.11.lib;CGAL_Qt5-vc140-mt-gd-4.11.lib;libgmp-10.lib;libmpfr-4.lib;KIFoundation.lib;KIGfx.lib;KIRenderer.lib;KITopology.lib;KIAlgorithm.lib;KIAsset.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3.lib;glew32.lib;opengl32.lib;libgmp-10.lib;libmpfr-4.lib;KIFoundation.lib;KIGfx.lib;KIRenderer.lib;KITopology.lib;KIAlgorithm.lib;KIAsset.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

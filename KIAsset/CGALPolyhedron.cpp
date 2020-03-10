@@ -1,3 +1,4 @@
+
 #include <CGAL/normal_vector_newell_3.h>
 #include <fstream>
 

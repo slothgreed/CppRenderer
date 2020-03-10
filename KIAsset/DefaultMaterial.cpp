@@ -24,7 +24,7 @@ void DefaultMaterial::SetFixColor(vec4 color)
 
 shared_ptr<IShader> DefaultMaterial::CompileShader(IVertexBuffer* pVertexBuffer)
 {
-	if (pVertexBuffer->Type() == DefaultVertexBuffer::DefaultVertexBufferTypeStr)
+	if (pVertexBuffer->Type() == SHADER_TYPE::SHADER_TYPE_DEFAULT)
 	{
 		auto pDefaultBuffer = (DefaultVertexBuffer*)(pVertexBuffer);
 		auto shaderDefine = make_shared<DefaultShaderDefine>();

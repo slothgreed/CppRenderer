@@ -1,6 +1,5 @@
 #ifndef CGAL_POLYHEDRAL_SURFACE_H
 #define CGAL_POLYHEDRAL_SURFACE_H
-
 #include <CGAL/Exact_predicates_inexact_constructions_kernel.h>
 #include <CGAL/Simple_cartesian.h>
 #include <CGAL/Polyhedron_3.h>

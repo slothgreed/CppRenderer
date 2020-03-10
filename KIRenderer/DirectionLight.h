@@ -6,7 +6,7 @@ namespace KI
 namespace Renderer
 {
 
-class DirectionLight : public ILight
+class DLL_EXPORT DirectionLight : public ILight
 {
 public:
 	DirectionLight();

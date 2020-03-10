@@ -1,6 +1,10 @@
 #ifndef KI_ASSET_PCH_H
 #define KI_ASSET_PCH_H
 
+#ifndef DLL_EXPORT
+#define DLL_EXPORT  __declspec(dllexport)
+#endif
+
 #include<memory>
 #include<string>
 #include<algorithm>

@@ -2,7 +2,6 @@ namespace KI
 {
 namespace Renderer
 {
-string DefaultVertexBuffer::DefaultVertexBufferTypeStr = "DEFAULT";
 DefaultVertexBuffer::DefaultVertexBuffer()
 {
 	for (int i = 0; i < VERTEX_ATTRIB_NUM; i++)

@@ -48,5 +48,5 @@ public:
 		return ((uid(mt)) ? true : false);
 	}
 };
-static thread_local Rand rnd;
+//static thread_local Rand rnd;
 }

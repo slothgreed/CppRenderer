@@ -5,7 +5,7 @@ namespace KI
 {
 namespace Renderer
 {
-class DLL_EXPORT PointLight
+class DLL_EXPORT PointLight : public ILight
 {
 public:
 	PointLight();

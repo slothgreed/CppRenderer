@@ -2,7 +2,7 @@
 #define KI_RENDERER_PCH_H
 
 #ifndef DLL_EXPORT
-#define DLL_EXPORT  //__declspec(dllexport)
+#define DLL_EXPORT  __declspec(dllexport)
 #endif
 
 #include<memory>
@@ -28,6 +28,7 @@ using namespace KI::Foundation;
 
 #include "../KIGfx/pch.h"
 using namespace KI::Gfx;
+
 
 #include "Define.h"
 #include "RendererTypes.h"

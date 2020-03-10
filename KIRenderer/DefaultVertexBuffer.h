@@ -20,8 +20,7 @@ public:
 	GLuint PrimitiveType() { return m_PrimitiveType; }
 	VERTEX_LAYOUT Layout() { return m_layout; };
 	virtual void Draw() override;
-	virtual string Type() { return DefaultVertexBufferTypeStr; }
-	static string DefaultVertexBufferTypeStr;
+	virtual SHADER_TYPE Type() { return SHADER_TYPE::SHADER_TYPE_DEFAULT; }
 
 	bool HasNormal();
 	bool HasColor();

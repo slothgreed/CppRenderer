@@ -5,7 +5,7 @@ namespace KI
 {
 namespace Renderer
 {
-struct LightData
+struct DLL_EXPORT LightData
 {
 	vec4 direction;
 	vec4 ambient;

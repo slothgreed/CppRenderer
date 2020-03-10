@@ -5,8 +5,8 @@ namespace Renderer
 GrayScaleShader::GrayScaleShader()
 {
 	SetVersion(GLSL_VERSION_400_CORE);
-	SetVertexPath(ShaderUtility::ShaderDirectory() + "\\grayscale.vert");
-	SetFragPath(ShaderUtility::ShaderDirectory() + "\\grayscale.frag");
+	SetVertexPath(string(SHADER_DIRECTORY) + "\\grayscale.vert");
+	SetFragPath(string(SHADER_DIRECTORY) + "\\grayscale.frag");
 }
 
 GrayScaleShader::~GrayScaleShader()

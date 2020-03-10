@@ -1,6 +1,12 @@
 #ifndef KI_TOPOLOGY_PCH_H
 #define	 KI_TOPOLOGY_PCH_H
 
+#ifndef DLL_EXPORT
+#define DLL_EXPORT  __declspec(dllexport)
+#endif
+
+#pragma warning( disable : 4251 )
+
 #include<memory>
 #include<string>
 #include<algorithm>
