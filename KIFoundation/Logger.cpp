@@ -24,6 +24,7 @@ void Logger::Output(LOG_LEVEL level, string message)
 void Logger::GLError()
 {
 	GLenum result = glGetError();
+	//GLenum result = GL_NO_ERROR;
 	if (result == GL_NO_ERROR) {
 		return;
 	}

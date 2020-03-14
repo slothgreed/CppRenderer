@@ -14,7 +14,17 @@ PrimitiveNode::~PrimitiveNode()
 
 void PrimitiveNode::Draw()
 {
+	if (m_pState != nullptr)
+	{
+		m_pState->Bind();
+	}
+
 	m_pMaterial->Draw(m_pVertexBuffer.get());
+
+	if (m_pState != nullptr)
+	{
+		m_pState->UnBind();
+	}
 
 	Logger::GLError();
 }

@@ -20,6 +20,8 @@ protected:
 	shared_ptr<Mouse> m_pMouse;
 	CONTROLER_TYPE m_CurrentController;
 	map<CONTROLER_TYPE, IController*> m_pController;
+	unique_ptr<CommandManager> m_pCommandManager;
+
 };
 
 }

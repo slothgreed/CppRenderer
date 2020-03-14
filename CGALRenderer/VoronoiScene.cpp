@@ -3,13 +3,12 @@ namespace KI
 
 void VoronoiScene::Initialize(Project* m_pProject)
 {
+	m_pScene = make_shared<Scene>();
+	m_pScene->Initialize();
 	auto pCamera = make_shared<OrthoCamera>();
 	pCamera->LookAt(vec3(0, 0, -1), vec3(0), vec3(0, 1, 0));
 	pCamera->Ortho(-10, 10, -10, 10, -10, 10);
-	m_pCamera = pCamera;
-
-	m_pUnifromScene = make_shared<UniformScene>();
-	m_pUnifromScene->Generate();
+	m_pScene->SetCamera(pCamera);
 
 	vector<vec3> pointPosition;
 	int pointSize = 100;
@@ -22,8 +21,8 @@ void VoronoiScene::Initialize(Project* m_pProject)
 
 	Cone cone;
 	vector<vec3> position;
-	vector<int> index;
 	vector<vec3> color;
+	vector<int> index;
 	for (int i = 0; i < pointSize; i++)
 	{
 		cone.Build(5, 10, 50);
@@ -44,33 +43,28 @@ void VoronoiScene::Initialize(Project* m_pProject)
 	pVertexBuffer->SetPosition(GL_TRIANGLES, position);
 	pVertexBuffer->SetColor(color);
 	pVertexBuffer->SetIndex(GL_TRIANGLES, index);
-	m_pConeNode = make_shared<PrimitiveNode>(pVertexBuffer);
+	auto pConeNode = make_shared<PrimitiveNode>(pVertexBuffer);
+	m_pScene->AddModelNode(pConeNode);
 
 	auto pPointVertexBuffer = make_shared<DefaultVertexBuffer>();
 	pPointVertexBuffer->Generate(VERTEX_LAYOUT::VERTEX_LAYOUT_P);
 	pPointVertexBuffer->SetPosition(GL_POINTS, pointPosition);
-	m_pPointNode = make_shared<PrimitiveNode>(pPointVertexBuffer);
-	m_pPointNode->GetMaterial()->SetFixColor(vec4(0, 0, 0, 1));
-	glPointSize(5);
+	auto pPointNode = make_shared<PrimitiveNode>(pPointVertexBuffer);
+	pPointNode->GetMaterial()->SetFixColor(vec4(0, 0, 0, 1));
+	pPointNode->SetState(make_shared<PointState>(5, false));
+	m_pScene->AddModelNode(pPointNode);
 
 	m_pBackTarget = make_shared<SymbolicRenderTarget>(GL_BACK);
 }
 
 void VoronoiScene::Invoke()
 {
-	SceneData sceneData;
-	sceneData.viewMatrix = m_pCamera->ViewMatrix();
-	sceneData.projection = m_pCamera->Projection();
-	m_pUnifromScene->Set(sceneData);
-	m_pUnifromScene->Bind();
 	m_pBackTarget->Begin();
 	m_pBackTarget->Clear();
-	m_pConeNode->Draw();
-	glDisable(GL_DEPTH_TEST);
-	m_pPointNode->Draw();
-	glEnable(GL_DEPTH_TEST);
+	m_pScene->Bind();
+	m_pScene->Draw();
+	m_pScene->UnBind();
 	m_pBackTarget->End();
-	m_pUnifromScene->UnBind();
 }
 
 void VoronoiScene::ProcessMouseEvent(const MouseInput& input)

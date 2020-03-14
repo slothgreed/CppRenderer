@@ -15,13 +15,9 @@ public:
 	virtual void AddModelNode(shared_ptr<IModelNode> pModelNode) override;
 private:
 	shared_ptr<GeometryPass> m_pGeometryPass;
-	shared_ptr<UniformScene> m_pUniformScene;
-	shared_ptr<UniformLight> m_pUniformLight;
-	shared_ptr<ICamera> m_pCamera;
-	vector<shared_ptr<ILight>> m_pLights;
 	vector<shared_ptr<IModelNode>> m_pRenderList;
 	shared_ptr<IRenderTarget> m_pBackTarget;
-	unique_ptr<CommandManager> m_pCommandManager;
+	shared_ptr<Scene> m_pScene;
 };
 }
 #endif // BUNNY_SCENE_H

@@ -18,22 +18,18 @@ void Workspace::Initialize(Project* m_pProject)
 {
 	m_pCommandManager = make_unique<CommandManager>();
 	m_pMouse = make_shared<Mouse>();
-
-	auto shaderDefine = make_shared<DefaultShaderDefine>();
-	shaderDefine->SetShaderDefine(VERTEX_LAYOUT_PC);
-	m_pDefaultShader = ShaderManager::Instance()->FindOrNew(shaderDefine);
+	m_pScene = make_shared<Scene>();
+	m_pScene->Initialize();
 
 	auto pCamera = make_shared<PerspectiveCamera>();
 	pCamera->LookAt(vec3(0, 0, -2), vec3(0, 0, 0), vec3(0, 1, 0));
 	pCamera->Perspective(glm::radians(60.0f), 1, 0.01f, 1000);
-	m_pCamera = pCamera;
+	m_pScene->SetCamera(pCamera);
 
 	m_pController[CONTROLER_TYPE::CAMERA_CONTROLER] = new CameraController();
 	m_CurrentController = CONTROLER_TYPE::CAMERA_CONTROLER;
-	shared_ptr<IControllerArgs> args = make_shared<CameraControllerArgs>(m_pCamera);
+	shared_ptr<IControllerArgs> args = make_shared<CameraControllerArgs>(pCamera);
 	m_pController[CONTROLER_TYPE::CAMERA_CONTROLER]->SetArgs(args);
-	m_pUniformScene = make_shared<UniformScene>();
-	m_pUniformScene->Generate();
 	
 
 	//shared_ptr<CGALModel> polyhedron = make_shared<CGALPolyhedron>();
@@ -46,12 +42,12 @@ void Workspace::Initialize(Project* m_pProject)
 	auto axis = make_shared<DefaultVertexBuffer>();
 	ModelGenerator::Axis(axis.get());
 	auto axisNode = make_shared<PrimitiveNode>(axis);
-	m_pRenderList.push_back(axisNode);
+	m_pScene->AddModelNode(axisNode);
 
 	auto model = make_shared<DefaultVertexBuffer>();
 	//ModelGenerator::RenderPlane(plane.get());
 	SpecialUtility::LoadVectorFieldSphere(model.get());
-	auto modelNode = make_shared<PrimitiveNode>(model);
+	auto pModelNode = make_shared<PrimitiveNode>(model);
 	TextureData data;
 	TextureGenerator::RandomTexture(8, 15, data);
 	auto texture = make_shared<Texture>();
@@ -59,9 +55,8 @@ void Workspace::Initialize(Project* m_pProject)
 	texture->Begin();
 	texture->Set(data);
 	texture->End();
-	modelNode->GetMaterial()->AddTexture(texture);
-
-	m_pRenderList.push_back(modelNode);
+	pModelNode->GetMaterial()->AddTexture(texture);
+	m_pScene->AddModelNode(pModelNode);
 
 	m_pRenderTarget = make_shared<RenderTarget>();
 	m_pRenderTarget->Initialize(1, 640, 480);
@@ -92,43 +87,28 @@ void Workspace::Initialize(Project* m_pProject)
 
 void Workspace::Invoke()
 {
-	m_pBackTarget->Begin();
-	SceneData sceneData;
-	sceneData.viewMatrix = m_pCamera->ViewMatrix();
-	sceneData.projection = m_pCamera->Projection();
-	m_pUniformScene->Set(sceneData);
-	m_pUniformScene->Bind();
 
 	m_pRenderTarget->Begin();
-	m_pRenderTarget->Clear();
-
-	for (int i = 0; i < m_pRenderList.size(); i++)
 	{
-		m_pRenderList[i]->Draw();
+		m_pRenderTarget->Clear();
+
+		m_pScene->Bind();
+		{
+			m_pScene->Draw();
+		}
+		m_pScene->UnBind();
+
 	}
-	
 	m_pRenderTarget->End();
+
 	m_pPfxRenderer->Draw();
 
 	m_pBackTarget->Begin();
-	m_pBackTarget->Clear();
-	m_pOutputPlane->Draw();
-
-	m_pUniformScene->UnBind();
-
-}
-
-void Workspace::ShowProperty()
-{
-	for (int i = 0; i < m_pRenderList.size(); i++)
 	{
-		m_pRenderList[i]->ShowProperty();
+		m_pBackTarget->Clear();
+		m_pOutputPlane->Draw();
 	}
-}
-
-void Workspace::AddModelNode(shared_ptr<IModelNode> pModelNode)
-{
-	m_pRenderList.push_back(pModelNode);
+	m_pBackTarget->End();
 }
 
 void Workspace::ProcessMouseEvent(const MouseInput& input)

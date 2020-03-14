@@ -13,10 +13,12 @@ public:
 	virtual void ShowProperty();
 	virtual void Update(void* sender, IEventArgs* args);
 	shared_ptr<DefaultMaterial> GetMaterial() { return m_pMaterial; }
+	void SetState(shared_ptr<IGLState> pState) { m_pState = pState; };
 private:
 	string m_name;
 	shared_ptr<DefaultMaterial> m_pMaterial;
 	shared_ptr<DefaultVertexBuffer> m_pVertexBuffer;
+	shared_ptr<IGLState> m_pState;
 };
 }
 

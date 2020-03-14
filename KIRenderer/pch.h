@@ -75,4 +75,6 @@ using namespace KI::Gfx;
 #include "PfxRenderer.h"
 #include "LighthingPass.h"
 
+#include "Scene.h"
+
 #endif KI_RENDERER_PCH_H

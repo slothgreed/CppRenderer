@@ -11,9 +11,7 @@ public:
 	virtual void ProcessMouseEvent(const MouseInput& input)override;
 
 private:
-	shared_ptr<UniformScene> m_pUnifromScene;
-	shared_ptr<ICamera> m_pCamera;
-	vector<shared_ptr<IModelNode>> m_pModelNode;
+	shared_ptr<Scene> m_pScene;
 	shared_ptr<PrimitiveNode> m_pConeNode;
 	shared_ptr<PrimitiveNode> m_pPointNode;
 	shared_ptr<IRenderTarget> m_pBackTarget;

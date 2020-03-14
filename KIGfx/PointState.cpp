@@ -2,8 +2,10 @@ namespace KI
 {
 namespace Gfx
 {
-PointState::PointState()
+PointState::PointState(GLfloat pointSize, GLboolean depthTest)
 {
+	m_pointSize = pointSize;
+	m_depthTest = depthTest;
 }
 
 PointState::~PointState()
@@ -12,12 +14,20 @@ PointState::~PointState()
 
 void PointState::Bind()
 {
-	glPointSize((GLfloat)m_pointSize);
+	if (m_depthTest == false)
+	{
+		glDisable(GL_DEPTH_TEST);
+	}
+	glPointSize(m_pointSize);
 }
 
 void PointState::UnBind()
 {
 	glPointSize(1.0f);
+	if (m_depthTest == false)
+	{
+		glEnable(GL_DEPTH_TEST);
+	}
 }
 bool PointState::Compare(const IGLState& state)
 {

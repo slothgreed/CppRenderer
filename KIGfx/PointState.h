@@ -7,7 +7,8 @@ namespace Gfx
 class DLL_EXPORT PointState : public IRasterState
 {
 public:
-	PointState();
+
+	PointState(GLfloat pointSize, GLboolean depthTest = false);
 	~PointState();
 
 	virtual const STATE_TYPE Type() const { return STATE_TYPE_POINT; }
@@ -22,6 +23,7 @@ public:
 
 private:
 	GLuint m_pointSize;
+	GLboolean m_depthTest;
 };
 }
 }
