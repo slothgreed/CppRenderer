@@ -57,7 +57,7 @@ public:
 		m_useGBuffer = false;
 		m_useNormal = false; m_useColor = false; 
 		m_useTexcoord = false; m_useTexture0 = false;
-		m_useShading = true;};
+		m_useShading = false;};
 	~DefaultShaderDefine() {};
 
 	virtual SHADER_TYPE Type() { return SHADER_TYPE::SHADER_TYPE_DEFAULT; };

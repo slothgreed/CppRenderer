@@ -4,14 +4,19 @@ namespace KI
 {
 namespace Renderer
 {
-class DLL_EXPORT Camera
+enum CAMERA_TYPE
+{
+	CAMERA_TYPE_PERSPECTIVE,
+	CAMERA_TYPE_ORTHO
+};
+class DLL_EXPORT ICamera
 {
 public:
-	Camera();
-	~Camera();
+	ICamera();
+	virtual ~ICamera();
 	void LookAt(const vec3& eye, const vec3& center, const vec3& up);
-	void Perspective(float fov, float aspect, float _near, float _far);
-	void MoveWithSpherical(const vec2& move);
+	
+	virtual CAMERA_TYPE Type() = 0;
 	const mat4x4& ViewMatrix() const { return m_View; }
 	const mat4x4& Projection() const { return m_Project; }
 
@@ -20,20 +25,13 @@ public:
 	const vec3& Up() { return m_up; };
 	const vec3& Direction() { return m_direction; }
 
-	const float Phi() const { return m_phi; }
-	const float Theta() const { return m_theta; }
 	const float LookAtDistance() const { return m_distance; }
 
-	void FitToBDB(const BDB& bdb);
-	void ShowProperty();
-private:
-
-	void SetTheta(float value);
-	void SetPhi(float value);
-
-	string m_name;
-	mat4x4 m_View;
+	virtual void FitToBDB(const BDB& bdb) = 0;
+protected:
 	mat4x4 m_Project;
+private:
+	mat4x4 m_View;
 
 	vec3 m_eye;
 	vec3 m_center;
@@ -41,13 +39,6 @@ private:
 	vec3 m_direction;
 
 	
-	float m_fov;
-	float m_aspect;
-	float m_near;
-	float m_far;
-
-	float m_theta;
-	float m_phi;
 	float m_distance;
 };
 }

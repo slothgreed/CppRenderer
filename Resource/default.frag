@@ -60,12 +60,12 @@ vec4 Shading()
 #if defined(USE_TEXTURE0)
 	return texture2D(uTexture0,v_texcoord);
 #elif defined (USE_NORMAL)
-	//return v_color;
 	return dot(normalize(light.Direction),v_color) * vec4(1.0);
 #else
 	return v_color * vec4(0,0.7,0.7,1.0);
 #endif
 #endif
+	return vec4(1,1,0,1);
 }
 
 void main()
@@ -77,6 +77,6 @@ void main()
 #elif defined(USE_TEXTURE0)
 	outputColor = texture2D(uTexture0,v_texcoord);
 #else
-	outputColor = v_color * vec4(0,0.7,0.7,1.0);
+	outputColor = vec4(v_color.xyz,1.0);
 #endif
 }

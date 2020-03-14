@@ -9,14 +9,14 @@ public:
 
 	friend class CameraController;
 
-	CameraControllerArgs( std::shared_ptr<Camera> camera) {
+	CameraControllerArgs( std::shared_ptr<ICamera> camera) {
 		m_pCamera = camera;
 	};
 
 	~CameraControllerArgs() {};
 
 private:
-	std::shared_ptr<Camera> m_pCamera;
+	std::shared_ptr<ICamera> m_pCamera;
 };
 
 class CameraController : public IController

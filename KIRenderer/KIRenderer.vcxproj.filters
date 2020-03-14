@@ -64,6 +64,12 @@
     <Filter Include="ヘッダー ファイル\Interface">
       <UniqueIdentifier>{8f8500e1-ff08-4cc3-bc9d-786b07df0d15}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Camera">
+      <UniqueIdentifier>{519cbeb4-7521-4fff-bd1c-3d0caccc66bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Camera">
+      <UniqueIdentifier>{09b11c40-c248-45b8-9183-0a012c490c83}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -94,9 +100,6 @@
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="pch.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Camera.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="GrayScaleShader.h">
@@ -174,6 +177,15 @@
     <ClInclude Include="UniformModel.h">
       <Filter>ヘッダー ファイル\Uniform</Filter>
     </ClInclude>
+    <ClInclude Include="OrthoCamera.h">
+      <Filter>ヘッダー ファイル\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="PerspectiveCamera.h">
+      <Filter>ヘッダー ファイル\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="ICamera.h">
+      <Filter>ヘッダー ファイル\Camera</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -195,9 +207,6 @@
       <Filter>ソース ファイル\Pfx</Filter>
     </ClCompile>
     <ClCompile Include="PfxPlane.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Camera.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="GrayScaleShader.cpp">
@@ -256,6 +265,15 @@
     </ClCompile>
     <ClCompile Include="UniformModel.cpp">
       <Filter>ソース ファイル\Uniform</Filter>
+    </ClCompile>
+    <ClCompile Include="OrthoCamera.cpp">
+      <Filter>ソース ファイル\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="PerspectiveCamera.cpp">
+      <Filter>ソース ファイル\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="ICamera.cpp">
+      <Filter>ソース ファイル\Camera</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -12,6 +12,8 @@ Cone::~Cone()
 
 void Cone::Build(float radius, float height, int partition)
 {
+	m_position.clear();
+	m_index.clear();
 	m_position.push_back(vec3(0, height, 0));
 	m_position.push_back(vec3(0, 0, 0));
 
@@ -23,7 +25,6 @@ void Cone::Build(float radius, float height, int partition)
 		vec3 position;
 		MathHelper::SphericalToCartesian(radius, -(i * rad), pi<float>()/2, position);
 		m_position.push_back(position);
-		Logger::Output(LOG_LEVEL::DEBUG, (MathHelper::ToString(position)+"\n").data() );
 	}
 
 	int index1;
@@ -41,14 +42,14 @@ void Cone::Build(float radius, float height, int partition)
 			index2 = 2 + i + 1;
 		}
 
-		m_index.push_back(0);			// 先端点
-		m_index.push_back(index1);
-		m_index.push_back(index2);
+		m_index.push_back(0		 + IndexOffset());			// 先端点
+		m_index.push_back(index1 + IndexOffset());
+		m_index.push_back(index2 + IndexOffset());
 
 		// 終端を結ぶ
-		m_index.push_back(1);			// 底面の中心点
-		m_index.push_back(index2);
-		m_index.push_back(index1);
+		m_index.push_back(1		 + IndexOffset());			// 底面の中心点
+		m_index.push_back(index2 + IndexOffset());
+		m_index.push_back(index1 + IndexOffset());
 	}
 
 }

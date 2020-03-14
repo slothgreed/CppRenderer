@@ -138,6 +138,9 @@
     <ClInclude Include="..\extlibs\imgui\imstb_truetype.h">
       <Filter>ImGui</Filter>
     </ClInclude>
+    <ClInclude Include="VoronoiScene.h">
+      <Filter>ヘッダー ファイル\Application\InitApp</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -205,6 +208,9 @@
     </ClCompile>
     <ClCompile Include="..\extlibs\imgui\imgui_widgets.cpp">
       <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="VoronoiScene.cpp">
+      <Filter>ソース ファイル\Application\InitApp</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -165,7 +165,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Camera.h" />
+    <ClInclude Include="ICamera.h" />
     <ClInclude Include="CompositShader.h" />
     <ClInclude Include="DefaultShader.h" />
     <ClInclude Include="DefaultVertexBuffer.h" />
@@ -182,8 +182,10 @@
     <ClInclude Include="IPostEffect.h" />
     <ClInclude Include="LighthingPass.h" />
     <ClInclude Include="ModelGenerator.h" />
+    <ClInclude Include="OrthoCamera.h" />
     <ClInclude Include="OutputShader.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="PerspectiveCamera.h" />
     <ClInclude Include="PfxPlane.h" />
     <ClInclude Include="PfxRenderer.h" />
     <ClInclude Include="PointLight.h" />
@@ -203,7 +205,7 @@
     <ClInclude Include="Vertex.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="ICamera.cpp" />
     <ClCompile Include="CompositShader.cpp" />
     <ClCompile Include="DefaultShader.cpp" />
     <ClCompile Include="DefaultVertexBuffer.cpp" />
@@ -215,7 +217,9 @@
     <ClCompile Include="IModelNode.cpp" />
     <ClCompile Include="LighthingPass.cpp" />
     <ClCompile Include="ModelGenerator.cpp" />
+    <ClCompile Include="OrthoCamera.cpp" />
     <ClCompile Include="OutputShader.cpp" />
+    <ClCompile Include="PerspectiveCamera.cpp" />
     <ClCompile Include="PfxPlane.cpp" />
     <ClCompile Include="PfxRenderer.cpp" />
     <ClCompile Include="PointLight.cpp" />

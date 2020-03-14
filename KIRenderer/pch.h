@@ -62,7 +62,9 @@ using namespace KI::Gfx;
 #include "GrayScaleShader.h"
 #include "ShaderManager.h"
 
-#include "Camera.h"
+#include "ICamera.h"
+#include "PerspectiveCamera.h"
+#include "OrthoCamera.h"
 // Renderer
 #include "PfxPlane.h"
 #include "IPostEffect.h"

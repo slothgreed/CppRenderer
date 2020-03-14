@@ -49,4 +49,5 @@ public:
 	}
 };
 //static thread_local Rand rnd;
+static Rand rnd;
 }

@@ -15,7 +15,7 @@ public:
 	virtual void AddModelNode(shared_ptr<IModelNode> pModelNode) override;
 
 private:
-	shared_ptr<Camera> m_pCamera; 
+	shared_ptr<ICamera> m_pCamera;
 	std::shared_ptr<Mouse> m_pMouse;
 	shared_ptr<IShader> m_pDefaultShader;
 	shared_ptr<UniformScene> m_pUniformScene;

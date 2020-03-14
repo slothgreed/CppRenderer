@@ -10,7 +10,7 @@ RenderSystem::~RenderSystem()
 {
 }
 
-void RenderSystem::Draw(shared_ptr<Camera> pCamera)
+void RenderSystem::Draw(shared_ptr<ICamera> pCamera)
 {
 
 }

@@ -66,9 +66,10 @@ using namespace KI::Asset;
 // application
 #include "IWorkspace.h"
 #include "BunnyScene.h"
+#include "Workspace.h"
+#include "VoronoiScene.h"
 #include "CGALRenderer.h"
 #include "Project.h"
-#include "Workspace.h"
 #include "SpecialUtility.h"
 
 // logic

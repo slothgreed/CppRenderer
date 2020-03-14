@@ -12,15 +12,13 @@ BunnyScene::~BunnyScene()
 void BunnyScene::Initialize(Project* m_pProject)
 {
 	m_pCommandManager = make_unique<CommandManager>();
-	auto shaderDefine = make_shared<DefaultShaderDefine>();
-	shaderDefine->SetShaderDefine(VERTEX_LAYOUT_PC);
-	m_pDefaultShader = ShaderManager::Instance()->FindOrNew(shaderDefine);
 
 	m_pMouse = make_shared<Mouse>();
 
-	m_pCamera = make_shared<Camera>();
-	m_pCamera->LookAt(vec3(0, 0, -2), vec3(0, 0, 0), vec3(0, 1, 0));
-	m_pCamera->Perspective(glm::radians(60.0f), 1, 0.01f, 1000);
+	auto pCamera = make_shared<PerspectiveCamera>();
+	pCamera->LookAt(vec3(0, 0, -2), vec3(0, 0, 0), vec3(0, 1, 0));
+	pCamera->Perspective(glm::radians(60.0f), 1, 0.01f, 1000);
+	m_pCamera = pCamera;
 
 	m_pController[CONTROLER_TYPE::CAMERA_CONTROLER] = new CameraController();
 	m_CurrentController = CONTROLER_TYPE::CAMERA_CONTROLER;
@@ -121,8 +119,6 @@ void BunnyScene::AddModelNode(shared_ptr<IModelNode> pModelNode)
 
 void BunnyScene::ShowProperty()
 {
-	m_pCamera->ShowProperty();
-
 	for (int i = 0; i < m_pRenderList.size(); i++)
 	{
 		m_pRenderList[i]->ShowProperty();

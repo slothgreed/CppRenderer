@@ -15,10 +15,9 @@ public:
 	virtual void AddModelNode(shared_ptr<IModelNode> pModelNode) override;
 private:
 	shared_ptr<GeometryPass> m_pGeometryPass;
-	shared_ptr<IShader> m_pDefaultShader;
 	shared_ptr<UniformScene> m_pUniformScene;
 	shared_ptr<UniformLight> m_pUniformLight;
-	shared_ptr<Camera> m_pCamera;
+	shared_ptr<ICamera> m_pCamera;
 	vector<shared_ptr<ILight>> m_pLights;
 	vector<shared_ptr<IModelNode>> m_pRenderList;
 	shared_ptr<IRenderTarget> m_pBackTarget;
