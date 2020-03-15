@@ -44,7 +44,7 @@ CommandResult VoxelCommand::Execute()
 	auto pModelNode = make_shared<PrimitiveNode>(pVertexBuffer);
 	pModelNode->GetMaterial()->SetFixColor(vec4(1, 0, 0, 1));
 	
-	args->m_pWorkspace->AddModelNode(pModelNode);
+	args->m_pScene->AddModelNode(pModelNode);
 	
 	return CommandResult::Success;
 }

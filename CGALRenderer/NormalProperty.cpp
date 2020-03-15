@@ -40,6 +40,7 @@ void NormalProperty::SetVBOData(IModel* pModel)
 		assert(0);
 	}
 
+	pPolygonModel->GetVertexList(vertexList);
 	vector<vec3> normalList;
 	for (int i = 0; i < vertexList.size(); i++)
 	{

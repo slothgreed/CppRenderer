@@ -15,7 +15,6 @@ public:
 	virtual void Invoke() = 0;
 	virtual void ShowProperty() {};
 	virtual void ProcessMouseEvent(const MouseInput& input) {};
-	virtual void AddModelNode(shared_ptr<IModelNode> pModelNode) {};
 protected:
 	shared_ptr<Mouse> m_pMouse;
 	CONTROLER_TYPE m_CurrentController;

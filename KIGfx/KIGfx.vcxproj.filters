@@ -105,6 +105,9 @@
     <ClInclude Include="IndexBuffer.h">
       <Filter>ヘッダー ファイル\GLObject</Filter>
     </ClInclude>
+    <ClInclude Include="ArrayBuffer.h">
+      <Filter>ヘッダー ファイル\GLObject</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -156,6 +159,9 @@
       <Filter>ソース ファイル\GLObject</Filter>
     </ClCompile>
     <ClCompile Include="UniformBuffer.cpp">
+      <Filter>ソース ファイル\GLObject</Filter>
+    </ClCompile>
+    <ClCompile Include="ArrayBuffer.cpp">
       <Filter>ソース ファイル\GLObject</Filter>
     </ClCompile>
   </ItemGroup>

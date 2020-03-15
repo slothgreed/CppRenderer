@@ -4,19 +4,22 @@ namespace KI
 {
 namespace Gfx
 {
-class DLL_EXPORT IndexBuffer
+class DLL_EXPORT IndexBuffer : public GLObject
 {
 public:
 	IndexBuffer();
 	~IndexBuffer();
-	void Generate();
-	bool IsGenerated();
+	virtual void Generate() override;
 	void Set(GLuint primitiveType, const vector<int>& index);
-	void Dispose();
+	virtual void Dispose() override;
 	void Draw();
 	GLuint Size() { return m_indexSize; }
+
+protected:
+	virtual void Bind() override;
+	virtual void UnBind() override;
+private:
 	GLuint m_PrimitiveType;
-	GLuint m_Id;
 	GLuint m_indexSize;
 };
 }

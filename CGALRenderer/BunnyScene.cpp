@@ -41,12 +41,12 @@ void BunnyScene::Initialize(Project* m_pProject)
 		auto polyNode = make_shared<HalfEdgeDSNode>(polyhedron);
 
 		auto voxelCommandArgs = make_shared<VoxelCommandArgs>(
-			this, polyNode->GetModel(), 100);
+			m_pScene.get(), polyNode->GetModel(), 100);
 		
 		//auto voxelCommand = make_shared<VoxelCommand>(voxelCommandArgs);
 
 		//m_pCommandManager->Execute(voxelCommand);
-		m_pRenderList.push_back(polyNode);
+		m_pScene->AddModelNode(polyNode);
 	}
 	pCamera->FitToBDB(modelSpace);
 
@@ -64,19 +64,20 @@ void BunnyScene::Initialize(Project* m_pProject)
 		texture->End();
 		cubeNode->GetMaterial()->AddTexture(texture);
 
-		m_pRenderList.push_back(cubeNode);
+		m_pScene->AddModelNode(cubeNode);
 	}
 
 
 	{
 		auto moveManipulator = make_shared<ManipulatorNode>();
-		m_pRenderList.push_back(moveManipulator);
+		m_pScene->AddModelNode(moveManipulator);
 	}
 
 	auto axis = make_shared<DefaultVertexBuffer>();
 	ModelGenerator::Axis(axis.get());
 	auto axisNode = make_shared<PrimitiveNode>(axis);
-	m_pRenderList.push_back(axisNode);
+	m_pScene->AddModelNode(axisNode);
+
 
 	m_pBackTarget = make_shared<SymbolicRenderTarget>(GL_BACK);
 	m_pGeometryPass = make_shared<GeometryPass>();
@@ -88,30 +89,15 @@ void BunnyScene::Invoke()
 	m_pScene->Bind();
 	m_pBackTarget->Begin();
 	m_pBackTarget->Clear();
-	for (int i = 0; i < m_pRenderList.size(); i++)
-	{
-		m_pRenderList[i]->Draw();
-	}
+	m_pScene->Draw();
 	m_pScene->UnBind();
-}
-
-void BunnyScene::AddModelNode(shared_ptr<IModelNode> pModelNode)
-{
-	m_pRenderList.push_back(pModelNode);
-}
-
-void BunnyScene::ShowProperty()
-{
-	for (int i = 0; i < m_pRenderList.size(); i++)
-	{
-		m_pRenderList[i]->ShowProperty();
-	}
 }
 
 void BunnyScene::ProcessMouseEvent(const MouseInput& input)
 {
 	m_pMouse->ApplyMouseInput(input);
-	if (input.Event() == MOUSE_EVENT_WHEEL) {
+	if (input.Event() == MOUSE_EVENT_WHEEL) 
+	{
 		m_pController[m_CurrentController]->Wheel(*m_pMouse.get());
 	}
 	else if (input.Event() == MOUSE_EVENT_MOVE)

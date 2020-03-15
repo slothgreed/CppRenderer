@@ -4,11 +4,6 @@ namespace Renderer
 {
 DefaultVertexBuffer::DefaultVertexBuffer()
 {
-	for (int i = 0; i < VERTEX_ATTRIB_NUM; i++)
-	{
-		m_id[i] = 0;
-	}
-
 	m_vaoId = 0;
 }
 
@@ -20,47 +15,44 @@ DefaultVertexBuffer::~DefaultVertexBuffer()
 void DefaultVertexBuffer::Generate(VERTEX_LAYOUT layout)
 {
 	m_layout = layout;
-	GLuint* attrib = new GLuint[NumVertexAttrib()];
-	glGenBuffers(NumVertexAttrib(), attrib);
 
 	if (m_layout == VERTEX_LAYOUT_P)
 	{
-		m_id[VERTEX_ATTRIB_POSITION]	= attrib[0];
+		m_id[VERTEX_ATTRIB_POSITION].Generate();
 	}
 	else if(m_layout == VERTEX_LAYOUT_PN)
 	{
-		m_id[VERTEX_ATTRIB_POSITION]	= attrib[0];
-		m_id[VERTEX_ATTRIB_NORMAL]		= attrib[1];
+		m_id[VERTEX_ATTRIB_POSITION].Generate();
+		m_id[VERTEX_ATTRIB_NORMAL].Generate();
 	}
 	else if (m_layout == VERTEX_LAYOUT_PC)
 	{
-		m_id[VERTEX_ATTRIB_POSITION]	= attrib[0];
-		m_id[VERTEX_ATTRIB_COLOR]		= attrib[1];
+		m_id[VERTEX_ATTRIB_POSITION].Generate();
+		m_id[VERTEX_ATTRIB_COLOR].Generate();
 	}
 	else if (m_layout == VERTEX_LAYOUT_PT)
 	{
-		m_id[VERTEX_ATTRIB_POSITION]	= attrib[0];
-		m_id[VERTEX_ATTRIB_TEXCOORD]	= attrib[1];
+		m_id[VERTEX_ATTRIB_POSITION].Generate();
+		m_id[VERTEX_ATTRIB_TEXCOORD].Generate();
 	}
 	else if (m_layout == VERTEX_LAYOUT_PNC)
 	{
-		m_id[VERTEX_ATTRIB_POSITION]	= attrib[0];
-		m_id[VERTEX_ATTRIB_NORMAL]		= attrib[1];
-		m_id[VERTEX_ATTRIB_COLOR]		= attrib[2];
+		m_id[VERTEX_ATTRIB_POSITION].Generate();
+		m_id[VERTEX_ATTRIB_NORMAL].Generate();
+		m_id[VERTEX_ATTRIB_COLOR].Generate();
 	}
 	else if(m_layout == VERTEX_LAYOUT_PNCT)
 	{
-		m_id[VERTEX_ATTRIB_POSITION]	= attrib[0];
-		m_id[VERTEX_ATTRIB_NORMAL]		= attrib[1];
-		m_id[VERTEX_ATTRIB_COLOR]		= attrib[2];
-		m_id[VERTEX_ATTRIB_TEXCOORD]	= attrib[3];
+		m_id[VERTEX_ATTRIB_POSITION].Generate();
+		m_id[VERTEX_ATTRIB_NORMAL].Generate();
+		m_id[VERTEX_ATTRIB_COLOR].Generate();
+		m_id[VERTEX_ATTRIB_TEXCOORD].Generate();
 	}
 	else
 	{
 		assert(0);
 	}
 
-	delete attrib;
 	Logger::GLError();
 
 	GenerateVAO();
@@ -69,10 +61,7 @@ void DefaultVertexBuffer::Generate(VERTEX_LAYOUT layout)
 
 void DefaultVertexBuffer::SetPosition(GLuint primitiveType, const vector<vec3>& position)
 {
-	glBindBuffer(GL_ARRAY_BUFFER, m_id[VERTEX_ATTRIB_POSITION]);
-	glBufferData(GL_ARRAY_BUFFER, position.size() * sizeof(vec3), position.data(), GL_STATIC_DRAW);
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-
+	m_id[VERTEX_ATTRIB_POSITION].Set(position);
 	m_vertexNum = (GLuint)position.size();
 	m_PrimitiveType = primitiveType;
 	Logger::GLError();
@@ -86,9 +75,7 @@ void DefaultVertexBuffer::SetNormal(const vector<vec3>& normal)
 		return;
 	}
 
-	glBindBuffer(GL_ARRAY_BUFFER, m_id[VERTEX_ATTRIB_NORMAL]);
-	glBufferData(GL_ARRAY_BUFFER, normal.size() * sizeof(vec3), normal.data(), GL_STATIC_DRAW);
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	m_id[VERTEX_ATTRIB_NORMAL].Set(normal);
 	Logger::GLError();
 }
 
@@ -100,9 +87,7 @@ void DefaultVertexBuffer::SetColor(const vector<vec3>& color)
 		return;
 	}
 
-	glBindBuffer(GL_ARRAY_BUFFER, m_id[VERTEX_ATTRIB_COLOR]);
-	glBufferData(GL_ARRAY_BUFFER, color.size() * sizeof(vec3), color.data(), GL_STATIC_DRAW);
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	m_id[VERTEX_ATTRIB_COLOR].Set(color);
 	Logger::GLError();
 }
 
@@ -114,9 +99,7 @@ void DefaultVertexBuffer::SetTexcoord(const vector<vec2>& texcoord)
 		return;
 	}
 
-	glBindBuffer(GL_ARRAY_BUFFER, m_id[VERTEX_ATTRIB_TEXCOORD]);
-	glBufferData(GL_ARRAY_BUFFER, texcoord.size() * sizeof(vec2), texcoord.data(), GL_STATIC_DRAW);
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	m_id[VERTEX_ATTRIB_TEXCOORD].Set(texcoord);
 	Logger::GLError();
 }
 
@@ -139,27 +122,27 @@ void DefaultVertexBuffer::GenerateVAO()
 	glGenVertexArrays(1, &m_vaoId);
 	glBindVertexArray(m_vaoId);
 	glEnableVertexAttribArray(VERTEX_ATTRIB_POSITION);
-	glBindBuffer(GL_ARRAY_BUFFER, m_id[VERTEX_ATTRIB_POSITION]);
+	glBindBuffer(GL_ARRAY_BUFFER, m_id[VERTEX_ATTRIB_POSITION].ID());
 	glVertexAttribPointer(VERTEX_ATTRIB_POSITION, 3, GL_FLOAT, GL_FALSE, 0, NULL);
 
 	if (HasNormal())
 	{
 		glEnableVertexAttribArray(VERTEX_ATTRIB_NORMAL);
-		glBindBuffer(GL_ARRAY_BUFFER, m_id[VERTEX_ATTRIB_NORMAL]);
+		glBindBuffer(GL_ARRAY_BUFFER, m_id[VERTEX_ATTRIB_NORMAL].ID());
 		glVertexAttribPointer(VERTEX_ATTRIB_NORMAL, 3, GL_FLOAT, GL_FALSE, 0, NULL);
 	}
 
 	if (HasColor())
 	{
 		glEnableVertexAttribArray(VERTEX_ATTRIB_COLOR);
-		glBindBuffer(GL_ARRAY_BUFFER, m_id[VERTEX_ATTRIB_COLOR]);
+		glBindBuffer(GL_ARRAY_BUFFER, m_id[VERTEX_ATTRIB_COLOR].ID());
 		glVertexAttribPointer(VERTEX_ATTRIB_COLOR, 3, GL_FLOAT, GL_FALSE, 0, NULL);
 	}
 
 	if (HasTexCoord())
 	{
 		glEnableVertexAttribArray(VERTEX_ATTRIB_TEXCOORD);
-		glBindBuffer(GL_ARRAY_BUFFER, m_id[VERTEX_ATTRIB_TEXCOORD]);
+		glBindBuffer(GL_ARRAY_BUFFER, m_id[VERTEX_ATTRIB_TEXCOORD].ID());
 		glVertexAttribPointer(VERTEX_ATTRIB_TEXCOORD, 2, GL_FLOAT, GL_FALSE, 0,NULL);
 	}
 
@@ -171,10 +154,7 @@ void DefaultVertexBuffer::Dispose()
 {
 	for (int i = 0; i < VERTEX_ATTRIB_NUM; i++)
 	{
-		if (m_id[i] != 0)
-		{
-			glDeleteBuffers(1, &m_id[i]);
-		}
+		m_id[i].Dispose();
 	}
 
 	if (m_vaoId != 0)

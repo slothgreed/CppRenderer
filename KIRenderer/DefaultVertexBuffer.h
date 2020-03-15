@@ -31,7 +31,7 @@ private:
 	void GenerateVAO();
 	int NumVertexAttrib();
 
-	GLuint m_id[VERTEX_ATTRIB_NUM];
+	ArrayBuffer m_id[VERTEX_ATTRIB_NUM];
 	GLuint m_vaoId;
 	IndexBuffer m_indexBuffer;
 	

@@ -20,15 +20,21 @@ void IndexBuffer::Generate()
 	}
 }
 
-bool IndexBuffer::IsGenerated()
+void IndexBuffer::Bind()
 {
-	return m_Id != 0;
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_Id);
+}
+
+void IndexBuffer::UnBind()
+{
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 }
 
 void IndexBuffer::Set(GLuint primitiveType, const vector<int>& index)
 {
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_Id);
+	Bind();
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, index.size() * sizeof(int), index.data(), GL_STATIC_DRAW);
+	// UnBind(); ‰½ŒÌ‚©•s—v
 	m_PrimitiveType = primitiveType;
 	m_indexSize = (GLuint)index.size();
 	Logger::GLError();

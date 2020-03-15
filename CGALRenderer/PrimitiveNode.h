@@ -12,8 +12,10 @@ public:
 	virtual void Pick(const vec3& direction, PickResult& result) override {};
 	virtual void ShowProperty();
 	virtual void Update(void* sender, IEventArgs* args);
-	shared_ptr<DefaultMaterial> GetMaterial() { return m_pMaterial; }
+	DefaultMaterial* GetMaterial() { return m_pMaterial.get(); }
+	DefaultVertexBuffer* GetVertexBuffer() { return m_pVertexBuffer.get(); }
 	void SetState(shared_ptr<IGLState> pState) { m_pState = pState; };
+		
 private:
 	string m_name;
 	shared_ptr<DefaultMaterial> m_pMaterial;

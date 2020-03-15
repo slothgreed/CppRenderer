@@ -169,6 +169,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ArrayBuffer.h" />
     <ClInclude Include="FrameBuffer.h" />
     <ClInclude Include="GfxTypes.h" />
     <ClInclude Include="GLObject.h" />
@@ -196,6 +197,7 @@
     <ClInclude Include="Viewport.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ArrayBuffer.cpp" />
     <ClCompile Include="FrameBuffer.cpp" />
     <ClCompile Include="GLObject.cpp" />
     <ClCompile Include="IndexBuffer.cpp" />
