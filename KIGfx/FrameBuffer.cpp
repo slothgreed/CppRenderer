@@ -8,6 +8,7 @@ FrameBuffer::FrameBuffer()
 
 FrameBuffer::~FrameBuffer()
 {
+
 }
 
 void FrameBuffer::Generate()

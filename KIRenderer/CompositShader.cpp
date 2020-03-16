@@ -5,7 +5,7 @@ namespace Renderer
 CompositShader::CompositShader()
 {
 	SetVersion(GLSL_VERSION_400_CORE);
-	SetVertexPath(string(SHADER_DIRECTORY) + "\\composit.vert");
+	SetVertexPath(string(SHADER_DIRECTORY) + "\\postprocess.vert");
 	SetFragPath(string(SHADER_DIRECTORY) + "\\composit.frag");
 }
 

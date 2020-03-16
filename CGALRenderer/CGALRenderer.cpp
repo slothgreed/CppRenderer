@@ -158,7 +158,6 @@ bool CGALRenderer::Initialize()
 	m_pViewport->SetPosition(0, 0);
 	m_pViewport->Resize(640, 480);
 
-
 	theApp = this;
 	return true;
 }
