@@ -4,7 +4,7 @@ namespace KI
 {
 namespace Gfx
 {
-class DLL_EXPORT IndexBuffer : public GLObject
+class DLL_EXPORT IndexBuffer : public IGLObject
 {
 public:
 	IndexBuffer();

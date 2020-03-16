@@ -11,8 +11,8 @@ public:
 	Mouse();
 	~Mouse();
 
-	const glm::vec2& Position() const { return m_current; };
-	const glm::vec2& Delta() const { return m_delta; };
+	const vec2& Position() const { return m_current; };
+	const vec2& Delta() const { return m_delta; };
 	MOUSE_EVENT Event() const { return m_event; };
 	MOUSE_BUTTON Button() const { return m_press; };
 	int Wheel() const { return m_wheel; };
@@ -20,9 +20,9 @@ public:
 	void ApplyMouseInput(const MouseInput& input);
 private:
 
-	glm::vec2 m_before;
-	glm::vec2 m_current;
-	glm::vec2 m_delta;
+	vec2 m_before;
+	vec2 m_current;
+	vec2 m_delta;
 	bool m_drag;
 	MOUSE_EVENT m_event;
 	MOUSE_BUTTON m_press;

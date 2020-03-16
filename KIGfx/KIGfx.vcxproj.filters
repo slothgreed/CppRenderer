@@ -39,16 +39,10 @@
     <ClInclude Include="GLTypes.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="GLState.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="RenderTarget.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="SymbolicRenderTarget.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="UniformBuffer.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Viewport.h">
@@ -67,9 +61,6 @@
       <Filter>ヘッダー ファイル\GLObject</Filter>
     </ClInclude>
     <ClInclude Include="FrameBuffer.h">
-      <Filter>ヘッダー ファイル\GLObject</Filter>
-    </ClInclude>
-    <ClInclude Include="GLObject.h">
       <Filter>ヘッダー ファイル\GLObject</Filter>
     </ClInclude>
     <ClInclude Include="Texture.h">
@@ -107,6 +98,15 @@
     </ClInclude>
     <ClInclude Include="ArrayBuffer.h">
       <Filter>ヘッダー ファイル\GLObject</Filter>
+    </ClInclude>
+    <ClInclude Include="UniformBuffer.h">
+      <Filter>ヘッダー ファイル\GLObject</Filter>
+    </ClInclude>
+    <ClInclude Include="IGLState.h">
+      <Filter>ヘッダー ファイル\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="IGLObject.h">
+      <Filter>ヘッダー ファイル\Interface</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

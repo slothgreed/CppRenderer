@@ -19,7 +19,7 @@ void VoronoiScene::Initialize(Project* m_pProject)
 	pPointVertexBuffer->Generate(VERTEX_LAYOUT::VERTEX_LAYOUT_P);
 	m_pPointNode = make_shared<PrimitiveNode>(pPointVertexBuffer);
 	m_pPointNode->GetMaterial()->SetFixColor(vec4(0, 0, 0, 1));
-	m_pPointNode->SetState(make_shared<PointState>(5, false));
+	m_pPointNode->SetState(make_shared<PointState>(5.0f, false));
 	m_pScene->AddModelNode(m_pPointNode);
 
 	GenerateVoronoiDiagram();

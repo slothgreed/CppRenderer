@@ -31,6 +31,9 @@ void PointState::UnBind()
 }
 bool PointState::Compare(const IGLState& state)
 {
+	assert(0);
+	// memcmpŒŸØ
+	// Depth‚ÌONOFF
 	if (state.Type() == STATE_TYPE_POINT)
 	{
 		const PointState* point = dynamic_cast<const PointState*>(&state);

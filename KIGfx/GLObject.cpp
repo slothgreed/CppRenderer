@@ -2,7 +2,7 @@ namespace KI
 {
 namespace Gfx
 {
-void GLObject::Begin()
+void IGLObject::Begin()
 {
 	if (m_Id == 0)
 	{
@@ -14,7 +14,7 @@ void GLObject::Begin()
 	m_modifing = true;
 }
 
-void GLObject::End()
+void IGLObject::End()
 {
 	UnBind();
 

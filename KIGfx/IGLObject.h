@@ -4,11 +4,11 @@ namespace KI
 {
 namespace Gfx
 {
-class DLL_EXPORT GLObject
+class DLL_EXPORT IGLObject
 {
 public:
-	GLObject() { m_Id = 0; m_modifing = false; };
-	~GLObject() {};
+	IGLObject() { m_Id = 0; m_modifing = false; };
+	~IGLObject() {};
 
 	GLuint ID() { return m_Id; }
 	bool IsGenerated() { return m_Id != 0; }

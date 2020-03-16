@@ -41,6 +41,7 @@ using namespace KI::Gfx;
 #include "ILight.h"
 
 #include "Vertex.h"
+
 #include "DirectionLight.h"
 #include "SpotLight.h"
 #include "PointLight.h"
@@ -65,6 +66,7 @@ using namespace KI::Gfx;
 #include "ICamera.h"
 #include "PerspectiveCamera.h"
 #include "OrthoCamera.h"
+
 // Renderer
 #include "PfxPlane.h"
 #include "IPostEffect.h"

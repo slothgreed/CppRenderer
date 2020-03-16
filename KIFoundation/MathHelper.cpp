@@ -14,7 +14,7 @@ void MathHelper::SphericalToCartesian(float radius, float x, float y, vec3& resu
 	//Logger::Output(LOG_LEVEL::DEBUG, to_string(x) + "," + to_string(y) + "\n");
 }
 
-void MathHelper::CartesianToSpherical(const glm::vec3& position, float& radian, float& theta, float& phi)
+void MathHelper::CartesianToSpherical(const vec3& position, float& radian, float& theta, float& phi)
 {
 	radian = glm::length(position);
 	phi = glm::acos(position.z / radian);

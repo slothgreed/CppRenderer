@@ -172,8 +172,8 @@
     <ClInclude Include="ArrayBuffer.h" />
     <ClInclude Include="FrameBuffer.h" />
     <ClInclude Include="GfxTypes.h" />
-    <ClInclude Include="GLObject.h" />
-    <ClInclude Include="GLState.h" />
+    <ClInclude Include="IGLObject.h" />
+    <ClInclude Include="IGLState.h" />
     <ClInclude Include="GLTypes.h" />
     <ClInclude Include="IndexBuffer.h" />
     <ClInclude Include="IRenderTarget.h" />

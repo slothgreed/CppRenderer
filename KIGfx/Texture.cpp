@@ -19,10 +19,10 @@ void Texture::Generate()
 
 	glGenTextures(1, &m_Id);
 	glBindTexture(GL_TEXTURE_2D, m_Id);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
 
 	glBindTexture(GL_TEXTURE_2D, 0);
 
@@ -87,6 +87,11 @@ void Texture::Set(const TextureData& data)
 	}
 
 	SetTextureData(data);
+}
+
+void Texture::SetSampler(shared_ptr<Sampler> pSampler)
+{
+	m_pSampler = pSampler;
 }
 
 void Texture::SetTextureData(const TextureData& data)

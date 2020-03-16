@@ -5,7 +5,7 @@ namespace KI
 {
 namespace Gfx
 {
-class DLL_EXPORT RenderBuffer : public GLObject
+class DLL_EXPORT RenderBuffer : public IGLObject
 {
 public:
 	RenderBuffer();

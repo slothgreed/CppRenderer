@@ -4,7 +4,7 @@ namespace KI
 {
 namespace Gfx
 {
-class DLL_EXPORT UniformBuffer : public GLObject
+class DLL_EXPORT UniformBuffer : public IGLObject
 {
 public:
 	UniformBuffer(GLuint dataLocation);

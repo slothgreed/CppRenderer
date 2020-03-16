@@ -39,7 +39,7 @@ public:
 	}
 };
 
-class DLL_EXPORT Texture : public GLObject
+class DLL_EXPORT Texture : public IGLObject
 {
 public:
 	Texture();
@@ -52,6 +52,7 @@ public:
 	int Height() { return m_data.height; };
 
 	void Set(const TextureData& data);
+	void SetSampler(shared_ptr<Sampler> pSampler);
 protected:
 
 	virtual void Bind();
@@ -60,6 +61,7 @@ protected:
 
 private:
 	void SetTextureData(const TextureData& data);
+	shared_ptr<Sampler> m_pSampler;
 };
 }
 }

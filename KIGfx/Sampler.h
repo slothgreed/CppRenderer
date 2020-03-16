@@ -4,7 +4,7 @@ namespace KI
 {
 namespace Gfx
 {
-class DLL_EXPORT Sampler : public GLObject
+class DLL_EXPORT Sampler : public IGLObject
 {
 public:
 	struct SamplerData

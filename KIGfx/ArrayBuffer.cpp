@@ -109,12 +109,12 @@ void ArrayBuffer::Set(const vector<int>& data)
 	Logger::GLError();
 }
 
-void IndexBuffer::Bind()
+void ArrayBuffer::Bind()
 {
 	glBindBuffer(GL_ARRAY_BUFFER, m_Id);
 }
 
-void IndexBuffer::UnBind()
+void ArrayBuffer::UnBind()
 {
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }

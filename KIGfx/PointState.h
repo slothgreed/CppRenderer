@@ -12,9 +12,9 @@ public:
 	~PointState();
 
 	virtual const STATE_TYPE Type() const { return STATE_TYPE_POINT; }
-	void SetPointSize(GLuint value) { m_pointSize = value; }
-	GLuint GetPointSize() { return m_pointSize; }
-	GLuint const GetPointSize() const { return m_pointSize; }
+	void SetPointSize(GLfloat value) { m_pointSize = value; }
+	GLfloat GetPointSize() { return m_pointSize; }
+	GLfloat const GetPointSize() const { return m_pointSize; }
 
 	virtual void Bind() override;
 	virtual void UnBind() override;
@@ -22,7 +22,7 @@ public:
 	virtual bool Compare(const IGLState& state) override;
 
 private:
-	GLuint m_pointSize;
+	GLfloat m_pointSize;
 	GLboolean m_depthTest;
 };
 }

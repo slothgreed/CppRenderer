@@ -16,14 +16,14 @@ public:
 	void SetPress(MOUSE_BUTTON value) { m_press |= value; }
 	void SetRelease(MOUSE_BUTTON value) { m_press &= ~value; }
 
-	const glm::vec2& Position() const { return m_position; };
+	const vec2& Position() const { return m_position; };
 	MOUSE_EVENT Event() const { return m_event; };
 	int Wheel() const { return m_wheel; };
 	bool Press(MOUSE_BUTTON value) const { return m_press & value; }
 	MOUSE_BUTTON Press() const { return (MOUSE_BUTTON)m_press; }
 private:
-	glm::vec2 m_position;
-	glm::vec2 m_delta;
+	vec2 m_position;
+	vec2 m_delta;
 	MOUSE_EVENT m_event;
 	unsigned int m_press;	//Å@MOUSE_BUTTON
 	int m_wheel;

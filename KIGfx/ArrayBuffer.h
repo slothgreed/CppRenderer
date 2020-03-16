@@ -4,7 +4,7 @@ namespace KI
 {
 namespace Gfx
 {
-class DLL_EXPORT ArrayBuffer : public GLObject
+class DLL_EXPORT ArrayBuffer : public IGLObject
 {
 public:
 	ArrayBuffer();
