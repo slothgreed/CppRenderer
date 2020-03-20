@@ -13,7 +13,7 @@ public:
 
 	static void Axis(DefaultVertexBuffer* vertexBuffer);
 	static void RenderPlane(DefaultVertexBuffer* vertexBuffer); // ƒŒƒ“ƒ_ƒŠƒ“ƒO—p‚Ì•½–Ê
-	static void CubeSpace(const BDB& size, DefaultVertexBuffer* pVertexBuffer);
+	static void CubeSpace(const BDB& size, DefaultVertexBuffer* pVertexBuffer, IndexBuffer* pIndexBuffer);
 private:
 };
 }

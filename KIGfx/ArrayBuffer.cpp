@@ -2,10 +2,12 @@ namespace KI
 {
 namespace Gfx
 {
-ArrayBuffer::ArrayBuffer()
+ArrayBuffer::ArrayBuffer(GLuint componentType, GLuint componentSize)
 {
 	m_Id = 0;
 	m_Size = 0;
+	m_ComponentType = componentType;
+	m_ComponentSize = componentSize;
 }
 
 ArrayBuffer::~ArrayBuffer()
@@ -25,8 +27,13 @@ void ArrayBuffer::Set(const vector<vec2>& data)
 {
 	if (m_Id == 0)
 	{
+		Generate();
+	}
+
+	if (m_ComponentType != GL_FLOAT || 
+		m_ComponentSize != 2)
+	{
 		assert(0);
-		return;
 	}
 
 	int size = (int)data.size() * sizeof(vec2);
@@ -56,8 +63,13 @@ void ArrayBuffer::Set(const vector<vec3>& data)
 {
 	if (m_Id == 0)
 	{
+		Generate();
+	}
+
+	if (m_ComponentType != GL_FLOAT ||
+		m_ComponentSize != 3)
+	{
 		assert(0);
-		return;
 	}
 
 	int size = (int)data.size() * sizeof(vec3);
@@ -83,10 +95,15 @@ void ArrayBuffer::Set(const vector<vec3>& data)
 
 void ArrayBuffer::Set(const vector<int>& data)
 {
-	if (m_Id == 0)
+	if (m_ComponentType != GL_INT ||
+		m_ComponentSize != 1)
 	{
 		assert(0);
-		return;
+	}
+
+	if (m_Id == 0)
+	{
+		Generate();
 	}
 
 	int size = (int)data.size() * sizeof(int);
@@ -99,11 +116,14 @@ void ArrayBuffer::Set(const vector<int>& data)
 	glBindBuffer(GL_ARRAY_BUFFER, m_Id);
 	if (m_Size != size)
 	{
+		m_Size = size;
+		m_ComponentType = GL_INT;
+		m_ComponentSize = 1; //TODO:check;
+		assert(0);
 		glBufferData(GL_ARRAY_BUFFER, m_Size, data.data(), GL_STATIC_DRAW);
 	}
 	else
 	{
-		m_Size = size;
 		glBufferSubData(GL_ARRAY_BUFFER, 0, m_Size, data.data());
 	}
 	Logger::GLError();

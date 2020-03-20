@@ -3,7 +3,7 @@ namespace KI
 namespace Renderer
 {
 
-void IMaterial::Draw(IVertexBuffer* pVertexBuffer)
+void IMaterial::Draw(IVertexBuffer* pVertexBuffer, IndexBuffer* pIndexBuffer)
 {
 	if (pVertexBuffer == nullptr)
 	{
@@ -14,7 +14,14 @@ void IMaterial::Draw(IVertexBuffer* pVertexBuffer)
 
 	m_pShader->Use();
 	Bind();
-	pVertexBuffer->Draw();
+	if (pIndexBuffer == nullptr)
+	{
+		pVertexBuffer->Draw();
+	}
+	else
+	{
+		pVertexBuffer->Draw(pIndexBuffer);
+	}
 	UnBind();
 	m_pShader->UnUse();
 }

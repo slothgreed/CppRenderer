@@ -5,7 +5,8 @@ namespace KI
 class PrimitiveNode : public IModelNode
 {
 public:
-	PrimitiveNode(shared_ptr<DefaultVertexBuffer> buffer);
+	PrimitiveNode(shared_ptr<DefaultVertexBuffer> pVertexBuffer, shared_ptr<IndexBuffer> pIndexBuffer);
+	PrimitiveNode(shared_ptr<DefaultVertexBuffer> pVertexBuffer);
 	~PrimitiveNode();
 
 	virtual void Draw();
@@ -14,12 +15,14 @@ public:
 	virtual void Update(void* sender, IEventArgs* args);
 	DefaultMaterial* GetMaterial() { return m_pMaterial.get(); }
 	DefaultVertexBuffer* GetVertexBuffer() { return m_pVertexBuffer.get(); }
+	IndexBuffer* GetIndexBuffer();
 	void SetState(shared_ptr<IGLState> pState) { m_pState = pState; };
 		
 private:
 	string m_name;
 	shared_ptr<DefaultMaterial> m_pMaterial;
 	shared_ptr<DefaultVertexBuffer> m_pVertexBuffer;
+	shared_ptr<IndexBuffer> m_pIndexBuffer;
 	shared_ptr<IGLState> m_pState;
 };
 }

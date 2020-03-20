@@ -22,6 +22,7 @@ protected:
 	shared_ptr<IMaterial> m_pFaceMaterial;
 	shared_ptr<IMaterial> m_pEdgeMaterial;
 	shared_ptr<IVertexBuffer> m_pFaceBuffer;
+	shared_ptr<IndexBuffer> m_pFaceIndex;
 	shared_ptr<IVertexBuffer> m_pEdgeBuffer;
 
 private:

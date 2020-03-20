@@ -32,6 +32,11 @@ void IndexBuffer::UnBind()
 
 void IndexBuffer::Set(GLuint primitiveType, const vector<int>& index)
 {
+	if (IsGenerated() == false)
+	{
+		Generate();
+	}
+
 	Bind();
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, index.size() * sizeof(int), index.data(), GL_STATIC_DRAW);
 	// UnBind(); ‰½ŒÌ‚©•s—v
@@ -52,6 +57,7 @@ void IndexBuffer::Dispose()
 
 void IndexBuffer::Draw()
 {
+	Bind();
 	glDrawElements(m_PrimitiveType, Size(), GL_UNSIGNED_INT, 0);
 }
 }

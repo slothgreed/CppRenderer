@@ -36,7 +36,6 @@ void ModelGenerator::Axis(DefaultVertexBuffer* pVertexBuffer)
 	color.push_back(vec3(0.0, 0.0, 1.0));
 	color.push_back(vec3(0.0, 0.0, 1.0));
 
-	pVertexBuffer->Generate(VERTEX_LAYOUT_PC);
 	pVertexBuffer->SetPosition(GL_LINES, position);
 	pVertexBuffer->SetColor(color);
 }
@@ -62,12 +61,11 @@ void ModelGenerator::RenderPlane(DefaultVertexBuffer* pVertexBuffer)
 	texcoord.push_back(vec2(0, 1));
 	texcoord.push_back(vec2(1, 1));
 
-	pVertexBuffer->Generate(VERTEX_LAYOUT_PT);
 	pVertexBuffer->SetPosition(GL_TRIANGLE_STRIP, position);
 	pVertexBuffer->SetTexcoord(texcoord);
 }
 
-void ModelGenerator::CubeSpace(const BDB& size, DefaultVertexBuffer* pVertexBuffer)
+void ModelGenerator::CubeSpace(const BDB& size, DefaultVertexBuffer* pVertexBuffer, IndexBuffer* pIndexBuffer)
 {
 	vector<vec3> position;
 	position.reserve(24);
@@ -140,7 +138,6 @@ void ModelGenerator::CubeSpace(const BDB& size, DefaultVertexBuffer* pVertexBuff
 	texcoord.push_back(vec2(widthCell * 3, heightCell));
 	texcoord.push_back(vec2(widthCell * 2, heightCell));
 
-	pVertexBuffer->Generate(VERTEX_LAYOUT_PT);
 	pVertexBuffer->SetPosition(GL_TRIANGLES, position);
 	pVertexBuffer->SetTexcoord(texcoord);
 
@@ -154,7 +151,7 @@ void ModelGenerator::CubeSpace(const BDB& size, DefaultVertexBuffer* pVertexBuff
 		offset += 4;
 	}
 
-	pVertexBuffer->SetIndex(GL_TRIANGLES, index);
+	pIndexBuffer->Set(GL_TRIANGLES, index);
 }
 }
 }

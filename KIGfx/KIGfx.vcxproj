@@ -203,6 +203,7 @@
     <ClCompile Include="IndexBuffer.cpp" />
     <ClCompile Include="IRenderTarget.cpp" />
     <ClCompile Include="IShader.cpp" />
+    <ClCompile Include="IVertexBuffer.cpp" />
     <ClCompile Include="LineState.cpp" />
     <ClCompile Include="PointState.cpp" />
     <ClCompile Include="RenderBuffer.cpp" />

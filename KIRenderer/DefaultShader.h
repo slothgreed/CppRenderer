@@ -63,7 +63,7 @@ public:
 	virtual SHADER_TYPE Type() { return SHADER_TYPE::SHADER_TYPE_DEFAULT; };
 	void GetVertexDefine(string& define);
 	void GetFragDefine(string& define);
-	void SetShaderDefine(VERTEX_LAYOUT layout);
+	void SetShaderDefine(GLuint layout);
 	virtual bool Compare(IShaderDefine* shaderDefine) override;
 
 	void SetUseGBuffer(bool value) { m_useGBuffer = value; }

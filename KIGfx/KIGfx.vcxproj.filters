@@ -28,6 +28,9 @@
     <Filter Include="ヘッダー ファイル\Interface">
       <UniqueIdentifier>{467bf899-c403-4f5a-80d1-fc7c82763a11}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Interface">
+      <UniqueIdentifier>{2f5b0805-d1c0-4038-95bf-f088cb2396ef}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -116,12 +119,6 @@
     <ClCompile Include="RenderTarget.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="IShader.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="IRenderTarget.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="Viewport.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
@@ -163,6 +160,15 @@
     </ClCompile>
     <ClCompile Include="ArrayBuffer.cpp">
       <Filter>ソース ファイル\GLObject</Filter>
+    </ClCompile>
+    <ClCompile Include="IVertexBuffer.cpp">
+      <Filter>ソース ファイル\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="IRenderTarget.cpp">
+      <Filter>ソース ファイル\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="IShader.cpp">
+      <Filter>ソース ファイル\Interface</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -11,7 +11,6 @@ BDBProperty::~BDBProperty()
 void BDBProperty::Build(IModel* pModel)
 {
 	m_pVertexBuffer = make_shared<DefaultVertexBuffer>();
-	m_pVertexBuffer->Generate(VERTEX_LAYOUT::VERTEX_LAYOUT_P);
 
 	
 	vector<vec3> position;
@@ -41,10 +40,11 @@ void BDBProperty::Build(IModel* pModel)
 	index[i] = 2; i++; index[i] = 6; i++;
 	index[i] = 3; i++; index[i] = 7;
 
-	m_pVertexBuffer->SetIndex(GL_LINES, index);
+	m_pIndexBuffer = make_shared<IndexBuffer>();
+	m_pIndexBuffer->Set(GL_LINES, index);
 
 	auto shaderDefine = make_shared<DefaultShaderDefine>();
-	shaderDefine->SetShaderDefine(VERTEX_LAYOUT_P);
+	shaderDefine->SetShaderDefine(VERTEX_ATTRIB_POSITION);
 	m_pShader = ShaderManager::Instance()->FindOrNew(shaderDefine);
 
 }
@@ -74,7 +74,7 @@ void BDBProperty::Update(IModel* pModel)
 void BDBProperty::Draw()
 {
 	m_pShader->Use();
-	m_pVertexBuffer->Draw();
+	m_pVertexBuffer->Draw(m_pIndexBuffer.get());
 	m_pShader->UnUse();
 }
 }

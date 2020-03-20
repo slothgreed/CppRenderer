@@ -28,7 +28,7 @@ void SSLICEffect::Initialize()
 	ModelGenerator::RenderPlane(m_pPlaneBuffer.get());
 
 	auto shaderDefine = make_shared<DefaultShaderDefine>();
-	shaderDefine->SetShaderDefine(VERTEX_LAYOUT_PT);
+	shaderDefine->SetShaderDefine(VERTEX_ATTRIB_POSITION | VERTEX_ATTRIB_TEXCOORD);
 	m_pModelShader = static_pointer_cast<DefaultShader>(ShaderManager::Instance()->FindOrNew(shaderDefine));
 
 	auto licshaderDefine = make_shared<SSLICShaderDefine>();
@@ -52,10 +52,6 @@ void SSLICEffect::Initialize()
 void SSLICEffect::SetDrawModel(shared_ptr<DefaultVertexBuffer> model)
 {
 	m_pModel = model;
-	if (m_pModel->HasTexCoord() == false)
-	{
-		Logger::Output(LOG_LEVEL::WARNING, "Need Texcoord.");
-	}
 }
 
 void SSLICEffect::Draw()

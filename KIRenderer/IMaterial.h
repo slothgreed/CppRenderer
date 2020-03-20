@@ -17,7 +17,7 @@ public:
 
 	virtual shared_ptr<IShader> CompileShader(IVertexBuffer* pVertexBuffer) = 0;
 	virtual bool Compare(const IMaterial& material) = 0;
-	void Draw(IVertexBuffer* pVertexBuffer);
+	void Draw(IVertexBuffer* pVertexBuffer, IndexBuffer* pIndexBuffer = nullptr);
 
 protected:
 	shared_ptr<IShader> m_pShader;

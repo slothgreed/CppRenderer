@@ -1,10 +1,18 @@
 
 namespace KI
 {
-PrimitiveNode::PrimitiveNode(shared_ptr<DefaultVertexBuffer> buffer)
+PrimitiveNode::PrimitiveNode(shared_ptr<DefaultVertexBuffer> pVertexBuffer, shared_ptr<IndexBuffer> pIndexBuffer)
 {
 	m_name = "Primitive";
-	m_pVertexBuffer = buffer;
+	m_pVertexBuffer = pVertexBuffer;
+	m_pIndexBuffer = pIndexBuffer;
+	m_pMaterial = make_shared<DefaultMaterial>();
+}
+
+PrimitiveNode::PrimitiveNode(shared_ptr<DefaultVertexBuffer> pVertexBuffer)
+{
+	m_name = "Primitive";
+	m_pVertexBuffer = pVertexBuffer;
 	m_pMaterial = make_shared<DefaultMaterial>();
 }
 
@@ -19,7 +27,7 @@ void PrimitiveNode::Draw()
 		m_pState->Bind();
 	}
 
-	m_pMaterial->Draw(m_pVertexBuffer.get());
+	m_pMaterial->Draw(m_pVertexBuffer.get(), m_pIndexBuffer.get());
 
 	if (m_pState != nullptr)
 	{
@@ -29,6 +37,15 @@ void PrimitiveNode::Draw()
 	Logger::GLError();
 }
 
+IndexBuffer* PrimitiveNode::GetIndexBuffer()
+{
+	if (m_pIndexBuffer == nullptr)
+	{
+		assert(0);
+	}
+
+	return m_pIndexBuffer.get();
+}
 
 void PrimitiveNode::Update(void* sender, IEventArgs* args)
 {

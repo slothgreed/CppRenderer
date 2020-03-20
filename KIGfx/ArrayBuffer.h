@@ -7,9 +7,8 @@ namespace Gfx
 class DLL_EXPORT ArrayBuffer : public IGLObject
 {
 public:
-	ArrayBuffer();
+	ArrayBuffer(GLuint componentType, GLuint componentSize);
 	~ArrayBuffer();
-	GLuint ID() { return m_Id; }
 
 	virtual void Generate() override;
 	void Set(const vector<vec2>& index);
@@ -17,13 +16,16 @@ public:
 	void Set(const vector<int>& index);
 	virtual void Dispose() override;
 	GLuint Size() { return m_Size; }
-
+	GLuint ComponentSize() { return m_ComponentSize; }
+	GLuint ComponentType() { return m_ComponentType; }
 protected:
 	virtual void Bind() override;
 	virtual void UnBind() override;
 private:
-	GLuint m_Id;
+	GLuint m_ComponentType;
+	GLuint m_ComponentSize;
 	GLuint m_Size;
+
 };
 }
 }

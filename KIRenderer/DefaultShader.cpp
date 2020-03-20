@@ -175,34 +175,22 @@ bool DefaultShaderDefine::Compare(IShaderDefine* shaderDefine)
 	return false;
 }
 
-void DefaultShaderDefine::SetShaderDefine(VERTEX_LAYOUT layout)
+void DefaultShaderDefine::SetShaderDefine(GLuint layout)
 {
-	switch (layout)
+	if (layout & VERTEX_LAYOUT_NORMAL)
 	{
-	case VERTEX_LAYOUT_P:
-		break;
-	case VERTEX_LAYOUT_PN:
 		m_useNormal = true;
-		break;
-	case VERTEX_LAYOUT_PC:
+	}
+
+	if (layout & VERTEX_LAYOUT_COLOR)
+	{
 		m_useColor = true;
-		break;
-	case VERTEX_LAYOUT_PT:
+	}
+
+	if (layout & VERTEX_LAYOUT_TEXCOORD)
+	{
 		m_useTexcoord = true;
 		m_useTexture0 = true;
-		break;
-	case VERTEX_LAYOUT_PNC:
-		m_useNormal = true;
-		m_useColor = true;
-		break;
-	case VERTEX_LAYOUT_PNCT:
-		m_useNormal = true;
-		m_useColor = true;
-		m_useTexcoord = true;
-		m_useTexture0 = true;
-		break;
-	default:
-		break;
 	}
 }
 }

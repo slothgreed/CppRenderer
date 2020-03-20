@@ -31,7 +31,6 @@ void SpecialUtility::LoadVectorFieldSphere(DefaultVertexBuffer* vertexBuffer)
 
 	binaryStream.close();
 
-	vertexBuffer->Generate(VERTEX_LAYOUT_PT);
 	vertexBuffer->SetPosition(GL_TRIANGLES, position);
 	vertexBuffer->SetTexcoord(texcoord);
 }

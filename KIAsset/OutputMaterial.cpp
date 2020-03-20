@@ -16,7 +16,9 @@ shared_ptr<IShader> OutputMaterial::CompileShader(IVertexBuffer* pVertexBuffer)
 	if (pVertexBuffer->Type() == SHADER_TYPE::SHADER_TYPE_DEFAULT)
 	{
 		auto pDefaultBuffer = (DefaultVertexBuffer*)(pVertexBuffer);
-		if (pDefaultBuffer->Layout() != VERTEX_LAYOUT::VERTEX_LAYOUT_PT)
+		assert(0);
+		// need check layout;
+		if (pDefaultBuffer->Layout() != (VERTEX_ATTRIB_POSITION | VERTEX_ATTRIB_TEXCOORD))
 		{
 			assert(0);
 		}

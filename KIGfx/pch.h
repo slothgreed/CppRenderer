@@ -31,7 +31,15 @@ using namespace glm;
 #include "GfxTypes.h"
 #include "ShaderUtility.h"
 #include "GLTypes.h"
+
 #include "IGLObject.h"
+#include "UniformBuffer.h"
+#include "FrameBuffer.h"
+#include "RenderBuffer.h"
+#include "Sampler.h"
+#include "Texture.h"
+#include "IndexBuffer.h"
+#include "ArrayBuffer.h"
 
 
 #include "IUniform.h"
@@ -43,16 +51,10 @@ using namespace glm;
 #include "LineState.h"
 #include "PointState.h"
 
-#include "UniformBuffer.h"
 #include "Viewport.h"
-#include "FrameBuffer.h"
-#include "RenderBuffer.h"
-#include "Sampler.h"
-#include "Texture.h"
 #include "RenderTexture.h"
 #include "IRenderTarget.h"
 #include "RenderTarget.h"
 #include "SymbolicRenderTarget.h"
-#include "IndexBuffer.h"
-#include "ArrayBuffer.h"
+
 #endif KI_GFX_PCH_H

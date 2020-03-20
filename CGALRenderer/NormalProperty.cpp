@@ -11,13 +11,12 @@ NormalProperty::~NormalProperty()
 void NormalProperty::Build(IModel* pModel)
 {
 	auto shaderDefine = make_shared<DefaultShaderDefine>();
-	shaderDefine->SetShaderDefine(VERTEX_LAYOUT_P);
+	shaderDefine->SetShaderDefine(VERTEX_ATTRIB_POSITION);
 	m_pShader = ShaderManager::Instance()->FindOrNew(shaderDefine);
 	m_pUniform = make_shared<DefaultUniform>();
 	m_pUniform->SetFixColor(vec4(0, 0, 1, 1));
 
 	m_pVertexBuffer = make_shared<DefaultVertexBuffer>();
-	m_pVertexBuffer->Generate(VERTEX_LAYOUT::VERTEX_LAYOUT_P);
 
 	SetVBOData(pModel);
 }

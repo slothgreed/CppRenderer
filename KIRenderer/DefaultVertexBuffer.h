@@ -9,36 +9,17 @@ class DLL_EXPORT DefaultVertexBuffer : public IVertexBuffer
 public:
 	DefaultVertexBuffer();
 	~DefaultVertexBuffer();
-	void Generate(VERTEX_LAYOUT layout);
 	void SetPosition(GLuint primitiveType, const std::vector<glm::vec3>& position);
 	void SetNormal(const std::vector<glm::vec3>& normal);
 	void SetColor(const std::vector<glm::vec3>& color);
 	void SetTexcoord(const vector<vec2>& texcoord);
-	void SetIndex(GLuint primitiveType, const std::vector<int>& index);
-	void Dispose();
 
-	GLuint PrimitiveType() { return m_PrimitiveType; }
-	VERTEX_LAYOUT Layout() { return m_layout; };
-	virtual void Draw() override;
+	GLuint Layout();
 	virtual SHADER_TYPE Type() { return SHADER_TYPE::SHADER_TYPE_DEFAULT; }
 
-	bool HasNormal();
-	bool HasColor();
-	bool HasTexCoord();
-	bool HasIndex();
+	bool HasAttribute(VERTEX_ATTRIB attribute);
 
 private:
-	void GenerateVAO();
-	int NumVertexAttrib();
-
-	ArrayBuffer m_id[VERTEX_ATTRIB_NUM];
-	GLuint m_vaoId;
-	IndexBuffer m_indexBuffer;
-	
-	GLuint m_PrimitiveType;
-	GLuint m_vertexNum;
-	VERTEX_LAYOUT m_layout;
-	bool elements;
 };
 }
 }

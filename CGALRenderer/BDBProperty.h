@@ -17,6 +17,7 @@ private:
 	void Build(IModel* pModel);
 	shared_ptr<IShader> m_pShader;
 	shared_ptr<DefaultVertexBuffer> m_pVertexBuffer;
+	shared_ptr<IndexBuffer> m_pIndexBuffer;
 };
 
 }
