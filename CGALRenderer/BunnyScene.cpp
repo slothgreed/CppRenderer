@@ -55,24 +55,24 @@ void BunnyScene::Initialize(Project* m_pProject)
 		auto pVertexBuffer = make_shared<DefaultVertexBuffer>();
 		auto pIndexBuffer = make_shared<IndexBuffer>();
 		ModelGenerator::CubeSpace(modelSpace, pVertexBuffer.get(), pIndexBuffer.get());
-		auto cubeNode = make_shared<PrimitiveNode>(pVertexBuffer, pIndexBuffer);
-		auto texture = make_shared<Texture>();
-		texture->Generate();
+		auto pCubeNode = make_shared<PrimitiveNode>(pVertexBuffer, pIndexBuffer);
+		auto pTexture = make_shared<Texture>();
+		pTexture->Generate();
 		TextureData textureData;
 		TextureGenerator::Load("E:\\cgModel\\texture\\SkyBox\\skybox-texture800x600.png", textureData);
-		texture->Begin();
-		texture->Set(textureData);
-		texture->End();
-		cubeNode->GetMaterial()->AddTexture(texture);
+		pTexture->Begin();
+		pTexture->Set(textureData);
+		pTexture->End();
+		pCubeNode->GetMaterial()->AddTexture(pTexture);
 
-		m_pScene->AddModelNode(cubeNode);
+		m_pScene->AddModelNode(pCubeNode);
 	}
 
 
-	{
-		auto moveManipulator = make_shared<ManipulatorNode>();
-		m_pScene->AddModelNode(moveManipulator);
-	}
+	//{
+	//	auto moveManipulator = make_shared<ManipulatorNode>();
+	//	m_pScene->AddModelNode(moveManipulator);
+	//}
 
 	auto axis = make_shared<DefaultVertexBuffer>();
 	ModelGenerator::Axis(axis.get());

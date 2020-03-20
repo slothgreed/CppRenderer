@@ -48,41 +48,32 @@ void HalfEdgeModel::GetFacetList(vector<vec3>& facetList, vector<vec3>& normalLi
 void HalfEdgeModel::GetEdgeList(vector<vec3>& edgeList)
 {
 	auto halfEdgeList = m_HalfEdgeDS->EdgeList();
+	edgeList.resize(halfEdgeList.size() * 2);
 	for (int i = 0; i < halfEdgeList.size(); i++)
 	{
-		edgeList.push_back(
-			halfEdgeList[i]->Start()->Position()
-		);
-
-		edgeList.push_back(
-			halfEdgeList[i]->End()->Position()
-		);
+		edgeList[2 * i] = halfEdgeList[i]->Start()->Position();
+		edgeList[2 * i+1] = halfEdgeList[i]->End()->Position();
 	};
 }
 
 void HalfEdgeModel::GetPositionList(vector<vec3>& vertexList)
 {
 	auto halfVertexList = m_HalfEdgeDS->VertexList();
+	vertexList.resize(halfVertexList.size());
 	for (int i = 0; i < halfVertexList.size(); i++)
 	{
-		vertexList.push_back(
-			halfVertexList[i]->Position()
-		);
+		vertexList[i] = halfVertexList[i]->Position();
 	}
 }
 
 void HalfEdgeModel::GetEdgeIndexList(vector<int>& index)
 {
 	auto halfEdgeList = m_HalfEdgeDS->EdgeList();
+	index.resize(halfEdgeList.size() * 2);
 	for (int i = 0; i < halfEdgeList.size(); i++)
 	{
-		index.push_back(
-			halfEdgeList[i]->Start()->Index()
-		);
-
-		index.push_back(
-			halfEdgeList[i]->End()->Index()
-		);
+		index[2 * i] = halfEdgeList[i]->Start()->Index();
+		index[2 * i + 1] = halfEdgeList[i]->End()->Index();
 	};
 }
 void HalfEdgeModel::GetFaceIndexList(vector<int>& index)
@@ -106,12 +97,11 @@ void HalfEdgeModel::GetFaceIndexList(vector<int>& index)
 void HalfEdgeModel::GetVertexList(vector<Vertex>& vertex)
 {
 	auto halfVertexList = m_HalfEdgeDS->VertexList();
+	vertex.resize(halfVertexList.size());
 	for (int i = 0; i < halfVertexList.size(); i++)
 	{
 		auto halfVertex = halfVertexList[i];
-		vertex.push_back(
-			Vertex(halfVertex->Position(),halfVertex->Normal())
-		);
+		vertex[i] = Vertex(halfVertex->Position(),halfVertex->Normal());
 	}
 }
 

@@ -7,6 +7,7 @@ namespace Renderer
 class DLL_EXPORT Vertex
 {
 public:
+	Vertex() {};
 	Vertex(vec3 position, vec3 normal) { m_position = position, m_normal = normal; }
 	void SetPosition(vec3 position) { m_position = position; }
 	vec3 Position() { return m_position; };

@@ -16,16 +16,13 @@ void DefaultVertexBuffer::SetPosition(GLuint primitiveType, const vector<vec3>& 
 	if (m_VertexInfo[VERTEX_ATTRIB_POSITION] == nullptr)
 	{
 		Add(VERTEX_ATTRIB_POSITION, make_shared<ArrayBuffer>(GL_FLOAT, 3));
-		m_VertexInfo[VERTEX_ATTRIB_POSITION]->Set(position);
+		m_VertexInfo[VERTEX_ATTRIB_POSITION]->Generate();
 		BindToVAO(VERTEX_ATTRIB_POSITION);
 	}
-	else
-	{
-		m_VertexInfo[VERTEX_ATTRIB_POSITION]->Set(position);
-	}
 
+	m_VertexInfo[VERTEX_ATTRIB_POSITION]->Set(position);
+	SetVertexSize(m_VertexInfo[VERTEX_ATTRIB_POSITION]->Size());
 	SetPrimitiveType(primitiveType);
-	Logger::GLError();
 }
 
 void DefaultVertexBuffer::SetNormal(const vector<vec3>& normal)
@@ -33,15 +30,11 @@ void DefaultVertexBuffer::SetNormal(const vector<vec3>& normal)
 	if (m_VertexInfo[VERTEX_ATTRIB_NORMAL] == nullptr)
 	{
 		Add(VERTEX_ATTRIB_NORMAL, make_shared<ArrayBuffer>(GL_FLOAT, 3));
-		m_VertexInfo[VERTEX_ATTRIB_NORMAL]->Set(normal);
+		m_VertexInfo[VERTEX_ATTRIB_NORMAL]->Generate();
 		BindToVAO(VERTEX_ATTRIB_NORMAL);
 	}
-	else
-	{
-		m_VertexInfo[VERTEX_ATTRIB_NORMAL]->Set(normal);
-	}
 
-	Logger::GLError();
+	m_VertexInfo[VERTEX_ATTRIB_NORMAL]->Set(normal);
 }
 
 void DefaultVertexBuffer::SetColor(const vector<vec3>& color)
@@ -49,15 +42,11 @@ void DefaultVertexBuffer::SetColor(const vector<vec3>& color)
 	if (m_VertexInfo[VERTEX_ATTRIB_COLOR] == nullptr)
 	{
 		Add(VERTEX_ATTRIB_COLOR, make_shared<ArrayBuffer>(GL_FLOAT, 3));
-		m_VertexInfo[VERTEX_ATTRIB_COLOR]->Set(color);
+		m_VertexInfo[VERTEX_ATTRIB_COLOR]->Generate();
 		BindToVAO(VERTEX_ATTRIB_COLOR);
 	}
-	else
-	{
-		m_VertexInfo[VERTEX_ATTRIB_COLOR]->Set(color);
-	}
 
-	Logger::GLError();
+	m_VertexInfo[VERTEX_ATTRIB_COLOR]->Set(color);
 }
 
 void DefaultVertexBuffer::SetTexcoord(const vector<vec2>& texcoord)
@@ -65,15 +54,24 @@ void DefaultVertexBuffer::SetTexcoord(const vector<vec2>& texcoord)
 	if (m_VertexInfo[VERTEX_ATTRIB_TEXCOORD] == nullptr)
 	{
 		Add(VERTEX_ATTRIB_TEXCOORD, make_shared<ArrayBuffer>(GL_FLOAT, 2));
-		m_VertexInfo[VERTEX_ATTRIB_TEXCOORD]->Set(texcoord);
+		m_VertexInfo[VERTEX_ATTRIB_TEXCOORD]->Generate();
 		BindToVAO(VERTEX_ATTRIB_TEXCOORD);
 	}
-	else
+
+	m_VertexInfo[VERTEX_ATTRIB_TEXCOORD]->Set(texcoord);
+}
+
+
+void DefaultVertexBuffer::SetTranslate(const vector<vec3>& texcoord)
+{
+	if (m_VertexInfo[VERTEX_ATTRIB_TRANSLATE] == nullptr)
 	{
-		m_VertexInfo[VERTEX_ATTRIB_TEXCOORD]->Set(texcoord);
+		Add(VERTEX_ATTRIB_TRANSLATE, make_shared<ArrayBuffer>(GL_FLOAT, 3));
+		m_VertexInfo[VERTEX_ATTRIB_TRANSLATE]->Generate();
+		BindToVAO(VERTEX_ATTRIB_TRANSLATE);
 	}
 
-	Logger::GLError();
+	m_VertexInfo[VERTEX_ATTRIB_TRANSLATE]->Set(texcoord);
 }
 
 bool DefaultVertexBuffer::HasAttribute(VERTEX_ATTRIB attribute)
@@ -85,6 +83,46 @@ bool DefaultVertexBuffer::HasAttribute(VERTEX_ATTRIB attribute)
 	}
 
 	return false;
+}
+
+void DefaultVertexBuffer::BindAttribDivisor()
+{
+	glVertexAttribDivisor(VERTEX_ATTRIB_POSITION, 0);
+	
+	if (HasAttribute(VERTEX_ATTRIB_COLOR))
+	{
+		glVertexAttribDivisor(VERTEX_ATTRIB_COLOR, 1);
+	}
+
+	if (HasAttribute(VERTEX_ATTRIB_TEXCOORD))
+	{
+		glVertexAttribDivisor(VERTEX_ATTRIB_TEXCOORD, 1);
+	}
+
+	if (HasAttribute(VERTEX_ATTRIB_TRANSLATE))
+	{
+		glVertexAttribDivisor(VERTEX_ATTRIB_TRANSLATE, 1);
+	}
+}
+
+void DefaultVertexBuffer::UnBindAttribDivisor()
+{
+	glVertexAttribDivisor(VERTEX_ATTRIB_POSITION, 0);
+
+	if (HasAttribute(VERTEX_ATTRIB_COLOR))
+	{
+		glVertexAttribDivisor(VERTEX_ATTRIB_COLOR, 0);
+	}
+
+	if (HasAttribute(VERTEX_ATTRIB_TEXCOORD))
+	{
+		glVertexAttribDivisor(VERTEX_ATTRIB_TEXCOORD, 0);
+	}
+
+	if (HasAttribute(VERTEX_ATTRIB_TRANSLATE))
+	{
+		glVertexAttribDivisor(VERTEX_ATTRIB_TRANSLATE, 0);
+	}
 }
 
 GLuint DefaultVertexBuffer::Layout()
