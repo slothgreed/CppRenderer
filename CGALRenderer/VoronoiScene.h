@@ -13,7 +13,7 @@ public:
 private:
 	void GenerateVoronoiDiagram();
 	void GenerateVoronoiPoint(vector<vec3>& position, int size);
-	void GenerateVoronoiCone(const vector<vec3>& pointPosition, vector<vec3>& position, vector<vec3>& color, vector<int>& index);
+	void GenerateVoronoiCone(const vector<vec3>& pointPosition, vector<vec3>& position, vector<vec3>& color, vector<mat4x4>& matrix, vector<int>& index);
 
 private:
 	shared_ptr<Scene> m_pScene;

@@ -59,6 +59,15 @@ void IndexBuffer::Draw()
 {
 	Bind();
 	glDrawElements(m_PrimitiveType, Size(), GL_UNSIGNED_INT, 0);
+	UnBind();
 }
+
+void IndexBuffer::InstanceDraw(int num)
+{
+	Bind();
+	glDrawElementsInstanced(GL_TRIANGLE_STRIP, Size(), GL_UNSIGNED_INT, NULL, num);
+	UnBind();
+}
+
 }
 }

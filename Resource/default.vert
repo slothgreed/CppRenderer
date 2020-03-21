@@ -26,12 +26,25 @@ out vec4 v_position;
 out vec4 v_normal;
 #endif
 
+#ifdef USE_INSTANCE
+layout(location = 4) in vec4 instanceMatrix0;
+layout(location = 5) in vec4 instanceMatrix1;
+layout(location = 6) in vec4 instanceMatrix2;
+layout(location = 7) in vec4 instanceMatrix3;
+#endif
+
 uniform vec4 uFixColor;
 
 void main()
 {
 	mat4 vp = scene.Projection * scene.ViewMatrix;
+#ifdef USE_INSTANCE
+	mat4 instanceMatrix = mat4(instanceMatrix0,instanceMatrix1,instanceMatrix2,instanceMatrix3);
+	gl_Position = vp * instanceMatrix * vec4(position,1.0);
+#else
 	gl_Position = vp * vec4(position,1.0);
+#endif
+
 #ifdef USE_COLOR
 	v_color = vec4(color,1.0);
 #elif defined(USE_NORMAL)

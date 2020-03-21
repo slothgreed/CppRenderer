@@ -138,6 +138,8 @@ void DefaultShaderDefine::GetVertexDefine(string& define)
 		define += USE_TEXCOORD;
 	if (m_useGBuffer)
 		define += USE_GBUFFER;
+	if (m_useInstance)
+		define += USE_INSTANCE;
 }
 
 void DefaultShaderDefine::GetFragDefine(string& define)
@@ -166,6 +168,7 @@ bool DefaultShaderDefine::Compare(IShaderDefine* shaderDefine)
 			m_useColor == pDefine->m_useColor &&
 			m_useTexcoord == pDefine->m_useTexcoord &&
 			m_useTexture0 == pDefine->m_useTexture0 &&
+			m_useInstance == pDefine->m_useInstance &&
 			m_useShading == pDefine->m_useShading)
 		{
 			return true;
@@ -191,6 +194,14 @@ void DefaultShaderDefine::SetShaderDefine(GLuint layout)
 	{
 		m_useTexcoord = true;
 		m_useTexture0 = true;
+	}
+
+	if (layout & VERTEX_LAYOUT_INSTANCE_MATRIX0 ||
+		layout & VERTEX_LAYOUT_INSTANCE_MATRIX1 || 
+		layout & VERTEX_LAYOUT_INSTANCE_MATRIX2 || 
+		layout & VERTEX_LAYOUT_INSTANCE_MATRIX3)
+	{
+		m_useInstance = true;
 	}
 }
 }

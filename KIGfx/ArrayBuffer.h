@@ -11,8 +11,9 @@ public:
 	~ArrayBuffer();
 
 	virtual void Generate() override;
-	void Set(const vector<vec2>& index);
+	void Set(const vector<vec4>& data);
 	void Set(const vector<vec3>& index);
+	void Set(const vector<vec2>& index);
 	void Set(const vector<int>& index);
 	virtual void Dispose() override;
 	GLuint Size() { return m_Size; }

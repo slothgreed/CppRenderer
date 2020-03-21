@@ -17,11 +17,9 @@ public:
 	void SetNormal(const vector<vec3>& normal);
 	void SetColor(const vector<vec3>& color);
 	void SetTexcoord(const vector<vec2>& texcoord);
-	void SetTranslate(const vector<vec3>& translate);
+	void SetInstanceMatrix(const vector<mat4>& matrix);
 	GLuint Layout();
-
 	bool HasAttribute(VERTEX_ATTRIB attribute);
-
 private:
 };
 }

@@ -56,11 +56,15 @@ void VoronoiScene::GenerateVoronoiDiagram()
 
 	vector<vec3> position;
 	vector<vec3> color;
+	vector<mat4x4> matrix;
 	vector<int> index;
-	GenerateVoronoiCone(pointPosition, position, color, index);
+
+	GenerateVoronoiCone(pointPosition, position, color, matrix, index);
 
 	m_pConeNode->GetVertexBuffer()->SetPosition(GL_TRIANGLES, position);
 	m_pConeNode->GetVertexBuffer()->SetColor(color);
+	m_pConeNode->GetVertexBuffer()->SetInstanceMatrix(matrix);
+	m_pConeNode->GetVertexBuffer()->SetInstanceNum(100);
 	m_pConeNode->GetIndexBuffer()->Set(GL_TRIANGLES, index);
 }
 
@@ -76,21 +80,20 @@ void VoronoiScene::GenerateVoronoiPoint(vector<vec3>& position, int size)
 	}
 }
 
-void VoronoiScene::GenerateVoronoiCone(const vector<vec3>& pointPosition, vector<vec3>& position, vector<vec3>& color, vector<int>& index)
+void VoronoiScene::GenerateVoronoiCone(const vector<vec3>& pointPosition, vector<vec3>& position, vector<vec3>& color, vector<mat4x4>& matrix, vector<int>& index)
 {
 	Cone cone;
+	cone.Build(5, 10, 50);
+	std::copy(cone.Position().begin(), cone.Position().end(), back_inserter(position));
+	std::copy(cone.Index().begin(), cone.Index().end(), back_inserter(index));
+
 	for (int i = 0; i < pointPosition.size(); i++)
 	{
-		cone.Build(5, 10, 50);
 		mat4x4 xMatrix = mat4x4(1);
 		xMatrix = glm::translate(xMatrix, pointPosition[i]);
 		xMatrix = glm::rotate(xMatrix, -pi<float>() / 2, vec3(1, 0, 0));
-		cone.Multi(xMatrix);
-		std::copy(cone.Position().begin(), cone.Position().end(), back_inserter(position));
-		std::copy(cone.Index().begin(), cone.Index().end(), back_inserter(index));
-		cone.SetIndexOffset((int)cone.Position().size() * i);
-		vector<vec3> coneColor(cone.Position().size(), vec3(Gaccho::rnd(0, 255) / 255.0, Gaccho::rnd(0, 255) / 255.0, Gaccho::rnd(0, 255) / 255.0));
-		std::copy(coneColor.begin(), coneColor.end(), back_inserter(color));
+		matrix.push_back(xMatrix);
+		color.push_back(vec3(Gaccho::rnd(0, 255) / 255.0, Gaccho::rnd(0, 255) / 255.0, Gaccho::rnd(0, 255) / 255.0));
 	}
 }
 

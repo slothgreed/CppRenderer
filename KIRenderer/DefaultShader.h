@@ -57,7 +57,7 @@ public:
 		m_useGBuffer = false;
 		m_useNormal = false; m_useColor = false; 
 		m_useTexcoord = false; m_useTexture0 = false;
-		m_useShading = false;};
+		m_useShading = false; m_useInstance = false;};
 	~DefaultShaderDefine() {};
 
 	virtual SHADER_TYPE Type() { return SHADER_TYPE::SHADER_TYPE_DEFAULT; };
@@ -71,6 +71,7 @@ public:
 	void SetUseColor(bool value) { m_useColor = value; };
 	void SetUseTexcoord(bool value) { m_useTexcoord = value; };
 	void SetUseTexture0(bool value) { m_useTexture0 = value; };
+	void SetUseInstance(bool value) { m_useInstance = value; };
 	void SetShading(bool value) { m_useShading = value; }
 
 	bool UseGBuffer() const { return m_useGBuffer; }
@@ -78,13 +79,16 @@ public:
 	bool UseColor() const { return m_useColor; };
 	bool UseTexcoord() const { return m_useTexcoord; };
 	bool UseTexture0() const { return m_useTexture0; };
+	bool UseInstance() const { return m_useInstance; };
 	bool UseShading() const { return m_useShading; }
+	
 private:
 	bool m_useGBuffer;
 	bool m_useNormal;
 	bool m_useColor;
 	bool m_useTexcoord;
 	bool m_useTexture0;
+	bool m_useInstance;
 	bool m_useShading;
 };
 
@@ -94,6 +98,7 @@ private:
 #define USE_TEXTURE0 "#define USE_TEXTURE0\n"
 #define USE_GBUFFER	 "#define USE_GBUFFER\n"
 #define USE_SHADING	 "#define USE_SHADING\n"
+#define USE_INSTANCE "#define USE_INSTANCE\n"
 }
 }
 #endif DEFAULT_SHADER_H

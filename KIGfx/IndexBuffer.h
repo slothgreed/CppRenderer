@@ -13,6 +13,7 @@ public:
 	void Set(GLuint primitiveType, const vector<int>& index);
 	virtual void Dispose() override;
 	void Draw();
+	void InstanceDraw(int num);
 	GLuint Size() { return m_indexSize; }
 
 protected:

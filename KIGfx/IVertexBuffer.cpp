@@ -5,9 +5,9 @@ namespace Gfx
 IVertexBuffer::IVertexBuffer()
 {
 	m_vaoId = 0;
-	m_Size = 0;
+	m_VertexSize = 0;
 	m_PrimitiveType = GL_NONE;
-	m_isInstanceDraw = false;
+	m_instanceNum = 1;
 }
 void IVertexBuffer::Add(GLuint location, shared_ptr<ArrayBuffer> arrayBuffer)
 {
@@ -36,19 +36,20 @@ void IVertexBuffer::Draw(IndexBuffer* pIndexbuffer)
 		assert(0);
 	}
 
-	glBindVertexArray(m_vaoId);
 	
 	if (IsInstanceDraw())
 	{
+		glBindVertexArray(m_vaoId);
 		BindAttribDivisor();
-	}
-	
-	pIndexbuffer->Draw();
-	glBindVertexArray(0);
-
-	if (IsInstanceDraw())
-	{
+		pIndexbuffer->InstanceDraw(m_instanceNum);
 		UnBindAttribDivisor();
+		glBindVertexArray(0);
+	}
+	else
+	{
+		glBindVertexArray(m_vaoId);
+		pIndexbuffer->Draw();
+		glBindVertexArray(0);
 	}
 
 }
@@ -61,8 +62,7 @@ void IVertexBuffer::Draw()
 		assert(0);
 	}
 
-	GLuint size = m_VertexInfo[0]->Size();
-	Draw(m_PrimitiveType, 0, size);
+	Draw(m_PrimitiveType, 0, GetVertexSize());
 }
 void IVertexBuffer::Draw(GLuint primitiveType, GLuint first, GLuint count)
 {
@@ -79,15 +79,16 @@ void IVertexBuffer::Draw(GLuint primitiveType, GLuint first, GLuint count)
 	if (IsInstanceDraw())
 	{
 		BindAttribDivisor();
-	}
-
-	glBindVertexArray(m_vaoId);
-	glDrawArrays(primitiveType, first, count);
-	glBindVertexArray(0);
-
-	if (IsInstanceDraw())
-	{
+		glBindVertexArray(m_vaoId);
+		glDrawArraysInstanced(primitiveType, first, count, m_instanceNum);
+		glBindVertexArray(0);
 		UnBindAttribDivisor();
+	}
+	else
+	{
+		glBindVertexArray(m_vaoId);
+		glDrawArrays(primitiveType, first, count);
+		glBindVertexArray(0);
 	}
 
 	Logger::GLError();
