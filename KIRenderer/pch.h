@@ -61,7 +61,9 @@ using namespace KI::Gfx;
 #include "CompositShader.h"
 #include "SSLICShader.h"
 #include "GrayScaleShader.h"
+#include "NormalVisualizeShader.h"
 #include "ShaderManager.h"
+
 
 #include "ICamera.h"
 #include "PerspectiveCamera.h"

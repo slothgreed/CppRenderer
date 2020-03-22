@@ -49,9 +49,9 @@ class DLL_EXPORT CompositShaderDefine : public IShaderDefine
 {
 	virtual SHADER_TYPE Type() { return SHADER_TYPE::SHADER_TYPE_COMPOSIT; };
 	void SetShaderDefine(CompositShader::COMPOSIT_TYPE type);
-	virtual void GetVertexDefine(string& define) {};
-	virtual void GetFragDefine(string& define);
-	virtual bool Compare(IShaderDefine* shaderDefine);
+	virtual void GetDefineCode(SHADER_PROGRAM_TYPE type, string& define) override;
+	virtual bool Compare(IShaderDefine* shaderDefine) override;
+	void GetFragDefine(string& define);
 
 	CompositShader::COMPOSIT_TYPE m_CompositType;
 };

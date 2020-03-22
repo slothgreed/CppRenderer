@@ -61,11 +61,12 @@ public:
 	~DefaultShaderDefine() {};
 
 	virtual SHADER_TYPE Type() { return SHADER_TYPE::SHADER_TYPE_DEFAULT; };
-	void GetVertexDefine(string& define);
-	void GetFragDefine(string& define);
-	void SetShaderDefine(GLuint layout);
+	virtual void GetDefineCode(SHADER_PROGRAM_TYPE type, string& define) override;
 	virtual bool Compare(IShaderDefine* shaderDefine) override;
 
+	void SetShaderDefine(GLuint layout);
+	void GetVertexDefine(string& define);
+	void GetFragDefine(string& define);
 	void SetUseGBuffer(bool value) { m_useGBuffer = value; }
 	void SetUseNormal(bool value) { m_useNormal = value; };
 	void SetUseColor(bool value) { m_useColor = value; };

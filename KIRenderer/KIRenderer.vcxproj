@@ -182,6 +182,7 @@
     <ClInclude Include="IPostEffect.h" />
     <ClInclude Include="LighthingPass.h" />
     <ClInclude Include="ModelGenerator.h" />
+    <ClInclude Include="NormalVisualizeShader.h" />
     <ClInclude Include="OrthoCamera.h" />
     <ClInclude Include="OutputShader.h" />
     <ClInclude Include="pch.h" />
@@ -218,6 +219,7 @@
     <ClCompile Include="IModelNode.cpp" />
     <ClCompile Include="LighthingPass.cpp" />
     <ClCompile Include="ModelGenerator.cpp" />
+    <ClCompile Include="NormalVisualizeShader.cpp" />
     <ClCompile Include="OrthoCamera.cpp" />
     <ClCompile Include="OutputShader.cpp" />
     <ClCompile Include="PerspectiveCamera.cpp" />

@@ -62,7 +62,7 @@ void DefaultShader::Bind(shared_ptr<IUniform> uniform)
 	DefaultShaderDefine* pDefine = nullptr;
 	if (GetShaderDefine()->Type() == SHADER_TYPE::SHADER_TYPE_DEFAULT)
 	{
-		pDefine = static_pointer_cast<DefaultShaderDefine>(GetShaderDefine()).get();
+		pDefine = (DefaultShaderDefine*)GetShaderDefine();
 	}
 	else
 	{
@@ -126,6 +126,18 @@ void DefaultShader::BindFixColor()
 	}
 
 	IShader::BindVector4(m_uniformLocation[DEFAULT_UNIFORM_FIX_COLOR], m_uniformParameter->FixColor());
+}
+
+void DefaultShaderDefine::GetDefineCode(SHADER_PROGRAM_TYPE type, string& define)
+{
+	if (type == SHADER_PROGRAM_TYPE::SHADER_PROGRAM_VERTEX)
+	{
+		GetVertexDefine(define);
+	}
+	else if (type == SHADER_PROGRAM_TYPE::SHADER_PROGRAM_FRAG)
+	{
+		GetFragDefine(define);
+	}
 }
 
 void DefaultShaderDefine::GetVertexDefine(string& define)

@@ -87,9 +87,6 @@
     <ClInclude Include="IShader.h">
       <Filter>ヘッダー ファイル\Interface</Filter>
     </ClInclude>
-    <ClInclude Include="IShaderDefine.h">
-      <Filter>ヘッダー ファイル\Interface</Filter>
-    </ClInclude>
     <ClInclude Include="IUniform.h">
       <Filter>ヘッダー ファイル\Interface</Filter>
     </ClInclude>
@@ -109,6 +106,9 @@
       <Filter>ヘッダー ファイル\Interface</Filter>
     </ClInclude>
     <ClInclude Include="IGLObject.h">
+      <Filter>ヘッダー ファイル\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="IShaderDefine.h">
       <Filter>ヘッダー ファイル\Interface</Filter>
     </ClInclude>
   </ItemGroup>

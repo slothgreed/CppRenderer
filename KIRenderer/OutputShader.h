@@ -16,8 +16,6 @@ public:
 class DLL_EXPORT OutputShaderDefine : public IShaderDefine
 {
 	virtual SHADER_TYPE Type() { return SHADER_TYPE::SHADER_TYPE_OUTPUT; };
-	virtual void GetVertexDefine(string& define) {};
-	virtual void GetFragDefine(string& define) {};
 	virtual bool Compare(IShaderDefine* shaderDefine) { return true; };
 };
 class DLL_EXPORT OutputShader : public IShader

@@ -59,6 +59,14 @@ bool CompositShaderDefine::Compare(IShaderDefine* shaderDefine)
 
 	return false;
 }
+
+void CompositShaderDefine::GetDefineCode(SHADER_PROGRAM_TYPE type, string& define)
+{
+	if (type == SHADER_PROGRAM_TYPE::SHADER_PROGRAM_FRAG)
+	{
+		GetFragDefine(define);
+	}
+}
 void CompositShaderDefine::GetFragDefine(string& define)
 {
 	switch (m_CompositType)

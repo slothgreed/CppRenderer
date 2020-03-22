@@ -8,8 +8,8 @@ public:
 	IShaderDefine() {};
 	virtual ~IShaderDefine() {};
 	virtual SHADER_TYPE Type() = 0;
-	virtual void GetVertexDefine(string& define) = 0;
-	virtual void GetFragDefine(string& define) = 0;
+	virtual void GetDefineCode(SHADER_PROGRAM_TYPE type, string& define) {};
+
 	virtual bool Compare(IShaderDefine* shaderDefine) = 0;
 private:
 

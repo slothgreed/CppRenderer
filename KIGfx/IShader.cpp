@@ -3,32 +3,48 @@ namespace KI
 {
 namespace Gfx
 {
-void IShader::Build(shared_ptr<IShaderDefine> shaderDefine)
+void IShader::Build(shared_ptr<IShaderDefine> pShaderDefine)
+{
+	m_pShaderDefine = pShaderDefine;
+	GenerateShaderCode(pShaderDefine.get());
+}
+
+void IShader::GenerateShaderCode(IShaderDefine* pShaderDefine)
 {
 	string vertexCode;
 	string fragCode;
-	FileUtility::Load(m_vertexPath, vertexCode);
-	FileUtility::Load(m_fragPath, fragCode);
-	string vertexDefine;
-	string fragDefine;
-
-	shaderDefine->GetVertexDefine(vertexDefine);
-	shaderDefine->GetFragDefine(fragDefine);
-
-	vertexCode = m_version + vertexDefine + vertexCode;
-	fragCode = m_version + fragDefine + fragCode;
-
+	string geomCode;
+	GetShaderCode(SHADER_PROGRAM_VERTEX, vertexCode);
+	GetShaderCode(SHADER_PROGRAM_GEOM, geomCode);
+	GetShaderCode(SHADER_PROGRAM_FRAG, fragCode);
+	
 #ifdef SHADER_DEBUG
 	debug_vertexShader = vertexCode;
+	debug_geomShader = geomCode;
 	debug_fragShader = fragCode;
 #endif
 
 	BuildFromCode(vertexCode, fragCode);
-
-	m_shaderDefine = shaderDefine;
 }
 
-void IShader::BuildFromCode(const std::string& vertexShaderCode, const std::string& fragmentShader)
+void IShader::GetShaderCode(
+	SHADER_PROGRAM_TYPE type,
+	string& code)
+{
+	if (m_shaderPath[type] == "")
+	{
+		return;
+	}
+
+	string shaderCode;
+	FileUtility::Load(m_shaderPath[type], shaderCode);
+	string shaderDefine;
+	m_pShaderDefine->GetDefineCode(type, shaderDefine);
+
+	code = m_version + shaderDefine + shaderCode;
+}
+
+void IShader::BuildFromCode(const string& vertexShaderCode, const string& fragmentShader)
 {
 	GLuint vertId = ShaderUtility::Compile(vertexShaderCode, GL_VERTEX_SHADER);
 	GLuint fragId = ShaderUtility::Compile(fragmentShader, GL_FRAGMENT_SHADER);
@@ -103,7 +119,7 @@ void IShader::BindVector4(GLint uniformId, vec4 value)
 
 bool IShader::Compare(IShaderDefine* shaderDefine)
 {
-	if (m_shaderDefine->Compare(shaderDefine)) {
+	if (m_pShaderDefine->Compare(shaderDefine)) {
 		return true;
 	}
 	else {

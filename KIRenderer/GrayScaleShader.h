@@ -15,8 +15,6 @@ public:
 class DLL_EXPORT GrayScaleShaderDefine : public IShaderDefine
 {
 	virtual SHADER_TYPE Type() { return SHADER_TYPE::SHADER_TYPE_GRAYSCALE; };
-	virtual void GetVertexDefine(string& define) {};
-	virtual void GetFragDefine(string& define) {};
 	virtual bool Compare(IShaderDefine* shaderDefine) { return true; };
 };
 

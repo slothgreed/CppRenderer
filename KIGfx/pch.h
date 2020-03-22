@@ -28,9 +28,9 @@ using namespace KI::Foundation;
 using namespace std;
 using namespace glm;
 
+#include "GLTypes.h"
 #include "GfxTypes.h"
 #include "ShaderUtility.h"
-#include "GLTypes.h"
 
 #include "IGLObject.h"
 #include "UniformBuffer.h"
