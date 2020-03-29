@@ -165,6 +165,9 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CompositFragCode.h" />
+    <ClInclude Include="DefaultFragCode.h" />
+    <ClInclude Include="DefaultVertexCode.h" />
     <ClInclude Include="ICamera.h" />
     <ClInclude Include="CompositShader.h" />
     <ClInclude Include="DefaultShader.h" />
@@ -190,6 +193,7 @@
     <ClInclude Include="PfxPlane.h" />
     <ClInclude Include="PfxRenderer.h" />
     <ClInclude Include="PointLight.h" />
+    <ClInclude Include="PostProcessCode.h" />
     <ClInclude Include="RenderSystem.h" />
     <ClInclude Include="RendererTypes.h" />
     <ClInclude Include="Scene.h" />
@@ -207,6 +211,9 @@
     <ClInclude Include="Vertex.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CompositFragCode.cpp" />
+    <ClCompile Include="DefaultFragCode.cpp" />
+    <ClCompile Include="DefaultVertexCode.cpp" />
     <ClCompile Include="ICamera.cpp" />
     <ClCompile Include="CompositShader.cpp" />
     <ClCompile Include="DefaultShader.cpp" />

@@ -5,13 +5,12 @@ namespace KI
 {
 namespace Gfx
 {
-class DLL_EXPORT IVertexBuffer
+class DLL_EXPORT IVertexBuffer : public IAttribute
 {
 public:
 	IVertexBuffer();
 	~IVertexBuffer() {};
 
-	virtual SHADER_TYPE Type() = 0;
 	virtual void Add(GLuint location, shared_ptr<ArrayBuffer> arrayBuffer);
 	virtual void Remove(GLuint location);
 	virtual bool IsInstanceDraw() { return m_instanceNum > 1; };

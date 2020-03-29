@@ -11,13 +11,10 @@ class DLL_EXPORT OutputUniform : public IUniform
 public:
 	virtual SHADER_TYPE Type() override { return SHADER_TYPE::SHADER_TYPE_OUTPUT; }
 	shared_ptr<Texture> pTexture;
+
 };
 
-class DLL_EXPORT OutputShaderDefine : public IShaderDefine
-{
-	virtual SHADER_TYPE Type() { return SHADER_TYPE::SHADER_TYPE_OUTPUT; };
-	virtual bool Compare(IShaderDefine* shaderDefine) { return true; };
-};
+
 class DLL_EXPORT OutputShader : public IShader
 {
 	enum OUTPUT_UNIFORM : unsigned short

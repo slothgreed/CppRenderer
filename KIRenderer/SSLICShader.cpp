@@ -4,9 +4,6 @@ namespace Renderer
 {
 SSLICShader::SSLICShader()
 {
-	SetVersion(GLSL_VERSION_400_CORE);
-	SetVertexPath(string(SHADER_DIRECTORY) + "\\output.vert");
-	SetFragPath(string(SHADER_DIRECTORY) + "\\output.frag");
 }
 
 SSLICShader::~SSLICShader()

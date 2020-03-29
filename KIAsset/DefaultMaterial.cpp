@@ -27,10 +27,14 @@ shared_ptr<IShader> DefaultMaterial::CompileShader(IVertexBuffer* pVertexBuffer)
 	if (pVertexBuffer->Type() == SHADER_TYPE::SHADER_TYPE_DEFAULT)
 	{
 		auto pDefaultBuffer = (DefaultVertexBuffer*)(pVertexBuffer);
-		auto shaderDefine = make_shared<DefaultShaderDefine>();
-		shaderDefine->SetShaderDefine(pDefaultBuffer->Layout());
-		//shaderDefine->SetUseGBuffer(true);
-		return ShaderManager::Instance()->FindOrNew(shaderDefine);
+		auto pBuildInfo = make_shared<IShaderBuildInfo>(SHADER_TYPE_DEFAULT);
+		auto pVertexCode = make_shared<DefaultVertexCode>();
+		pVertexCode->SetShaderDefine(pDefaultBuffer->Layout());
+		pBuildInfo->SetVertexCode(pVertexCode);
+		auto pFragCode = make_shared<DefaultFragCode>();
+		pFragCode->SetShaderDefine(pDefaultBuffer->Layout());
+		pBuildInfo->SetFragCode(pFragCode);
+		return ShaderManager::Instance()->FindOrNew(pBuildInfo);
 	}
 	else
 	{

@@ -23,8 +23,10 @@ shared_ptr<IShader> OutputMaterial::CompileShader(IVertexBuffer* pVertexBuffer)
 			assert(0);
 		}
 
-		auto shaderDefine = make_shared<OutputShaderDefine>();
-		return ShaderManager::Instance()->FindOrNew(shaderDefine);
+		auto pBuildInfo = make_shared<IShaderBuildInfo>(SHADER_TYPE_OUTPUT);
+		pBuildInfo->SetVertexCode(make_shared<PostProcessVertexCode>());
+		pBuildInfo->SetFragCode(make_shared<OutputFragCode>());
+		return ShaderManager::Instance()->FindOrNew(pBuildInfo);
 	}
 	else
 	{

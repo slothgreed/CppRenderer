@@ -26,48 +26,51 @@ ShaderManager::~ShaderManager()
 	}
 }
 
-shared_ptr<IShader> ShaderManager::Generate(shared_ptr<IShaderDefine> shaderDefine)
+shared_ptr<IShader> ShaderManager::Generate(shared_ptr<IShaderBuildInfo> buildInfo)
 {
-	shared_ptr<IShader> shader;
-	switch (shaderDefine->Type())
+	shared_ptr<IShader> pShader;
+	switch (buildInfo->Type())
 	{
 	case SHADER_TYPE_DEFAULT:
-		shader = make_shared<DefaultShader>();
-		shader->Build(shaderDefine);
+		pShader = make_shared<DefaultShader>();
+		pShader->Build(buildInfo);
 		break;
 	case SHADER_TYPE_OUTPUT:
-		shader = make_shared<OutputShader>();
-		shader->Build(shaderDefine);
+		pShader = make_shared<OutputShader>();
+		pShader->Build(buildInfo);
 		break;
 	case SHADER_TYPE_SSLIC:
-		shader = make_shared<SSLICShader>();
-		shader->Build(shaderDefine);
+		pShader = make_shared<SSLICShader>();
+		pShader->Build(buildInfo);
 		break;
 	case SHADER_TYPE_GRAYSCALE:
-		shader = make_shared<GrayScaleShader>();
-		shader->Build(shaderDefine);
+		pShader = make_shared<GrayScaleShader>();
+		pShader->Build(buildInfo);
 		break;
+	case SHADER_TYPE_COMPOSIT:
+		pShader = make_shared<CompositShader>();
+		pShader->Build(buildInfo);
 	default:
 		assert(0);
 		break;
 	}
 
-	m_pShaderList.push_back(shader);
+	m_pShaderList.push_back(pShader);
 
-	return shader;
+	return pShader;
 }
 
-shared_ptr<IShader> ShaderManager::FindOrNew(shared_ptr<IShaderDefine> shaderDefine)
+shared_ptr<IShader> ShaderManager::FindOrNew(shared_ptr<IShaderBuildInfo> pBuildInfo)
 {
 	for (int i = 0; i < m_pShaderList.size(); i++)
 	{
-		if (m_pShaderList[i]->Compare(shaderDefine.get()))
+		if (m_pShaderList[i]->Compare(pBuildInfo.get()))
 		{
 			return m_pShaderList[i];
 		}
 	}
 
-	return Generate(shaderDefine);
+	return Generate(pBuildInfo);
 }
 
 void ShaderManager::Dispose()

@@ -169,7 +169,7 @@ void DefaultVertexBuffer::UnBindAttribDivisor()
 	}
 }
 
-GLuint DefaultVertexBuffer::Layout()
+VERTEX_LAYOUT DefaultVertexBuffer::Layout()
 {
 	GLuint layout = 0;
 	if (HasAttribute(VERTEX_ATTRIB_POSITION))
@@ -203,7 +203,9 @@ GLuint DefaultVertexBuffer::Layout()
 		layout |= VERTEX_LAYOUT_INSTANCE_MATRIX3;
 	}
 
-	return layout;
+	
+
+	return (VERTEX_LAYOUT)layout;
 }
 }
 }

@@ -12,20 +12,9 @@ public:
 	virtual SHADER_TYPE Type() override { return SHADER_TYPE::SHADER_TYPE_SSLIC; }
 	void SetTexture(shared_ptr<Texture> value) { m_pTexture = value; };
 	shared_ptr<Texture> GetTexture() { return m_pTexture; };
+
 private:
 	shared_ptr<Texture> m_pTexture;
-};
-
-
-class DLL_EXPORT SSLICShaderDefine : public IShaderDefine
-{
-public:
-	SSLICShaderDefine() {};
-	~SSLICShaderDefine() {};
-
-	virtual SHADER_TYPE Type() { return SHADER_TYPE::SHADER_TYPE_SSLIC; };
-	virtual bool Compare(IShaderDefine* shaderDefine) { return true; };
-
 };
 
 

@@ -41,8 +41,10 @@ using namespace glm;
 #include "IndexBuffer.h"
 #include "ArrayBuffer.h"
 
-
+#include "IAttribute.h"
+#include "IShaderCode.h"
 #include "IUniform.h"
+#include "IShaderBuildInfo.h"
 #include "IShaderDefine.h"
 #include "IShader.h"
 #include "IVertexBuffer.h"

@@ -172,12 +172,15 @@
     <ClInclude Include="ArrayBuffer.h" />
     <ClInclude Include="FrameBuffer.h" />
     <ClInclude Include="GfxTypes.h" />
+    <ClInclude Include="IAttribute.h" />
     <ClInclude Include="IGLObject.h" />
     <ClInclude Include="IGLState.h" />
     <ClInclude Include="GLTypes.h" />
     <ClInclude Include="IndexBuffer.h" />
     <ClInclude Include="IRenderTarget.h" />
     <ClInclude Include="IShader.h" />
+    <ClInclude Include="IShaderBuildInfo.h" />
+    <ClInclude Include="IShaderCode.h" />
     <ClInclude Include="IShaderDefine.h" />
     <ClInclude Include="IUniform.h" />
     <ClInclude Include="IVertexBuffer.h" />
@@ -203,6 +206,8 @@
     <ClCompile Include="IndexBuffer.cpp" />
     <ClCompile Include="IRenderTarget.cpp" />
     <ClCompile Include="IShader.cpp" />
+    <ClCompile Include="IShaderBuildInfo.cpp" />
+    <ClCompile Include="IShaderCode.cpp" />
     <ClCompile Include="IVertexBuffer.cpp" />
     <ClCompile Include="LineState.cpp" />
     <ClCompile Include="PointState.cpp" />

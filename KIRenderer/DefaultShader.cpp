@@ -4,9 +4,6 @@ namespace Renderer
 {
 DefaultShader::DefaultShader()
 {
-	SetVersion(GLSL_VERSION_400_CORE);
-	SetVertexPath(string(SHADER_DIRECTORY) + "\\default.vert");
-	SetFragPath(string(SHADER_DIRECTORY) + "\\default.frag");
 }
 
 DefaultShader::~DefaultShader()
@@ -42,16 +39,16 @@ void DefaultShader::FetchUniformLocation()
 	Logger::GLError();
 }
 
-void DefaultShader::Bind(shared_ptr<IUniform> uniform)
+void DefaultShader::Bind(shared_ptr<IUniform> pUniform)
 {
-	if (uniform == nullptr)
+	if (pUniform == nullptr)
 	{
 		return;
 	}
 
-	if (uniform->Type() == SHADER_TYPE::SHADER_TYPE_DEFAULT)
+	if (pUniform->Type() == SHADER_TYPE::SHADER_TYPE_DEFAULT)
 	{
-		m_uniformParameter = static_pointer_cast<DefaultUniform>(uniform);
+		m_uniformParameter = static_pointer_cast<DefaultUniform>(pUniform);
 	}
 	else
 	{
@@ -59,10 +56,14 @@ void DefaultShader::Bind(shared_ptr<IUniform> uniform)
 		return;
 	}
 
-	DefaultShaderDefine* pDefine = nullptr;
-	if (GetShaderDefine()->Type() == SHADER_TYPE::SHADER_TYPE_DEFAULT)
+	DefaultVertexCode* pVertexCode = nullptr;
+	DefaultFragCode* pFragCode = nullptr;
+	if (BuildInfo()->GetShaderCode(SHADER_PROGRAM_VERTEX)->Type() == SHADER_TYPE::SHADER_TYPE_DEFAULT &&
+		BuildInfo()->GetShaderCode(SHADER_PROGRAM_FRAG)->Type() == SHADER_TYPE::SHADER_TYPE_DEFAULT)
 	{
-		pDefine = (DefaultShaderDefine*)GetShaderDefine();
+		pVertexCode = (DefaultVertexCode*)BuildInfo()->GetShaderCode(SHADER_PROGRAM_VERTEX);
+		pFragCode = (DefaultFragCode*)BuildInfo()->GetShaderCode(SHADER_PROGRAM_FRAG);
+
 	}
 	else
 	{
@@ -70,14 +71,14 @@ void DefaultShader::Bind(shared_ptr<IUniform> uniform)
 		return;
 	}
 
-	if (pDefine->UseColor() == false &&
-		pDefine->UseNormal() == false &&
-		pDefine->UseTexcoord() == false)
+	if (pVertexCode->UseColor() == false &&
+		pVertexCode->UseNormal() == false &&
+		pVertexCode->UseTexcoord() == false)
 	{
 		BindFixColor();
 	}
 
-	if (pDefine->UseTexture0() == true)
+	if (pFragCode->UseTexture0() == true)
 	{
 		if (m_uniformParameter->GetTexture() == nullptr)
 		{
@@ -128,93 +129,5 @@ void DefaultShader::BindFixColor()
 	IShader::BindVector4(m_uniformLocation[DEFAULT_UNIFORM_FIX_COLOR], m_uniformParameter->FixColor());
 }
 
-void DefaultShaderDefine::GetDefineCode(SHADER_PROGRAM_TYPE type, string& define)
-{
-	if (type == SHADER_PROGRAM_TYPE::SHADER_PROGRAM_VERTEX)
-	{
-		GetVertexDefine(define);
-	}
-	else if (type == SHADER_PROGRAM_TYPE::SHADER_PROGRAM_FRAG)
-	{
-		GetFragDefine(define);
-	}
-}
-
-void DefaultShaderDefine::GetVertexDefine(string& define)
-{
-	if (m_useNormal)
-		define += USE_NORMAL;
-	if (m_useColor)
-		define += USE_COLOR;
-	if (m_useTexcoord)
-		define += USE_TEXCOORD;
-	if (m_useGBuffer)
-		define += USE_GBUFFER;
-	if (m_useInstance)
-		define += USE_INSTANCE;
-}
-
-void DefaultShaderDefine::GetFragDefine(string& define)
-{
-	if (m_useNormal)
-		define += USE_NORMAL;
-	if (m_useColor)
-		define += USE_COLOR;
-	if (m_useTexcoord)
-		define += USE_TEXCOORD;
-	if (m_useTexture0)
-		define += USE_TEXTURE0;
-	if (m_useGBuffer)
-		define += USE_GBUFFER;
-	if (m_useShading)
-		define += USE_SHADING;
-}
-
-bool DefaultShaderDefine::Compare(IShaderDefine* shaderDefine)
-{
-	if (shaderDefine->Type() == SHADER_TYPE_DEFAULT)
-	{
-		DefaultShaderDefine* pDefine = (DefaultShaderDefine*)(shaderDefine);
-		if (m_useGBuffer == pDefine->m_useGBuffer &&
-			m_useNormal == pDefine->m_useNormal &&
-			m_useColor == pDefine->m_useColor &&
-			m_useTexcoord == pDefine->m_useTexcoord &&
-			m_useTexture0 == pDefine->m_useTexture0 &&
-			m_useInstance == pDefine->m_useInstance &&
-			m_useShading == pDefine->m_useShading)
-		{
-			return true;
-		}
-	}
-
-	return false;
-}
-
-void DefaultShaderDefine::SetShaderDefine(GLuint layout)
-{
-	if (layout & VERTEX_LAYOUT_NORMAL)
-	{
-		m_useNormal = true;
-	}
-
-	if (layout & VERTEX_LAYOUT_COLOR)
-	{
-		m_useColor = true;
-	}
-
-	if (layout & VERTEX_LAYOUT_TEXCOORD)
-	{
-		m_useTexcoord = true;
-		m_useTexture0 = true;
-	}
-
-	if (layout & VERTEX_LAYOUT_INSTANCE_MATRIX0 ||
-		layout & VERTEX_LAYOUT_INSTANCE_MATRIX1 || 
-		layout & VERTEX_LAYOUT_INSTANCE_MATRIX2 || 
-		layout & VERTEX_LAYOUT_INSTANCE_MATRIX3)
-	{
-		m_useInstance = true;
-	}
-}
 }
 }

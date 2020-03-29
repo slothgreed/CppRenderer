@@ -70,6 +70,12 @@
     <Filter Include="ヘッダー ファイル\Camera">
       <UniqueIdentifier>{09b11c40-c248-45b8-9183-0a012c490c83}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\Shader\Code">
+      <UniqueIdentifier>{bd641b93-83e7-45be-8c29-e22c2c2bb4f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Shader\Code">
+      <UniqueIdentifier>{1187a1b2-bd71-4d30-b56d-e1e037930af8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -192,6 +198,18 @@
     <ClInclude Include="NormalVisualizeShader.h">
       <Filter>ヘッダー ファイル\Shader</Filter>
     </ClInclude>
+    <ClInclude Include="DefaultFragCode.h">
+      <Filter>ヘッダー ファイル\Shader\Code</Filter>
+    </ClInclude>
+    <ClInclude Include="DefaultVertexCode.h">
+      <Filter>ヘッダー ファイル\Shader\Code</Filter>
+    </ClInclude>
+    <ClInclude Include="PostProcessCode.h">
+      <Filter>ヘッダー ファイル\Shader\Code</Filter>
+    </ClInclude>
+    <ClInclude Include="CompositFragCode.h">
+      <Filter>ヘッダー ファイル\Shader\Code</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -286,6 +304,15 @@
     </ClCompile>
     <ClCompile Include="NormalVisualizeShader.cpp">
       <Filter>ソース ファイル\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="DefaultFragCode.cpp">
+      <Filter>ソース ファイル\Shader\Code</Filter>
+    </ClCompile>
+    <ClCompile Include="DefaultVertexCode.cpp">
+      <Filter>ソース ファイル\Shader\Code</Filter>
+    </ClCompile>
+    <ClCompile Include="CompositFragCode.cpp">
+      <Filter>ソース ファイル\Shader\Code</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

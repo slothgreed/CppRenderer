@@ -54,8 +54,14 @@ using namespace KI::Gfx;
 #include "UniformScene.h"
 #include "UniformLight.h"
 
+
+#include "DefaultVertexCode.h"
+#include "DefaultFragCode.h"
 #include "DefaultShader.h"
 #include "DefaultVertexBuffer.h"
+
+#include "PostProcessCode.h"
+#include "CompositFragCode.h"
 
 #include "OutputShader.h"
 #include "CompositShader.h"

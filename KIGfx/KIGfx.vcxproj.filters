@@ -111,6 +111,15 @@
     <ClInclude Include="IShaderDefine.h">
       <Filter>ヘッダー ファイル\Interface</Filter>
     </ClInclude>
+    <ClInclude Include="IShaderCode.h">
+      <Filter>ヘッダー ファイル\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="IShaderBuildInfo.h">
+      <Filter>ヘッダー ファイル\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="IAttribute.h">
+      <Filter>ヘッダー ファイル\Interface</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -168,6 +177,12 @@
       <Filter>ソース ファイル\Interface</Filter>
     </ClCompile>
     <ClCompile Include="IShader.cpp">
+      <Filter>ソース ファイル\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="IShaderCode.cpp">
+      <Filter>ソース ファイル\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="IShaderBuildInfo.cpp">
       <Filter>ソース ファイル\Interface</Filter>
     </ClCompile>
   </ItemGroup>

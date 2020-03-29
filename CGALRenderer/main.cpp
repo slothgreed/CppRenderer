@@ -6,7 +6,7 @@
 using namespace KI;
 int main()
 {
-	int NEW_SCENE = 3;
+	int NEW_SCENE = 2;
     std::cout << "Hello World!\n"; 
 	std::unique_ptr<CGALRenderer> renderer(new CGALRenderer());
 	auto pProject = make_shared<Project>();

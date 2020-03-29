@@ -12,12 +12,6 @@ public:
 	shared_ptr<Texture> pTexture;
 };
 
-class DLL_EXPORT GrayScaleShaderDefine : public IShaderDefine
-{
-	virtual SHADER_TYPE Type() { return SHADER_TYPE::SHADER_TYPE_GRAYSCALE; };
-	virtual bool Compare(IShaderDefine* shaderDefine) { return true; };
-};
-
 class DLL_EXPORT GrayScaleShader : public IShader
 {
 	enum GRAYSCALE_UNIFORM : unsigned short

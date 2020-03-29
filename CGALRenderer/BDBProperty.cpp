@@ -43,9 +43,12 @@ void BDBProperty::Build(IModel* pModel)
 	m_pIndexBuffer = make_shared<IndexBuffer>();
 	m_pIndexBuffer->Set(GL_LINES, index);
 
-	auto shaderDefine = make_shared<DefaultShaderDefine>();
-	shaderDefine->SetShaderDefine(VERTEX_ATTRIB_POSITION);
-	m_pShader = ShaderManager::Instance()->FindOrNew(shaderDefine);
+	auto pBuildInfo = make_shared<IShaderBuildInfo>(SHADER_TYPE_DEFAULT);
+	auto pVertexCode = make_shared<DefaultVertexCode>();
+	pVertexCode->SetShaderDefine(m_pVertexBuffer->Layout());
+	pBuildInfo->SetVertexCode(pVertexCode);
+	pBuildInfo->SetFragCode(make_shared<DefaultFragCode>());
+	m_pShader = ShaderManager::Instance()->FindOrNew(pBuildInfo);
 
 }
 

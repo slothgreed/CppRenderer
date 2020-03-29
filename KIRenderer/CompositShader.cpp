@@ -4,9 +4,6 @@ namespace Renderer
 {
 CompositShader::CompositShader()
 {
-	SetVersion(GLSL_VERSION_400_CORE);
-	SetVertexPath(string(SHADER_DIRECTORY) + "\\postprocess.vert");
-	SetFragPath(string(SHADER_DIRECTORY) + "\\composit.frag");
 }
 
 CompositShader::~CompositShader()
@@ -41,55 +38,6 @@ void CompositShader::Bind(shared_ptr<IUniform> uniform)
 void CompositShader::UnBind()
 {
 
-}
-void CompositShaderDefine::SetShaderDefine(CompositShader::COMPOSIT_TYPE type)
-{
-	m_CompositType = type;
-}
-bool CompositShaderDefine::Compare(IShaderDefine* shaderDefine)
-{
-	if (shaderDefine->Type() == SHADER_TYPE::SHADER_TYPE_COMPOSIT)
-	{
-		CompositShaderDefine* pDefine = (CompositShaderDefine*)(shaderDefine);
-		if (m_CompositType == pDefine->m_CompositType)
-		{
-			return true;
-		}
-	}
-
-	return false;
-}
-
-void CompositShaderDefine::GetDefineCode(SHADER_PROGRAM_TYPE type, string& define)
-{
-	if (type == SHADER_PROGRAM_TYPE::SHADER_PROGRAM_FRAG)
-	{
-		GetFragDefine(define);
-	}
-}
-void CompositShaderDefine::GetFragDefine(string& define)
-{
-	switch (m_CompositType)
-	{
-	case CompositShader::COMPOSIT_TYPE_ADD:
-		define += FRAG_SHADER_COMPOSIT_ADD;
-		break;
-	case CompositShader::COMPOSIT_TYPE_SUB:
-		define += FRAG_SHADER_COMPOSIT_SUB;
-		break;
-	case CompositShader::COMPOSIT_TYPE_MULT:
-		define += FRAG_SHADER_COMPOSIT_MULT;
-		break;
-	case CompositShader::COMPOSIT_TYPE_OVERWRITE:
-		define += FRAG_SHADER_COMPOSIT_ADD;
-		break;
-	case CompositShader::COMPOSIT_TYPE_NUM:
-		define += FRAG_SHADER_COMPOSIT_OVERWRITE;
-		break;
-	default:
-		assert(0);
-		break;
-	}
 }
 }
 }
