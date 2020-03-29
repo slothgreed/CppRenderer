@@ -14,6 +14,7 @@ DefaultVertexCode::DefaultVertexCode()
 	m_useColor = false;
 	m_useTexcoord = false;
 	m_useInstance = false;
+	m_outInstance = false;
 	m_useShading = false;
 }
 
@@ -23,16 +24,29 @@ DefaultVertexCode::~DefaultVertexCode()
 
 void DefaultVertexCode::GetDefineCode(string& code)
 {
-	if (m_useNormal)
-		code += USE_NORMAL;
-	if (m_useColor)
-		code += USE_COLOR;
-	if (m_useTexcoord)
-		code += USE_TEXCOORD;
-	if (m_useGBuffer)
+	if (m_useNormal) {
+		code += IN_NORMAL;
+		code += OUT_NORMAL;
+	}
+	if (m_useColor) {
+		code += IN_COLOR;
+	}
+
+	code += OUT_COLOR;	// 色の出力は必ずする．
+
+	if (m_useTexcoord) {
+		code += IN_TEXCOORD;
+		code += OUT_TEXCOORD;
+	}
+	if (m_useGBuffer) {
 		code += USE_GBUFFER;
-	if (m_useInstance)
-		code += USE_INSTANCE;
+	}
+	if (m_useInstance) {
+		code += IN_INSTANCE;
+		if (m_outInstance) {
+			code += OUT_INSTANCE;
+		}
+	}
 }
 
 bool DefaultVertexCode::Compare(IShaderCode* pShaderCode)
@@ -44,7 +58,8 @@ bool DefaultVertexCode::Compare(IShaderCode* pShaderCode)
 			m_useNormal == pDefine->m_useNormal &&
 			m_useColor == pDefine->m_useColor &&
 			m_useTexcoord == pDefine->m_useTexcoord &&
-			m_useInstance == pDefine->m_useInstance)
+			m_useInstance == pDefine->m_useInstance &&
+			m_outInstance == pDefine->m_outInstance)
 		{
 			return true;
 		}

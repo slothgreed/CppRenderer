@@ -14,11 +14,16 @@ public:
 	virtual SHADER_TYPE Type() { return SHADER_TYPE::SHADER_TYPE_DEFAULT; }
 	virtual void GetDefineCode(string& code) override;
 	virtual bool Compare(IShaderCode* pShaderCode);
+	
+	void SetOutInstance(bool value) { m_outInstance = value; }
+
 	bool UseGBuffer() const { return m_useGBuffer; }
 	bool UseNormal() const { return m_useNormal; };
 	bool UseColor() const { return m_useColor; };
+	
 	bool UseTexcoord() const { return m_useTexcoord; };
 	bool UseInstance() const { return m_useInstance; };
+	bool OutInstance() const { return m_outInstance; };
 
 	void SetShaderDefine(VERTEX_LAYOUT layout);
 
@@ -29,6 +34,7 @@ private:
 	bool m_useTexcoord;
 	bool m_useInstance;
 	bool m_useShading;
+	bool m_outInstance;
 };
 }
 }

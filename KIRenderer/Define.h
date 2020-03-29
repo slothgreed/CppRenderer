@@ -20,13 +20,20 @@ namespace Rednerer
 
 
 #define GLSL_VERSION_400_CORE "#version 400 core\n"
-#define USE_NORMAL	 "#define USE_NORMAL\n"
-#define USE_COLOR	 "#define USE_COLOR\n"
-#define USE_TEXCOORD "#define USE_TEXCOORD\n"
-#define USE_TEXTURE0 "#define USE_TEXTURE0\n"
-#define USE_GBUFFER	 "#define USE_GBUFFER\n"
-#define USE_SHADING	 "#define USE_SHADING\n"
-#define USE_INSTANCE "#define USE_INSTANCE\n"
+#define IN_NORMAL		"#define IN_NORMAL\n"
+#define IN_COLOR		"#define IN_COLOR\n"
+#define IN_TEXCOORD		"#define IN_TEXCOORD\n"
+#define IN_TEXTURE0		"#define IN_TEXTURE0\n"
+#define IN_INSTANCE		"#define IN_INSTANCE\n"
+
+#define OUT_NORMAL		"#define OUT_NORMAL\n"
+#define OUT_COLOR		"#define OUT_COLOR\n"
+#define OUT_TEXCOORD	"#define OUT_TEXCOORD\n"
+#define OUT_TEXTURE0	"#define OUT_TEXTURE0\n"
+#define OUT_INSTANCE	"#define IN_INSTANCE\n"
+
+#define USE_GBUFFER		"#define USE_GBUFFER\n"
+#define USE_SHADING		"#define USE_SHADING\n"
 
 #define SCENE_DATA_LOCATION		5
 #define LIGHT_DATA_LOCATION		6

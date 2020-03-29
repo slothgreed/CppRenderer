@@ -26,13 +26,13 @@ void DefaultFragCode::GetDefineCode(string& code)
 	if (m_useGBuffer)
 		code += USE_GBUFFER;
 	if (m_useNormal)
-		code += USE_NORMAL;
+		code += IN_NORMAL;
 	if (m_useColor)
-		code += USE_COLOR;
+		code += IN_COLOR;
 	if (m_useTexcoord)
-		code += USE_TEXCOORD;
+		code += IN_TEXCOORD;
 	if (m_useTexture0)
-		code += USE_TEXTURE0;
+		code += IN_TEXTURE0;
 	if (m_useShading)
 		code += USE_SHADING;
 }
