@@ -210,6 +210,9 @@
     <ClInclude Include="CompositFragCode.h">
       <Filter>ヘッダー ファイル\Shader\Code</Filter>
     </ClInclude>
+    <ClInclude Include="SimpleShaderCode.h">
+      <Filter>ヘッダー ファイル\Shader\Code</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

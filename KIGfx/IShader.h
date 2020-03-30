@@ -11,7 +11,7 @@ class DLL_EXPORT IShader
 {
 public:
 	void Build(shared_ptr<IShaderBuildInfo> pShaderBuildInfo);
-	void BuildFromCode(const string& vertexShaderCode, const string& fragmentShader);
+	void BuildFromCode(const string& vertexShaderCode, const string& geomCode, const string& fragmentShader);
 	void GetShaderCode(SHADER_PROGRAM_TYPE type, string& code);
 	void Use();
 	void UnUse();
@@ -23,6 +23,7 @@ public:
 	virtual void FetchUniformLocation() = 0;
 	virtual void Bind(shared_ptr<IUniform> uniform) = 0;
 	virtual void UnBind() = 0;
+
 	GLuint Program() { return m_programId; }
 	bool Compare(IShaderBuildInfo* shaderDefine);
 	IShaderBuildInfo* BuildInfo() { return m_pShaderBuildInfo.get(); }

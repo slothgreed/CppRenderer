@@ -50,6 +50,10 @@ shared_ptr<IShader> ShaderManager::Generate(shared_ptr<IShaderBuildInfo> buildIn
 	case SHADER_TYPE_COMPOSIT:
 		pShader = make_shared<CompositShader>();
 		pShader->Build(buildInfo);
+	case SHADER_TYPE_NORMALVISUALIZE:
+		pShader = make_shared<NormalVisualizeShader>();
+		pShader->Build(buildInfo);
+		break;
 	default:
 		assert(0);
 		break;

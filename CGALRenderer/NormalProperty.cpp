@@ -14,11 +14,15 @@ void NormalProperty::Build(IModel* pModel)
 	m_pUniform->SetFixColor(vec4(0, 0, 1, 1));
 
 	m_pVertexBuffer = make_shared<DefaultVertexBuffer>();
-	auto pBuildInfo = make_shared<IShaderBuildInfo>(SHADER_TYPE::SHADER_TYPE_DEFAULT);
+	auto pBuildInfo = make_shared<IShaderBuildInfo>(SHADER_TYPE::SHADER_TYPE_NORMALVISUALIZE);
 	auto pVertexCode = make_shared<DefaultVertexCode>();
-	pVertexCode->SetShaderDefine(m_pVertexBuffer->Layout());
+	auto pFragCode = make_shared<DefaultFragCode>();
+	pVertexCode->SetShaderDefine(SHADER_TYPE::SHADER_TYPE_NORMALVISUALIZE);
+	pFragCode->SetShaderDefine(SHADER_TYPE::SHADER_TYPE_NORMALVISUALIZE);
+
 	pBuildInfo->SetVertexCode(pVertexCode);
-	pBuildInfo->SetFragCode(make_shared<DefaultFragCode>());
+	pBuildInfo->SetGeomCode(make_shared<NormalVisualizeGeometryCode>());
+	pBuildInfo->SetFragCode(pFragCode);
 	m_pShader = ShaderManager::Instance()->FindOrNew(pBuildInfo);
 
 	SetVBOData(pModel);
@@ -43,14 +47,16 @@ void NormalProperty::SetVBOData(IModel* pModel)
 	}
 
 	pPolygonModel->GetVertexList(vertexList);
+	vector<vec3> positionList;
 	vector<vec3> normalList;
 	for (int i = 0; i < vertexList.size(); i++)
 	{
-		normalList.push_back(vertexList[i].Position());
-		normalList.push_back(vertexList[i].Position() + vertexList[i].Normal());
+		positionList.push_back(vertexList[i].Position());
+		normalList.push_back(vertexList[i].Normal());
 	}
 
-	m_pVertexBuffer->SetPosition(GL_LINES, normalList);
+	m_pVertexBuffer->SetPosition(GL_POINTS, positionList);
+	m_pVertexBuffer->SetNormal(normalList);
 }
 
 void NormalProperty::Draw()

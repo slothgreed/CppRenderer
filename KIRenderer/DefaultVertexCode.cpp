@@ -12,6 +12,7 @@ DefaultVertexCode::DefaultVertexCode()
 	m_useGBuffer = false;
 	m_useNormal = false;
 	m_useColor = false;
+	m_planePosition = false;
 	m_useTexcoord = false;
 	m_useInstance = false;
 	m_outInstance = false;
@@ -24,6 +25,10 @@ DefaultVertexCode::~DefaultVertexCode()
 
 void DefaultVertexCode::GetDefineCode(string& code)
 {
+	if (m_planePosition){
+		code += OUT_PLANE_POSITION;
+	}
+
 	if (m_useNormal) {
 		code += IN_NORMAL;
 		code += OUT_NORMAL;
@@ -59,7 +64,8 @@ bool DefaultVertexCode::Compare(IShaderCode* pShaderCode)
 			m_useColor == pDefine->m_useColor &&
 			m_useTexcoord == pDefine->m_useTexcoord &&
 			m_useInstance == pDefine->m_useInstance &&
-			m_outInstance == pDefine->m_outInstance)
+			m_outInstance == pDefine->m_outInstance &&
+			m_planePosition == pDefine->m_planePosition)
 		{
 			return true;
 		}
@@ -67,6 +73,20 @@ bool DefaultVertexCode::Compare(IShaderCode* pShaderCode)
 
 	return false;
 }
+
+void DefaultVertexCode::SetShaderDefine(SHADER_TYPE type)
+{
+	if (type == SHADER_TYPE::SHADER_TYPE_NORMALVISUALIZE)
+	{
+		m_useNormal = true;
+		m_planePosition = true;
+	}
+	else
+	{
+		assert(0);
+	}
+}
+
 void DefaultVertexCode::SetShaderDefine(VERTEX_LAYOUT layout)
 {
 	if (layout & VERTEX_LAYOUT_NORMAL)

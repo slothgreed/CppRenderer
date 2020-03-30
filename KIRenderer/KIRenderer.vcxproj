@@ -198,6 +198,7 @@
     <ClInclude Include="RendererTypes.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="ShaderManager.h" />
+    <ClInclude Include="SimpleShaderCode.h" />
     <ClInclude Include="SpotLight.h" />
     <ClInclude Include="SSLICEffect.h" />
     <ClInclude Include="SSLICShader.h" />

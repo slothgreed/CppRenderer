@@ -26,10 +26,12 @@ public:
 	bool OutInstance() const { return m_outInstance; };
 
 	void SetShaderDefine(VERTEX_LAYOUT layout);
+	void SetShaderDefine(SHADER_TYPE type);
 
 private:
 	bool m_useGBuffer;
 	bool m_useNormal;
+	bool m_planePosition;
 	bool m_useColor;
 	bool m_useTexcoord;
 	bool m_useInstance;

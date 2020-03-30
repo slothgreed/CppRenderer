@@ -14,7 +14,8 @@ public:
 	const vec3& Min() const { return m_min; }
 	const vec3& Max() const { return m_max; }
 	const vec3& Center() const { return m_center; }
-	std::string ToString();
+	float MaxEdgeLength();
+	string ToString();
 	~BDB();
 
 private:

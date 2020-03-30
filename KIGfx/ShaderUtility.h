@@ -11,7 +11,7 @@ public:
 	~ShaderUtility();
 	
 	static GLuint Compile(const string& code, GLuint shaderType);
-	static GLuint Link(GLuint vertexId, GLuint fragId);
+	static GLuint Link(GLuint vertexId, GLuint geomId, GLuint fragId);
 
 private:
 

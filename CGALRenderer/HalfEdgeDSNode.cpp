@@ -3,7 +3,7 @@ namespace KI
 HalfEdgeDSNode::HalfEdgeDSNode(shared_ptr<HalfEdgeModel> model)
 	:PolygonModelNode(static_pointer_cast<IModel>(model))
 {
-	VisibleHalfEdgeLine(true);
+	//VisibleHalfEdgeLine(true);
 }
 
 HalfEdgeDSNode::~HalfEdgeDSNode()

@@ -21,6 +21,18 @@ DefaultFragCode::~DefaultFragCode()
 {
 }
 
+void DefaultFragCode::SetShaderDefine(SHADER_TYPE type)
+{
+	if (type == SHADER_TYPE::SHADER_TYPE_NORMALVISUALIZE)
+	{
+		m_useColor = true;
+	}
+	else
+	{
+		assert(0);
+	}
+}
+
 void DefaultFragCode::GetDefineCode(string& code)
 {
 	if (m_useGBuffer)

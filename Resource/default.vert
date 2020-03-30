@@ -56,6 +56,14 @@ void OutputColor()
 #endif
 }
 
+ 
+void OutputNormal()
+{
+#if defined(IN_NORMAL) && defined(OUT_NORMAL)
+	o_normal = vec3(0.5);
+#endif
+}
+
 void OutputTexcoord()
 {
 #if defined(IN_TEXCOORD) && defined(OUT_TEXCOORD)
@@ -66,7 +74,8 @@ void OutputTexcoord()
 void OutputPosition()
 {
 #if defined(OUT_PLANE_POSITION) 
-	gl_Position = vec4(position,1.0);
+	mat4 vp = scene.Projection * scene.ViewMatrix;
+	gl_Position = vp * vec4(position,1.0);
 #elif defined(IN_INSTANCE)
 	mat4 vp = scene.Projection * scene.ViewMatrix;
 	mat4 instanceMatrix = mat4(instanceMatrix0,instanceMatrix1,instanceMatrix2,instanceMatrix3);
@@ -103,6 +112,7 @@ void main()
 	OutputGBuffer();
 #else
 	OutputPosition();
+	OutputNormal();
 	OutputColor();
 	OutputTexcoord();
 	OutputInstance();

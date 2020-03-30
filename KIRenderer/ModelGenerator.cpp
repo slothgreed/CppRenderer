@@ -153,5 +153,6 @@ void ModelGenerator::CubeSpace(const BDB& size, DefaultVertexBuffer* pVertexBuff
 
 	pIndexBuffer->Set(GL_TRIANGLES, index);
 }
+
 }
 }

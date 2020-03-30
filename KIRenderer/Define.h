@@ -16,6 +16,7 @@ namespace Rednerer
 #define SHADER_GRAYSCALE	"grayscale"
 #define SHADER_COMPOSIT		"composit"
 #define SHADER_SSLIC		"sslic"
+#define SHADER_NORMALVIS	"normalvisualize"
 #define SHADER_OUTPUT		"output"
 
 
@@ -26,11 +27,12 @@ namespace Rednerer
 #define IN_TEXTURE0		"#define IN_TEXTURE0\n"
 #define IN_INSTANCE		"#define IN_INSTANCE\n"
 
-#define OUT_NORMAL		"#define OUT_NORMAL\n"
-#define OUT_COLOR		"#define OUT_COLOR\n"
-#define OUT_TEXCOORD	"#define OUT_TEXCOORD\n"
-#define OUT_TEXTURE0	"#define OUT_TEXTURE0\n"
-#define OUT_INSTANCE	"#define IN_INSTANCE\n"
+#define OUT_NORMAL			"#define OUT_NORMAL\n"
+#define OUT_COLOR			"#define OUT_COLOR\n"
+#define OUT_TEXCOORD		"#define OUT_TEXCOORD\n"
+#define OUT_TEXTURE0		"#define OUT_TEXTURE0\n"
+#define OUT_INSTANCE		"#define IN_INSTANCE\n"
+#define OUT_PLANE_POSITION	"#define OUT_PLANE_POSITION\n"
 
 #define USE_GBUFFER		"#define USE_GBUFFER\n"
 #define USE_SHADING		"#define USE_SHADING\n"

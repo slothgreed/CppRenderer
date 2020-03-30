@@ -4,7 +4,7 @@ PolygonModelNode::PolygonModelNode(shared_ptr<IModel> model)
 	: IModelNode(model)
 {
 	m_name = "PolygonModelNode";
-	VisibleBDB(true);
+	//VisibleBDB(true);
 	VisibleNormal(true);
 	SetRenderData();
 }
@@ -15,15 +15,15 @@ PolygonModelNode::~PolygonModelNode()
 
 void PolygonModelNode::Draw()
 {
-	if (m_pFaceMaterial != NULL && m_pFaceBuffer != NULL)
-	{
-		m_pFaceMaterial->Draw(m_pFaceBuffer.get(), m_pFaceIndex.get());
-	}
+	//if (m_pFaceMaterial != NULL && m_pFaceBuffer != NULL)
+	//{
+	//	m_pFaceMaterial->Draw(m_pFaceBuffer.get(), m_pFaceIndex.get());
+	//}
 
-	if (m_pEdgeMaterial != NULL && m_pEdgeBuffer != NULL)
-	{
-		m_pEdgeMaterial->Draw(m_pEdgeBuffer.get());
-	}
+	//if (m_pEdgeMaterial != NULL && m_pEdgeBuffer != NULL)
+	//{
+	//	m_pEdgeMaterial->Draw(m_pEdgeBuffer.get());
+	//}
 
 	DrawProperty();
 

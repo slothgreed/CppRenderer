@@ -18,7 +18,8 @@ void IShader::GenerateShaderCode(IShaderBuildInfo* pBuildInfo)
 	GetShaderCode(SHADER_PROGRAM_GEOM, geomCode);
 	GetShaderCode(SHADER_PROGRAM_FRAG, fragCode);
 	
-	BuildFromCode(vertexCode, fragCode);
+
+	BuildFromCode(vertexCode, geomCode, fragCode);
 }
 
 void IShader::GetShaderCode(SHADER_PROGRAM_TYPE type, string& code)
@@ -38,12 +39,20 @@ void IShader::GetShaderCode(SHADER_PROGRAM_TYPE type, string& code)
 	code = string("#version 400 core\n") +shaderDefine + shaderCode;
 }
 
-void IShader::BuildFromCode(const string& vertexShaderCode, const string& fragmentShader)
+void IShader::BuildFromCode(const string& vertexCode, const string& geomCode, const string& fragCode)
 {
-	GLuint vertId = ShaderUtility::Compile(vertexShaderCode, GL_VERTEX_SHADER);
-	GLuint fragId = ShaderUtility::Compile(fragmentShader, GL_FRAGMENT_SHADER);
+	GLuint vertId = 0;
+	GLuint geomId = 0;
+	GLuint fragId = 0;
+	
+	if (vertexCode != "")
+		vertId = ShaderUtility::Compile(vertexCode, GL_VERTEX_SHADER);
+	if (geomCode != "")
+		geomId = ShaderUtility::Compile(geomCode, GL_GEOMETRY_SHADER);
+	if(fragCode != "")
+		fragId = ShaderUtility::Compile(fragCode, GL_FRAGMENT_SHADER);
 
-	m_programId = ShaderUtility::Link(vertId, fragId);
+	m_programId = ShaderUtility::Link(vertId, geomId, fragId);
 	Initialize();
 	//UniformValidation();
 }

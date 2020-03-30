@@ -101,6 +101,8 @@ void HalfEdgeDS::Load(const string& filePath)
 	//{
 	//	halfEdgeOperator.EdgeFlips(this, m_EdgeList[i]);
 	//}
+
+	Normalize();
 }
 
 void HalfEdgeDS::CalcElement()
@@ -136,6 +138,26 @@ float HalfEdgeDS::CalcAllEdgeLength()
 	return edgeSum / 2; // opposite ‚Ì‚à‚Ì‚àŠÜ‚Ü‚ê‚Ä‚¢‚é‚Ì‚Å/2
 }
 
+void HalfEdgeDS::Normalize()
+{
+	BDB bdb;
+	for (int i = 0; i < m_VertexList.size(); i++)
+	{
+		bdb.Apply(m_VertexList[i]->Position());
+	}
+
+	float length = bdb.MaxEdgeLength();
+	for (int i = 0; i < m_VertexList.size(); i++) 
+	{
+		vec3 position = m_VertexList[i]->Position();
+		position += bdb.Min();
+		position.x /= length;
+		position.y /= length;
+		position.z /= length;
+
+		m_VertexList[i]->SetPosition(position);
+	}
+}
 void HalfEdgeDS::RemoveVertex(int index)
 {
 

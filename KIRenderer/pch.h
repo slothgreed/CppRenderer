@@ -61,6 +61,7 @@ using namespace KI::Gfx;
 #include "DefaultVertexBuffer.h"
 
 #include "PostProcessCode.h"
+#include "SimpleShaderCode.h"
 #include "CompositFragCode.h"
 
 #include "OutputShader.h"

@@ -40,14 +40,23 @@ GLuint ShaderUtility::Compile(const string& code, GLuint shaderType)
 	return id;
 }
 
-GLuint ShaderUtility::Link(GLuint vertexId, GLuint fragId)
+GLuint ShaderUtility::Link(GLuint vertexId, GLuint geomId, GLuint fragId)
 {
 	GLuint programId = glCreateProgram();
-	glAttachShader(programId, vertexId);
-	glAttachShader(programId, fragId);
 
-	glDeleteShader(vertexId);
-	glDeleteShader(fragId);
+	if (vertexId != 0)
+		glAttachShader(programId, vertexId);
+	if (geomId != 0)
+		glAttachShader(programId, geomId);
+	if (fragId != 0)
+		glAttachShader(programId, fragId);
+
+	if (vertexId != 0)
+		glDeleteShader(vertexId);
+	if (geomId != 0)
+		glDeleteShader(geomId);
+	if (fragId != 0)
+		glDeleteShader(fragId);
 
 	glLinkProgram(programId);
 
@@ -57,10 +66,10 @@ GLuint ShaderUtility::Link(GLuint vertexId, GLuint fragId)
 	{
 		GLint maxLength = 0;
 		// The maxLength includes the NULL character
-		glGetShaderiv(programId, GL_INFO_LOG_LENGTH, &maxLength);
+		glGetProgramiv(programId, GL_INFO_LOG_LENGTH, &maxLength);
 
 		GLchar* errorLog = new GLchar[maxLength];
-		glGetShaderInfoLog(programId, maxLength, &maxLength, errorLog);
+		glGetProgramInfoLog(programId, maxLength, &maxLength, errorLog);
 		Logger::Output(LOG_LEVEL::ERROR, "DefaultShader Link Error");
 		delete errorLog;
 		errorLog = nullptr;

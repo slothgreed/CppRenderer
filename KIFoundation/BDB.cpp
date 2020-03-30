@@ -40,6 +40,14 @@ void BDB::Set(vec3 min, vec3 max)
 	);
 }
 
+float BDB::MaxEdgeLength()
+{
+	float maxLength = m_max.x - m_min.x;
+	maxLength = std::max(m_max.y - m_min.y, maxLength);
+	maxLength = std::max(m_max.z - m_min.z, maxLength);
+	return maxLength;
+}
+
 std::string BDB::ToString()
 {
 	// min(x, y, z) : max(x, y, z);

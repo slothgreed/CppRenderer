@@ -29,6 +29,7 @@ public:
 	bool UseShading() const		{ return m_useShading; }
 
 	void SetShaderDefine(VERTEX_LAYOUT layout);
+	void SetShaderDefine(SHADER_TYPE type);
 
 private:
 	bool m_useGBuffer;
