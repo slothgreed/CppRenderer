@@ -11,7 +11,7 @@ layout(location = 0) in vec3 position;
 layout(location = 1) in vec3 normal;
 #endif
 
-#ifdef OUT_NORMAL
+#if defined(OUT_NORMAL)
 out vec3 o_normal;
 #endif
 
@@ -19,6 +19,7 @@ out vec3 o_normal;
 #ifdef IN_COLOR
 layout(location = 2) in vec3 color;
 #endif
+
 #ifdef OUT_COLOR
 out vec4 o_color;
 #endif
@@ -60,7 +61,7 @@ void OutputColor()
 void OutputNormal()
 {
 #if defined(IN_NORMAL) && defined(OUT_NORMAL)
-	o_normal = vec3(0.5);
+	o_normal = normal;
 #endif
 }
 
@@ -74,8 +75,7 @@ void OutputTexcoord()
 void OutputPosition()
 {
 #if defined(OUT_PLANE_POSITION) 
-	mat4 vp = scene.Projection * scene.ViewMatrix;
-	gl_Position = vp * vec4(position,1.0);
+	gl_Position = vec4(position,1.0);
 #elif defined(IN_INSTANCE)
 	mat4 vp = scene.Projection * scene.ViewMatrix;
 	mat4 instanceMatrix = mat4(instanceMatrix0,instanceMatrix1,instanceMatrix2,instanceMatrix3);

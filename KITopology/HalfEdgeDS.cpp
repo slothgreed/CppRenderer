@@ -102,7 +102,7 @@ void HalfEdgeDS::Load(const string& filePath)
 	//	halfEdgeOperator.EdgeFlips(this, m_EdgeList[i]);
 	//}
 
-	Normalize();
+	//Normalize();
 }
 
 void HalfEdgeDS::CalcElement()
