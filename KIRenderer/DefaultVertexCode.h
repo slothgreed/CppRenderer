@@ -32,7 +32,7 @@ public:
 private:
 	bool m_useGBuffer;
 	bool m_useNormal;
-	bool m_planePosition;
+	bool m_planePosition;	// ˆÊ’u‚ð‚»‚Ì‚Ü‚Ü‚É‚µ‚Ägl_Position‚É—¬‚·‚©‚Ç‚¤‚©
 	bool m_useColor;
 	bool m_useTexcoord;
 	bool m_useInstance;

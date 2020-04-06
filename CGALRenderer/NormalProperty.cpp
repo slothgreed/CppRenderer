@@ -43,6 +43,7 @@ void NormalProperty::SetVBOData(IModelNode* pModelNode)
 	else
 	{
 		assert(0);
+		return;
 	}
 
 	m_pVertexBuffer = pPolygonModel->GetVertexBuffer();

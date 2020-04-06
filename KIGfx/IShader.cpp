@@ -12,14 +12,17 @@ void IShader::Build(shared_ptr<IShaderBuildInfo> pBuildInfo)
 void IShader::GenerateShaderCode(IShaderBuildInfo* pBuildInfo)
 {
 	string vertexCode;
-	string fragCode;
+	string tcsCode;
+	string tesCode;
 	string geomCode;
+	string fragCode;
 	GetShaderCode(SHADER_PROGRAM_VERTEX, vertexCode);
-	GetShaderCode(SHADER_PROGRAM_GEOM, geomCode);
-	GetShaderCode(SHADER_PROGRAM_FRAG, fragCode);
+	GetShaderCode(SHADER_PROGRAM_TCS,	tcsCode);
+	GetShaderCode(SHADER_PROGRAM_TESS,	tesCode);
+	GetShaderCode(SHADER_PROGRAM_GEOM,	geomCode);
+	GetShaderCode(SHADER_PROGRAM_FRAG,	fragCode);
 	
-
-	BuildFromCode(vertexCode, geomCode, fragCode);
+	BuildFromCode(vertexCode, tcsCode, tesCode, geomCode, fragCode);
 }
 
 void IShader::GetShaderCode(SHADER_PROGRAM_TYPE type, string& code)
@@ -39,20 +42,26 @@ void IShader::GetShaderCode(SHADER_PROGRAM_TYPE type, string& code)
 	code = string("#version 400 core\n") +shaderDefine + shaderCode;
 }
 
-void IShader::BuildFromCode(const string& vertexCode, const string& geomCode, const string& fragCode)
+void IShader::BuildFromCode(const string& vertexCode, const string& tcsCode, const string& tesCode, const string& geomCode, const string& fragCode)
 {
 	GLuint vertId = 0;
+	GLuint tcsId = 0;
+	GLuint tesId = 0;
 	GLuint geomId = 0;
 	GLuint fragId = 0;
 	
 	if (vertexCode != "")
 		vertId = ShaderUtility::Compile(vertexCode, GL_VERTEX_SHADER);
+	if (tcsCode != "")
+		tcsId = ShaderUtility::Compile(tcsCode, GL_TESS_CONTROL_SHADER);
+	if (tesCode != "")
+		tesId = ShaderUtility::Compile(tesCode, GL_TESS_EVALUATION_SHADER);
 	if (geomCode != "")
 		geomId = ShaderUtility::Compile(geomCode, GL_GEOMETRY_SHADER);
 	if(fragCode != "")
 		fragId = ShaderUtility::Compile(fragCode, GL_FRAGMENT_SHADER);
 
-	m_programId = ShaderUtility::Link(vertId, geomId, fragId);
+	m_programId = ShaderUtility::Link(vertId, tcsId, tesId, geomId, fragId);
 	Initialize();
 	//UniformValidation();
 }

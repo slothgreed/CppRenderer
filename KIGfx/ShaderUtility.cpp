@@ -40,12 +40,16 @@ GLuint ShaderUtility::Compile(const string& code, GLuint shaderType)
 	return id;
 }
 
-GLuint ShaderUtility::Link(GLuint vertexId, GLuint geomId, GLuint fragId)
+GLuint ShaderUtility::Link(GLuint vertexId, GLuint tcsId, GLuint tesId, GLuint geomId, GLuint fragId)
 {
 	GLuint programId = glCreateProgram();
 
 	if (vertexId != 0)
 		glAttachShader(programId, vertexId);
+	if (tcsId != 0)
+		glAttachShader(programId, tcsId);
+	if (tesId != 0)
+		glAttachShader(programId, tesId);
 	if (geomId != 0)
 		glAttachShader(programId, geomId);
 	if (fragId != 0)
@@ -53,6 +57,10 @@ GLuint ShaderUtility::Link(GLuint vertexId, GLuint geomId, GLuint fragId)
 
 	if (vertexId != 0)
 		glDeleteShader(vertexId);
+	if (tcsId != 0)
+		glDeleteShader(tcsId);
+	if (tesId != 0)
+		glDeleteShader(tesId);
 	if (geomId != 0)
 		glDeleteShader(geomId);
 	if (fragId != 0)

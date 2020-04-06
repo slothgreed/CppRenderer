@@ -11,7 +11,6 @@ BDBProperty::~BDBProperty()
 void BDBProperty::Build(IModelNode* pModelNode)
 {
 	m_pVertexBuffer = make_shared<DefaultVertexBuffer>();
-
 	
 	vector<vec3> position;
 	BDB bdb;

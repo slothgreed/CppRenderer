@@ -11,7 +11,7 @@ class DLL_EXPORT IShader
 {
 public:
 	void Build(shared_ptr<IShaderBuildInfo> pShaderBuildInfo);
-	void BuildFromCode(const string& vertexShaderCode, const string& geomCode, const string& fragmentShader);
+	void BuildFromCode(const string& vertexCode, const string& tcsCode, const string& tesCode, const string& geomCode, const string& fragShader);
 	void GetShaderCode(SHADER_PROGRAM_TYPE type, string& code);
 	void Use();
 	void UnUse();
