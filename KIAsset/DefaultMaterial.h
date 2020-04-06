@@ -17,6 +17,7 @@ public:
 	virtual shared_ptr<IShader> CompileShader(IVertexBuffer* pVertexBuffer) override;
 	virtual bool Compare(const IMaterial& material);
 
+	void VisibleNormal(bool value);
 	void SetFixColor(vec4 color);
 	void AddTexture(shared_ptr<Texture> texture);
 private:

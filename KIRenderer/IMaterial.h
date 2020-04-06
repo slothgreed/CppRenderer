@@ -8,7 +8,7 @@ namespace Renderer
 class DLL_EXPORT IMaterial
 {
 public:
-	IMaterial() {};
+	IMaterial();
 	virtual ~IMaterial() {};
 
 	virtual const MATERIAL_TYPE Type() const = 0;
@@ -21,6 +21,7 @@ public:
 
 protected:
 	shared_ptr<IShader> m_pShader;
+	bool m_bReCompileShader;
 };
 }
 }

@@ -1,6 +1,5 @@
 namespace KI
 {
-
 BunnyScene::~BunnyScene()
 {
 	for (auto itr = m_pController.begin(); itr != m_pController.end(); itr++)
@@ -42,7 +41,7 @@ void BunnyScene::Initialize(Project* m_pProject)
 
 		auto voxelCommandArgs = make_shared<VoxelCommandArgs>(
 			m_pScene.get(), polyNode->GetModel(), 100);
-		
+
 		//auto voxelCommand = make_shared<VoxelCommand>(voxelCommandArgs);
 
 		//m_pCommandManager->Execute(voxelCommand);
@@ -68,7 +67,6 @@ void BunnyScene::Initialize(Project* m_pProject)
 		m_pScene->AddModelNode(pCubeNode);
 	}
 
-
 	//{
 	//	auto moveManipulator = make_shared<ManipulatorNode>();
 	//	m_pScene->AddModelNode(moveManipulator);
@@ -78,13 +76,6 @@ void BunnyScene::Initialize(Project* m_pProject)
 	ModelGenerator::Axis(axis.get());
 	auto axisNode = make_shared<PrimitiveNode>(axis);
 	m_pScene->AddModelNode(axisNode);
-
-	auto sphere = make_shared<DefaultVertexBuffer>();
-	auto sphereIdx = make_shared<IndexBuffer>();
-	ModelGenerator::Sphere(10, 10, 10, sphere.get(), sphereIdx.get());
-	auto sphereNode = make_shared<PrimitiveNode>(sphere, sphereIdx);
-	m_pScene->AddModelNode(sphereNode);
-
 
 	m_pBackTarget = make_shared<SymbolicRenderTarget>(GL_BACK);
 	m_pGeometryPass = make_shared<GeometryPass>();
@@ -103,7 +94,7 @@ void BunnyScene::Invoke()
 void BunnyScene::ProcessMouseEvent(const MouseInput& input)
 {
 	m_pMouse->ApplyMouseInput(input);
-	if (input.Event() == MOUSE_EVENT_WHEEL) 
+	if (input.Event() == MOUSE_EVENT_WHEEL)
 	{
 		m_pController[m_CurrentController]->Wheel(*m_pMouse.get());
 	}

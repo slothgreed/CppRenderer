@@ -36,16 +36,19 @@ private:
 class DLL_EXPORT DefaultUniform : public IUniform
 {
 public:
-	DefaultUniform() :m_pTexture(nullptr), m_FixColor(vec4(0.7f, 0.7f, 0.7f, 1)) {}
+	DefaultUniform() :m_pTexture(nullptr), m_FixColor(vec4(0.7f, 0.7f, 0.7f, 1)),m_visible(false) {}
 	SHADER_TYPE Type() { return SHADER_TYPE::SHADER_TYPE_DEFAULT; }
 
 	void SetTexture(shared_ptr<Texture> value) { m_pTexture = value; };
+	bool VisibleNormal() { return m_visible; }
+	void VisibleNormal(bool value) { m_visible = value; }
 	void SetFixColor(vec4 value) { m_FixColor = value; };
 	shared_ptr<Texture> GetTexture() { return m_pTexture; }
 	const vec4&		FixColor() { return m_FixColor; }
 private:
 	shared_ptr<Texture> m_pTexture;
 	vec4 m_FixColor;
+	bool m_visible;
 };
 
 }

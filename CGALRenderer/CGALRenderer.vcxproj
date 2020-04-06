@@ -180,6 +180,7 @@
     <ClInclude Include="LogicEventArgs.h" />
     <ClInclude Include="ManipulatorNode.h" />
     <ClInclude Include="PickCommand.h" />
+    <ClInclude Include="PrimitiveScene.h" />
     <ClInclude Include="SpecialUtility.h" />
     <ClInclude Include="PrimitiveNode.h" />
     <ClInclude Include="pch.h" />
@@ -212,6 +213,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="PrimitiveScene.cpp" />
     <ClCompile Include="Project.cpp" />
     <ClCompile Include="PolygonModelNode.cpp" />
     <ClCompile Include="SpecialUtility.cpp" />

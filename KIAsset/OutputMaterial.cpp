@@ -31,9 +31,8 @@ shared_ptr<IShader> OutputMaterial::CompileShader(IVertexBuffer* pVertexBuffer)
 	else
 	{
 		assert(0);
+		return nullptr;
 	}
-
-	return nullptr;
 }
 
 void OutputMaterial::AddColorTexture(shared_ptr<Texture> colorTexture)

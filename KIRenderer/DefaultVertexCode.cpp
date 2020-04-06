@@ -38,6 +38,10 @@ void DefaultVertexCode::GetDefineCode(string& code)
 		code += IN_COLOR;
 	}
 
+	if (m_viewNormal){
+		code += VIEW_NORMAL;
+	}
+
 	code += OUT_COLOR;	// 色の出力は必ずする．
 
 	if (m_useTexcoord) {

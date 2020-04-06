@@ -65,6 +65,7 @@ using namespace KI::Asset;
 
 // application
 #include "IWorkspace.h"
+#include "PrimitiveScene.h"
 #include "BunnyScene.h"
 #include "Workspace.h"
 #include "VoronoiScene.h"

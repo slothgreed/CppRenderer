@@ -1,9 +1,7 @@
 namespace KI
 {
-
 Workspace::Workspace()
 {
-	
 }
 
 Workspace::~Workspace()
@@ -30,7 +28,6 @@ void Workspace::Initialize(Project* m_pProject)
 	m_CurrentController = CONTROLER_TYPE::CAMERA_CONTROLER;
 	shared_ptr<IControllerArgs> args = make_shared<CameraControllerArgs>(pCamera);
 	m_pController[CONTROLER_TYPE::CAMERA_CONTROLER]->SetArgs(args);
-	
 
 	//shared_ptr<CGALModel> polyhedron = make_shared<CGALPolyhedron>();
 	//polyhedron->Load("E:\\cgModel\\StanfordBunny.off");
@@ -78,7 +75,6 @@ void Workspace::Initialize(Project* m_pProject)
 	m_pPfxRenderer->AddPostEffect(pSSLIC);
 	m_pPfxRenderer->AddPostEffect(pGrayScale);
 
-
 	auto outputMaterial = make_shared<OutputMaterial>();
 	m_pOutputPlane = make_shared<PfxPlane>(outputMaterial);
 	m_pOutputPlane->Initialize();
@@ -87,7 +83,6 @@ void Workspace::Initialize(Project* m_pProject)
 
 void Workspace::Invoke()
 {
-
 	m_pRenderTarget->Begin();
 	{
 		m_pRenderTarget->Clear();

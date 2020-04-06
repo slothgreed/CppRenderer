@@ -22,6 +22,12 @@ void DefaultMaterial::SetFixColor(vec4 color)
 	m_pUniform->SetFixColor(color);
 }
 
+void DefaultMaterial::VisibleNormal(bool visible)
+{
+	m_pUniform->VisibleNormal(visible);
+	m_bReCompileShader = true;
+}
+
 shared_ptr<IShader> DefaultMaterial::CompileShader(IVertexBuffer* pVertexBuffer)
 {
 	if (pVertexBuffer->Type() == SHADER_TYPE::SHADER_TYPE_DEFAULT)
@@ -30,6 +36,7 @@ shared_ptr<IShader> DefaultMaterial::CompileShader(IVertexBuffer* pVertexBuffer)
 		auto pBuildInfo = make_shared<IShaderBuildInfo>(SHADER_TYPE_DEFAULT);
 		auto pVertexCode = make_shared<DefaultVertexCode>();
 		pVertexCode->SetShaderDefine(pDefaultBuffer->Layout());
+		pVertexCode->SetViewNormal(m_pUniform->VisibleNormal());
 		pBuildInfo->SetVertexCode(pVertexCode);
 		auto pFragCode = make_shared<DefaultFragCode>();
 		pFragCode->SetShaderDefine(pDefaultBuffer->Layout());
@@ -39,9 +46,8 @@ shared_ptr<IShader> DefaultMaterial::CompileShader(IVertexBuffer* pVertexBuffer)
 	else
 	{
 		assert(0);
+		return nullptr;
 	}
-
-	return nullptr;
 }
 
 void DefaultMaterial::Bind()

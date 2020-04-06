@@ -1,6 +1,5 @@
 namespace KI
 {
-
 void VoronoiScene::Initialize(Project* m_pProject)
 {
 	m_pScene = make_shared<Scene>();
@@ -96,5 +95,4 @@ void VoronoiScene::GenerateVoronoiCone(const vector<vec3>& pointPosition, vector
 		color.push_back(vec3(Gaccho::rnd(0, 255) / 255.0, Gaccho::rnd(0, 255) / 255.0, Gaccho::rnd(0, 255) / 255.0));
 	}
 }
-
 }

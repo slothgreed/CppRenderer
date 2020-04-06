@@ -26,6 +26,7 @@ namespace Rednerer
 #define IN_TEXCOORD		"#define IN_TEXCOORD\n"
 #define IN_TEXTURE0		"#define IN_TEXTURE0\n"
 #define IN_INSTANCE		"#define IN_INSTANCE\n"
+#define VIEW_NORMAL		"#define VIEW_NORMAL\n"
 
 #define OUT_NORMAL			"#define OUT_NORMAL\n"
 #define OUT_COLOR			"#define OUT_COLOR\n"

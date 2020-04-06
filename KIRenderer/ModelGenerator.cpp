@@ -186,8 +186,8 @@ void ModelGenerator::Sphere(float radius, int sectorNum, int stackNum, DefaultVe
 			normals.push_back(normal);
 
 			vec2 texcoord;
-			texcoord.x = (float)i / stackNum;
-			texcoord.y = (float)j / sectorNum;
+			texcoord.x = (float)j / sectorNum;
+			texcoord.y = (float)i / stackNum;
 			texcoords.push_back(texcoord);
 		}
 	}
@@ -221,7 +221,7 @@ void ModelGenerator::Sphere(float radius, int sectorNum, int stackNum, DefaultVe
 
 	pVertexBuffer->SetPosition(GL_TRIANGLES, positions);
 	pVertexBuffer->SetNormal(normals);
-	//pVertexBuffer->SetTexcoord(texcoords);
+	pVertexBuffer->SetTexcoord(texcoords);
 	pIndexBuffer->Set(GL_TRIANGLES, indexs);
 }
 

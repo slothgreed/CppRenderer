@@ -3,6 +3,10 @@ namespace KI
 namespace Renderer
 {
 
+IMaterial::IMaterial()
+{
+	m_bReCompileShader = true;
+}
 void IMaterial::Draw(IVertexBuffer* pVertexBuffer, IndexBuffer* pIndexBuffer)
 {
 	if (pVertexBuffer == nullptr)
@@ -10,7 +14,11 @@ void IMaterial::Draw(IVertexBuffer* pVertexBuffer, IndexBuffer* pIndexBuffer)
 		assert(0);
 	}
 
-	m_pShader = CompileShader(pVertexBuffer);
+	if (m_bReCompileShader == true)
+	{
+		m_pShader = CompileShader(pVertexBuffer);
+	}
+	m_bReCompileShader = false;
 
 	m_pShader->Use();
 	Bind();
