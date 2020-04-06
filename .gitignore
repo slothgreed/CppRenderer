@@ -12,4 +12,6 @@ imgui.ini
 *.suo
 *.Cache
 *.opendb
+*.ipch
+*.VC.db
 RenderApp.v12.suo
