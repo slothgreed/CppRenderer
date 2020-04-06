@@ -28,14 +28,13 @@ void CompositShader::Bind(shared_ptr<IUniform> uniform)
 	if (uniform->Type() != SHADER_TYPE::SHADER_TYPE_COMPOSIT)
 	{
 		assert(0);
+		return;
 	}
-	else
-	{
-		m_uniformParameter = static_pointer_cast<CompositUniform>(uniform);
-	}
+	
+	auto uniformParameter = static_pointer_cast<CompositUniform>(uniform);
 }
 
-void CompositShader::UnBind()
+void CompositShader::UnBind(shared_ptr<IUniform> uniform)
 {
 
 }

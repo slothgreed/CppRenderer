@@ -104,6 +104,7 @@ void IShader::BindTexture(GLint activeNumber, GLint uniformId)
 	if (m_programId == 0)
 	{
 		assert(0);
+		return;
 	}
 
 
@@ -111,6 +112,17 @@ void IShader::BindTexture(GLint activeNumber, GLint uniformId)
 	Logger::GLError();
 
 	glUniform1i(uniformId, activeNumber - GL_TEXTURE0);
+	Logger::GLError();
+}
+
+void IShader::BindFloat(GLint uniformId, float value)
+{
+	glUniform1f(uniformId, value);
+	Logger::GLError();
+}
+void IShader::BindVector3(GLint uniformId, vec3 value)
+{
+	glUniform3fv(uniformId, 1, glm::value_ptr(value));
 	Logger::GLError();
 }
 

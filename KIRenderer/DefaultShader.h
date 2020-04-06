@@ -23,15 +23,14 @@ public:
 
 	virtual void Initialize() override;
 	virtual void FetchUniformLocation() override;
-	virtual void Bind(shared_ptr<IUniform> uniform) override;
-	virtual void UnBind() override;
+	virtual void Bind(shared_ptr<IUniform> pUniform) override;
+	virtual void UnBind(shared_ptr<IUniform> pUniform) override;
 	
 private:
 	void BindColorTexture();
-	void BindFixColor();
+	void BindFixColor(const vec4& color);
 	void BindScene();
 	void BindLight();
-	shared_ptr<DefaultUniform> m_uniformParameter;
 };
 
 class DLL_EXPORT DefaultUniform : public IUniform

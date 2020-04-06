@@ -24,29 +24,41 @@ void OutputShader::FetchUniformLocation()
 
 }
 
-void OutputShader::Bind(shared_ptr<IUniform> uniform)
+void OutputShader::Bind(shared_ptr<IUniform> pUniform)
 {
-	if (uniform->Type() != SHADER_TYPE::SHADER_TYPE_OUTPUT)
+	if (pUniform->Type() != SHADER_TYPE::SHADER_TYPE_OUTPUT)
 	{
 		assert(0);
-	}
-	else
-	{
-		m_uniformParameter = static_pointer_cast<OutputUniform>(uniform);
+		return;
 	}
 
-	if (m_uniformParameter->pTexture == nullptr)
+	auto uniformParameter = static_pointer_cast<OutputUniform>(pUniform);
+	if (uniformParameter->pTexture == nullptr)
 	{
 		assert(0);
+		return;
 	}
 
-	m_uniformParameter->pTexture->Begin();
+	uniformParameter->pTexture->Begin();
 	BindOutputTexture();
 }
 
-void OutputShader::UnBind()
+void OutputShader::UnBind(shared_ptr<IUniform> pUniform)
 {
-	m_uniformParameter->pTexture->End();
+	if (pUniform->Type() != SHADER_TYPE::SHADER_TYPE_OUTPUT)
+	{
+		assert(0);
+		return;
+	}
+
+	auto uniformParameter = static_pointer_cast<OutputUniform>(pUniform);
+	if (uniformParameter->pTexture == nullptr)
+	{
+		assert(0);
+		return;
+	}
+
+	uniformParameter->pTexture->End();
 }
 
 void OutputShader::BindOutputTexture()

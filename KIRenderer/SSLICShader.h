@@ -33,12 +33,11 @@ public:
 	virtual SHADER_TYPE Type() override { return SHADER_TYPE::SHADER_TYPE_SSLIC; }
 	virtual void Initialize() override;
 	virtual void FetchUniformLocation() override;
-	virtual void Bind(shared_ptr<IUniform> uniform) override;
-	virtual void UnBind() override;
+	virtual void Bind(shared_ptr<IUniform> pUniform) override;
+	virtual void UnBind(shared_ptr<IUniform> pUniform) override;
 
 private:
 	void BindColorTexture();
-	shared_ptr<SSLICUniform> m_uniformParameter;
 };
 }
 }

@@ -9,7 +9,7 @@ layout (std140) uniform SceneData
 }scene;
 
 
-
+uniform float uLength;
 in Inputs
 {
 	vec4 o_color;
@@ -25,7 +25,7 @@ void main()
 	o_color = vec4(1);
 	EmitVertex();
 	
-	gl_Position = vp * vec4(gl_in[0].gl_Position.xyz + o_normal[0],1.0);
+	gl_Position = vp * vec4(gl_in[0].gl_Position.xyz + o_normal[0]*uLength,1.0);
 	o_color = vec4(1);
 	EmitVertex();
 	EndPrimitive();

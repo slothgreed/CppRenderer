@@ -24,11 +24,9 @@ public:
 
 	virtual void Initialize() override;
 	virtual void FetchUniformLocation() override;
-	virtual void Bind(shared_ptr<IUniform> uniform) override;
-	virtual void UnBind() override;
+	virtual void Bind(shared_ptr<IUniform> pUniform) override;
+	virtual void UnBind(shared_ptr<IUniform> pUniform) override;
 
-private:
-	shared_ptr<CompositUniform> m_uniformParameter;
 };
 
 class DLL_EXPORT CompositUniform : public IUniform

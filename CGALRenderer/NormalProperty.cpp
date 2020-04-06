@@ -10,8 +10,8 @@ NormalProperty::~NormalProperty()
 
 void NormalProperty::Build(IModelNode* pModelNode)
 {
-	m_pUniform = make_shared<DefaultUniform>();
-	m_pUniform->SetFixColor(vec4(0, 0, 1, 1));
+	m_pUniform = make_shared<NormalVisualizeUniform>();
+	m_pUniform->SetLength(5.0f);
 
 	auto pBuildInfo = make_shared<IShaderBuildInfo>(SHADER_TYPE::SHADER_TYPE_NORMALVISUALIZE);
 	auto pVertexCode = make_shared<DefaultVertexCode>();
@@ -53,7 +53,7 @@ void NormalProperty::Draw()
 	m_pShader->Use();
 	m_pShader->Bind(m_pUniform);
 	m_pVertexBuffer->Draw(GL_POINTS, 0, m_pVertexBuffer->GetVertexSize());
-	m_pShader->UnBind();
+	m_pShader->UnBind(m_pUniform);
 	m_pShader->UnUse();
 }
 }

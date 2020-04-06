@@ -46,15 +46,13 @@ void DefaultShader::Bind(shared_ptr<IUniform> pUniform)
 		return;
 	}
 
-	if (pUniform->Type() == SHADER_TYPE::SHADER_TYPE_DEFAULT)
-	{
-		m_uniformParameter = static_pointer_cast<DefaultUniform>(pUniform);
-	}
-	else
+	if (pUniform->Type() != SHADER_TYPE::SHADER_TYPE_DEFAULT)
 	{
 		assert(0);
 		return;
 	}
+
+	auto uniformParameter = static_pointer_cast<DefaultUniform>(pUniform);
 
 	shared_ptr<DefaultVertexCode> pVertexCode;
 	shared_ptr<DefaultFragCode> pFragCode;
@@ -75,35 +73,37 @@ void DefaultShader::Bind(shared_ptr<IUniform> pUniform)
 		pVertexCode->ViewNormal() == false &&
 		pVertexCode->UseTexcoord() == false)
 	{
-		BindFixColor();
+		BindFixColor(uniformParameter->FixColor());
 	}
 
 	if (pFragCode->UseTexture0() == true)
 	{
-		if (m_uniformParameter->GetTexture() == nullptr)
+		if (uniformParameter->GetTexture() == nullptr)
 		{
 			assert(0);
 			return;
 		}
 		else
 		{
-			m_uniformParameter->GetTexture()->Begin();
+			uniformParameter->GetTexture()->Begin();
 			BindColorTexture();
 		}
 	}
 
 }
 
-void DefaultShader::UnBind()
+void DefaultShader::UnBind(shared_ptr<IUniform> pUniform)
 {
-	if (m_uniformParameter == nullptr)
+	auto uniformParameter = static_pointer_cast<DefaultUniform>(pUniform);
+	if (uniformParameter == nullptr)
 	{
+		assert(0);
 		return;
 	}
 
-	if (m_uniformParameter->GetTexture() != nullptr)
+	if (uniformParameter->GetTexture() != nullptr)
 	{
-		m_uniformParameter->GetTexture()->End();
+		uniformParameter->GetTexture()->End();
 	}
 }
 
@@ -118,7 +118,7 @@ void DefaultShader::BindColorTexture()
 	IShader::BindTexture(GL_TEXTURE0, m_uniformLocation[DEFAULT_UNIFORM_COLOR_TEXTURE]);
 }
 
-void DefaultShader::BindFixColor()
+void DefaultShader::BindFixColor(const vec4& color)
 {
 	if (m_uniformLocation[DEFAULT_UNIFORM_FIX_COLOR] == -1)
 	{
@@ -126,7 +126,7 @@ void DefaultShader::BindFixColor()
 		return;
 	}
 
-	IShader::BindVector4(m_uniformLocation[DEFAULT_UNIFORM_FIX_COLOR], m_uniformParameter->FixColor());
+	IShader::BindVector4(m_uniformLocation[DEFAULT_UNIFORM_FIX_COLOR], color);
 }
 
 }

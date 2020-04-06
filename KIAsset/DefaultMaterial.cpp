@@ -51,7 +51,7 @@ void DefaultMaterial::Bind()
 
 void DefaultMaterial::UnBind()
 {
-	m_pShader->UnBind();
+	m_pShader->UnBind(m_pUniform);
 }
 
 bool DefaultMaterial::Compare(const IMaterial& material)

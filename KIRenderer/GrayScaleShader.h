@@ -30,13 +30,12 @@ public:
 	virtual void Initialize() override;
 	virtual void FetchUniformLocation() override;
 
-	virtual void Bind(shared_ptr<IUniform> uniform) override;
-	virtual void UnBind() override;
+	virtual void Bind(shared_ptr<IUniform> pUniform) override;
+	virtual void UnBind(shared_ptr<IUniform> pUniform) override;
 
 private:
 	void BindColorTexture();
 	shared_ptr<Texture> m_pSource;
-	shared_ptr<GrayScaleUniform> m_uniformParameter;
 };
 }
 }

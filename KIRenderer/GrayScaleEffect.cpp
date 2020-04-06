@@ -45,7 +45,7 @@ void GrayScaleEffect::Draw()
 	m_pGrayScaleShader->Use();
 	m_pGrayScaleShader->Bind(m_pGrayUniform);
 	m_pPlane->Draw();
-	m_pGrayScaleShader->UnBind();
+	m_pGrayScaleShader->UnBind(m_pGrayUniform);
 	m_pGrayScaleShader->UnUse();
 	m_pRenderTarget->End();
 }

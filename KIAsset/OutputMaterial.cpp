@@ -48,7 +48,7 @@ void OutputMaterial::Bind()
 
 void OutputMaterial::UnBind()
 {
-	m_pShader->UnBind();
+	m_pShader->UnBind(m_pUniform);
 }
 
 bool OutputMaterial::Compare(const IMaterial& material)

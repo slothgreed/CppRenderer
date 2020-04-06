@@ -21,34 +21,42 @@ void GrayScaleShader::FetchUniformLocation()
 	Logger::GLError();
 }
 
-void GrayScaleShader::Bind(shared_ptr<IUniform> uniform)
+void GrayScaleShader::Bind(shared_ptr<IUniform> pUniform)
 {
-	if (uniform->Type() != SHADER_TYPE::SHADER_TYPE_GRAYSCALE)
+	if (pUniform->Type() != SHADER_TYPE::SHADER_TYPE_GRAYSCALE)
 	{
 		assert(0);
-	}
-	else
-	{
-		m_uniformParameter = static_pointer_cast<GrayScaleUniform>(uniform);
+		return;
 	}
 
-	if (m_uniformParameter->pTexture == nullptr)
+	auto uniformParameter = static_pointer_cast<GrayScaleUniform>(pUniform);
+
+	if (uniformParameter->pTexture == nullptr)
 	{
 		assert(0);
+		return;
 	}
 
-	m_uniformParameter->pTexture->Begin();
+	uniformParameter->pTexture->Begin();
 	BindColorTexture();
 }
 
-void GrayScaleShader::UnBind()
+void GrayScaleShader::UnBind(shared_ptr<IUniform> pUniform)
 {
-	if (m_uniformParameter->pTexture == nullptr)
+	if (pUniform->Type() != SHADER_TYPE::SHADER_TYPE_GRAYSCALE)
 	{
 		assert(0);
+		return;
 	}
 
-	m_uniformParameter->pTexture->End();
+	auto uniformParameter = static_pointer_cast<GrayScaleUniform>(pUniform);
+	if (uniformParameter->pTexture == nullptr)
+	{
+		assert(0);
+		return;
+	}
+
+	uniformParameter->pTexture->End();
 
 }
 

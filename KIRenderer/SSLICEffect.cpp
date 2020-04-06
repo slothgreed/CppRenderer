@@ -71,7 +71,7 @@ void SSLICEffect::Draw()
 
 	m_pModel->Draw();
 
-	m_pModelShader->UnBind();
+	m_pModelShader->UnBind(m_pModelUniform);
 	m_pModelShader->UnUse();
 
 	glEnable(GL_BLEND);
@@ -79,7 +79,7 @@ void SSLICEffect::Draw()
 	m_pSSLICShader->Use();
 	m_pSSLICShader->Bind(m_pSSLICUniform);
 	m_pPlaneBuffer->Draw();
-	m_pSSLICShader->UnBind();
+	m_pSSLICShader->UnBind(m_pSSLICUniform);
 	m_pSSLICShader->UnUse();
 	glDisable(GL_BLEND);
 

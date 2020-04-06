@@ -32,5 +32,34 @@ void NormalVisualizeShader::BindLight()
 	Logger::GLError();
 }
 
+void NormalVisualizeShader::FetchUniformLocation()
+{
+	m_uniformLocation.resize(NORMAL_VISUALIZE_UNIFORM_NUM);
+	m_uniformLocation[NORMAL_VISUALIZE_UNIFORM_LENGTH] = glGetUniformLocation(m_programId, "uLength");
+}
+
+void NormalVisualizeShader::Bind(shared_ptr<IUniform> pUniform)
+{
+	if (pUniform->Type() != SHADER_TYPE::SHADER_TYPE_NORMALVISUALIZE)
+	{
+		assert(0);
+		return;
+	}
+
+	auto uniformParameter = static_pointer_cast<NormalVisualizeUniform>(pUniform);
+
+	BindLength(uniformParameter->Length());
+}
+
+void NormalVisualizeShader::BindLength(float length)
+{
+	if (m_uniformLocation[NORMAL_VISUALIZE_UNIFORM_LENGTH] == -1)
+	{
+		assert(0);
+		return;
+	}
+
+	IShader::BindFloat(m_uniformLocation[NORMAL_VISUALIZE_UNIFORM_LENGTH], length);
+}
 }
 }
