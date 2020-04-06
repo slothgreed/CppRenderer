@@ -5,16 +5,17 @@ HalfEdgeProperty::HalfEdgeProperty()
 {
 }
 
-void HalfEdgeProperty::Build(IModel* model)
+void HalfEdgeProperty::Build(IModelNode* pModelNode)
 {
-	HalfEdgeModel* pModel = nullptr;
-	if (model->Type() == MODEL_TYPE_HALF_EDGE)
+	shared_ptr<HalfEdgeModel> pModel;
+	if (pModelNode->GetModel()->Type() == MODEL_TYPE_HALF_EDGE)
 	{
-		pModel = (HalfEdgeModel*)model;
+		pModel = static_pointer_cast<HalfEdgeModel>(pModelNode->GetModel());
 	}
 	else
 	{
 		assert(0);
+		return;
 	}
 
 	m_pVertexBuffer = make_shared<DefaultVertexBuffer>();
@@ -37,18 +38,19 @@ void HalfEdgeProperty::Build(IModel* model)
 
 }
 
-void HalfEdgeProperty::Update(IModel* model)
+void HalfEdgeProperty::Update(IModelNode* pModelNode)
 {
 	vector<vec3> position;
 	vector<vec3> color;
-	HalfEdgeModel* pModel = nullptr;
-	if (model->Type() == MODEL_TYPE_HALF_EDGE)
+	shared_ptr<HalfEdgeModel> pModel;
+	if (pModelNode->GetModel()->Type() == MODEL_TYPE_HALF_EDGE)
 	{
-		pModel = (HalfEdgeModel*)model;
+		pModel = static_pointer_cast<HalfEdgeModel>(pModelNode->GetModel());
 	}
 	else
 	{
 		assert(0);
+		return;
 	}
 
 	GetVBOData(pModel->GetHalfEdgeDS().get(), position, color, false);

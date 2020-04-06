@@ -11,10 +11,10 @@ public:
 
 	virtual PROPERTY_TYPE Type() override { return PROPERTY_TYPE_BDB; }
 	virtual void Draw();
-	virtual void Update(IModel* pModel) override;
+	virtual void Update(IModelNode* pModel) override;
 private:
 	void GetBDBPosition(const BDB& bdb, vector<vec3>& position);
-	void Build(IModel* pModel);
+	void Build(IModelNode* pModel);
 	shared_ptr<IShader> m_pShader;
 	shared_ptr<DefaultVertexBuffer> m_pVertexBuffer;
 	shared_ptr<IndexBuffer> m_pIndexBuffer;

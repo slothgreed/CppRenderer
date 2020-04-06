@@ -19,6 +19,7 @@ public:
 
 	bool UseGBuffer() const { return m_useGBuffer; }
 	bool UseNormal() const { return m_useNormal; };
+	bool ViewNormal() const { return m_viewNormal; }
 	bool UseColor() const { return m_useColor; };
 	
 	bool UseTexcoord() const { return m_useTexcoord; };
@@ -27,7 +28,7 @@ public:
 
 	void SetShaderDefine(VERTEX_LAYOUT layout);
 	void SetShaderDefine(SHADER_TYPE type);
-
+	void SetViewNormal(bool value) { m_viewNormal = value; }
 private:
 	bool m_useGBuffer;
 	bool m_useNormal;
@@ -37,6 +38,7 @@ private:
 	bool m_useInstance;
 	bool m_useShading;
 	bool m_outInstance;
+	bool m_viewNormal;
 };
 }
 }

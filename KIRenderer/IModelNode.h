@@ -27,7 +27,7 @@ public:
 	virtual void Pick(const vec3& direction, PickResult& result) = 0;
 	virtual void Draw() = 0;
 	virtual void Update(void* sender, IEventArgs* args);
-
+	shared_ptr<IModel> GetModel() { return m_pModel; }
 protected:
 	void AddProperty(shared_ptr<IModelProperty> prop);
 	void RemoveProperty(shared_ptr<IModelProperty> prop);

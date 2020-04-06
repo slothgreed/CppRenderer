@@ -13,14 +13,13 @@ public:
 
 	virtual PROPERTY_TYPE Type() override { return PROPERTY_TYPE_VECTOR; }
 	virtual void Draw();
-	virtual void Update(IModel* pModel);
+	virtual void Update(IModelNode* pModelNode);
 private:
-	void Build(IModel* pModel);
-	void SetVBOData(IModel* pModel);
+	void Build(IModelNode* pModelNode);
+	void SetVBOData(IModelNode* pModelNode);
 	shared_ptr<IShader> m_pShader;
-	shared_ptr<DefaultVertexBuffer> m_pVertexBuffer;
 	shared_ptr<DefaultUniform> m_pUniform;
-
+	shared_ptr<IVertexBuffer> m_pVertexBuffer;
 	
 };
 

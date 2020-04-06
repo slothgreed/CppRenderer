@@ -17,6 +17,7 @@ public:
 	void VisibleNormal(bool visibility);
 	void VisibleFace(bool visibility);
 	void VisibleEdge(bool visibility);
+	shared_ptr<IVertexBuffer> GetVertexBuffer() { return m_pFaceBuffer; }
 protected:
 	string m_name;
 	shared_ptr<IMaterial> m_pFaceMaterial;

@@ -22,7 +22,7 @@ void IModelNode::AddProperty(shared_ptr<IModelProperty> prop)
 		[&prop](shared_ptr<IModelProperty> value) {return value->Type() == prop->Type(); });
 	if (itr == m_pProperty.end())
 	{
-		prop->Build(m_pModel.get());
+		prop->Build(this);
 		m_pProperty.push_back(prop);
 	}
 }
@@ -55,7 +55,7 @@ void IModelNode::UpdateProperty()
 {
 	for (int i = 0; i < m_pProperty.size(); i++)
 	{
-		m_pProperty[i]->Update(m_pModel.get());
+		m_pProperty[i]->Update(this);
 	}
 }
 }

@@ -37,7 +37,7 @@ private:
 class DLL_EXPORT DefaultUniform : public IUniform
 {
 public:
-	DefaultUniform() :m_pTexture(nullptr), m_FixColor(vec4(0, 1, 0, 1)) {}
+	DefaultUniform() :m_pTexture(nullptr), m_FixColor(vec4(0.7f, 0.7f, 0.7f, 1)) {}
 	SHADER_TYPE Type() { return SHADER_TYPE::SHADER_TYPE_DEFAULT; }
 
 	void SetTexture(shared_ptr<Texture> value) { m_pTexture = value; };

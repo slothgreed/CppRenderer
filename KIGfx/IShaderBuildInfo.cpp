@@ -24,7 +24,7 @@ bool IShaderBuildInfo::Compare(IShaderBuildInfo* pShaderBuildInfo)
 
 		if (GetShaderCode(shaderType) != nullptr && pShaderBuildInfo->GetShaderCode(shaderType) != nullptr)
 		{
-			if (!GetShaderCode(shaderType)->Compare(pShaderBuildInfo->GetShaderCode(shaderType)))
+			if (!GetShaderCode(shaderType)->Compare(pShaderBuildInfo->GetShaderCode(shaderType).get()))
 			{
 				return false;
 			}

@@ -56,13 +56,13 @@ void DefaultShader::Bind(shared_ptr<IUniform> pUniform)
 		return;
 	}
 
-	DefaultVertexCode* pVertexCode = nullptr;
-	DefaultFragCode* pFragCode = nullptr;
+	shared_ptr<DefaultVertexCode> pVertexCode;
+	shared_ptr<DefaultFragCode> pFragCode;
 	if (BuildInfo()->GetShaderCode(SHADER_PROGRAM_VERTEX)->Type() == SHADER_TYPE::SHADER_TYPE_DEFAULT &&
 		BuildInfo()->GetShaderCode(SHADER_PROGRAM_FRAG)->Type() == SHADER_TYPE::SHADER_TYPE_DEFAULT)
 	{
-		pVertexCode = (DefaultVertexCode*)BuildInfo()->GetShaderCode(SHADER_PROGRAM_VERTEX);
-		pFragCode = (DefaultFragCode*)BuildInfo()->GetShaderCode(SHADER_PROGRAM_FRAG);
+		pVertexCode = static_pointer_cast<DefaultVertexCode>(BuildInfo()->GetShaderCode(SHADER_PROGRAM_VERTEX));
+		pFragCode = static_pointer_cast<DefaultFragCode>(BuildInfo()->GetShaderCode(SHADER_PROGRAM_FRAG));
 
 	}
 	else
@@ -72,7 +72,7 @@ void DefaultShader::Bind(shared_ptr<IUniform> pUniform)
 	}
 
 	if (pVertexCode->UseColor() == false &&
-		pVertexCode->UseNormal() == false &&
+		pVertexCode->ViewNormal() == false &&
 		pVertexCode->UseTexcoord() == false)
 	{
 		BindFixColor();

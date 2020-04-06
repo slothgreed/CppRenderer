@@ -17,6 +17,7 @@ DefaultVertexCode::DefaultVertexCode()
 	m_useInstance = false;
 	m_outInstance = false;
 	m_useShading = false;
+	m_viewNormal = false;
 }
 
 DefaultVertexCode::~DefaultVertexCode()

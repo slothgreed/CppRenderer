@@ -42,6 +42,7 @@ IndexBuffer* PrimitiveNode::GetIndexBuffer()
 	if (m_pIndexBuffer == nullptr)
 	{
 		assert(0);
+		return nullptr;
 	}
 
 	return m_pIndexBuffer.get();

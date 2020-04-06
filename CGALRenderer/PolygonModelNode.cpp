@@ -4,9 +4,9 @@ PolygonModelNode::PolygonModelNode(shared_ptr<IModel> model)
 	: IModelNode(model)
 {
 	m_name = "PolygonModelNode";
-	//VisibleBDB(true);
-	VisibleNormal(true);
 	SetRenderData();
+	VisibleBDB(true);
+	VisibleNormal(true);
 }
 
 PolygonModelNode::~PolygonModelNode()
@@ -116,8 +116,9 @@ void PolygonModelNode::SetRenderData()
 		auto pEdgeBuffer = make_shared<DefaultVertexBuffer>();
 		pEdgeBuffer->SetPosition(GL_LINES, edge);
 
-		m_pEdgeMaterial = make_shared<DefaultMaterial>();
-
+		auto pEdgeMaterial = make_shared<DefaultMaterial>();
+		pEdgeMaterial->SetFixColor(vec4(0));
+		m_pEdgeMaterial = pEdgeMaterial;
 		m_pEdgeBuffer = pEdgeBuffer;
 	}
 

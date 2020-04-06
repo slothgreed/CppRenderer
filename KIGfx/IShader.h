@@ -26,7 +26,7 @@ public:
 
 	GLuint Program() { return m_programId; }
 	bool Compare(IShaderBuildInfo* shaderDefine);
-	IShaderBuildInfo* BuildInfo() { return m_pShaderBuildInfo.get(); }
+	shared_ptr<IShaderBuildInfo> BuildInfo() { return m_pShaderBuildInfo; }
 protected:
 	virtual void BindTexture(GLint activeNumber, GLint uniformId);
 	virtual void BindVector4(GLint uniformId, vec4 value);

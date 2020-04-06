@@ -11,8 +11,8 @@ public:
 
 	virtual PROPERTY_TYPE Type() override { return PROPERTY_TYPE_HALFEDGE; }
 	virtual void Draw() override;
-	virtual void Build(IModel* model) override;
-	virtual void Update(IModel* model) override;
+	virtual void Build(IModelNode* model) override;
+	virtual void Update(IModelNode* model) override;
 private:
 	void GetVBOData(HalfEdgeDS* model, vector<vec3>& position, vector<vec3>& color, bool needColor);
 

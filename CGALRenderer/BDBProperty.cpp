@@ -8,14 +8,14 @@ BDBProperty::~BDBProperty()
 {
 }
 
-void BDBProperty::Build(IModel* pModel)
+void BDBProperty::Build(IModelNode* pModelNode)
 {
 	m_pVertexBuffer = make_shared<DefaultVertexBuffer>();
 
 	
 	vector<vec3> position;
 	BDB bdb;
-	pModel->GetBDB(bdb);
+	pModelNode->GetModel()->GetBDB(bdb);
 	GetBDBPosition(bdb, position);
 	m_pVertexBuffer->SetPosition(GL_LINES, position);
 
@@ -65,11 +65,11 @@ void BDBProperty::GetBDBPosition(const BDB& bdb, vector<vec3>& position)
 	position[6] = bdb.Max();
 	position[7] = vec3(bdb.Min().x, bdb.Max().y, bdb.Max().z);
 }
-void BDBProperty::Update(IModel* pModel)
+void BDBProperty::Update(IModelNode* pModelNode)
 {
 	vector<vec3> position;
 	BDB bdb;
-	pModel->GetBDB(bdb);
+	pModelNode->GetModel()->GetBDB(bdb);
 	GetBDBPosition(bdb, position);
 	m_pVertexBuffer->SetPosition(GL_LINES, position);
 }

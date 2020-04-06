@@ -29,7 +29,7 @@ void IShader::GetShaderCode(SHADER_PROGRAM_TYPE type, string& code)
 		return;
 	}
 
-	IShaderCode* pCode = BuildInfo()->GetShaderCode(type);
+	auto pCode = BuildInfo()->GetShaderCode(type);
 
 	string shaderCode;
 	pCode->Load(shaderCode);
