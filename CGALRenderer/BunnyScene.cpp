@@ -79,6 +79,12 @@ void BunnyScene::Initialize(Project* m_pProject)
 	auto axisNode = make_shared<PrimitiveNode>(axis);
 	m_pScene->AddModelNode(axisNode);
 
+	auto sphere = make_shared<DefaultVertexBuffer>();
+	auto sphereIdx = make_shared<IndexBuffer>();
+	ModelGenerator::Sphere(10, 10, 10, sphere.get(), sphereIdx.get());
+	auto sphereNode = make_shared<PrimitiveNode>(sphere, sphereIdx);
+	m_pScene->AddModelNode(sphereNode);
+
 
 	m_pBackTarget = make_shared<SymbolicRenderTarget>(GL_BACK);
 	m_pGeometryPass = make_shared<GeometryPass>();

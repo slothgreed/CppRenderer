@@ -154,5 +154,76 @@ void ModelGenerator::CubeSpace(const BDB& size, DefaultVertexBuffer* pVertexBuff
 	pIndexBuffer->Set(GL_TRIANGLES, index);
 }
 
+// reference : http://www.songho.ca/opengl/gl_sphere.html
+void ModelGenerator::Sphere(float radius, int sectorNum, int stackNum, DefaultVertexBuffer* pVertexBuffer, IndexBuffer* pIndexBuffer)
+{
+	vector<vec3> positions;
+	vector<vec3> normals;
+	vector<vec2> texcoords;
+
+	float sectorStep = 2 * pi<float>() / sectorNum;
+	float stackStep = pi<float>() / stackNum;
+	float lengthInvert = 1.0f / radius;
+
+	for (int i = 0; i <= stackNum; i++)
+	{
+		float stackAngle = pi<float>() / 2 - i * stackStep;
+		float xy = radius * cosf(stackAngle);
+		
+		for (int j = 0; j <= sectorNum; j++)
+		{
+			float sectorAngle = j * sectorStep;
+			vec3 position;
+			position.x = xy * cosf(sectorAngle);
+			position.y = xy * sinf(sectorAngle);
+			position.z = radius * sinf(stackAngle);
+			positions.push_back(position);
+
+			vec3 normal;
+			normal.x = position.x * lengthInvert;
+			normal.y = position.y * lengthInvert;
+			normal.z = position.z * lengthInvert;
+			normals.push_back(normal);
+
+			vec2 texcoord;
+			texcoord.x = (float)i / stackNum;
+			texcoord.y = (float)j / sectorNum;
+			texcoords.push_back(texcoord);
+		}
+	}
+
+	vector<int> indexs;
+	for (int i = 0; i < stackNum; i++)
+	{
+		int k1 = i * (sectorNum + 1);
+		int k2 = k1 + sectorNum + 1;
+
+		for (int j = 0; j < sectorNum; j++)
+		{
+			if (i != 0)
+			{
+				indexs.push_back(k1);
+				indexs.push_back(k2);
+				indexs.push_back(k1 + 1);
+			}
+
+			if (i != stackNum - 1)
+			{
+				indexs.push_back(k1 + 1);
+				indexs.push_back(k2);
+				indexs.push_back(k2 + 1);
+			}
+
+			k1++;
+			k2++;
+		}
+	}
+
+	pVertexBuffer->SetPosition(GL_TRIANGLES, positions);
+	pVertexBuffer->SetNormal(normals);
+	//pVertexBuffer->SetTexcoord(texcoords);
+	pIndexBuffer->Set(GL_TRIANGLES, indexs);
+}
+
 }
 }

@@ -97,7 +97,6 @@ void Workspace::Invoke()
 			m_pScene->Draw();
 		}
 		m_pScene->UnBind();
-
 	}
 	m_pRenderTarget->End();
 
