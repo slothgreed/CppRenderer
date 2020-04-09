@@ -2,7 +2,7 @@
 #define CGAL_RENDERER_H
 namespace KI
 {
-class Workspace;
+
 class CGALRenderer
 {
 public:

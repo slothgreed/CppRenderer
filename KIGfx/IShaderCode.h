@@ -13,8 +13,8 @@ public:
 	virtual ~IShaderCode() {};
 	virtual void GetDefineCode(string& code) {};
 	virtual SHADER_TYPE Type() = 0;
-	virtual bool Compare(IShaderCode* pShaderCode) { return true; }
 	void Load(string& code);
+	virtual bool Compare(IShaderCode* pShaderCode) { return pShaderCode->Type() == Type(); };
 
 private:
 

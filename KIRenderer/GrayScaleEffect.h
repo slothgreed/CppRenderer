@@ -12,11 +12,12 @@ public:
 	~GrayScaleEffect();
 
 	virtual PFX_TYPE Type() { return PFX_TYPE::PFX_TYPE_GRAYSCALE; }
-	virtual void Initialize() override;
+	virtual void Initialize(int width, int height) override;
 	virtual void Draw() override;
 	void Resize(int width, int height) override;
 
 	void SetTexture(shared_ptr<Texture> texture);
+	shared_ptr<Texture> RenderTexture() { return m_pRenderTarget->ColorTexture(0); };
 	//virtual void ReadFromXML(const boost::property_tree::ptree& tree);
 	//virtual void WriteToXML(const boost::property_tree::ptree& tree);
 

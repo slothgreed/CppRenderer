@@ -179,6 +179,7 @@
     <ClInclude Include="IWorkspace.h" />
     <ClInclude Include="LogicEventArgs.h" />
     <ClInclude Include="ManipulatorNode.h" />
+    <ClInclude Include="PfxScene.h" />
     <ClInclude Include="PickCommand.h" />
     <ClInclude Include="PrimitiveScene.h" />
     <ClInclude Include="SpecialUtility.h" />
@@ -204,6 +205,7 @@
     <ClCompile Include="HalfEdgeDSNode.cpp" />
     <ClCompile Include="HalfEdgeProperty.cpp" />
     <ClCompile Include="ManipulatorNode.cpp" />
+    <ClCompile Include="PfxScene.cpp" />
     <ClCompile Include="PickCommand.cpp" />
     <ClCompile Include="PrimitiveNode.cpp" />
     <ClCompile Include="main.cpp" />

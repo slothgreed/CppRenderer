@@ -17,8 +17,8 @@ void IMaterial::Draw(IVertexBuffer* pVertexBuffer, IndexBuffer* pIndexBuffer)
 	if (m_bReCompileShader == true)
 	{
 		m_pShader = CompileShader(pVertexBuffer);
+		m_bReCompileShader = false;
 	}
-	m_bReCompileShader = false;
 
 	m_pShader->Use();
 	Bind();

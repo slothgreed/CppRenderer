@@ -61,7 +61,6 @@ void DefaultShader::Bind(shared_ptr<IUniform> pUniform)
 	{
 		pVertexCode = static_pointer_cast<DefaultVertexCode>(BuildInfo()->GetShaderCode(SHADER_PROGRAM_VERTEX));
 		pFragCode = static_pointer_cast<DefaultFragCode>(BuildInfo()->GetShaderCode(SHADER_PROGRAM_FRAG));
-
 	}
 	else
 	{

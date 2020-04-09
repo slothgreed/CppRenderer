@@ -31,7 +31,6 @@ public:
 			string(SHADER_EXT_FRAG)) {};
 	~GrayScaleFragCode() {};
 	virtual SHADER_TYPE Type() { return SHADER_TYPE::SHADER_TYPE_GRAYSCALE; }
-
 };
 
 class DLL_EXPORT OutputFragCode : public IShaderCode
@@ -40,7 +39,7 @@ public:
 	OutputFragCode()
 		:IShaderCode(
 			string(SHADER_DIRECTORY) +
-			string(SHADER_COMPOSIT) +
+			string(SHADER_OUTPUT) +
 			string(SHADER_EXT_FRAG)) {};
 	~OutputFragCode() {};
 	virtual SHADER_TYPE Type() { return SHADER_TYPE::SHADER_TYPE_OUTPUT; }

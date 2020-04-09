@@ -10,7 +10,7 @@ GrayScaleEffect::~GrayScaleEffect()
 {
 }
 
-void GrayScaleEffect::Initialize()
+void GrayScaleEffect::Initialize(int width, int height)
 {
 	m_pPlane = make_shared<DefaultVertexBuffer>();
 	ModelGenerator::RenderPlane(m_pPlane.get());
@@ -19,9 +19,8 @@ void GrayScaleEffect::Initialize()
 	pBuildInfo->SetVertexCode(make_shared<PostProcessVertexCode>());
 	pBuildInfo->SetFragCode(make_shared<GrayScaleFragCode>());
 	m_pGrayScaleShader = static_pointer_cast<GrayScaleShader>(ShaderManager::Instance()->FindOrNew(pBuildInfo));
-	int size = 64;
 	m_pRenderTarget = make_shared<RenderTarget>();
-	m_pRenderTarget->Initialize(1, size, size);
+	m_pRenderTarget->Initialize(1, width, height);
 }
 
 void GrayScaleEffect::SetTexture(shared_ptr<Texture> texture)

@@ -16,6 +16,22 @@ void PfxRenderer::AddPostEffect(shared_ptr<IPostEffect> postEffect)
 	m_pPfxLists.push_back(postEffect);
 }
 
+IPostEffect* PfxRenderer::FindPostEffect(int index)
+{
+	if (m_pPfxLists.size() <= index)
+	{
+		assert(0);
+		return nullptr;
+	}
+
+	return m_pPfxLists[index].get();
+}
+
+int PfxRenderer::PostEffectNum()
+{
+	return m_pPfxLists.size();
+}
+
 IPostEffect* PfxRenderer::FindPostEffect(PFX_TYPE type)
 {
 	for (int i = 0; i < m_pPfxLists.size(); i++)
@@ -37,6 +53,14 @@ void PfxRenderer::Draw()
 		{
 			m_pPfxLists[i]->Draw();
 		}
+	}
+}
+
+void PfxRenderer::Resize(int width, int height)
+{
+	for (int i = 0; i < m_pPfxLists.size(); i++)
+	{
+		m_pPfxLists[i]->Resize(width, height);
 	}
 }
 

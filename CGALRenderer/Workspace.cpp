@@ -64,11 +64,11 @@ void Workspace::Initialize(Project* m_pProject)
 	//m_pCommandManager->Execute(subdivCommand);
 
 	auto pSSLIC = make_shared<SSLICEffect>();
-	pSSLIC->Initialize();
+	pSSLIC->Initialize(64, 64);
 	pSSLIC->SetDrawModel(model);
 
 	auto pGrayScale = make_shared<GrayScaleEffect>();
-	pGrayScale->Initialize();
+	pGrayScale->Initialize(640, 480);
 	pGrayScale->SetTexture(m_pRenderTarget->ColorTexture(0));
 
 	m_pPfxRenderer = make_shared<PfxRenderer>();

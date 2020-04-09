@@ -12,7 +12,7 @@ public:
 	~SSLICEffect();
 	
 	virtual PFX_TYPE Type() { return PFX_TYPE::PFX_TYPE_SSLIC; }
-	virtual void Initialize() override;
+	virtual void Initialize(int width, int height) override;
 	virtual void Draw() override;
 	virtual void Resize(int width, int height) override;
 	void SetDrawModel(shared_ptr<DefaultVertexBuffer> model);

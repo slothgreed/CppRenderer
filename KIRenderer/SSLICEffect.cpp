@@ -10,11 +10,16 @@ SSLICEffect::~SSLICEffect()
 {
 }
 
-void SSLICEffect::Initialize()
+void SSLICEffect::Initialize(int width, int height)
 {
-	int size = 64;
 	TextureData textureData;
-	TextureGenerator::RandomTexture(size,15, textureData);
+	if (width != height)
+	{
+		assert(0);
+		width = height;
+	}
+
+	TextureGenerator::RandomTexture(width,15, textureData);
 	m_pNoizeTexture = make_shared<Texture>();
 	m_pNoizeTexture->Generate();
 	m_pNoizeTexture->Begin();

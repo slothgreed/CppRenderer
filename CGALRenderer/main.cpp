@@ -6,7 +6,7 @@
 using namespace KI;
 int main()
 {
-	int NEW_SCENE = 4;
+	int NEW_SCENE = 5;
     std::cout << "Hello World!\n"; 
 	std::unique_ptr<CGALRenderer> renderer(new CGALRenderer());
 	auto pProject = make_shared<Project>();
@@ -26,6 +26,10 @@ int main()
 	else if (NEW_SCENE == 4)
 	{
 		pWorkspace = make_shared<PrimitiveScene>();
+	}
+	else if (NEW_SCENE == 5)
+	{
+		pWorkspace = make_shared<PfxScene>();
 	}
 
 	renderer->Initialize();

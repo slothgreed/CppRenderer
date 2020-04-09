@@ -15,6 +15,7 @@ public:
 	virtual void Invoke() = 0;
 	virtual void ShowProperty() {};
 	virtual void ProcessMouseEvent(const MouseInput& input) {};
+	virtual void WindowResize(int width, int height) {};
 protected:
 	shared_ptr<Mouse> m_pMouse;
 	CONTROLER_TYPE m_CurrentController;
