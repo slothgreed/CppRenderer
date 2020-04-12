@@ -24,13 +24,16 @@ public:
 	virtual void FetchUniformLocation() override;
 	virtual void Bind(shared_ptr<UniformSet> pUniform) override;
 	virtual void UnBind(shared_ptr<UniformSet> pUniform) override;
+	void SetPatchVertices(GLuint patchVertex);
 private:
 	void BindScene();
+	GLuint m_patchVertex;
 };
 
 class DLL_EXPORT BezierLineUniform : public IUniform
 {
 public:
+	BezierLineUniform() : m_SegmentNum(10),m_StripNum(1) {}
 	SHADER_TYPE Type() { return SHADER_TYPE::SHADER_TYPE_BEZIERLINE; }
 
 	void SetSegmentNum(int value) { m_SegmentNum = value; };

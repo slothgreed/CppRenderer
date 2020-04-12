@@ -13,14 +13,13 @@ void TessellationScene::Initialize(Project* pProject)
 	m_pScene = make_shared<Scene>();
 	m_pScene->Initialize();
 	auto pCamera = make_shared<OrthoCamera>();
-	pCamera->LookAt(vec3(0, 0, -1), vec3(0), vec3(0, 1, 0));
-	pCamera->Ortho(-2, 2, -2, 2, -2, 2);
+	pCamera->LookAt(vec3(0, 0, 1), vec3(0), vec3(0, 1, 0));
+	pCamera->Ortho(-3, 3, -3, 3, -3, 3);
 	m_pScene->SetCamera(pCamera);
 
 	auto pVertexBuffer = make_shared<DefaultVertexBuffer>();
 	SampleModelGenerator::BezierLine(pVertexBuffer.get());
-	m_pBezierNode = make_shared<BezierLineNode>(
-		pVertexBuffer);
+	m_pBezierNode = make_shared<BezierLineNode>(pVertexBuffer);
 
 
 	m_pScene->AddModelNode(m_pBezierNode);

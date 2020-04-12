@@ -5,6 +5,7 @@ namespace Renderer
 
 BezierLineShader::BezierLineShader()
 {
+	m_patchVertex = 0;
 }
 
 BezierLineShader::~BezierLineShader()
@@ -16,6 +17,11 @@ void BezierLineShader::Initialize()
 {
 	BindScene();
 	FetchUniformLocation();
+}
+
+void BezierLineShader::SetPatchVertices(GLuint patchVertex)
+{
+	m_patchVertex = patchVertex;
 }
 
 void BezierLineShader::BindScene()
@@ -36,6 +42,13 @@ void BezierLineShader::FetchUniformLocation()
 
 void BezierLineShader::Bind(shared_ptr<UniformSet> pUniform)
 {
+	if (m_patchVertex == 0)
+	{
+		assert(0);
+		return;
+	}
+	glPatchParameteri(GL_PATCH_VERTICES, m_patchVertex);
+
 	if (m_uniformLocation[BEZIERLINE_UNIFORM_STRIP_NUM] == -1 ||
 		m_uniformLocation[BEZIERLINE_UNIFORM_SEGMENT_NUM] == -1)
 	{
@@ -50,12 +63,9 @@ void BezierLineShader::Bind(shared_ptr<UniformSet> pUniform)
 	}
 	
 	auto uniform = static_pointer_cast<BezierLineUniform>(pUniform->TCS());
-
-	IShader::BindInt(m_uniformLocation[BEZIERLINE_UNIFORM_STRIP_NUM], 1);
-	IShader::BindInt(m_uniformLocation[BEZIERLINE_UNIFORM_SEGMENT_NUM], 30);
-
-	//IShader::BindInt(m_uniformLocation[BEZIERLINE_UNIFORM_STRIP_NUM], uniform->StripNum());
-	//IShader::BindInt(m_uniformLocation[BEZIERLINE_UNIFORM_SEGMENT_NUM], uniform->SegmentNum());
+	IShader::BindInt(m_uniformLocation[BEZIERLINE_UNIFORM_STRIP_NUM], uniform->StripNum());
+	IShader::BindInt(m_uniformLocation[BEZIERLINE_UNIFORM_SEGMENT_NUM], uniform->SegmentNum());
+	
 }
 
 void BezierLineShader::UnBind(shared_ptr<UniformSet> uniform)

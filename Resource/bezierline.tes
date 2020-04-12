@@ -28,6 +28,6 @@ void main()
 				p3 * b3;
 	
 	mat4 vp = scene.Projection * scene.ViewMatrix;
-	gl_Position = vp * vec4(pos,1.0);
+	gl_Position = /*vp * */vec4(pos,1.0);
 	
 }
