@@ -9,15 +9,14 @@ void VoronoiScene::Initialize(Project* m_pProject)
 	pCamera->Ortho(-10, 10, -10, 10, -10, 10);
 	m_pScene->SetCamera(pCamera);
 
-	auto pVertexBuffer = make_shared<DefaultVertexBuffer>();
 	m_pConeNode = make_shared<PrimitiveNode>(
 		make_shared<DefaultVertexBuffer>(),
 		make_shared<IndexBuffer>());
 	m_pScene->AddModelNode(m_pConeNode);
 
-	auto pPointVertexBuffer = make_shared<DefaultVertexBuffer>();
-	m_pPointNode = make_shared<PrimitiveNode>(pPointVertexBuffer);
-	m_pPointNode->GetMaterial()->SetFixColor(vec4(0, 0, 0, 1));
+	auto pMaterial = make_shared<DefaultMaterial>();
+	m_pPointNode = make_shared<PrimitiveNode>(make_shared<DefaultVertexBuffer>(), pMaterial);
+	pMaterial->SetFixColor(vec4(0, 0, 0, 1));
 	m_pPointNode->SetState(make_shared<PointState>(5.0f, false));
 	m_pScene->AddModelNode(m_pPointNode);
 

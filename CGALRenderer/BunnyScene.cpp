@@ -54,7 +54,8 @@ void BunnyScene::Initialize(Project* m_pProject)
 		auto pVertexBuffer = make_shared<DefaultVertexBuffer>();
 		auto pIndexBuffer = make_shared<IndexBuffer>();
 		ModelGenerator::CubeSpace(modelSpace, pVertexBuffer.get(), pIndexBuffer.get());
-		auto pCubeNode = make_shared<PrimitiveNode>(pVertexBuffer, pIndexBuffer);
+		auto pMaterial = make_shared<DefaultMaterial>();
+		auto pCubeNode = make_shared<PrimitiveNode>(pVertexBuffer, pIndexBuffer, pMaterial);
 		auto pTexture = make_shared<Texture>();
 		pTexture->Generate();
 		TextureData textureData;
@@ -62,7 +63,7 @@ void BunnyScene::Initialize(Project* m_pProject)
 		pTexture->Begin();
 		pTexture->Set(textureData);
 		pTexture->End();
-		pCubeNode->GetMaterial()->AddTexture(pTexture);
+		pMaterial->AddTexture(pTexture);
 
 		m_pScene->AddModelNode(pCubeNode);
 	}

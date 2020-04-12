@@ -42,8 +42,10 @@ CommandResult VoxelCommand::Execute()
 	auto pIndexBuffer = make_shared<IndexBuffer>();
 	pIndexBuffer->Set(GL_TRIANGLES, indexBuffer);
 
-	auto pModelNode = make_shared<PrimitiveNode>(pVertexBuffer, pIndexBuffer);
-	pModelNode->GetMaterial()->SetFixColor(vec4(1, 0, 0, 1));
+	auto pMaterial = make_shared<DefaultMaterial>();
+	pMaterial->SetFixColor(vec4(1, 0, 0, 1));
+	
+	auto pModelNode = make_shared<PrimitiveNode>(pVertexBuffer, pIndexBuffer, pMaterial);
 	
 	args->m_pScene->AddModelNode(pModelNode);
 	

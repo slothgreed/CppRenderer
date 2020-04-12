@@ -44,7 +44,8 @@ void Workspace::Initialize(Project* m_pProject)
 	auto model = make_shared<DefaultVertexBuffer>();
 	//ModelGenerator::RenderPlane(plane.get());
 	SpecialUtility::LoadVectorFieldSphere(model.get());
-	auto pModelNode = make_shared<PrimitiveNode>(model);
+	auto pMaterial = make_shared<DefaultMaterial>();
+	auto pModelNode = make_shared<PrimitiveNode>(model, pMaterial);
 	TextureData data;
 	TextureGenerator::RandomTexture(8, 15, data);
 	auto texture = make_shared<Texture>();
@@ -52,7 +53,7 @@ void Workspace::Initialize(Project* m_pProject)
 	texture->Begin();
 	texture->Set(data);
 	texture->End();
-	pModelNode->GetMaterial()->AddTexture(texture);
+	pMaterial->AddTexture(texture);
 	m_pScene->AddModelNode(pModelNode);
 
 	m_pRenderTarget = make_shared<RenderTarget>();

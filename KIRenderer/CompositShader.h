@@ -6,7 +6,6 @@ namespace KI
 namespace Renderer
 {
 class CompositUniform;
-class CompositShaderDefine;
 class DLL_EXPORT CompositShader : public IShader
 {
 public:

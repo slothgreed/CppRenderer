@@ -70,6 +70,7 @@ using namespace KI::Asset;
 #include "BunnyScene.h"
 #include "Workspace.h"
 #include "VoronoiScene.h"
+#include "TessellationScene.h"
 #include "CGALRenderer.h"
 #include "Project.h"
 #include "SpecialUtility.h"

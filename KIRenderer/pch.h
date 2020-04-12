@@ -48,6 +48,7 @@ using namespace KI::Gfx;
 
 #include "ModelGenerator.h"
 #include "TextureGenerator.h"
+#include "SampleModelGenerator.h"
 
 #include "UniformMaterial.h"
 #include "UniformModel.h"
@@ -69,6 +70,7 @@ using namespace KI::Gfx;
 #include "SSLICShader.h"
 #include "GrayScaleShader.h"
 #include "NormalVisualizeShader.h"
+#include "BezierLineShader.h"
 #include "ShaderManager.h"
 
 

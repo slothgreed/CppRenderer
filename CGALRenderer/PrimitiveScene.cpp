@@ -29,7 +29,8 @@ void PrimitiveScene::Initialize(Project* m_pProject)
 	auto sphere = make_shared<DefaultVertexBuffer>();
 	auto sphereIdx = make_shared<IndexBuffer>();
 	ModelGenerator::Sphere(10, 36, 36, sphere.get(), sphereIdx.get());
-	auto sphereNode = make_shared<PrimitiveNode>(sphere, sphereIdx);
+	auto pMaterial = make_shared<DefaultMaterial>();
+	auto sphereNode = make_shared<PrimitiveNode>(sphere, sphereIdx, pMaterial);
 
 	auto pTexture = make_shared<Texture>();
 	pTexture->Generate();
@@ -40,7 +41,7 @@ void PrimitiveScene::Initialize(Project* m_pProject)
 	pTexture->Begin();
 	pTexture->Set(textureData);
 	pTexture->End();
-	sphereNode->GetMaterial()->AddTexture(pTexture);
+	pMaterial->AddTexture(pTexture);
 	m_pScene->AddModelNode(sphereNode);
 	BDB bdb(vec3(-10), vec3(10));
 	pCamera->FitToBDB(bdb);

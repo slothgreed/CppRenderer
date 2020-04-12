@@ -213,6 +213,12 @@
     <ClInclude Include="SimpleShaderCode.h">
       <Filter>ヘッダー ファイル\Shader\Code</Filter>
     </ClInclude>
+    <ClInclude Include="BezierLineShader.h">
+      <Filter>ヘッダー ファイル\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="SampleModelGenerator.h">
+      <Filter>ヘッダー ファイル\Utility</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -316,6 +322,12 @@
     </ClCompile>
     <ClCompile Include="CompositFragCode.cpp">
       <Filter>ソース ファイル\Shader\Code</Filter>
+    </ClCompile>
+    <ClCompile Include="BezierLineShader.cpp">
+      <Filter>ソース ファイル\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="SampleModelGenerator.cpp">
+      <Filter>ソース ファイル\Utility</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -189,6 +189,7 @@
     <ClInclude Include="PolygonModelNode.h" />
     <ClInclude Include="SubdivisionCommand.h" />
     <ClInclude Include="NormalProperty.h" />
+    <ClInclude Include="TessellationScene.h" />
     <ClInclude Include="VoronoiScene.h" />
     <ClInclude Include="VoxelCommand.h" />
     <ClInclude Include="Workspace.h" />
@@ -221,6 +222,7 @@
     <ClCompile Include="SpecialUtility.cpp" />
     <ClCompile Include="SubdivisionCommand.cpp" />
     <ClCompile Include="NormalProperty.cpp" />
+    <ClCompile Include="TessellationScene.cpp" />
     <ClCompile Include="VoronoiScene.cpp" />
     <ClCompile Include="VoxelCommand.cpp" />
     <ClCompile Include="Workspace.cpp" />

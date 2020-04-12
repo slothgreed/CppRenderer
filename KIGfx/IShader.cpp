@@ -124,6 +124,11 @@ void IShader::BindTexture(GLint activeNumber, GLint uniformId)
 	Logger::GLError();
 }
 
+void IShader::BindInt(GLint uniformId, int value)
+{
+	glUniform1i(uniformId, value);
+	Logger::GLError();
+}
 void IShader::BindFloat(GLint uniformId, float value)
 {
 	glUniform1f(uniformId, value);

@@ -29,6 +29,7 @@ public:
 	shared_ptr<IShaderBuildInfo> BuildInfo() { return m_pShaderBuildInfo; }
 protected:
 	virtual void BindTexture(GLint activeNumber, GLint uniformId);
+	virtual void BindInt(GLint uniformId, int value);
 	virtual void BindFloat(GLint uniformId, float value);
 	virtual void BindVector3(GLint uniformId, vec3 value);
 	virtual void BindVector4(GLint uniformId, vec4 value);

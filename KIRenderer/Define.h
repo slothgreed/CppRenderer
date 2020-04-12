@@ -7,8 +7,10 @@ namespace Rednerer
 {
 #define SHADER_DIRECTORY	"E:\\MyProgram\\KIProject\\CGALRenderer\\Resource\\"
 #define SHADER_EXT_VERTEX	".vert"
-#define SHADER_EXT_FRAG		".frag"
+#define SHADER_EXT_TES		".tes"
+#define SHADER_EXT_TCS		".tcs"
 #define SHADER_EXT_GEOM		".geom"
+#define SHADER_EXT_FRAG		".frag"
 
 
 #define SHADER_DEFAULT		"default"
@@ -17,6 +19,7 @@ namespace Rednerer
 #define SHADER_COMPOSIT		"composit"
 #define SHADER_SSLIC		"sslic"
 #define SHADER_NORMALVIS	"normalvisualize"
+#define SHADER_BEZIERLINE	"bezierline"
 #define SHADER_OUTPUT		"output"
 
 

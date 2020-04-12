@@ -16,6 +16,21 @@ PrimitiveNode::PrimitiveNode(shared_ptr<DefaultVertexBuffer> pVertexBuffer)
 	m_pMaterial = make_shared<DefaultMaterial>();
 }
 
+PrimitiveNode::PrimitiveNode(shared_ptr<DefaultVertexBuffer> pVertexBuffer, shared_ptr<IndexBuffer> pIndexBuffer, shared_ptr<IMaterial> pMaterial)
+{
+	m_name = "Primitive";
+	m_pVertexBuffer = pVertexBuffer;
+	m_pIndexBuffer = pIndexBuffer;
+	m_pMaterial = pMaterial;
+}
+
+PrimitiveNode::PrimitiveNode(shared_ptr<DefaultVertexBuffer> pVertexBuffer, shared_ptr<IMaterial> pMaterial)
+{
+	m_name = "Primitive";
+	m_pVertexBuffer = pVertexBuffer;
+	m_pMaterial = pMaterial;
+}
+
 PrimitiveNode::~PrimitiveNode()
 {
 }

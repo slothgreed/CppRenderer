@@ -165,6 +165,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BezierLineShader.h" />
     <ClInclude Include="CompositFragCode.h" />
     <ClInclude Include="DefaultFragCode.h" />
     <ClInclude Include="DefaultVertexCode.h" />
@@ -196,6 +197,7 @@
     <ClInclude Include="PostProcessCode.h" />
     <ClInclude Include="RenderSystem.h" />
     <ClInclude Include="RendererTypes.h" />
+    <ClInclude Include="SampleModelGenerator.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="ShaderManager.h" />
     <ClInclude Include="SimpleShaderCode.h" />
@@ -212,6 +214,7 @@
     <ClInclude Include="Vertex.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BezierLineShader.cpp" />
     <ClCompile Include="CompositFragCode.cpp" />
     <ClCompile Include="DefaultFragCode.cpp" />
     <ClCompile Include="DefaultVertexCode.cpp" />
@@ -235,6 +238,7 @@
     <ClCompile Include="PfxRenderer.cpp" />
     <ClCompile Include="PointLight.cpp" />
     <ClCompile Include="RenderSystem.cpp" />
+    <ClCompile Include="SampleModelGenerator.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="ShaderManager.cpp" />
     <ClCompile Include="SpotLight.cpp" />
