@@ -21,8 +21,8 @@ public:
 	
 	virtual void Initialize() = 0;
 	virtual void FetchUniformLocation() = 0;
-	virtual void Bind(shared_ptr<IUniform> pUniform) = 0;
-	virtual void UnBind(shared_ptr<IUniform> pUniform) = 0;
+	virtual void Bind(shared_ptr<UniformSet> pUniform) = 0;
+	virtual void UnBind(shared_ptr<UniformSet> pUniform) = 0;
 
 	GLuint Program() { return m_programId; }
 	bool Compare(IShaderBuildInfo* shaderDefine);

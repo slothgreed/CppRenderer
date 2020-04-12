@@ -38,15 +38,15 @@ void NormalVisualizeShader::FetchUniformLocation()
 	m_uniformLocation[NORMAL_VISUALIZE_UNIFORM_LENGTH] = glGetUniformLocation(m_programId, "uLength");
 }
 
-void NormalVisualizeShader::Bind(shared_ptr<IUniform> pUniform)
+void NormalVisualizeShader::Bind(shared_ptr<UniformSet> pUniform)
 {
-	if (pUniform->Type() != SHADER_TYPE::SHADER_TYPE_NORMALVISUALIZE)
+	if (pUniform->Geometry()->Type() != SHADER_TYPE::SHADER_TYPE_NORMALVISUALIZE)
 	{
 		assert(0);
 		return;
 	}
 
-	auto uniformParameter = static_pointer_cast<NormalVisualizeUniform>(pUniform);
+	auto uniformParameter = static_pointer_cast<NormalVisualizeUniform>(pUniform->Geometry());
 
 	BindLength(uniformParameter->Length());
 }

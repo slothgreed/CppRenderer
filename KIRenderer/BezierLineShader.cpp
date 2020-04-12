@@ -24,8 +24,9 @@ void BezierLineShader::FetchUniformLocation()
 	Logger::GLError();
 }
 
-void BezierLineShader::Bind(shared_ptr<IUniform> uniform)
+void BezierLineShader::Bind(shared_ptr<UniformSet> uniform)
 {
+	assert(0);
 	if (m_uniformLocation[BEZIERLINE_UNIFORM_STRIP_NUM] == -1 ||
 		m_uniformLocation[BEZIERLINE_UNIFORM_SEGMENT_NUM] == -1)
 	{
@@ -33,19 +34,19 @@ void BezierLineShader::Bind(shared_ptr<IUniform> uniform)
 		return;
 	}
 
-	if (uniform->Type() != SHADER_TYPE::SHADER_TYPE_BEZIERLINE)
+	if (uniform->TES()->Type() != SHADER_TYPE::SHADER_TYPE_BEZIERLINE)
 	{
 		assert(0);
 		return;
 	}
 	
-	auto uniformParameter = static_pointer_cast<BezierLineUniform>(uniform);
+	auto uniformParameter = static_pointer_cast<BezierLineUniform>(uniform->TES());
 	
 	IShader::BindInt(m_uniformLocation[BEZIERLINE_UNIFORM_STRIP_NUM], uniformParameter->StripNum());
 	IShader::BindInt(m_uniformLocation[BEZIERLINE_UNIFORM_SEGMENT_NUM],uniformParameter->SegmentNum());
 }
 
-void BezierLineShader::UnBind(shared_ptr<IUniform> uniform)
+void BezierLineShader::UnBind(shared_ptr<UniformSet> uniform)
 {
 
 }}

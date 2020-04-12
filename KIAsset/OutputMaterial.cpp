@@ -4,7 +4,8 @@ namespace Asset
 {
 OutputMaterial::OutputMaterial()
 {
-	m_pUniform = make_shared<OutputUniform>();
+	auto pFragUniform = make_shared<OutputUniform>();
+	m_pUniform = make_shared<UniformSet>(nullptr, pFragUniform);
 }
 
 OutputMaterial::~OutputMaterial()
@@ -35,11 +36,25 @@ shared_ptr<IShader> OutputMaterial::CompileShader(IVertexBuffer* pVertexBuffer)
 
 void OutputMaterial::AddColorTexture(shared_ptr<Texture> colorTexture)
 {
-	m_pUniform->pTexture = colorTexture;
+	if (m_pUniform->Frag()->Type() != SHADER_TYPE::SHADER_TYPE_OUTPUT)
+	{
+		assert(0);
+		return;
+	}
+
+	auto uniform = static_pointer_cast<OutputUniform>(m_pUniform->Frag());
+	if (uniform->GetTexture() == nullptr)
+	{
+		assert(0);
+		return;
+	}
+
+	uniform->SetTexture(colorTexture);
 }
 
 void OutputMaterial::Bind()
 {
+
 	m_pShader->Bind(m_pUniform);
 }
 

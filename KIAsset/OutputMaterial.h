@@ -24,7 +24,7 @@ public:
 	void AddColorTexture(shared_ptr<Texture> colorTexture);
 
 private:
-	shared_ptr<OutputUniform> m_pUniform;
+	shared_ptr<UniformSet> m_pUniform;
 
 };
 }

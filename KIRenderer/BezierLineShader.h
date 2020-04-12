@@ -21,8 +21,8 @@ class DLL_EXPORT BezierLineShader : public IShader
 	~BezierLineShader();
 	virtual void Initialize() override;
 	virtual void FetchUniformLocation() override;
-	virtual void Bind(shared_ptr<IUniform> pUniform) override;
-	virtual void UnBind(shared_ptr<IUniform> pUniform) override;
+	virtual void Bind(shared_ptr<UniformSet> pUniform) override;
+	virtual void UnBind(shared_ptr<UniformSet> pUniform) override;
 };
 
 class DLL_EXPORT BezierLineUniform : public IUniform

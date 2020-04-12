@@ -28,8 +28,8 @@ public:
 	~NormalVisualizeShader();
 	virtual void Initialize();
 	virtual void FetchUniformLocation();
-	virtual void Bind(shared_ptr<IUniform> pUniform);
-	virtual void UnBind(shared_ptr<IUniform> pUniform) {};
+	virtual void Bind(shared_ptr<UniformSet> pUniform);
+	virtual void UnBind(shared_ptr<UniformSet> pUniform) {};
 
 	virtual SHADER_TYPE Type() override { return SHADER_TYPE::SHADER_TYPE_NORMALVISUALIZE; }
 private:

@@ -9,7 +9,11 @@ class DLL_EXPORT GrayScaleUniform : public IUniform
 {
 public:
 	SHADER_TYPE Type() { return SHADER_TYPE::SHADER_TYPE_GRAYSCALE; }
-	shared_ptr<Texture> pTexture;
+
+	void SetTexture(shared_ptr<Texture> pTexture) { m_pTexture = pTexture; }
+	shared_ptr<Texture> GetTexture() { return m_pTexture; }
+private:
+	shared_ptr<Texture> m_pTexture;
 };
 
 class DLL_EXPORT GrayScaleShader : public IShader
@@ -30,8 +34,8 @@ public:
 	virtual void Initialize() override;
 	virtual void FetchUniformLocation() override;
 
-	virtual void Bind(shared_ptr<IUniform> pUniform) override;
-	virtual void UnBind(shared_ptr<IUniform> pUniform) override;
+	virtual void Bind(shared_ptr<UniformSet> pUniform) override;
+	virtual void UnBind(shared_ptr<UniformSet> pUniform) override;
 
 private:
 	void BindColorTexture();

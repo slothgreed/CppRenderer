@@ -10,8 +10,11 @@ class DLL_EXPORT OutputUniform : public IUniform
 {
 public:
 	virtual SHADER_TYPE Type() override { return SHADER_TYPE::SHADER_TYPE_OUTPUT; }
-	shared_ptr<Texture> pTexture;
-
+public:
+	void SetTexture(shared_ptr<Texture> pTexture) { m_pTexture = pTexture; }
+	shared_ptr<Texture> GetTexture() { return m_pTexture; }
+private:
+	shared_ptr<Texture> m_pTexture;
 };
 
 
@@ -28,11 +31,11 @@ public:
 	virtual SHADER_TYPE Type() override { return SHADER_TYPE::SHADER_TYPE_OUTPUT; }
 	virtual void Initialize() override;
 	virtual void FetchUniformLocation() override;
-	virtual void Bind(shared_ptr<IUniform> pUniform) override;
-	virtual void UnBind(shared_ptr<IUniform> pUniform) override;
+	virtual void Bind(shared_ptr<UniformSet> pUniform) override;
+	virtual void UnBind(shared_ptr<UniformSet> pUniform) override;
 private:
 	void BindOutputTexture();
-	shared_ptr<OutputUniform> m_uniformParameter;
+	shared_ptr<UniformSet> m_pUniform;
 };
 }
 }

@@ -25,14 +25,14 @@ void SSLICShader::FetchUniformLocation()
 	Logger::GLError();
 }
 
-void SSLICShader::Bind(shared_ptr<IUniform> pUniform)
+void SSLICShader::Bind(shared_ptr<UniformSet> pUniform)
 {
-	if (pUniform->Type() != SHADER_TYPE::SHADER_TYPE_SSLIC)
+	if (pUniform->Frag()->Type() != SHADER_TYPE::SHADER_TYPE_SSLIC)
 	{
 		assert(0);
 	}
 	
-	auto uniformParameter = static_pointer_cast<SSLICUniform>(pUniform);
+	auto uniformParameter = static_pointer_cast<SSLICUniform>(pUniform->Frag());
 	if (uniformParameter->GetTexture() == nullptr)
 	{
 		assert(0);
@@ -42,15 +42,15 @@ void SSLICShader::Bind(shared_ptr<IUniform> pUniform)
 	BindColorTexture();
 }
 
-void SSLICShader::UnBind(shared_ptr<IUniform> pUniform)
+void SSLICShader::UnBind(shared_ptr<UniformSet> pUniform)
 {
-	if (pUniform->Type() != SHADER_TYPE::SHADER_TYPE_SSLIC)
+	if (pUniform->Frag()->Type() != SHADER_TYPE::SHADER_TYPE_SSLIC)
 	{
 		assert(0);
 		return;
 	}
 
-	auto uniformParameter = static_pointer_cast<SSLICUniform>(pUniform);
+	auto uniformParameter = static_pointer_cast<SSLICUniform>(pUniform->Frag());
 	if (uniformParameter->GetTexture() == nullptr)
 	{
 		assert(0);

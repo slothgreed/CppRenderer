@@ -39,20 +39,22 @@ void DefaultShader::FetchUniformLocation()
 	Logger::GLError();
 }
 
-void DefaultShader::Bind(shared_ptr<IUniform> pUniform)
+void DefaultShader::Bind(shared_ptr<UniformSet> pUniform)
 {
 	if (pUniform == nullptr)
 	{
 		return;
 	}
 
-	if (pUniform->Type() != SHADER_TYPE::SHADER_TYPE_DEFAULT)
+	if (pUniform->Vertex()->Type() != SHADER_TYPE::SHADER_TYPE_DEFAULT ||
+		pUniform->Frag()->Type() != SHADER_TYPE::SHADER_TYPE_DEFAULT)
 	{
 		assert(0);
 		return;
 	}
 
-	auto uniformParameter = static_pointer_cast<DefaultUniform>(pUniform);
+	auto vertexUniform = static_pointer_cast<DefaultVertexUniform>(pUniform->Vertex());
+	auto fragUniform = static_pointer_cast<DefaultFragUniform>(pUniform->Frag());
 
 	shared_ptr<DefaultVertexCode> pVertexCode;
 	shared_ptr<DefaultFragCode> pFragCode;
@@ -72,37 +74,37 @@ void DefaultShader::Bind(shared_ptr<IUniform> pUniform)
 		pVertexCode->ViewNormal() == false &&
 		pVertexCode->UseTexcoord() == false)
 	{
-		BindFixColor(uniformParameter->FixColor());
+		BindFixColor(vertexUniform->FixColor());
 	}
 
 	if (pFragCode->UseTexture0() == true)
 	{
-		if (uniformParameter->GetTexture() == nullptr)
+		if (fragUniform->GetTexture() == nullptr)
 		{
 			assert(0);
 			return;
 		}
 		else
 		{
-			uniformParameter->GetTexture()->Begin();
+			fragUniform->GetTexture()->Begin();
 			BindColorTexture();
 		}
 	}
 
 }
 
-void DefaultShader::UnBind(shared_ptr<IUniform> pUniform)
+void DefaultShader::UnBind(shared_ptr<UniformSet> pUniform)
 {
-	auto uniformParameter = static_pointer_cast<DefaultUniform>(pUniform);
-	if (uniformParameter == nullptr)
+	auto uniform = static_pointer_cast<DefaultFragUniform>(pUniform->Frag());
+	if (uniform == nullptr)
 	{
 		assert(0);
 		return;
 	}
 
-	if (uniformParameter->GetTexture() != nullptr)
+	if (uniform->GetTexture() != nullptr)
 	{
-		uniformParameter->GetTexture()->End();
+		uniform->GetTexture()->End();
 	}
 }
 

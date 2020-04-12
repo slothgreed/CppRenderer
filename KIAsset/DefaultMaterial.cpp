@@ -4,7 +4,9 @@ namespace Asset
 {
 DefaultMaterial::DefaultMaterial()
 {
-	m_pUniform = make_shared<DefaultUniform>();
+	auto pVertexUniform = make_shared<DefaultVertexUniform>();
+	auto pFragUniform = make_shared<DefaultFragUniform>();
+	m_pUniform = make_shared<UniformSet>(pVertexUniform, pFragUniform);
 }
 
 DefaultMaterial::~DefaultMaterial()
@@ -14,17 +16,39 @@ DefaultMaterial::~DefaultMaterial()
 
 void DefaultMaterial::AddTexture(shared_ptr<Texture> texture)
 {
-	m_pUniform->SetTexture(texture);
+	if (m_pUniform->Frag()->Type() != SHADER_TYPE::SHADER_TYPE_DEFAULT)
+	{
+		assert(0);
+		return;
+	}
+
+	auto uniform = static_pointer_cast<DefaultFragUniform>(m_pUniform->Frag());
+	uniform->SetTexture(texture);
 }
 
 void DefaultMaterial::SetFixColor(vec4 color)
 {
-	m_pUniform->SetFixColor(color);
+	if (m_pUniform->Vertex()->Type() != SHADER_TYPE::SHADER_TYPE_DEFAULT)
+	{
+		assert(0);
+		return;
+	}
+
+	auto uniform = static_pointer_cast<DefaultVertexUniform>(m_pUniform->Vertex());
+	uniform->SetFixColor(color);
 }
 
 void DefaultMaterial::VisibleNormal(bool visible)
 {
-	m_pUniform->VisibleNormal(visible);
+	if (m_pUniform->Vertex()->Type() != SHADER_TYPE::SHADER_TYPE_DEFAULT)
+	{
+		assert(0);
+		return;
+	}
+
+	auto uniform = static_pointer_cast<DefaultVertexUniform>(m_pUniform->Vertex());
+	uniform->VisibleNormal(visible);
+
 	m_bReCompileShader = true;
 }
 
@@ -36,7 +60,8 @@ shared_ptr<IShader> DefaultMaterial::CompileShader(IVertexBuffer* pVertexBuffer)
 		auto pBuildInfo = make_shared<IShaderBuildInfo>(SHADER_TYPE_DEFAULT);
 		auto pVertexCode = make_shared<DefaultVertexCode>();
 		pVertexCode->SetShaderDefine(pDefaultBuffer->Layout());
-		pVertexCode->SetViewNormal(m_pUniform->VisibleNormal());
+		auto uniform = static_pointer_cast<DefaultVertexUniform>(m_pUniform->Vertex());
+		pVertexCode->SetViewNormal(uniform->VisibleNormal());
 		pBuildInfo->SetVertexCode(pVertexCode);
 		auto pFragCode = make_shared<DefaultFragCode>();
 		pFragCode->SetShaderDefine(pDefaultBuffer->Layout());

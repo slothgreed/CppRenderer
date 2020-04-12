@@ -44,11 +44,16 @@ void SSLICEffect::Initialize(int width, int height)
 	m_pBlendTexture->Set(blendTexture);
 	m_pBlendTexture->End();
 
-	m_pModelUniform = make_shared<DefaultUniform>();
-	m_pModelUniform->SetTexture(m_pBlendTexture);
+	auto pVertexUniform = make_shared<DefaultVertexUniform>();
+	auto pFragUniform = make_shared<DefaultFragUniform>();
+	pFragUniform->SetTexture(m_pBlendTexture);
+	m_pModelUniform = make_shared<UniformSet>(pVertexUniform, pFragUniform);
+	
 
-	m_pSSLICUniform = make_shared<SSLICUniform>();
-	m_pSSLICUniform->SetTexture(m_pBlendTexture);
+	auto pSSLICVertexUniform = make_shared<DefaultVertexUniform>();
+	auto pSSLICFragUniform = make_shared<DefaultFragUniform>();
+	pSSLICFragUniform->SetTexture(m_pBlendTexture);
+	m_pSSLICUniform = make_shared<UniformSet>(pSSLICVertexUniform, pSSLICFragUniform);
 
 	auto pBuildInfo = make_shared<IShaderBuildInfo>(SHADER_TYPE_DEFAULT);
 	auto pVertexCode = make_shared<DefaultVertexCode>();

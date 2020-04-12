@@ -26,7 +26,7 @@ private:
 	shared_ptr<Texture> m_pTexture;
 	shared_ptr<DefaultVertexBuffer> m_pPlane;
 	shared_ptr<GrayScaleShader> m_pGrayScaleShader;
-	shared_ptr<GrayScaleUniform> m_pGrayUniform;
+	shared_ptr<UniformSet> m_pGrayUniform;
 };
 }
 }

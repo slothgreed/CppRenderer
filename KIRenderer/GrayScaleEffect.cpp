@@ -21,16 +21,21 @@ void GrayScaleEffect::Initialize(int width, int height)
 	m_pGrayScaleShader = static_pointer_cast<GrayScaleShader>(ShaderManager::Instance()->FindOrNew(pBuildInfo));
 	m_pRenderTarget = make_shared<RenderTarget>();
 	m_pRenderTarget->Initialize(1, width, height);
+
+	auto pGrayUniform = make_shared<GrayScaleUniform>();
+	m_pGrayUniform = make_shared<UniformSet>(nullptr, pGrayUniform);
 }
 
-void GrayScaleEffect::SetTexture(shared_ptr<Texture> texture)
+void GrayScaleEffect::SetTexture(shared_ptr<Texture> pTexture)
 {
-	if (m_pGrayUniform == nullptr)
-	{
-		m_pGrayUniform = make_shared<GrayScaleUniform>();
+	if (m_pGrayUniform->Frag()->Type() != SHADER_TYPE::SHADER_TYPE_GRAYSCALE) {
+		assert(0);
+		return;
 	}
 
-	m_pGrayUniform->pTexture = texture;
+	auto uniformParameter = static_pointer_cast<GrayScaleUniform>(m_pGrayUniform->Frag());
+
+	uniformParameter->SetTexture(pTexture);
 }
 
 void GrayScaleEffect::Resize(int width, int height)

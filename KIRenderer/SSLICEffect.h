@@ -29,8 +29,8 @@ private:
 	shared_ptr<DefaultVertexBuffer> m_pPlaneBuffer;
 	shared_ptr<RenderTarget> m_pRenderTarget;
 
-	shared_ptr<DefaultUniform> m_pModelUniform;
-	shared_ptr<SSLICUniform> m_pSSLICUniform;
+	shared_ptr<UniformSet> m_pModelUniform;
+	shared_ptr<UniformSet> m_pSSLICUniform;
 };
 }
 }

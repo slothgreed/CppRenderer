@@ -24,41 +24,41 @@ void OutputShader::FetchUniformLocation()
 
 }
 
-void OutputShader::Bind(shared_ptr<IUniform> pUniform)
+void OutputShader::Bind(shared_ptr<UniformSet> pUniform)
 {
-	if (pUniform->Type() != SHADER_TYPE::SHADER_TYPE_OUTPUT)
+	if (pUniform->Frag()->Type() != SHADER_TYPE::SHADER_TYPE_OUTPUT)
 	{
 		assert(0);
 		return;
 	}
 
-	auto uniformParameter = static_pointer_cast<OutputUniform>(pUniform);
-	if (uniformParameter->pTexture == nullptr)
+	auto uniformParameter = static_pointer_cast<OutputUniform>(pUniform->Frag());
+	if (uniformParameter->GetTexture() == nullptr)
 	{
 		assert(0);
 		return;
 	}
 
-	uniformParameter->pTexture->Begin();
+	uniformParameter->GetTexture()->Begin();
 	BindOutputTexture();
 }
 
-void OutputShader::UnBind(shared_ptr<IUniform> pUniform)
+void OutputShader::UnBind(shared_ptr<UniformSet> pUniform)
 {
-	if (pUniform->Type() != SHADER_TYPE::SHADER_TYPE_OUTPUT)
+	if (pUniform->Frag()->Type() != SHADER_TYPE::SHADER_TYPE_OUTPUT)
 	{
 		assert(0);
 		return;
 	}
 
-	auto uniformParameter = static_pointer_cast<OutputUniform>(pUniform);
-	if (uniformParameter->pTexture == nullptr)
+	auto uniformParameter = static_pointer_cast<OutputUniform>(pUniform->Frag());
+	if (uniformParameter->GetTexture() == nullptr)
 	{
 		assert(0);
 		return;
 	}
 
-	uniformParameter->pTexture->End();
+	uniformParameter->GetTexture()->End();
 }
 
 void OutputShader::BindOutputTexture()

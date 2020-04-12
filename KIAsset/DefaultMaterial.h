@@ -21,7 +21,7 @@ public:
 	void SetFixColor(vec4 color);
 	void AddTexture(shared_ptr<Texture> texture);
 private:
-	shared_ptr<DefaultUniform> m_pUniform;
+	shared_ptr<UniformSet> m_pUniform;
 };
 }
 }

@@ -23,18 +23,18 @@ void CompositShader::FetchUniformLocation()
 	Logger::GLError();
 }
 
-void CompositShader::Bind(shared_ptr<IUniform> uniform)
+void CompositShader::Bind(shared_ptr<UniformSet> uniform)
 {
-	if (uniform->Type() != SHADER_TYPE::SHADER_TYPE_COMPOSIT)
+	if (uniform->Frag()->Type() != SHADER_TYPE::SHADER_TYPE_COMPOSIT)
 	{
 		assert(0);
 		return;
 	}
 	
-	auto uniformParameter = static_pointer_cast<CompositUniform>(uniform);
+	auto uniformParameter = static_pointer_cast<CompositUniform>(uniform->Frag());
 }
 
-void CompositShader::UnBind(shared_ptr<IUniform> uniform)
+void CompositShader::UnBind(shared_ptr<UniformSet> uniform)
 {
 
 }
