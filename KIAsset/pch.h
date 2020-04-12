@@ -46,4 +46,9 @@ using namespace KI::Topology;
 #include "MoveManipulator.h"
 #include "RotateManipulator.h"
 #include "ScaleManipulator.h"
+
+#include "KeyFrame.h"
+#include "IAnimation.h"
+#include "ModelAnimation.h"
+#include "Storyboard.h"
 #endif // !KI_ASSET_PCH_H

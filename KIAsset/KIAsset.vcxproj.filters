@@ -37,6 +37,12 @@
     <Filter Include="ソース ファイル\Model\PolygonModel">
       <UniqueIdentifier>{c044d6be-b1f0-4557-ad19-ebf195c7c3a2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\Animation">
+      <UniqueIdentifier>{af97aac8-becb-4078-bbe9-17f8bbf0f682}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Animation">
+      <UniqueIdentifier>{30a90139-4cc7-46ad-a2b5-d9b68d20c19e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -87,6 +93,18 @@
     <ClInclude Include="pch.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
+    <ClInclude Include="Storyboard.h">
+      <Filter>ヘッダー ファイル\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="IAnimation.h">
+      <Filter>ヘッダー ファイル\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyFrame.h">
+      <Filter>ヘッダー ファイル\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelAnimation.h">
+      <Filter>ヘッダー ファイル\Animation</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -121,6 +139,12 @@
     </ClCompile>
     <ClCompile Include="IPolygonModel.cpp">
       <Filter>ソース ファイル\Model\PolygonModel</Filter>
+    </ClCompile>
+    <ClCompile Include="Storyboard.cpp">
+      <Filter>ソース ファイル\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelAnimation.cpp">
+      <Filter>ソース ファイル\Animation</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,10 +1,12 @@
 
 out vec4 outputColor;
 
-in vec2 v_texcoord;
 uniform sampler2D uTexture0;
 
+in Data{
+	vec2 texcoord;
+}OutData;
 void main()
 {
-	outputColor = texture2D(uTexture0,v_texcoord);
+	outputColor = texture2D(uTexture0,OutData.texcoord);
 }
