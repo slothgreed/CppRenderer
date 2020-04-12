@@ -68,8 +68,4 @@ void PrimitiveNode::Update(void* sender, IEventArgs* args)
 
 }
 
-void PrimitiveNode::ShowProperty()
-{
-
-}
 }

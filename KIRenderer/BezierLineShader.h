@@ -17,12 +17,15 @@ class DLL_EXPORT BezierLineShader : public IShader
 		BEZIERLINE_UNIFORM_NUM
 	};
 
+public:
 	BezierLineShader();
 	~BezierLineShader();
 	virtual void Initialize() override;
 	virtual void FetchUniformLocation() override;
 	virtual void Bind(shared_ptr<UniformSet> pUniform) override;
 	virtual void UnBind(shared_ptr<UniformSet> pUniform) override;
+private:
+	void BindScene();
 };
 
 class DLL_EXPORT BezierLineUniform : public IUniform

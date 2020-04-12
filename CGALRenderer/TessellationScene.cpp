@@ -14,12 +14,12 @@ void TessellationScene::Initialize(Project* pProject)
 	m_pScene->Initialize();
 	auto pCamera = make_shared<OrthoCamera>();
 	pCamera->LookAt(vec3(0, 0, -1), vec3(0), vec3(0, 1, 0));
-	pCamera->Ortho(-10, 10, -10, 10, -10, 10);
+	pCamera->Ortho(-2, 2, -2, 2, -2, 2);
 	m_pScene->SetCamera(pCamera);
 
 	auto pVertexBuffer = make_shared<DefaultVertexBuffer>();
 	SampleModelGenerator::BezierLine(pVertexBuffer.get());
-	m_pBezierNode = make_shared<PrimitiveNode>(
+	m_pBezierNode = make_shared<BezierLineNode>(
 		pVertexBuffer);
 
 
@@ -30,7 +30,12 @@ void TessellationScene::Initialize(Project* pProject)
 
 void TessellationScene::Invoke()
 {
-
+	m_pBackTarget->Begin();
+	m_pBackTarget->Clear();
+	m_pScene->Bind();
+	m_pScene->Draw();
+	m_pScene->UnBind();
+	m_pBackTarget->End();
 }
 
 void TessellationScene::ProcessMouseEvent(const MouseInput& input)

@@ -23,8 +23,8 @@ public:
 	IModelNode(shared_ptr<IModel> model);
 	virtual ~IModelNode();
 
-	virtual void ShowProperty() = 0;
-	virtual void Pick(const vec3& direction, PickResult& result) = 0;
+	virtual void ShowProperty() {};
+	virtual void Pick(const vec3& direction, PickResult& result) {};
 	virtual void Draw() = 0;
 	virtual void Update(void* sender, IEventArgs* args);
 	shared_ptr<IModel> GetModel() { return m_pModel; }

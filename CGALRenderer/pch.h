@@ -62,6 +62,7 @@ using namespace KI::Asset;
 #include "PolygonModelNode.h"
 #include "HalfEdgeDSNode.h"
 #include "ManipulatorNode.h"
+#include "BezierLineNode.h"
 
 // application
 #include "IWorkspace.h"

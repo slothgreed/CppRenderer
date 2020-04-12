@@ -13,6 +13,8 @@ public:
 
 	SHADER_TYPE Type() { return m_type; };
 	void SetVertexCode(shared_ptr<IShaderCode> value) { m_pShaderCode[SHADER_PROGRAM_VERTEX] = value; };
+	void SetTESCode(shared_ptr<IShaderCode> value) { m_pShaderCode[SHADER_PROGRAM_TESS] = value; };
+	void SetTCSCode(shared_ptr<IShaderCode> value) { m_pShaderCode[SHADER_PROGRAM_TCS] = value; };
 	void SetGeomCode(shared_ptr<IShaderCode> value) { m_pShaderCode[SHADER_PROGRAM_GEOM] = value; };
 	void SetFragCode(shared_ptr<IShaderCode> value) { m_pShaderCode[SHADER_PROGRAM_FRAG] = value; };
 

@@ -54,6 +54,10 @@ shared_ptr<IShader> ShaderManager::Generate(shared_ptr<IShaderBuildInfo> buildIn
 		pShader = make_shared<NormalVisualizeShader>();
 		pShader->Build(buildInfo);
 		break;
+	case SHADER_TYPE_BEZIERLINE:
+		pShader = make_shared<BezierLineShader>();
+		pShader->Build(buildInfo);
+		break;
 	default:
 		assert(0);
 		break;

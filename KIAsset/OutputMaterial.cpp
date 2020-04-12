@@ -43,18 +43,11 @@ void OutputMaterial::AddColorTexture(shared_ptr<Texture> colorTexture)
 	}
 
 	auto uniform = static_pointer_cast<OutputUniform>(m_pUniform->Frag());
-	if (uniform->GetTexture() == nullptr)
-	{
-		assert(0);
-		return;
-	}
-
 	uniform->SetTexture(colorTexture);
 }
 
 void OutputMaterial::Bind()
 {
-
 	m_pShader->Bind(m_pUniform);
 }
 

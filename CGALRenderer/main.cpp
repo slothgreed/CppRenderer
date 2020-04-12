@@ -6,7 +6,7 @@
 using namespace KI;
 int main()
 {
-	int NEW_SCENE = 2;
+	int NEW_SCENE = 6;
     std::cout << "Hello World!\n"; 
 	std::unique_ptr<CGALRenderer> renderer(new CGALRenderer());
 	auto pProject = make_shared<Project>();
@@ -30,6 +30,10 @@ int main()
 	else if (NEW_SCENE == 5)
 	{
 		pWorkspace = make_shared<PfxScene>();
+	}
+	else if (NEW_SCENE == 6)
+	{
+		pWorkspace = make_shared<TessellationScene>();
 	}
 
 	renderer->Initialize();

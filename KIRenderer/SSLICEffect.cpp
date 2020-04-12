@@ -32,9 +32,6 @@ void SSLICEffect::Initialize(int width, int height)
 	m_pPlaneBuffer = make_shared<DefaultVertexBuffer>();
 	ModelGenerator::RenderPlane(m_pPlaneBuffer.get());
 
-
-
-
 	TextureData blendTexture;
 	blendTexture.width = 256;
 	blendTexture.height = 256;

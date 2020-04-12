@@ -12,8 +12,6 @@ public:
 	~PrimitiveNode();
 
 	virtual void Draw();
-	virtual void Pick(const vec3& direction, PickResult& result) override {};
-	virtual void ShowProperty();
 	virtual void Update(void* sender, IEventArgs* args);
 	shared_ptr<IMaterial> GetMaterial() { return m_pMaterial; }
 	shared_ptr<DefaultVertexBuffer> GetVertexBuffer() { return m_pVertexBuffer; }

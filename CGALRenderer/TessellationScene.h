@@ -4,7 +4,7 @@
 namespace KI
 {
 
-class TessellationScene : IWorkspace
+class TessellationScene : public IWorkspace
 {
 public:
 	TessellationScene();
@@ -15,7 +15,7 @@ public:
 	virtual void ProcessMouseEvent(const MouseInput& input) override; 
 private:
 	shared_ptr<Scene> m_pScene;
-	shared_ptr<PrimitiveNode> m_pBezierNode;
+	shared_ptr<BezierLineNode> m_pBezierNode;
 	shared_ptr<IRenderTarget> m_pBackTarget;
 };
 

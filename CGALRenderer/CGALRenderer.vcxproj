@@ -171,6 +171,7 @@
     <ClInclude Include="..\extlibs\imgui\imstb_textedit.h" />
     <ClInclude Include="..\extlibs\imgui\imstb_truetype.h" />
     <ClInclude Include="BDBProperty.h" />
+    <ClInclude Include="BezierLineNode.h" />
     <ClInclude Include="BunnyScene.h" />
     <ClInclude Include="CameraController.h" />
     <ClInclude Include="CGALRenderer.h" />
@@ -200,6 +201,7 @@
     <ClCompile Include="..\extlibs\imgui\imgui_draw.cpp" />
     <ClCompile Include="..\extlibs\imgui\imgui_widgets.cpp" />
     <ClCompile Include="BDBProperty.cpp" />
+    <ClCompile Include="BezierLineNode.cpp" />
     <ClCompile Include="BunnyScene.cpp" />
     <ClCompile Include="CameraController.cpp" />
     <ClCompile Include="CGALRenderer.cpp" />
