@@ -96,15 +96,6 @@ void IVertexBuffer::Draw(GLuint primitiveType, GLuint first, GLuint count)
 
 void IVertexBuffer::Dispose()
 {
-	map<int, shared_ptr<ArrayBuffer>> itr;
-
-	for (auto itr = m_VertexInfo.begin(); itr != m_VertexInfo.end(); itr++)
-	{
-		if (itr->second != nullptr)
-		{
-			itr->second->Dispose();
-		}
-	}
 }
 
 void IVertexBuffer::BindToVAO(GLuint location)

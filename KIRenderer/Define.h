@@ -21,6 +21,7 @@ namespace Rednerer
 #define SHADER_NORMALVIS	"normalvisualize"
 #define SHADER_BEZIERLINE	"bezierline"
 #define SHADER_OUTPUT		"output"
+#define SHADER_PICK			"pick"
 
 
 #define GLSL_VERSION_400_CORE "#version 400 core\n"

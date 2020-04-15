@@ -183,6 +183,7 @@
     <ClInclude Include="PfxScene.h" />
     <ClInclude Include="PickCommand.h" />
     <ClInclude Include="PrimitiveScene.h" />
+    <ClInclude Include="RungeKuttaScene.h" />
     <ClInclude Include="SpecialUtility.h" />
     <ClInclude Include="PrimitiveNode.h" />
     <ClInclude Include="pch.h" />
@@ -221,6 +222,7 @@
     <ClCompile Include="PrimitiveScene.cpp" />
     <ClCompile Include="Project.cpp" />
     <ClCompile Include="PolygonModelNode.cpp" />
+    <ClCompile Include="RungeKuttaScene.cpp" />
     <ClCompile Include="SpecialUtility.cpp" />
     <ClCompile Include="SubdivisionCommand.cpp" />
     <ClCompile Include="NormalProperty.cpp" />

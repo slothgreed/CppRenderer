@@ -22,5 +22,6 @@ using namespace std;
 using namespace glm;
 
 #include "Voxelize.h"
+#include "SampleSimulation.h"
 
 #endif //KI_ALGORITHM_PCH_H

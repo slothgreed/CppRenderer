@@ -153,6 +153,9 @@
     <ClInclude Include="BezierLineNode.h">
       <Filter>ヘッダー ファイル\Application\Node</Filter>
     </ClInclude>
+    <ClInclude Include="RungeKuttaScene.h">
+      <Filter>ヘッダー ファイル\Application\InitApp</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -235,6 +238,9 @@
     </ClCompile>
     <ClCompile Include="BezierLineNode.cpp">
       <Filter>ソース ファイル\Application\Node</Filter>
+    </ClCompile>
+    <ClCompile Include="RungeKuttaScene.cpp">
+      <Filter>ソース ファイル\Application\InitApp</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

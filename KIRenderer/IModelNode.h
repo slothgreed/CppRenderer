@@ -6,17 +6,7 @@ namespace Renderer
 {
 class IModelProperty;
 
-class DLL_EXPORT PickResult
-{
-public:
-	PickResult() {};
-	~PickResult() {};
-
-private:
-
-};
-
-class DLL_EXPORT IModelNode : public IObserver
+class DLL_EXPORT IModelNode : public IObserver, public IPickable
 {
 public:
 	IModelNode() {};
@@ -24,7 +14,6 @@ public:
 	virtual ~IModelNode();
 
 	virtual void ShowProperty() {};
-	virtual void Pick(const vec3& direction, PickResult& result) {};
 	virtual void Draw() = 0;
 	virtual void Update(void* sender, IEventArgs* args);
 	shared_ptr<IModel> GetModel() { return m_pModel; }
@@ -33,10 +22,10 @@ protected:
 	void RemoveProperty(shared_ptr<IModelProperty> prop);
 	virtual void DrawProperty();
 	virtual void UpdateProperty();
-	shared_ptr<IModel> m_pModel; 
+	shared_ptr<IModel> m_pModel;
+
 private:
 	vector<shared_ptr<IModelProperty>> m_pProperty;
-
 };
 }
 }

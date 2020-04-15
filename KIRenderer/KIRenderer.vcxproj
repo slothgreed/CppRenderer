@@ -183,6 +183,7 @@
     <ClInclude Include="IModel.h" />
     <ClInclude Include="IModelNode.h" />
     <ClInclude Include="IModelProperty.h" />
+    <ClInclude Include="IPickable.h" />
     <ClInclude Include="IPostEffect.h" />
     <ClInclude Include="LighthingPass.h" />
     <ClInclude Include="ModelGenerator.h" />
@@ -193,8 +194,10 @@
     <ClInclude Include="PerspectiveCamera.h" />
     <ClInclude Include="PfxPlane.h" />
     <ClInclude Include="PfxRenderer.h" />
+    <ClInclude Include="PickManager.h" />
     <ClInclude Include="PointLight.h" />
     <ClInclude Include="PostProcessCode.h" />
+    <ClInclude Include="RenderData.h" />
     <ClInclude Include="RenderSystem.h" />
     <ClInclude Include="RendererTypes.h" />
     <ClInclude Include="SampleModelGenerator.h" />
@@ -236,7 +239,9 @@
     <ClCompile Include="PerspectiveCamera.cpp" />
     <ClCompile Include="PfxPlane.cpp" />
     <ClCompile Include="PfxRenderer.cpp" />
+    <ClCompile Include="PickManager.cpp" />
     <ClCompile Include="PointLight.cpp" />
+    <ClCompile Include="RenderData.cpp" />
     <ClCompile Include="RenderSystem.cpp" />
     <ClCompile Include="SampleModelGenerator.cpp" />
     <ClCompile Include="Scene.cpp" />

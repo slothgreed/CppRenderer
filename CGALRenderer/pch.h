@@ -72,6 +72,7 @@ using namespace KI::Asset;
 #include "Workspace.h"
 #include "VoronoiScene.h"
 #include "TessellationScene.h"
+#include "RungeKuttaScene.h"
 #include "CGALRenderer.h"
 #include "Project.h"
 #include "SpecialUtility.h"

@@ -90,4 +90,8 @@ using namespace KI::Gfx;
 
 #include "Scene.h"
 
+#include "RenderData.h"
+#include "IPickable.h"
+#include "PickManager.h"
+
 #endif KI_RENDERER_PCH_H

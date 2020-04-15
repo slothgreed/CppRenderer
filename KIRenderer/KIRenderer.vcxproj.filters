@@ -219,6 +219,15 @@
     <ClInclude Include="SampleModelGenerator.h">
       <Filter>ヘッダー ファイル\Utility</Filter>
     </ClInclude>
+    <ClInclude Include="IPickable.h">
+      <Filter>ヘッダー ファイル\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="PickManager.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderData.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -328,6 +337,12 @@
     </ClCompile>
     <ClCompile Include="SampleModelGenerator.cpp">
       <Filter>ソース ファイル\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="PickManager.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderData.cpp">
+      <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -7,11 +7,12 @@ class PolygonModelNode : public IModelNode
 public:
 	PolygonModelNode(shared_ptr<IModel> model);
 	~PolygonModelNode();
-	virtual void Pick(const vec3& direction, PickResult& result) override;
 	virtual void Draw() override;
 	virtual void ShowProperty() override;
 	virtual void Update(void* sender, IEventArgs* args) override;
 	IPolygonModel* GetModel();
+	virtual void SetPickID(int startIndex, int& endIndex) override;
+
 
 	void VisibleBDB(bool visibility);
 	void VisibleNormal(bool visibility);
@@ -27,6 +28,7 @@ protected:
 	shared_ptr<IVertexBuffer> m_pEdgeBuffer;
 
 private:
+	shared_ptr<DefaultVertexBuffer> m_pPickPolygon;
 	BDB m_bdb;
 	void SetRenderData();
 };

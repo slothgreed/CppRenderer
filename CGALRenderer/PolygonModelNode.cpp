@@ -133,10 +133,6 @@ void PolygonModelNode::VisibleEdge(bool visibility)
 {
 
 }
-void PolygonModelNode::Pick(const vec3& direction, PickResult& distance)
-{
-
-}
 
 void PolygonModelNode::Update(void* sender, IEventArgs* args)
 {
@@ -144,4 +140,23 @@ void PolygonModelNode::Update(void* sender, IEventArgs* args)
 
 	IModelNode::Update(sender, args);
 }
+
+void PolygonModelNode::SetPickID(int startIndex, int& endIndex)
+{
+	if (m_pFaceIndex != nullptr)
+	{
+		int pickIndex = startIndex;
+		vector<int> pickId;
+		pickId.resize(m_pFaceIndex->Size());
+		for (int i = 0; i < pickId.size(); i+=3){
+			pickId[i] = pickIndex;
+			pickId[i + 1] = pickIndex + 1;
+			pickId[i + 2] = pickIndex + 2;
+			pickIndex += 3;
+		}
+
+		m_pPickPolygon->SetPosition(GL_TRIANGLES,);
+	}
+}
+
 }
