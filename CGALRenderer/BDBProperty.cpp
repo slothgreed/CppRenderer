@@ -10,13 +10,13 @@ BDBProperty::~BDBProperty()
 
 void BDBProperty::Build(IModelNode* pModelNode)
 {
-	m_pVertexBuffer = make_shared<DefaultVertexBuffer>();
+	auto pVertexBuffer = make_shared<DefaultVertexBuffer>();
 	
 	vector<vec3> position;
 	BDB bdb;
 	pModelNode->GetModel()->GetBDB(bdb);
 	GetBDBPosition(bdb, position);
-	m_pVertexBuffer->SetPosition(GL_LINES, position);
+	pVertexBuffer->SetPosition(position);
 
 	vector<int> index;
 	index.resize(24);
@@ -39,12 +39,14 @@ void BDBProperty::Build(IModelNode* pModelNode)
 	index[i] = 2; i++; index[i] = 6; i++;
 	index[i] = 3; i++; index[i] = 7;
 
-	m_pIndexBuffer = make_shared<IndexBuffer>();
-	m_pIndexBuffer->Set(GL_LINES, index);
+	auto pIndexBuffer = make_shared<IndexBuffer>();
+	pIndexBuffer->Set(index);
+
+	m_pRenderData = make_shared<RenderData>(GL_LINES, pVertexBuffer, pIndexBuffer);
 
 	auto pBuildInfo = make_shared<IShaderBuildInfo>(SHADER_TYPE_DEFAULT);
 	auto pVertexCode = make_shared<DefaultVertexCode>();
-	pVertexCode->SetShaderDefine(m_pVertexBuffer->Layout());
+	pVertexCode->SetShaderDefine(pVertexBuffer->Layout());
 	pBuildInfo->SetVertexCode(pVertexCode);
 	pBuildInfo->SetFragCode(make_shared<DefaultFragCode>());
 	m_pShader = ShaderManager::Instance()->FindOrNew(pBuildInfo);
@@ -70,13 +72,22 @@ void BDBProperty::Update(IModelNode* pModelNode)
 	BDB bdb;
 	pModelNode->GetModel()->GetBDB(bdb);
 	GetBDBPosition(bdb, position);
-	m_pVertexBuffer->SetPosition(GL_LINES, position);
+	auto pVertexBuffer = m_pRenderData->GetVertexBuffer();
+	if (pVertexBuffer->Type() == VERTEX_BUFFER_TYPE_DEFAULT)
+	{
+		auto pDefaultBuffer = static_pointer_cast<DefaultVertexBuffer>(pVertexBuffer);
+		pDefaultBuffer->SetPosition(position);
+	}
+	else
+	{
+		assert(0);
+	}
 }
 
 void BDBProperty::Draw()
 {
 	m_pShader->Use();
-	m_pVertexBuffer->Draw(m_pIndexBuffer.get());
+	m_pRenderData->Draw();
 	m_pShader->UnUse();
 }
 }

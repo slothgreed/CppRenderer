@@ -51,11 +51,10 @@ void BunnyScene::Initialize(Project* m_pProject)
 
 	{
 		modelSpace.Set(vec3(-200), vec3(200));
-		auto pVertexBuffer = make_shared<DefaultVertexBuffer>();
-		auto pIndexBuffer = make_shared<IndexBuffer>();
-		ModelGenerator::CubeSpace(modelSpace, pVertexBuffer.get(), pIndexBuffer.get());
+		auto pRenderData = make_shared<RenderData>();
+		ModelGenerator::CubeSpace(modelSpace, pRenderData.get());
 		auto pMaterial = make_shared<DefaultMaterial>();
-		auto pCubeNode = make_shared<PrimitiveNode>(pVertexBuffer, pIndexBuffer, pMaterial);
+		auto pCubeNode = make_shared<PrimitiveNode>(pRenderData, pMaterial);
 		auto pTexture = make_shared<Texture>();
 		pTexture->Generate();
 		TextureData textureData;
@@ -73,7 +72,7 @@ void BunnyScene::Initialize(Project* m_pProject)
 	//	m_pScene->AddModelNode(moveManipulator);
 	//}
 
-	auto axis = make_shared<DefaultVertexBuffer>();
+	auto axis = make_shared<RenderData>();
 	ModelGenerator::Axis(axis.get());
 	auto axisNode = make_shared<PrimitiveNode>(axis);
 	m_pScene->AddModelNode(axisNode);

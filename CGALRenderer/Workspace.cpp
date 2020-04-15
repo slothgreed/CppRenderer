@@ -36,12 +36,12 @@ void Workspace::Initialize(Project* m_pProject)
 	//polyhedron->Load("E:\\cgModel\\StanfordBunny.off");
 	//polyhedron->GenSampleModel();
 
-	auto axis = make_shared<DefaultVertexBuffer>();
+	auto axis = make_shared<RenderData>();
 	ModelGenerator::Axis(axis.get());
 	auto axisNode = make_shared<PrimitiveNode>(axis);
 	m_pScene->AddModelNode(axisNode);
 
-	auto model = make_shared<DefaultVertexBuffer>();
+	auto model = make_shared<RenderData>();
 	//ModelGenerator::RenderPlane(plane.get());
 	SpecialUtility::LoadVectorFieldSphere(model.get());
 	auto pMaterial = make_shared<DefaultMaterial>();
@@ -66,7 +66,7 @@ void Workspace::Initialize(Project* m_pProject)
 
 	auto pSSLIC = make_shared<SSLICEffect>();
 	pSSLIC->Initialize(64, 64);
-	pSSLIC->SetDrawModel(model);
+	pSSLIC->SetRenderData(model);
 
 	auto pGrayScale = make_shared<GrayScaleEffect>();
 	pGrayScale->Initialize(640, 480);

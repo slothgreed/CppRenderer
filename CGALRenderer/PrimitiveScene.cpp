@@ -26,11 +26,10 @@ void PrimitiveScene::Initialize(Project* m_pProject)
 	shared_ptr<IControllerArgs> args = make_shared<CameraControllerArgs>(pCamera);
 	m_pController[CONTROLER_TYPE::CAMERA_CONTROLER]->SetArgs(args);
 
-	auto sphere = make_shared<DefaultVertexBuffer>();
-	auto sphereIdx = make_shared<IndexBuffer>();
-	ModelGenerator::Sphere(10, 36, 36, sphere.get(), sphereIdx.get());
+	auto sphereData = make_shared<RenderData>();
+	ModelGenerator::Sphere(10, 36, 36, sphereData.get());
 	auto pMaterial = make_shared<DefaultMaterial>();
-	auto sphereNode = make_shared<PrimitiveNode>(sphere, sphereIdx, pMaterial);
+	auto sphereNode = make_shared<PrimitiveNode>(sphereData, pMaterial);
 
 	auto pTexture = make_shared<Texture>();
 	pTexture->Generate();

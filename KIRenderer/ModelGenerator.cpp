@@ -10,9 +10,9 @@ ModelGenerator::~ModelGenerator()
 {
 }
 
-void ModelGenerator::Axis(DefaultVertexBuffer* pVertexBuffer)
+void ModelGenerator::Axis(RenderData* pRenderData)
 {
-	if (pVertexBuffer == NULL)
+	if (pRenderData == NULL)
 	{
 		assert(0);
 		return;
@@ -36,13 +36,15 @@ void ModelGenerator::Axis(DefaultVertexBuffer* pVertexBuffer)
 	color.push_back(vec3(0.0, 0.0, 1.0));
 	color.push_back(vec3(0.0, 0.0, 1.0));
 
-	pVertexBuffer->SetPosition(GL_LINES, position);
+	auto pVertexBuffer = make_shared<DefaultVertexBuffer>();
+	pVertexBuffer->SetPosition(position);
 	pVertexBuffer->SetColor(color);
+	pRenderData->Set(GL_LINES, pVertexBuffer);
 }
 
-void ModelGenerator::RenderPlane(DefaultVertexBuffer* pVertexBuffer)
+void ModelGenerator::RenderPlane(RenderData* pRenderData)
 {
-	if (pVertexBuffer == NULL)
+	if (pRenderData == NULL)
 	{
 		assert(0);
 		return;
@@ -61,11 +63,14 @@ void ModelGenerator::RenderPlane(DefaultVertexBuffer* pVertexBuffer)
 	texcoord.push_back(vec2(0, 1));
 	texcoord.push_back(vec2(1, 1));
 
-	pVertexBuffer->SetPosition(GL_TRIANGLE_STRIP, position);
+	auto pVertexBuffer = make_shared<DefaultVertexBuffer>();
+	pVertexBuffer->SetPosition(position);
 	pVertexBuffer->SetTexcoord(texcoord);
+	pRenderData->Set(GL_TRIANGLE_STRIP, pVertexBuffer);
+
 }
 
-void ModelGenerator::CubeSpace(const BDB& size, DefaultVertexBuffer* pVertexBuffer, IndexBuffer* pIndexBuffer)
+void ModelGenerator::CubeSpace(const BDB& size, RenderData* pRenderData)
 {
 	vector<vec3> position;
 	position.reserve(24);
@@ -138,7 +143,8 @@ void ModelGenerator::CubeSpace(const BDB& size, DefaultVertexBuffer* pVertexBuff
 	texcoord.push_back(vec2(widthCell * 3, heightCell));
 	texcoord.push_back(vec2(widthCell * 2, heightCell));
 
-	pVertexBuffer->SetPosition(GL_TRIANGLES, position);
+	auto pVertexBuffer = make_shared<DefaultVertexBuffer>();
+	pVertexBuffer->SetPosition(position);
 	pVertexBuffer->SetTexcoord(texcoord);
 
 	vector<int> index;
@@ -151,11 +157,14 @@ void ModelGenerator::CubeSpace(const BDB& size, DefaultVertexBuffer* pVertexBuff
 		offset += 4;
 	}
 
-	pIndexBuffer->Set(GL_TRIANGLES, index);
+	auto pIndexBuffer = make_shared<IndexBuffer>();
+	pIndexBuffer->Set(index);
+
+	pRenderData->Set(GL_TRIANGLES, pVertexBuffer, pIndexBuffer);
 }
 
 // reference : http://www.songho.ca/opengl/gl_sphere.html
-void ModelGenerator::Sphere(float radius, int sectorNum, int stackNum, DefaultVertexBuffer* pVertexBuffer, IndexBuffer* pIndexBuffer)
+void ModelGenerator::Sphere(float radius, int sectorNum, int stackNum, RenderData* pRenderData)
 {
 	vector<vec3> positions;
 	vector<vec3> normals;
@@ -219,11 +228,15 @@ void ModelGenerator::Sphere(float radius, int sectorNum, int stackNum, DefaultVe
 		}
 	}
 
-	pVertexBuffer->SetPosition(GL_TRIANGLES, positions);
+	auto pVertexBuffer = make_shared<DefaultVertexBuffer>();
+	pVertexBuffer->SetPosition(positions);
 	pVertexBuffer->SetNormal(normals);
 	pVertexBuffer->SetTexcoord(texcoords);
-	pIndexBuffer->Set(GL_TRIANGLES, indexs);
-}
+	auto pIndexBuffer = make_shared<IndexBuffer>();
+	pIndexBuffer->Set(indexs);
 
+	pRenderData->Set(GL_TRIANGLES, pVertexBuffer, pIndexBuffer);
+
+}
 }
 }

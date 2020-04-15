@@ -7,15 +7,6 @@ ManipulatorNode::ManipulatorNode()
 
 ManipulatorNode::~ManipulatorNode()
 {
-	delete m_pFaceBuffers[MANIPULATOR_HANDLE_X];
-	delete m_pFaceBuffers[MANIPULATOR_HANDLE_Y];
-	delete m_pFaceBuffers[MANIPULATOR_HANDLE_Z];
-
-	delete m_pEdgeBuffers[MANIPULATOR_HANDLE_X];
-	delete m_pEdgeBuffers[MANIPULATOR_HANDLE_Y];
-	delete m_pEdgeBuffers[MANIPULATOR_HANDLE_Z];
-
-	delete m_pMaterial;
 }
 
 void ManipulatorNode::ShowProperty()
@@ -26,88 +17,78 @@ void ManipulatorNode::ShowProperty()
 void ManipulatorNode::SetRenderData()
 {
 	manipulator.Build();
-	m_pFaceBuffers[MANIPULATOR_HANDLE_X] = new DefaultVertexBuffer();
-	m_pFaceBuffers[MANIPULATOR_HANDLE_Y] = new DefaultVertexBuffer();
-	m_pFaceBuffers[MANIPULATOR_HANDLE_Z] = new DefaultVertexBuffer();
-	m_pFaceIndexBuffers[MANIPULATOR_HANDLE_X] = new IndexBuffer();
-	m_pFaceIndexBuffers[MANIPULATOR_HANDLE_Y] = new IndexBuffer();
-	m_pFaceIndexBuffers[MANIPULATOR_HANDLE_Z] = new IndexBuffer();
+	m_pFaceDatas[MANIPULATOR_HANDLE_X] = make_shared<RenderData>();
+	m_pFaceDatas[MANIPULATOR_HANDLE_Y] = make_shared<RenderData>();
+	m_pFaceDatas[MANIPULATOR_HANDLE_Z] = make_shared<RenderData>();
 
-	m_pEdgeBuffers[MANIPULATOR_HANDLE_X] = new DefaultVertexBuffer();
-	m_pEdgeBuffers[MANIPULATOR_HANDLE_Y] = new DefaultVertexBuffer();
-	m_pEdgeBuffers[MANIPULATOR_HANDLE_Z] = new DefaultVertexBuffer();
-	m_pEdgeIndexBuffers[MANIPULATOR_HANDLE_X] = new IndexBuffer();
-	m_pEdgeIndexBuffers[MANIPULATOR_HANDLE_Y] = new IndexBuffer();
-	m_pEdgeIndexBuffers[MANIPULATOR_HANDLE_Z] = new IndexBuffer();
+	m_pEdgeDatas[MANIPULATOR_HANDLE_X] = make_shared<RenderData>();
+	m_pEdgeDatas[MANIPULATOR_HANDLE_Y] = make_shared<RenderData>();
+	m_pEdgeDatas[MANIPULATOR_HANDLE_Z] = make_shared<RenderData>();
 
 	GenManipulatorHandleVBO(
-		m_pFaceBuffers[MANIPULATOR_HANDLE_X],
-		m_pFaceIndexBuffers[MANIPULATOR_HANDLE_X],
-		m_pEdgeBuffers[MANIPULATOR_HANDLE_X],
-		m_pEdgeIndexBuffers[MANIPULATOR_HANDLE_X],
+		m_pFaceDatas[MANIPULATOR_HANDLE_X].get(),
+		m_pEdgeDatas[MANIPULATOR_HANDLE_X].get(),
 		MANIPULATOR_HANDLE::MANIPULATOR_HANDLE_X);
 	GenManipulatorHandleVBO(
-		m_pFaceBuffers[MANIPULATOR_HANDLE_Y],
-		m_pFaceIndexBuffers[MANIPULATOR_HANDLE_Y],
-		m_pEdgeBuffers[MANIPULATOR_HANDLE_Y],
-		m_pEdgeIndexBuffers[MANIPULATOR_HANDLE_Y],
+		m_pFaceDatas[MANIPULATOR_HANDLE_Y].get(),
+		m_pEdgeDatas[MANIPULATOR_HANDLE_Y].get(),
 		MANIPULATOR_HANDLE::MANIPULATOR_HANDLE_Y);
 
 	GenManipulatorHandleVBO(
-		m_pFaceBuffers[MANIPULATOR_HANDLE_Z],
-		m_pFaceIndexBuffers[MANIPULATOR_HANDLE_Z],
-		m_pEdgeBuffers[MANIPULATOR_HANDLE_Z],
-		m_pEdgeIndexBuffers[MANIPULATOR_HANDLE_Z],
+		m_pFaceDatas[MANIPULATOR_HANDLE_Z].get(),
+		m_pEdgeDatas[MANIPULATOR_HANDLE_Z].get(),
 		MANIPULATOR_HANDLE::MANIPULATOR_HANDLE_Z);
 
-	m_pMaterial = new DefaultMaterial();
+	m_pMaterial = make_shared<DefaultMaterial>();
 }
 
 void ManipulatorNode::GenManipulatorHandleVBO(
-	DefaultVertexBuffer* pFaceBuffer, 
-	IndexBuffer* pFaceIndexBuffer,
-	DefaultVertexBuffer* pEdgeBuffer, 
-	IndexBuffer* pEdgeIndexBuffer, 
+	RenderData* pFaceData,
+	RenderData* pEdgeData,
 	MANIPULATOR_HANDLE handle)
 {
-	if (pFaceBuffer == nullptr ||
-		pEdgeBuffer == nullptr)
+	if (pFaceData == nullptr ||
+		pEdgeData == nullptr)
 	{
 		assert(0);
 		return;
 	}
 
+	auto pFaceBuffer = make_shared<DefaultVertexBuffer>();
+	auto pFaceIndexBuffer = make_shared<IndexBuffer>();
+
 	vector<vec3> facet;
 	vector<int> faceIndex;
 	manipulator.GetFaceList(facet, faceIndex, handle);
-	pFaceBuffer->SetPosition(GL_TRIANGLES, facet);
-	pFaceIndexBuffer->Set(GL_TRIANGLES, faceIndex);
+	pFaceBuffer->SetPosition(facet);
+	pFaceIndexBuffer->Set(faceIndex);
+	pFaceData->Set(GL_TRIANGLES, pFaceBuffer, pFaceIndexBuffer);
 
+	auto pEdgeBuffer = make_shared<DefaultVertexBuffer>();
+	auto pEdgeIndexBuffer = make_shared<IndexBuffer>();
 	vector<vec3> edge;
 	vector<int> edgeIndex;
 	manipulator.GetEdgeList(edge, edgeIndex, handle);
-	pEdgeBuffer->SetPosition(GL_LINES, edge);
-	pEdgeIndexBuffer->Set(GL_LINES, edgeIndex);
+	pEdgeBuffer->SetPosition(edge);
+	pEdgeIndexBuffer->Set(edgeIndex);
+	pEdgeData->Set(GL_LINES, pFaceBuffer, pFaceIndexBuffer);
 
 }
 
 void ManipulatorNode::Draw()
 {
 	m_pMaterial->SetFixColor(vec4(1, 0, 0, 1));
-	m_pMaterial->Draw(m_pFaceBuffers[MANIPULATOR_HANDLE_X], m_pFaceIndexBuffers[MANIPULATOR_HANDLE_X]);
-	m_pMaterial->Draw(m_pEdgeBuffers[MANIPULATOR_HANDLE_X], m_pEdgeIndexBuffers[MANIPULATOR_HANDLE_X]);
+	m_pMaterial->Draw(m_pFaceDatas[MANIPULATOR_HANDLE_X].get());
+	m_pMaterial->Draw(m_pEdgeDatas[MANIPULATOR_HANDLE_X].get());
 
 	m_pMaterial->SetFixColor(vec4(0, 1, 0, 1));
-	m_pMaterial->Draw(m_pFaceBuffers[MANIPULATOR_HANDLE_Y], m_pFaceIndexBuffers[MANIPULATOR_HANDLE_Y]);
-	m_pMaterial->Draw(m_pEdgeBuffers[MANIPULATOR_HANDLE_Y], m_pEdgeIndexBuffers[MANIPULATOR_HANDLE_Y]);
+	m_pMaterial->Draw(m_pFaceDatas[MANIPULATOR_HANDLE_Y].get());
+	m_pMaterial->Draw(m_pEdgeDatas[MANIPULATOR_HANDLE_Y].get());
 
 	m_pMaterial->SetFixColor(vec4(0, 0, 1, 1));
-	m_pMaterial->Draw(m_pFaceBuffers[MANIPULATOR_HANDLE_Z], m_pFaceIndexBuffers[MANIPULATOR_HANDLE_Z]);
-	m_pMaterial->Draw(m_pEdgeBuffers[MANIPULATOR_HANDLE_Z], m_pEdgeIndexBuffers[MANIPULATOR_HANDLE_Z]);
+	m_pMaterial->Draw(m_pFaceDatas[MANIPULATOR_HANDLE_Z].get());
+	m_pMaterial->Draw(m_pEdgeDatas[MANIPULATOR_HANDLE_Z].get());
 }
 
 
-void ManipulatorNode::Pick(const vec3& direction, PickResult& result)
-{
-}
 }

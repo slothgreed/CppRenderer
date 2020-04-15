@@ -11,7 +11,7 @@ DefaultVertexBuffer::~DefaultVertexBuffer()
 	Dispose();
 }
 
-void DefaultVertexBuffer::SetPosition(GLuint primitiveType, const vector<vec3>& position)
+void DefaultVertexBuffer::SetPosition(const vector<vec3>& position)
 {
 	if (m_VertexInfo[VERTEX_ATTRIB_POSITION] == nullptr)
 	{
@@ -22,7 +22,6 @@ void DefaultVertexBuffer::SetPosition(GLuint primitiveType, const vector<vec3>& 
 
 	m_VertexInfo[VERTEX_ATTRIB_POSITION]->Set(position);
 	SetVertexSize((int)position.size());
-	SetPrimitiveType(primitiveType);
 }
 
 void DefaultVertexBuffer::SetNormal(const vector<vec3>& normal)

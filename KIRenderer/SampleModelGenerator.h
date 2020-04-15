@@ -5,14 +5,14 @@ namespace KI
 {
 namespace Renderer
 {
-class DefaultVertexBuffer;
+class RenderData;
 class DLL_EXPORT SampleModelGenerator
 {
 public:
 	SampleModelGenerator();
 	~SampleModelGenerator();
 
-	static void BezierLine(DefaultVertexBuffer* pVertexBuffer);
+	static void BezierLine(RenderData* pVertexBuffer);
 private:
 
 };

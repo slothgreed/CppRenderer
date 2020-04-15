@@ -29,8 +29,8 @@ void SSLICEffect::Initialize(int width, int height)
 	m_pRenderTarget = make_shared<RenderTarget>();
 	m_pRenderTarget->Initialize(1, 256, 256);
 
-	m_pPlaneBuffer = make_shared<DefaultVertexBuffer>();
-	ModelGenerator::RenderPlane(m_pPlaneBuffer.get());
+	m_pPlaneData = make_shared<RenderData>();
+	ModelGenerator::RenderPlane(m_pPlaneData.get());
 
 	TextureData blendTexture;
 	blendTexture.width = 256;
@@ -54,7 +54,15 @@ void SSLICEffect::Initialize(int width, int height)
 
 	auto pBuildInfo = make_shared<IShaderBuildInfo>(SHADER_TYPE_DEFAULT);
 	auto pVertexCode = make_shared<DefaultVertexCode>();
-	pVertexCode->SetShaderDefine(m_pPlaneBuffer->Layout());
+	
+	auto pPlaneBuffer = m_pPlaneData->GetVertexBuffer();
+	if (pPlaneBuffer->Type() == VERTEX_BUFFER_TYPE_DEFAULT)
+	{
+		auto pDefaultBuffer = static_pointer_cast<DefaultVertexBuffer>(pPlaneBuffer);
+		pVertexCode->SetShaderDefine(pDefaultBuffer->Layout());
+	}
+
+
 	pBuildInfo->SetVertexCode(pVertexCode);
 	pBuildInfo->SetFragCode(make_shared<DefaultFragCode>());
 	m_pModelShader = static_pointer_cast<DefaultShader>(ShaderManager::Instance()->FindOrNew(pBuildInfo));
@@ -66,9 +74,9 @@ void SSLICEffect::Initialize(int width, int height)
 
 	m_pSSLICShader = static_pointer_cast<SSLICShader>(ShaderManager::Instance()->FindOrNew(pSSLICInfo));
 }
-void SSLICEffect::SetDrawModel(shared_ptr<DefaultVertexBuffer> model)
+void SSLICEffect::SetRenderData(shared_ptr<RenderData> pRenderData)
 {
-	m_pModel = model;
+	m_pModelData = pRenderData;
 }
 
 void SSLICEffect::Draw()
@@ -76,7 +84,7 @@ void SSLICEffect::Draw()
 	m_pModelShader->Use();
 	m_pModelShader->Bind(m_pModelUniform);
 
-	m_pModel->Draw();
+	m_pModelData->Draw();
 
 	m_pModelShader->UnBind(m_pModelUniform);
 	m_pModelShader->UnUse();
@@ -85,7 +93,7 @@ void SSLICEffect::Draw()
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC1_ALPHA);
 	m_pSSLICShader->Use();
 	m_pSSLICShader->Bind(m_pSSLICUniform);
-	m_pPlaneBuffer->Draw();
+	m_pPlaneData->Draw();
 	m_pSSLICShader->UnBind(m_pSSLICUniform);
 	m_pSSLICShader->UnUse();
 	glDisable(GL_BLEND);

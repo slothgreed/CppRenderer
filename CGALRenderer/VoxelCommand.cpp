@@ -36,16 +36,19 @@ CommandResult VoxelCommand::Execute()
 	vector<int> indexBuffer;
 	pVoxelize.GetVertexList(voxelPosition, indexBuffer);
 
+	auto pRenderData = make_shared<RenderData>();
+
 	auto pVertexBuffer = make_shared<DefaultVertexBuffer>();
-	pVertexBuffer->SetPosition(GL_TRIANGLES, voxelPosition);
+	pVertexBuffer->SetPosition(voxelPosition);
 
 	auto pIndexBuffer = make_shared<IndexBuffer>();
-	pIndexBuffer->Set(GL_TRIANGLES, indexBuffer);
-
+	pIndexBuffer->Set(indexBuffer);
 	auto pMaterial = make_shared<DefaultMaterial>();
 	pMaterial->SetFixColor(vec4(1, 0, 0, 1));
-	
-	auto pModelNode = make_shared<PrimitiveNode>(pVertexBuffer, pIndexBuffer, pMaterial);
+
+	pRenderData->Set(GL_TRIANGLES, pVertexBuffer, pIndexBuffer);
+
+	auto pModelNode = make_shared<PrimitiveNode>(pRenderData, pMaterial);
 	
 	args->m_pScene->AddModelNode(pModelNode);
 	

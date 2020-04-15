@@ -18,14 +18,13 @@ public:
 	void VisibleNormal(bool visibility);
 	void VisibleFace(bool visibility);
 	void VisibleEdge(bool visibility);
-	shared_ptr<IVertexBuffer> GetVertexBuffer() { return m_pFaceBuffer; }
+	shared_ptr<IVertexBuffer> GetVertexBuffer();
 protected:
 	string m_name;
 	shared_ptr<IMaterial> m_pFaceMaterial;
 	shared_ptr<IMaterial> m_pEdgeMaterial;
-	shared_ptr<IVertexBuffer> m_pFaceBuffer;
-	shared_ptr<IndexBuffer> m_pFaceIndex;
-	shared_ptr<IVertexBuffer> m_pEdgeBuffer;
+	shared_ptr<RenderData> m_pFaceData;
+	shared_ptr<RenderData> m_pEdgeData;
 
 private:
 	shared_ptr<DefaultVertexBuffer> m_pPickPolygon;

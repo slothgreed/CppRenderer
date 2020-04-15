@@ -10,7 +10,7 @@ public:
 	IAttribute() {};
 	~IAttribute() {};
 
-	virtual SHADER_TYPE Type() = 0;
+	virtual VERTEX_BUFFER_TYPE Type() = 0;
 private:
 
 };

@@ -15,7 +15,7 @@ public:
 	virtual void Initialize(int width, int height) override;
 	virtual void Draw() override;
 	virtual void Resize(int width, int height) override;
-	void SetDrawModel(shared_ptr<DefaultVertexBuffer> model);
+	void SetRenderData(shared_ptr<RenderData> pRenderData);
 
 	//virtual void ReadFromXML(const boost::property_tree::ptree& tree);
 	//virtual void WriteToXML(const boost::property_tree::ptree& tree);
@@ -25,8 +25,8 @@ private:
 	shared_ptr<Texture> m_pBlendTexture;
 	shared_ptr<SSLICShader> m_pSSLICShader;
 	shared_ptr<DefaultShader> m_pModelShader;
-	shared_ptr<DefaultVertexBuffer> m_pModel;
-	shared_ptr<DefaultVertexBuffer> m_pPlaneBuffer;
+	shared_ptr<RenderData> m_pModelData;
+	shared_ptr<RenderData> m_pPlaneData;
 	shared_ptr<RenderTarget> m_pRenderTarget;
 
 	shared_ptr<UniformSet> m_pModelUniform;

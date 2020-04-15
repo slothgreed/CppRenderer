@@ -17,7 +17,7 @@ private:
 	void GetVBOData(HalfEdgeDS* model, vector<vec3>& position, vector<vec3>& color, bool needColor);
 
 	shared_ptr<IShader> m_pShader;
-	shared_ptr<DefaultVertexBuffer> m_pVertexBuffer;
+	shared_ptr<RenderData> m_pRenderData;
 };
 
 }

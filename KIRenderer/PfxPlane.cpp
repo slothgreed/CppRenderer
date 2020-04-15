@@ -13,12 +13,12 @@ PfxPlane::~PfxPlane()
 
 void PfxPlane::Initialize()
 {
-	m_pVertexBuffer = make_shared<DefaultVertexBuffer>();
-	ModelGenerator::RenderPlane(m_pVertexBuffer.get());
+	m_pRenderData = make_shared<RenderData>();
+	ModelGenerator::RenderPlane(m_pRenderData.get());
 }
 void PfxPlane::Draw()
 {
-	m_pMaterial->Draw(m_pVertexBuffer.get());
+	m_pMaterial->Draw(m_pRenderData.get());
 
 	Logger::GLError();
 }

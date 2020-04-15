@@ -2,7 +2,7 @@
 namespace KI
 {
 
-BezierLineNode::BezierLineNode(shared_ptr<IVertexBuffer> pVertexBuffer)
+BezierLineNode::BezierLineNode(shared_ptr<RenderData> pRenderData)
 {
 
 	auto pBuildInfo = make_shared<IShaderBuildInfo>(SHADER_TYPE_BEZIERLINE);
@@ -12,7 +12,7 @@ BezierLineNode::BezierLineNode(shared_ptr<IVertexBuffer> pVertexBuffer)
 	pBuildInfo->SetFragCode(make_shared<DefaultFragCode>());
 	m_pBezierShader = static_pointer_cast<BezierLineShader>(ShaderManager::Instance()->FindOrNew(pBuildInfo));
 	m_pBezierShader->SetPatchVertices(4);
-	m_pVertexBuffer = pVertexBuffer;
+	m_pRenderData = pRenderData;
 	auto pTCSUniform = make_shared<BezierLineUniform>();
 	m_pUniform = make_shared<UniformSet>(nullptr, nullptr, pTCSUniform, nullptr, nullptr);
 }
@@ -25,7 +25,7 @@ void BezierLineNode::Draw()
 {
 	m_pBezierShader->Use();
 	m_pBezierShader->Bind(m_pUniform);
-	m_pVertexBuffer->Draw();
+	m_pRenderData->Draw();
 	m_pBezierShader->UnBind(m_pUniform);
 	m_pBezierShader->UnUse();
 }

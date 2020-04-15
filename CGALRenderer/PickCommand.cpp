@@ -40,15 +40,7 @@ CommandResult PickCommand::Execute()
 		args->m_pViewport->GetScreen()
 	);
 
-
-	vec3 vector = far - near;
-	for (int i = 0; args->m_pTarget.size(); i++)
-	{
-		auto pTarget = args->m_pTarget[i];
-		PickResult result;
-		pTarget->Pick(vector, result);
-
-	}
+	assert(0);
 
 	return CommandResult::Failed;
 }

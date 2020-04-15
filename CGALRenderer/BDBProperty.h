@@ -16,8 +16,7 @@ private:
 	void GetBDBPosition(const BDB& bdb, vector<vec3>& position);
 	void Build(IModelNode* pModel);
 	shared_ptr<IShader> m_pShader;
-	shared_ptr<DefaultVertexBuffer> m_pVertexBuffer;
-	shared_ptr<IndexBuffer> m_pIndexBuffer;
+	shared_ptr<RenderData> m_pRenderData;
 };
 
 }

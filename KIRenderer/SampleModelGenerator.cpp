@@ -10,7 +10,7 @@ SampleModelGenerator::~SampleModelGenerator()
 {
 }
 
-void SampleModelGenerator::BezierLine(DefaultVertexBuffer* pVertexBuffer)
+void SampleModelGenerator::BezierLine(RenderData* pRenderData)
 {
 	vector<vec3> position;
 
@@ -19,7 +19,9 @@ void SampleModelGenerator::BezierLine(DefaultVertexBuffer* pVertexBuffer)
 	position.push_back(vec3(1.5, 0, 0));
 	position.push_back(vec3(2, 2, 0));
 
-	pVertexBuffer->SetPosition(GL_PATCHES, position);
+	auto pVertexBuffer = make_shared<DefaultVertexBuffer>();
+	pVertexBuffer->SetPosition(position);
+	pRenderData->Set(GL_PATCHES, pVertexBuffer);
 }
 }
 }

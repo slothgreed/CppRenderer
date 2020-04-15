@@ -24,7 +24,7 @@ public:
 private:
 	shared_ptr<RenderTarget> m_pRenderTarget;
 	shared_ptr<Texture> m_pTexture;
-	shared_ptr<DefaultVertexBuffer> m_pPlane;
+	shared_ptr<RenderData> m_pPlane;
 	shared_ptr<GrayScaleShader> m_pGrayScaleShader;
 	shared_ptr<UniformSet> m_pGrayUniform;
 };

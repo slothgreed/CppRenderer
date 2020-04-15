@@ -9,11 +9,11 @@ class DLL_EXPORT DefaultVertexBuffer : public IVertexBuffer
 public:
 	DefaultVertexBuffer();
 	~DefaultVertexBuffer();
-	virtual SHADER_TYPE Type() { return SHADER_TYPE::SHADER_TYPE_DEFAULT; }
+	virtual VERTEX_BUFFER_TYPE Type() { return VERTEX_BUFFER_TYPE::VERTEX_BUFFER_TYPE_DEFAULT; }
 	virtual void BindAttribDivisor() override;
 	virtual void UnBindAttribDivisor() override;
 
-	void SetPosition(GLuint primitiveType, const vector<vec3>& position);
+	void SetPosition(const vector<vec3>& position);
 	void SetNormal(const vector<vec3>& normal);
 	void SetColor(const vector<vec3>& color);
 	void SetTexcoord(const vector<vec2>& texcoord);

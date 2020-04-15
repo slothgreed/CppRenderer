@@ -18,7 +18,7 @@ void HalfEdgeProperty::Build(IModelNode* pModelNode)
 		return;
 	}
 
-	m_pVertexBuffer = make_shared<DefaultVertexBuffer>();
+	m_pRenderData = make_shared<RenderData>();
 
 	vector<vec3> position;
 	vector<vec3> color;
@@ -26,12 +26,13 @@ void HalfEdgeProperty::Build(IModelNode* pModelNode)
 	position.resize(pModel->GetHalfEdgeDS()->EdgeList().size() * 2);
 	color.resize(pModel->GetHalfEdgeDS()->EdgeList().size() * 2);
 
-	m_pVertexBuffer->SetPosition(GL_LINES, position);
-	m_pVertexBuffer->SetColor(color);
+	auto pVertexBuffer = make_shared<DefaultVertexBuffer>();
+	pVertexBuffer->SetPosition(position);
+	pVertexBuffer->SetColor(color);
 
 	auto pBuildInfo = make_shared<IShaderBuildInfo>(SHADER_TYPE_DEFAULT);
 	auto pVertexCode = make_shared<DefaultVertexCode>();
-	pVertexCode->SetShaderDefine(m_pVertexBuffer->Layout());
+	pVertexCode->SetShaderDefine(pVertexBuffer->Layout());
 	pBuildInfo->SetVertexCode(pVertexCode);
 	pBuildInfo->SetFragCode(make_shared<DefaultFragCode>());
 	m_pShader = ShaderManager::Instance()->FindOrNew(pBuildInfo);
@@ -54,7 +55,17 @@ void HalfEdgeProperty::Update(IModelNode* pModelNode)
 	}
 
 	GetVBOData(pModel->GetHalfEdgeDS().get(), position, color, false);
-	m_pVertexBuffer->SetPosition(GL_LINES, position);
+
+	auto pVertexBuffer = m_pRenderData->GetVertexBuffer();
+	if (pVertexBuffer->Type() == VERTEX_BUFFER_TYPE_DEFAULT)
+	{
+		auto pDefaultBuffer = static_pointer_cast<DefaultVertexBuffer>(pVertexBuffer);
+		pDefaultBuffer->SetPosition(position);
+	}
+	else
+	{
+		assert(0);
+	}
 }
 
 void HalfEdgeProperty::GetVBOData(HalfEdgeDS* model, vector<vec3>& position, vector<vec3>& color, bool needColor)
@@ -99,7 +110,7 @@ void HalfEdgeProperty::GetVBOData(HalfEdgeDS* model, vector<vec3>& position, vec
 void HalfEdgeProperty::Draw()
 {
 	m_pShader->Use();
-	m_pVertexBuffer->Draw();
+	m_pRenderData->Draw();
 	m_pShader->UnUse();
 }
 }

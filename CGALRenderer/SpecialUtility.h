@@ -10,7 +10,7 @@ public:
 	SpecialUtility();
 	~SpecialUtility();
 
-	static void LoadVectorFieldSphere(DefaultVertexBuffer* vertexBuffer);
+	static void LoadVectorFieldSphere(RenderData* vertexBuffer);
 private:
 
 };

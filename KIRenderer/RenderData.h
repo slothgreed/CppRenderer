@@ -5,11 +5,18 @@ namespace KI
 {
 namespace Renderer
 {
-class RenderData
+
+class DLL_EXPORT RenderData
 {
 public:
-	RenderData(GLuint m_primitiveType, shared_ptr<IVertexBuffer> pVertexBuffer, shared_ptr<IndexBuffer> pIndexBuffer);
+	RenderData() {};
 	~RenderData();
+	RenderData(GLuint primitiveType, shared_ptr<IVertexBuffer> pVertexBuffer, shared_ptr<IndexBuffer> pIndexBuffer = nullptr);
+
+	void Set(GLuint primitiveType, shared_ptr<IVertexBuffer> pVertexBuffer, shared_ptr<IndexBuffer> pIndexBuffer = nullptr);
+	shared_ptr<IVertexBuffer> GetVertexBuffer() { return m_pVertexBuffer; }
+	shared_ptr<IndexBuffer> GetIndexBuffer() { return m_pIndexBuffer; }
+	void Draw();
 
 private:
 	GLuint	m_pPrimitiveType;

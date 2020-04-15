@@ -33,6 +33,9 @@ using namespace KI::Gfx;
 #include "Define.h"
 #include "RendererTypes.h"
 
+#include "IPickable.h"
+#include "PickManager.h"
+
 #include "IModel.h"
 #include "IMaterial.h"
 #include "IModelProperty.h"
@@ -91,7 +94,6 @@ using namespace KI::Gfx;
 #include "Scene.h"
 
 #include "RenderData.h"
-#include "IPickable.h"
-#include "PickManager.h"
+
 
 #endif KI_RENDERER_PCH_H

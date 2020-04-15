@@ -14,7 +14,7 @@ OutputMaterial::~OutputMaterial()
 
 shared_ptr<IShader> OutputMaterial::CompileShader(IVertexBuffer* pVertexBuffer)
 {
-	if (pVertexBuffer->Type() == SHADER_TYPE::SHADER_TYPE_DEFAULT)
+	if (pVertexBuffer->Type() == VERTEX_BUFFER_TYPE_DEFAULT)
 	{
 		auto pDefaultBuffer = (DefaultVertexBuffer*)(pVertexBuffer);
 		if (pDefaultBuffer->Layout() != (VERTEX_LAYOUT_POSITION | VERTEX_LAYOUT_TEXCOORD))

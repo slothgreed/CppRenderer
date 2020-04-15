@@ -5,6 +5,7 @@ namespace KI
 {
 namespace Renderer
 {
+class RenderData;
 class DLL_EXPORT IMaterial
 {
 public:
@@ -17,7 +18,7 @@ public:
 
 	virtual shared_ptr<IShader> CompileShader(IVertexBuffer* pVertexBuffer) = 0;
 	virtual bool Compare(const IMaterial& material) = 0;
-	void Draw(IVertexBuffer* pVertexBuffer, IndexBuffer* pIndexBuffer = nullptr);
+	void Draw(RenderData* pRenderData);
 
 protected:
 	shared_ptr<IShader> m_pShader;

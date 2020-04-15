@@ -9,13 +9,19 @@ void VoronoiScene::Initialize(Project* m_pProject)
 	pCamera->Ortho(-10, 10, -10, 10, -10, 10);
 	m_pScene->SetCamera(pCamera);
 
-	m_pConeNode = make_shared<PrimitiveNode>(
+	auto pRenderData = make_shared<RenderData>(
+		GL_TRIANGLES,
 		make_shared<DefaultVertexBuffer>(),
 		make_shared<IndexBuffer>());
+
+	m_pConeNode = make_shared<PrimitiveNode>(pRenderData);
 	m_pScene->AddModelNode(m_pConeNode);
 
 	auto pMaterial = make_shared<DefaultMaterial>();
-	m_pPointNode = make_shared<PrimitiveNode>(make_shared<DefaultVertexBuffer>(), pMaterial);
+	auto pPointData = make_shared<RenderData>(
+		GL_POINTS,
+		make_shared<DefaultVertexBuffer>());
+	m_pPointNode = make_shared<PrimitiveNode>(pPointData, pMaterial);
 	pMaterial->SetFixColor(vec4(0, 0, 0, 1));
 	m_pPointNode->SetState(make_shared<PointState>(5.0f, false));
 	m_pScene->AddModelNode(m_pPointNode);
@@ -50,7 +56,7 @@ void VoronoiScene::GenerateVoronoiDiagram()
 {
 	vector<vec3> pointPosition;
 	GenerateVoronoiPoint(pointPosition, 100);
-	m_pPointNode->GetVertexBuffer()->SetPosition(GL_POINTS, pointPosition);
+	m_pPointNode->GetVertexBuffer()->SetPosition(pointPosition);
 
 	vector<vec3> position;
 	vector<vec3> color;
@@ -59,11 +65,11 @@ void VoronoiScene::GenerateVoronoiDiagram()
 
 	GenerateVoronoiCone(pointPosition, position, color, matrix, index);
 
-	m_pConeNode->GetVertexBuffer()->SetPosition(GL_TRIANGLES, position);
+	m_pConeNode->GetVertexBuffer()->SetPosition(position);
 	m_pConeNode->GetVertexBuffer()->SetColor(color);
 	m_pConeNode->GetVertexBuffer()->SetInstanceMatrix(matrix);
 	m_pConeNode->GetVertexBuffer()->SetInstanceNum(100);
-	m_pConeNode->GetIndexBuffer()->Set(GL_TRIANGLES, index);
+	m_pConeNode->GetIndexBuffer()->Set(index);
 }
 
 void VoronoiScene::GenerateVoronoiPoint(vector<vec3>& position, int size)

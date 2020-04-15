@@ -14,7 +14,7 @@ public:
 	void Draw();
 private:
 	shared_ptr<IMaterial> m_pMaterial;
-	shared_ptr<DefaultVertexBuffer> m_pVertexBuffer;
+	shared_ptr<RenderData> m_pRenderData;
 };
 }
 }

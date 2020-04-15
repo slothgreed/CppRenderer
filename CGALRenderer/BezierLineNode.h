@@ -7,13 +7,13 @@ namespace KI
 class BezierLineNode : public IModelNode
 {
 public:
-	BezierLineNode(shared_ptr<IVertexBuffer> pVertexBuffer);
+	BezierLineNode(shared_ptr<RenderData> pVertexBuffer);
 	~BezierLineNode();
 
 	virtual void Draw();
 
 private:
-	shared_ptr<IVertexBuffer> m_pVertexBuffer;
+	shared_ptr<RenderData> m_pRenderData;
 	shared_ptr<BezierLineShader> m_pBezierShader;
 	shared_ptr<UniformSet> m_pUniform;
 };

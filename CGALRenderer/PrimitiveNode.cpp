@@ -1,33 +1,17 @@
 
 namespace KI
 {
-PrimitiveNode::PrimitiveNode(shared_ptr<DefaultVertexBuffer> pVertexBuffer, shared_ptr<IndexBuffer> pIndexBuffer)
+PrimitiveNode::PrimitiveNode(shared_ptr<RenderData> pRenderData)
 {
 	m_name = "Primitive";
-	m_pVertexBuffer = pVertexBuffer;
-	m_pIndexBuffer = pIndexBuffer;
+	m_pRenderData = pRenderData;
 	m_pMaterial = make_shared<DefaultMaterial>();
 }
 
-PrimitiveNode::PrimitiveNode(shared_ptr<DefaultVertexBuffer> pVertexBuffer)
+PrimitiveNode::PrimitiveNode(shared_ptr<RenderData> pRenderData, shared_ptr<IMaterial> pMaterial)
 {
 	m_name = "Primitive";
-	m_pVertexBuffer = pVertexBuffer;
-	m_pMaterial = make_shared<DefaultMaterial>();
-}
-
-PrimitiveNode::PrimitiveNode(shared_ptr<DefaultVertexBuffer> pVertexBuffer, shared_ptr<IndexBuffer> pIndexBuffer, shared_ptr<IMaterial> pMaterial)
-{
-	m_name = "Primitive";
-	m_pVertexBuffer = pVertexBuffer;
-	m_pIndexBuffer = pIndexBuffer;
-	m_pMaterial = pMaterial;
-}
-
-PrimitiveNode::PrimitiveNode(shared_ptr<DefaultVertexBuffer> pVertexBuffer, shared_ptr<IMaterial> pMaterial)
-{
-	m_name = "Primitive";
-	m_pVertexBuffer = pVertexBuffer;
+	m_pRenderData = pRenderData;
 	m_pMaterial = pMaterial;
 }
 
@@ -42,7 +26,7 @@ void PrimitiveNode::Draw()
 		m_pState->Bind();
 	}
 
-	m_pMaterial->Draw(m_pVertexBuffer.get(), m_pIndexBuffer.get());
+	m_pMaterial->Draw(m_pRenderData.get());
 
 	if (m_pState != nullptr)
 	{
@@ -54,13 +38,32 @@ void PrimitiveNode::Draw()
 
 IndexBuffer* PrimitiveNode::GetIndexBuffer()
 {
-	if (m_pIndexBuffer == nullptr)
+	if (m_pRenderData == nullptr)
 	{
 		assert(0);
 		return nullptr;
 	}
 
-	return m_pIndexBuffer.get();
+	return m_pRenderData->GetIndexBuffer().get();
+}
+
+shared_ptr<DefaultVertexBuffer> PrimitiveNode::GetVertexBuffer()
+{
+	if (m_pRenderData == nullptr)
+	{
+		assert(0);
+		return nullptr;
+	}
+
+	if (m_pRenderData->GetVertexBuffer()->Type() != VERTEX_BUFFER_TYPE_DEFAULT)
+	{
+		assert(0);
+		return nullptr;
+	}
+
+
+
+	return static_pointer_cast<DefaultVertexBuffer>(m_pRenderData->GetVertexBuffer());
 }
 
 void PrimitiveNode::Update(void* sender, IEventArgs* args)

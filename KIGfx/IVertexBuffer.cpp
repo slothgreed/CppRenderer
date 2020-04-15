@@ -6,7 +6,6 @@ IVertexBuffer::IVertexBuffer()
 {
 	m_vaoId = 0;
 	m_VertexSize = 0;
-	m_PrimitiveType = GL_NONE;
 	m_instanceNum = 1;
 }
 void IVertexBuffer::Add(GLuint location, shared_ptr<ArrayBuffer> arrayBuffer)
@@ -24,12 +23,8 @@ void IVertexBuffer::Remove(GLuint location)
 	m_VertexInfo.erase(location);
 }
 
-void IVertexBuffer::SetPrimitiveType(GLuint primitiveType)
-{
-	m_PrimitiveType = primitiveType;
-}
 
-void IVertexBuffer::Draw(IndexBuffer* pIndexbuffer)
+void IVertexBuffer::Draw(GLuint primitiveType, IndexBuffer* pIndexbuffer)
 {
 	if (m_vaoId == 0)
 	{
@@ -41,20 +36,20 @@ void IVertexBuffer::Draw(IndexBuffer* pIndexbuffer)
 	{
 		glBindVertexArray(m_vaoId);
 		BindAttribDivisor();
-		pIndexbuffer->InstanceDraw(m_instanceNum);
+		pIndexbuffer->InstanceDraw(primitiveType, m_instanceNum);
 		UnBindAttribDivisor();
 		glBindVertexArray(0);
 	}
 	else
 	{
 		glBindVertexArray(m_vaoId);
-		pIndexbuffer->Draw();
+		pIndexbuffer->Draw(primitiveType);
 		glBindVertexArray(0);
 	}
 
 }
 
-void IVertexBuffer::Draw()
+void IVertexBuffer::Draw(GLuint primitiveType)
 {
 	if (m_VertexInfo[0] == nullptr ||
 		m_VertexInfo[0]->Size() == 0)
@@ -62,7 +57,7 @@ void IVertexBuffer::Draw()
 		assert(0);
 	}
 
-	Draw(m_PrimitiveType, 0, GetVertexSize());
+	Draw(primitiveType, 0, GetVertexSize());
 }
 void IVertexBuffer::Draw(GLuint primitiveType, GLuint first, GLuint count)
 {

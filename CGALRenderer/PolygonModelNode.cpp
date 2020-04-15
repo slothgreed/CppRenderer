@@ -15,14 +15,14 @@ PolygonModelNode::~PolygonModelNode()
 
 void PolygonModelNode::Draw()
 {
-	if (m_pFaceMaterial != NULL && m_pFaceBuffer != NULL)
+	if (m_pFaceMaterial != NULL && m_pFaceData != NULL)
 	{
-		m_pFaceMaterial->Draw(m_pFaceBuffer.get(), m_pFaceIndex.get());
+		m_pFaceMaterial->Draw(m_pFaceData.get());
 	}
 
-	if (m_pEdgeMaterial != NULL && m_pEdgeBuffer != NULL)
+	if (m_pEdgeMaterial != NULL && m_pEdgeData != NULL)
 	{
-		m_pEdgeMaterial->Draw(m_pEdgeBuffer.get());
+		m_pEdgeMaterial->Draw(m_pEdgeData.get());
 	}
 
 	DrawProperty();
@@ -55,6 +55,17 @@ void PolygonModelNode::VisibleBDB(bool visibility)
 	AddProperty(make_shared<BDBProperty>());
 }
 
+shared_ptr<IVertexBuffer> PolygonModelNode::GetVertexBuffer()
+{
+	if (m_pFaceData == nullptr)
+	{
+		assert(0);
+		return nullptr;
+	}
+
+	return m_pFaceData->GetVertexBuffer(); 
+}
+
 void PolygonModelNode::VisibleNormal(bool visibility)
 {
 	if (GetModel()->HasVertexList())
@@ -75,18 +86,19 @@ void PolygonModelNode::SetRenderData()
 		vector<vec3> normal;
 		GetModel()->GetFacetList(facet, normal);
 		auto pFaceBuffer = make_shared<DefaultVertexBuffer>();
-		pFaceBuffer->SetPosition(GL_TRIANGLES, facet);
+		pFaceBuffer->SetPosition(facet);
 		pFaceBuffer->SetNormal(normal);
-		m_pFaceBuffer = pFaceBuffer;
 		m_pFaceMaterial = make_shared<DefaultMaterial>();
+		m_pFaceData = make_shared <RenderData>(GL_TRIANGLES, pFaceBuffer);
 
 		vector<vec3> edge;
 		GetModel()->GetEdgeList(edge);
 		auto pEdgeBuffer = make_shared<DefaultVertexBuffer>();
-		pEdgeBuffer->SetPosition(GL_LINES, edge);
+		pEdgeBuffer->SetPosition(edge);
 
 		m_pEdgeMaterial = make_shared<DefaultMaterial>();
-		m_pEdgeBuffer = pEdgeBuffer;
+		m_pEdgeData = make_shared <RenderData>(GL_LINES, pEdgeBuffer);
+
 	}
 	else
 	{
@@ -104,22 +116,24 @@ void PolygonModelNode::SetRenderData()
 			normal.push_back(vertex[i].Normal());
 		}
 
-		pFaceBuffer->SetPosition(GL_TRIANGLES, position);
+		pFaceBuffer->SetPosition(position);
 		pFaceBuffer->SetNormal(normal);
 		m_pFaceMaterial = make_shared<DefaultMaterial>();
-		m_pFaceBuffer = pFaceBuffer;
-		m_pFaceIndex = make_shared <IndexBuffer>();
-		m_pFaceIndex->Set(GL_TRIANGLES, index);
+		
+		auto pFaceIndex = make_shared <IndexBuffer>();
+		pFaceIndex->Set(index);
+		m_pFaceData = make_shared <RenderData>(GL_TRIANGLES, pFaceBuffer, pFaceIndex);
 
 		vector<vec3> edge;
 		GetModel()->GetEdgeList(edge);
 		auto pEdgeBuffer = make_shared<DefaultVertexBuffer>();
-		pEdgeBuffer->SetPosition(GL_LINES, edge);
+		pEdgeBuffer->SetPosition(edge);
 
 		auto pEdgeMaterial = make_shared<DefaultMaterial>();
 		pEdgeMaterial->SetFixColor(vec4(0));
 		m_pEdgeMaterial = pEdgeMaterial;
-		m_pEdgeBuffer = pEdgeBuffer;
+		m_pEdgeData = make_shared <RenderData>(GL_LINES, pEdgeBuffer);
+
 	}
 
 }
@@ -143,11 +157,11 @@ void PolygonModelNode::Update(void* sender, IEventArgs* args)
 
 void PolygonModelNode::SetPickID(int startIndex, int& endIndex)
 {
-	if (m_pFaceIndex != nullptr)
+	if (m_pFaceData->GetIndexBuffer() != nullptr)
 	{
 		int pickIndex = startIndex;
 		vector<int> pickId;
-		pickId.resize(m_pFaceIndex->Size());
+		pickId.resize(m_pFaceData->GetIndexBuffer()->Size());
 		for (int i = 0; i < pickId.size(); i+=3){
 			pickId[i] = pickIndex;
 			pickId[i + 1] = pickIndex + 1;
@@ -155,7 +169,7 @@ void PolygonModelNode::SetPickID(int startIndex, int& endIndex)
 			pickIndex += 3;
 		}
 
-		m_pPickPolygon->SetPosition(GL_TRIANGLES,);
+		assert(0);
 	}
 }
 

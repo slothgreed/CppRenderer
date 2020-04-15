@@ -7,29 +7,22 @@ IMaterial::IMaterial()
 {
 	m_bReCompileShader = true;
 }
-void IMaterial::Draw(IVertexBuffer* pVertexBuffer, IndexBuffer* pIndexBuffer)
+void IMaterial::Draw(RenderData* pRenderData)
 {
-	if (pVertexBuffer == nullptr)
+	if (pRenderData == nullptr)
 	{
 		assert(0);
 	}
 
 	if (m_bReCompileShader == true)
 	{
-		m_pShader = CompileShader(pVertexBuffer);
+		m_pShader = CompileShader(pRenderData->GetVertexBuffer().get());
 		m_bReCompileShader = false;
 	}
 
 	m_pShader->Use();
 	Bind();
-	if (pIndexBuffer == nullptr)
-	{
-		pVertexBuffer->Draw();
-	}
-	else
-	{
-		pVertexBuffer->Draw(pIndexBuffer);
-	}
+	pRenderData->Draw();
 	UnBind();
 	m_pShader->UnUse();
 }

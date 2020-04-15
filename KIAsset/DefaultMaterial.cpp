@@ -54,7 +54,7 @@ void DefaultMaterial::VisibleNormal(bool visible)
 
 shared_ptr<IShader> DefaultMaterial::CompileShader(IVertexBuffer* pVertexBuffer)
 {
-	if (pVertexBuffer->Type() == SHADER_TYPE::SHADER_TYPE_DEFAULT)
+	if (pVertexBuffer->Type() == VERTEX_BUFFER_TYPE::VERTEX_BUFFER_TYPE_DEFAULT)
 	{
 		auto pDefaultBuffer = (DefaultVertexBuffer*)(pVertexBuffer);
 		auto pBuildInfo = make_shared<IShaderBuildInfo>(SHADER_TYPE_DEFAULT);
