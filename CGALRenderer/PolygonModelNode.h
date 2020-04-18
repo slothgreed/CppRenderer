@@ -11,7 +11,8 @@ public:
 	virtual void ShowProperty() override;
 	virtual void Update(void* sender, IEventArgs* args) override;
 	IPolygonModel* GetModel();
-	virtual void SetPickID(int startIndex, int& endIndex) override;
+	virtual void CalculatePickID(int startIndex, int& nextStartIndex) override;
+	virtual void PickDraw() override;
 
 
 	void VisibleBDB(bool visibility);
@@ -27,7 +28,6 @@ protected:
 	shared_ptr<RenderData> m_pEdgeData;
 
 private:
-	shared_ptr<DefaultVertexBuffer> m_pPickPolygon;
 	BDB m_bdb;
 	void SetRenderData();
 };

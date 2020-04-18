@@ -13,6 +13,8 @@ public:
 	virtual void BindAttribDivisor() override;
 	virtual void UnBindAttribDivisor() override;
 
+	virtual void SetArrayBuffer(GLuint location, shared_ptr<ArrayBuffer> pArrayBuffer) override;
+	virtual shared_ptr<ArrayBuffer> GetArrayBuffer(GLuint location) override;
 	void SetPosition(const vector<vec3>& position);
 	void SetNormal(const vector<vec3>& normal);
 	void SetColor(const vector<vec3>& color);

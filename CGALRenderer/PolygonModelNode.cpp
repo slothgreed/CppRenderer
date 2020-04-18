@@ -155,21 +155,51 @@ void PolygonModelNode::Update(void* sender, IEventArgs* args)
 	IModelNode::Update(sender, args);
 }
 
-void PolygonModelNode::SetPickID(int startIndex, int& endIndex)
+void PolygonModelNode::CalculatePickID(int startIndex, int& nextStartIndex)
 {
+	int nodeStartIndex = startIndex;
 	if (m_pFaceData->GetIndexBuffer() != nullptr)
 	{
-		int pickIndex = startIndex;
-		vector<int> pickId;
-		pickId.resize(m_pFaceData->GetIndexBuffer()->Size());
-		for (int i = 0; i < pickId.size(); i+=3){
-			pickId[i] = pickIndex;
-			pickId[i + 1] = pickIndex + 1;
-			pickId[i + 2] = pickIndex + 2;
-			pickIndex += 3;
-		}
+		vector<vec3> pickId;
+		IPickable::CalculateID(
+			m_pFaceData->GetPrimitiveType(),
+			m_pFaceData->GetVertexBuffer()->GetVertexSize(),
+			nodeStartIndex, nextStartIndex,
+			pickId);
 
-		assert(0);
+		BuildPickData(m_pFaceData->GetPrimitiveType(), m_pFaceData, pickId);
+
+		nodeStartIndex = nextStartIndex;
+	}
+
+	if (m_pEdgeData->GetIndexBuffer() != nullptr)
+	{
+		int pickIndex = startIndex;
+		vector<vec3> pickId;
+		IPickable::CalculateID(
+			m_pEdgeData->GetPrimitiveType(),
+			m_pFaceData->GetVertexBuffer()->GetVertexSize(),
+			nodeStartIndex, nextStartIndex,
+			pickId);
+
+		BuildPickData(m_pEdgeData->GetPrimitiveType(), m_pEdgeData, pickId);
+
+		nodeStartIndex = nextStartIndex;
+	}
+}
+
+void PolygonModelNode::PickDraw()
+{
+	if (m_pFaceData != NULL)
+	{
+		auto pRenderData = GetPickRenderData(m_pFaceData->GetPrimitiveType());
+		pRenderData->Draw();
+	}
+
+	if (m_pEdgeData != NULL)
+	{
+		//auto pRenderData = GetPickRenderData(m_pEdgeData->GetPrimitiveType());
+		//pRenderData->Draw();
 	}
 }
 

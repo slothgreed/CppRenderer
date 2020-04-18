@@ -11,6 +11,55 @@ DefaultVertexBuffer::~DefaultVertexBuffer()
 	Dispose();
 }
 
+void DefaultVertexBuffer::SetArrayBuffer(GLuint layout, shared_ptr<ArrayBuffer> pArrayBuffer)
+{
+	if (pArrayBuffer->IsGenerated() == false)
+	{
+		// need set value;
+		assert(0);
+		return;
+	}
+
+	bool varidator = false;
+	for (int i = 0; i < VERTEX_ATTRIB_NUM; i++)
+	{
+		if (layout == i)
+		{
+			varidator = true;
+			break;
+		}
+	}
+
+	if (varidator == false) {
+		assert(0);
+	}
+
+	if (m_VertexInfo[layout] == nullptr)
+	{
+		Add(layout, pArrayBuffer);
+		BindToVAO(layout);
+	}
+}
+
+shared_ptr<ArrayBuffer> DefaultVertexBuffer::GetArrayBuffer(GLuint location)
+{
+	bool varidator = false;
+	for (int i = 0; i < VERTEX_ATTRIB_NUM; i++)
+	{
+		if (location == i)
+		{
+			varidator = true;
+			break;
+		}
+	}
+
+	if (varidator == false) {
+		assert(0);
+	}
+
+	return m_VertexInfo[location];
+
+}
 void DefaultVertexBuffer::SetPosition(const vector<vec3>& position)
 {
 	if (m_VertexInfo[VERTEX_ATTRIB_POSITION] == nullptr)

@@ -14,6 +14,7 @@ public:
 	RenderData(GLuint primitiveType, shared_ptr<IVertexBuffer> pVertexBuffer, shared_ptr<IndexBuffer> pIndexBuffer = nullptr);
 
 	void Set(GLuint primitiveType, shared_ptr<IVertexBuffer> pVertexBuffer, shared_ptr<IndexBuffer> pIndexBuffer = nullptr);
+	GLuint GetPrimitiveType() { return m_pPrimitiveType; }
 	shared_ptr<IVertexBuffer> GetVertexBuffer() { return m_pVertexBuffer; }
 	shared_ptr<IndexBuffer> GetIndexBuffer() { return m_pIndexBuffer; }
 	void Draw();

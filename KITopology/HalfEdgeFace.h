@@ -22,7 +22,7 @@ private:
 	bool m_init; // ‰‰ñ‚©‚Ç‚¤‚© next ‚ğŒÄ‚ñ‚¾‚ç false
 };
 
-class DLL_EXPORT HalfEdgeFace : public IToString
+class DLL_EXPORT HalfEdgeFace , public IToString
 {
 public:
 	HalfEdgeFace(int index);

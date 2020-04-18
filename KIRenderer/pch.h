@@ -34,7 +34,6 @@ using namespace KI::Gfx;
 #include "RendererTypes.h"
 
 #include "IPickable.h"
-#include "PickManager.h"
 
 #include "IModel.h"
 #include "IMaterial.h"
@@ -42,6 +41,7 @@ using namespace KI::Gfx;
 #include "IModelNode.h"
 #include "IMaterial.h"
 #include "ILight.h"
+#include "IGeometryPath.h"
 
 #include "Vertex.h"
 
@@ -84,7 +84,8 @@ using namespace KI::Gfx;
 // Renderer
 #include "PfxPlane.h"
 #include "IPostEffect.h"
-#include "GeometryPass.h"
+#include "GeometryPath.h"
+#include "PickPath.h"
 #include "GrayScaleEffect.h"
 #include "SSLICEffect.h"
 #include "RenderSystem.h"

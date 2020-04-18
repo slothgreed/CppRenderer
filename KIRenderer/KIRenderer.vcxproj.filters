@@ -13,17 +13,11 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="ソース ファイル\GeometryPass">
-      <UniqueIdentifier>{310c0009-1e2d-4893-b574-5f7146af5e3b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ソース ファイル\LithingPass">
       <UniqueIdentifier>{15cbb6b4-9d87-4e18-9e99-474a2c9130a8}</UniqueIdentifier>
     </Filter>
     <Filter Include="ソース ファイル\Pfx">
       <UniqueIdentifier>{262e248b-a6b1-4710-86fa-0f9bb2ac8767}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\GeometryPass">
-      <UniqueIdentifier>{1edded72-4f99-4a21-ac21-9d22eb346b95}</UniqueIdentifier>
     </Filter>
     <Filter Include="ヘッダー ファイル\LightingPass">
       <UniqueIdentifier>{5bfb11c7-31fe-4252-b942-3cd476f8a8b8}</UniqueIdentifier>
@@ -76,6 +70,12 @@
     <Filter Include="ソース ファイル\Shader\Code">
       <UniqueIdentifier>{1187a1b2-bd71-4d30-b56d-e1e037930af8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\GeometryPath">
+      <UniqueIdentifier>{1edded72-4f99-4a21-ac21-9d22eb346b95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GeometryPath">
+      <UniqueIdentifier>{310c0009-1e2d-4893-b574-5f7146af5e3b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -83,9 +83,6 @@
     </ClInclude>
     <ClInclude Include="targetver.h">
       <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="GeometryPass.h">
-      <Filter>ヘッダー ファイル\GeometryPass</Filter>
     </ClInclude>
     <ClInclude Include="LighthingPass.h">
       <Filter>ヘッダー ファイル\LightingPass</Filter>
@@ -222,19 +219,22 @@
     <ClInclude Include="IPickable.h">
       <Filter>ヘッダー ファイル\Interface</Filter>
     </ClInclude>
-    <ClInclude Include="PickManager.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="RenderData.h">
       <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="PickPath.h">
+      <Filter>ヘッダー ファイル\GeometryPath</Filter>
+    </ClInclude>
+    <ClInclude Include="GeometryPath.h">
+      <Filter>ヘッダー ファイル\GeometryPath</Filter>
+    </ClInclude>
+    <ClInclude Include="IGeometryPath.h">
+      <Filter>ヘッダー ファイル\Interface</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="GeometryPass.cpp">
-      <Filter>ソース ファイル\GeometryPass</Filter>
     </ClCompile>
     <ClCompile Include="LighthingPass.cpp">
       <Filter>ソース ファイル\LithingPass</Filter>
@@ -338,11 +338,17 @@
     <ClCompile Include="SampleModelGenerator.cpp">
       <Filter>ソース ファイル\Utility</Filter>
     </ClCompile>
-    <ClCompile Include="PickManager.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="RenderData.cpp">
       <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="IPickable.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="GeometryPath.cpp">
+      <Filter>ソース ファイル\GeometryPath</Filter>
+    </ClCompile>
+    <ClCompile Include="PickPath.cpp">
+      <Filter>ソース ファイル\GeometryPath</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

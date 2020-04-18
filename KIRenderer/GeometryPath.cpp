@@ -2,26 +2,26 @@ namespace KI
 {
 namespace Renderer
 {
-GeometryPass::GeometryPass()
+GeometryPath::GeometryPath()
 {
 }
 
-GeometryPass::~GeometryPass()
+GeometryPath::~GeometryPath()
 {
 }
 
-void GeometryPass::Initialize(int width, int height)
+void GeometryPath::Initialize(int width, int height)
 {
 	m_pRenderTarget = make_shared<RenderTarget>();
 	m_pRenderTarget->Initialize(4, width, height);
 }
 
-void GeometryPass::Resize(int width, int height)
+void GeometryPath::Resize(int width, int height)
 {
 	m_pRenderTarget->Resize(width, height);
 }
 
-void GeometryPass::Draw(const vector<shared_ptr<IModelNode>>& modelNodes)
+void GeometryPath::Draw(const vector<shared_ptr<IModelNode>>& modelNodes)
 {
 	m_pRenderTarget->Begin();
 	m_pRenderTarget->Clear();

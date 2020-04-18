@@ -15,9 +15,10 @@ public:
 
 	virtual void ShowProperty() {};
 	virtual void Draw() = 0;
+	virtual void PickDraw() {};
 	virtual void Update(void* sender, IEventArgs* args);
 	shared_ptr<IModel> GetModel() { return m_pModel; }
-	virtual void SetPickID(int startIndex, int& endIndex) override { assert(0); endIndex = startIndex; };
+	virtual void CalculatePickID(int startIndex, int& nextStartIndex) override {};
 
 protected:
 	void AddProperty(shared_ptr<IModelProperty> prop);

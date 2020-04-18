@@ -175,9 +175,10 @@
     <ClInclude Include="DefaultVertexBuffer.h" />
     <ClInclude Include="Define.h" />
     <ClInclude Include="DirectionLight.h" />
-    <ClInclude Include="GeometryPass.h" />
+    <ClInclude Include="GeometryPath.h" />
     <ClInclude Include="GrayScaleEffect.h" />
     <ClInclude Include="GrayScaleShader.h" />
+    <ClInclude Include="IGeometryPath.h" />
     <ClInclude Include="ILight.h" />
     <ClInclude Include="IMaterial.h" />
     <ClInclude Include="IModel.h" />
@@ -194,7 +195,7 @@
     <ClInclude Include="PerspectiveCamera.h" />
     <ClInclude Include="PfxPlane.h" />
     <ClInclude Include="PfxRenderer.h" />
-    <ClInclude Include="PickManager.h" />
+    <ClInclude Include="PickPath.h" />
     <ClInclude Include="PointLight.h" />
     <ClInclude Include="PostProcessCode.h" />
     <ClInclude Include="RenderData.h" />
@@ -226,11 +227,12 @@
     <ClCompile Include="DefaultShader.cpp" />
     <ClCompile Include="DefaultVertexBuffer.cpp" />
     <ClCompile Include="DirectionLight.cpp" />
-    <ClCompile Include="GeometryPass.cpp" />
+    <ClCompile Include="GeometryPath.cpp" />
     <ClCompile Include="GrayScaleEffect.cpp" />
     <ClCompile Include="GrayScaleShader.cpp" />
     <ClCompile Include="IMaterial.cpp" />
     <ClCompile Include="IModelNode.cpp" />
+    <ClCompile Include="IPickable.cpp" />
     <ClCompile Include="LighthingPass.cpp" />
     <ClCompile Include="ModelGenerator.cpp" />
     <ClCompile Include="NormalVisualizeShader.cpp" />
@@ -239,7 +241,7 @@
     <ClCompile Include="PerspectiveCamera.cpp" />
     <ClCompile Include="PfxPlane.cpp" />
     <ClCompile Include="PfxRenderer.cpp" />
-    <ClCompile Include="PickManager.cpp" />
+    <ClCompile Include="PickPath.cpp" />
     <ClCompile Include="PointLight.cpp" />
     <ClCompile Include="RenderData.cpp" />
     <ClCompile Include="RenderSystem.cpp" />

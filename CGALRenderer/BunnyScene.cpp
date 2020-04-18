@@ -78,8 +78,12 @@ void BunnyScene::Initialize(Project* m_pProject)
 	m_pScene->AddModelNode(axisNode);
 
 	m_pBackTarget = make_shared<SymbolicRenderTarget>(GL_BACK);
-	m_pGeometryPass = make_shared<GeometryPass>();
-	m_pGeometryPass->Initialize(640, 480);
+	m_pGeometryPath = make_shared<GeometryPath>();
+	m_pGeometryPath->Initialize(640, 480);
+
+	m_pPickPath = make_shared<PickPath>();
+	m_pPickPath->Initialize(640, 480);
+	m_pPickPath->ResetPickID(m_pScene->ModelNodes());
 }
 void BunnyScene::Invoke()
 {
@@ -87,7 +91,8 @@ void BunnyScene::Invoke()
 	m_pScene->Bind();
 	m_pBackTarget->Begin();
 	m_pBackTarget->Clear();
-	m_pScene->Draw();
+	//m_pScene->Draw();
+	m_pPickPath->Draw(m_pScene->ModelNodes());
 	m_pScene->UnBind();
 }
 
