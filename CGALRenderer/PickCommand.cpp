@@ -1,7 +1,7 @@
 namespace KI
 {
 
-PickCommand::PickCommand(shared_ptr<ICommandArgs> args)
+PickCommand::PickCommand(shared_ptr<PickCommandArgs> args)
 	: ICommand(args)
 {
 
@@ -34,11 +34,14 @@ CommandResult PickCommand::Execute()
 		);
 
 	vec3 far = glm::unProject(
-		vec3(pArgs->screenPosition.x, pArgs->screenPosition.y, 0),
+		vec3(pArgs->screenPosition.x, pArgs->screenPosition.y, 1),
 		pArgs->m_pCamera->ViewMatrix(),
 		pArgs->m_pCamera->Projection(),
 		pArgs->m_pViewport->GetScreen()
 	);
+
+	Ray ray(near, far - near);
+	RaycastPickInfo pickInfo(PICK_TYPE::PICK_TYPE_FACE, &ray);
 
 	for (int i = 0; i < pArgs->m_pTarget.size(); i++)
 	{
@@ -48,17 +51,21 @@ CommandResult PickCommand::Execute()
 			continue;
 		}
 
-		if (pModel->Type() == IPolygonModel::IsPolygonModel(pModel->Type()))
+		if (IPolygonModel::IsPolygonModel(pModel->Type()))
 		{
 			auto pPolygonModel = static_pointer_cast<IPolygonModel>(pModel);
-			pPolygonModel->GetFaceIndexList();
+			pPolygonModel->RaycastPick(pickInfo);
 		}
-
 	}
 
-	assert(0);
-
-	return CommandResult::Failed;
+	if (pickInfo.Success())
+	{
+		return CommandResult::Success;
+	}
+	else
+	{
+		return CommandResult::Failed;
+	}
 }
 
 }

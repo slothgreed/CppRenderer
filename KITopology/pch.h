@@ -28,6 +28,7 @@ using namespace glm;
 using namespace KI::Foundation;
 
 #include "IPrimitive.h"
+#include "Ray.h"
 #include "Sphere.h"
 #include "Cone.h"
 #include "Cube.h"

@@ -19,6 +19,7 @@ public:
 	void Draw();
 	void Bind();
 	void UnBind();
+	shared_ptr<ICamera> GetCamera() { return m_pCamera; };
 private:
 	shared_ptr<ICamera> m_pCamera;
 	shared_ptr<UniformScene> m_pUniformScene;

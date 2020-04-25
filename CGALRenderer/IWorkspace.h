@@ -16,9 +16,12 @@ public:
 	virtual void ShowProperty() {};
 	virtual void ProcessMouseEvent(const MouseInput& input) {};
 	virtual void WindowResize(int width, int height) {};
+	virtual void SetViewport(shared_ptr<Viewport> pViewport) { m_pViewport = pViewport; }
+	shared_ptr<Viewport> GetViewport() { return m_pViewport; }
 protected:
 	shared_ptr<Mouse> m_pMouse;
 	CONTROLER_TYPE m_CurrentController;
+	shared_ptr<Viewport> m_pViewport;
 	map<CONTROLER_TYPE, IController*> m_pController;
 	unique_ptr<CommandManager> m_pCommandManager;
 

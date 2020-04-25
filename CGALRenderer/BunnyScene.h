@@ -13,7 +13,6 @@ public:
 	virtual void ProcessMouseEvent(const MouseInput& input) override;
 private:
 	shared_ptr<GeometryPath> m_pGeometryPath;
-	shared_ptr<PickPath> m_pPickPath;
 	shared_ptr<IRenderTarget> m_pBackTarget;
 	shared_ptr<Scene> m_pScene;
 };

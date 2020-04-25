@@ -67,9 +67,61 @@ vec3 HalfEdgeFace::CalcCentroid()
 	return centroid;
 }
 
-bool HalfEdgeFace::Intersection(const vec3& direction, float& distance)
+int HalfEdgeFace::CalcVertexNum()
 {
-	return true;
+	int counter = 0;
+	for (auto itr = FaceAroundEdgeIterator(this); itr.HasNext(); itr.Next())
+	{
+		counter++;
+	}
+	
+	return counter;
+}
+
+// refer : https://shikousakugo.wordpress.com/2012/06/27/ray-intersection-2/
+// Tomas Mollerの交差判定,　クラメルの公式利用
+bool HalfEdgeFace::Intersection(const Ray& ray, vec3& result, float& distance)
+{
+	if (CalcVertexNum() != 3)
+	{
+		assert(0);
+		return false;
+	}
+
+	auto invDirection = -ray.Direction();
+	auto vector1 = m_Edge->End()->Position() - m_Edge->Start()->Position();
+	auto vector2 = m_Edge->Before()->Start()->Position() - m_Edge->Start()->Position();
+
+	float denominator = MathHelper::CramesDet(vector1, vector2, invDirection);
+	
+	// レイと平行かどうか
+	if (denominator <= 0){
+		distance = numeric_limits<float>::infinity();
+		return false;
+	}
+
+	auto rayFormula = ray.Origin() - ray.Direction();
+	float u = MathHelper::CramesDet(rayFormula, vector2, invDirection) / denominator;
+	if (u >= 0 && u <= 1)
+	{
+		float v = MathHelper::CramesDet(vector1, rayFormula, invDirection) / denominator;
+		if (v >= 0 && (u + v <= 1))
+		{
+			float t = MathHelper::CramesDet(vector1, vector2, rayFormula) / denominator;
+			// 距離が負
+			if (t < 0)
+			{
+				return false;
+			}
+
+			vec3 ratio = ray.Direction()* t;
+			result = ray.Origin() + ratio;
+			distance = t;
+			return true;
+		}
+	}
+
+	return false;
 }
 
 string HalfEdgeFace::ToString()

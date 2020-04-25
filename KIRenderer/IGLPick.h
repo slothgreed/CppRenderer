@@ -1,28 +1,30 @@
-#ifndef IPICKABLE_H
-#define IPICKABLE_H
+#ifndef IGLPICK_H
+#define IGLPICK_H
 
 namespace KI
 {
 namespace Renderer
 {
 class RenderData;
-class DLL_EXPORT PickInfo
+
+// Selection Buffer ‚ð—˜—p‚µ‚½Picking
+class DLL_EXPORT GLPickInfo
 {
 public:
-	PickInfo() {};
-	~PickInfo() {};
-	void Set(shared_ptr<RenderData> pRenderData, const vector<vec3>& pPickInfo);
+	GLPickInfo() {};
+	~GLPickInfo() {};
+	void Set(shared_ptr<RenderData> pRenderData, const vector<vec3>& pPickInfo) { m_pRenderData = pRenderData; m_pPickInfo = pPickInfo; };
 	shared_ptr<RenderData> GetRenderData() { return m_pRenderData; };
 private:
-	vector<vec3> m_pPickInfo;
 	shared_ptr<RenderData> m_pRenderData;
+	vector<vec3> m_pPickInfo;
 };
 
-class DLL_EXPORT IPickable
+class DLL_EXPORT IGLPick
 {
 public:
-	IPickable() {};
-	~IPickable() {};
+	IGLPick() {};
+	~IGLPick() {};
 	
 	virtual void CalculatePickID(int startIndex, int& nextStartIndex) = 0;
 	virtual void PickDraw() = 0;
@@ -33,7 +35,7 @@ protected:
 	virtual void CalculateID(GLuint primitiveType, int indexNum, int startIndex, int& nextStartIndex, vector<vec3>& ids);
 	void BuildPickData(int key, shared_ptr<RenderData> pRenderData, const vector<vec3>& ids);
 private:
-	map<int, PickInfo> m_pPickInfo; // key = identifier, value = id;
+	map<int, GLPickInfo> m_pPickInfo; // key = identifier, value = id;
 };
 
 }

@@ -216,9 +216,6 @@
     <ClInclude Include="SampleModelGenerator.h">
       <Filter>ヘッダー ファイル\Utility</Filter>
     </ClInclude>
-    <ClInclude Include="IPickable.h">
-      <Filter>ヘッダー ファイル\Interface</Filter>
-    </ClInclude>
     <ClInclude Include="RenderData.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
@@ -229,6 +226,12 @@
       <Filter>ヘッダー ファイル\GeometryPath</Filter>
     </ClInclude>
     <ClInclude Include="IGeometryPath.h">
+      <Filter>ヘッダー ファイル\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="IRaycastPick.h">
+      <Filter>ヘッダー ファイル\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="IGLPick.h">
       <Filter>ヘッダー ファイル\Interface</Filter>
     </ClInclude>
   </ItemGroup>
@@ -341,14 +344,17 @@
     <ClCompile Include="RenderData.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="IPickable.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="GeometryPath.cpp">
       <Filter>ソース ファイル\GeometryPath</Filter>
     </ClCompile>
     <ClCompile Include="PickPath.cpp">
       <Filter>ソース ファイル\GeometryPath</Filter>
+    </ClCompile>
+    <ClCompile Include="IGLPick.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="IRaycastPick.cpp">
+      <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

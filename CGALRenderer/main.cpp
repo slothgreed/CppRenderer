@@ -35,6 +35,10 @@ int main()
 	{
 		pWorkspace = make_shared<TessellationScene>();
 	}
+	else if (NEW_SCENE == 7)
+	{
+		pWorkspace = make_shared<RungeKuttaScene>();
+	}
 
 	renderer->Initialize();
 	renderer->SetWorkspace(pWorkspace);

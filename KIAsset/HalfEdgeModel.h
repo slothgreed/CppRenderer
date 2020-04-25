@@ -23,7 +23,7 @@ public:
 
 	shared_ptr<HalfEdgeDS> GetHalfEdgeDS() { return m_HalfEdgeDS; };
 
-	float Intersection(const vec3& direction);
+	void RaycastPick(RaycastPickInfo& result) override;
 
 private:
 	shared_ptr<HalfEdgeDS> m_HalfEdgeDS;

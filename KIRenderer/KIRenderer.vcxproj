@@ -184,8 +184,9 @@
     <ClInclude Include="IModel.h" />
     <ClInclude Include="IModelNode.h" />
     <ClInclude Include="IModelProperty.h" />
-    <ClInclude Include="IPickable.h" />
+    <ClInclude Include="IGLPick.h" />
     <ClInclude Include="IPostEffect.h" />
+    <ClInclude Include="IRaycastPick.h" />
     <ClInclude Include="LighthingPass.h" />
     <ClInclude Include="ModelGenerator.h" />
     <ClInclude Include="NormalVisualizeShader.h" />
@@ -232,7 +233,8 @@
     <ClCompile Include="GrayScaleShader.cpp" />
     <ClCompile Include="IMaterial.cpp" />
     <ClCompile Include="IModelNode.cpp" />
-    <ClCompile Include="IPickable.cpp" />
+    <ClCompile Include="IGLPick.cpp" />
+    <ClCompile Include="IRaycastPick.cpp" />
     <ClCompile Include="LighthingPass.cpp" />
     <ClCompile Include="ModelGenerator.cpp" />
     <ClCompile Include="NormalVisualizeShader.cpp" />

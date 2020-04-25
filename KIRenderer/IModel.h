@@ -21,6 +21,7 @@ public:
 	virtual ~IModel() {};
 	virtual MODEL_TYPE Type() = 0;
 	virtual void GetBDB(BDB& bdb) = 0;
+	virtual void RaycastPick(RaycastPickInfo& pickInfo) {};
 protected:
 	void SetBDB(BDB value) { m_bdb = value; };
 private:

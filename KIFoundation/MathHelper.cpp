@@ -51,6 +51,17 @@ float MathHelper::CalcRadian(const vec3& v1, const vec3& v2)
 	return acos(rad);
 }
 
+float MathHelper::CramesDet(vec3 a, vec3 b, vec3 c)
+{
+	return (
+		  (a.x * b.y * c.z)
+		+ (a.y * b.z * c.x)
+		+ (a.z * b.x * c.y)
+		- (a.x * b.z * c.y)
+		- (a.y * b.x * c.z)
+		- (a.z * b.y * c.x));
+}
+
 std::string MathHelper::ToString(const vec3& value)
 {
 	// (x, y, z)

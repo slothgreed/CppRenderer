@@ -6,7 +6,7 @@ namespace Renderer
 {
 class IModelProperty;
 
-class DLL_EXPORT IModelNode : public IObserver, public IPickable
+class DLL_EXPORT IModelNode : public IObserver, public IGLPick
 {
 public:
 	IModelNode() {};

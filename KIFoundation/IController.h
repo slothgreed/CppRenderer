@@ -7,6 +7,7 @@ namespace Foundation
 enum CONTROLER_TYPE : unsigned int
 {
 	CAMERA_CONTROLER,
+	PICK_CONTROLER,
 	CONTROLER_TYPE_NUM
 };
 

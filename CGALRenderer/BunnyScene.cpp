@@ -26,6 +26,7 @@ void BunnyScene::Initialize(Project* m_pProject)
 	shared_ptr<IControllerArgs> args = make_shared<CameraControllerArgs>(pCamera);
 	m_pController[CONTROLER_TYPE::CAMERA_CONTROLER]->SetArgs(args);
 
+
 	auto directionLight = make_shared<DirectionLight>();
 	directionLight->Direction(vec3(1, 1, 1));
 	m_pScene->AddLight(directionLight);
@@ -81,9 +82,9 @@ void BunnyScene::Initialize(Project* m_pProject)
 	m_pGeometryPath = make_shared<GeometryPath>();
 	m_pGeometryPath->Initialize(640, 480);
 
-	m_pPickPath = make_shared<PickPath>();
-	m_pPickPath->Initialize(640, 480);
-	m_pPickPath->ResetPickID(m_pScene->ModelNodes());
+	//m_pPickPath = make_shared<PickPath>();
+	//m_pPickPath->Initialize(640, 480);
+	//m_pPickPath->ResetPickID(m_pScene->ModelNodes());
 }
 void BunnyScene::Invoke()
 {
@@ -91,8 +92,8 @@ void BunnyScene::Invoke()
 	m_pScene->Bind();
 	m_pBackTarget->Begin();
 	m_pBackTarget->Clear();
-	//m_pScene->Draw();
-	m_pPickPath->Draw(m_pScene->ModelNodes());
+	m_pScene->Draw();
+	//m_pPickPath->Draw(m_pScene->ModelNodes());
 	m_pScene->UnBind();
 }
 
@@ -106,6 +107,17 @@ void BunnyScene::ProcessMouseEvent(const MouseInput& input)
 	else if (input.Event() == MOUSE_EVENT_MOVE)
 	{
 		m_pController[m_CurrentController]->Move(*m_pMouse.get());
+	}
+	else if (input.Event() == MOUSE_EVENT_DOWN)
+	{
+		m_pCommandManager->Execute(
+			make_shared<PickCommand>(
+				make_shared<PickCommandArgs>(
+					GetViewport(),
+					m_pScene->GetCamera(),
+					m_pScene->ModelNodes(),
+					input.Position()))
+		);
 	}
 }
 }

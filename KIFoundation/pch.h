@@ -30,6 +30,7 @@ using namespace glm;
 #include "Random.h"
 #include "MathHelper.h"
 
+#include "Timer.h"
 #include "Interface.h"
 #include "IController.h"
 #include "ICommand.h"

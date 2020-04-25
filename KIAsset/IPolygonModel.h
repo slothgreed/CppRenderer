@@ -19,6 +19,7 @@ public:
 	virtual void GetFaceIndexList(std::vector<int>& index) { assert(0); };
 	virtual void GetBDB(BDB& bdb) = 0;
 	virtual void SetMaterial(shared_ptr<IMaterial> material) { m_pMaterial = material; };
+	virtual void RaycastPick(RaycastPickInfo& pickInfo) {};
 	shared_ptr<IMaterial> GetMaterial() { return m_pMaterial; };
 
 	static bool IsPolygonModel(MODEL_TYPE type);

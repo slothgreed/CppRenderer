@@ -157,7 +157,6 @@ bool CGALRenderer::Initialize()
 	m_pViewport = make_shared<Viewport>();
 	m_pViewport->SetPosition(0, 0);
 	m_pViewport->Resize(640, 480);
-
 	theApp = this;
 	return true;
 }
@@ -165,6 +164,7 @@ bool CGALRenderer::Initialize()
 void CGALRenderer::SetWorkspace(shared_ptr<IWorkspace> pWorkspace)
 {
 	m_pWorkspace = pWorkspace;
+	m_pWorkspace->SetViewport(m_pViewport);
 }
 
 bool CGALRenderer::Run()
@@ -185,21 +185,27 @@ bool CGALRenderer::Run()
 	//ImGui_ImplGlfw_InitForOpenGL(m_window, true);
 	//ImGui_ImplOpenGL3_Init("#version 400 core");
 
+	Timer timer;
+	timer.Start();
 	while (!glfwWindowShouldClose(m_window))
 	{
-
 		//ImGui_ImplOpenGL3_NewFrame();
 		//ImGui_ImplGlfw_NewFrame();
 		//ImGui::NewFrame();
 		//m_pWorkspace->ShowProperty();
 		//ImGui::Render();
 		//ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+		
+		
 		m_pWorkspace->Invoke();
 
 		glfwPollEvents();
 		glfwSwapBuffers(m_window);
 
+		timer.WaitForFPS(60);
 	}
+
+	timer.End();
 
 	// close GL context and any other GLFW resources
 	glfwTerminate();	

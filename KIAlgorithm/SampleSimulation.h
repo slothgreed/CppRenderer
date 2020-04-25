@@ -5,13 +5,13 @@ namespace KI
 {
 namespace Algorithm
 {
-class SampleSimulation
+class DLL_EXPORT SampleSimulation
 {
 public:
 	SampleSimulation() {};
 	~SampleSimulation() {};
 
-	static void RungeKutta(int index, vec2& position, float time, float dt);
+	static void RungeKutta(const vec3& position, float time, float dt, vec3& result);
 private:
 
 };

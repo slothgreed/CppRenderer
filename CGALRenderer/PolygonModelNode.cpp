@@ -161,7 +161,7 @@ void PolygonModelNode::CalculatePickID(int startIndex, int& nextStartIndex)
 	if (m_pFaceData->GetIndexBuffer() != nullptr)
 	{
 		vector<vec3> pickId;
-		IPickable::CalculateID(
+		IGLPick::CalculateID(
 			m_pFaceData->GetPrimitiveType(),
 			m_pFaceData->GetVertexBuffer()->GetVertexSize(),
 			nodeStartIndex, nextStartIndex,
@@ -176,7 +176,7 @@ void PolygonModelNode::CalculatePickID(int startIndex, int& nextStartIndex)
 	{
 		int pickIndex = startIndex;
 		vector<vec3> pickId;
-		IPickable::CalculateID(
+		IGLPick::CalculateID(
 			m_pEdgeData->GetPrimitiveType(),
 			m_pFaceData->GetVertexBuffer()->GetVertexSize(),
 			nodeStartIndex, nextStartIndex,

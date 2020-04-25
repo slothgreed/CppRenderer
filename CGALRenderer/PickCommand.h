@@ -18,19 +18,19 @@ class PickCommandArgs : public ICommandArgs
 
 public:
 	PickCommandArgs(
-		shared_ptr<Viewport> viewport,
+		shared_ptr<Viewport> pViewport,
 		shared_ptr<ICamera> pCamera,
-		vector<shared_ptr<IModelNode>>& pTarget,
+		const vector<shared_ptr<IModelNode>>& pTarget,
 		vec2 position)
 	{ 
-		m_pViewport = viewport;
+		m_pViewport = pViewport;
 		m_pCamera = pCamera;
 		m_pTarget = pTarget;
 		screenPosition = position;
 	};
 	~PickCommandArgs() {};
 
-	virtual COMMAND_TYPE Type() { return SUBDIVISION_COMMAND; }
+	virtual COMMAND_TYPE Type() { return PICK_COMMAND; }
 
 private:
 	shared_ptr<Viewport> m_pViewport;
@@ -43,7 +43,7 @@ class PickCommand : public ICommand
 {
 
 public :
-	PickCommand(shared_ptr<ICommandArgs> args);
+	PickCommand(shared_ptr<PickCommandArgs> args);
 	~PickCommand();
 
 	virtual COMMAND_TYPE Type() { return PICK_COMMAND; }

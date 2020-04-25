@@ -33,7 +33,8 @@ using namespace KI::Gfx;
 #include "Define.h"
 #include "RendererTypes.h"
 
-#include "IPickable.h"
+#include "IGLPick.h"
+#include "IRaycastPick.h"
 
 #include "IModel.h"
 #include "IMaterial.h"

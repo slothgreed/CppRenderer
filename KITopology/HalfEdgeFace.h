@@ -22,7 +22,7 @@ private:
 	bool m_init; // ‰‰ñ‚©‚Ç‚¤‚© next ‚ğŒÄ‚ñ‚¾‚ç false
 };
 
-class DLL_EXPORT HalfEdgeFace , public IToString
+class DLL_EXPORT HalfEdgeFace : public IToString
 {
 public:
 	HalfEdgeFace(int index);
@@ -36,7 +36,7 @@ public:
 	virtual string ToString();
 	void CalcElement();
 
-	bool Intersection(const vec3& direction, float& distance);
+	bool Intersection(const Ray& ray, vec3& result, float& distance);
 	vec3 Centroid() { return m_centroid; }
 	vec3 Normal() { return m_normal; }
 	float Area() { return m_area; }
@@ -45,7 +45,7 @@ private:
 	vec3 CalcNormal();
 	float CalcArea();
 	vec3 CalcCentroid();
-	
+	int CalcVertexNum();
 
 	shared_ptr<HalfEdge> m_Edge;
 	int m_Index;

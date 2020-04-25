@@ -4,13 +4,7 @@ namespace KI
 namespace Renderer
 {
 
-void PickInfo::Set(shared_ptr<RenderData> pRenderData, const vector<vec3>& pPickInfo)
-{
-	m_pRenderData = pRenderData;
-	m_pPickInfo = pPickInfo;
-}
-
-void IPickable::CalculateID(
+void IGLPick::CalculateID(
 	GLuint primitiveType,
 	int indexNum,
 	int startIndex, 
@@ -53,7 +47,7 @@ void IPickable::CalculateID(
 	nextStartIndex = startIndex + counter;
 }
 
-vec3 IPickable::IndexToColor(int index)
+vec3 IGLPick::IndexToColor(int index)
 {
 	vec3 color;
 	color.r = (float)((index & 0x000000FF) >> 0) / 255.0f;
@@ -62,9 +56,9 @@ vec3 IPickable::IndexToColor(int index)
 	return color;
 }
 
-void IPickable::BuildPickData(int key, shared_ptr<RenderData> pRenderData, const vector<vec3>& ids)
+void IGLPick::BuildPickData(int key, shared_ptr<RenderData> pRenderData, const vector<vec3>& ids)
 {
-	m_pPickInfo[key] = PickInfo();
+	m_pPickInfo[key] = GLPickInfo();
 
 	auto pPickData = make_shared<RenderData>();
 	auto pDefaultBuffer = make_shared<DefaultVertexBuffer>();
@@ -80,7 +74,7 @@ void IPickable::BuildPickData(int key, shared_ptr<RenderData> pRenderData, const
 	m_pPickInfo[key].Set(pPickData, ids);
 }
 
-shared_ptr<RenderData> IPickable::GetPickRenderData(int key)
+shared_ptr<RenderData> IGLPick::GetPickRenderData(int key)
 {
 	return m_pPickInfo[key].GetRenderData();
 }

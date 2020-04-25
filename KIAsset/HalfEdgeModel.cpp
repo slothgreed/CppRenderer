@@ -93,7 +93,6 @@ void HalfEdgeModel::GetFaceIndexList(vector<int>& index)
 	}
 }
 
-
 void HalfEdgeModel::GetVertexList(vector<Vertex>& vertex)
 {
 	auto halfVertexList = m_HalfEdgeDS->VertexList();
@@ -114,18 +113,30 @@ void HalfEdgeModel::GetBDB(BDB& bdb)
 	}
 }
 
-float HalfEdgeModel::Intersection(const vec3& direction)
+void HalfEdgeModel::RaycastPick(RaycastPickInfo& pickInfo)
 {
 	auto halfFaceList = m_HalfEdgeDS->FaceList();
-	float distance = numeric_limits<float>::infinity();
-	for (int i = 0; i < halfFaceList.size(); i++)
+	float minDistance = numeric_limits<float>::infinity();
+	vec3 position;
+	
+	if (pickInfo.Type() & PICK_TYPE::PICK_TYPE_FACE)
 	{
-		auto face = halfFaceList[i];
-		face->Intersection(direction, distance);
-	}
+		for (int i = 0; i < halfFaceList.size(); i++)
+		{
+			auto face = halfFaceList[i];
+			float distance = numeric_limits<float>::infinity();
+			if (face->Intersection(pickInfo.GetRay(), position, distance))
+			{
+				if (pickInfo.MinDistance() > distance)
+				{
+					pickInfo.SetResult(PICK_TYPE::PICK_TYPE_FACE, "HalfEdgeModel", face.get(), distance);
+				}
+			}
+		}
 
-	assert(0);
-	return true;
+	}
 }
+
+
 }
 }
