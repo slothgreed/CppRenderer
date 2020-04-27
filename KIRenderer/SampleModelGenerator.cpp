@@ -21,7 +21,7 @@ void SampleModelGenerator::BezierLine(RenderData* pRenderData)
 
 	auto pVertexBuffer = make_shared<DefaultVertexBuffer>();
 	pVertexBuffer->SetPosition(position);
-	pRenderData->Set(GL_PATCHES, pVertexBuffer);
+	pRenderData->SetGeometryData(GL_PATCHES, pVertexBuffer);
 }
 }
 }

@@ -13,16 +13,19 @@ public:
 	virtual ~IMaterial() {};
 
 	virtual const MATERIAL_TYPE Type() const = 0;
-	virtual void Bind() = 0;
-	virtual void UnBind() = 0;
+	virtual void Bind(shared_ptr<IShader> pShader) = 0;
+	virtual void UnBind(shared_ptr<IShader> pShader) = 0;
 
-	virtual shared_ptr<IShader> CompileShader(IVertexBuffer* pVertexBuffer) = 0;
+	virtual void CompileShader(IVertexBuffer* pVertexBuffer) = 0;
 	virtual bool Compare(const IMaterial& material) = 0;
-	void Draw(RenderData* pRenderData);
 
+	shared_ptr<IShader> GetShader() { return m_pShader; };
+	bool NeedReCompileShader() { return m_bReCompileShader; }
 protected:
-	shared_ptr<IShader> m_pShader;
+	void SetShader(shared_ptr<IShader> pShader) { m_pShader = pShader; m_bReCompileShader = false; };
 	bool m_bReCompileShader;
+private:
+	shared_ptr<IShader> m_pShader;
 };
 }
 }

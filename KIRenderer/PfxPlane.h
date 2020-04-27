@@ -8,7 +8,7 @@ namespace Renderer
 class DLL_EXPORT PfxPlane
 {
 public:
-	PfxPlane(shared_ptr<IMaterial> material);
+	PfxPlane(shared_ptr<IMaterial> pMaterial);
 	~PfxPlane();
 	void Initialize();
 	void Draw();

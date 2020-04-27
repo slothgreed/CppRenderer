@@ -4,26 +4,34 @@ namespace Renderer
 {
 RenderData::RenderData(GLuint primitiveType, shared_ptr<IVertexBuffer> pVertexBuffer, shared_ptr<IndexBuffer> pIndexBuffer)
 {
-	Set(primitiveType, pVertexBuffer, pIndexBuffer);
+	SetGeometryData(primitiveType, pVertexBuffer, pIndexBuffer);
 }
 
 RenderData::~RenderData()
 {
 }
 
-void RenderData::Set(GLuint primitiveType, shared_ptr<IVertexBuffer> pVertexBuffer, shared_ptr<IndexBuffer> pIndexBuffer)
+void RenderData::SetMaterial(shared_ptr<IMaterial> pMaterial)
+{
+	m_pMaterial = pMaterial;
+}
+
+void RenderData::SetGeometryData(GLuint primitiveType, shared_ptr<IVertexBuffer> pVertexBuffer, shared_ptr<IndexBuffer> pIndexBuffer)
 {
 	m_pPrimitiveType = primitiveType;
 	m_pVertexBuffer = pVertexBuffer;
 	m_pIndexBuffer = pIndexBuffer;
 }
-void RenderData::Draw()
+
+void RenderData::Draw(shared_ptr<IShader> pShader)
 {
-	if (m_pVertexBuffer == nullptr)
+	pShader->Use();
+
+	if (m_pMaterial != nullptr)
 	{
-		assert(0);
-		return;
+		m_pMaterial->Bind(pShader);
 	}
+
 
 	if (m_pIndexBuffer == nullptr)
 	{
@@ -33,6 +41,31 @@ void RenderData::Draw()
 	{
 		m_pVertexBuffer->Draw(m_pPrimitiveType, m_pIndexBuffer.get());
 	}
+
+	if (m_pMaterial != nullptr)
+	{
+		m_pMaterial->UnBind(pShader);
+	}
+
+	pShader->UnUse();
+}
+
+void RenderData::Draw()
+{
+	if (m_pVertexBuffer == nullptr ||
+		m_pMaterial == nullptr)
+	{
+		assert(0);
+		return;
+	}
+
+	if (m_pMaterial->NeedReCompileShader())
+	{
+		m_pMaterial->CompileShader(GetVertexBuffer().get());
+	}
+
+	Draw(m_pMaterial->GetShader());
+
 }
 
 };

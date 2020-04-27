@@ -12,7 +12,7 @@ OutputMaterial::~OutputMaterial()
 {
 }
 
-shared_ptr<IShader> OutputMaterial::CompileShader(IVertexBuffer* pVertexBuffer)
+void OutputMaterial::CompileShader(IVertexBuffer* pVertexBuffer)
 {
 	if (pVertexBuffer->Type() == VERTEX_BUFFER_TYPE_DEFAULT)
 	{
@@ -25,12 +25,11 @@ shared_ptr<IShader> OutputMaterial::CompileShader(IVertexBuffer* pVertexBuffer)
 		auto pBuildInfo = make_shared<IShaderBuildInfo>(SHADER_TYPE_OUTPUT);
 		pBuildInfo->SetVertexCode(make_shared<PostProcessVertexCode>());
 		pBuildInfo->SetFragCode(make_shared<OutputFragCode>());
-		return ShaderManager::Instance()->FindOrNew(pBuildInfo);
+		SetShader(ShaderManager::Instance()->FindOrNew(pBuildInfo));
 	}
 	else
 	{
 		assert(0);
-		return nullptr;
 	}
 }
 
@@ -46,14 +45,14 @@ void OutputMaterial::AddColorTexture(shared_ptr<Texture> colorTexture)
 	uniform->SetTexture(colorTexture);
 }
 
-void OutputMaterial::Bind()
+void OutputMaterial::Bind(shared_ptr<IShader> pShader)
 {
-	m_pShader->Bind(m_pUniform);
+	pShader->Bind(m_pUniform);
 }
 
-void OutputMaterial::UnBind()
+void OutputMaterial::UnBind(shared_ptr<IShader> pShader)
 {
-	m_pShader->UnBind(m_pUniform);
+	pShader->UnBind(m_pUniform);
 }
 
 bool OutputMaterial::Compare(const IMaterial& material)

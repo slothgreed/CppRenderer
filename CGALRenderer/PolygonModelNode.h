@@ -22,8 +22,6 @@ public:
 	shared_ptr<IVertexBuffer> GetVertexBuffer();
 protected:
 	string m_name;
-	shared_ptr<IMaterial> m_pFaceMaterial;
-	shared_ptr<IMaterial> m_pEdgeMaterial;
 	shared_ptr<RenderData> m_pFaceData;
 	shared_ptr<RenderData> m_pEdgeData;
 

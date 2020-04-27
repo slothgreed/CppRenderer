@@ -13,16 +13,19 @@ public:
 	~RenderData();
 	RenderData(GLuint primitiveType, shared_ptr<IVertexBuffer> pVertexBuffer, shared_ptr<IndexBuffer> pIndexBuffer = nullptr);
 
-	void Set(GLuint primitiveType, shared_ptr<IVertexBuffer> pVertexBuffer, shared_ptr<IndexBuffer> pIndexBuffer = nullptr);
+	void SetMaterial(shared_ptr<IMaterial> pMaterial);
+	void SetGeometryData(GLuint primitiveType, shared_ptr<IVertexBuffer> pVertexBuffer, shared_ptr<IndexBuffer> pIndexBuffer = nullptr);
 	GLuint GetPrimitiveType() { return m_pPrimitiveType; }
 	shared_ptr<IVertexBuffer> GetVertexBuffer() { return m_pVertexBuffer; }
 	shared_ptr<IndexBuffer> GetIndexBuffer() { return m_pIndexBuffer; }
 	void Draw();
+	void Draw(shared_ptr<IShader> pShader);
 
 private:
 	GLuint	m_pPrimitiveType;
 	shared_ptr<IndexBuffer> m_pIndexBuffer;
 	shared_ptr<IVertexBuffer> m_pVertexBuffer;
+	shared_ptr<IMaterial> m_pMaterial;
 };
 }
 }

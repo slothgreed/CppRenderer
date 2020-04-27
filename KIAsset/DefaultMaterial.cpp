@@ -52,7 +52,7 @@ void DefaultMaterial::VisibleNormal(bool visible)
 	m_bReCompileShader = true;
 }
 
-shared_ptr<IShader> DefaultMaterial::CompileShader(IVertexBuffer* pVertexBuffer)
+void DefaultMaterial::CompileShader(IVertexBuffer* pVertexBuffer)
 {
 	if (pVertexBuffer->Type() == VERTEX_BUFFER_TYPE::VERTEX_BUFFER_TYPE_DEFAULT)
 	{
@@ -66,23 +66,22 @@ shared_ptr<IShader> DefaultMaterial::CompileShader(IVertexBuffer* pVertexBuffer)
 		auto pFragCode = make_shared<DefaultFragCode>();
 		pFragCode->SetShaderDefine(pDefaultBuffer->Layout());
 		pBuildInfo->SetFragCode(pFragCode);
-		return ShaderManager::Instance()->FindOrNew(pBuildInfo);
+		SetShader(ShaderManager::Instance()->FindOrNew(pBuildInfo));
 	}
 	else
 	{
 		assert(0);
-		return nullptr;
 	}
 }
 
-void DefaultMaterial::Bind()
+void DefaultMaterial::Bind(shared_ptr<IShader> pShader)
 {
-	m_pShader->Bind(m_pUniform);
+	pShader->Bind(m_pUniform);
 }
 
-void DefaultMaterial::UnBind()
+void DefaultMaterial::UnBind(shared_ptr<IShader> pShader)
 {
-	m_pShader->UnBind(m_pUniform);
+	pShader->UnBind(m_pUniform);
 }
 
 bool DefaultMaterial::Compare(const IMaterial& material)

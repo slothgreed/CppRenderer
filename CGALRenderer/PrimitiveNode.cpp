@@ -5,14 +5,14 @@ PrimitiveNode::PrimitiveNode(shared_ptr<RenderData> pRenderData)
 {
 	m_name = "Primitive";
 	m_pRenderData = pRenderData;
-	m_pMaterial = make_shared<DefaultMaterial>();
+	m_pRenderData->SetMaterial(make_shared<DefaultMaterial>());
 }
 
 PrimitiveNode::PrimitiveNode(shared_ptr<RenderData> pRenderData, shared_ptr<IMaterial> pMaterial)
 {
 	m_name = "Primitive";
 	m_pRenderData = pRenderData;
-	m_pMaterial = pMaterial;
+	m_pRenderData->SetMaterial(pMaterial);
 }
 
 PrimitiveNode::~PrimitiveNode()
@@ -26,7 +26,7 @@ void PrimitiveNode::Draw()
 		m_pState->Bind();
 	}
 
-	m_pMaterial->Draw(m_pRenderData.get());
+	m_pRenderData->Draw();
 
 	if (m_pState != nullptr)
 	{

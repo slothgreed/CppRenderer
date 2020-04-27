@@ -86,8 +86,6 @@ void BDBProperty::Update(IModelNode* pModelNode)
 
 void BDBProperty::Draw()
 {
-	m_pShader->Use();
-	m_pRenderData->Draw();
-	m_pShader->UnUse();
+	m_pRenderData->Draw(m_pShader);
 }
 }

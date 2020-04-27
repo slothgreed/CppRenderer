@@ -69,7 +69,7 @@ void IGLPick::BuildPickData(int key, shared_ptr<RenderData> pRenderData, const v
 
 
 
-	pPickData->Set(pRenderData->GetPrimitiveType(),	pDefaultBuffer, pRenderData->GetIndexBuffer());
+	pPickData->SetGeometryData(pRenderData->GetPrimitiveType(),	pDefaultBuffer, pRenderData->GetIndexBuffer());
 
 	m_pPickInfo[key].Set(pPickData, ids);
 }
