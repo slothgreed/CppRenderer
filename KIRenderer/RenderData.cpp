@@ -29,7 +29,7 @@ void RenderData::Draw(shared_ptr<IShader> pShader)
 
 	if (m_pMaterial != nullptr)
 	{
-		m_pMaterial->Bind(pShader);
+		m_pMaterial->Bind();
 	}
 
 
@@ -44,7 +44,7 @@ void RenderData::Draw(shared_ptr<IShader> pShader)
 
 	if (m_pMaterial != nullptr)
 	{
-		m_pMaterial->UnBind(pShader);
+		m_pMaterial->UnBind();
 	}
 
 	pShader->UnUse();

@@ -51,4 +51,8 @@ using namespace KI::Topology;
 #include "IAnimation.h"
 #include "ModelAnimation.h"
 #include "Storyboard.h"
+
+#include "GrayScaleEffect.h"
+#include "SSLICEffect.h"
+
 #endif // !KI_ASSET_PCH_H

@@ -176,7 +176,6 @@
     <ClInclude Include="Define.h" />
     <ClInclude Include="DirectionLight.h" />
     <ClInclude Include="GeometryPath.h" />
-    <ClInclude Include="GrayScaleEffect.h" />
     <ClInclude Include="GrayScaleShader.h" />
     <ClInclude Include="IGeometryPath.h" />
     <ClInclude Include="ILight.h" />
@@ -207,7 +206,6 @@
     <ClInclude Include="ShaderManager.h" />
     <ClInclude Include="SimpleShaderCode.h" />
     <ClInclude Include="SpotLight.h" />
-    <ClInclude Include="SSLICEffect.h" />
     <ClInclude Include="SSLICShader.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
@@ -229,7 +227,6 @@
     <ClCompile Include="DefaultVertexBuffer.cpp" />
     <ClCompile Include="DirectionLight.cpp" />
     <ClCompile Include="GeometryPath.cpp" />
-    <ClCompile Include="GrayScaleEffect.cpp" />
     <ClCompile Include="GrayScaleShader.cpp" />
     <ClCompile Include="IMaterial.cpp" />
     <ClCompile Include="IModelNode.cpp" />
@@ -251,7 +248,6 @@
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="ShaderManager.cpp" />
     <ClCompile Include="SpotLight.cpp" />
-    <ClCompile Include="SSLICEffect.cpp" />
     <ClCompile Include="SSLICShader.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

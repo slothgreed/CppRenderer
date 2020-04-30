@@ -1,6 +1,6 @@
 namespace KI
 {
-namespace Renderer
+namespace Asset
 {	
 SSLICEffect::SSLICEffect()
 {
@@ -52,7 +52,7 @@ void SSLICEffect::Initialize(int width, int height)
 	auto pSSLICFragUniform = make_shared<DefaultFragUniform>();
 	pSSLICFragUniform->SetTexture(m_pBlendTexture);
 	m_pSSLICUniform = make_shared<UniformSet>();
-	m_pModelUniform->Set(pSSLICVertexUniform, pSSLICFragUniform);
+	m_pSSLICUniform->Set(pSSLICVertexUniform, pSSLICFragUniform);
 
 	auto pBuildInfo = make_shared<IShaderBuildInfo>(SHADER_TYPE_DEFAULT);
 	auto pVertexCode = make_shared<DefaultVertexCode>();

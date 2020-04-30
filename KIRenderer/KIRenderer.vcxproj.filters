@@ -87,16 +87,10 @@
     <ClInclude Include="LighthingPass.h">
       <Filter>ヘッダー ファイル\LightingPass</Filter>
     </ClInclude>
-    <ClInclude Include="GrayScaleEffect.h">
-      <Filter>ヘッダー ファイル\Pfx</Filter>
-    </ClInclude>
     <ClInclude Include="IPostEffect.h">
       <Filter>ヘッダー ファイル\Pfx</Filter>
     </ClInclude>
     <ClInclude Include="PfxPlane.h">
-      <Filter>ヘッダー ファイル\Pfx</Filter>
-    </ClInclude>
-    <ClInclude Include="SSLICEffect.h">
       <Filter>ヘッダー ファイル\Pfx</Filter>
     </ClInclude>
     <ClInclude Include="PfxRenderer.h">
@@ -242,13 +236,7 @@
     <ClCompile Include="LighthingPass.cpp">
       <Filter>ソース ファイル\LithingPass</Filter>
     </ClCompile>
-    <ClCompile Include="GrayScaleEffect.cpp">
-      <Filter>ソース ファイル\Pfx</Filter>
-    </ClCompile>
     <ClCompile Include="PfxRenderer.cpp">
-      <Filter>ソース ファイル\Pfx</Filter>
-    </ClCompile>
-    <ClCompile Include="SSLICEffect.cpp">
       <Filter>ソース ファイル\Pfx</Filter>
     </ClCompile>
     <ClCompile Include="PfxPlane.cpp">

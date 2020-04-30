@@ -43,6 +43,12 @@
     <Filter Include="ソース ファイル\Animation">
       <UniqueIdentifier>{30a90139-4cc7-46ad-a2b5-d9b68d20c19e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Pfx">
+      <UniqueIdentifier>{8cd2657d-4f54-4ce1-be5e-000ef22f370f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Pfx">
+      <UniqueIdentifier>{2b34540f-0a76-44ea-87ca-c06a1054a67f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -105,6 +111,12 @@
     <ClInclude Include="ModelAnimation.h">
       <Filter>ヘッダー ファイル\Animation</Filter>
     </ClInclude>
+    <ClInclude Include="GrayScaleEffect.h">
+      <Filter>ヘッダー ファイル\Pfx</Filter>
+    </ClInclude>
+    <ClInclude Include="SSLICEffect.h">
+      <Filter>ヘッダー ファイル\Pfx</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -145,6 +157,12 @@
     </ClCompile>
     <ClCompile Include="ModelAnimation.cpp">
       <Filter>ソース ファイル\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="GrayScaleEffect.cpp">
+      <Filter>ソース ファイル\Pfx</Filter>
+    </ClCompile>
+    <ClCompile Include="SSLICEffect.cpp">
+      <Filter>ソース ファイル\Pfx</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

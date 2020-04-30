@@ -87,8 +87,6 @@ using namespace KI::Gfx;
 #include "IPostEffect.h"
 #include "GeometryPath.h"
 #include "PickPath.h"
-#include "GrayScaleEffect.h"
-#include "SSLICEffect.h"
 #include "RenderSystem.h"
 #include "PfxRenderer.h"
 #include "LighthingPass.h"

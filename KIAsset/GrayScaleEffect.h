@@ -3,7 +3,7 @@
 
 namespace KI
 {
-namespace Renderer
+namespace Asset
 {
 class DLL_EXPORT GrayScaleEffect : public IPostEffect
 {

@@ -1,6 +1,6 @@
 namespace KI
 {
-namespace Renderer
+namespace Asset
 {
 GrayScaleEffect::GrayScaleEffect()
 {
