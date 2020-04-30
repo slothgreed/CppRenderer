@@ -12,7 +12,7 @@ public:
 	virtual void Generate() override;
 	void Set(const vector<int>& index);
 	virtual void Dispose() override;
-	void Draw(GLuint primitiveType);
+	void Draw(GLuint primitiveType, GLuint first = 0, GLuint count = 0);
 	void InstanceDraw(GLuint primitiveType, int num);
 	GLuint Size() { return m_indexSize; }
 

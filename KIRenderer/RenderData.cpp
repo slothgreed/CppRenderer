@@ -16,6 +16,16 @@ void RenderData::SetMaterial(shared_ptr<IMaterial> pMaterial)
 	m_pMaterial = pMaterial;
 }
 
+void RenderData::AddRenderRegion(const string& descriptor, shared_ptr<IMaterial> pMaterial, int first, int count)
+{
+	m_pRenderRegion.push_back(RenderRegion());
+	int size = m_pRenderRegion.size() - 1;
+	m_pRenderRegion[size].m_descriptor = descriptor;
+	m_pRenderRegion[size].m_pMaterial = pMaterial;
+	m_pRenderRegion[size].m_first = first;
+	m_pRenderRegion[size].m_count = count;
+}
+
 void RenderData::SetGeometryData(GLuint primitiveType, shared_ptr<IVertexBuffer> pVertexBuffer, shared_ptr<IndexBuffer> pIndexBuffer)
 {
 	m_pPrimitiveType = primitiveType;
@@ -23,34 +33,79 @@ void RenderData::SetGeometryData(GLuint primitiveType, shared_ptr<IVertexBuffer>
 	m_pIndexBuffer = pIndexBuffer;
 }
 
-void RenderData::Draw(shared_ptr<IShader> pShader)
+void RenderData::DrawUseRegion()
 {
-	pShader->Use();
-
-	if (m_pMaterial != nullptr)
+	// 部分マテリアルで描画
+	for (int i = 0; i < m_pRenderRegion.size(); i++)
 	{
-		m_pMaterial->Bind();
+		DrawInternal(
+			m_pRenderRegion[i].m_pMaterial, 
+			m_pRenderRegion[i].m_first,
+			m_pRenderRegion[i].m_count);
 	}
 
+	// 部分マテリアル以外を通常マテリアルで描画
+	{
+		DrawInternal(m_pMaterial, 0, m_pRenderRegion[0].m_first);
+		int first = 0;
+		int count = 0;
+		for (int i = 0; i < m_pRenderRegion.size() - 1; i++)
+		{
+			first = m_pRenderRegion[i].m_first + m_pRenderRegion[i].m_count;
+			count = m_pRenderRegion[i + 1].m_first - first;
+
+			DrawInternal(m_pMaterial, first, count);
+		}
+
+		int size = m_pRenderRegion.size() - 1;
+		first = m_pRenderRegion[size].m_first + m_pRenderRegion[size].m_count;
+		count = GetVertexSize() - first;
+		DrawInternal(m_pMaterial, first, count);
+	}
+}
+
+int RenderData::GetVertexSize()
+{
 	if (m_pIndexBuffer == nullptr)
 	{
-		m_pVertexBuffer->Draw(m_pPrimitiveType);
+		return m_pVertexBuffer->GetVertexSize();
 	}
 	else
 	{
-		m_pVertexBuffer->Draw(m_pPrimitiveType, m_pIndexBuffer.get());
+		return m_pIndexBuffer->Size();
 	}
-
-	if (m_pMaterial != nullptr)
+}
+void RenderData::DrawInternal(shared_ptr<IMaterial> pMaterial, int first, int count)
+{
+	if (pMaterial->NeedReCompileShader())
 	{
-		m_pMaterial->UnBind();
+		pMaterial->CompileShader(GetVertexBuffer().get());
 	}
 
+	auto pShader = pMaterial->GetShader();
+	pShader->Use();
+	pMaterial->Bind();
+
+	if (m_pIndexBuffer == nullptr)
+	{
+		m_pVertexBuffer->Draw(m_pPrimitiveType, first, count);
+	}
+	else
+	{
+		m_pVertexBuffer->DrawByIndexBuffer(m_pPrimitiveType, m_pIndexBuffer.get(), first, count);
+	}
+
+	pMaterial->UnBind();
 	pShader->UnUse();
 }
-
 void RenderData::Draw()
 {
+	if (m_pRenderRegion.size() != 0)
+	{
+		DrawUseRegion();
+		return;
+	}
+
 	if (m_pVertexBuffer == nullptr ||
 		m_pMaterial == nullptr)
 	{
@@ -58,13 +113,7 @@ void RenderData::Draw()
 		return;
 	}
 
-	if (m_pMaterial->NeedReCompileShader())
-	{
-		m_pMaterial->CompileShader(GetVertexBuffer().get());
-	}
-
-	Draw(m_pMaterial->GetShader());
-
+	DrawInternal(m_pMaterial, 0, GetVertexSize());
 }
 
 shared_ptr<RenderData> RenderData::Clone()

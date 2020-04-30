@@ -19,7 +19,7 @@ public:
 	virtual void SetInstanceNum(int num) { m_instanceNum = num; }
 	virtual void BindAttribDivisor() { assert(0); };
 	virtual void UnBindAttribDivisor() { assert(0); };
-	virtual void Draw(GLuint primitiveType, IndexBuffer* pIndexbuffer);
+	virtual void DrawByIndexBuffer(GLuint primitiveType, IndexBuffer* pIndexbuffer, GLuint first = 0, GLuint count = 0);
 	virtual void Draw(GLuint primitiveType, GLuint first, GLuint count);
 	virtual void Draw(GLuint primitiveType);
 	GLuint GetVertexSize() { return m_VertexSize; }

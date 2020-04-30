@@ -24,7 +24,7 @@ void IVertexBuffer::Remove(GLuint location)
 }
 
 
-void IVertexBuffer::Draw(GLuint primitiveType, IndexBuffer* pIndexbuffer)
+void IVertexBuffer::DrawByIndexBuffer(GLuint primitiveType, IndexBuffer* pIndexbuffer, GLuint first, GLuint count)
 {
 	if (m_vaoId == 0)
 	{
@@ -43,7 +43,7 @@ void IVertexBuffer::Draw(GLuint primitiveType, IndexBuffer* pIndexbuffer)
 	else
 	{
 		glBindVertexArray(m_vaoId);
-		pIndexbuffer->Draw(primitiveType);
+		pIndexbuffer->Draw(primitiveType, first, count);
 		glBindVertexArray(0);
 	}
 

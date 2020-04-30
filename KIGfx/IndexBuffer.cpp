@@ -54,10 +54,17 @@ void IndexBuffer::Dispose()
 	m_Id = 0;
 }
 
-void IndexBuffer::Draw(GLuint primitiveType)
+void IndexBuffer::Draw(GLuint primitiveType, GLuint first, GLuint count)
 {
 	Bind();
-	glDrawElements(primitiveType, Size(), GL_UNSIGNED_INT, 0);
+	if (first == 0 && count == 0)
+	{
+		glDrawElements(primitiveType, Size(), GL_UNSIGNED_INT, 0);
+	}
+	else
+	{
+		glDrawElements(primitiveType, count, GL_UNSIGNED_INT, (void*)first);
+	}
 	UnBind();
 }
 

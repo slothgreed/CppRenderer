@@ -49,8 +49,10 @@ void BDBProperty::Build(IModelNode* pModelNode)
 	pVertexCode->SetShaderDefine(pVertexBuffer->Layout());
 	pBuildInfo->SetVertexCode(pVertexCode);
 	pBuildInfo->SetFragCode(make_shared<DefaultFragCode>());
-	m_pShader = ShaderManager::Instance()->FindOrNew(pBuildInfo);
-
+	auto pShader = ShaderManager::Instance()->FindOrNew(pBuildInfo);
+	
+	auto pMaterial = make_shared<DefaultMaterial>();
+	m_pRenderData->SetMaterial(pMaterial);
 }
 
 void BDBProperty::GetBDBPosition(const BDB& bdb, vector<vec3>& position)
@@ -86,6 +88,6 @@ void BDBProperty::Update(IModelNode* pModelNode)
 
 void BDBProperty::Draw()
 {
-	m_pRenderData->Draw(m_pShader);
+	m_pRenderData->Draw();
 }
 }
