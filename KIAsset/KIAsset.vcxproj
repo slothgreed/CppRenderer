@@ -165,6 +165,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="GeneralMaterial.h" />
     <ClInclude Include="GrayScaleEffect.h" />
     <ClInclude Include="IAnimation.h" />
     <ClInclude Include="AssetTypes.h" />
@@ -193,6 +194,7 @@
     <ClCompile Include="CGALLinearCellComplex.cpp" />
     <ClCompile Include="CGALPolyhedron.cpp" />
     <ClCompile Include="DefaultMaterial.cpp" />
+    <ClCompile Include="GeneralMaterial.cpp" />
     <ClCompile Include="GrayScaleEffect.cpp" />
     <ClCompile Include="HalfEdgeModel.cpp" />
     <ClCompile Include="IPolygonModel.cpp" />

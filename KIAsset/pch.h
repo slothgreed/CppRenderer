@@ -42,6 +42,7 @@ using namespace KI::Topology;
 #include "HalfEdgeModel.h"
 #include "DefaultMaterial.h"
 #include "OutputMaterial.h"
+#include "GeneralMaterial.h"
 
 #include "MoveManipulator.h"
 #include "RotateManipulator.h"
@@ -51,6 +52,8 @@ using namespace KI::Topology;
 #include "IAnimation.h"
 #include "ModelAnimation.h"
 #include "Storyboard.h"
+
+
 
 #include "GrayScaleEffect.h"
 #include "SSLICEffect.h"

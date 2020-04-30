@@ -17,10 +17,7 @@ public:
 private:
 	void Build(IModelNode* pModelNode);
 	void SetVBOData(IModelNode* pModelNode);
-	shared_ptr<IShader> m_pShader;
-	shared_ptr<UniformSet> m_pUniform;
-	shared_ptr<IVertexBuffer> m_pVertexBuffer;
-	
+	shared_ptr<RenderData> m_pRenderData;
 };
 
 }

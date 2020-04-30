@@ -14,8 +14,6 @@ public:
 
 private:
 	shared_ptr<RenderData> m_pRenderData;
-	shared_ptr<BezierLineShader> m_pBezierShader;
-	shared_ptr<UniformSet> m_pUniform;
 };
 }
 

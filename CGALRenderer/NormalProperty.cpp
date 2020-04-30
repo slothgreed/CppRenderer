@@ -12,8 +12,6 @@ void NormalProperty::Build(IModelNode* pModelNode)
 {
 	auto pGeomUniform = make_shared<NormalVisualizeUniform>();
 	pGeomUniform->SetLength(5.0f);
-	m_pUniform = make_shared<UniformSet>();
-	m_pUniform->Set(nullptr, pGeomUniform, nullptr);
 
 	auto pBuildInfo = make_shared<IShaderBuildInfo>(SHADER_TYPE::SHADER_TYPE_NORMALVISUALIZE);
 	auto pVertexCode = make_shared<DefaultVertexCode>();
@@ -24,7 +22,13 @@ void NormalProperty::Build(IModelNode* pModelNode)
 	pBuildInfo->SetVertexCode(pVertexCode);
 	pBuildInfo->SetGeomCode(make_shared<NormalVisualizeGeometryCode>());
 	pBuildInfo->SetFragCode(pFragCode);
-	m_pShader = ShaderManager::Instance()->FindOrNew(pBuildInfo);
+	auto pShader = ShaderManager::Instance()->FindOrNew(pBuildInfo);
+
+	m_pRenderData = make_shared<RenderData>();
+	auto pMaterial = make_shared<GeneralMaterial>();
+	pMaterial->SetShader(pShader);
+	pMaterial->GetUniform()->Set(nullptr, pGeomUniform, nullptr);
+	m_pRenderData->SetMaterial(pMaterial);
 
 	SetVBOData(pModelNode);
 }
@@ -48,15 +52,12 @@ void NormalProperty::SetVBOData(IModelNode* pModelNode)
 		return;
 	}
 
-	m_pVertexBuffer = pPolygonModel->GetVertexBuffer();
+	auto pVertexBuffer = pPolygonModel->GetVertexBuffer();
+	m_pRenderData->SetGeometryData(GL_POINTS, pVertexBuffer);
 }
 
 void NormalProperty::Draw()
 {
-	m_pShader->Use();
-	m_pShader->Bind(m_pUniform);
-	m_pVertexBuffer->Draw(GL_POINTS, 0, m_pVertexBuffer->GetVertexSize());
-	m_pShader->UnBind(m_pUniform);
-	m_pShader->UnUse();
+	m_pRenderData->Draw();
 }
 }

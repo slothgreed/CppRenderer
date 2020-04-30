@@ -20,6 +20,7 @@ public:
 	virtual bool Compare(const IMaterial& material) = 0;
 
 	shared_ptr<IShader> GetShader() { return m_pShader; };
+
 	shared_ptr<UniformSet> GetUniform() { return m_pUniform; }
 	bool NeedReCompileShader() { return m_bReCompileShader; }
 protected:

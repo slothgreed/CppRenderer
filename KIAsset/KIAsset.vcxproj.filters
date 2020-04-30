@@ -117,6 +117,9 @@
     <ClInclude Include="SSLICEffect.h">
       <Filter>ヘッダー ファイル\Pfx</Filter>
     </ClInclude>
+    <ClInclude Include="GeneralMaterial.h">
+      <Filter>ヘッダー ファイル\Material</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -163,6 +166,9 @@
     </ClCompile>
     <ClCompile Include="SSLICEffect.cpp">
       <Filter>ソース ファイル\Pfx</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneralMaterial.cpp">
+      <Filter>ソース ファイル\Material</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

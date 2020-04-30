@@ -18,24 +18,25 @@ void GrayScaleEffect::Initialize(int width, int height)
 	auto pBuildInfo = make_shared<IShaderBuildInfo>(SHADER_TYPE::SHADER_TYPE_GRAYSCALE);
 	pBuildInfo->SetVertexCode(make_shared<PostProcessVertexCode>());
 	pBuildInfo->SetFragCode(make_shared<GrayScaleFragCode>());
-	m_pGrayScaleShader = static_pointer_cast<GrayScaleShader>(ShaderManager::Instance()->FindOrNew(pBuildInfo));
+	auto pGrayScaleShader = static_pointer_cast<GrayScaleShader>(ShaderManager::Instance()->FindOrNew(pBuildInfo));
 	m_pRenderTarget = make_shared<RenderTarget>();
 	m_pRenderTarget->Initialize(1, width, height);
 
-	auto pGrayUniform = make_shared<GrayScaleUniform>();
-	m_pGrayUniform = make_shared<UniformSet>();
-	m_pGrayUniform->Set(nullptr, pGrayUniform);
+	auto pGrayMaterial = make_shared<GeneralMaterial>();
+	pGrayMaterial->SetShader(pGrayScaleShader);
+	pGrayMaterial->GetUniform()->Set(nullptr, make_shared<GrayScaleUniform>());
 
+	m_pPlane->SetMaterial(pGrayMaterial);
 }
 
 void GrayScaleEffect::SetTexture(shared_ptr<Texture> pTexture)
 {
-	if (m_pGrayUniform->Frag()->Type() != SHADER_TYPE::SHADER_TYPE_GRAYSCALE) {
+	if (m_pPlane->GetMaterial()->GetUniform()->Frag()->Type() != SHADER_TYPE::SHADER_TYPE_GRAYSCALE) {
 		assert(0);
 		return;
 	}
 
-	auto uniformParameter = static_pointer_cast<GrayScaleUniform>(m_pGrayUniform->Frag());
+	auto uniformParameter = static_pointer_cast<GrayScaleUniform>(m_pPlane->GetMaterial()->GetUniform()->Frag());
 
 	uniformParameter->SetTexture(pTexture);
 }
@@ -48,11 +49,7 @@ void GrayScaleEffect::Draw()
 {
 	m_pRenderTarget->Begin();
 	m_pRenderTarget->Clear();
-	m_pGrayScaleShader->Use();
-	m_pGrayScaleShader->Bind(m_pGrayUniform);
 	m_pPlane->Draw();
-	m_pGrayScaleShader->UnBind(m_pGrayUniform);
-	m_pGrayScaleShader->UnUse();
 	m_pRenderTarget->End();
 }
 

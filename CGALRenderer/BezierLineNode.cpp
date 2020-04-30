@@ -10,12 +10,15 @@ BezierLineNode::BezierLineNode(shared_ptr<RenderData> pRenderData)
 	pBuildInfo->SetTESCode(make_shared<BezierLineTESCode>());
 	pBuildInfo->SetTCSCode(make_shared<BezierLineTCSCode>());
 	pBuildInfo->SetFragCode(make_shared<DefaultFragCode>());
-	m_pBezierShader = static_pointer_cast<BezierLineShader>(ShaderManager::Instance()->FindOrNew(pBuildInfo));
-	m_pBezierShader->SetPatchVertices(4);
-	m_pRenderData = pRenderData;
+	auto pBezierShader = static_pointer_cast<BezierLineShader>(ShaderManager::Instance()->FindOrNew(pBuildInfo));
+	pBezierShader->SetPatchVertices(4);
+
 	auto pTCSUniform = make_shared<BezierLineUniform>();
-	m_pUniform = make_shared<UniformSet>();
-	m_pUniform->Set(nullptr, nullptr, pTCSUniform, nullptr, nullptr);
+	auto pMaterial = make_shared<GeneralMaterial>();
+	pMaterial->SetShader(pBezierShader);
+	pMaterial->GetUniform()->Set(nullptr, nullptr, pTCSUniform, nullptr, nullptr);
+	pRenderData->SetMaterial(pMaterial);
+	m_pRenderData = pRenderData;
 }
 
 BezierLineNode::~BezierLineNode()
@@ -24,11 +27,7 @@ BezierLineNode::~BezierLineNode()
 
 void BezierLineNode::Draw()
 {
-	m_pBezierShader->Use();
-	m_pBezierShader->Bind(m_pUniform);
 	m_pRenderData->Draw();
-	m_pBezierShader->UnBind(m_pUniform);
-	m_pBezierShader->UnUse();
 }
 
 }

@@ -32,7 +32,6 @@ void RenderData::Draw(shared_ptr<IShader> pShader)
 		m_pMaterial->Bind();
 	}
 
-
 	if (m_pIndexBuffer == nullptr)
 	{
 		m_pVertexBuffer->Draw(m_pPrimitiveType);
@@ -68,5 +67,15 @@ void RenderData::Draw()
 
 }
 
+shared_ptr<RenderData> RenderData::Clone()
+{
+	auto pClone = make_shared<RenderData>();
+	pClone->m_pPrimitiveType = m_pPrimitiveType;
+	pClone->m_pIndexBuffer	= m_pIndexBuffer;
+	pClone->m_pVertexBuffer = m_pVertexBuffer;
+	pClone->m_pMaterial		= m_pMaterial;
+
+	return pClone;
+}
 };
 }

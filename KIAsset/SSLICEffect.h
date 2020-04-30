@@ -23,14 +23,11 @@ public:
 private:
 	shared_ptr<Texture> m_pNoizeTexture;
 	shared_ptr<Texture> m_pBlendTexture;
-	shared_ptr<SSLICShader> m_pSSLICShader;
-	shared_ptr<DefaultShader> m_pModelShader;
 	shared_ptr<RenderData> m_pModelData;
 	shared_ptr<RenderData> m_pPlaneData;
 	shared_ptr<RenderTarget> m_pRenderTarget;
 
-	shared_ptr<UniformSet> m_pModelUniform;
-	shared_ptr<UniformSet> m_pSSLICUniform;
+	shared_ptr<DefaultMaterial> m_pModelMaterial;
 };
 }
 }

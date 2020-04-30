@@ -18,8 +18,10 @@ public:
 	GLuint GetPrimitiveType() { return m_pPrimitiveType; }
 	shared_ptr<IVertexBuffer> GetVertexBuffer() { return m_pVertexBuffer; }
 	shared_ptr<IndexBuffer> GetIndexBuffer() { return m_pIndexBuffer; }
+	shared_ptr<IMaterial> GetMaterial() { return m_pMaterial; }
 	void Draw();
 	void Draw(shared_ptr<IShader> pShader);
+	shared_ptr<RenderData> Clone();
 
 private:
 	GLuint	m_pPrimitiveType;
