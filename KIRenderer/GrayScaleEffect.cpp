@@ -23,7 +23,9 @@ void GrayScaleEffect::Initialize(int width, int height)
 	m_pRenderTarget->Initialize(1, width, height);
 
 	auto pGrayUniform = make_shared<GrayScaleUniform>();
-	m_pGrayUniform = make_shared<UniformSet>(nullptr, pGrayUniform);
+	m_pGrayUniform = make_shared<UniformSet>();
+	m_pGrayUniform->Set(nullptr, pGrayUniform);
+
 }
 
 void GrayScaleEffect::SetTexture(shared_ptr<Texture> pTexture)

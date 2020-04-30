@@ -14,7 +14,8 @@ BezierLineNode::BezierLineNode(shared_ptr<RenderData> pRenderData)
 	m_pBezierShader->SetPatchVertices(4);
 	m_pRenderData = pRenderData;
 	auto pTCSUniform = make_shared<BezierLineUniform>();
-	m_pUniform = make_shared<UniformSet>(nullptr, nullptr, pTCSUniform, nullptr, nullptr);
+	m_pUniform = make_shared<UniformSet>();
+	m_pUniform->Set(nullptr, nullptr, pTCSUniform, nullptr, nullptr);
 }
 
 BezierLineNode::~BezierLineNode()

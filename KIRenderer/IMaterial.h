@@ -22,7 +22,7 @@ public:
 	shared_ptr<IShader> GetShader() { return m_pShader; };
 	bool NeedReCompileShader() { return m_bReCompileShader; }
 protected:
-	void SetShader(shared_ptr<IShader> pShader) { m_pShader = pShader; m_bReCompileShader = false; };
+	void SetShader(shared_ptr<IShader> pShader);
 	bool m_bReCompileShader;
 private:
 	shared_ptr<IShader> m_pShader;

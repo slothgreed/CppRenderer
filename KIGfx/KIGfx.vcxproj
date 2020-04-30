@@ -208,6 +208,7 @@
     <ClCompile Include="IShader.cpp" />
     <ClCompile Include="IShaderBuildInfo.cpp" />
     <ClCompile Include="IShaderCode.cpp" />
+    <ClCompile Include="IUniform.cpp" />
     <ClCompile Include="IVertexBuffer.cpp" />
     <ClCompile Include="LineState.cpp" />
     <ClCompile Include="PointState.cpp" />

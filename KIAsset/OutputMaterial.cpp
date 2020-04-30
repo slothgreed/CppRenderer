@@ -5,7 +5,9 @@ namespace Asset
 OutputMaterial::OutputMaterial()
 {
 	auto pFragUniform = make_shared<OutputUniform>();
-	m_pUniform = make_shared<UniformSet>(nullptr, pFragUniform);
+	m_pUniform = make_shared<UniformSet>();
+	m_pUniform->Set(nullptr, pFragUniform);
+
 }
 
 OutputMaterial::~OutputMaterial()

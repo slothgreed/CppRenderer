@@ -12,7 +12,8 @@ void NormalProperty::Build(IModelNode* pModelNode)
 {
 	auto pGeomUniform = make_shared<NormalVisualizeUniform>();
 	pGeomUniform->SetLength(5.0f);
-	m_pUniform = make_shared<UniformSet>(nullptr, pGeomUniform, nullptr);
+	m_pUniform = make_shared<UniformSet>();
+	m_pUniform->Set(nullptr, pGeomUniform, nullptr);
 
 	auto pBuildInfo = make_shared<IShaderBuildInfo>(SHADER_TYPE::SHADER_TYPE_NORMALVISUALIZE);
 	auto pVertexCode = make_shared<DefaultVertexCode>();

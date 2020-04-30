@@ -6,7 +6,8 @@ DefaultMaterial::DefaultMaterial()
 {
 	auto pVertexUniform = make_shared<DefaultVertexUniform>();
 	auto pFragUniform = make_shared<DefaultFragUniform>();
-	m_pUniform = make_shared<UniformSet>(pVertexUniform, pFragUniform);
+	m_pUniform = make_shared<UniformSet>();
+	m_pUniform->Set(pVertexUniform, pFragUniform);
 }
 
 DefaultMaterial::~DefaultMaterial()
