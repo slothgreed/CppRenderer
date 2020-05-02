@@ -5,14 +5,10 @@ PrimitiveNode::PrimitiveNode(shared_ptr<RenderData> pRenderData)
 {
 	m_name = "Primitive";
 	m_pRenderData = pRenderData;
-	m_pRenderData->SetMaterial(make_shared<DefaultMaterial>());
-}
-
-PrimitiveNode::PrimitiveNode(shared_ptr<RenderData> pRenderData, shared_ptr<IMaterial> pMaterial)
-{
-	m_name = "Primitive";
-	m_pRenderData = pRenderData;
-	m_pRenderData->SetMaterial(pMaterial);
+	if (pRenderData->GetMaterial() == nullptr)
+	{
+		m_pRenderData->SetMaterial(make_shared<DefaultMaterial>());
+	}
 }
 
 PrimitiveNode::~PrimitiveNode()

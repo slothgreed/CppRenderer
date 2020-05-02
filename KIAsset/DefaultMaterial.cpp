@@ -26,7 +26,7 @@ void DefaultMaterial::AddTexture(shared_ptr<Texture> texture)
 	uniform->SetTexture(texture);
 }
 
-void DefaultMaterial::SetFixColor(vec4 color)
+void DefaultMaterial::SetFixColor(const vec4& color)
 {
 	if (GetUniform()->Vertex()->Type() != SHADER_TYPE::SHADER_TYPE_DEFAULT)
 	{

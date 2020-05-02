@@ -172,6 +172,7 @@
     <ClInclude Include="HalfEdgeFace.h" />
     <ClInclude Include="HalfEdgeOperator.h" />
     <ClInclude Include="HalfEdgeVertex.h" />
+    <ClInclude Include="Icosahedron.h" />
     <ClInclude Include="IPrimitive.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Ray.h" />
@@ -187,6 +188,7 @@
     <ClCompile Include="HalfEdgeFace.cpp" />
     <ClCompile Include="HalfEdgeOperator.cpp" />
     <ClCompile Include="HalfEdgeVertex.cpp" />
+    <ClCompile Include="Icosahedron.cpp" />
     <ClCompile Include="IPrimitive.cpp" />
     <ClCompile Include="Sphere.cpp" />
     <ClCompile Include="stdafx.cpp">

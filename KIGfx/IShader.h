@@ -40,6 +40,13 @@ private:
 	void GenerateShaderCode(IShaderBuildInfo* pShaderBuildInfo);
 	bool UniformValidation();
 	string m_version;
+
+	string debug_vertexCode;
+	string debug_tcsCode;
+	string debug_tesCode;
+	string debug_geomCode;
+	string debug_fragCode;
+
 	shared_ptr<IShaderBuildInfo> m_pShaderBuildInfo;
 };
 }

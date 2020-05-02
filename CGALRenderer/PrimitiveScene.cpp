@@ -29,7 +29,8 @@ void PrimitiveScene::Initialize(Project* m_pProject)
 	auto sphereData = make_shared<RenderData>();
 	ModelGenerator::Sphere(10, 36, 36, sphereData.get());
 	auto pMaterial = make_shared<DefaultMaterial>();
-	auto sphereNode = make_shared<PrimitiveNode>(sphereData, pMaterial);
+	sphereData->SetMaterial(pMaterial);
+	auto sphereNode = make_shared<PrimitiveNode>(sphereData);
 
 	auto pTexture = make_shared<Texture>();
 	pTexture->Generate();
@@ -41,7 +42,30 @@ void PrimitiveScene::Initialize(Project* m_pProject)
 	pTexture->Set(textureData);
 	pTexture->End();
 	pMaterial->AddTexture(pTexture);
-	m_pScene->AddModelNode(sphereNode);
+	//m_pScene->AddModelNode(sphereNode);
+
+
+	Icosahedron icosahedron;
+	icosahedron.Build(IcosahedronArgs());
+	auto pVertexBuffer = make_shared<DefaultVertexBuffer>();
+	pVertexBuffer->SetPosition(icosahedron.Position());
+	pVertexBuffer->SetNormal(icosahedron.Normal());
+	auto pIndexBuffer = make_shared<IndexBuffer>();
+	pIndexBuffer->Set(icosahedron.Index());
+
+	auto pRenderData = make_shared<RenderData>();
+	
+	pRenderData->AddRenderRegion("first", make_shared<DefaultMaterial>(), 0, 30);
+	
+	
+	pRenderData->SetGeometryData(GL_TRIANGLES, pVertexBuffer, pIndexBuffer);
+	auto pPlaneMaterial = make_shared<DefaultMaterial>();
+	pPlaneMaterial->VisibleNormal(true);
+	pRenderData->SetMaterial(pPlaneMaterial);
+	auto pPrimitiveNode = make_shared<PrimitiveNode>(pRenderData);
+	m_pScene->AddModelNode(pPrimitiveNode);
+
+
 	BDB bdb(vec3(-10), vec3(10));
 	pCamera->FitToBDB(bdb);
 

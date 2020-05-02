@@ -16,7 +16,7 @@ public:
 	virtual bool Compare(const IMaterial& material) override;
 
 	void VisibleNormal(bool value);
-	void SetFixColor(vec4 color);
+	void SetFixColor(const vec4& color);
 	void AddTexture(shared_ptr<Texture> texture);
 };
 }

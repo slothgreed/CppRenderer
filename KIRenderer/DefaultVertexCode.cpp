@@ -70,7 +70,8 @@ bool DefaultVertexCode::Compare(IShaderCode* pShaderCode)
 			m_useTexcoord == pDefine->m_useTexcoord &&
 			m_useInstance == pDefine->m_useInstance &&
 			m_outInstance == pDefine->m_outInstance &&
-			m_planePosition == pDefine->m_planePosition)
+			m_planePosition == pDefine->m_planePosition &&
+			m_viewNormal == pDefine->m_viewNormal)
 		{
 			return true;
 		}

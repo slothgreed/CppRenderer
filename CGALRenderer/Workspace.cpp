@@ -45,7 +45,8 @@ void Workspace::Initialize(Project* m_pProject)
 	//ModelGenerator::RenderPlane(plane.get());
 	SpecialUtility::LoadVectorFieldSphere(model.get());
 	auto pMaterial = make_shared<DefaultMaterial>();
-	auto pModelNode = make_shared<PrimitiveNode>(model, pMaterial);
+	model->SetMaterial(pMaterial);
+	auto pModelNode = make_shared<PrimitiveNode>(model);
 	TextureData data;
 	TextureGenerator::RandomTexture(8, 15, data);
 	auto texture = make_shared<Texture>();

@@ -20,7 +20,8 @@ void RungeKuttaScene::Initialize(Project* m_pProject)
 
 	auto pMaterial = make_shared<DefaultMaterial>();
 	auto pPointData = make_shared<RenderData>(GL_POINTS, make_shared<DefaultVertexBuffer>());
-	m_pPointNode = make_shared<PrimitiveNode>(pPointData, pMaterial);
+	pPointData->SetMaterial(pMaterial);
+	m_pPointNode = make_shared<PrimitiveNode>(pPointData);
 	pMaterial->SetFixColor(vec4(1, 0, 0, 1));
 	m_pScene->AddModelNode(m_pPointNode);
 

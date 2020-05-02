@@ -21,7 +21,8 @@ void VoronoiScene::Initialize(Project* m_pProject)
 	auto pPointData = make_shared<RenderData>(
 		GL_POINTS,
 		make_shared<DefaultVertexBuffer>());
-	m_pPointNode = make_shared<PrimitiveNode>(pPointData, pMaterial);
+	pPointData->SetMaterial(pMaterial);
+	m_pPointNode = make_shared<PrimitiveNode>(pPointData);
 	pMaterial->SetFixColor(vec4(0, 0, 0, 1));
 	m_pPointNode->SetState(make_shared<PointState>(5.0f, false));
 	m_pScene->AddModelNode(m_pPointNode);

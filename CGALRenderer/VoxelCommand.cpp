@@ -47,8 +47,8 @@ CommandResult VoxelCommand::Execute()
 	pMaterial->SetFixColor(vec4(1, 0, 0, 1));
 
 	pRenderData->SetGeometryData(GL_TRIANGLES, pVertexBuffer, pIndexBuffer);
-
-	auto pModelNode = make_shared<PrimitiveNode>(pRenderData, pMaterial);
+	pRenderData->SetMaterial(pMaterial);
+	auto pModelNode = make_shared<PrimitiveNode>(pRenderData);
 	
 	args->m_pScene->AddModelNode(pModelNode);
 	

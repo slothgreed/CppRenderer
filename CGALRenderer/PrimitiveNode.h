@@ -6,7 +6,6 @@ class PrimitiveNode : public IModelNode
 {
 public:
 	PrimitiveNode(shared_ptr<RenderData> pRenderData);
-	PrimitiveNode(shared_ptr<RenderData> pRenderData, shared_ptr<IMaterial> pMaterial);
 	~PrimitiveNode();
 
 	virtual void Draw();

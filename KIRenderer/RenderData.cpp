@@ -44,9 +44,13 @@ void RenderData::DrawUseRegion()
 			m_pRenderRegion[i].m_count);
 	}
 
-	// 部分マテリアル以外を通常マテリアルで描画
+	// 部分マテリアル以外を通常マテリアルで描画・ソートされている前提
 	{
-		DrawInternal(m_pMaterial, 0, m_pRenderRegion[0].m_first);
+		if (m_pRenderRegion[0].m_first != 0)
+		{
+			DrawInternal(m_pMaterial, 0, m_pRenderRegion[0].m_first);
+		}
+
 		int first = 0;
 		int count = 0;
 		for (int i = 0; i < m_pRenderRegion.size() - 1; i++)
@@ -60,7 +64,10 @@ void RenderData::DrawUseRegion()
 		int size = m_pRenderRegion.size() - 1;
 		first = m_pRenderRegion[size].m_first + m_pRenderRegion[size].m_count;
 		count = GetVertexSize() - first;
-		DrawInternal(m_pMaterial, first, count);
+		if (first != GetVertexSize())
+		{
+			DrawInternal(m_pMaterial, first, count);
+		}
 	}
 }
 

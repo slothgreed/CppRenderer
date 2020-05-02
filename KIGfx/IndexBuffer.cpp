@@ -63,8 +63,9 @@ void IndexBuffer::Draw(GLuint primitiveType, GLuint first, GLuint count)
 	}
 	else
 	{
-		glDrawElements(primitiveType, count, GL_UNSIGNED_INT, (void*)first);
+		glDrawElements(primitiveType, count, GL_UNSIGNED_INT, (void*)(first * sizeof(GLuint)));
 	}
+
 	UnBind();
 }
 

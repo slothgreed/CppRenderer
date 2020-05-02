@@ -39,7 +39,7 @@ public:
 
 	bool VisibleNormal() { return m_visible; }
 	void VisibleNormal(bool value) { m_visible = value; }
-	void SetFixColor(vec4 value) { m_FixColor = value; };
+	void SetFixColor(const vec4& value) { m_FixColor = value; };
 	const vec4&		FixColor() { return m_FixColor; }
 private:
 	vec4 m_FixColor;

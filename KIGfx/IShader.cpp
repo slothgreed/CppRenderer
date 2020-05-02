@@ -22,6 +22,12 @@ void IShader::GenerateShaderCode(IShaderBuildInfo* pBuildInfo)
 	GetShaderCode(SHADER_PROGRAM_GEOM,	geomCode);
 	GetShaderCode(SHADER_PROGRAM_FRAG,	fragCode);
 	
+	debug_vertexCode = vertexCode;
+	debug_tcsCode = tcsCode;;
+	debug_tesCode = tesCode;;
+	debug_geomCode = geomCode;;
+	debug_fragCode = fragCode;;
+
 	BuildFromCode(vertexCode, tcsCode, tesCode, geomCode, fragCode);
 }
 
