@@ -134,9 +134,8 @@ void PolygonModelNode::SetRenderData()
 		m_pEdgeData = make_shared <RenderData>(GL_LINES, pEdgeBuffer);
 		m_pEdgeData->SetMaterial(pEdgeMaterial);
 
-		auto pSelectionMaterial = make_shared<DefaultMaterial>();
-		pSelectionMaterial->SetFixColor(vec4(1, 0, 0, 1));
-		m_pFaceData->AddRenderRegion("Test", pSelectionMaterial, 3, 270);
+		auto pSelectionMaterial = MaterialManager::Instance()->GetSystemMaterial(SYSTEM_MATERIAL::SYSTEM_MATERIAL_SELECTION);
+		m_pFaceData->AddRenderRegion("Selection", pSelectionMaterial, 3, 270);
 	}
 
 }

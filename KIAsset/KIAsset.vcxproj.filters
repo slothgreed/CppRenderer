@@ -120,6 +120,9 @@
     <ClInclude Include="GeneralMaterial.h">
       <Filter>ヘッダー ファイル\Material</Filter>
     </ClInclude>
+    <ClInclude Include="MaterialManager.h">
+      <Filter>ヘッダー ファイル\Material</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -168,6 +171,9 @@
       <Filter>ソース ファイル\Pfx</Filter>
     </ClCompile>
     <ClCompile Include="GeneralMaterial.cpp">
+      <Filter>ソース ファイル\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="MaterialManager.cpp">
       <Filter>ソース ファイル\Material</Filter>
     </ClCompile>
   </ItemGroup>

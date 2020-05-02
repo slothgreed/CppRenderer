@@ -178,6 +178,7 @@
     <ClInclude Include="IManipulatorModel.h" />
     <ClInclude Include="IPolygonModel.h" />
     <ClInclude Include="KeyFrame.h" />
+    <ClInclude Include="MaterialManager.h" />
     <ClInclude Include="ModelAnimation.h" />
     <ClInclude Include="MoveManipulator.h" />
     <ClInclude Include="OutputMaterial.h" />
@@ -198,6 +199,7 @@
     <ClCompile Include="GrayScaleEffect.cpp" />
     <ClCompile Include="HalfEdgeModel.cpp" />
     <ClCompile Include="IPolygonModel.cpp" />
+    <ClCompile Include="MaterialManager.cpp" />
     <ClCompile Include="ModelAnimation.cpp" />
     <ClCompile Include="MoveManipulator.cpp" />
     <ClCompile Include="OutputMaterial.cpp" />
