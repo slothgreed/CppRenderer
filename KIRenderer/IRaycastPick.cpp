@@ -3,7 +3,14 @@ namespace KI
 namespace Renderer
 {
 
-void RaycastPickInfo::SetResult(PICK_TYPE type, const string& id, int first, int count, float distance)
+RaycastPickInfo::RaycastPickInfo(PICK_TYPE type, Topology::Ray* ray) 
+{ 
+    m_minDistance = numeric_limits<float>::infinity();
+    m_Type = type;
+    m_ray = ray;
+};
+
+void RaycastPickInfo::SetResult(PICK_TYPE type, const string& id, int first, int count, vec3 position, float distance)
 {
     if (m_pickItemType & ~type)
     {
@@ -18,6 +25,7 @@ void RaycastPickInfo::SetResult(PICK_TYPE type, const string& id, int first, int
     m_pickItemType = type;
     m_minDistance = distance; 
     m_identifier = id; 
+    m_position = position;
     m_first = first;
     m_count = count;
 };

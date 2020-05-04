@@ -21,7 +21,7 @@ void PrimitiveModel::GetFaceIndexList(vector<int>& index)
 
 void PrimitiveModel::RaycastPick(RaycastPickInfo& pickInfo)
 {
-	if (m_pPrimitive->Index().size() == 0)
+	if (m_pPrimitive->Index().size() != 0)
 	{
 		auto positions = m_pPrimitive->Position();
 		auto indexs = m_pPrimitive->Index();
@@ -31,7 +31,7 @@ void PrimitiveModel::RaycastPick(RaycastPickInfo& pickInfo)
 		if (pickInfo.Type() & PICK_TYPE_FACE)
 		{
 			GL_TRIANGLES_Iterator itr = GL_TRIANGLES_Iterator(
-				m_pPrimitive->GetDrawType(), positions.data(), positions.size());
+				m_pPrimitive->GetDrawType(), positions.data(), indexs.data(), indexs.size());
 
 			while (itr.HasNext())
 			{
@@ -40,9 +40,10 @@ void PrimitiveModel::RaycastPick(RaycastPickInfo& pickInfo)
 				bool result = MathHelper::IntersectionRayToTriangle(
 					pickInfo.GetRay().Origin(), pickInfo.GetRay().Direction(),
 					pos0, pos1, pos2, position, distance);
-				if (pickInfo.MinDistance() > distance)
+				if (result == true &&
+					pickInfo.MinDistance() > distance)
 				{
-					pickInfo.SetResult(PICK_TYPE_FACE, "Face", 3 * itr.Index(), 3, distance);
+					pickInfo.SetResult(PICK_TYPE_FACE, "Face", 3 * itr.Index(), 3, position, distance);
 				}
 
 				itr.Next();

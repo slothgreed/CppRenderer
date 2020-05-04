@@ -29,18 +29,20 @@ CommandResult PickCommand::Execute()
 
 	vec3 near = glm::unProject(
 		vec3(pArgs->screenPosition.x, pArgs->screenPosition.y, 0),
-		pArgs->m_pScene->GetCamera()->Projection(),
 		pArgs->m_pScene->GetCamera()->ViewMatrix(),
+		pArgs->m_pScene->GetCamera()->Projection(),
 		pArgs->m_pViewport->GetScreen()
 		);
 
 	vec3 far = glm::unProject(
 		vec3(pArgs->screenPosition.x, pArgs->screenPosition.y, 1),
-		pArgs->m_pScene->GetCamera()->Projection(),
 		pArgs->m_pScene->GetCamera()->ViewMatrix(),
+		pArgs->m_pScene->GetCamera()->Projection(),
 		pArgs->m_pViewport->GetScreen()
 	);
 
+	near = vec3(0.5, 0.5, -1);
+	far = vec3(0.5, 0.5, 1);
 	Logger::Output(LOG_LEVEL::DEBUG, "Near" + MathHelper::ToString(near)+ ", ");
 	Logger::Output(LOG_LEVEL::DEBUG, "Far" + MathHelper::ToString(far) + "\n");
 	Logger::Output(LOG_LEVEL::DEBUG, "Proj" + MathHelper::ToString(pArgs->m_pScene->GetCamera()->Projection()) + "\n");
@@ -76,6 +78,7 @@ CommandResult PickCommand::Execute()
 		auto pRayMaterial = make_shared<DefaultMaterial>();
 		pRayMaterial->SetFixColor(vec4(0, 0, 1, 1));
 		vector<vec3> positions;
+		//positions.push_back(pickInfo.GetSelectPosition());
 		positions.push_back(near);
 		positions.push_back(far);
 		pRayVertexBuffer->SetPosition(positions);

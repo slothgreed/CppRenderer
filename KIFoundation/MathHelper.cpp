@@ -99,10 +99,10 @@ bool MathHelper::IntersectionRayToTriangle(
 	float denominator = MathHelper::CramesDet(vector1, vector2, invDirection);
 
 	// ÉåÉCÇ∆ïΩçsÇ©Ç«Ç§Ç©
-	if (denominator <= 0) {
-		distance = numeric_limits<float>::infinity();
-		return false;
-	}
+	//if (denominator <= 0) {
+	//	distance = numeric_limits<float>::infinity();
+	//	return false;
+	//}
 
 	auto rayFormula = origin - direction;
 	float u = MathHelper::CramesDet(rayFormula, vector2, invDirection) / denominator;
