@@ -13,7 +13,7 @@ GrayScaleEffect::~GrayScaleEffect()
 void GrayScaleEffect::Initialize(int width, int height)
 {
 	m_pPlane = make_shared<RenderData>();
-	ModelGenerator::RenderPlane(m_pPlane.get());
+	ModelGenerator::Plane(m_pPlane.get(), VERTEX_LAYOUT_TEXCOORD);
 
 	auto pBuildInfo = make_shared<IShaderBuildInfo>(SHADER_TYPE::SHADER_TYPE_GRAYSCALE);
 	pBuildInfo->SetVertexCode(make_shared<PostProcessVertexCode>());

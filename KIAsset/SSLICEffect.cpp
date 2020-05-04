@@ -30,7 +30,7 @@ void SSLICEffect::Initialize(int width, int height)
 	m_pRenderTarget->Initialize(1, 256, 256);
 
 	m_pPlaneData = make_shared<RenderData>();
-	ModelGenerator::RenderPlane(m_pPlaneData.get());
+	ModelGenerator::Plane(m_pPlaneData.get(), VERTEX_LAYOUT_TEXCOORD);
 
 	TextureData blendTexture;
 	blendTexture.width = 256;

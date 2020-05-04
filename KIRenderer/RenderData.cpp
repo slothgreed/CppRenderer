@@ -26,6 +26,11 @@ void RenderData::AddRenderRegion(const string& descriptor, shared_ptr<IMaterial>
 	m_pRenderRegion[size].m_count = count;
 }
 
+void RenderData::ClearRenderRegion()
+{
+	m_pRenderRegion.clear();
+}
+
 void RenderData::SetGeometryData(GLuint primitiveType, shared_ptr<IVertexBuffer> pVertexBuffer, shared_ptr<IndexBuffer> pIndexBuffer)
 {
 	m_pPrimitiveType = primitiveType;

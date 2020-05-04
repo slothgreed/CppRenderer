@@ -129,7 +129,7 @@ void HalfEdgeModel::RaycastPick(RaycastPickInfo& pickInfo)
 			{
 				if (pickInfo.MinDistance() > distance)
 				{
-					pickInfo.SetResult(PICK_TYPE::PICK_TYPE_FACE, "HalfEdgeModel", face.get(), distance);
+					pickInfo.SetResult(PICK_TYPE::PICK_TYPE_FACE, "HalfEdgeModel", 3 * i, 3, distance);
 				}
 			}
 		}

@@ -14,7 +14,7 @@ PfxPlane::~PfxPlane()
 void PfxPlane::Initialize()
 {
 	m_pRenderData = make_shared<RenderData>();
-	ModelGenerator::RenderPlane(m_pRenderData.get());
+	ModelGenerator::Plane(m_pRenderData.get(), VERTEX_LAYOUT_TEXCOORD);
 	m_pRenderData->SetMaterial(m_pMaterial);
 }
 void PfxPlane::Draw()

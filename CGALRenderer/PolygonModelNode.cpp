@@ -134,8 +134,6 @@ void PolygonModelNode::SetRenderData()
 		m_pEdgeData = make_shared <RenderData>(GL_LINES, pEdgeBuffer);
 		m_pEdgeData->SetMaterial(pEdgeMaterial);
 
-		auto pSelectionMaterial = MaterialManager::Instance()->GetSystemMaterial(SYSTEM_MATERIAL::SYSTEM_MATERIAL_SELECTION);
-		m_pFaceData->AddRenderRegion("Selection", pSelectionMaterial, 3, 270);
 	}
 
 }
@@ -150,6 +148,24 @@ void PolygonModelNode::VisibleEdge(bool visibility)
 
 }
 
+void PolygonModelNode::AddPartSelect(TOPOLOGY_TYPE type, int first, int count)
+{
+	auto pSelectionMaterial = MaterialManager::Instance()->GetSystemMaterial(SYSTEM_MATERIAL::SYSTEM_MATERIAL_SELECTION);
+	if (type == TOPOLOGY_TYPE::TOPOLOGY_TYPE_FACE)
+	{
+		if (m_pFaceData->HasRenderRegion())
+		{
+			m_pFaceData->ClearRenderRegion();
+		}
+
+		m_pFaceData->AddRenderRegion("Selection", pSelectionMaterial, first, count);
+	}
+	else
+	{
+		assert(0);
+	}
+}
+
 void PolygonModelNode::Update(void* sender, IEventArgs* args)
 {
 	SetRenderData();
@@ -157,52 +173,5 @@ void PolygonModelNode::Update(void* sender, IEventArgs* args)
 	IModelNode::Update(sender, args);
 }
 
-void PolygonModelNode::CalculatePickID(int startIndex, int& nextStartIndex)
-{
-	int nodeStartIndex = startIndex;
-	if (m_pFaceData->GetIndexBuffer() != nullptr)
-	{
-		vector<vec3> pickId;
-		IGLPick::CalculateID(
-			m_pFaceData->GetPrimitiveType(),
-			m_pFaceData->GetVertexBuffer()->GetVertexSize(),
-			nodeStartIndex, nextStartIndex,
-			pickId);
-
-		BuildPickData(m_pFaceData->GetPrimitiveType(), m_pFaceData, pickId);
-
-		nodeStartIndex = nextStartIndex;
-	}
-
-	if (m_pEdgeData->GetIndexBuffer() != nullptr)
-	{
-		int pickIndex = startIndex;
-		vector<vec3> pickId;
-		IGLPick::CalculateID(
-			m_pEdgeData->GetPrimitiveType(),
-			m_pFaceData->GetVertexBuffer()->GetVertexSize(),
-			nodeStartIndex, nextStartIndex,
-			pickId);
-
-		BuildPickData(m_pEdgeData->GetPrimitiveType(), m_pEdgeData, pickId);
-
-		nodeStartIndex = nextStartIndex;
-	}
-}
-
-void PolygonModelNode::PickDraw()
-{
-	if (m_pFaceData != NULL)
-	{
-		auto pRenderData = GetPickRenderData(m_pFaceData->GetPrimitiveType());
-		pRenderData->Draw();
-	}
-
-	if (m_pEdgeData != NULL)
-	{
-		//auto pRenderData = GetPickRenderData(m_pEdgeData->GetPrimitiveType());
-		//pRenderData->Draw();
-	}
-}
 
 }

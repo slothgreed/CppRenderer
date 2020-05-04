@@ -29,6 +29,8 @@ public:
 	shared_ptr<IndexBuffer> GetIndexBuffer() { return m_pIndexBuffer; }
 	shared_ptr<IMaterial> GetMaterial() { return m_pMaterial; }
 	void AddRenderRegion(const string& descriptor, shared_ptr<IMaterial> pMaterial, int first, int count);
+	bool HasRenderRegion() { return m_pRenderRegion.size() != 0; };
+	void ClearRenderRegion();
 	void Draw();
 	void DrawInternal(shared_ptr<IMaterial> pMaterial, int first, int count);
 	void DrawUseRegion();

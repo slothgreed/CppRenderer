@@ -11,14 +11,13 @@ public:
 	virtual void ShowProperty() override;
 	virtual void Update(void* sender, IEventArgs* args) override;
 	IPolygonModel* GetModel();
-	virtual void CalculatePickID(int startIndex, int& nextStartIndex) override;
-	virtual void PickDraw() override;
 
 
 	void VisibleBDB(bool visibility);
 	void VisibleNormal(bool visibility);
 	void VisibleFace(bool visibility);
 	void VisibleEdge(bool visibility);
+	void AddPartSelect(TOPOLOGY_TYPE type, int first, int count);
 	shared_ptr<IVertexBuffer> GetVertexBuffer();
 protected:
 	string m_name;

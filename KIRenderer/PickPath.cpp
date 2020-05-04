@@ -36,25 +36,25 @@ void PickPath::Resize(int width, int height)
 
 void PickPath::ResetPickID(const vector<shared_ptr<IModelNode>> modelNodes)
 {
-	int startIndex = 0;
-	int nextStartIndex = 0;
-	for (int i = 0; i < modelNodes.size(); i++)
-	{
-		modelNodes[i]->CalculatePickID(startIndex, nextStartIndex);
-		startIndex = nextStartIndex;
-	}
+	//int startIndex = 0;
+	//int nextStartIndex = 0;
+	//for (int i = 0; i < modelNodes.size(); i++)
+	//{
+	//	modelNodes[i]->CalculatePickID(startIndex, nextStartIndex);
+	//	startIndex = nextStartIndex;
+	//}
 }
 
 void PickPath::Draw(const vector<shared_ptr<IModelNode>>& modelNodes)
 {
 	//m_pRenderTarget->Begin();
 	//m_pRenderTarget->Clear();
-	m_pPickShader->Use();
-	for (int i = 0; i < modelNodes.size(); i++)
-	{
-		modelNodes[i]->PickDraw();
-	}
-	m_pPickShader->UnUse();
+	//m_pPickShader->Use();
+	//for (int i = 0; i < modelNodes.size(); i++)
+	//{
+	//	modelNodes[i]->PickDraw();
+	//}
+	//m_pPickShader->UnUse();
 	//m_pRenderTarget->End();
 }
 }

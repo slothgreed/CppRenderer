@@ -4,7 +4,6 @@ namespace KI
 
 BezierLineNode::BezierLineNode(shared_ptr<RenderData> pRenderData)
 {
-
 	auto pBuildInfo = make_shared<IShaderBuildInfo>(SHADER_TYPE_BEZIERLINE);
 	pBuildInfo->SetVertexCode(make_shared<DefaultVertexCode>());
 	pBuildInfo->SetTESCode(make_shared<BezierLineTESCode>());

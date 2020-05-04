@@ -10,6 +10,7 @@ namespace Topology
 
 namespace Renderer
 {
+
 class DLL_EXPORT RaycastPickInfo
 {
 public:
@@ -19,16 +20,18 @@ public:
 	PICK_TYPE Type() { return m_Type; }
 	const Topology::Ray& GetRay() { return *m_ray; };
 	float MinDistance() { return m_minDistance; };
-	void SetResult(PICK_TYPE type, const string& id, void* obj, float distance);
+	void SetResult(PICK_TYPE type, const string& id, int first, int count, float distance);
 	bool Success();
 
+	void GetSelectRegion(int& first, int& count) { first = m_first; count = m_count; }
 private:
 	PICK_TYPE m_Type;
 
 	PICK_TYPE m_pickItemType;
 	Topology::Ray* m_ray;
 	float m_minDistance;
-	void* m_object;
+	int m_first;
+	int m_count;
 	string m_identifier;
 };
 

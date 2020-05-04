@@ -6,19 +6,18 @@ namespace Renderer
 {
 class IModelProperty;
 
-class DLL_EXPORT IModelNode : public IObserver, public IGLPick
+class DLL_EXPORT IModelNode : public IObserver
 {
 public:
 	IModelNode() {};
 	IModelNode(shared_ptr<IModel> model);
 	virtual ~IModelNode();
 
-	virtual void ShowProperty() {};
 	virtual void Draw() = 0;
-	virtual void PickDraw() {};
+	virtual void ShowProperty() {};
+	virtual void AddPartSelect(TOPOLOGY_TYPE type, int first, int count) {};
 	virtual void Update(void* sender, IEventArgs* args);
 	shared_ptr<IModel> GetModel() { return m_pModel; }
-	virtual void CalculatePickID(int startIndex, int& nextStartIndex) override {};
 
 protected:
 	void AddProperty(shared_ptr<IModelProperty> prop);

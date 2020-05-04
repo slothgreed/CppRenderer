@@ -22,30 +22,32 @@ CommandResult PickCommand::CanExecute()
 	return CommandResult::Success;
 }
 
+int g_first = true;
 CommandResult PickCommand::Execute()
 {
 	auto pArgs = static_pointer_cast<PickCommandArgs>(m_pArgs);
 
 	vec3 near = glm::unProject(
 		vec3(pArgs->screenPosition.x, pArgs->screenPosition.y, 0),
-		pArgs->m_pCamera->ViewMatrix(),
-		pArgs->m_pCamera->Projection(),
+		pArgs->m_pScene->GetCamera()->Projection(),
+		pArgs->m_pScene->GetCamera()->ViewMatrix(),
 		pArgs->m_pViewport->GetScreen()
 		);
 
 	vec3 far = glm::unProject(
 		vec3(pArgs->screenPosition.x, pArgs->screenPosition.y, 1),
-		pArgs->m_pCamera->ViewMatrix(),
-		pArgs->m_pCamera->Projection(),
+		pArgs->m_pScene->GetCamera()->Projection(),
+		pArgs->m_pScene->GetCamera()->ViewMatrix(),
 		pArgs->m_pViewport->GetScreen()
 	);
 
 	Ray ray(near, far - near);
 	RaycastPickInfo pickInfo(PICK_TYPE::PICK_TYPE_FACE, &ray);
 
-	for (int i = 0; i < pArgs->m_pTarget.size(); i++)
+	auto pModelNodes = pArgs->m_pScene->ModelNodes();
+	for (int i = 0; i < pModelNodes.size(); i++)
 	{
-		auto pModel = pArgs->m_pTarget[i]->GetModel();
+		auto pModel = pModelNodes[i]->GetModel();
 		if (pModel == nullptr)
 		{
 			continue;
@@ -55,7 +57,32 @@ CommandResult PickCommand::Execute()
 		{
 			auto pPolygonModel = static_pointer_cast<IPolygonModel>(pModel);
 			pPolygonModel->RaycastPick(pickInfo);
+
+			int first;
+			int count;
+			pickInfo.GetSelectRegion(first, count);
+			if (pickInfo.Success())
+			{
+				pModelNodes[i]->AddPartSelect(TOPOLOGY_TYPE_FACE, first, count);
+			}
 		}
+	}
+
+	if (g_first)
+	{
+		auto pRayData = make_shared<RenderData>();
+		auto pRayVertexBuffer = make_shared<DefaultVertexBuffer>();
+		auto pRayMaterial = make_shared<DefaultMaterial>();
+		pRayMaterial->SetFixColor(vec4(0, 0, 1, 1));
+		vector<vec3> positions;
+		positions.push_back(near);
+		positions.push_back(far);
+		pRayVertexBuffer->SetPosition(positions);
+		pRayData->SetGeometryData(GL_LINES,pRayVertexBuffer);
+		pRayData->SetMaterial(pRayMaterial);
+		auto pPrimitiveNode = make_shared<PrimitiveNode>(pRayData);
+		pArgs->m_pScene->AddModelNode(pPrimitiveNode);
+		g_first = false;
 	}
 
 	if (pickInfo.Success())

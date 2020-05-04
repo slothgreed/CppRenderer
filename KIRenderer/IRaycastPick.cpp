@@ -3,7 +3,7 @@ namespace KI
 namespace Renderer
 {
 
-void RaycastPickInfo::SetResult(PICK_TYPE type, const string& id, void* obj, float distance)
+void RaycastPickInfo::SetResult(PICK_TYPE type, const string& id, int first, int count, float distance)
 {
     if (m_pickItemType & ~type)
     {
@@ -18,12 +18,13 @@ void RaycastPickInfo::SetResult(PICK_TYPE type, const string& id, void* obj, flo
     m_pickItemType = type;
     m_minDistance = distance; 
     m_identifier = id; 
-    m_object = obj; 
+    m_first = first;
+    m_count = count;
 };
 
 bool RaycastPickInfo::Success()
 {
-    if (m_object != NULL)
+    if (m_count != 0)
     {
         return true;
     }

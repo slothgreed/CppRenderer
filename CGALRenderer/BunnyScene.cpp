@@ -116,8 +116,7 @@ void BunnyScene::ProcessMouseEvent(const MouseInput& input)
 			make_shared<PickCommand>(
 				make_shared<PickCommandArgs>(
 					GetViewport(),
-					m_pScene->GetCamera(),
-					m_pScene->ModelNodes(),
+					m_pScene,
 					input.Position()))
 		);
 	}

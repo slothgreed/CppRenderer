@@ -14,7 +14,7 @@ enum MODEL_TYPE
 	MODEL_TYPE_MOVE_MANIPULATOR
 };
 
-class DLL_EXPORT IModel : public ISubject
+class DLL_EXPORT IModel : public ISubject, public IRaycastPick
 {
 public:
 	IModel() { };

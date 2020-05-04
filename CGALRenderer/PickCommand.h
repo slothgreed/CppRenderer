@@ -19,13 +19,11 @@ class PickCommandArgs : public ICommandArgs
 public:
 	PickCommandArgs(
 		shared_ptr<Viewport> pViewport,
-		shared_ptr<ICamera> pCamera,
-		const vector<shared_ptr<IModelNode>>& pTarget,
+		shared_ptr<Scene> pScene,
 		vec2 position)
 	{ 
 		m_pViewport = pViewport;
-		m_pCamera = pCamera;
-		m_pTarget = pTarget;
+		m_pScene = pScene;
 		screenPosition = position;
 	};
 	~PickCommandArgs() {};
@@ -34,8 +32,7 @@ public:
 
 private:
 	shared_ptr<Viewport> m_pViewport;
-	shared_ptr<ICamera> m_pCamera;
-	vector<shared_ptr<IModelNode>> m_pTarget;
+	shared_ptr<Scene> m_pScene;
 	vec2 screenPosition;
 };
 

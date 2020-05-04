@@ -42,7 +42,7 @@ void Workspace::Initialize(Project* m_pProject)
 	m_pScene->AddModelNode(axisNode);
 
 	auto model = make_shared<RenderData>();
-	//ModelGenerator::RenderPlane(plane.get());
+	//ModelGenerator::Plane(plane.get());
 	SpecialUtility::LoadVectorFieldSphere(model.get());
 	auto pMaterial = make_shared<DefaultMaterial>();
 	model->SetMaterial(pMaterial);
