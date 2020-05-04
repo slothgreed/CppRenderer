@@ -52,6 +52,7 @@ void Cone::Build(float radius, float height, int partition)
 		m_index.push_back(index1 + IndexOffset());
 	}
 
+	m_drawType = GL_TRIANGLES;
 }
 }
 }

@@ -12,14 +12,17 @@ public:
 	~IPrimitive() {};
 
 public:
+	GLuint GetDrawType() { return m_drawType; };
 	virtual vector<vec3>& Position() { return m_position; };
 	virtual vector<vec3>& Normal() { return m_normal; };
 	virtual vector<vec2>& Texcoord() { return m_texcoord; };
 	virtual vector<int>& Index() { return m_index; };
 	void Multi(const mat4x4& matrix);
-	int IndexOffset() { return m_indexOffset; };
 	void SetIndexOffset(int indexOffset) { m_indexOffset = indexOffset; };
 protected:
+	int IndexOffset() { return m_indexOffset; };
+
+	GLuint m_drawType;
 	vector<vec3> m_position;
 	vector<vec3> m_normal;
 	vector<vec2> m_texcoord;

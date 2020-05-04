@@ -44,6 +44,8 @@ void Icosahedron::Build(const IcosahedronArgs& args)
 		0, 8, 4, 0, 6, 9, 1, 4, 10, 1, 11, 6,
 		2, 5, 8, 2, 9, 7, 3, 10, 5, 3, 7, 11 };
 	m_index.insert(m_index.begin(), std::begin(indexArray), std::end(indexArray));
+
+	m_drawType = GL_TRIANGLES;
 }
 
 }

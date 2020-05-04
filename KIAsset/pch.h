@@ -40,6 +40,7 @@ using namespace KI::Topology;
 #include "CGALLinearCellComplex.h"
 #include "CGALGeneralizedMaps.h"
 #include "HalfEdgeModel.h"
+#include "PrimitiveModel.h"
 
 #include "MaterialManager.h"
 #include "DefaultMaterial.h"

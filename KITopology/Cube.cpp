@@ -34,6 +34,8 @@ void Cube::Build(const CubeArgs& args)
 	AddTrianlgeIndexFromRectangle(3, 1 + IndexOffset(), 2 + IndexOffset(), 6 + IndexOffset(), 5 + IndexOffset());
 	AddTrianlgeIndexFromRectangle(4, 2 + IndexOffset(), 3 + IndexOffset(), 7 + IndexOffset(), 6 + IndexOffset());
 	AddTrianlgeIndexFromRectangle(5, 1 + IndexOffset(), 5 + IndexOffset(), 4 + IndexOffset(), 0 + IndexOffset());
+	
+	m_drawType = GL_TRIANGLES;
 }
 
 void Cube::AddTrianlgeIndexFromRectangle(int index, int vertex0, int vertex1, int vertex2, int vertex3)

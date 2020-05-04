@@ -116,7 +116,6 @@ void HalfEdgeModel::GetBDB(BDB& bdb)
 void HalfEdgeModel::RaycastPick(RaycastPickInfo& pickInfo)
 {
 	auto halfFaceList = m_HalfEdgeDS->FaceList();
-	float minDistance = numeric_limits<float>::infinity();
 	vec3 position;
 	
 	if (pickInfo.Type() & PICK_TYPE::PICK_TYPE_FACE)

@@ -36,7 +36,7 @@ public:
 	virtual string ToString();
 	void CalcElement();
 
-	bool Intersection(const Ray& ray, vec3& result, float& distance);
+	bool Intersection(const Ray& ray, vec3& position, float& distance);
 	vec3 Centroid() { return m_centroid; }
 	vec3 Normal() { return m_normal; }
 	float Area() { return m_area; }

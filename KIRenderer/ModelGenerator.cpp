@@ -60,10 +60,10 @@ void ModelGenerator::Plane(RenderData* pRenderData, VERTEX_LAYOUT layout)
 
 	vector<vec3> position;
 	position.reserve(4);
-	position.push_back(vec3(-5, -5, 0));
-	position.push_back(vec3(5, -5, 0));
-	position.push_back(vec3(-5, 5, 0));
-	position.push_back(vec3(5, 5, 0));
+	position.push_back(vec3(-1, -1, 0));
+	position.push_back(vec3(1, -1, 0));
+	position.push_back(vec3(-1, 1, 0));
+	position.push_back(vec3(1, 1, 0));
 	pVertexBuffer->SetPosition(position);
 
 	vector<vec2> texcoord;

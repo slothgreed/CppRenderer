@@ -17,6 +17,11 @@ public:
 	static float CalcRadian(const vec3& v1, const vec3& v2);
 	static float CramesDet(vec3 a, vec3 b, vec3 c);
 	static std::string ToString(const vec3& value);
+	static bool IntersectionRayToTriangle(
+		const vec3& origin, const vec3& direction,
+		const vec3& p0, const vec3& p1, const vec3& p2,
+		vec3& position, float& distance);
+
 private:
 
 };

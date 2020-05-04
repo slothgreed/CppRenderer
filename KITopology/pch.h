@@ -32,6 +32,7 @@ using namespace KI::Foundation;
 #include "Sphere.h"
 #include "Cone.h"
 #include "Cube.h"
+#include "Quad.h"
 #include "Icosahedron.h"
 #include "HalfEdge.h"
 #include "HalfEdgeFace.h"
