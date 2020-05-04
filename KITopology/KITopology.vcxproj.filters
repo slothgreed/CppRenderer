@@ -75,6 +75,9 @@
     <ClInclude Include="Icosahedron.h">
       <Filter>ヘッダー ファイル\Primitive</Filter>
     </ClInclude>
+    <ClInclude Include="Quad.h">
+      <Filter>ヘッダー ファイル\Primitive</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -108,6 +111,9 @@
       <Filter>ソース ファイル\Primitive</Filter>
     </ClCompile>
     <ClCompile Include="Icosahedron.cpp">
+      <Filter>ソース ファイル\Primitive</Filter>
+    </ClCompile>
+    <ClCompile Include="Quad.cpp">
       <Filter>ソース ファイル\Primitive</Filter>
     </ClCompile>
   </ItemGroup>

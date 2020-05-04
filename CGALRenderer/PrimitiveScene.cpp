@@ -70,12 +70,18 @@ void PrimitiveScene::Initialize(Project* m_pProject)
 		pMaterial->SetFixColor(vec4(1, 1, 0, 1));
 		pRenderData->SetMaterial(pMaterial);
 		ModelGenerator::Plane(pRenderData.get(),VERTEX_LAYOUT_COLOR);
-		auto pPlaneNode = make_shared<PrimitiveNode>(pRenderData);
+		auto pPlaneNode = make_shared<PrimitiveNode>(
+			make_shared<PrimitiveModel>(
+				make_shared<Quad>(
+					QuadArgs(vec2(-1), vec2(1))
+					)
+				)
+			);
 		m_pScene->AddModelNode(pPlaneNode);
 	}
 
-	BDB bdb(vec3(-10), vec3(10));
-	pCamera->FitToBDB(bdb);
+	//BDB bdb(vec3(0), vec3(2));
+	//pCamera->FitToBDB(bdb);
 
 	m_pBackTarget = make_shared<SymbolicRenderTarget>(GL_BACK);
 
@@ -99,6 +105,16 @@ void PrimitiveScene::ProcessMouseEvent(const MouseInput& input)
 	else if (input.Event() == MOUSE_EVENT_MOVE)
 	{
 		m_pController[m_CurrentController]->Move(*m_pMouse.get());
+	}
+	else if (input.Event() == MOUSE_EVENT_DOWN)
+	{
+		m_pCommandManager->Execute(
+			make_shared<PickCommand>(
+				make_shared<PickCommandArgs>(
+					GetViewport(),
+					m_pScene,
+					input.Position()))
+		);
 	}
 }
 }

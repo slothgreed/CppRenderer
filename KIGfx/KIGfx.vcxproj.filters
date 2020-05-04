@@ -31,6 +31,12 @@
     <Filter Include="ソース ファイル\Interface">
       <UniqueIdentifier>{2f5b0805-d1c0-4038-95bf-f088cb2396ef}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Utility">
+      <UniqueIdentifier>{49b0f96c-bbad-4acc-b423-acd499292e02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Utility">
+      <UniqueIdentifier>{eeed6b01-ee34-4363-8705-3923188239d6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -120,6 +126,9 @@
     <ClInclude Include="IAttribute.h">
       <Filter>ヘッダー ファイル\Interface</Filter>
     </ClInclude>
+    <ClInclude Include="GLIterator.h">
+      <Filter>ヘッダー ファイル\Utility</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -187,6 +196,9 @@
     </ClCompile>
     <ClCompile Include="IUniform.cpp">
       <Filter>ソース ファイル\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="GLIterator.cpp">
+      <Filter>ソース ファイル\Utility</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

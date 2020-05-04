@@ -6,6 +6,8 @@ class PrimitiveNode : public IModelNode
 {
 public:
 	PrimitiveNode(shared_ptr<RenderData> pRenderData);
+	PrimitiveNode(shared_ptr<PrimitiveModel> pPrimitive);
+
 	~PrimitiveNode();
 
 	virtual void Draw();
@@ -13,8 +15,10 @@ public:
 	shared_ptr<IMaterial> GetMaterial() { return m_pMaterial; }
 	shared_ptr<DefaultVertexBuffer> GetVertexBuffer();
 	IndexBuffer* GetIndexBuffer();
+	void SetRenderData();
 	void SetState(shared_ptr<IGLState> pState) { m_pState = pState; };
-		
+	virtual void AddPartSelect(TOPOLOGY_TYPE type, int first, int count);
+
 private:
 	string m_name;
 	shared_ptr<RenderData> m_pRenderData;

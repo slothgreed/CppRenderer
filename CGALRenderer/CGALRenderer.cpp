@@ -12,7 +12,6 @@ void CursorPosCallBack(GLFWwindow* window, double xpos, double ypos)
 {
 	MouseInput input;
 	input.SetPosition((float)xpos, (float)ypos);
-
 	input.SetEvent(MOUSE_EVENT::MOUSE_EVENT_MOVE);
 
 	if (GLFW_PRESS == glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT))

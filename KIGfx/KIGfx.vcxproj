@@ -172,6 +172,7 @@
     <ClInclude Include="ArrayBuffer.h" />
     <ClInclude Include="FrameBuffer.h" />
     <ClInclude Include="GfxTypes.h" />
+    <ClInclude Include="GLIterator.h" />
     <ClInclude Include="IAttribute.h" />
     <ClInclude Include="IGLObject.h" />
     <ClInclude Include="IGLState.h" />
@@ -202,6 +203,7 @@
   <ItemGroup>
     <ClCompile Include="ArrayBuffer.cpp" />
     <ClCompile Include="FrameBuffer.cpp" />
+    <ClCompile Include="GLIterator.cpp" />
     <ClCompile Include="GLObject.cpp" />
     <ClCompile Include="IndexBuffer.cpp" />
     <ClCompile Include="IRenderTarget.cpp" />

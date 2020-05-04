@@ -41,6 +41,11 @@ CommandResult PickCommand::Execute()
 		pArgs->m_pViewport->GetScreen()
 	);
 
+	Logger::Output(LOG_LEVEL::DEBUG, "Near" + MathHelper::ToString(near)+ ", ");
+	Logger::Output(LOG_LEVEL::DEBUG, "Far" + MathHelper::ToString(far) + "\n");
+	Logger::Output(LOG_LEVEL::DEBUG, "Proj" + MathHelper::ToString(pArgs->m_pScene->GetCamera()->Projection()) + "\n");
+	Logger::Output(LOG_LEVEL::DEBUG, "View" + MathHelper::ToString(pArgs->m_pScene->GetCamera()->ViewMatrix()) + "\n");
+
 	Ray ray(near, far - near);
 	RaycastPickInfo pickInfo(PICK_TYPE::PICK_TYPE_FACE, &ray);
 
@@ -53,22 +58,18 @@ CommandResult PickCommand::Execute()
 			continue;
 		}
 
-		if (IPolygonModel::IsPolygonModel(pModel->Type()))
-		{
-			auto pPolygonModel = static_pointer_cast<IPolygonModel>(pModel);
-			pPolygonModel->RaycastPick(pickInfo);
+		pModel->RaycastPick(pickInfo);
 
-			int first;
-			int count;
-			pickInfo.GetSelectRegion(first, count);
-			if (pickInfo.Success())
-			{
-				pModelNodes[i]->AddPartSelect(TOPOLOGY_TYPE_FACE, first, count);
-			}
+		int first;
+		int count;
+		pickInfo.GetSelectRegion(first, count);
+		if (pickInfo.Success())
+		{
+			pModelNodes[i]->AddPartSelect(TOPOLOGY_TYPE_FACE, first, count);
 		}
 	}
 
-	if (g_first)
+	//if (g_first)
 	{
 		auto pRayData = make_shared<RenderData>();
 		auto pRayVertexBuffer = make_shared<DefaultVertexBuffer>();

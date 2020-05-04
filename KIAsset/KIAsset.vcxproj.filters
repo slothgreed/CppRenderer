@@ -123,6 +123,9 @@
     <ClInclude Include="MaterialManager.h">
       <Filter>ヘッダー ファイル\Material</Filter>
     </ClInclude>
+    <ClInclude Include="PrimitiveModel.h">
+      <Filter>ヘッダー ファイル\Model\PolygonModel</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -175,6 +178,9 @@
     </ClCompile>
     <ClCompile Include="MaterialManager.cpp">
       <Filter>ソース ファイル\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="PrimitiveModel.cpp">
+      <Filter>ソース ファイル\Model\PolygonModel</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

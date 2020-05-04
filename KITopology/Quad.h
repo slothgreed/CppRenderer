@@ -19,8 +19,9 @@ class DLL_EXPORT Quad : public IPrimitive
 {
 	
 public:
-	Quad();
-	~Quad();
+	Quad() {};
+	~Quad() {};
+	Quad(const QuadArgs& args);
 
 	void Build(const QuadArgs& args);
 private:

@@ -183,6 +183,7 @@
     <ClInclude Include="MoveManipulator.h" />
     <ClInclude Include="OutputMaterial.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="PrimitiveModel.h" />
     <ClInclude Include="RotateManipulator.h" />
     <ClInclude Include="ScaleManipulator.h" />
     <ClInclude Include="SSLICEffect.h" />
@@ -203,6 +204,7 @@
     <ClCompile Include="ModelAnimation.cpp" />
     <ClCompile Include="MoveManipulator.cpp" />
     <ClCompile Include="OutputMaterial.cpp" />
+    <ClCompile Include="PrimitiveModel.cpp" />
     <ClCompile Include="RotateManipulator.cpp" />
     <ClCompile Include="ScaleManipulator.cpp" />
     <ClCompile Include="SSLICEffect.cpp" />

@@ -13,8 +13,8 @@ public:
 	bool HasNext();
 	void Current(vec3& pos0, vec3& pos1, vec3& pos2);
 	void Next();
-
-	GLuint sourceType;
+	int Index() { return m_index; }
+	GLuint m_sourceType;
 	vec3* m_position;
 	int m_index;
 	int m_size;

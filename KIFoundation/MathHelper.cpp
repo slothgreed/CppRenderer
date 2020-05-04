@@ -62,7 +62,7 @@ float MathHelper::CramesDet(vec3 a, vec3 b, vec3 c)
 		- (a.z * b.y * c.x));
 }
 
-std::string MathHelper::ToString(const vec3& value)
+string MathHelper::ToString(const vec3& value)
 {
 	// (x, y, z)
 	string str;
@@ -74,6 +74,18 @@ std::string MathHelper::ToString(const vec3& value)
 	return str;
 }
 
+string MathHelper::ToString(const mat4x4& value)
+{
+	// (,,)
+	string str;
+	str += "(";
+	str += to_string(value[0][0]) + ", " + to_string(value[0][1]) + ", " + to_string(value[0][2]) + ", " + to_string(value[0][3]) + "\n";
+	str += to_string(value[1][0]) + ", " + to_string(value[1][1]) + ", " + to_string(value[1][2]) + ", " + to_string(value[1][3]) + "\n";
+	str += to_string(value[2][0]) + ", " + to_string(value[2][1]) + ", " + to_string(value[2][2]) + ", " + to_string(value[2][3]) + "\n";
+	str += to_string(value[3][0]) + ", " + to_string(value[3][1]) + ", " + to_string(value[3][2]) + ", " + to_string(value[3][3]) + ")";
+
+	return str;
+}
 // refer : https://shikousakugo.wordpress.com/2012/06/27/ray-intersection-2/
 // Tomas Moller‚ÌŒğ·”»’è,@ƒNƒ‰ƒƒ‹‚ÌŒö®—˜—p
 bool MathHelper::IntersectionRayToTriangle(
@@ -112,6 +124,8 @@ bool MathHelper::IntersectionRayToTriangle(
 			return true;
 		}
 	}
+
+	return false;
 }
 }
 }

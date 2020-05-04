@@ -11,6 +11,13 @@ PrimitiveNode::PrimitiveNode(shared_ptr<RenderData> pRenderData)
 	}
 }
 
+PrimitiveNode::PrimitiveNode(shared_ptr<PrimitiveModel> pPrimitive)
+	:IModelNode(pPrimitive)
+{
+	m_pMaterial = make_shared<DefaultMaterial>();
+	SetRenderData();
+}
+
 PrimitiveNode::~PrimitiveNode()
 {
 }
@@ -57,9 +64,63 @@ shared_ptr<DefaultVertexBuffer> PrimitiveNode::GetVertexBuffer()
 		return nullptr;
 	}
 
-
-
 	return static_pointer_cast<DefaultVertexBuffer>(m_pRenderData->GetVertexBuffer());
+}
+
+void PrimitiveNode::SetRenderData()
+{
+	m_pRenderData = make_shared<RenderData>();
+	auto pPrimitive = static_pointer_cast<PrimitiveModel>(m_pModel);
+
+	auto pVertexBuffer = make_shared<DefaultVertexBuffer>();
+	vector<vec3> position;
+	vector<vec3> normal;
+	vector<vec2> texcoord;
+
+	pPrimitive->GetFaceList(position, normal, texcoord);
+	pVertexBuffer->SetPosition(position);
+	if (normal.size() != 0)
+	{
+		pVertexBuffer->SetNormal(normal);
+	}
+
+	if (texcoord.size() != 0)
+	{
+		pVertexBuffer->SetTexcoord(texcoord);
+	}
+
+	vector<int> index;
+	pPrimitive->GetFaceIndexList(index);
+	shared_ptr<IndexBuffer> pIndexBuffer = nullptr;
+	if (index.size() != 0)
+	{
+		pIndexBuffer = make_shared<IndexBuffer>();
+		pIndexBuffer->Set(index);
+	}
+
+	m_pRenderData->SetGeometryData(
+		pPrimitive->GetPrimitive()->GetDrawType(),
+		pVertexBuffer, pIndexBuffer);
+	m_pRenderData->SetMaterial(m_pMaterial);
+
+}
+
+void PrimitiveNode::AddPartSelect(TOPOLOGY_TYPE type, int first, int count)
+{
+	auto pSelectionMaterial = MaterialManager::Instance()->GetSystemMaterial(SYSTEM_MATERIAL::SYSTEM_MATERIAL_SELECTION);
+	if (type == TOPOLOGY_TYPE::TOPOLOGY_TYPE_FACE)
+	{
+		if (m_pRenderData->HasRenderRegion())
+		{
+			m_pRenderData->ClearRenderRegion();
+		}
+
+		m_pRenderData->AddRenderRegion("Selection", pSelectionMaterial, first, count);
+	}
+	else
+	{
+		assert(0);
+	}
 }
 
 void PrimitiveNode::Update(void* sender, IEventArgs* args)

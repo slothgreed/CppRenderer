@@ -18,6 +18,7 @@ public:
 	shared_ptr<IPrimitive> GetPrimitive() { return m_pPrimitive; };
 
 	void RaycastPick(RaycastPickInfo& result);
+	virtual void GetBDB(BDB& bdb) {};
 
 private:
 	shared_ptr<IPrimitive> m_pPrimitive;
