@@ -23,7 +23,7 @@ public:
 	void SetResult(PICK_TYPE type, const string& id, int first, int count, vec3 position, float distance);
 	bool Success();
 
-	const vec3& GetSelectPosition() { return m_position; }
+	const vec3& GetSelectPosition() const { return m_position; }
 	void GetSelectRegion(int& first, int& count) { first = m_first; count = m_count; }
 private:
 	PICK_TYPE m_Type;

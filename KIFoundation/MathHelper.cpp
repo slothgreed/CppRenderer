@@ -62,6 +62,28 @@ float MathHelper::CramesDet(vec3 a, vec3 b, vec3 c)
 		- (a.z * b.y * c.x));
 }
 
+string MathHelper::ToString(const vec2& value)
+{
+	// (x, y)
+	string str;
+	str += "(";
+	str += to_string(value.x) + ", ";
+	str += to_string(value.y) + ") ";
+
+	return str;
+}
+string MathHelper::ToString(const ivec4& value)
+{
+	// (x, y, z, w)
+	string str;
+	str += "(";
+	str += to_string(value.x) + ", ";
+	str += to_string(value.y) + ", ";
+	str += to_string(value.z) + ",";
+	str += to_string(value.w) + ")";
+
+	return str;
+}
 string MathHelper::ToString(const vec3& value)
 {
 	// (x, y, z)
@@ -104,7 +126,7 @@ bool MathHelper::IntersectionRayToTriangle(
 	//	return false;
 	//}
 
-	auto rayFormula = origin - direction;
+	auto rayFormula = origin - p0;
 	float u = MathHelper::CramesDet(rayFormula, vector2, invDirection) / denominator;
 	if (u >= 0 && u <= 1)
 	{

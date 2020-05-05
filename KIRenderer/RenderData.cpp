@@ -18,6 +18,11 @@ void RenderData::SetMaterial(shared_ptr<IMaterial> pMaterial)
 
 void RenderData::AddRenderRegion(const string& descriptor, shared_ptr<IMaterial> pMaterial, int first, int count)
 {
+	if (GetPrimitiveType() != GL_TRIANGLES)
+	{
+		assert(0);
+		return;
+	}
 	m_pRenderRegion.push_back(RenderRegion());
 	int size = m_pRenderRegion.size() - 1;
 	m_pRenderRegion[size].m_descriptor = descriptor;

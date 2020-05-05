@@ -73,10 +73,7 @@ void PrimitiveScene::Initialize(Project* m_pProject)
 		auto pPlaneNode = make_shared<PrimitiveNode>(
 			make_shared<PrimitiveModel>(
 				make_shared<Quad>(
-					QuadArgs(vec2(-1), vec2(1))
-					)
-				)
-			);
+					QuadArgs(vec2(-1), vec2(1)))));
 		m_pScene->AddModelNode(pPlaneNode);
 	}
 
@@ -108,13 +105,15 @@ void PrimitiveScene::ProcessMouseEvent(const MouseInput& input)
 	}
 	else if (input.Event() == MOUSE_EVENT_DOWN)
 	{
-		m_pCommandManager->Execute(
-			make_shared<PickCommand>(
-				make_shared<PickCommandArgs>(
-					GetViewport(),
-					m_pScene,
-					input.Position()))
-		);
+		if (input.Press(MOUSE_BUTTON_LEFT))
+		{
+			m_pCommandManager->Execute(
+				make_shared<PickCommand>(
+					make_shared<PickCommandArgs>(
+						GetViewport(),
+						m_pScene,
+						input.Position())));
+		}
 	}
 }
 }
