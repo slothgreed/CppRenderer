@@ -9,7 +9,6 @@ class DLL_EXPORT MoveManipulator : public IManipulatorModel
 {
 public:
 
-	virtual MODEL_TYPE Type() { return MODEL_TYPE::MODEL_TYPE_MOVE_MANIPULATOR; };
 	class ShapeData
 	{
 	public:
@@ -21,8 +20,8 @@ public:
 	~MoveManipulator();
 
 	virtual void Build() override;
-	void GetFaceList(vector<vec3>& faceList, vector<int>& faceIndex, MANIPULATOR_HANDLE handle);
-	void GetEdgeList(vector<vec3>& edgeList, vector<int>& edgeIndex, MANIPULATOR_HANDLE handle);
+	virtual void GetFaceList(vector<vec3>& faceList, vector<int>& faceIndex, MANIPULATOR_HANDLE handle) override;
+	virtual void GetEdgeList(vector<vec3>& edgeList, vector<int>& edgeIndex, MANIPULATOR_HANDLE handle) override;
 private:
 	ShapeData xDirection;
 	ShapeData yDirection;

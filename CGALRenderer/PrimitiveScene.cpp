@@ -26,6 +26,7 @@ void PrimitiveScene::Initialize(Project* m_pProject)
 	shared_ptr<IControllerArgs> args = make_shared<CameraControllerArgs>(pCamera);
 	m_pController[CONTROLER_TYPE::CAMERA_CONTROLER]->SetArgs(args);
 
+	// sphere rendering
 	{
 		auto sphereData = make_shared<RenderData>();
 		ModelGenerator::Sphere(10, 36, 36, sphereData.get());
@@ -46,6 +47,7 @@ void PrimitiveScene::Initialize(Project* m_pProject)
 		//m_pScene->AddModelNode(sphereNode);
 	}
 
+	// icosahedron rendring
 	{
 		Icosahedron icosahedron;
 		icosahedron.Build(IcosahedronArgs());
@@ -64,6 +66,7 @@ void PrimitiveScene::Initialize(Project* m_pProject)
 		//m_pScene->AddModelNode(pPrimitiveNode);
 	}
 
+	// quad rendering
 	{
 		auto pRenderData = make_shared<RenderData>();
 		auto pMaterial = make_shared<DefaultMaterial>();
@@ -74,7 +77,15 @@ void PrimitiveScene::Initialize(Project* m_pProject)
 			make_shared<PrimitiveModel>(
 				make_shared<Quad>(
 					QuadArgs(vec2(-1), vec2(1)))));
-		m_pScene->AddModelNode(pPlaneNode);
+		//m_pScene->AddModelNode(pPlaneNode);
+	}
+
+	{
+		auto pMoveManipulator = make_shared<MoveManipulator>();
+		pMoveManipulator->Build();
+		auto pManipulatorNode = make_shared<ManipulatorNode>(MANIPULATOR_TYPE_MOVE);
+		m_pScene->AddModelNode(pManipulatorNode);
+
 	}
 
 	//BDB bdb(vec3(0), vec3(2));

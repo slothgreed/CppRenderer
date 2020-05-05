@@ -45,51 +45,48 @@ void MoveManipulator::Build()
 
 void MoveManipulator::GetFaceList(vector<vec3>& faceList, vector<int>& faceIndex, MANIPULATOR_HANDLE handle)
 {
-	ShapeData* shape = nullptr;
 	if (handle == MANIPULATOR_HANDLE_X)
 	{
-		shape = &xDirection;
+		faceList = xDirection.cone.Position();
+		faceIndex = xDirection.cone.Index();
 	}
 	else if (handle == MANIPULATOR_HANDLE_Y) 
 	{
-		shape = &yDirection;
+		faceList = yDirection.cone.Position();
+		faceIndex = yDirection.cone.Index();
 	}
 	else if (handle == MANIPULATOR_HANDLE_Z) 
 	{
-		shape = &zDirection;
+		faceList = zDirection.cone.Position();
+		faceIndex = zDirection.cone.Index();
 	}
 	else
 	{
 		assert(0);
 	}
-
-	faceList = shape->cone.Position();
-	faceIndex = shape->cone.Index();
 }
 
 void MoveManipulator::GetEdgeList(vector<vec3>& edgeList, vector<int>& edgeIndex, MANIPULATOR_HANDLE handle)
 {
-	ShapeData* shape = nullptr;
 	if (handle == MANIPULATOR_HANDLE_X)
 	{
-		shape = &xDirection;
+		edgeList = xDirection.position;
+		edgeIndex.push_back(0); edgeIndex.push_back(1);
 	}
 	else if (handle == MANIPULATOR_HANDLE_Y)
 	{
-		shape = &yDirection;
+		edgeList = yDirection.position;
+		edgeIndex.push_back(0); edgeIndex.push_back(1);
 	}
 	else if (handle == MANIPULATOR_HANDLE_Z)
 	{
-		shape = &zDirection;
+		edgeList = zDirection.position;
+		edgeIndex.push_back(0); edgeIndex.push_back(1);
 	}
 	else
 	{
 		assert(0);
 	}
-
-	edgeList = shape->position;
-	edgeIndex.push_back(0); edgeIndex.push_back(1);
-
 }
 }
 }
