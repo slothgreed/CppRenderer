@@ -22,7 +22,7 @@ void GrayScaleEffect::Initialize(int width, int height)
 	m_pRenderTarget = make_shared<RenderTarget>();
 	m_pRenderTarget->Initialize(1, width, height);
 
-	auto pGrayMaterial = make_shared<GeneralPass>();
+	auto pGrayMaterial = make_shared<GeneralShaderPass>();
 	pGrayMaterial->SetShader(pGrayScaleShader);
 	pGrayMaterial->GetUniform()->Set(nullptr, make_shared<GrayScaleUniform>());
 

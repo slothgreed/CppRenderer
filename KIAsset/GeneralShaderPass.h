@@ -6,11 +6,11 @@ namespace KI
 namespace Asset
 {
 
-class DLL_EXPORT GeneralPass : public IShaderPass
+class DLL_EXPORT GeneralShaderPass : public IShaderPass
 {
 public:
-	GeneralPass();
-	~GeneralPass();
+	GeneralShaderPass();
+	~GeneralShaderPass();
 
 	virtual const MATERIAL_TYPE Type() const { return MATERIAL_TYPE::MATERIAL_TYPE_GENERAL; };
 

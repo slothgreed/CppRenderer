@@ -41,11 +41,11 @@ void SSLICEffect::Initialize(int width, int height)
 	m_pBlendTexture->Set(blendTexture);
 	m_pBlendTexture->End();
 
-	m_pModelMaterial = make_shared<DefaultPass>();
+	m_pModelMaterial = make_shared<DefaultShaderPass>();
 	m_pModelMaterial->AddTexture(m_pBlendTexture);
 
 
-	auto pSSLICMaterial = make_shared<GeneralPass>();
+	auto pSSLICMaterial = make_shared<GeneralShaderPass>();
 	auto pSSLICInfo = make_shared<IShaderBuildInfo>(SHADER_TYPE_SSLIC);
 	pSSLICInfo->SetVertexCode(make_shared<PostProcessVertexCode>());
 	pSSLICInfo->SetFragCode(make_shared<SSLICFragCode>());

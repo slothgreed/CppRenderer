@@ -5,11 +5,11 @@ namespace KI
 {
 namespace Asset
 {
-class DLL_EXPORT DefaultPass : public IShaderPass
+class DLL_EXPORT DefaultShaderPass : public IShaderPass
 {
 public:
-	DefaultPass();
-	~DefaultPass();
+	DefaultShaderPass();
+	~DefaultShaderPass();
 
 	virtual const MATERIAL_TYPE Type() const { return MATERIAL_TYPE_DEFAULT; }
 	virtual void CompileShader(IVertexBuffer* pVertexBuffer) override;

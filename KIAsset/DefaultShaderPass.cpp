@@ -2,19 +2,19 @@ namespace KI
 {
 namespace Asset
 {
-DefaultPass::DefaultPass()
+DefaultShaderPass::DefaultShaderPass()
 {
 	auto pVertexUniform = make_shared<DefaultVertexUniform>();
 	auto pFragUniform = make_shared<DefaultFragUniform>();
 	GetUniform()->Set(pVertexUniform, pFragUniform);
 }
 
-DefaultPass::~DefaultPass()
+DefaultShaderPass::~DefaultShaderPass()
 {
 
 }
 
-void DefaultPass::AddTexture(shared_ptr<Texture> texture)
+void DefaultShaderPass::AddTexture(shared_ptr<Texture> texture)
 {
 	if (GetUniform()->Frag()->Type() != SHADER_TYPE::SHADER_TYPE_DEFAULT)
 	{
@@ -26,7 +26,7 @@ void DefaultPass::AddTexture(shared_ptr<Texture> texture)
 	uniform->SetTexture(texture);
 }
 
-void DefaultPass::SetFixColor(const vec4& color)
+void DefaultShaderPass::SetFixColor(const vec4& color)
 {
 	if (GetUniform()->Vertex()->Type() != SHADER_TYPE::SHADER_TYPE_DEFAULT)
 	{
@@ -38,7 +38,7 @@ void DefaultPass::SetFixColor(const vec4& color)
 	uniform->SetFixColor(color);
 }
 
-void DefaultPass::VisibleNormal(bool visible)
+void DefaultShaderPass::VisibleNormal(bool visible)
 {
 	if (GetUniform()->Vertex()->Type() != SHADER_TYPE::SHADER_TYPE_DEFAULT)
 	{
@@ -52,7 +52,7 @@ void DefaultPass::VisibleNormal(bool visible)
 	m_bReCompileShader = true;
 }
 
-void DefaultPass::CompileShader(IVertexBuffer* pVertexBuffer)
+void DefaultShaderPass::CompileShader(IVertexBuffer* pVertexBuffer)
 {
 	if (pVertexBuffer->Type() == VERTEX_BUFFER_TYPE::VERTEX_BUFFER_TYPE_DEFAULT)
 	{
@@ -74,7 +74,7 @@ void DefaultPass::CompileShader(IVertexBuffer* pVertexBuffer)
 	}
 }
 
-bool DefaultPass::Compare(const IShaderPass& material)
+bool DefaultShaderPass::Compare(const IShaderPass& material)
 {
 	if (material.Type() == MATERIAL_TYPE_DEFAULT)
 	{

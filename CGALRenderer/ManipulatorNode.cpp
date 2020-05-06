@@ -37,7 +37,7 @@ void ManipulatorNode::ShowProperty()
 void ManipulatorNode::SetRenderData()
 {
 	m_pManipulator->Build();
-	m_pMaterial = make_shared<DefaultPass>();
+	m_pMaterial = make_shared<DefaultShaderPass>();
 
 	for (int i = 0; i < MANIPULATOR_HANDLE_NUM; i++)
 	{

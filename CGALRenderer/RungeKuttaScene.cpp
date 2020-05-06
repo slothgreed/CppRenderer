@@ -18,7 +18,7 @@ void RungeKuttaScene::Initialize(Project* m_pProject)
 	pCamera->Ortho(0, 1, 0, 1, -2, 2);
 	m_pScene->SetCamera(pCamera);
 
-	auto pMaterial = make_shared<DefaultPass>();
+	auto pMaterial = make_shared<DefaultShaderPass>();
 	auto pPointData = make_shared<RenderData>(GL_POINTS, make_shared<DefaultVertexBuffer>());
 	pPointData->SetMaterial(pMaterial);
 	m_pPointNode = make_shared<PrimitiveNode>(pPointData);

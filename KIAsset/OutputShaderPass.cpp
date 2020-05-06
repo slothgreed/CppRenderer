@@ -2,18 +2,18 @@ namespace KI
 {
 namespace Asset
 {
-OutputPass::OutputPass()
+OutputShaderPass::OutputShaderPass()
 {
 	auto pFragUniform = make_shared<OutputUniform>();
 	GetUniform()->Set(nullptr, pFragUniform);
 
 }
 
-OutputPass::~OutputPass()
+OutputShaderPass::~OutputShaderPass()
 {
 }
 
-void OutputPass::CompileShader(IVertexBuffer* pVertexBuffer)
+void OutputShaderPass::CompileShader(IVertexBuffer* pVertexBuffer)
 {
 	if (pVertexBuffer->Type() == VERTEX_BUFFER_TYPE_DEFAULT)
 	{
@@ -34,7 +34,7 @@ void OutputPass::CompileShader(IVertexBuffer* pVertexBuffer)
 	}
 }
 
-void OutputPass::AddColorTexture(shared_ptr<Texture> colorTexture)
+void OutputShaderPass::AddColorTexture(shared_ptr<Texture> colorTexture)
 {
 	if (GetUniform()->Frag()->Type() != SHADER_TYPE::SHADER_TYPE_OUTPUT)
 	{
@@ -46,7 +46,7 @@ void OutputPass::AddColorTexture(shared_ptr<Texture> colorTexture)
 	uniform->SetTexture(colorTexture);
 }
 
-bool OutputPass::Compare(const IShaderPass& material)
+bool OutputShaderPass::Compare(const IShaderPass& material)
 {
 	if (material.Type() == MATERIAL_TYPE_OUTPUT_BUFFER)
 	{

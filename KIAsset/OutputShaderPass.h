@@ -5,7 +5,7 @@ namespace KI
 {
 namespace Asset
 {
-class DLL_EXPORT OutputPass : public IShaderPass
+class DLL_EXPORT OutputShaderPass : public IShaderPass
 {
 	enum UNIFORM_LOCATION : unsigned short
 	{
@@ -13,8 +13,8 @@ class DLL_EXPORT OutputPass : public IShaderPass
 		UNIFORM_LOCATION_NUM
 	};
 public:
-	OutputPass();
-	~OutputPass();
+	OutputShaderPass();
+	~OutputShaderPass();
 
 	virtual const MATERIAL_TYPE Type() const { return MATERIAL_TYPE::MATERIAL_TYPE_OUTPUT_BUFFER; };
 	virtual void CompileShader(IVertexBuffer* pVertexBuffer) override;

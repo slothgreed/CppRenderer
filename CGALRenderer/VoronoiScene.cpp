@@ -17,7 +17,7 @@ void VoronoiScene::Initialize(Project* m_pProject)
 	m_pConeNode = make_shared<PrimitiveNode>(pRenderData);
 	m_pScene->AddModelNode(m_pConeNode);
 
-	auto pMaterial = make_shared<DefaultPass>();
+	auto pMaterial = make_shared<DefaultShaderPass>();
 	auto pPointData = make_shared<RenderData>(
 		GL_POINTS,
 		make_shared<DefaultVertexBuffer>());

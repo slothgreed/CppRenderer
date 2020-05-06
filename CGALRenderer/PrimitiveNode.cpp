@@ -7,14 +7,14 @@ PrimitiveNode::PrimitiveNode(shared_ptr<RenderData> pRenderData)
 	m_pRenderData = pRenderData;
 	if (pRenderData->GetMaterial() == nullptr)
 	{
-		m_pRenderData->SetMaterial(make_shared<DefaultPass>());
+		m_pRenderData->SetMaterial(make_shared<DefaultShaderPass>());
 	}
 }
 
 PrimitiveNode::PrimitiveNode(shared_ptr<PrimitiveModel> pPrimitive)
 	:IModelNode(pPrimitive)
 {
-	m_pMaterial = make_shared<DefaultPass>();
+	m_pMaterial = make_shared<DefaultShaderPass>();
 	SetRenderData();
 }
 

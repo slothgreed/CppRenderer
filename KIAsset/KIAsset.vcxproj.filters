@@ -117,13 +117,13 @@
     <ClInclude Include="PrimitiveModel.h">
       <Filter>ヘッダー ファイル\Model\PolygonModel</Filter>
     </ClInclude>
-    <ClInclude Include="OutputPass.h">
+    <ClInclude Include="DefaultShaderPass.h">
       <Filter>ヘッダー ファイル\ShaderPass</Filter>
     </ClInclude>
-    <ClInclude Include="GeneralPass.h">
+    <ClInclude Include="GeneralShaderPass.h">
       <Filter>ヘッダー ファイル\ShaderPass</Filter>
     </ClInclude>
-    <ClInclude Include="DefaultPass.h">
+    <ClInclude Include="OutputShaderPass.h">
       <Filter>ヘッダー ファイル\ShaderPass</Filter>
     </ClInclude>
   </ItemGroup>
@@ -173,13 +173,13 @@
     <ClCompile Include="PrimitiveModel.cpp">
       <Filter>ソース ファイル\Model\PolygonModel</Filter>
     </ClCompile>
-    <ClCompile Include="OutputPass.cpp">
+    <ClCompile Include="DefaultShaderPass.cpp">
       <Filter>ソース ファイル\ShaderPass</Filter>
     </ClCompile>
-    <ClCompile Include="GeneralPass.cpp">
+    <ClCompile Include="GeneralShaderPass.cpp">
       <Filter>ソース ファイル\ShaderPass</Filter>
     </ClCompile>
-    <ClCompile Include="DefaultPass.cpp">
+    <ClCompile Include="OutputShaderPass.cpp">
       <Filter>ソース ファイル\ShaderPass</Filter>
     </ClCompile>
   </ItemGroup>
