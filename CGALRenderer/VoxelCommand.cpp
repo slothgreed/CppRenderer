@@ -43,7 +43,7 @@ CommandResult VoxelCommand::Execute()
 
 	auto pIndexBuffer = make_shared<IndexBuffer>();
 	pIndexBuffer->Set(indexBuffer);
-	auto pMaterial = make_shared<DefaultMaterial>();
+	auto pMaterial = make_shared<DefaultPass>();
 	pMaterial->SetFixColor(vec4(1, 0, 0, 1));
 
 	pRenderData->SetGeometryData(GL_TRIANGLES, pVertexBuffer, pIndexBuffer);

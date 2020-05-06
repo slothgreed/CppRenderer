@@ -25,7 +25,7 @@ void NormalProperty::Build(IModelNode* pModelNode)
 	auto pShader = ShaderManager::Instance()->FindOrNew(pBuildInfo);
 
 	m_pRenderData = make_shared<RenderData>();
-	auto pMaterial = make_shared<GeneralMaterial>();
+	auto pMaterial = make_shared<GeneralPass>();
 	pMaterial->SetShader(pShader);
 	pMaterial->GetUniform()->Set(nullptr, pGeomUniform, nullptr);
 	m_pRenderData->SetMaterial(pMaterial);

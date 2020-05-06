@@ -37,10 +37,9 @@ using namespace KI::Gfx;
 #include "IRaycastPick.h"
 
 #include "IModel.h"
-#include "IMaterial.h"
+#include "IShaderPass.h"
 #include "IModelProperty.h"
 #include "IModelNode.h"
-#include "IMaterial.h"
 #include "ILight.h"
 #include "IGeometryPath.h"
 

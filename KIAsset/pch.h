@@ -43,9 +43,9 @@ using namespace KI::Topology;
 #include "PrimitiveModel.h"
 
 #include "MaterialManager.h"
-#include "DefaultMaterial.h"
-#include "OutputMaterial.h"
-#include "GeneralMaterial.h"
+#include "DefaultPass.h"
+#include "OutputPass.h"
+#include "GeneralPass.h"
 
 #include "MoveManipulator.h"
 #include "RotateManipulator.h"

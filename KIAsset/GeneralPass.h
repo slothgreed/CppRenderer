@@ -6,17 +6,17 @@ namespace KI
 namespace Asset
 {
 
-class DLL_EXPORT GeneralMaterial : public IMaterial
+class DLL_EXPORT GeneralPass : public IShaderPass
 {
 public:
-	GeneralMaterial();
-	~GeneralMaterial();
+	GeneralPass();
+	~GeneralPass();
 
 	virtual const MATERIAL_TYPE Type() const { return MATERIAL_TYPE::MATERIAL_TYPE_GENERAL; };
 
 	virtual void CompileShader(IVertexBuffer* pVertexBuffer);
-	virtual bool Compare(const IMaterial& material);
-	void SetShader(shared_ptr<IShader> pShader) { IMaterial::SetShader(pShader); };
+	virtual bool Compare(const IShaderPass& material);
+	void SetShader(shared_ptr<IShader> pShader) { IShaderPass::SetShader(pShader); };
 private:
 
 };

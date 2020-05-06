@@ -31,14 +31,14 @@ void MaterialManager::Initialize()
 
 void MaterialManager::CreateSystemMaterial()
 {
-	auto pMaterial = make_unique<DefaultMaterial>();
+	auto pMaterial = make_unique<DefaultPass>();
 	pMaterial->SetFixColor(vec4(1, 0, 0, 1));
 
 	m_pMaterials[SYSTEM_MATERIAL_SELECTION] = std::move(pMaterial);
 
 }
 
-shared_ptr<IMaterial> MaterialManager::GetSystemMaterial(SYSTEM_MATERIAL systemMaterial)
+shared_ptr<IShaderPass> MaterialManager::GetSystemMaterial(SYSTEM_MATERIAL systemMaterial)
 {
 	auto itr = m_pMaterials.find(systemMaterial);
 	if (itr == m_pMaterials.end())

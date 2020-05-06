@@ -5,15 +5,15 @@ namespace KI
 {
 namespace Asset
 {
-class DLL_EXPORT DefaultMaterial : public IMaterial
+class DLL_EXPORT DefaultPass : public IShaderPass
 {
 public:
-	DefaultMaterial();
-	~DefaultMaterial();
+	DefaultPass();
+	~DefaultPass();
 
 	virtual const MATERIAL_TYPE Type() const { return MATERIAL_TYPE_DEFAULT; }
 	virtual void CompileShader(IVertexBuffer* pVertexBuffer) override;
-	virtual bool Compare(const IMaterial& material) override;
+	virtual bool Compare(const IShaderPass& material) override;
 
 	void VisibleNormal(bool value);
 	void SetFixColor(const vec4& color);

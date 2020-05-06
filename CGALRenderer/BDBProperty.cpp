@@ -51,7 +51,7 @@ void BDBProperty::Build(IModelNode* pModelNode)
 	pBuildInfo->SetFragCode(make_shared<DefaultFragCode>());
 	auto pShader = ShaderManager::Instance()->FindOrNew(pBuildInfo);
 	
-	auto pMaterial = make_shared<DefaultMaterial>();
+	auto pMaterial = make_shared<DefaultPass>();
 	m_pRenderData->SetMaterial(pMaterial);
 }
 

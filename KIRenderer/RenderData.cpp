@@ -11,12 +11,12 @@ RenderData::~RenderData()
 {
 }
 
-void RenderData::SetMaterial(shared_ptr<IMaterial> pMaterial)
+void RenderData::SetMaterial(shared_ptr<IShaderPass> pMaterial)
 {
 	m_pMaterial = pMaterial;
 }
 
-void RenderData::AddRenderRegion(const string& descriptor, shared_ptr<IMaterial> pMaterial, int first, int count)
+void RenderData::AddRenderRegion(const string& descriptor, shared_ptr<IShaderPass> pMaterial, int first, int count)
 {
 	if (GetPrimitiveType() != GL_TRIANGLES)
 	{
@@ -92,7 +92,7 @@ int RenderData::GetVertexSize()
 		return m_pIndexBuffer->Size();
 	}
 }
-void RenderData::DrawInternal(shared_ptr<IMaterial> pMaterial, int first, int count)
+void RenderData::DrawInternal(shared_ptr<IShaderPass> pMaterial, int first, int count)
 {
 	if (pMaterial->NeedReCompileShader())
 	{

@@ -2,7 +2,7 @@ namespace KI
 {
 namespace Renderer
 {
-PfxPlane::PfxPlane(shared_ptr<IMaterial> pMaterial)
+PfxPlane::PfxPlane(shared_ptr<IShaderPass> pMaterial)
 {
 	m_pMaterial = pMaterial;
 }

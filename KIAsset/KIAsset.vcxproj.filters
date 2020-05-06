@@ -13,9 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="ヘッダー ファイル\Material">
-      <UniqueIdentifier>{6a8545eb-0366-4875-855e-344c8b905438}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ヘッダー ファイル\Model">
       <UniqueIdentifier>{1968049d-aaf8-4d9e-8bf5-475e1dc2c249}</UniqueIdentifier>
     </Filter>
@@ -24,9 +21,6 @@
     </Filter>
     <Filter Include="ヘッダー ファイル\Model\PolygonModel">
       <UniqueIdentifier>{d135b4a4-691f-4d6e-9cdd-085b38e6a6ad}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Material">
-      <UniqueIdentifier>{26222bc2-e434-4adf-a309-3344e9ec795e}</UniqueIdentifier>
     </Filter>
     <Filter Include="ソース ファイル\Model">
       <UniqueIdentifier>{b8b99cdf-f747-4146-89e0-7a4c4b652479}</UniqueIdentifier>
@@ -48,6 +42,12 @@
     </Filter>
     <Filter Include="ヘッダー ファイル\Pfx">
       <UniqueIdentifier>{2b34540f-0a76-44ea-87ca-c06a1054a67f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ShaderPass">
+      <UniqueIdentifier>{26222bc2-e434-4adf-a309-3344e9ec795e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\ShaderPass">
+      <UniqueIdentifier>{6a8545eb-0366-4875-855e-344c8b905438}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -84,12 +84,6 @@
     <ClInclude Include="ScaleManipulator.h">
       <Filter>ヘッダー ファイル\Model\Manipulator</Filter>
     </ClInclude>
-    <ClInclude Include="DefaultMaterial.h">
-      <Filter>ヘッダー ファイル\Material</Filter>
-    </ClInclude>
-    <ClInclude Include="OutputMaterial.h">
-      <Filter>ヘッダー ファイル\Material</Filter>
-    </ClInclude>
     <ClInclude Include="HalfEdgeModel.h">
       <Filter>ヘッダー ファイル\Model\PolygonModel</Filter>
     </ClInclude>
@@ -117,14 +111,20 @@
     <ClInclude Include="SSLICEffect.h">
       <Filter>ヘッダー ファイル\Pfx</Filter>
     </ClInclude>
-    <ClInclude Include="GeneralMaterial.h">
-      <Filter>ヘッダー ファイル\Material</Filter>
-    </ClInclude>
     <ClInclude Include="MaterialManager.h">
-      <Filter>ヘッダー ファイル\Material</Filter>
+      <Filter>ヘッダー ファイル\ShaderPass</Filter>
     </ClInclude>
     <ClInclude Include="PrimitiveModel.h">
       <Filter>ヘッダー ファイル\Model\PolygonModel</Filter>
+    </ClInclude>
+    <ClInclude Include="OutputPass.h">
+      <Filter>ヘッダー ファイル\ShaderPass</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneralPass.h">
+      <Filter>ヘッダー ファイル\ShaderPass</Filter>
+    </ClInclude>
+    <ClInclude Include="DefaultPass.h">
+      <Filter>ヘッダー ファイル\ShaderPass</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -149,12 +149,6 @@
     <ClCompile Include="ScaleManipulator.cpp">
       <Filter>ソース ファイル\Model\Manipulator</Filter>
     </ClCompile>
-    <ClCompile Include="DefaultMaterial.cpp">
-      <Filter>ソース ファイル\Material</Filter>
-    </ClCompile>
-    <ClCompile Include="OutputMaterial.cpp">
-      <Filter>ソース ファイル\Material</Filter>
-    </ClCompile>
     <ClCompile Include="HalfEdgeModel.cpp">
       <Filter>ソース ファイル\Model\PolygonModel</Filter>
     </ClCompile>
@@ -173,14 +167,20 @@
     <ClCompile Include="SSLICEffect.cpp">
       <Filter>ソース ファイル\Pfx</Filter>
     </ClCompile>
-    <ClCompile Include="GeneralMaterial.cpp">
-      <Filter>ソース ファイル\Material</Filter>
-    </ClCompile>
     <ClCompile Include="MaterialManager.cpp">
-      <Filter>ソース ファイル\Material</Filter>
+      <Filter>ソース ファイル\ShaderPass</Filter>
     </ClCompile>
     <ClCompile Include="PrimitiveModel.cpp">
       <Filter>ソース ファイル\Model\PolygonModel</Filter>
+    </ClCompile>
+    <ClCompile Include="OutputPass.cpp">
+      <Filter>ソース ファイル\ShaderPass</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneralPass.cpp">
+      <Filter>ソース ファイル\ShaderPass</Filter>
+    </ClCompile>
+    <ClCompile Include="DefaultPass.cpp">
+      <Filter>ソース ファイル\ShaderPass</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

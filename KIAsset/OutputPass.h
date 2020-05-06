@@ -5,7 +5,7 @@ namespace KI
 {
 namespace Asset
 {
-class DLL_EXPORT OutputMaterial : public IMaterial
+class DLL_EXPORT OutputPass : public IShaderPass
 {
 	enum UNIFORM_LOCATION : unsigned short
 	{
@@ -13,12 +13,12 @@ class DLL_EXPORT OutputMaterial : public IMaterial
 		UNIFORM_LOCATION_NUM
 	};
 public:
-	OutputMaterial();
-	~OutputMaterial();
+	OutputPass();
+	~OutputPass();
 
 	virtual const MATERIAL_TYPE Type() const { return MATERIAL_TYPE::MATERIAL_TYPE_OUTPUT_BUFFER; };
 	virtual void CompileShader(IVertexBuffer* pVertexBuffer) override;
-	virtual bool Compare(const IMaterial& material);
+	virtual bool Compare(const IShaderPass& material);
 	void AddColorTexture(shared_ptr<Texture> colorTexture);
 
 };

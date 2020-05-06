@@ -165,7 +165,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="GeneralMaterial.h" />
+    <ClInclude Include="GeneralPass.h" />
     <ClInclude Include="GrayScaleEffect.h" />
     <ClInclude Include="IAnimation.h" />
     <ClInclude Include="AssetTypes.h" />
@@ -173,7 +173,7 @@
     <ClInclude Include="CGALLinearCellComplex.h" />
     <ClInclude Include="CGALModel.h" />
     <ClInclude Include="CGALPolyhedron.h" />
-    <ClInclude Include="DefaultMaterial.h" />
+    <ClInclude Include="DefaultPass.h" />
     <ClInclude Include="HalfEdgeModel.h" />
     <ClInclude Include="IManipulatorModel.h" />
     <ClInclude Include="IPolygonModel.h" />
@@ -181,7 +181,7 @@
     <ClInclude Include="MaterialManager.h" />
     <ClInclude Include="ModelAnimation.h" />
     <ClInclude Include="MoveManipulator.h" />
-    <ClInclude Include="OutputMaterial.h" />
+    <ClInclude Include="OutputPass.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="PrimitiveModel.h" />
     <ClInclude Include="RotateManipulator.h" />
@@ -195,15 +195,15 @@
     <ClCompile Include="CGALGeneralizedMaps.cpp" />
     <ClCompile Include="CGALLinearCellComplex.cpp" />
     <ClCompile Include="CGALPolyhedron.cpp" />
-    <ClCompile Include="DefaultMaterial.cpp" />
-    <ClCompile Include="GeneralMaterial.cpp" />
+    <ClCompile Include="DefaultPass.cpp" />
+    <ClCompile Include="GeneralPass.cpp" />
     <ClCompile Include="GrayScaleEffect.cpp" />
     <ClCompile Include="HalfEdgeModel.cpp" />
     <ClCompile Include="IPolygonModel.cpp" />
     <ClCompile Include="MaterialManager.cpp" />
     <ClCompile Include="ModelAnimation.cpp" />
     <ClCompile Include="MoveManipulator.cpp" />
-    <ClCompile Include="OutputMaterial.cpp" />
+    <ClCompile Include="OutputPass.cpp" />
     <ClCompile Include="PrimitiveModel.cpp" />
     <ClCompile Include="RotateManipulator.cpp" />
     <ClCompile Include="ScaleManipulator.cpp" />

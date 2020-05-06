@@ -3,19 +3,19 @@ namespace KI
 namespace Renderer
 {
 
-IMaterial::IMaterial()
+IShaderPass::IShaderPass()
 {
 	m_bReCompileShader = true;
 	m_pUniform = make_shared<UniformSet>();
 }
 
-void IMaterial::SetShader(shared_ptr<IShader> pShader)
+void IShaderPass::SetShader(shared_ptr<IShader> pShader)
 {
 	m_pShader = pShader;
 	m_bReCompileShader = false;
 }
 
-void IMaterial::Bind()
+void IShaderPass::Bind()
 {
 	if (m_pShader == nullptr)
 	{
@@ -30,7 +30,7 @@ void IMaterial::Bind()
 	m_pShader->Bind(m_pUniform);
 }
 
-void IMaterial::UnBind()
+void IShaderPass::UnBind()
 {
 	m_pShader->Bind(m_pUniform);
 

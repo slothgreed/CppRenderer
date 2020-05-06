@@ -150,9 +150,6 @@
     <ClInclude Include="Vertex.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="IMaterial.h">
-      <Filter>ヘッダー ファイル\Interface</Filter>
-    </ClInclude>
     <ClInclude Include="IModel.h">
       <Filter>ヘッダー ファイル\Interface</Filter>
     </ClInclude>
@@ -226,6 +223,9 @@
       <Filter>ヘッダー ファイル\Interface</Filter>
     </ClInclude>
     <ClInclude Include="IGLPick.h">
+      <Filter>ヘッダー ファイル\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="IShaderPass.h">
       <Filter>ヘッダー ファイル\Interface</Filter>
     </ClInclude>
   </ItemGroup>
