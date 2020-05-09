@@ -22,21 +22,21 @@ void GrayScaleEffect::Initialize(int width, int height)
 	m_pRenderTarget = make_shared<RenderTarget>();
 	m_pRenderTarget->Initialize(1, width, height);
 
-	auto pGrayMaterial = make_shared<GeneralShaderPass>();
-	pGrayMaterial->SetShader(pGrayScaleShader);
-	pGrayMaterial->GetUniform()->Set(nullptr, make_shared<GrayScaleUniform>());
+	auto pGrayShaderPass = make_shared<GeneralShaderPass>();
+	pGrayShaderPass->SetShader(pGrayScaleShader);
+	pGrayShaderPass->GetUniform()->Set(nullptr, make_shared<GrayScaleUniform>());
 
-	m_pPlane->SetMaterial(pGrayMaterial);
+	m_pPlane->SetShaderPass(pGrayShaderPass);
 }
 
 void GrayScaleEffect::SetTexture(shared_ptr<Texture> pTexture)
 {
-	if (m_pPlane->GetMaterial()->GetUniform()->Frag()->Type() != SHADER_TYPE::SHADER_TYPE_GRAYSCALE) {
+	if (m_pPlane->GetShaderPass()->GetUniform()->Frag()->Type() != SHADER_TYPE::SHADER_TYPE_GRAYSCALE) {
 		assert(0);
 		return;
 	}
 
-	auto uniformParameter = static_pointer_cast<GrayScaleUniform>(m_pPlane->GetMaterial()->GetUniform()->Frag());
+	auto uniformParameter = static_pointer_cast<GrayScaleUniform>(m_pPlane->GetShaderPass()->GetUniform()->Frag());
 
 	uniformParameter->SetTexture(pTexture);
 }

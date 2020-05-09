@@ -17,22 +17,22 @@ public:
 	class DLL_EXPORT RenderRegion
 	{
 	public:
-		shared_ptr<IShaderPass> m_pMaterial;
+		shared_ptr<IShaderPass> m_pShaderPass;
 		string m_descriptor;
 		int m_first;
 		int m_count;
 	};
-	void SetMaterial(shared_ptr<IShaderPass> pMaterial);
+	void SetShaderPass(shared_ptr<IShaderPass> pShaderPass);
 	void SetGeometryData(GLuint primitiveType, shared_ptr<IVertexBuffer> pVertexBuffer, shared_ptr<IndexBuffer> pIndexBuffer = nullptr);
 	GLuint GetPrimitiveType() { return m_pPrimitiveType; }
 	shared_ptr<IVertexBuffer> GetVertexBuffer() { return m_pVertexBuffer; }
 	shared_ptr<IndexBuffer> GetIndexBuffer() { return m_pIndexBuffer; }
-	shared_ptr<IShaderPass> GetMaterial() { return m_pMaterial; }
-	void AddRenderRegion(const string& descriptor, shared_ptr<IShaderPass> pMaterial, int first, int count);
+	shared_ptr<IShaderPass> GetShaderPass() { return m_pShaderPass; }
+	void AddRenderRegion(const string& descriptor, shared_ptr<IShaderPass> pShaderPass, int first, int count);
 	bool HasRenderRegion() { return m_pRenderRegion.size() != 0; };
 	void ClearRenderRegion();
 	void Draw();
-	void DrawInternal(shared_ptr<IShaderPass> pMaterial, int first, int count);
+	void DrawInternal(shared_ptr<IShaderPass> pShaderPass, int first, int count);
 	void DrawUseRegion();
 	shared_ptr<RenderData> Clone();
 
@@ -41,7 +41,7 @@ private:
 	GLuint	m_pPrimitiveType;
 	shared_ptr<IndexBuffer> m_pIndexBuffer;
 	shared_ptr<IVertexBuffer> m_pVertexBuffer;
-	shared_ptr<IShaderPass> m_pMaterial;
+	shared_ptr<IShaderPass> m_pShaderPass;
 	vector<RenderRegion> m_pRenderRegion;
 };
 }

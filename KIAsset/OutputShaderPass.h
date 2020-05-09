@@ -16,9 +16,9 @@ public:
 	OutputShaderPass();
 	~OutputShaderPass();
 
-	virtual const MATERIAL_TYPE Type() const { return MATERIAL_TYPE::MATERIAL_TYPE_OUTPUT_BUFFER; };
+	virtual const SHADERPASS_TYPE Type() const { return SHADERPASS_TYPE::SHADERPASS_TYPE_OUTPUT_BUFFER; };
 	virtual void CompileShader(IVertexBuffer* pVertexBuffer) override;
-	virtual bool Compare(const IShaderPass& material);
+	virtual bool Compare(const IShaderPass& shaderPass);
 	void AddColorTexture(shared_ptr<Texture> colorTexture);
 
 };

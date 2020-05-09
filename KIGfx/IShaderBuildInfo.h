@@ -19,7 +19,6 @@ public:
 	void SetFragCode(shared_ptr<IShaderCode> value) { m_pShaderCode[SHADER_PROGRAM_FRAG] = value; };
 
 	shared_ptr<IShaderCode> GetShaderCode(SHADER_PROGRAM_TYPE type) { return m_pShaderCode[type]; }
-
 	bool Compare(IShaderBuildInfo* pShaderBuildInfo);
 private:
 	shared_ptr<IShaderCode> m_pShaderCode[SHADER_PROGRAM_NUM];

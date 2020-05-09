@@ -25,10 +25,10 @@ void NormalProperty::Build(IModelNode* pModelNode)
 	auto pShader = ShaderManager::Instance()->FindOrNew(pBuildInfo);
 
 	m_pRenderData = make_shared<RenderData>();
-	auto pMaterial = make_shared<GeneralShaderPass>();
-	pMaterial->SetShader(pShader);
-	pMaterial->GetUniform()->Set(nullptr, pGeomUniform, nullptr);
-	m_pRenderData->SetMaterial(pMaterial);
+	auto pShaderPass = make_shared<GeneralShaderPass>();
+	pShaderPass->SetShader(pShader);
+	pShaderPass->GetUniform()->Set(nullptr, pGeomUniform, nullptr);
+	m_pRenderData->SetShaderPass(pShaderPass);
 
 	SetVBOData(pModelNode);
 }

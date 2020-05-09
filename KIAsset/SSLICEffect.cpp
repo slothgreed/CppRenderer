@@ -41,24 +41,24 @@ void SSLICEffect::Initialize(int width, int height)
 	m_pBlendTexture->Set(blendTexture);
 	m_pBlendTexture->End();
 
-	m_pModelMaterial = make_shared<DefaultShaderPass>();
-	m_pModelMaterial->AddTexture(m_pBlendTexture);
+	m_pModelShaderPass = make_shared<DefaultShaderPass>();
+	m_pModelShaderPass->AddTexture(m_pBlendTexture);
 
 
-	auto pSSLICMaterial = make_shared<GeneralShaderPass>();
+	auto pSSLICShaderPass = make_shared<GeneralShaderPass>();
 	auto pSSLICInfo = make_shared<IShaderBuildInfo>(SHADER_TYPE_SSLIC);
 	pSSLICInfo->SetVertexCode(make_shared<PostProcessVertexCode>());
 	pSSLICInfo->SetFragCode(make_shared<SSLICFragCode>());
 
 	auto pSSLICShader = static_pointer_cast<SSLICShader>(ShaderManager::Instance()->FindOrNew(pSSLICInfo));
 	
-	pSSLICMaterial->SetShader(pSSLICShader);
-	m_pPlaneData->SetMaterial(pSSLICMaterial);
+	pSSLICShaderPass->SetShader(pSSLICShader);
+	m_pPlaneData->SetShaderPass(pSSLICShaderPass);
 }
 void SSLICEffect::SetRenderData(shared_ptr<RenderData> pRenderData)
 {
 	m_pModelData = pRenderData->Clone();
-	m_pModelData->SetMaterial(m_pModelMaterial);
+	m_pModelData->SetShaderPass(m_pModelShaderPass);
 }
 
 void SSLICEffect::Draw()

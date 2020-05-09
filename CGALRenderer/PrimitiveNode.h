@@ -12,7 +12,7 @@ public:
 
 	virtual void Draw();
 	virtual void Update(void* sender, IEventArgs* args);
-	shared_ptr<IShaderPass> GetMaterial() { return m_pMaterial; }
+	shared_ptr<IShaderPass> GetShaderPass() { return m_pShaderPass; }
 	shared_ptr<DefaultVertexBuffer> GetVertexBuffer();
 	IndexBuffer* GetIndexBuffer();
 	void SetRenderData();
@@ -22,7 +22,7 @@ public:
 private:
 	string m_name;
 	shared_ptr<RenderData> m_pRenderData;
-	shared_ptr<IShaderPass> m_pMaterial;
+	shared_ptr<IShaderPass> m_pShaderPass;
 	shared_ptr<IGLState> m_pState;
 };
 }

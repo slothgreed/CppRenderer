@@ -12,12 +12,12 @@ public:
 	IShaderPass();
 	virtual ~IShaderPass() {};
 
-	virtual const MATERIAL_TYPE Type() const = 0;
+	virtual const SHADERPASS_TYPE Type() const = 0;
 	virtual void Bind();
 	virtual void UnBind();
 
 	virtual void CompileShader(IVertexBuffer* pVertexBuffer) = 0;
-	virtual bool Compare(const IShaderPass& material) = 0;
+	virtual bool Compare(const IShaderPass& shaderPass) = 0;
 
 	shared_ptr<IShader> GetShader() { return m_pShader; };
 

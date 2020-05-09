@@ -19,11 +19,11 @@ public:
 	static MaterialManager* Instance();
 
 	void Initialize();
-	shared_ptr<IShaderPass> GetSystemMaterial(SYSTEM_MATERIAL systemMaterial);
+	shared_ptr<IShaderPass> GetSystemShaderPass(SYSTEM_MATERIAL systemShaderPass);
 
 private:
-	void CreateSystemMaterial();
-	map<SYSTEM_MATERIAL, shared_ptr<IShaderPass>> m_pMaterials;
+	void CreateSystemShaderPass();
+	map<SYSTEM_MATERIAL, shared_ptr<IShaderPass>> m_pShaderPasss;
 	static MaterialManager* m_Instance;
 
 };

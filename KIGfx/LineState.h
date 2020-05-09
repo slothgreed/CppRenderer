@@ -1,5 +1,5 @@
-#ifndef LINE_MATERIAL_H
-#define LINE_MATERIAL_H
+#ifndef LINE_STATE_H
+#define LINE_STATE_H
 
 namespace KI
 {
@@ -26,4 +26,4 @@ private:
 
 }
 }
-#endif LINE_MATERIAL_H
+#endif LINE_STATE_H

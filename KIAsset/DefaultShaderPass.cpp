@@ -74,9 +74,9 @@ void DefaultShaderPass::CompileShader(IVertexBuffer* pVertexBuffer)
 	}
 }
 
-bool DefaultShaderPass::Compare(const IShaderPass& material)
+bool DefaultShaderPass::Compare(const IShaderPass& shaderPass)
 {
-	if (material.Type() == MATERIAL_TYPE_DEFAULT)
+	if (shaderPass.Type() == SHADERPASS_TYPE_DEFAULT)
 	{
 		assert(0);
 		// todo : compare;

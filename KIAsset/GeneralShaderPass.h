@@ -1,5 +1,5 @@
-#ifndef GENERAL_MATERIAL_H
-#define GENERAL_MATERIAL_H
+#ifndef GENERAL_SHADERPASS_H
+#define GENERAL_SHADERPASS_H
 
 namespace KI
 {
@@ -12,10 +12,10 @@ public:
 	GeneralShaderPass();
 	~GeneralShaderPass();
 
-	virtual const MATERIAL_TYPE Type() const { return MATERIAL_TYPE::MATERIAL_TYPE_GENERAL; };
+	virtual const SHADERPASS_TYPE Type() const { return SHADERPASS_TYPE::SHADERPASS_TYPE_GENERAL; };
 
 	virtual void CompileShader(IVertexBuffer* pVertexBuffer);
-	virtual bool Compare(const IShaderPass& material);
+	virtual bool Compare(const IShaderPass& shaderPass);
 	void SetShader(shared_ptr<IShader> pShader) { IShaderPass::SetShader(pShader); };
 private:
 
@@ -23,4 +23,4 @@ private:
 
 }
 }
-#endif GENERAL_MATERIAL_H
+#endif GENERAL_SHADERPASS_H

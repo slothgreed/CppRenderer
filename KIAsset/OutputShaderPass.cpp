@@ -46,9 +46,9 @@ void OutputShaderPass::AddColorTexture(shared_ptr<Texture> colorTexture)
 	uniform->SetTexture(colorTexture);
 }
 
-bool OutputShaderPass::Compare(const IShaderPass& material)
+bool OutputShaderPass::Compare(const IShaderPass& shaderPass)
 {
-	if (material.Type() == MATERIAL_TYPE_OUTPUT_BUFFER)
+	if (shaderPass.Type() == SHADERPASS_TYPE_OUTPUT_BUFFER)
 	{
 		return true;
 	}

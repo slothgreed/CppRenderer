@@ -228,6 +228,9 @@
     <ClInclude Include="IShaderPass.h">
       <Filter>ヘッダー ファイル\Interface</Filter>
     </ClInclude>
+    <ClInclude Include="IMaterial.h">
+      <Filter>ヘッダー ファイル\Interface</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

@@ -29,7 +29,7 @@ IPostEffect* PfxRenderer::FindPostEffect(int index)
 
 int PfxRenderer::PostEffectNum()
 {
-	return m_pPfxLists.size();
+	return (int)m_pPfxLists.size();
 }
 
 IPostEffect* PfxRenderer::FindPostEffect(PFX_TYPE type)

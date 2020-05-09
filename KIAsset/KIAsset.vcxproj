@@ -165,8 +165,11 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ADSMaterial.h" />
+    <ClInclude Include="BasicMaterial.h" />
     <ClInclude Include="GeneralShaderPass.h" />
     <ClInclude Include="GrayScaleEffect.h" />
+    <ClInclude Include="Grid.h" />
     <ClInclude Include="IAnimation.h" />
     <ClInclude Include="AssetTypes.h" />
     <ClInclude Include="CGALGeneralizedMaps.h" />
@@ -192,12 +195,15 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ADSMaterial.cpp" />
     <ClCompile Include="CGALGeneralizedMaps.cpp" />
     <ClCompile Include="CGALLinearCellComplex.cpp" />
     <ClCompile Include="CGALPolyhedron.cpp" />
     <ClCompile Include="DefaultShaderPass.cpp" />
+    <ClCompile Include="BasicMaterial.cpp" />
     <ClCompile Include="GeneralShaderPass.cpp" />
     <ClCompile Include="GrayScaleEffect.cpp" />
+    <ClCompile Include="Grid.cpp" />
     <ClCompile Include="HalfEdgeModel.cpp" />
     <ClCompile Include="IPolygonModel.cpp" />
     <ClCompile Include="MaterialManager.cpp" />

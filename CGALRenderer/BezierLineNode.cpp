@@ -13,10 +13,10 @@ BezierLineNode::BezierLineNode(shared_ptr<RenderData> pRenderData)
 	pBezierShader->SetPatchVertices(4);
 
 	auto pTCSUniform = make_shared<BezierLineUniform>();
-	auto pMaterial = make_shared<GeneralShaderPass>();
-	pMaterial->SetShader(pBezierShader);
-	pMaterial->GetUniform()->Set(nullptr, nullptr, pTCSUniform, nullptr, nullptr);
-	pRenderData->SetMaterial(pMaterial);
+	auto pShaderPass = make_shared<GeneralShaderPass>();
+	pShaderPass->SetShader(pBezierShader);
+	pShaderPass->GetUniform()->Set(nullptr, nullptr, pTCSUniform, nullptr, nullptr);
+	pRenderData->SetShaderPass(pShaderPass);
 	m_pRenderData = pRenderData;
 }
 

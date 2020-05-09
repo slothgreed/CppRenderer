@@ -1,5 +1,5 @@
-#ifndef DEFAULT_MATERIAL_H
-#define DEFAULT_MATERIAL_H
+#ifndef DEFAULT_SHADERPASS_H
+#define DEFAULT_SHADERPASS_H
 
 namespace KI
 {
@@ -11,9 +11,9 @@ public:
 	DefaultShaderPass();
 	~DefaultShaderPass();
 
-	virtual const MATERIAL_TYPE Type() const { return MATERIAL_TYPE_DEFAULT; }
+	virtual const SHADERPASS_TYPE Type() const { return SHADERPASS_TYPE_DEFAULT; }
 	virtual void CompileShader(IVertexBuffer* pVertexBuffer) override;
-	virtual bool Compare(const IShaderPass& material) override;
+	virtual bool Compare(const IShaderPass& shaderPass) override;
 
 	void VisibleNormal(bool value);
 	void SetFixColor(const vec4& color);
@@ -21,4 +21,4 @@ public:
 };
 }
 }
-#endif DEFAULT_MATERIAL_H
+#endif DEFAULT_SHADERPASS_H

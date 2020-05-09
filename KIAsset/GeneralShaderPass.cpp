@@ -16,7 +16,7 @@ void GeneralShaderPass::CompileShader(IVertexBuffer* pVertexBuffer)
 	assert(0);
 }
 
-bool GeneralShaderPass::Compare(const IShaderPass& material)
+bool GeneralShaderPass::Compare(const IShaderPass& shaderPass)
 {
 	return false;
 }

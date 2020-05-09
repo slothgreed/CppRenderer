@@ -36,15 +36,15 @@ void DebugRendering(vec3 near, vec3 far, vec2 screenPosition, Viewport* pViewpor
 	{
 		auto pRayData = make_shared<RenderData>();
 		auto pRayVertexBuffer = make_shared<DefaultVertexBuffer>();
-		auto pRayMaterial = make_shared<DefaultShaderPass>();
-		pRayMaterial->SetFixColor(vec4(0, 0, 1, 1));
+		auto pRayShaderPass = make_shared<DefaultShaderPass>();
+		pRayShaderPass->SetFixColor(vec4(0, 0, 1, 1));
 		vector<vec3> positions;
 		//positions.push_back(pickInfo.GetSelectPosition());
 		positions.push_back(near);
 		positions.push_back(far);
 		pRayVertexBuffer->SetPosition(positions);
 		pRayData->SetGeometryData(GL_LINES, pRayVertexBuffer);
-		pRayData->SetMaterial(pRayMaterial);
+		pRayData->SetShaderPass(pRayShaderPass);
 		auto pPrimitiveNode = make_shared<PrimitiveNode>(pRayData);
 		pScene->AddModelNode(pPrimitiveNode);
 	}
@@ -52,13 +52,13 @@ void DebugRendering(vec3 near, vec3 far, vec2 screenPosition, Viewport* pViewpor
 	{
 		auto pRayData = make_shared<RenderData>();
 		auto pRayVertexBuffer = make_shared<DefaultVertexBuffer>();
-		auto pRayMaterial = make_shared<DefaultShaderPass>();
-		pRayMaterial->SetFixColor(vec4(0, 0, 1, 1));
+		auto pRayShaderPass = make_shared<DefaultShaderPass>();
+		pRayShaderPass->SetFixColor(vec4(0, 0, 1, 1));
 		vector<vec3> positions;
 		positions.push_back(pickInfo.GetSelectPosition());
 		pRayVertexBuffer->SetPosition(positions);
 		pRayData->SetGeometryData(GL_POINTS, pRayVertexBuffer);
-		pRayData->SetMaterial(pRayMaterial);
+		pRayData->SetShaderPass(pRayShaderPass);
 		auto pPrimitiveNode = make_shared<PrimitiveNode>(pRayData);
 		pPrimitiveNode->SetState(make_shared<PointState>(5, true));
 		pScene->AddModelNode(pPrimitiveNode);

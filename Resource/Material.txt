@@ -1,0 +1,7 @@
+layout (std140) uniform ADSMaterial
+{
+	vec4 Ambient;
+	vec4 Diffuse;
+	vec4 Specular;
+	float Shinness;
+}

@@ -1,4 +1,5 @@
-#ifndef POINT_MATERIAL_H
+#ifndef POINT_STATE_H
+#define POINT_STATE_H
 
 namespace KI
 {
@@ -28,5 +29,4 @@ private:
 }
 }
 
-#define POINT_MATERIAL_H
-#endif POINT_MATERIAL_H
+#endif POINT_STATE_H

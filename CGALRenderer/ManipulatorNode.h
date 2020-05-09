@@ -21,7 +21,7 @@ private:
 	map<MANIPULATOR_HANDLE, shared_ptr<RenderData>> m_pEdgeDatas;
 	MANIPULATOR_TYPE m_ManipulatorType;
 	shared_ptr<IManipulatorModel> m_pManipulator;
-	shared_ptr<DefaultShaderPass> m_pMaterial;
+	shared_ptr<DefaultShaderPass> m_pShaderPass;
 };
 }
 

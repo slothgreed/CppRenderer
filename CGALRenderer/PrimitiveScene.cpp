@@ -30,8 +30,8 @@ void PrimitiveScene::Initialize(Project* m_pProject)
 	{
 		auto sphereData = make_shared<RenderData>();
 		ModelGenerator::Sphere(10, 36, 36, sphereData.get());
-		auto pMaterial = make_shared<DefaultShaderPass>();
-		sphereData->SetMaterial(pMaterial);
+		auto pShaderPass = make_shared<DefaultShaderPass>();
+		sphereData->SetShaderPass(pShaderPass);
 		auto sphereNode = make_shared<PrimitiveNode>(sphereData);
 
 		auto pTexture = make_shared<Texture>();
@@ -43,7 +43,7 @@ void PrimitiveScene::Initialize(Project* m_pProject)
 		pTexture->Begin();
 		pTexture->Set(textureData);
 		pTexture->End();
-		pMaterial->AddTexture(pTexture);
+		pShaderPass->AddTexture(pTexture);
 		//m_pScene->AddModelNode(sphereNode);
 	}
 
@@ -59,9 +59,9 @@ void PrimitiveScene::Initialize(Project* m_pProject)
 
 		auto pRenderData = make_shared<RenderData>();
 		pRenderData->SetGeometryData(GL_TRIANGLES, pVertexBuffer, pIndexBuffer);
-		auto pPlaneMaterial = make_shared<DefaultShaderPass>();
-		pPlaneMaterial->VisibleNormal(true);
-		pRenderData->SetMaterial(pPlaneMaterial);
+		auto pPlaneShaderPass = make_shared<DefaultShaderPass>();
+		pPlaneShaderPass->VisibleNormal(true);
+		pRenderData->SetShaderPass(pPlaneShaderPass);
 		auto pPrimitiveNode = make_shared<PrimitiveNode>(pRenderData);
 		//m_pScene->AddModelNode(pPrimitiveNode);
 	}
@@ -69,9 +69,9 @@ void PrimitiveScene::Initialize(Project* m_pProject)
 	// quad rendering
 	{
 		auto pRenderData = make_shared<RenderData>();
-		auto pMaterial = make_shared<DefaultShaderPass>();
-		pMaterial->SetFixColor(vec4(1, 1, 0, 1));
-		pRenderData->SetMaterial(pMaterial);
+		auto pShaderPass = make_shared<DefaultShaderPass>();
+		pShaderPass->SetFixColor(vec4(1, 1, 0, 1));
+		pRenderData->SetShaderPass(pShaderPass);
 		ModelGenerator::Plane(pRenderData.get(),VERTEX_LAYOUT_COLOR);
 		auto pPlaneNode = make_shared<PrimitiveNode>(
 			make_shared<PrimitiveModel>(

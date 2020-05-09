@@ -19,7 +19,6 @@ public:
 	UniformMaterial();
 	~UniformMaterial();
 	void Set(const MaterialData& data);
-	void Set(ILight* pLight);
 };
 }
 }

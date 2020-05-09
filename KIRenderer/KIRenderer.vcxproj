@@ -179,6 +179,7 @@
     <ClInclude Include="GrayScaleShader.h" />
     <ClInclude Include="IGeometryPath.h" />
     <ClInclude Include="ILight.h" />
+    <ClInclude Include="IMaterial.h" />
     <ClInclude Include="IShaderPass.h" />
     <ClInclude Include="IModel.h" />
     <ClInclude Include="IModelNode.h" />

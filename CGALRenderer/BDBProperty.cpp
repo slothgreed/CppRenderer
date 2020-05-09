@@ -51,8 +51,8 @@ void BDBProperty::Build(IModelNode* pModelNode)
 	pBuildInfo->SetFragCode(make_shared<DefaultFragCode>());
 	auto pShader = ShaderManager::Instance()->FindOrNew(pBuildInfo);
 	
-	auto pMaterial = make_shared<DefaultShaderPass>();
-	m_pRenderData->SetMaterial(pMaterial);
+	auto pShaderPass = make_shared<DefaultShaderPass>();
+	m_pRenderData->SetShaderPass(pShaderPass);
 }
 
 void BDBProperty::GetBDBPosition(const BDB& bdb, vector<vec3>& position)

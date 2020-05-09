@@ -47,16 +47,21 @@ using namespace KI::Topology;
 #include "OutputShaderPass.h"
 #include "GeneralShaderPass.h"
 
+// manipulator
 #include "MoveManipulator.h"
 #include "RotateManipulator.h"
 #include "ScaleManipulator.h"
+
+// grid
+#include "Grid.h"
 
 #include "KeyFrame.h"
 #include "IAnimation.h"
 #include "ModelAnimation.h"
 #include "Storyboard.h"
 
-
+#include "BasicMaterial.h"
+#include "ADSMaterial.h"
 
 #include "GrayScaleEffect.h"
 #include "SSLICEffect.h"
