@@ -36,7 +36,6 @@ using namespace KI::Gfx;
 #include "IGLPick.h"
 #include "IRaycastPick.h"
 
-#include "IMaterial.h"
 #include "IModel.h"
 #include "IShaderPass.h"
 #include "IModelProperty.h"

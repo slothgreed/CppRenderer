@@ -13,6 +13,7 @@ OutputShader::~OutputShader()
 void OutputShader::Initialize()
 {
 	FetchUniformLocation();
+	
 }
 
 
@@ -24,7 +25,7 @@ void OutputShader::FetchUniformLocation()
 
 }
 
-void OutputShader::Bind(shared_ptr<UniformSet> pUniform)
+void OutputShader::Bind(shared_ptr<IMaterial> pMaterial, shared_ptr<UniformSet> pUniform)
 {
 	if (pUniform->Frag()->Type() != SHADER_TYPE::SHADER_TYPE_OUTPUT)
 	{
@@ -43,7 +44,7 @@ void OutputShader::Bind(shared_ptr<UniformSet> pUniform)
 	BindOutputTexture();
 }
 
-void OutputShader::UnBind(shared_ptr<UniformSet> pUniform)
+void OutputShader::UnBind(shared_ptr<IMaterial> pMaterial, shared_ptr<UniformSet> pUniform)
 {
 	if (pUniform->Frag()->Type() != SHADER_TYPE::SHADER_TYPE_OUTPUT)
 	{

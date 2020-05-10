@@ -22,6 +22,9 @@ private:
 	MANIPULATOR_TYPE m_ManipulatorType;
 	shared_ptr<IManipulatorModel> m_pManipulator;
 	shared_ptr<DefaultShaderPass> m_pShaderPass;
+	shared_ptr<BasicMaterial> m_pRedMaterial;
+	shared_ptr<BasicMaterial> m_pGreenMaterial;
+	shared_ptr<BasicMaterial> m_pBlueMaterial;
 };
 }
 

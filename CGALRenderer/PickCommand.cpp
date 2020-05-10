@@ -36,8 +36,7 @@ void DebugRendering(vec3 near, vec3 far, vec2 screenPosition, Viewport* pViewpor
 	{
 		auto pRayData = make_shared<RenderData>();
 		auto pRayVertexBuffer = make_shared<DefaultVertexBuffer>();
-		auto pRayShaderPass = make_shared<DefaultShaderPass>();
-		pRayShaderPass->SetFixColor(vec4(0, 0, 1, 1));
+		auto pRayShaderPass = make_shared<DefaultShaderPass>(make_shared<BasicMaterial>(vec4(0, 0, 1, 1)));
 		vector<vec3> positions;
 		//positions.push_back(pickInfo.GetSelectPosition());
 		positions.push_back(near);
@@ -52,8 +51,7 @@ void DebugRendering(vec3 near, vec3 far, vec2 screenPosition, Viewport* pViewpor
 	{
 		auto pRayData = make_shared<RenderData>();
 		auto pRayVertexBuffer = make_shared<DefaultVertexBuffer>();
-		auto pRayShaderPass = make_shared<DefaultShaderPass>();
-		pRayShaderPass->SetFixColor(vec4(0, 0, 1, 1));
+		auto pRayShaderPass = make_shared<DefaultShaderPass>(make_shared<BasicMaterial>(vec4(0, 0, 1, 1)));
 		vector<vec3> positions;
 		positions.push_back(pickInfo.GetSelectPosition());
 		pRayVertexBuffer->SetPosition(positions);

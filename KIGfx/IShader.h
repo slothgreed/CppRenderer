@@ -21,18 +21,20 @@ public:
 	
 	virtual void Initialize() = 0;
 	virtual void FetchUniformLocation() = 0;
-	virtual void Bind(shared_ptr<UniformSet> pUniform) = 0;
-	virtual void UnBind(shared_ptr<UniformSet> pUniform) = 0;
+	virtual void Bind(shared_ptr<IMaterial> pMaterial, shared_ptr<UniformSet> pUniform) = 0;
+	virtual void UnBind(shared_ptr<IMaterial> pMaterial, shared_ptr<UniformSet> pUniform) = 0;
 
 	GLuint Program() { return m_programId; }
 	bool Compare(IShaderBuildInfo* shaderDefine);
 	shared_ptr<IShaderBuildInfo> BuildInfo() { return m_pShaderBuildInfo; }
+
+	static void BindTexture(GLint activeNumber, GLint uniformId);
+	static void BindInt(GLint uniformId, int value);
+	static void BindFloat(GLint uniformId, float value);
+	static void BindVector3(GLint uniformId, vec3 value);
+	static void BindVector4(GLint uniformId, vec4 value);
+
 protected:
-	virtual void BindTexture(GLint activeNumber, GLint uniformId);
-	virtual void BindInt(GLint uniformId, int value);
-	virtual void BindFloat(GLint uniformId, float value);
-	virtual void BindVector3(GLint uniformId, vec3 value);
-	virtual void BindVector4(GLint uniformId, vec4 value);
 
 	GLuint m_programId;
 	vector<GLint> m_uniformLocation;
@@ -41,11 +43,7 @@ private:
 	bool UniformValidation();
 	string m_version;
 
-	string debug_vertexCode;
-	string debug_tcsCode;
-	string debug_tesCode;
-	string debug_geomCode;
-	string debug_fragCode;
+	string m_debugCode[SHADER_PROGRAM_NUM];
 
 	shared_ptr<IShaderBuildInfo> m_pShaderBuildInfo;
 };

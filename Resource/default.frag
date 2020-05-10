@@ -18,14 +18,6 @@ in Data{
 
 
 
-layout (std140) uniform LightData
-{
-	vec4 Direction;
-	vec4 Ambient;
-	vec4 Diffuse;
-	vec4 Specular;
-}light;
-
 #ifdef USE_GBUFFER
 out vec4 OutputColor0;
 out vec4 OutputColor1;
@@ -33,6 +25,10 @@ out vec4 OutputColor2;
 out vec4 OutputColor3;
 in vec4 o_position;
 #endif
+
+
+<< EmbeddedCode Area >>
+
 
 void OutputGBuffer()
 {
@@ -70,17 +66,15 @@ vec4 Shading()
 	return InData.color * vec4(0,0.7,0.7,1.0);
 #endif
 #endif
-	return vec4(1,1,0,1);
+	return vec4(1,0,0,1);
 }
 
 void main()
 {
 #if defined(USE_GBUFFER)
 	OutputGBuffer()
-#elif defined(USE_SHADING)
-	outputColor = Shading();
-#elif defined(IN_TEXTURE0)
-	outputColor = texture2D(uTexture0,InData.texcoord);
+#elif defined(USE_MATERIAL)
+	GetMaterialColor();
 #else
 	outputColor = vec4(InData.color.xyz,1.0);
 #endif

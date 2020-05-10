@@ -41,8 +41,7 @@ void SSLICEffect::Initialize(int width, int height)
 	m_pBlendTexture->Set(blendTexture);
 	m_pBlendTexture->End();
 
-	m_pModelShaderPass = make_shared<DefaultShaderPass>();
-	m_pModelShaderPass->AddTexture(m_pBlendTexture);
+	m_pModelShaderPass = make_shared<DefaultShaderPass>(make_shared<BasicMaterial>(m_pBlendTexture));
 
 
 	auto pSSLICShaderPass = make_shared<GeneralShaderPass>();

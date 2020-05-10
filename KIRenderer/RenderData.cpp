@@ -24,7 +24,7 @@ void RenderData::AddRenderRegion(const string& descriptor, shared_ptr<IShaderPas
 		return;
 	}
 	m_pRenderRegion.push_back(RenderRegion());
-	int size = m_pRenderRegion.size() - 1;
+	int size = (int)m_pRenderRegion.size() - 1;
 	m_pRenderRegion[size].m_descriptor = descriptor;
 	m_pRenderRegion[size].m_pShaderPass = pShaderPass;
 	m_pRenderRegion[size].m_first = first;
@@ -71,7 +71,7 @@ void RenderData::DrawUseRegion()
 			DrawInternal(m_pShaderPass, first, count);
 		}
 
-		int size = m_pRenderRegion.size() - 1;
+		int size = (int)m_pRenderRegion.size() - 1;
 		first = m_pRenderRegion[size].m_first + m_pRenderRegion[size].m_count;
 		count = GetVertexSize() - first;
 		if (first != GetVertexSize())

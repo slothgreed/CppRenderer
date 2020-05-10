@@ -13,6 +13,7 @@ void NormalProperty::Build(IModelNode* pModelNode)
 	auto pGeomUniform = make_shared<NormalVisualizeUniform>();
 	pGeomUniform->SetLength(5.0f);
 
+	auto pMaterial = make_shared<BasicMaterial>(vec4(0, 1, 0, 1));
 	auto pBuildInfo = make_shared<IShaderBuildInfo>(SHADER_TYPE::SHADER_TYPE_NORMALVISUALIZE);
 	auto pVertexCode = make_shared<DefaultVertexCode>();
 	auto pFragCode = make_shared<DefaultFragCode>();
@@ -22,10 +23,12 @@ void NormalProperty::Build(IModelNode* pModelNode)
 	pBuildInfo->SetVertexCode(pVertexCode);
 	pBuildInfo->SetGeomCode(make_shared<NormalVisualizeGeometryCode>());
 	pBuildInfo->SetFragCode(pFragCode);
+	pBuildInfo->AddEmbeddedCode(pMaterial);
 	auto pShader = ShaderManager::Instance()->FindOrNew(pBuildInfo);
 
 	m_pRenderData = make_shared<RenderData>();
 	auto pShaderPass = make_shared<GeneralShaderPass>();
+	pShaderPass->SetMaterial(pMaterial);
 	pShaderPass->SetShader(pShader);
 	pShaderPass->GetUniform()->Set(nullptr, pGeomUniform, nullptr);
 	m_pRenderData->SetShaderPass(pShaderPass);

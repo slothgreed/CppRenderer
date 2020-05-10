@@ -27,12 +27,12 @@ void IShaderPass::Bind()
 		assert(0);
 	}
 
-	m_pShader->Bind(m_pUniform);
+	m_pShader->Bind(m_pMaterial, m_pUniform);
 }
 
 void IShaderPass::UnBind()
 {
-	m_pShader->Bind(m_pUniform);
+	m_pShader->UnBind(m_pMaterial, m_pUniform);
 
 }
 }

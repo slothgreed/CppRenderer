@@ -49,6 +49,10 @@ void ManipulatorNode::SetRenderData()
 
 		GenManipulatorHandleVBO(m_pFaceDatas[handle].get(), m_pEdgeDatas[handle].get(), handle);
 	}
+
+	m_pRedMaterial = make_shared<BasicMaterial>(vec4(1, 0, 0, 1));
+	m_pGreenMaterial = make_shared<BasicMaterial>(vec4(0, 1, 0, 1));
+	m_pBlueMaterial = make_shared<BasicMaterial>(vec4(0, 0, 1, 1));
 }
 
 void ManipulatorNode::GenManipulatorHandleVBO(
@@ -86,15 +90,15 @@ void ManipulatorNode::GenManipulatorHandleVBO(
 
 void ManipulatorNode::Draw()
 {
-	m_pShaderPass->SetFixColor(vec4(1, 0, 0, 1));
+	m_pShaderPass->SetMaterial(m_pRedMaterial);
 	m_pFaceDatas[MANIPULATOR_HANDLE_X]->Draw();
 	m_pEdgeDatas[MANIPULATOR_HANDLE_X]->Draw();
 
-	m_pShaderPass->SetFixColor(vec4(0, 1, 0, 1));
+	m_pShaderPass->SetMaterial(m_pGreenMaterial);
 	m_pFaceDatas[MANIPULATOR_HANDLE_Y]->Draw();
 	m_pEdgeDatas[MANIPULATOR_HANDLE_Y]->Draw();
 
-	m_pShaderPass->SetFixColor(vec4(0, 0, 1, 1));
+	m_pShaderPass->SetMaterial(m_pBlueMaterial);
 	m_pFaceDatas[MANIPULATOR_HANDLE_Z]->Draw();
 	m_pEdgeDatas[MANIPULATOR_HANDLE_Z]->Draw();
 }

@@ -16,17 +16,17 @@ PickPath::~PickPath()
 
 void PickPath::Initialize(int width, int height)
 {
-	auto pBuildInfo = make_shared<IShaderBuildInfo>(SHADER_TYPE::SHADER_TYPE_DEFAULT);
-	auto pVertexCode = make_shared<DefaultVertexCode>();
-	auto pFragCode = make_shared<DefaultFragCode>();
-	VERTEX_LAYOUT layout = (VERTEX_LAYOUT)(VERTEX_LAYOUT_POSITION | VERTEX_LAYOUT_COLOR);
-	pVertexCode->SetShaderDefine(layout);
-	pFragCode->SetShaderDefine(layout);
-	pBuildInfo->SetVertexCode(pVertexCode);
-	pBuildInfo->SetFragCode(pFragCode);
-	m_pPickShader = static_pointer_cast<DefaultShader>(ShaderManager::Instance()->FindOrNew(pBuildInfo));
-	m_pRenderTarget = make_shared<RenderTarget>();
-	m_pRenderTarget->Initialize(1, width, height);
+	//auto pBuildInfo = make_shared<IShaderBuildInfo>(SHADER_TYPE::SHADER_TYPE_DEFAULT);
+	//auto pVertexCode = make_shared<DefaultVertexCode>();
+	//auto pFragCode = make_shared<DefaultFragCode>();
+	//VERTEX_LAYOUT layout = (VERTEX_LAYOUT)(VERTEX_LAYOUT_POSITION | VERTEX_LAYOUT_COLOR);
+	//pVertexCode->SetShaderDefine(layout);
+	//pFragCode->SetShaderDefine(layout);
+	//pBuildInfo->SetVertexCode(pVertexCode);
+	//pBuildInfo->SetFragCode(pFragCode);
+	//m_pPickShader = static_pointer_cast<DefaultShader>(ShaderManager::Instance()->FindOrNew(pBuildInfo));
+	//m_pRenderTarget = make_shared<RenderTarget>();
+	//m_pRenderTarget->Initialize(1, width, height);
 }
 
 void PickPath::Resize(int width, int height)

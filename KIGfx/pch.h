@@ -44,8 +44,10 @@ using namespace glm;
 #include "IAttribute.h"
 #include "IShaderCode.h"
 #include "IUniform.h"
+#include "IEmbeddedShaderCode.h"
 #include "IShaderBuildInfo.h"
 #include "IShaderDefine.h"
+#include "IMaterial.h"
 #include "IShader.h"
 #include "IVertexBuffer.h"
 

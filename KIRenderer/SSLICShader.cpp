@@ -14,6 +14,7 @@ SSLICShader::~SSLICShader()
 void SSLICShader::Initialize()
 {
 	FetchUniformLocation();
+	
 }
 
 
@@ -25,7 +26,7 @@ void SSLICShader::FetchUniformLocation()
 	Logger::GLError();
 }
 
-void SSLICShader::Bind(shared_ptr<UniformSet> pUniform)
+void SSLICShader::Bind(shared_ptr<IMaterial> pMaterial, shared_ptr<UniformSet> pUniform)
 {
 	if (pUniform->Frag()->Type() != SHADER_TYPE::SHADER_TYPE_SSLIC)
 	{
@@ -42,7 +43,7 @@ void SSLICShader::Bind(shared_ptr<UniformSet> pUniform)
 	BindColorTexture();
 }
 
-void SSLICShader::UnBind(shared_ptr<UniformSet> pUniform)
+void SSLICShader::UnBind(shared_ptr<IMaterial> pMaterial, shared_ptr<UniformSet> pUniform)
 {
 	if (pUniform->Frag()->Type() != SHADER_TYPE::SHADER_TYPE_SSLIC)
 	{

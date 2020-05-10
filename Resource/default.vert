@@ -53,7 +53,7 @@ out vec4 instanceMatrix3;
 }OutData;
 
 
-uniform vec4 uFixColor;
+<< EmbeddedCode Area >>
 
 void OutputColor()
 {
@@ -122,7 +122,11 @@ void main()
 #else
 	OutputPosition();
 	OutputNormal();
-	OutputColor();
+#if defined(USE_MATERIAL)
+	GetMaterialColor();
+#else 
+	OutData.color = vec4(1,0,0,1);
+#endif
 	OutputTexcoord();
 	OutputInstance();
 #endif

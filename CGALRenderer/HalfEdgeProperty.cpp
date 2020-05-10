@@ -35,6 +35,7 @@ void HalfEdgeProperty::Build(IModelNode* pModelNode)
 	pVertexCode->SetShaderDefine(pVertexBuffer->Layout());
 	pBuildInfo->SetVertexCode(pVertexCode);
 	pBuildInfo->SetFragCode(make_shared<DefaultFragCode>());
+	pBuildInfo->AddEmbeddedCode(make_shared<BasicMaterial>(vec4(0, 0, 0, 1)));
 	m_pShader = ShaderManager::Instance()->FindOrNew(pBuildInfo);
 
 }

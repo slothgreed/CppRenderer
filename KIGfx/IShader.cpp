@@ -7,28 +7,62 @@ void IShader::Build(shared_ptr<IShaderBuildInfo> pBuildInfo)
 {
 	m_pShaderBuildInfo = pBuildInfo;
 	GenerateShaderCode(m_pShaderBuildInfo.get());
+	Initialize();
+	for (int i = 0; i < pBuildInfo->GetEmbeddedCodeSize(); i++)
+	{
+		pBuildInfo->GetEmbeddedCode(i)->FetchUniformLocation(m_programId);
+	}
 }
 
 void IShader::GenerateShaderCode(IShaderBuildInfo* pBuildInfo)
 {
-	string vertexCode;
-	string tcsCode;
-	string tesCode;
-	string geomCode;
-	string fragCode;
-	GetShaderCode(SHADER_PROGRAM_VERTEX, vertexCode);
-	GetShaderCode(SHADER_PROGRAM_TCS,	tcsCode);
-	GetShaderCode(SHADER_PROGRAM_TESS,	tesCode);
-	GetShaderCode(SHADER_PROGRAM_GEOM,	geomCode);
-	GetShaderCode(SHADER_PROGRAM_FRAG,	fragCode);
-	
-	debug_vertexCode = vertexCode;
-	debug_tcsCode = tcsCode;;
-	debug_tesCode = tesCode;;
-	debug_geomCode = geomCode;;
-	debug_fragCode = fragCode;;
+	string shaderCode[SHADER_PROGRAM_NUM];
 
-	BuildFromCode(vertexCode, tcsCode, tesCode, geomCode, fragCode);
+	for (int i = 0; i < SHADER_PROGRAM_NUM; i++)
+	{
+		GetShaderCode((SHADER_PROGRAM_TYPE)i, shaderCode[i]);
+	}
+
+	string embeddedCode[SHADER_PROGRAM_NUM];
+	for (int i = 0; i < pBuildInfo->GetEmbeddedCodeSize(); i++)
+	{
+		auto pEmbedded = pBuildInfo->GetEmbeddedCode(i);
+		SHADER_PROGRAM_TYPE type;
+		string code;
+		pEmbedded->GetEmbeddedCode(type, code);
+		embeddedCode[type] += code;
+	}
+
+	string embeddedAreaStr = EMBEDDEDCODE_AREA;
+	for (int i = 0; i < SHADER_PROGRAM_NUM; i++)
+	{
+		if (shaderCode[i].empty())
+		{
+			continue;
+		}
+		int pos = shaderCode[i].find(embeddedAreaStr);
+		if (pos == -1)
+		{
+			continue;
+		}
+		
+		string code = shaderCode[i].substr(0, pos);
+		code += embeddedCode[i] + "\n";
+		code += shaderCode[i].substr(pos + embeddedAreaStr.size(), shaderCode[i].size());
+		shaderCode[i] = code;
+	}
+
+	BuildFromCode(
+		shaderCode[SHADER_PROGRAM_VERTEX],
+		shaderCode[SHADER_PROGRAM_TCS],
+		shaderCode[SHADER_PROGRAM_TESS],
+		shaderCode[SHADER_PROGRAM_GEOM],
+		shaderCode[SHADER_PROGRAM_FRAG]);
+
+	for (int i = 0; i < SHADER_PROGRAM_NUM; i++)
+	{
+		m_debugCode[i] = shaderCode[i];
+	}
 }
 
 void IShader::GetShaderCode(SHADER_PROGRAM_TYPE type, string& code)
@@ -68,7 +102,6 @@ void IShader::BuildFromCode(const string& vertexCode, const string& tcsCode, con
 		fragId = ShaderUtility::Compile(fragCode, GL_FRAGMENT_SHADER);
 
 	m_programId = ShaderUtility::Link(vertId, tcsId, tesId, geomId, fragId);
-	Initialize();
 	//UniformValidation();
 }
 
@@ -116,13 +149,6 @@ void IShader::Dispose()
 
 void IShader::BindTexture(GLint activeNumber, GLint uniformId)
 {
-	if (m_programId == 0)
-	{
-		assert(0);
-		return;
-	}
-
-
 	glActiveTexture(activeNumber);
 	Logger::GLError();
 

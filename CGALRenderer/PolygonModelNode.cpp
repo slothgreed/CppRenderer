@@ -89,7 +89,8 @@ void PolygonModelNode::SetRenderData()
 		pFaceBuffer->SetPosition(facet);
 		pFaceBuffer->SetNormal(normal);
 		m_pFaceData = make_shared <RenderData>(GL_TRIANGLES, pFaceBuffer);
-		m_pFaceData->SetShaderPass(make_shared<DefaultShaderPass>());
+		m_pFaceData->SetShaderPass(make_shared<DefaultShaderPass>(
+			make_shared<BasicMaterial>(vec4(0.7, 0.7, 0.7, 1))));
 
 		vector<vec3> edge;
 		GetModel()->GetEdgeList(edge);
@@ -97,7 +98,8 @@ void PolygonModelNode::SetRenderData()
 		pEdgeBuffer->SetPosition(edge);
 
 		m_pEdgeData = make_shared <RenderData>(GL_LINES, pEdgeBuffer);
-		m_pEdgeData->SetShaderPass(make_shared<DefaultShaderPass>());
+		m_pEdgeData->SetShaderPass(make_shared<DefaultShaderPass>(
+			make_shared<BasicMaterial>(vec4(0, 0, 0, 1))));
 
 	}
 	else
@@ -122,17 +124,16 @@ void PolygonModelNode::SetRenderData()
 		auto pFaceIndex = make_shared <IndexBuffer>();
 		pFaceIndex->Set(index);
 		m_pFaceData = make_shared <RenderData>(GL_TRIANGLES, pFaceBuffer, pFaceIndex);
-		m_pFaceData->SetShaderPass(make_shared<DefaultShaderPass>());
-
+		m_pFaceData->SetShaderPass(make_shared<DefaultShaderPass>(
+			make_shared<BasicMaterial>(vec4(0.7, 0.7, 0.7, 1))));
 		vector<vec3> edge;
 		GetModel()->GetEdgeList(edge);
 		auto pEdgeBuffer = make_shared<DefaultVertexBuffer>();
 		pEdgeBuffer->SetPosition(edge);
 
-		auto pEdgeShaderPass = make_shared<DefaultShaderPass>();
-		pEdgeShaderPass->SetFixColor(vec4(0, 1, 0, 1));
 		m_pEdgeData = make_shared <RenderData>(GL_LINES, pEdgeBuffer);
-		m_pEdgeData->SetShaderPass(pEdgeShaderPass);
+		m_pEdgeData->SetShaderPass(make_shared<DefaultShaderPass>(
+			make_shared<BasicMaterial>(vec4(0, 1, 0, 1))));
 
 	}
 

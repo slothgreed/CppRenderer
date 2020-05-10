@@ -12,6 +12,7 @@ GrayScaleShader::~GrayScaleShader()
 void GrayScaleShader::Initialize()
 {
 	FetchUniformLocation();
+	
 }
 
 void GrayScaleShader::FetchUniformLocation()
@@ -21,7 +22,7 @@ void GrayScaleShader::FetchUniformLocation()
 	Logger::GLError();
 }
 
-void GrayScaleShader::Bind(shared_ptr<UniformSet> pUniform)
+void GrayScaleShader::Bind(shared_ptr<IMaterial> pMaterial, shared_ptr<UniformSet> pUniform)
 {
 	if (pUniform->Frag()->Type() != SHADER_TYPE::SHADER_TYPE_GRAYSCALE)
 	{
@@ -40,7 +41,7 @@ void GrayScaleShader::Bind(shared_ptr<UniformSet> pUniform)
 	BindColorTexture();
 }
 
-void GrayScaleShader::UnBind(shared_ptr<UniformSet> pUniform)
+void GrayScaleShader::UnBind(shared_ptr<IMaterial> pMaterial, shared_ptr<UniformSet> pUniform)
 {
 	if (pUniform->Frag()->Type() != SHADER_TYPE::SHADER_TYPE_GRAYSCALE)
 	{

@@ -17,6 +17,7 @@ void BezierLineShader::Initialize()
 {
 	BindScene();
 	FetchUniformLocation();
+	
 }
 
 void BezierLineShader::SetPatchVertices(GLuint patchVertex)
@@ -40,7 +41,7 @@ void BezierLineShader::FetchUniformLocation()
 	Logger::GLError();
 }
 
-void BezierLineShader::Bind(shared_ptr<UniformSet> pUniform)
+void BezierLineShader::Bind(shared_ptr<IMaterial> pMaterial, shared_ptr<UniformSet> pUniform)
 {
 	if (m_patchVertex == 0)
 	{
@@ -68,7 +69,7 @@ void BezierLineShader::Bind(shared_ptr<UniformSet> pUniform)
 	
 }
 
-void BezierLineShader::UnBind(shared_ptr<UniformSet> uniform)
+void BezierLineShader::UnBind(shared_ptr<IMaterial> pMaterial, shared_ptr<UniformSet> uniform)
 {
 
 }}

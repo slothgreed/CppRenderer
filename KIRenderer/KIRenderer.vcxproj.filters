@@ -228,9 +228,6 @@
     <ClInclude Include="IShaderPass.h">
       <Filter>ヘッダー ファイル\Interface</Filter>
     </ClInclude>
-    <ClInclude Include="IMaterial.h">
-      <Filter>ヘッダー ファイル\Interface</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -264,9 +261,6 @@
       <Filter>ソース ファイル\VertexBuffer</Filter>
     </ClCompile>
     <ClCompile Include="RenderSystem.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="IMaterial.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="IModelNode.cpp">
@@ -345,6 +339,9 @@
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="IRaycastPick.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="IShaderPass.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>

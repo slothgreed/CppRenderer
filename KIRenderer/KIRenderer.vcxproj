@@ -179,7 +179,6 @@
     <ClInclude Include="GrayScaleShader.h" />
     <ClInclude Include="IGeometryPath.h" />
     <ClInclude Include="ILight.h" />
-    <ClInclude Include="IMaterial.h" />
     <ClInclude Include="IShaderPass.h" />
     <ClInclude Include="IModel.h" />
     <ClInclude Include="IModelNode.h" />
@@ -229,7 +228,7 @@
     <ClCompile Include="DirectionLight.cpp" />
     <ClCompile Include="GeometryPath.cpp" />
     <ClCompile Include="GrayScaleShader.cpp" />
-    <ClCompile Include="IMaterial.cpp" />
+    <ClCompile Include="IShaderPass.cpp" />
     <ClCompile Include="IModelNode.cpp" />
     <ClCompile Include="IGLPick.cpp" />
     <ClCompile Include="IRaycastPick.cpp" />

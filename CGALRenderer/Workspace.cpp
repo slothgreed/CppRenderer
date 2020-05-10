@@ -41,20 +41,21 @@ void Workspace::Initialize(Project* m_pProject)
 	auto axisNode = make_shared<PrimitiveNode>(axis);
 	m_pScene->AddModelNode(axisNode);
 
-	auto model = make_shared<RenderData>();
+	auto pModel = make_shared<RenderData>();
 	//ModelGenerator::Plane(plane.get());
-	SpecialUtility::LoadVectorFieldSphere(model.get());
-	auto pShaderPass = make_shared<DefaultShaderPass>();
-	model->SetShaderPass(pShaderPass);
-	auto pModelNode = make_shared<PrimitiveNode>(model);
+	SpecialUtility::LoadVectorFieldSphere(pModel.get());
+
+	auto pModelNode = make_shared<PrimitiveNode>(pModel);
 	TextureData data;
 	TextureGenerator::RandomTexture(8, 15, data);
-	auto texture = make_shared<Texture>();
-	texture->Generate();
-	texture->Begin();
-	texture->Set(data);
-	texture->End();
-	pShaderPass->AddTexture(texture);
+	auto pTexture = make_shared<Texture>();
+	pTexture->Generate();
+	pTexture->Begin();
+	pTexture->Set(data);
+	pTexture->End();
+
+	auto pShaderPass = make_shared<DefaultShaderPass>(make_shared<BasicMaterial>(pTexture));
+	pModel->SetShaderPass(pShaderPass);
 	m_pScene->AddModelNode(pModelNode);
 
 	m_pRenderTarget = make_shared<RenderTarget>();
@@ -67,7 +68,7 @@ void Workspace::Initialize(Project* m_pProject)
 
 	auto pSSLIC = make_shared<SSLICEffect>();
 	pSSLIC->Initialize(64, 64);
-	pSSLIC->SetRenderData(model);
+	pSSLIC->SetRenderData(pModel);
 
 	auto pGrayScale = make_shared<GrayScaleEffect>();
 	pGrayScale->Initialize(640, 480);

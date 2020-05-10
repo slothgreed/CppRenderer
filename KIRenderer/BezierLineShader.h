@@ -22,8 +22,8 @@ public:
 	~BezierLineShader();
 	virtual void Initialize() override;
 	virtual void FetchUniformLocation() override;
-	virtual void Bind(shared_ptr<UniformSet> pUniform) override;
-	virtual void UnBind(shared_ptr<UniformSet> pUniform) override;
+	virtual void Bind(shared_ptr<IMaterial> pMaterial, shared_ptr<UniformSet> pUniform) override;
+	virtual void UnBind(shared_ptr<IMaterial> pMaterial, shared_ptr<UniformSet> pUniform) override;
 	void SetPatchVertices(GLuint patchVertex);
 private:
 	void BindScene();

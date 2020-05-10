@@ -174,9 +174,11 @@
     <ClInclude Include="GfxTypes.h" />
     <ClInclude Include="GLIterator.h" />
     <ClInclude Include="IAttribute.h" />
+    <ClInclude Include="IEmbeddedShaderCode.h" />
     <ClInclude Include="IGLObject.h" />
     <ClInclude Include="IGLState.h" />
     <ClInclude Include="GLTypes.h" />
+    <ClInclude Include="IMaterial.h" />
     <ClInclude Include="IndexBuffer.h" />
     <ClInclude Include="IRenderTarget.h" />
     <ClInclude Include="IShader.h" />

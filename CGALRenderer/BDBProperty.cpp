@@ -44,14 +44,16 @@ void BDBProperty::Build(IModelNode* pModelNode)
 
 	m_pRenderData = make_shared<RenderData>(GL_LINES, pVertexBuffer, pIndexBuffer);
 
+	auto pMaterial = make_shared<BasicMaterial>(vec4(0, 0, 0, 1));
 	auto pBuildInfo = make_shared<IShaderBuildInfo>(SHADER_TYPE_DEFAULT);
 	auto pVertexCode = make_shared<DefaultVertexCode>();
 	pVertexCode->SetShaderDefine(pVertexBuffer->Layout());
 	pBuildInfo->SetVertexCode(pVertexCode);
 	pBuildInfo->SetFragCode(make_shared<DefaultFragCode>());
+	pBuildInfo->AddEmbeddedCode(pMaterial);
 	auto pShader = ShaderManager::Instance()->FindOrNew(pBuildInfo);
 	
-	auto pShaderPass = make_shared<DefaultShaderPass>();
+	auto pShaderPass = make_shared<DefaultShaderPass>(pMaterial);
 	m_pRenderData->SetShaderPass(pShaderPass);
 }
 

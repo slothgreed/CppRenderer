@@ -18,11 +18,10 @@ void RungeKuttaScene::Initialize(Project* m_pProject)
 	pCamera->Ortho(0, 1, 0, 1, -2, 2);
 	m_pScene->SetCamera(pCamera);
 
-	auto pShaderPass = make_shared<DefaultShaderPass>();
+	auto pShaderPass = make_shared<DefaultShaderPass>(make_shared<BasicMaterial>(vec4(1, 0, 0, 1)));
 	auto pPointData = make_shared<RenderData>(GL_POINTS, make_shared<DefaultVertexBuffer>());
 	pPointData->SetShaderPass(pShaderPass);
 	m_pPointNode = make_shared<PrimitiveNode>(pPointData);
-	pShaderPass->SetFixColor(vec4(1, 0, 0, 1));
 	m_pScene->AddModelNode(m_pPointNode);
 
 	auto pAxis = make_shared<RenderData>();

@@ -31,8 +31,8 @@ void MaterialManager::Initialize()
 
 void MaterialManager::CreateSystemShaderPass()
 {
-	auto pShaderPass = make_unique<DefaultShaderPass>();
-	pShaderPass->SetFixColor(vec4(1, 0, 0, 1));
+	auto pShaderPass = make_unique<DefaultShaderPass>(
+		make_shared<BasicMaterial>(vec4(1, 0, 0, 1)));
 
 	m_pShaderPasss[SYSTEM_MATERIAL_SELECTION] = std::move(pShaderPass);
 

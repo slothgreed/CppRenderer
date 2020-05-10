@@ -16,6 +16,7 @@ void NormalVisualizeShader::Initialize()
 	BindScene();
 	BindLight();
 	FetchUniformLocation();
+	
 }
 
 void NormalVisualizeShader::BindScene()
@@ -38,7 +39,7 @@ void NormalVisualizeShader::FetchUniformLocation()
 	m_uniformLocation[NORMAL_VISUALIZE_UNIFORM_LENGTH] = glGetUniformLocation(m_programId, "uLength");
 }
 
-void NormalVisualizeShader::Bind(shared_ptr<UniformSet> pUniform)
+void NormalVisualizeShader::Bind(shared_ptr<IMaterial> pMaterial, shared_ptr<UniformSet> pUniform)
 {
 	if (pUniform->Geometry()->Type() != SHADER_TYPE::SHADER_TYPE_NORMALVISUALIZE)
 	{

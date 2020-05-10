@@ -12,6 +12,10 @@ public:
 	~IShaderBuildInfo();
 
 	SHADER_TYPE Type() { return m_type; };
+	void AddEmbeddedCode(shared_ptr<IEmbeddedShaderCode> value) { m_pEmbeddedCode.push_back(value); }
+	shared_ptr<IEmbeddedShaderCode> GetEmbeddedCode(int index) { return m_pEmbeddedCode[index]; };
+	const vector<shared_ptr<IEmbeddedShaderCode>> GetEmbeddedCode() { return m_pEmbeddedCode; };
+	int GetEmbeddedCodeSize() { return (int)m_pEmbeddedCode.size(); };
 	void SetVertexCode(shared_ptr<IShaderCode> value) { m_pShaderCode[SHADER_PROGRAM_VERTEX] = value; };
 	void SetTESCode(shared_ptr<IShaderCode> value) { m_pShaderCode[SHADER_PROGRAM_TESS] = value; };
 	void SetTCSCode(shared_ptr<IShaderCode> value) { m_pShaderCode[SHADER_PROGRAM_TCS] = value; };
@@ -22,6 +26,7 @@ public:
 	bool Compare(IShaderBuildInfo* pShaderBuildInfo);
 private:
 	shared_ptr<IShaderCode> m_pShaderCode[SHADER_PROGRAM_NUM];
+	vector<shared_ptr<IEmbeddedShaderCode>> m_pEmbeddedCode;
 	
 	SHADER_TYPE m_type;
 };

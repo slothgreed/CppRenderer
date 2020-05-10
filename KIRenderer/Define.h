@@ -12,7 +12,6 @@ namespace Rednerer
 #define SHADER_EXT_GEOM		".geom"
 #define SHADER_EXT_FRAG		".frag"
 
-
 #define SHADER_DEFAULT		"default"
 #define SHADER_POSTPROCESS	"postprocess"
 #define SHADER_GRAYSCALE	"grayscale"
@@ -22,6 +21,8 @@ namespace Rednerer
 #define SHADER_BEZIERLINE	"bezierline"
 #define SHADER_OUTPUT		"output"
 #define SHADER_PICK			"pick"
+
+#define SHADER_BASICMATERIAL	"material\\BasicMaterial"
 
 
 #define GLSL_VERSION_400_CORE "#version 400 core\n"
