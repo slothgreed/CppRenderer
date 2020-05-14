@@ -23,6 +23,19 @@ out vec4 instanceMatrix3;
 
 }OutData;
 
+vec4 OutputColorExt()
+{
+#if defined(VIEW_COLOR)
+	return a_color;
+#elif defined(VIEW_NORMAL)
+	return vec4(a_normal,1.0);
+#elif defined(VIEW_TEXCOLOR)
+	return vec4(a_texcoord.x,a_texcoord.y,0,1.0);
+#elif defined(VIEW_DEPTH)
+	return vec4(gl_Position.z,gl_Position.z,gl_Position.z,1.0);
+#endif
+}
+
 void main()
 {
 	gl_Position = OutputPosition();
