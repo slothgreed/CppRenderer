@@ -60,6 +60,7 @@ using namespace KI::Topology;
 #include "ModelAnimation.h"
 #include "Storyboard.h"
 
+#include "VertexMaterial.h"
 #include "BasicMaterial.h"
 #include "ADSMaterial.h"
 

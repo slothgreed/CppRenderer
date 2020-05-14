@@ -3,6 +3,17 @@ namespace KI
 {
 namespace Asset
 {
+BasicMaterialFragCode::BasicMaterialFragCode()
+	:IShaderCode(string(SHADER_DIRECTORY)+
+	string(SHADER_BASICMATERIAL)+
+	string(SHADER_EXT_VERTEX))
+{
+
+}
+
+BasicMaterialFragCode::~BasicMaterialFragCode()
+{
+}
 
 BasicMaterial::BasicMaterial(const vec4& color)
 {
@@ -12,20 +23,6 @@ BasicMaterial::BasicMaterial(const vec4& color)
 BasicMaterial::BasicMaterial(shared_ptr<Texture> pTexture)
 {
 	SetTexture(pTexture);
-}
-
-BasicMaterial::BasicMaterial(BASIC_COLOR_TYPE type)
-{
-	if (type == BASIC_COLOR_TYPE_FIX ||
-		type == BASIC_COLOR_TYPE_TEXTURE)
-	{
-		assert(0);
-		SetColor(vec4(1, 1, 0, 1));
-	}
-	else
-	{
-		m_Type = type;
-	}
 }
 
 BasicMaterial::~BasicMaterial()
@@ -44,5 +41,18 @@ void BasicMaterial::SetTexture(shared_ptr<Texture> pTexture)
 	m_Type = BASIC_COLOR_TYPE_TEXTURE;
 }
 
+bool BasicMaterial::ShaderDefineComare(IMaterial* pMaterial)
+{
+	if (pMaterial->Type() == MATERIAL_TYPE::MATERIAL_TYPE_BASIC)
+	{
+		auto pBasicMaterial = (BasicMaterial*)pMaterial;
+		if (m_Type == pBasicMaterial->ColorType())
+		{
+			return true;
+		}
+	}
+
+	return false;
+}
 }
 }

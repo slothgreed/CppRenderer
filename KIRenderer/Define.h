@@ -22,6 +22,8 @@ namespace Rednerer
 #define SHADER_BEZIERLINE	"bezierline"
 #define SHADER_OUTPUT		"output"
 #define SHADER_PICK			"pick"
+#define SHADER_BASICMATERIAL "material/basicmaterial"
+#define SHADER_VERTEXMATERIAL "material/vertexmaterial"
 
 
 #define GLSL_VERSION_400_CORE "#version 400 core\n"

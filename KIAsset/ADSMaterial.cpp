@@ -14,5 +14,11 @@ void ADSMaterial::Set(const vec4& ambient, const vec4& diffuse, const vec4& spec
 	m_specular = specular;
 	m_shinness = shinness;
 }
+
+bool ADSMaterial::ShaderDefineComare(IMaterial* pMaterial)
+{
+	assert(0);
+	return false;
+}
 }
 }

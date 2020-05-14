@@ -1,0 +1,102 @@
+#ifndef DEFAULT_VBO_TXT
+#define DEFAULT_VBO_TXT
+
+#include "common.h"
+#include "struct.txt"
+
+layout(location = 0) in vec3 a_position;
+
+#ifdef IN_NORMAL
+layout(location = 1) in vec3 a_normal;
+#endif
+
+#ifdef IN_COLOR
+layout(location = 2) in vec3 a_color;
+#endif
+
+#ifdef IN_TEXCOORD
+layout(location = 3) in vec2 a_texcoord;
+#endif
+
+
+#ifdef IN_INSTANCE
+layout(location = 4) in vec4 a_instanceMatrix0;
+layout(location = 5) in vec4 a_instanceMatrix1;
+layout(location = 6) in vec4 a_instanceMatrix2;
+layout(location = 7) in vec4 a_instanceMatrix3;
+#endif
+
+vec4 OutputPosition()
+{
+#if defined(OUT_PLANE_POSITION) 
+	return vec4(a_position,1.0);
+#elif defined(IN_INSTANCE)
+	mat4 vp = scene.Projection * scene.ViewMatrix;
+	mat4 instanceMatrix = mat4(a_instanceMatrix0,a_instanceMatrix1,a_instanceMatrix2,a_instanceMatrix3);
+	return vp * instanceMatrix * vec4(a_position,1.0);
+#else
+	mat4 vp = scene.Projection * scene.ViewMatrix;
+	return vp * vec4(a_position,1.0);
+#endif
+}
+ 
+vec3 OutputNormal()
+{
+#if defined(IN_NORMAL)
+	return a_normal;
+#else
+	return NotDefineNormal();
+#endif
+}
+
+vec4 OutputColor()
+{
+#if defined(IN_COLOR)
+	return vec4(a_color,1.0);
+#elif
+	return NotDefineColor();
+#endif
+}
+
+vec2 OutputTexcoord()
+{
+#if defined(IN_TEXCOORD)
+	return a_texcoord;
+#else
+	return NotDefineTexcoord();
+}
+
+vec4 OutputInstance0()
+{
+#ifdef IN_INSTANCE
+	return a_instanceMatrix0;
+#else
+	return vec4(1,0,0,0);
+#endif
+}
+vec4 OutputInstance1()
+{
+#ifdef IN_INSTANCE
+	return a_instanceMatrix1;
+#else
+	return vec4(0,1,0,0);
+#endif
+}
+vec4 OutputInstance2()
+{
+#ifdef IN_INSTANCE
+	return a_instanceMatrix2;
+#else
+	return vec4(0,0,1,0);
+#endif
+}
+vec4 OutputInstance3()
+{
+#ifdef IN_INSTANCE
+	return a_instanceMatrix3;
+#else
+	return vec4(0,0,0,1);
+#endif
+}
+
+#endif

@@ -14,6 +14,9 @@ public:
 	~ADSMaterial() {};
 
 	void Set(const vec4& ambient, const vec4& diffuse, const vec4& speculat, float shinness);
+
+	virtual bool ShaderDefineComare(IMaterial* pMaterial) override;
+
 private:
 	vec4 m_ambient;
 	vec4 m_diffuse;

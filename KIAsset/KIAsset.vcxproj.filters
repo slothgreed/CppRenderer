@@ -147,6 +147,9 @@
     <ClInclude Include="Grid.h">
       <Filter>ソース ファイル\Model\BasicObject</Filter>
     </ClInclude>
+    <ClInclude Include="VertexMaterial.h">
+      <Filter>ヘッダー ファイル\Material</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -211,6 +214,9 @@
     </ClCompile>
     <ClCompile Include="Grid.cpp">
       <Filter>ヘッダー ファイル\Model\BasicObject</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexMaterial.cpp">
+      <Filter>ソース ファイル\Material</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

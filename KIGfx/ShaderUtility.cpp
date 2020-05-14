@@ -86,5 +86,55 @@ GLuint ShaderUtility::Link(GLuint vertexId, GLuint tcsId, GLuint tesId, GLuint g
 	return programId;
 }
 
+void ShaderUtility::EmbeddedCode(string& code, const string& embeddedCode, const string& embeddedIdentifier)
+{
+	if (code.empty())
+	{
+		return;
+	}
+
+	int pos = code.find(embeddedIdentifier);
+	if (pos == -1)
+	{
+		return;
+	}
+
+	string resultCode = code.substr(0, pos);
+	resultCode += embeddedCode + "\n";
+	resultCode += code.substr(pos + embeddedIdentifier.size(), code.size());
+	code = resultCode;
+}
+
+void ShaderUtility::ExpandShaderCode(const string& filePath, string& shaderCode)
+{
+	vector<string> lines;
+	FileUtility::Load(filePath, lines);
+
+	string directoryPath;
+	FileUtility::GetDirectoryPath(filePath, directoryPath);
+	for (int i = 0; i < lines.size(); i++)
+	{
+		int pos = lines[i].find("#include");
+		if (pos == -1)
+		{
+			shaderCode += lines[i];
+			continue;
+		}
+
+		// include ‚ª‚ ‚Á‚½ê‡Ä‹A“Ç‚Ýž‚Ý
+		string includePath = directoryPath;
+		int startPos = lines[i].find("\"");
+		includePath += lines[i].substr(0, startPos);
+		int endPos = includePath.find_last_of("\"");
+		includePath = includePath.erase(endPos);
+		ShaderUtility::Load(includePath, shaderCode);
+	}
+}
+
+void ShaderUtility::Load(string filePath, string& shaderCode)
+{
+	ExpandShaderCode(filePath, shaderCode);
+	
+}
 }
 }

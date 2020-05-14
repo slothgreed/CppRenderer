@@ -1,3 +1,5 @@
+#include <filesystem>
+
 namespace KI
 {
 namespace Foundation
@@ -10,16 +12,16 @@ FileUtility::~FileUtility()
 {
 }
 
-bool FileUtility::Load(const std::string& filePath, std::string& contents)
+bool FileUtility::Load(const string& filePath, string& contents)
 {
-	std::ifstream ifs(filePath);
-	std::string line;
-	if (ifs.fail())
+	if (IsExist(filePath))
 	{
 		Logger::Output(LOG_LEVEL::ERROR, "file open error");
 		return false;
 	}
 
+	std::ifstream ifs(filePath);
+	std::string line;
 	while ((getline(ifs, line)))
 	{
 		contents += line + "\n";
@@ -28,15 +30,46 @@ bool FileUtility::Load(const std::string& filePath, std::string& contents)
 	return true;
 }
 
-void FileUtility::GetExtension(const std::string& filePath, std::string& ext)
+
+bool FileUtility::Load(const string& filePath, vector<string>& lines)
+{
+	if (IsExist(filePath))
+	{
+		Logger::Output(LOG_LEVEL::ERROR, "file open error");
+		return false;
+	}
+
+	ifstream ifs(filePath);
+	string line;
+	while ((getline(ifs, line)))
+	{
+		lines.push_back(line);
+	}
+
+	return true;
+}
+
+
+bool FileUtility::IsExist(const string& filePath)
+{
+	ifstream fs(filePath);
+	return fs.is_open();
+}
+
+void FileUtility::GetExtension(const string& filePath, string& ext)
 {
 	int index = (int)filePath.find_last_of(".");
 	ext = filePath.substr(index, filePath.size() - index);
 }
 
-bool FileUtility::CheckExtension(const std::string& filePath, const std::string& ext)
+void FileUtility::GetDirectoryPath(const string& filePath, string& directoryPath)
 {
-	std::string extname;
+	int index = (int)filePath.find_last_of("\"");
+	directoryPath = filePath.substr(index, filePath.size() - index);
+}
+bool FileUtility::CheckExtension(const string& filePath, const string& ext)
+{
+	string extname;
 	GetExtension(filePath, extname);
 
 	if (extname == ext)

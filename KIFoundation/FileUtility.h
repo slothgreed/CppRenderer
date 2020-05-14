@@ -10,9 +10,12 @@ public:
 	FileUtility();
 	~FileUtility();
 
-	static bool Load(const std::string& filePath, std::string& contents);
-	static void GetExtension(const std::string& filePath, std::string& ext);
-	static bool CheckExtension(const std::string& filePath, const std::string& ext);
+	static bool IsExist(const string& filePath);
+	static bool Load(const string& filePath, string& contents);
+	static bool Load(const string& filePath, vector<string>& contents);
+	static void GetExtension(const string& filePath, string& ext);
+	static void GetDirectoryPath(const string& filePath, string& directoryPath);
+	static bool CheckExtension(const string& filePath, const string& ext);
 private:
 
 };
