@@ -4,26 +4,21 @@ namespace KI
 {
 namespace Gfx
 {
+class IVertexBuffer;
 class DLL_EXPORT IShaderBuildInfo
 {
 public:
-	IShaderBuildInfo() { assert(0); }
-	IShaderBuildInfo(SHADER_TYPE type);
+	IShaderBuildInfo();
 	~IShaderBuildInfo();
 
-	SHADER_TYPE Type() { return m_type; };
-	void SetVertexCode(shared_ptr<IShaderCode> value) { m_pShaderCode[SHADER_PROGRAM_VERTEX] = value; };
-	void SetTESCode(shared_ptr<IShaderCode> value) { m_pShaderCode[SHADER_PROGRAM_TESS] = value; };
-	void SetTCSCode(shared_ptr<IShaderCode> value) { m_pShaderCode[SHADER_PROGRAM_TCS] = value; };
-	void SetGeomCode(shared_ptr<IShaderCode> value) { m_pShaderCode[SHADER_PROGRAM_GEOM] = value; };
-	void SetFragCode(shared_ptr<IShaderCode> value) { m_pShaderCode[SHADER_PROGRAM_FRAG] = value; };
-
-	shared_ptr<IShaderCode> GetShaderCode(SHADER_PROGRAM_TYPE type) { return m_pShaderCode[type]; }
+	void SetVertexBuffer(shared_ptr<IVertexBuffer> pVertexBuffer) { m_pVertexBuffer = pVertexBuffer; }
+	shared_ptr<IVertexBuffer> GetVertexBuffer() { return m_pVertexBuffer; }
+	void SetShaderChunk(shared_ptr<IShaderChunk> value) { m_pShaderChunk = value; };
+	shared_ptr<IShaderChunk> GetShaderChunk() { return m_pShaderChunk; };
 	bool Compare(IShaderBuildInfo* pShaderBuildInfo);
 private:
-	shared_ptr<IShaderCode> m_pShaderCode[SHADER_PROGRAM_NUM];
-	
-	SHADER_TYPE m_type;
+	shared_ptr<IVertexBuffer> m_pVertexBuffer;
+	shared_ptr<IShaderChunk> m_pShaderChunk;
 };
 
 }

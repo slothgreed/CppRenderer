@@ -1,6 +1,6 @@
 namespace KI
 {
-namespace Asset
+namespace Renderer
 {
 
 ADSMaterial::ADSMaterial()
@@ -15,7 +15,7 @@ void ADSMaterial::Set(const vec4& ambient, const vec4& diffuse, const vec4& spec
 	m_shinness = shinness;
 }
 
-bool ADSMaterial::ShaderDefineComare(IMaterial* pMaterial)
+shared_ptr<IShaderCode> ADSMaterial::NewShaderCode(IShaderBuildInfo* pBuildInfo,SHADER_PROGRAM_TYPE type)
 {
 	assert(0);
 	return false;

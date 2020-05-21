@@ -33,7 +33,7 @@ bool FileUtility::Load(const string& filePath, string& contents)
 
 bool FileUtility::Load(const string& filePath, vector<string>& lines)
 {
-	if (IsExist(filePath))
+	if (IsExist(filePath) == false)
 	{
 		Logger::Output(LOG_LEVEL::ERROR, "file open error");
 		return false;
@@ -64,8 +64,9 @@ void FileUtility::GetExtension(const string& filePath, string& ext)
 
 void FileUtility::GetDirectoryPath(const string& filePath, string& directoryPath)
 {
-	int index = (int)filePath.find_last_of("\"");
-	directoryPath = filePath.substr(index, filePath.size() - index);
+	int index = (int)filePath.find_last_of("\\");
+	//directoryPath = filePath.substr(index, filePath.size() - index);
+	directoryPath = filePath.substr(0, index + 1);
 }
 bool FileUtility::CheckExtension(const string& filePath, const string& ext)
 {

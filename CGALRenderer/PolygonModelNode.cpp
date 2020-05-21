@@ -89,16 +89,16 @@ void PolygonModelNode::SetRenderData()
 		pFaceBuffer->SetPosition(facet);
 		pFaceBuffer->SetNormal(normal);
 		m_pFaceData = make_shared <RenderData>(GL_TRIANGLES, pFaceBuffer);
-		m_pFaceData->SetShaderPass(make_shared<DefaultShaderPass>());
+		m_pFaceData->SetMaterial(make_shared<BasicMaterial>(vec4(0.7f, 0.7f, 0.7f, 1)));
 
 		vector<vec3> edge;
 		GetModel()->GetEdgeList(edge);
 		auto pEdgeBuffer = make_shared<DefaultVertexBuffer>();
 		pEdgeBuffer->SetPosition(edge);
 
+		auto pEdgeMaterial = make_shared<BasicMaterial>(vec4(0, 1, 0, 1));
 		m_pEdgeData = make_shared <RenderData>(GL_LINES, pEdgeBuffer);
-		m_pEdgeData->SetShaderPass(make_shared<DefaultShaderPass>());
-
+		m_pEdgeData->SetMaterial(pEdgeMaterial);
 	}
 	else
 	{
@@ -122,18 +122,16 @@ void PolygonModelNode::SetRenderData()
 		auto pFaceIndex = make_shared <IndexBuffer>();
 		pFaceIndex->Set(index);
 		m_pFaceData = make_shared <RenderData>(GL_TRIANGLES, pFaceBuffer, pFaceIndex);
-		m_pFaceData->SetShaderPass(make_shared<DefaultShaderPass>());
+		m_pFaceData->SetMaterial(make_shared<BasicMaterial>(vec4(0.7f, 0.7f, 0.7f, 1)));
 
 		vector<vec3> edge;
 		GetModel()->GetEdgeList(edge);
 		auto pEdgeBuffer = make_shared<DefaultVertexBuffer>();
 		pEdgeBuffer->SetPosition(edge);
 
-		auto pEdgeShaderPass = make_shared<DefaultShaderPass>();
-		pEdgeShaderPass->SetFixColor(vec4(0, 1, 0, 1));
+		auto pEdgeMaterial = make_shared<BasicMaterial>(vec4(0, 1, 0, 1));
 		m_pEdgeData = make_shared <RenderData>(GL_LINES, pEdgeBuffer);
-		m_pEdgeData->SetShaderPass(pEdgeShaderPass);
-
+		m_pEdgeData->SetMaterial(pEdgeMaterial);
 	}
 
 }
@@ -150,7 +148,7 @@ void PolygonModelNode::VisibleEdge(bool visibility)
 
 void PolygonModelNode::AddPartSelect(TOPOLOGY_TYPE type, int first, int count)
 {
-	auto pSelectionShaderPass = MaterialManager::Instance()->GetSystemShaderPass(SYSTEM_MATERIAL::SYSTEM_MATERIAL_SELECTION);
+	auto pMaterial = MaterialManager::Instance()->GetSystemMaterial(SYSTEM_MATERIAL::SYSTEM_MATERIAL_SELECTION);
 	if (type == TOPOLOGY_TYPE::TOPOLOGY_TYPE_FACE)
 	{
 		if (m_pFaceData->HasRenderRegion())
@@ -158,7 +156,7 @@ void PolygonModelNode::AddPartSelect(TOPOLOGY_TYPE type, int first, int count)
 			m_pFaceData->ClearRenderRegion();
 		}
 
-		m_pFaceData->AddRenderRegion("Selection", pSelectionShaderPass, first, count);
+		m_pFaceData->AddRenderRegion("Selection", pMaterial, first, count);
 	}
 	else
 	{

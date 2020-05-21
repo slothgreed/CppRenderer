@@ -2,11 +2,12 @@ namespace KI
 {
 namespace Gfx
 {
-IVertexBuffer::IVertexBuffer()
+IVertexBuffer::IVertexBuffer(const string& filePath)
 {
 	m_vaoId = 0;
 	m_VertexSize = 0;
 	m_instanceNum = 1;
+	m_filePath = filePath;
 }
 void IVertexBuffer::Add(GLuint location, shared_ptr<ArrayBuffer> arrayBuffer)
 {
@@ -120,5 +121,7 @@ void IVertexBuffer::BindToVAO(GLuint location)
 	glBindVertexArray(0);
 	Logger::GLError();
 }
+
+
 }
 }

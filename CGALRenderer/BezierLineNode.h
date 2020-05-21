@@ -13,6 +13,7 @@ public:
 	virtual void Draw();
 
 private:
+	shared_ptr<BezierLineMaterial> m_pMaterial;
 	shared_ptr<RenderData> m_pRenderData;
 };
 }

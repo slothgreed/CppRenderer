@@ -53,7 +53,7 @@ vec4 OutputColor()
 {
 #if defined(IN_COLOR)
 	return vec4(a_color,1.0);
-#elif
+#else
 	return NotDefineColor();
 #endif
 }
@@ -64,6 +64,7 @@ vec2 OutputTexcoord()
 	return a_texcoord;
 #else
 	return NotDefineTexcoord();
+#endif
 }
 
 vec4 OutputInstance0()

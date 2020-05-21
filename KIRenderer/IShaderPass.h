@@ -16,7 +16,7 @@ public:
 	virtual void Bind();
 	virtual void UnBind();
 
-	virtual void CompileShader(IVertexBuffer* pVertexBuffer) = 0;
+	virtual void CompileShader(shared_ptr<IVertexBuffer> pVertexBuffer) = 0;
 	virtual bool Compare(const IShaderPass& shaderPass) = 0;
 
 	shared_ptr<IShader> GetShader() { return m_pShader; };

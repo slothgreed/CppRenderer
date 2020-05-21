@@ -23,29 +23,45 @@ void IShader::GenerateShaderCode(IShaderBuildInfo* pBuildInfo)
 	GetShaderCode(SHADER_PROGRAM_FRAG,	fragCode);
 	
 	debug_vertexCode = vertexCode;
-	debug_tcsCode = tcsCode;;
-	debug_tesCode = tesCode;;
-	debug_geomCode = geomCode;;
-	debug_fragCode = fragCode;;
+	debug_tcsCode	= tcsCode;
+	debug_tesCode	= tesCode;
+	debug_geomCode	= geomCode;
+	debug_fragCode	= fragCode;
 
 	BuildFromCode(vertexCode, tcsCode, tesCode, geomCode, fragCode);
+
+	Initialize();
 }
 
 void IShader::GetShaderCode(SHADER_PROGRAM_TYPE type, string& code)
 {
-	if (BuildInfo()->GetShaderCode(type) == nullptr)
+	auto pCode = BuildInfo()->GetShaderChunk()->NewShaderCode(BuildInfo().get(), type);
+	if (pCode == nullptr)
 	{
 		return;
 	}
 
-	auto pCode = BuildInfo()->GetShaderCode(type);
-
 	string shaderCode;
 	pCode->Load(shaderCode);
-	string shaderDefine;
-	pCode->GetDefineCode(shaderDefine);
+	pCode->GetIncludeCode(m_pIncludeCode);
+	auto pVBOCode = pCode->GetVertexBufferCode(BuildInfo()->GetVertexBuffer());
+	string includeDefine;
+	for (int i = 0; i < m_pIncludeCode.size(); i++)
+	{
+		string defineCode;
+		m_pIncludeCode[i]->GetDefineCode(defineCode);
+		includeDefine += defineCode;
+	}
 
-	code = string("#version 400 core\n") +shaderDefine + shaderCode;
+	string vboDefine;
+	if (pVBOCode != nullptr)
+	{
+		pVBOCode->GetDefineCode(vboDefine);
+	}
+
+	code = string("#version 400 core\n") + includeDefine + vboDefine + shaderCode;
+
+	m_pShaderCodes[type] = pCode;
 }
 
 void IShader::BuildFromCode(const string& vertexCode, const string& tcsCode, const string& tesCode, const string& geomCode, const string& fragCode)
@@ -55,7 +71,7 @@ void IShader::BuildFromCode(const string& vertexCode, const string& tcsCode, con
 	GLuint tesId = 0;
 	GLuint geomId = 0;
 	GLuint fragId = 0;
-	
+
 	if (vertexCode != "")
 		vertId = ShaderUtility::Compile(vertexCode, GL_VERTEX_SHADER);
 	if (tcsCode != "")
@@ -64,27 +80,55 @@ void IShader::BuildFromCode(const string& vertexCode, const string& tcsCode, con
 		tesId = ShaderUtility::Compile(tesCode, GL_TESS_EVALUATION_SHADER);
 	if (geomCode != "")
 		geomId = ShaderUtility::Compile(geomCode, GL_GEOMETRY_SHADER);
-	if(fragCode != "")
+	if (fragCode != "")
 		fragId = ShaderUtility::Compile(fragCode, GL_FRAGMENT_SHADER);
 
 	m_programId = ShaderUtility::Link(vertId, tcsId, tesId, geomId, fragId);
-	Initialize();
-	//UniformValidation();
 }
 
-bool IShader::UniformValidation()
+void IShader::Initialize()
 {
-	// defineÇ…ÇÊÇ¡ÇƒíËã`Ç≥ÇÍÇ»Ç¢uniformÇ‡Ç†ÇÈÅB
-	for (int i = 0; i < m_uniformLocation.size(); i++)
+	for (int i = 0; i < m_pIncludeCode.size(); i++)
 	{
-		if (m_uniformLocation[i] == -1)
-		{
-			Logger::Output(LOG_LEVEL::ERROR, "Need Call FetchUniformLocation on Initialize. And Set UniformParameter");
-			return false;
-		}
+		m_pIncludeCode[i]->Initialize(m_programId);
 	}
 
-	return true;
+
+	for (int i = 0; i < SHADER_PROGRAM_NUM; i++)
+	{
+		if (m_pShaderCodes[i] == nullptr)
+		{
+			continue;
+		}
+
+		m_pShaderCodes[i]->Initialize(m_programId);
+	}
+}
+
+void IShader::Bind(shared_ptr<IShaderChunk> pShaderChunk)
+{
+	for (int i = 0; i < SHADER_PROGRAM_NUM; i++)
+	{
+		if (m_pShaderCodes[i] == nullptr)
+		{
+			continue;
+		}
+
+		m_pShaderCodes[i]->Bind(pShaderChunk);
+	}
+}
+
+void IShader::UnBind(shared_ptr<IShaderChunk> pShaderChunk)
+{
+	for (int i = 0; i < SHADER_PROGRAM_NUM; i++)
+	{
+		if (m_pShaderCodes[i] == nullptr)
+		{
+			continue;
+		}
+
+		m_pShaderCodes[i]->UnBind(pShaderChunk);
+	}
 }
 
 void IShader::Use()
@@ -114,43 +158,7 @@ void IShader::Dispose()
 	Logger::GLError();
 }
 
-void IShader::BindTexture(GLint activeNumber, GLint uniformId)
-{
-	if (m_programId == 0)
-	{
-		assert(0);
-		return;
-	}
 
-
-	glActiveTexture(activeNumber);
-	Logger::GLError();
-
-	glUniform1i(uniformId, activeNumber - GL_TEXTURE0);
-	Logger::GLError();
-}
-
-void IShader::BindInt(GLint uniformId, int value)
-{
-	glUniform1i(uniformId, value);
-	Logger::GLError();
-}
-void IShader::BindFloat(GLint uniformId, float value)
-{
-	glUniform1f(uniformId, value);
-	Logger::GLError();
-}
-void IShader::BindVector3(GLint uniformId, vec3 value)
-{
-	glUniform3fv(uniformId, 1, glm::value_ptr(value));
-	Logger::GLError();
-}
-
-void IShader::BindVector4(GLint uniformId, vec4 value)
-{
-	glUniform4fv(uniformId, 1, glm::value_ptr(value));
-	Logger::GLError();
-}
 
 bool IShader::Compare(IShaderBuildInfo* shaderDefine)
 {

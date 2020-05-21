@@ -5,16 +5,15 @@ namespace KI
 {
 namespace Renderer
 {
-class DLL_EXPORT IMaterial
+class DLL_EXPORT IMaterial : public IShaderChunk
 {
 public:
-	IMaterial() {};
+	IMaterial() :m_bNeedRecompileShader(true) {};
 	virtual ~IMaterial() {};
 
-	virtual MATERIAL_TYPE Type() = 0;
-	virtual bool ShaderDefineComare(IMaterial* pMaterial) = 0;
+	bool NeedReCompileShader() { return m_bNeedRecompileShader; };
 private:
-
+	bool m_bNeedRecompileShader;
 };
 
 }

@@ -43,6 +43,7 @@ using namespace glm;
 
 #include "IAttribute.h"
 #include "IShaderCode.h"
+#include "IShaderChunk.h"
 #include "IUniform.h"
 #include "IShaderBuildInfo.h"
 #include "IShaderDefine.h"

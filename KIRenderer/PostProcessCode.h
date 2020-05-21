@@ -15,49 +15,17 @@ public:
 			string(SHADER_POSTPROCESS) +
 			string(SHADER_EXT_VERTEX)) {};
 	~PostProcessVertexCode() {};
-	virtual SHADER_TYPE Type() { return SHADER_TYPE::SHADER_TYPE_POSTPROCESS; }
 
+	virtual void Initialize(GLuint programId) override {};
+	virtual bool Compare(IShaderCode* pShaderCode) override { return true; };
+	virtual void Bind(shared_ptr<IShaderChunk> pShaderChunk) override {};
+	virtual void UnBind(shared_ptr<IShaderChunk> pShaderChunk) override {};
 private:
 
 };
 
-class DLL_EXPORT GrayScaleFragCode : public IShaderCode
-{
-public:
-	GrayScaleFragCode()
-		:IShaderCode(
-			string(SHADER_DIRECTORY) +
-			string(SHADER_GRAYSCALE) +
-			string(SHADER_EXT_FRAG)) {};
-	~GrayScaleFragCode() {};
-	virtual SHADER_TYPE Type() { return SHADER_TYPE::SHADER_TYPE_GRAYSCALE; }
-};
 
-class DLL_EXPORT OutputFragCode : public IShaderCode
-{
-public:
-	OutputFragCode()
-		:IShaderCode(
-			string(SHADER_DIRECTORY) +
-			string(SHADER_OUTPUT) +
-			string(SHADER_EXT_FRAG)) {};
-	~OutputFragCode() {};
-	virtual SHADER_TYPE Type() { return SHADER_TYPE::SHADER_TYPE_OUTPUT; }
 
-};
-
-class DLL_EXPORT SSLICFragCode : public IShaderCode
-{
-public:
-	SSLICFragCode()
-		:IShaderCode(
-			string(SHADER_DIRECTORY) +
-			string(SHADER_SSLIC) +
-			string(SHADER_EXT_FRAG)) {};
-	~SSLICFragCode() {};
-	virtual SHADER_TYPE Type() { return SHADER_TYPE::SHADER_TYPE_SSLIC; }
-
-};
 
 }
 }

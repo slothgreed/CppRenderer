@@ -11,6 +11,8 @@ public:
 	~IUniform() {};
 
 	virtual SHADER_TYPE Type() = 0;
+	virtual bool ShaderDefineComare(IUniform* pUniform) = 0;
+
 private:
 
 };

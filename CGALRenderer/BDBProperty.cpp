@@ -43,16 +43,7 @@ void BDBProperty::Build(IModelNode* pModelNode)
 	pIndexBuffer->Set(index);
 
 	m_pRenderData = make_shared<RenderData>(GL_LINES, pVertexBuffer, pIndexBuffer);
-
-	auto pBuildInfo = make_shared<IShaderBuildInfo>(SHADER_TYPE_DEFAULT);
-	auto pVertexCode = make_shared<DefaultVertexCode>();
-	pVertexCode->SetShaderDefine(pVertexBuffer->Layout());
-	pBuildInfo->SetVertexCode(pVertexCode);
-	pBuildInfo->SetFragCode(make_shared<DefaultFragCode>());
-	auto pShader = ShaderManager::Instance()->FindOrNew(pBuildInfo);
-	
-	auto pShaderPass = make_shared<DefaultShaderPass>();
-	m_pRenderData->SetShaderPass(pShaderPass);
+	m_pRenderData->SetMaterial(make_shared<BasicMaterial>(vec4(0, 0, 0, 1)));
 }
 
 void BDBProperty::GetBDBPosition(const BDB& bdb, vector<vec3>& position)

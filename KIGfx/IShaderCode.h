@@ -5,17 +5,31 @@ namespace KI
 {
 namespace Gfx
 {
-
+class IVertexBuffer;
+class IShaderChunk;
 class DLL_EXPORT IShaderCode
 {
 public:
+
+	virtual bool IsGlobalCode() { return false; }	// 構造体などの定義コード
 	IShaderCode(const string& filePath) { m_filePath = filePath; };
 	virtual ~IShaderCode() {};
-	virtual void GetDefineCode(string& code) {};
-	virtual SHADER_TYPE Type() = 0;
 	void Load(string& code);
-	virtual bool Compare(IShaderCode* pShaderCode) { return pShaderCode->Type() == Type(); };
 
+	virtual void GetIncludeCode(vector<shared_ptr<IShaderCode>>& pShaderCodes) {};
+	virtual shared_ptr<IShaderCode> GetVertexBufferCode(shared_ptr<IVertexBuffer> pVertexBuffer) { return nullptr; };
+	virtual void GetDefineCode(string& code) {};
+	virtual void Initialize(GLuint programId) = 0;
+	virtual bool Compare(IShaderCode* pShaderCode) = 0;
+	virtual void Bind(shared_ptr<IShaderChunk> pShaderChunk) = 0;
+	virtual void UnBind(shared_ptr<IShaderChunk> pShaderChunk) = 0;
+protected:
+	vector<GLint> m_uniformLocation;
+	virtual void BindTexture(GLint activeNumber, GLint uniformId);
+	virtual void BindInt(GLint uniformId, int value);
+	virtual void BindFloat(GLint uniformId, float value);
+	virtual void BindVector3(GLint uniformId, vec3 value);
+	virtual void BindVector4(GLint uniformId, vec4 value);
 private:
 
 	string m_filePath;

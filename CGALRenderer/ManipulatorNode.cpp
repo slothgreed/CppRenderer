@@ -37,15 +37,15 @@ void ManipulatorNode::ShowProperty()
 void ManipulatorNode::SetRenderData()
 {
 	m_pManipulator->Build();
-	m_pShaderPass = make_shared<DefaultShaderPass>();
+	m_pMaterial = make_shared<BasicMaterial>(vec4(1, 0, 0, 1));
 
 	for (int i = 0; i < MANIPULATOR_HANDLE_NUM; i++)
 	{
 		MANIPULATOR_HANDLE handle = (MANIPULATOR_HANDLE)i;
 		m_pFaceDatas[handle] = make_shared<RenderData>();
-		m_pFaceDatas[handle]->SetShaderPass(m_pShaderPass);
+		m_pFaceDatas[handle]->SetMaterial(m_pMaterial);
 		m_pEdgeDatas[handle] = make_shared<RenderData>();
-		m_pEdgeDatas[handle]->SetShaderPass(m_pShaderPass);
+		m_pEdgeDatas[handle]->SetMaterial(m_pMaterial);
 
 		GenManipulatorHandleVBO(m_pFaceDatas[handle].get(), m_pEdgeDatas[handle].get(), handle);
 	}
@@ -86,15 +86,15 @@ void ManipulatorNode::GenManipulatorHandleVBO(
 
 void ManipulatorNode::Draw()
 {
-	m_pShaderPass->SetFixColor(vec4(1, 0, 0, 1));
+	m_pMaterial->SetColor(vec4(1, 0, 0, 1));
 	m_pFaceDatas[MANIPULATOR_HANDLE_X]->Draw();
 	m_pEdgeDatas[MANIPULATOR_HANDLE_X]->Draw();
 
-	m_pShaderPass->SetFixColor(vec4(0, 1, 0, 1));
+	m_pMaterial->SetColor(vec4(0, 1, 0, 1));
 	m_pFaceDatas[MANIPULATOR_HANDLE_Y]->Draw();
 	m_pEdgeDatas[MANIPULATOR_HANDLE_Y]->Draw();
 
-	m_pShaderPass->SetFixColor(vec4(0, 0, 1, 1));
+	m_pMaterial->SetColor(vec4(0, 0, 1, 1));
 	m_pFaceDatas[MANIPULATOR_HANDLE_Z]->Draw();
 	m_pEdgeDatas[MANIPULATOR_HANDLE_Z]->Draw();
 }

@@ -44,8 +44,7 @@ void Workspace::Initialize(Project* m_pProject)
 	auto model = make_shared<RenderData>();
 	//ModelGenerator::Plane(plane.get());
 	SpecialUtility::LoadVectorFieldSphere(model.get());
-	auto pShaderPass = make_shared<DefaultShaderPass>();
-	model->SetShaderPass(pShaderPass);
+
 	auto pModelNode = make_shared<PrimitiveNode>(model);
 	TextureData data;
 	TextureGenerator::RandomTexture(8, 15, data);
@@ -54,7 +53,8 @@ void Workspace::Initialize(Project* m_pProject)
 	texture->Begin();
 	texture->Set(data);
 	texture->End();
-	pShaderPass->AddTexture(texture);
+	auto pBasicMaterial = make_shared<BasicMaterial>(texture);
+	model->SetMaterial(pBasicMaterial);
 	m_pScene->AddModelNode(pModelNode);
 
 	m_pRenderTarget = make_shared<RenderTarget>();
@@ -77,10 +77,9 @@ void Workspace::Initialize(Project* m_pProject)
 	m_pPfxRenderer->AddPostEffect(pSSLIC);
 	m_pPfxRenderer->AddPostEffect(pGrayScale);
 
-	auto outputShaderPass = make_shared<OutputShaderPass>();
-	m_pOutputPlane = make_shared<PfxPlane>(outputShaderPass);
+	auto pMaterial = make_shared<BasicMaterial>(m_pRenderTarget->ColorTexture(0));
+	m_pOutputPlane = make_shared<PfxPlane>(pMaterial);
 	m_pOutputPlane->Initialize();
-	outputShaderPass->AddColorTexture(m_pRenderTarget->ColorTexture(0));
 }
 
 void Workspace::Invoke()

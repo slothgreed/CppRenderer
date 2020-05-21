@@ -41,24 +41,17 @@ void SSLICEffect::Initialize(int width, int height)
 	m_pBlendTexture->Set(blendTexture);
 	m_pBlendTexture->End();
 
-	m_pModelShaderPass = make_shared<DefaultShaderPass>();
-	m_pModelShaderPass->AddTexture(m_pBlendTexture);
+	m_pBasicMaterial = make_shared<BasicMaterial>(m_pBlendTexture);
 
 
-	auto pSSLICShaderPass = make_shared<GeneralShaderPass>();
-	auto pSSLICInfo = make_shared<IShaderBuildInfo>(SHADER_TYPE_SSLIC);
-	pSSLICInfo->SetVertexCode(make_shared<PostProcessVertexCode>());
-	pSSLICInfo->SetFragCode(make_shared<SSLICFragCode>());
+	auto pSSLICMaterial = make_shared<BasicMaterial>(vec4(1,0,0,1));
 
-	auto pSSLICShader = static_pointer_cast<SSLICShader>(ShaderManager::Instance()->FindOrNew(pSSLICInfo));
-	
-	pSSLICShaderPass->SetShader(pSSLICShader);
-	m_pPlaneData->SetShaderPass(pSSLICShaderPass);
+	m_pPlaneData->SetMaterial(pSSLICMaterial);
 }
 void SSLICEffect::SetRenderData(shared_ptr<RenderData> pRenderData)
 {
 	m_pModelData = pRenderData->Clone();
-	m_pModelData->SetShaderPass(m_pModelShaderPass);
+	m_pModelData->SetMaterial(m_pBasicMaterial);
 }
 
 void SSLICEffect::Draw()
@@ -77,18 +70,6 @@ void SSLICEffect::Resize(int width, int height)
 {
 
 }
-
-
-//void SSLICEffect::ReadFromXML(const boost::property_tree::ptree& tree)
-//{
-//
-//}
-//
-//
-//void SSLICEffect::WriteToXML(const boost::property_tree::ptree& tree)
-//{
-//
-//}
 
 }
 }

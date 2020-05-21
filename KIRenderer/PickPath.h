@@ -17,7 +17,7 @@ public:
 	void Draw(const vector<shared_ptr<IModelNode>>& modelNodes);
 	void ResetPickID(const vector<shared_ptr<IModelNode>> modelNodes);
 private:
-	shared_ptr<DefaultShader> m_pPickShader;
+	shared_ptr<IShader> m_pPickShader;
 	shared_ptr<RenderTarget> m_pRenderTarget;
 };
 }

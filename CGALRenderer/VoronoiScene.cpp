@@ -17,13 +17,12 @@ void VoronoiScene::Initialize(Project* m_pProject)
 	m_pConeNode = make_shared<PrimitiveNode>(pRenderData);
 	m_pScene->AddModelNode(m_pConeNode);
 
-	auto pShaderPass = make_shared<DefaultShaderPass>();
+	auto pBasicMaterial = make_shared<BasicMaterial>(vec4(0, 0, 0, 1));
 	auto pPointData = make_shared<RenderData>(
 		GL_POINTS,
 		make_shared<DefaultVertexBuffer>());
-	pPointData->SetShaderPass(pShaderPass);
+	pPointData->SetMaterial(pBasicMaterial);
 	m_pPointNode = make_shared<PrimitiveNode>(pPointData);
-	pShaderPass->SetFixColor(vec4(0, 0, 0, 1));
 	m_pPointNode->SetState(make_shared<PointState>(5.0f, false));
 	m_pScene->AddModelNode(m_pPointNode);
 

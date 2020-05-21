@@ -60,21 +60,15 @@ using namespace KI::Gfx;
 #include "UniformLight.h"
 
 
+#include "ShaderCommon.h"
+#include "ShaderStruct.h"
+#include "DefaultVBOCode.h"
 #include "DefaultVertexCode.h"
-#include "DefaultFragCode.h"
-#include "DefaultShader.h"
 #include "DefaultVertexBuffer.h"
 
 #include "PostProcessCode.h"
 #include "SimpleShaderCode.h"
-#include "CompositFragCode.h"
 
-#include "OutputShader.h"
-#include "CompositShader.h"
-#include "SSLICShader.h"
-#include "GrayScaleShader.h"
-#include "NormalVisualizeShader.h"
-#include "BezierLineShader.h"
 #include "ShaderManager.h"
 
 
@@ -94,6 +88,18 @@ using namespace KI::Gfx;
 #include "Scene.h"
 
 #include "RenderData.h"
+
+#include "OutputMaterial.h"
+#include "CompositMaterial.h"
+#include "SSLICMaterial.h"
+#include "VertexMaterial.h"
+#include "BasicMaterial.h"
+#include "ADSMaterial.h"
+#include "NormalVisualizeMaterial.h"
+#include "OutputMaterial.h"
+#include "GrayScaleMaterial.h"
+#include "BezierLineMaterial.h"
+
 
 
 #endif KI_RENDERER_PCH_H

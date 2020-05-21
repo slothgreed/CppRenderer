@@ -26,28 +26,27 @@ MaterialManager::~MaterialManager()
 
 void MaterialManager::Initialize()
 {
-	CreateSystemShaderPass();
+	CreateSystemMaterial();
 }
 
-void MaterialManager::CreateSystemShaderPass()
+void MaterialManager::CreateSystemMaterial()
 {
-	auto pShaderPass = make_unique<DefaultShaderPass>();
-	pShaderPass->SetFixColor(vec4(1, 0, 0, 1));
+	auto pBasicMaterial = make_shared<BasicMaterial>(vec4(1, 0, 0, 1));;
 
-	m_pShaderPasss[SYSTEM_MATERIAL_SELECTION] = std::move(pShaderPass);
+	m_pMaterials[SYSTEM_MATERIAL_SELECTION] = pBasicMaterial;
 
 }
 
-shared_ptr<IShaderPass> MaterialManager::GetSystemShaderPass(SYSTEM_MATERIAL systemShaderPass)
+shared_ptr<IMaterial> MaterialManager::GetSystemMaterial(SYSTEM_MATERIAL  type)
 {
-	auto itr = m_pShaderPasss.find(systemShaderPass);
-	if (itr == m_pShaderPasss.end())
+	auto itr = m_pMaterials.find(type);
+	if (itr == m_pMaterials.end())
 	{
 		assert(0);
 		return nullptr;
 	}
 
-	return m_pShaderPasss[systemShaderPass];
+	return m_pMaterials[type];
 }
 }
 }

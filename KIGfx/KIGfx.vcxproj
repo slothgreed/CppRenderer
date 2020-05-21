@@ -181,6 +181,7 @@
     <ClInclude Include="IRenderTarget.h" />
     <ClInclude Include="IShader.h" />
     <ClInclude Include="IShaderBuildInfo.h" />
+    <ClInclude Include="IShaderChunk.h" />
     <ClInclude Include="IShaderCode.h" />
     <ClInclude Include="IShaderDefine.h" />
     <ClInclude Include="IUniform.h" />

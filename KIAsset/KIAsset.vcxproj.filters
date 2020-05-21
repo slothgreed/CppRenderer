@@ -49,12 +49,6 @@
     <Filter Include="ヘッダー ファイル\ShaderPass">
       <UniqueIdentifier>{6a8545eb-0366-4875-855e-344c8b905438}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ヘッダー ファイル\Material">
-      <UniqueIdentifier>{2fd8c456-0755-45b9-8bb8-414a04408249}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Material">
-      <UniqueIdentifier>{b451fee2-4d8a-48c6-a0f3-8dac28425bb0}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ソース ファイル\Model\BasicObject">
       <UniqueIdentifier>{a782c782-cf44-43ec-9737-1639ea266dc3}</UniqueIdentifier>
     </Filter>
@@ -135,20 +129,8 @@
     <ClInclude Include="GeneralShaderPass.h">
       <Filter>ヘッダー ファイル\ShaderPass</Filter>
     </ClInclude>
-    <ClInclude Include="OutputShaderPass.h">
-      <Filter>ヘッダー ファイル\ShaderPass</Filter>
-    </ClInclude>
-    <ClInclude Include="BasicMaterial.h">
-      <Filter>ヘッダー ファイル\Material</Filter>
-    </ClInclude>
-    <ClInclude Include="ADSMaterial.h">
-      <Filter>ヘッダー ファイル\Material</Filter>
-    </ClInclude>
     <ClInclude Include="Grid.h">
       <Filter>ソース ファイル\Model\BasicObject</Filter>
-    </ClInclude>
-    <ClInclude Include="VertexMaterial.h">
-      <Filter>ヘッダー ファイル\Material</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -203,20 +185,8 @@
     <ClCompile Include="GeneralShaderPass.cpp">
       <Filter>ソース ファイル\ShaderPass</Filter>
     </ClCompile>
-    <ClCompile Include="OutputShaderPass.cpp">
-      <Filter>ソース ファイル\ShaderPass</Filter>
-    </ClCompile>
-    <ClCompile Include="BasicMaterial.cpp">
-      <Filter>ソース ファイル\Material</Filter>
-    </ClCompile>
-    <ClCompile Include="ADSMaterial.cpp">
-      <Filter>ソース ファイル\Material</Filter>
-    </ClCompile>
     <ClCompile Include="Grid.cpp">
       <Filter>ヘッダー ファイル\Model\BasicObject</Filter>
-    </ClCompile>
-    <ClCompile Include="VertexMaterial.cpp">
-      <Filter>ソース ファイル\Material</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

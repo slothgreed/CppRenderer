@@ -43,11 +43,10 @@ CommandResult VoxelCommand::Execute()
 
 	auto pIndexBuffer = make_shared<IndexBuffer>();
 	pIndexBuffer->Set(indexBuffer);
-	auto pShaderPass = make_shared<DefaultShaderPass>();
-	pShaderPass->SetFixColor(vec4(1, 0, 0, 1));
+	auto pMaterial = make_shared<BasicMaterial>(vec4(1, 0, 0, 1));
 
 	pRenderData->SetGeometryData(GL_TRIANGLES, pVertexBuffer, pIndexBuffer);
-	pRenderData->SetShaderPass(pShaderPass);
+	pRenderData->SetMaterial(pMaterial);
 	auto pModelNode = make_shared<PrimitiveNode>(pRenderData);
 	
 	args->m_pScene->AddModelNode(pModelNode);

@@ -11,9 +11,12 @@ namespace Rednerer
 #define SHADER_EXT_TCS		".tcs"
 #define SHADER_EXT_GEOM		".geom"
 #define SHADER_EXT_FRAG		".frag"
+#define SHADER_EXT_VBO		".vbo"
+#define SHADER_EXT_TXT		".txt"
 
 
 #define SHADER_DEFAULT		"default"
+#define SHADER_COMMON		"common/common"
 #define SHADER_POSTPROCESS	"postprocess"
 #define SHADER_GRAYSCALE	"grayscale"
 #define SHADER_COMPOSIT		"composit"
@@ -22,6 +25,7 @@ namespace Rednerer
 #define SHADER_BEZIERLINE	"bezierline"
 #define SHADER_OUTPUT		"output"
 #define SHADER_PICK			"pick"
+#define SHADER_STRUCT		"common/struct.txt"
 #define SHADER_BASICMATERIAL "material/basicmaterial"
 #define SHADER_VERTEXMATERIAL "material/vertexmaterial"
 

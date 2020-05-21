@@ -5,18 +5,23 @@ namespace KI
 {
 namespace Renderer
 {
-class DLL_EXPORT GrayScaleUniform : public IUniform
+class DLL_EXPORT GrayScaleMaterial : public IMaterial
 {
 public:
 	SHADER_TYPE Type() { return SHADER_TYPE::SHADER_TYPE_GRAYSCALE; }
 
 	void SetTexture(shared_ptr<Texture> pTexture) { m_pTexture = pTexture; }
 	shared_ptr<Texture> GetTexture() { return m_pTexture; }
+
+	virtual bool NewShaderCompare(IShaderChunk* pTarget) override;
+	virtual shared_ptr<IShaderCode> NewShaderCode(IShaderBuildInfo* pBuildInfo,SHADER_PROGRAM_TYPE type);
+
+
 private:
 	shared_ptr<Texture> m_pTexture;
 };
 
-class DLL_EXPORT GrayScaleShader : public IShader
+class DLL_EXPORT GrayScaleFragCode : public IShaderCode
 {
 	enum GRAYSCALE_UNIFORM : unsigned short
 	{
@@ -26,16 +31,17 @@ class DLL_EXPORT GrayScaleShader : public IShader
 
 public:
 
-	GrayScaleShader();
-	~GrayScaleShader();
+	GrayScaleFragCode();
+	~GrayScaleFragCode();
 
 	virtual SHADER_TYPE Type() { return SHADER_TYPE::SHADER_TYPE_GRAYSCALE; }
 
-	virtual void Initialize() override;
-	virtual void FetchUniformLocation() override;
+	virtual void Initialize(GLuint programId) override;
+	void FetchUniformLocation(GLuint programId);
 
-	virtual void Bind(shared_ptr<UniformSet> pUniform) override;
-	virtual void UnBind(shared_ptr<UniformSet> pUniform) override;
+	virtual bool Compare(IShaderCode* pShaderCode) override { return true; };
+	virtual void Bind(shared_ptr<IShaderChunk> pShaderChunk) override;
+	virtual void UnBind(shared_ptr<IShaderChunk> pShaderChunk) override;
 
 private:
 	void BindColorTexture();

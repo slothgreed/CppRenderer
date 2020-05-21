@@ -39,13 +39,6 @@ public:
 	virtual void	Next() = 0;
 };
 
-class DLL_EXPORT IXMLIO
-{
-public:
-	//virtual void ReadFromXML(const boost::property_tree::ptree& tree) = 0;
-	//virtual void WriteToXML(const boost::property_tree::ptree& tree) = 0;
-
-};
 }
 }
 #endif // HALFEDGE_FACE_H

@@ -54,8 +54,7 @@ void BunnyScene::Initialize(Project* m_pProject)
 		modelSpace.Set(vec3(-200), vec3(200));
 		auto pRenderData = make_shared<RenderData>();
 		ModelGenerator::CubeSpace(modelSpace, pRenderData.get());
-		auto pShaderPass = make_shared<DefaultShaderPass>();
-		pRenderData->SetShaderPass(pShaderPass);
+
 		auto pCubeNode = make_shared<PrimitiveNode>(pRenderData);
 		auto pTexture = make_shared<Texture>();
 		pTexture->Generate();
@@ -64,8 +63,8 @@ void BunnyScene::Initialize(Project* m_pProject)
 		pTexture->Begin();
 		pTexture->Set(textureData);
 		pTexture->End();
-		pShaderPass->AddTexture(pTexture);
-
+		auto pBasicMaterial = make_shared<BasicMaterial>(pTexture);
+		pRenderData->SetMaterial(pBasicMaterial);
 		m_pScene->AddModelNode(pCubeNode);
 	}
 
@@ -76,7 +75,7 @@ void BunnyScene::Initialize(Project* m_pProject)
 
 	auto axis = make_shared<RenderData>();
 	ModelGenerator::Axis(axis.get());
-	axis->SetShaderPass(make_shared<DefaultShaderPass>());
+	axis->SetMaterial(make_shared<VertexMaterial>(VERTEX_MATERIAL_TYPE::VERTEX_MATERIAL_COLOR));
 	auto axisNode = make_shared<PrimitiveNode>(axis);
 	m_pScene->AddModelNode(axisNode);
 

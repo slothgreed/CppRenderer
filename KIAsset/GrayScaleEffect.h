@@ -18,12 +18,10 @@ public:
 
 	void SetTexture(shared_ptr<Texture> texture);
 	shared_ptr<Texture> RenderTexture() { return m_pRenderTarget->ColorTexture(0); };
-	//virtual void ReadFromXML(const boost::property_tree::ptree& tree);
-	//virtual void WriteToXML(const boost::property_tree::ptree& tree);
 
 private:
+	shared_ptr<GrayScaleMaterial> m_pMaterial;
 	shared_ptr<RenderTarget> m_pRenderTarget;
-	shared_ptr<Texture> m_pTexture;
 	shared_ptr<RenderData> m_pPlane;
 };
 }

@@ -28,10 +28,9 @@ void PfxScene::Initialize(Project* m_pProject)
 	m_pBackTarget = make_shared<SymbolicRenderTarget>(GL_BACK);
 
 	m_pOutputTexture = pGrayScale->RenderTexture();
-	auto outputShaderPass = make_shared<OutputShaderPass>();
-	m_pOutputPlane = make_shared<PfxPlane>(outputShaderPass);
+	auto pBasicMaterial = make_shared<BasicMaterial>(m_pOutputTexture);
+	m_pOutputPlane = make_shared<PfxPlane>(pBasicMaterial);
 	m_pOutputPlane->Initialize();
-	outputShaderPass->AddColorTexture(m_pOutputTexture);
 }
 
 void PfxScene::Invoke()

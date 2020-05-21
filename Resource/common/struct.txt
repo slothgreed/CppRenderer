@@ -15,4 +15,4 @@ layout (std140) uniform LightData
 	vec4 Specular;
 }light;
 
-#endif SHADER_STRUCT_TXT
+#endif

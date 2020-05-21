@@ -165,18 +165,22 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="BezierLineShader.h" />
-    <ClInclude Include="CompositFragCode.h" />
-    <ClInclude Include="DefaultFragCode.h" />
+    <ClInclude Include="ADSMaterial.h" />
+    <ClInclude Include="BasicMaterial.h" />
+    <ClInclude Include="BezierLineMaterial.h" />
+    <ClInclude Include="DefaultVBOCode.h" />
     <ClInclude Include="DefaultVertexCode.h" />
     <ClInclude Include="ICamera.h" />
-    <ClInclude Include="CompositShader.h" />
-    <ClInclude Include="DefaultShader.h" />
+    <ClInclude Include="CompositMaterial.h" />
+    <ClInclude Include="NormalVisualizeMaterial.h" />
+    <ClInclude Include="OutputMaterial.h" />
+    <ClInclude Include="ShaderCommon.h" />
+    <ClInclude Include="ShaderStruct.h" />
     <ClInclude Include="DefaultVertexBuffer.h" />
     <ClInclude Include="Define.h" />
     <ClInclude Include="DirectionLight.h" />
     <ClInclude Include="GeometryPath.h" />
-    <ClInclude Include="GrayScaleShader.h" />
+    <ClInclude Include="GrayScaleMaterial.h" />
     <ClInclude Include="IGeometryPath.h" />
     <ClInclude Include="ILight.h" />
     <ClInclude Include="IMaterial.h" />
@@ -189,9 +193,7 @@
     <ClInclude Include="IRaycastPick.h" />
     <ClInclude Include="LighthingPass.h" />
     <ClInclude Include="ModelGenerator.h" />
-    <ClInclude Include="NormalVisualizeShader.h" />
     <ClInclude Include="OrthoCamera.h" />
-    <ClInclude Include="OutputShader.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="PerspectiveCamera.h" />
     <ClInclude Include="PfxPlane.h" />
@@ -207,7 +209,7 @@
     <ClInclude Include="ShaderManager.h" />
     <ClInclude Include="SimpleShaderCode.h" />
     <ClInclude Include="SpotLight.h" />
-    <ClInclude Include="SSLICShader.h" />
+    <ClInclude Include="SSLICMaterial.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="TextureGenerator.h" />
@@ -216,28 +218,31 @@
     <ClInclude Include="UniformModel.h" />
     <ClInclude Include="UniformScene.h" />
     <ClInclude Include="Vertex.h" />
+    <ClInclude Include="VertexMaterial.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="BezierLineShader.cpp" />
-    <ClCompile Include="CompositFragCode.cpp" />
-    <ClCompile Include="DefaultFragCode.cpp" />
+    <ClCompile Include="ADSMaterial.cpp" />
+    <ClCompile Include="BasicMaterial.cpp" />
+    <ClCompile Include="BezierLineMaterial.cpp" />
+    <ClCompile Include="DefaultVBOCode.cpp" />
     <ClCompile Include="DefaultVertexCode.cpp" />
     <ClCompile Include="ICamera.cpp" />
-    <ClCompile Include="CompositShader.cpp" />
-    <ClCompile Include="DefaultShader.cpp" />
+    <ClCompile Include="CompositMaterial.cpp" />
+    <ClCompile Include="NormalVisualizeMaterial.cpp" />
+    <ClCompile Include="OutputMaterial.cpp" />
+    <ClCompile Include="ShaderCommon.cpp" />
+    <ClCompile Include="ShaderStruct.cpp" />
     <ClCompile Include="DefaultVertexBuffer.cpp" />
     <ClCompile Include="DirectionLight.cpp" />
     <ClCompile Include="GeometryPath.cpp" />
-    <ClCompile Include="GrayScaleShader.cpp" />
+    <ClCompile Include="GrayScaleMaterial.cpp" />
     <ClCompile Include="IMaterial.cpp" />
     <ClCompile Include="IModelNode.cpp" />
     <ClCompile Include="IGLPick.cpp" />
     <ClCompile Include="IRaycastPick.cpp" />
     <ClCompile Include="LighthingPass.cpp" />
     <ClCompile Include="ModelGenerator.cpp" />
-    <ClCompile Include="NormalVisualizeShader.cpp" />
     <ClCompile Include="OrthoCamera.cpp" />
-    <ClCompile Include="OutputShader.cpp" />
     <ClCompile Include="PerspectiveCamera.cpp" />
     <ClCompile Include="PfxPlane.cpp" />
     <ClCompile Include="PfxRenderer.cpp" />
@@ -249,7 +254,7 @@
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="ShaderManager.cpp" />
     <ClCompile Include="SpotLight.cpp" />
-    <ClCompile Include="SSLICShader.cpp" />
+    <ClCompile Include="SSLICMaterial.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -261,6 +266,7 @@
     <ClCompile Include="UniformMaterial.cpp" />
     <ClCompile Include="UniformModel.cpp" />
     <ClCompile Include="UniformScene.cpp" />
+    <ClCompile Include="VertexMaterial.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

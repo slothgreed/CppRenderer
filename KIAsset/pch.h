@@ -44,7 +44,6 @@ using namespace KI::Topology;
 
 #include "MaterialManager.h"
 #include "DefaultShaderPass.h"
-#include "OutputShaderPass.h"
 #include "GeneralShaderPass.h"
 
 // manipulator
@@ -59,10 +58,6 @@ using namespace KI::Topology;
 #include "IAnimation.h"
 #include "ModelAnimation.h"
 #include "Storyboard.h"
-
-#include "VertexMaterial.h"
-#include "BasicMaterial.h"
-#include "ADSMaterial.h"
 
 #include "GrayScaleEffect.h"
 #include "SSLICEffect.h"

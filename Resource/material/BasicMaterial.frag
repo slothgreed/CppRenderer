@@ -1,20 +1,33 @@
-#include "common/common.h"
+#include "common\common.h"
+
+out vec4 outputColor;
 
 #ifdef VIEW_TEXTURE
 	uniform sampler2D uTexture0;
 #endif
 
-#if def VIEW_FIXCOLOR
+#ifdef VIEW_FIXCOLOR
 uniform vec4 uFixColor;
 #endif
 
-void OutputColorExt()
+in Data{
+#if defined(VIEW_FIXCOLOR)
+	in vec4 color;
+#elif defined(VIEW_TEXTURE)
+	in vec2 texcoord;
+#else
+	in vec4 color;
+#endif
+}InData;
+
+
+void main()
 {
 #if defined(VIEW_TEXTURE)
 	outputColor = texture2D(uTexture0,InData.texcoord);
 #elif defined(VIEW_FIXCOLOR)
 	outputColor = uFixColor;
-#elif
+#else
 	outputColor = NotDefinedColor();
 #endif
 }

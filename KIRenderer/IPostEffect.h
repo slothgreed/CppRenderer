@@ -10,7 +10,7 @@ enum PFX_TYPE
 	PFX_TYPE_GRAYSCALE,
 	PFX_TYPE_SSLIC,
 };
-class DLL_EXPORT IPostEffect : public IXMLIO
+class DLL_EXPORT IPostEffect 
 {
 public:
 	IPostEffect() : m_apply(true) {};
@@ -23,8 +23,6 @@ public:
 	void SetApply(bool value) { m_apply = value; }
 	bool Apply() { return m_apply; }
 
-	//virtual void ReadFromXML(const boost::property_tree::ptree& tree) = 0;
-	//virtual void WriteToXML(const boost::property_tree::ptree& tree) = 0;
 private:
 	bool m_apply;
 

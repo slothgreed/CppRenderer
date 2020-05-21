@@ -13,32 +13,26 @@ public:
 	void Build(shared_ptr<IShaderBuildInfo> pShaderBuildInfo);
 	void BuildFromCode(const string& vertexCode, const string& tcsCode, const string& tesCode, const string& geomCode, const string& fragShader);
 	void GetShaderCode(SHADER_PROGRAM_TYPE type, string& code);
+	void Initialize();
 	void Use();
 	void UnUse();
 	void Dispose();
+	void Bind(shared_ptr<IShaderChunk> pShaderChunk);
+	void UnBind(shared_ptr<IShaderChunk> pShaderChunk);
 
-	virtual SHADER_TYPE Type() = 0;
+	void AddIncludeCode(shared_ptr<IShaderCode> pShaderCode) { m_pIncludeCode.push_back(pShaderCode); };
 	
-	virtual void Initialize() = 0;
-	virtual void FetchUniformLocation() = 0;
-	virtual void Bind(shared_ptr<UniformSet> pUniform) = 0;
-	virtual void UnBind(shared_ptr<UniformSet> pUniform) = 0;
-
 	GLuint Program() { return m_programId; }
 	bool Compare(IShaderBuildInfo* shaderDefine);
 	shared_ptr<IShaderBuildInfo> BuildInfo() { return m_pShaderBuildInfo; }
-protected:
-	virtual void BindTexture(GLint activeNumber, GLint uniformId);
-	virtual void BindInt(GLint uniformId, int value);
-	virtual void BindFloat(GLint uniformId, float value);
-	virtual void BindVector3(GLint uniformId, vec3 value);
-	virtual void BindVector4(GLint uniformId, vec4 value);
+
 
 	GLuint m_programId;
-	vector<GLint> m_uniformLocation;
 private:
 	void GenerateShaderCode(IShaderBuildInfo* pShaderBuildInfo);
-	bool UniformValidation();
+	
+	shared_ptr<IShaderCode> m_pShaderCodes[SHADER_PROGRAM_NUM];
+	vector<shared_ptr<IShaderCode>> m_pIncludeCode;
 	string m_version;
 
 	string debug_vertexCode;

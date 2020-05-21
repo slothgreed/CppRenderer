@@ -17,9 +17,6 @@ public:
 	virtual void Resize(int width, int height) override;
 	void SetRenderData(shared_ptr<RenderData> pRenderData);
 
-	//virtual void ReadFromXML(const boost::property_tree::ptree& tree);
-	//virtual void WriteToXML(const boost::property_tree::ptree& tree);
-
 private:
 	shared_ptr<Texture> m_pNoizeTexture;
 	shared_ptr<Texture> m_pBlendTexture;
@@ -27,7 +24,7 @@ private:
 	shared_ptr<RenderData> m_pPlaneData;
 	shared_ptr<RenderTarget> m_pRenderTarget;
 
-	shared_ptr<DefaultShaderPass> m_pModelShaderPass;
+	shared_ptr<BasicMaterial> m_pBasicMaterial;
 };
 }
 }

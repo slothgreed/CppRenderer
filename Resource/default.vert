@@ -1,6 +1,6 @@
-#include "common/common.h"
-#include "common/struct.txt"
-#include "common/default.vbo"
+#include "common\common.h"
+#include "common\struct.txt"
+#include "common\default.vbo"
 
 out Data{
 

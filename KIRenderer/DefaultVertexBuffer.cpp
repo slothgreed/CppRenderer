@@ -3,6 +3,10 @@ namespace KI
 namespace Renderer
 {
 DefaultVertexBuffer::DefaultVertexBuffer()
+	:IVertexBuffer(
+		string(SHADER_DIRECTORY)+
+		string(SHADER_DEFAULT)+
+		string(SHADER_EXT_VBO))
 {
 }
 
@@ -254,6 +258,20 @@ VERTEX_LAYOUT DefaultVertexBuffer::Layout()
 	
 
 	return (VERTEX_LAYOUT)layout;
+}
+
+bool DefaultVertexBuffer::NewShaderCompare(IVertexBuffer* pTarget)
+{
+	auto pTargetBuffer = dynamic_cast<DefaultVertexBuffer*>(pTarget);
+	if (pTargetBuffer == nullptr)
+	{
+		return false;
+	}
+
+	if (Layout() == pTargetBuffer->Layout())
+	{
+		return true;
+	}
 }
 }
 }

@@ -76,6 +76,12 @@
     <Filter Include="ソース ファイル\GeometryPath">
       <UniqueIdentifier>{310c0009-1e2d-4893-b574-5f7146af5e3b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\Material">
+      <UniqueIdentifier>{22d463b5-76f7-4cd9-93bf-45c73a703814}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Material">
+      <UniqueIdentifier>{c98deb01-c0b0-4404-8717-c0b53b933979}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -98,21 +104,6 @@
     </ClInclude>
     <ClInclude Include="pch.h">
       <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="GrayScaleShader.h">
-      <Filter>ヘッダー ファイル\Shader</Filter>
-    </ClInclude>
-    <ClInclude Include="OutputShader.h">
-      <Filter>ヘッダー ファイル\Shader</Filter>
-    </ClInclude>
-    <ClInclude Include="SSLICShader.h">
-      <Filter>ヘッダー ファイル\Shader</Filter>
-    </ClInclude>
-    <ClInclude Include="CompositShader.h">
-      <Filter>ヘッダー ファイル\Shader</Filter>
-    </ClInclude>
-    <ClInclude Include="DefaultShader.h">
-      <Filter>ヘッダー ファイル\Shader</Filter>
     </ClInclude>
     <ClInclude Include="DefaultVertexBuffer.h">
       <Filter>ヘッダー ファイル\VertexBuffer</Filter>
@@ -183,26 +174,14 @@
     <ClInclude Include="Scene.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="NormalVisualizeShader.h">
-      <Filter>ヘッダー ファイル\Shader</Filter>
-    </ClInclude>
-    <ClInclude Include="DefaultFragCode.h">
-      <Filter>ヘッダー ファイル\Shader\Code</Filter>
-    </ClInclude>
     <ClInclude Include="DefaultVertexCode.h">
       <Filter>ヘッダー ファイル\Shader\Code</Filter>
     </ClInclude>
     <ClInclude Include="PostProcessCode.h">
       <Filter>ヘッダー ファイル\Shader\Code</Filter>
     </ClInclude>
-    <ClInclude Include="CompositFragCode.h">
-      <Filter>ヘッダー ファイル\Shader\Code</Filter>
-    </ClInclude>
     <ClInclude Include="SimpleShaderCode.h">
       <Filter>ヘッダー ファイル\Shader\Code</Filter>
-    </ClInclude>
-    <ClInclude Include="BezierLineShader.h">
-      <Filter>ヘッダー ファイル\Shader</Filter>
     </ClInclude>
     <ClInclude Include="SampleModelGenerator.h">
       <Filter>ヘッダー ファイル\Utility</Filter>
@@ -231,6 +210,42 @@
     <ClInclude Include="IMaterial.h">
       <Filter>ヘッダー ファイル\Interface</Filter>
     </ClInclude>
+    <ClInclude Include="ShaderStruct.h">
+      <Filter>ヘッダー ファイル\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="ADSMaterial.h">
+      <Filter>ヘッダー ファイル\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="BasicMaterial.h">
+      <Filter>ヘッダー ファイル\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexMaterial.h">
+      <Filter>ヘッダー ファイル\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="OutputMaterial.h">
+      <Filter>ヘッダー ファイル\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="NormalVisualizeMaterial.h">
+      <Filter>ヘッダー ファイル\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="BezierLineMaterial.h">
+      <Filter>ヘッダー ファイル\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="GrayScaleMaterial.h">
+      <Filter>ヘッダー ファイル\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="CompositMaterial.h">
+      <Filter>ヘッダー ファイル\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="SSLICMaterial.h">
+      <Filter>ヘッダー ファイル\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderCommon.h">
+      <Filter>ヘッダー ファイル\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="DefaultVBOCode.h">
+      <Filter>ヘッダー ファイル\Shader\Code</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -244,21 +259,6 @@
     </ClCompile>
     <ClCompile Include="PfxPlane.cpp">
       <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="GrayScaleShader.cpp">
-      <Filter>ソース ファイル\Shader</Filter>
-    </ClCompile>
-    <ClCompile Include="OutputShader.cpp">
-      <Filter>ソース ファイル\Shader</Filter>
-    </ClCompile>
-    <ClCompile Include="SSLICShader.cpp">
-      <Filter>ソース ファイル\Shader</Filter>
-    </ClCompile>
-    <ClCompile Include="CompositShader.cpp">
-      <Filter>ソース ファイル\Shader</Filter>
-    </ClCompile>
-    <ClCompile Include="DefaultShader.cpp">
-      <Filter>ソース ファイル\Shader</Filter>
     </ClCompile>
     <ClCompile Include="DefaultVertexBuffer.cpp">
       <Filter>ソース ファイル\VertexBuffer</Filter>
@@ -314,20 +314,8 @@
     <ClCompile Include="Scene.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="NormalVisualizeShader.cpp">
-      <Filter>ソース ファイル\Shader</Filter>
-    </ClCompile>
-    <ClCompile Include="DefaultFragCode.cpp">
-      <Filter>ソース ファイル\Shader\Code</Filter>
-    </ClCompile>
     <ClCompile Include="DefaultVertexCode.cpp">
       <Filter>ソース ファイル\Shader\Code</Filter>
-    </ClCompile>
-    <ClCompile Include="CompositFragCode.cpp">
-      <Filter>ソース ファイル\Shader\Code</Filter>
-    </ClCompile>
-    <ClCompile Include="BezierLineShader.cpp">
-      <Filter>ソース ファイル\Shader</Filter>
     </ClCompile>
     <ClCompile Include="SampleModelGenerator.cpp">
       <Filter>ソース ファイル\Utility</Filter>
@@ -346,6 +334,42 @@
     </ClCompile>
     <ClCompile Include="IRaycastPick.cpp">
       <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderStruct.cpp">
+      <Filter>ソース ファイル\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="BasicMaterial.cpp">
+      <Filter>ソース ファイル\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="NormalVisualizeMaterial.cpp">
+      <Filter>ソース ファイル\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="OutputMaterial.cpp">
+      <Filter>ソース ファイル\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexMaterial.cpp">
+      <Filter>ソース ファイル\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="ADSMaterial.cpp">
+      <Filter>ソース ファイル\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="BezierLineMaterial.cpp">
+      <Filter>ソース ファイル\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="GrayScaleMaterial.cpp">
+      <Filter>ソース ファイル\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="CompositMaterial.cpp">
+      <Filter>ソース ファイル\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="SSLICMaterial.cpp">
+      <Filter>ソース ファイル\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderCommon.cpp">
+      <Filter>ソース ファイル\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="DefaultVBOCode.cpp">
+      <Filter>ソース ファイル\Shader\Code</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

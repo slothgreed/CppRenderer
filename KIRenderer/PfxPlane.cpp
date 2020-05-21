@@ -2,9 +2,9 @@ namespace KI
 {
 namespace Renderer
 {
-PfxPlane::PfxPlane(shared_ptr<IShaderPass> pShaderPass)
+PfxPlane::PfxPlane(shared_ptr<IMaterial> pMaterial)
 {
-	m_pShaderPass = pShaderPass;
+	m_pMaterial = pMaterial;
 }
 
 PfxPlane::~PfxPlane()
@@ -15,7 +15,7 @@ void PfxPlane::Initialize()
 {
 	m_pRenderData = make_shared<RenderData>();
 	ModelGenerator::Plane(m_pRenderData.get(), VERTEX_LAYOUT_TEXCOORD);
-	m_pRenderData->SetShaderPass(m_pShaderPass);
+	m_pRenderData->SetMaterial(m_pMaterial);
 }
 void PfxPlane::Draw()
 {

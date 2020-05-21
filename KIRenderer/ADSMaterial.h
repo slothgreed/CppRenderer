@@ -3,7 +3,7 @@
 
 namespace KI
 {
-namespace Asset
+namespace Renderer
 {
 
 class DLL_EXPORT ADSMaterial : public IMaterial
@@ -15,7 +15,7 @@ public:
 
 	void Set(const vec4& ambient, const vec4& diffuse, const vec4& speculat, float shinness);
 
-	virtual bool ShaderDefineComare(IMaterial* pMaterial) override;
+	virtual shared_ptr<IShaderCode> NewShaderCode(IShaderBuildInfo* pBuildInfo,SHADER_PROGRAM_TYPE type) override;
 
 private:
 	vec4 m_ambient;

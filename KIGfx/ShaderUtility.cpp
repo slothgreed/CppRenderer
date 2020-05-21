@@ -117,14 +117,14 @@ void ShaderUtility::ExpandShaderCode(const string& filePath, string& shaderCode)
 		int pos = lines[i].find("#include");
 		if (pos == -1)
 		{
-			shaderCode += lines[i];
+			shaderCode += lines[i] + "\n";
 			continue;
 		}
 
 		// include Ç™Ç†Ç¡ÇΩèÍçáçƒãAì«Ç›çûÇ›
 		string includePath = directoryPath;
 		int startPos = lines[i].find("\"");
-		includePath += lines[i].substr(0, startPos);
+		includePath += lines[i].substr(startPos + 1, lines[i].length());
 		int endPos = includePath.find_last_of("\"");
 		includePath = includePath.erase(endPos);
 		ShaderUtility::Load(includePath, shaderCode);
@@ -134,7 +134,6 @@ void ShaderUtility::ExpandShaderCode(const string& filePath, string& shaderCode)
 void ShaderUtility::Load(string filePath, string& shaderCode)
 {
 	ExpandShaderCode(filePath, shaderCode);
-	
 }
 }
 }

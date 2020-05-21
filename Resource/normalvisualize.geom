@@ -13,7 +13,6 @@ uniform float uLength;
 in Data
 {
 	vec3 normal;
-	vec3 color;
 }InData[1];
 
 

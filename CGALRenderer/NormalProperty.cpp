@@ -10,25 +10,11 @@ NormalProperty::~NormalProperty()
 
 void NormalProperty::Build(IModelNode* pModelNode)
 {
-	auto pGeomUniform = make_shared<NormalVisualizeUniform>();
-	pGeomUniform->SetLength(5.0f);
-
-	auto pBuildInfo = make_shared<IShaderBuildInfo>(SHADER_TYPE::SHADER_TYPE_NORMALVISUALIZE);
-	auto pVertexCode = make_shared<DefaultVertexCode>();
-	auto pFragCode = make_shared<DefaultFragCode>();
-	pVertexCode->SetShaderDefine(SHADER_TYPE::SHADER_TYPE_NORMALVISUALIZE);
-	pFragCode->SetShaderDefine(SHADER_TYPE::SHADER_TYPE_NORMALVISUALIZE);
-
-	pBuildInfo->SetVertexCode(pVertexCode);
-	pBuildInfo->SetGeomCode(make_shared<NormalVisualizeGeometryCode>());
-	pBuildInfo->SetFragCode(pFragCode);
-	auto pShader = ShaderManager::Instance()->FindOrNew(pBuildInfo);
+	m_pMaterial = make_shared<NormalVisualizeMaterial>();
+	m_pMaterial->SetLength(5.0f);
 
 	m_pRenderData = make_shared<RenderData>();
-	auto pShaderPass = make_shared<GeneralShaderPass>();
-	pShaderPass->SetShader(pShader);
-	pShaderPass->GetUniform()->Set(nullptr, pGeomUniform, nullptr);
-	m_pRenderData->SetShaderPass(pShaderPass);
+	m_pRenderData->SetMaterial(m_pMaterial);
 
 	SetVBOData(pModelNode);
 }

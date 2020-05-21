@@ -8,37 +8,36 @@ namespace Renderer
 class DLL_EXPORT DefaultVertexCode : public IShaderCode
 {
 public:
-	DefaultVertexCode();
-	~DefaultVertexCode();
+	DefaultVertexCode(IVertexBuffer* pVertexBuffer);
+protected:
+	DefaultVertexCode(const string& shaderCode);
+public:
+	virtual ~DefaultVertexCode();
 
-	virtual SHADER_TYPE Type() { return SHADER_TYPE::SHADER_TYPE_DEFAULT; }
+	virtual void Initialize(GLuint programId);
+	virtual void GetIncludeCode(vector<shared_ptr<IShaderCode>>& pShaderCodes) override;
+	virtual shared_ptr<IShaderCode> GetVertexBufferCode(shared_ptr<IVertexBuffer> pVertexBuffer) override;
 	virtual void GetDefineCode(string& code) override;
-	virtual bool Compare(IShaderCode* pShaderCode);
-	
+	virtual bool Compare(IShaderCode* pShaderCode) override;
+	virtual void Bind(shared_ptr<IShaderChunk> pShaderChunk) override;
+	virtual void UnBind(shared_ptr<IShaderChunk> pShaderChunk) override;
 	void SetOutInstance(bool value) { m_outInstance = value; }
+	void SetPlanePosition(bool value) { m_planePosition = value; }
 
-	bool UseGBuffer() const { return m_useGBuffer; }
-	bool UseNormal() const { return m_useNormal; };
-	bool ViewNormal() const { return m_viewNormal; }
-	bool UseColor() const { return m_useColor; };
+	bool OutNormal() const { return m_outNormal; };
+	bool OutColor() const { return m_outColor; };
 	
-	bool UseTexcoord() const { return m_useTexcoord; };
-	bool UseInstance() const { return m_useInstance; };
+	bool OutTexcoord() const { return m_outTexcoord; };
 	bool OutInstance() const { return m_outInstance; };
+	bool OutPlanePosition() const { return m_planePosition; };
 
 	void SetShaderDefine(VERTEX_LAYOUT layout);
-	void SetShaderDefine(SHADER_TYPE type);
-	void SetViewNormal(bool value) { m_viewNormal = value; }
 private:
-	bool m_useGBuffer;
-	bool m_useNormal;
+	bool m_outNormal;
 	bool m_planePosition;	// ˆÊ’u‚ð‚»‚Ì‚Ü‚Ü‚É‚µ‚Ägl_Position‚É—¬‚·‚©‚Ç‚¤‚©
-	bool m_useColor;
-	bool m_useTexcoord;
-	bool m_useInstance;
-	bool m_useShading;
+	bool m_outColor;
+	bool m_outTexcoord;
 	bool m_outInstance;
-	bool m_viewNormal;
 };
 }
 }

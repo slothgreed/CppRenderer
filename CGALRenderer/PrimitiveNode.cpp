@@ -5,16 +5,15 @@ PrimitiveNode::PrimitiveNode(shared_ptr<RenderData> pRenderData)
 {
 	m_name = "Primitive";
 	m_pRenderData = pRenderData;
-	if (pRenderData->GetShaderPass() == nullptr)
+	if (pRenderData->GetMaterial() == nullptr)
 	{
-		m_pRenderData->SetShaderPass(make_shared<DefaultShaderPass>());
+		m_pRenderData->SetMaterial(make_shared<BasicMaterial>(vec4(1, 0, 0, 1)));
 	}
 }
 
 PrimitiveNode::PrimitiveNode(shared_ptr<PrimitiveModel> pPrimitive)
 	:IModelNode(pPrimitive)
 {
-	m_pShaderPass = make_shared<DefaultShaderPass>();
 	SetRenderData();
 }
 
@@ -101,13 +100,13 @@ void PrimitiveNode::SetRenderData()
 	m_pRenderData->SetGeometryData(
 		pPrimitive->GetPrimitive()->GetDrawType(),
 		pVertexBuffer, pIndexBuffer);
-	m_pRenderData->SetShaderPass(m_pShaderPass);
+	m_pRenderData->SetMaterial(make_shared<BasicMaterial>(vec4(1, 0, 0, 1)));
 
 }
 
 void PrimitiveNode::AddPartSelect(TOPOLOGY_TYPE type, int first, int count)
 {
-	auto pSelectionShaderPass = MaterialManager::Instance()->GetSystemShaderPass(SYSTEM_MATERIAL::SYSTEM_MATERIAL_SELECTION);
+	auto pMaterial = MaterialManager::Instance()->GetSystemMaterial(SYSTEM_MATERIAL::SYSTEM_MATERIAL_SELECTION);
 	if (type == TOPOLOGY_TYPE::TOPOLOGY_TYPE_FACE)
 	{
 		if (m_pRenderData->HasRenderRegion())
@@ -115,7 +114,7 @@ void PrimitiveNode::AddPartSelect(TOPOLOGY_TYPE type, int first, int count)
 			m_pRenderData->ClearRenderRegion();
 		}
 
-		m_pRenderData->AddRenderRegion("Selection", pSelectionShaderPass, first, count);
+		m_pRenderData->AddRenderRegion("Selection", pMaterial, first, count);
 	}
 	else
 	{

@@ -29,13 +29,7 @@ void HalfEdgeProperty::Build(IModelNode* pModelNode)
 	auto pVertexBuffer = make_shared<DefaultVertexBuffer>();
 	pVertexBuffer->SetPosition(position);
 	pVertexBuffer->SetColor(color);
-
-	auto pBuildInfo = make_shared<IShaderBuildInfo>(SHADER_TYPE_DEFAULT);
-	auto pVertexCode = make_shared<DefaultVertexCode>();
-	pVertexCode->SetShaderDefine(pVertexBuffer->Layout());
-	pBuildInfo->SetVertexCode(pVertexCode);
-	pBuildInfo->SetFragCode(make_shared<DefaultFragCode>());
-	m_pShader = ShaderManager::Instance()->FindOrNew(pBuildInfo);
+	m_pRenderData->SetMaterial(make_shared<BasicMaterial>(vec4(0, 1, 0, 1)));
 
 }
 

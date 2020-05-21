@@ -129,6 +129,9 @@
     <ClInclude Include="GLIterator.h">
       <Filter>ヘッダー ファイル\Utility</Filter>
     </ClInclude>
+    <ClInclude Include="IShaderChunk.h">
+      <Filter>ヘッダー ファイル\Interface</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
