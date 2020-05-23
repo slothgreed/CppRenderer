@@ -42,7 +42,7 @@ namespace Rednerer
 #define OUT_COLOR			"#define OUT_COLOR\n"
 #define OUT_TEXCOORD		"#define OUT_TEXCOORD\n"
 #define OUT_TEXTURE0		"#define OUT_TEXTURE0\n"
-#define OUT_INSTANCE		"#define IN_INSTANCE\n"
+#define OUT_INSTANCE		"#define OUT_INSTANCE\n"
 #define OUT_PLANE_POSITION	"#define OUT_PLANE_POSITION\n"
 
 #define USE_GBUFFER		"#define USE_GBUFFER\n"

@@ -105,7 +105,10 @@ void DefaultVertexCode::GetIncludeCode(vector<shared_ptr<IShaderCode>>& pShaderC
 
 shared_ptr<IShaderCode> DefaultVertexCode::GetVertexBufferCode(shared_ptr<IVertexBuffer> pVertexBuffer)
 {
-	return make_shared<DefaultVBOCode>(pVertexBuffer.get());
+	auto pCode =  make_shared<DefaultVBOCode>(pVertexBuffer.get());
+	pCode->SetPlanePosition(m_planePosition);
+
+	return pCode;
 }
 
 void DefaultVertexCode::Bind(shared_ptr<IShaderChunk> pShaderChunk)

@@ -11,6 +11,7 @@ public:
 	IMaterial() :m_bNeedRecompileShader(true) {};
 	virtual ~IMaterial() {};
 
+	void CompiledShader() { m_bNeedRecompileShader = false; }
 	bool NeedReCompileShader() { return m_bNeedRecompileShader; };
 private:
 	bool m_bNeedRecompileShader;

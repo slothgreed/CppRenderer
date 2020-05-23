@@ -31,9 +31,11 @@ class DLL_EXPORT OutputMaterial : public IMaterial
 {
 
 public:
-	OutputMaterial();
+	OutputMaterial() {};
+	OutputMaterial(shared_ptr<Texture> pTexture);
 	~OutputMaterial();
 
+	virtual bool NewShaderCompare(IShaderChunk* pTarget);
 	virtual shared_ptr<IShaderCode> NewShaderCode(IShaderBuildInfo* pBuildInfo,SHADER_PROGRAM_TYPE type) override;
 	bool Compare(IMaterial* pMaterial);
 	void SetTexture(shared_ptr<Texture> pTexture) { m_pTexture = pTexture; };

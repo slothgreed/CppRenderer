@@ -10,15 +10,11 @@ out vec4 outputColor;
 uniform vec4 uFixColor;
 #endif
 
+#if defined(VIEW_TEXTURE)
 in Data{
-#if defined(VIEW_FIXCOLOR)
-	in vec4 color;
-#elif defined(VIEW_TEXTURE)
 	in vec2 texcoord;
-#else
-	in vec4 color;
-#endif
 }InData;
+#endif
 
 
 void main()

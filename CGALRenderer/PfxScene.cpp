@@ -5,8 +5,8 @@ void PfxScene::Initialize(Project* m_pProject)
 	m_pScene = make_shared<Scene>();
 	m_pScene->Initialize();
 	auto pCamera = make_shared<OrthoCamera>();
-	pCamera->LookAt(vec3(0, 0, -1), vec3(0), vec3(0, 1, 0));
-	pCamera->Ortho(-10, 10, -10, 10, -10, 10);
+	pCamera->LookAt(vec3(0, 0, 1), vec3(0), vec3(0, 1, 0));
+	pCamera->Ortho(-1, 1, -1, 1, -1, 1);
 	m_pScene->SetCamera(pCamera);
 
 	auto pGrayScale = make_shared<GrayScaleEffect>();
@@ -28,20 +28,22 @@ void PfxScene::Initialize(Project* m_pProject)
 	m_pBackTarget = make_shared<SymbolicRenderTarget>(GL_BACK);
 
 	m_pOutputTexture = pGrayScale->RenderTexture();
-	auto pBasicMaterial = make_shared<BasicMaterial>(m_pOutputTexture);
-	m_pOutputPlane = make_shared<PfxPlane>(pBasicMaterial);
-	m_pOutputPlane->Initialize();
+	m_pOutputPlane = make_shared<PfxPlane>(
+		make_shared<OutputMaterial>(m_pOutputTexture));
+
 }
 
 void PfxScene::Invoke()
 {
+	
 	m_pPfxRenderer->Draw();
 
 	m_pBackTarget->Begin();
 	m_pBackTarget->Clear();
 
+	m_pScene->Bind(); 
 	m_pOutputPlane->Draw();
-
+	m_pScene->UnBind();
 	m_pBackTarget->End();
 }
 

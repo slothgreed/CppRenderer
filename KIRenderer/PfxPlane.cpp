@@ -5,6 +5,7 @@ namespace Renderer
 PfxPlane::PfxPlane(shared_ptr<IMaterial> pMaterial)
 {
 	m_pMaterial = pMaterial;
+	Initialize();
 }
 
 PfxPlane::~PfxPlane()

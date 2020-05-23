@@ -19,6 +19,9 @@ public:
 	virtual void UnBind(shared_ptr<IShaderChunk> pShaderChunk) override;
 	virtual void GetIncludeCode(vector<shared_ptr<IShaderCode>>& pShaderCodes);
 
+	void SetPlanePosition(bool value) { m_planePosition = value; }
+
+
 	bool InNormal() const	{ return m_inNormal; };
 	bool InColor() const	{ return m_inColor; };
 	bool InTexcoord() const { return m_inTexcoord; };

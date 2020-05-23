@@ -2,8 +2,8 @@
 #include "common\struct.txt"
 #include "common\default.vbo"
 
+#if defined(OUT_NORMAL) || defined(OUT_COLOR) || defined(OUT_TEXCOORD) || defined(OUT_INSTANCE)
 out Data{
-
 #ifdef OUT_NORMAL
 out vec3 normal;
 #endif
@@ -22,6 +22,7 @@ out vec4 instanceMatrix3;
 #endif
 
 }OutData;
+#endif
 
 vec4 OutputColorExt()
 {
@@ -57,9 +58,9 @@ void main()
 #endif
 
 #if defined(OUT_INSTANCE)
-	OutData.instance0 = OutputInstance0();
-	OutData.instance1 = OutputInstance1();
-	OutData.instance2 = OutputInstance2();
-	OutData.instance3 = OutputInstance3();
+	OutData.instanceMatrix0 = OutputInstance0();
+	OutData.instanceMatrix1 = OutputInstance1();
+	OutData.instanceMatrix2 = OutputInstance2();
+	OutData.instanceMatrix3 = OutputInstance3();
 #endif
 }

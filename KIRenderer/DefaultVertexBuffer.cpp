@@ -255,8 +255,6 @@ VERTEX_LAYOUT DefaultVertexBuffer::Layout()
 		layout |= VERTEX_LAYOUT_INSTANCE_MATRIX3;
 	}
 
-	
-
 	return (VERTEX_LAYOUT)layout;
 }
 

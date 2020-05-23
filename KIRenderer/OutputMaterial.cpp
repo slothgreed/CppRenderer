@@ -42,6 +42,11 @@ OutputMaterial::~OutputMaterial()
 {
 }
 
+OutputMaterial::OutputMaterial(shared_ptr<Texture> pTexture)
+{
+	SetTexture(pTexture);
+}
+
 bool OutputMaterial::Compare(IMaterial* pMaterial)
 {
 	auto pOutputMaterial = dynamic_cast<OutputMaterial*>(pMaterial);
@@ -51,6 +56,12 @@ bool OutputMaterial::Compare(IMaterial* pMaterial)
 	}
 
 	return true;
+}
+
+bool OutputMaterial::NewShaderCompare(IShaderChunk* pTarget)
+{
+	auto pOutputMaterial = dynamic_cast<OutputMaterial*>(pTarget);
+	return Compare(pOutputMaterial);
 }
 
 shared_ptr<IShaderCode> OutputMaterial::NewShaderCode(IShaderBuildInfo* pBuildInfo,SHADER_PROGRAM_TYPE type)

@@ -21,7 +21,6 @@ DefaultVBOCode::DefaultVBOCode(IVertexBuffer* pVertexBuffer)
 	{
 		SetShaderDefine(pDefault->Layout());
 	}
-	
 }
 
 DefaultVBOCode::~DefaultVBOCode()

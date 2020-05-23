@@ -16,6 +16,11 @@ VertexMaterial::~VertexMaterial()
 bool VertexMaterial::Compare(IMaterial* pMaterial)
 {
 	auto pVertexMaterial = dynamic_cast<VertexMaterial*>(pMaterial);
+	if (pVertexMaterial == nullptr)
+	{
+		return false;
+	}
+
 	if (m_Type == pVertexMaterial->Type())
 	{
 		return true;
@@ -36,7 +41,7 @@ shared_ptr<IShaderCode> VertexMaterial::NewShaderCode(IShaderBuildInfo* pBuildIn
 	if (type == SHADER_PROGRAM_VERTEX) {
 		return make_shared<VertexMaterialVertexCode>(m_Type);
 	}
-	else if (type == SHADER_PROGRAM_VERTEX)
+	else if (type == SHADER_PROGRAM_FRAG)
 	{
 		return make_shared<VertexMaterialFragCode>();
 	}

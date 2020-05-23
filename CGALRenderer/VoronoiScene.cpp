@@ -13,11 +13,11 @@ void VoronoiScene::Initialize(Project* m_pProject)
 		GL_TRIANGLES,
 		make_shared<DefaultVertexBuffer>(),
 		make_shared<IndexBuffer>());
-
+	pRenderData->SetMaterial(make_shared<VertexMaterial>(VERTEX_MATERIAL_COLOR));
 	m_pConeNode = make_shared<PrimitiveNode>(pRenderData);
 	m_pScene->AddModelNode(m_pConeNode);
 
-	auto pBasicMaterial = make_shared<BasicMaterial>(vec4(0, 0, 0, 1));
+	auto pBasicMaterial = make_shared<BasicMaterial>(vec4(0, 1, 0, 1));
 	auto pPointData = make_shared<RenderData>(
 		GL_POINTS,
 		make_shared<DefaultVertexBuffer>());

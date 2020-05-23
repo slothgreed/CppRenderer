@@ -100,6 +100,7 @@ void RenderData::DrawInternal(shared_ptr<IMaterial> pMaterial, int first, int co
 		pBuildInfo->SetVertexBuffer(m_pVertexBuffer);
 		pBuildInfo->SetShaderChunk(pMaterial);
 		m_pShader = ShaderManager::Instance()->FindOrNew(pBuildInfo);
+		pMaterial->CompiledShader();
 	}
 
 	m_pShader->Use();

@@ -45,7 +45,7 @@ void NormalVisualizeGeomCode::BindLength(float length)
 
 bool NormalVisualizeGeomCode::Compare(IShaderCode* pShaderCode)
 {
-	auto pMaterial = dynamic_cast<NormalVisualizeMaterial*>(pShaderCode);
+	auto pMaterial = dynamic_cast<NormalVisualizeGeomCode*>(pShaderCode);
 	if (pMaterial != nullptr)
 	{
 		return true;
