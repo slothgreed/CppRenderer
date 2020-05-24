@@ -7,7 +7,7 @@ namespace Renderer
 {
 struct DLL_EXPORT LightData
 {
-	vec4 direction;
+	vec3 direction;
 	vec4 ambient;
 	vec4 diffuse;
 	vec4 specular;

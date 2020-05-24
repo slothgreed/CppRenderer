@@ -7,7 +7,6 @@ class PolygonModelNode : public IModelNode
 public:
 	PolygonModelNode(shared_ptr<IModel> model);
 	~PolygonModelNode();
-	virtual void Draw() override;
 	virtual void ShowProperty() override;
 	virtual void Update(void* sender, IEventArgs* args) override;
 	IPolygonModel* GetModel();
@@ -25,6 +24,7 @@ protected:
 	shared_ptr<RenderData> m_pEdgeData;
 
 private:
+	virtual void DrawCore() override;
 	BDB m_bdb;
 	void SetRenderData();
 };

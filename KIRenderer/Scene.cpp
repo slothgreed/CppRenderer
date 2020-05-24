@@ -51,10 +51,7 @@ void Scene::Bind()
 
 	if (m_pLights.size() != 0)
 	{
-		for (int i = 0; i < m_pLights.size(); i++)
-		{
-			m_pUniformLight->Set(m_pLights[i].get());
-		}
+		m_pUniformLight->Set(m_pLights[0].get());
 		m_pUniformLight->Bind();
 	}
 }
@@ -76,6 +73,72 @@ void Scene::UnBind()
 	m_pUniformScene->UnBind();
 }
 
+bool SceneModelIterator::HasNext()
+{
+	if (m_pScene->m_pRenderList.size() > m_Index)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+IModelNode& SceneModelIterator::Current()
+{
+	return *(m_pScene->m_pRenderList[m_Index].get());
+}
+
+void SceneModelIterator::Next()
+{
+	m_Index++;
+}
+
+VisibleModelIterator::VisibleModelIterator(Scene* pScene)
+	: m_pScene(pScene), m_pNextModel(nullptr), m_NextIndex(0)
+{
+	Next();	// 1î‘ñ⁄ÇÃóvëfÇéÊìæÇµÇƒÇ®Ç≠ÅB
+
+}
+
+bool VisibleModelIterator::HasNext()
+{
+	if (m_pNextModel == nullptr)
+	{
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+}
+
+IModelNode& VisibleModelIterator::Current()
+{
+	return *m_pNextModel;
+}
+
+void VisibleModelIterator::Next()
+{
+	bool find = false;
+	for (int i = m_NextIndex; i < m_pScene->m_pRenderList.size(); i++)
+	{
+		if (m_pScene->m_pRenderList[i]->Visible())
+		{
+			m_pNextModel = m_pScene->m_pRenderList[i].get();
+			m_NextIndex = i + 1;
+			find = true;
+			break;
+		}
+	}
+
+	if (find == false)
+	{
+		m_pNextModel = nullptr;
+	}
+
+}
 }
 }
 

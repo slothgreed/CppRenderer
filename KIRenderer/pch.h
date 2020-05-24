@@ -94,7 +94,7 @@ using namespace KI::Gfx;
 #include "SSLICMaterial.h"
 #include "VertexMaterial.h"
 #include "BasicMaterial.h"
-#include "ADSMaterial.h"
+#include "LambertMaterial.h"
 #include "NormalVisualizeMaterial.h"
 #include "OutputMaterial.h"
 #include "GrayScaleMaterial.h"

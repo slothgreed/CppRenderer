@@ -25,8 +25,9 @@ namespace Rednerer
 #define SHADER_BEZIERLINE	"bezierline"
 #define SHADER_OUTPUT		"output"
 #define SHADER_PICK			"pick"
-#define SHADER_STRUCT		"common/struct.txt"
+#define SHADER_STRUCT		"common/struct.h"
 #define SHADER_BASICMATERIAL "material/basicmaterial"
+#define SHADER_LAMBERTMATERIAL "material/lambert"
 #define SHADER_VERTEXMATERIAL "material/vertexmaterial"
 
 

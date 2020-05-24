@@ -3,6 +3,15 @@ namespace KI
 namespace Renderer
 {
 
+DefaultVertexCode::DefaultVertexCode(VERTEX_LAYOUT layout)
+	:DefaultVertexCode(
+		string(SHADER_DIRECTORY) +
+		string(SHADER_DEFAULT) +
+		string(SHADER_EXT_VERTEX))
+{
+	SetShaderDefine(layout);
+}
+
 DefaultVertexCode::DefaultVertexCode(IVertexBuffer* pVertexBuffer)
 	:DefaultVertexCode(
 		string(SHADER_DIRECTORY) +
@@ -10,11 +19,12 @@ DefaultVertexCode::DefaultVertexCode(IVertexBuffer* pVertexBuffer)
 		string(SHADER_EXT_VERTEX))
 {
 	auto pDefault = dynamic_cast<DefaultVertexBuffer*>(pVertexBuffer);
-	if (pDefault != nullptr)
+	if (pDefault != NULL)
 	{
 		SetShaderDefine(pDefault->Layout());
 	}
 }
+
 
 DefaultVertexCode::DefaultVertexCode(const string& shaderCode)
 	:IShaderCode(shaderCode)
@@ -41,7 +51,7 @@ void DefaultVertexCode::GetDefineCode(string& code)
 	}
 
 	if (m_outColor) {
-		code += OUT_COLOR;	// 色の出力は必ずする．
+		code += OUT_COLOR;
 	}
 
 	if (m_outTexcoord) {

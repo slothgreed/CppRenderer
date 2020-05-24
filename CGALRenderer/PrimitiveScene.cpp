@@ -29,7 +29,7 @@ void PrimitiveScene::Initialize(Project* m_pProject)
 	// sphere rendering
 	{
 		auto sphereData = make_shared<RenderData>();
-		ModelGenerator::Sphere(10, 36, 36, sphereData.get());
+		ModelGenerator::Sphere(1, 36, 36, sphereData.get());
 
 		auto sphereNode = make_shared<PrimitiveNode>(sphereData);
 
@@ -45,7 +45,7 @@ void PrimitiveScene::Initialize(Project* m_pProject)
 
 		auto pBasicMaterial = make_shared<BasicMaterial>(pTexture);
 		sphereData->SetMaterial(pBasicMaterial);
-		//m_pScene->AddModelNode(sphereNode);
+		m_pScene->AddModelNode(sphereNode);
 	}
 
 	// icosahedron rendring
@@ -63,7 +63,7 @@ void PrimitiveScene::Initialize(Project* m_pProject)
 		auto pVertexMaterial = make_shared<VertexMaterial>(VERTEX_MATERIAL_NORMAL);
 		pRenderData->SetMaterial(pVertexMaterial);
 		auto pPrimitiveNode = make_shared<PrimitiveNode>(pRenderData);
-		//m_pScene->AddModelNode(pPrimitiveNode);
+		m_pScene->AddModelNode(pPrimitiveNode);
 	}
 
 	// quad rendering
@@ -76,7 +76,7 @@ void PrimitiveScene::Initialize(Project* m_pProject)
 			make_shared<PrimitiveModel>(
 				make_shared<Quad>(
 					QuadArgs(vec2(-1), vec2(1)))));
-		//m_pScene->AddModelNode(pPlaneNode);
+		m_pScene->AddModelNode(pPlaneNode);
 	}
 
 	{
@@ -92,6 +92,9 @@ void PrimitiveScene::Initialize(Project* m_pProject)
 
 	m_pBackTarget = make_shared<SymbolicRenderTarget>(GL_BACK);
 
+	m_currentPrimitive = 0;
+	ShowPrimitive(m_currentPrimitive);
+
 }
 void PrimitiveScene::Invoke()
 {
@@ -102,6 +105,43 @@ void PrimitiveScene::Invoke()
 	m_pScene->UnBind();
 }
 
+void PrimitiveScene::NextModel()
+{
+	m_currentPrimitive = (m_currentPrimitive + 1) % m_pScene->ModelNum();
+
+	ShowPrimitive(m_currentPrimitive);
+}
+
+void PrimitiveScene::PreviewModel()
+{
+	if (m_currentPrimitive == 0)
+	{
+		m_currentPrimitive = m_pScene->ModelNum() - 1;
+	}
+	else
+	{
+		m_currentPrimitive = m_currentPrimitive - 1;
+	}
+
+	ShowPrimitive(m_currentPrimitive);
+}
+
+void PrimitiveScene::ShowPrimitive(int index)
+{
+	SceneModelIterator itr(m_pScene.get());
+	for (; itr.HasNext(); itr.Next())
+	{
+		if (itr.Index() == index)
+		{
+			itr.Current().SetVisible(true);
+		}
+		else
+		{
+			itr.Current().SetVisible(false);
+		}
+	}
+	
+}
 void PrimitiveScene::ProcessMouseEvent(const MouseInput& input)
 {
 	m_pMouse->ApplyMouseInput(input);
@@ -123,6 +163,13 @@ void PrimitiveScene::ProcessMouseEvent(const MouseInput& input)
 						GetViewport(),
 						m_pScene,
 						input.Position())));
+		}
+		else
+		{
+			if (input.Press(MOUSE_BUTTON_RIGHT))
+			{
+				NextModel();
+			}
 		}
 	}
 }

@@ -21,7 +21,7 @@ PrimitiveNode::~PrimitiveNode()
 {
 }
 
-void PrimitiveNode::Draw()
+void PrimitiveNode::DrawCore()
 {
 	if (m_pState != nullptr)
 	{

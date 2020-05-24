@@ -165,7 +165,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="ADSMaterial.h" />
+    <ClInclude Include="LambertMaterial.h" />
     <ClInclude Include="BasicMaterial.h" />
     <ClInclude Include="BezierLineMaterial.h" />
     <ClInclude Include="DefaultVBOCode.h" />
@@ -221,7 +221,7 @@
     <ClInclude Include="VertexMaterial.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ADSMaterial.cpp" />
+    <ClCompile Include="LambertMaterial.cpp" />
     <ClCompile Include="BasicMaterial.cpp" />
     <ClCompile Include="BezierLineMaterial.cpp" />
     <ClCompile Include="DefaultVBOCode.cpp" />

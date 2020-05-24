@@ -213,9 +213,6 @@
     <ClInclude Include="ShaderStruct.h">
       <Filter>ヘッダー ファイル\Shader</Filter>
     </ClInclude>
-    <ClInclude Include="ADSMaterial.h">
-      <Filter>ヘッダー ファイル\Material</Filter>
-    </ClInclude>
     <ClInclude Include="BasicMaterial.h">
       <Filter>ヘッダー ファイル\Material</Filter>
     </ClInclude>
@@ -245,6 +242,9 @@
     </ClInclude>
     <ClInclude Include="DefaultVBOCode.h">
       <Filter>ヘッダー ファイル\Shader\Code</Filter>
+    </ClInclude>
+    <ClInclude Include="LambertMaterial.h">
+      <Filter>ヘッダー ファイル\Material</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -350,9 +350,6 @@
     <ClCompile Include="VertexMaterial.cpp">
       <Filter>ソース ファイル\Material</Filter>
     </ClCompile>
-    <ClCompile Include="ADSMaterial.cpp">
-      <Filter>ソース ファイル\Material</Filter>
-    </ClCompile>
     <ClCompile Include="BezierLineMaterial.cpp">
       <Filter>ソース ファイル\Material</Filter>
     </ClCompile>
@@ -370,6 +367,9 @@
     </ClCompile>
     <ClCompile Include="DefaultVBOCode.cpp">
       <Filter>ソース ファイル\Shader\Code</Filter>
+    </ClCompile>
+    <ClCompile Include="LambertMaterial.cpp">
+      <Filter>ソース ファイル\Material</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -8,11 +8,15 @@ class IShaderBuildInfo;
 class DLL_EXPORT IShaderChunk
 {
 public:
-	IShaderChunk() {};
+	IShaderChunk() :m_bNeedRecompileShader(true) {};
 	virtual ~IShaderChunk() {};
 	virtual bool NewShaderCompare(IShaderChunk* pTarget) = 0;
 	virtual shared_ptr<IShaderCode> NewShaderCode(IShaderBuildInfo* pBuildInfo,SHADER_PROGRAM_TYPE type) = 0;
+	void CompiledShader() { m_bNeedRecompileShader = false; }
+	bool NeedReCompileShader() { return m_bNeedRecompileShader; };
+
 private:
+	bool m_bNeedRecompileShader;
 
 };
 }

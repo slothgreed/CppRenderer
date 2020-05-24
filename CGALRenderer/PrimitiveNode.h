@@ -10,7 +10,6 @@ public:
 
 	~PrimitiveNode();
 
-	virtual void Draw();
 	virtual void Update(void* sender, IEventArgs* args);
 	shared_ptr<IMaterial> GetMaterial() { return m_pMaterial; }
 	shared_ptr<DefaultVertexBuffer> GetVertexBuffer();
@@ -20,6 +19,7 @@ public:
 	virtual void AddPartSelect(TOPOLOGY_TYPE type, int first, int count);
 
 private:
+	virtual void DrawCore() override;
 	string m_name;
 	shared_ptr<RenderData> m_pRenderData;
 	shared_ptr<IMaterial> m_pMaterial;

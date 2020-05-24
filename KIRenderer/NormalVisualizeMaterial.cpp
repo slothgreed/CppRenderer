@@ -74,7 +74,7 @@ shared_ptr<IShaderCode> NormalVisualizeMaterial::NewShaderCode(IShaderBuildInfo*
 	}
 	else if (type == SHADER_PROGRAM_FRAG)
 	{
-		return make_shared<BasicMaterialFragCode>(BASIC_MATERIAL_TYPE::BASIC_COLOR_TYPE_FIXCOLOR);
+		return make_shared<BasicMaterialFragCode>(BASIC_MATERIAL_TYPE::BASIC_MATERIAL_TYPE_FIXCOLOR);
 	}
 	else if (type == SHADER_PROGRAM_GEOM)
 	{

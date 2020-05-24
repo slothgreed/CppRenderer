@@ -5,8 +5,7 @@ namespace Renderer
 ShaderStruct::ShaderStruct()
 	:IShaderCode(
 		string(SHADER_DIRECTORY) +
-		string(SHADER_BASICMATERIAL) +
-		string(SHADER_EXT_VERTEX))
+		string(SHADER_STRUCT))
 {
 }
 

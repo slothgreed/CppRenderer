@@ -86,25 +86,24 @@ CommandResult PickCommand::Execute()
 	Ray ray(near, far - near);
 	RaycastPickInfo pickInfo(PICK_TYPE::PICK_TYPE_FACE, &ray);
 
-	auto pModelNodes = pArgs->m_pScene->ModelNodes();
-	for (int i = 0; i < pModelNodes.size(); i++)
+	VisibleModelIterator itr(pArgs->m_pScene.get());
+	for (; itr.HasNext(); itr.Next())
 	{
-		auto pModel = pModelNodes[i]->GetModel();
+		auto pModel = itr.Current().GetModel();
 		if (pModel == nullptr)
 		{
 			continue;
 		}
-
 		pModel->RaycastPick(pickInfo);
-
 		int first;
 		int count;
 		pickInfo.GetSelectRegion(first, count);
 		if (pickInfo.Success())
 		{
-			pModelNodes[i]->AddPartSelect(TOPOLOGY_TYPE_FACE, first, count);
+			itr.Current().AddPartSelect(TOPOLOGY_TYPE_FACE, first, count);
 		}
 	}
+
 
 #ifdef DEBUG_RENDERING
 	DebugRendering(near, far, pArgs->screenPosition, pArgs->m_pViewport.get(), pArgs->m_pScene.get(), pickInfo);

@@ -77,7 +77,7 @@ shared_ptr<IShaderCode> BezierLineMaterial::NewShaderCode(IShaderBuildInfo* pBui
 	case SHADER_PROGRAM_VERTEX:
 		return make_shared<DefaultVertexCode>(pBuildInfo->GetVertexBuffer().get());
 	case SHADER_PROGRAM_FRAG:
-		return make_shared<BasicMaterialFragCode>(BASIC_MATERIAL_TYPE::BASIC_COLOR_TYPE_FIXCOLOR);
+		return make_shared<BasicMaterialFragCode>(BASIC_MATERIAL_TYPE::BASIC_MATERIAL_TYPE_FIXCOLOR);
 	case SHADER_PROGRAM_TCS:
 		return make_shared<BezierLineTCSCode>();
 	case SHADER_PROGRAM_TESS:

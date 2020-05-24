@@ -15,7 +15,7 @@ BezierLineNode::~BezierLineNode()
 {
 }
 
-void BezierLineNode::Draw()
+void BezierLineNode::DrawCore()
 {
 	m_pRenderData->Draw();
 }

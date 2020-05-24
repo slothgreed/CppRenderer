@@ -10,9 +10,8 @@ public:
 	BezierLineNode(shared_ptr<RenderData> pVertexBuffer);
 	~BezierLineNode();
 
-	virtual void Draw();
-
 private:
+	virtual void DrawCore() override;
 	shared_ptr<BezierLineMaterial> m_pMaterial;
 	shared_ptr<RenderData> m_pRenderData;
 };

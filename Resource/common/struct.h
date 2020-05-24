@@ -9,10 +9,19 @@ layout (std140) uniform SceneData
 
 layout (std140) uniform LightData
 {
-	vec4 Direction;
+	vec3 Direction;
 	vec4 Ambient;
 	vec4 Diffuse;
 	vec4 Specular;
 }light;
+
+
+layout (std140) uniform MaterialData
+{
+	vec4 Ambient;
+	vec4 Diffuse;
+	vec4 Specular;
+	float Shinning;
+}material;
 
 #endif

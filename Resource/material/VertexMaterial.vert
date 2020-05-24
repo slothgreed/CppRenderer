@@ -1,5 +1,5 @@
 #include "common\common.h"
-#include "common\struct.txt"
+#include "common\struct.h"
 #include "common\default.vbo"
 
 #if defined(OUT_NORMAL) || defined(OUT_COLOR) || defined(OUT_TEXCOORD) || defined(OUT_INSTANCE)
@@ -50,7 +50,7 @@ void main()
 #endif
 
 #if defined(OUT_COLOR)
-	OutData.color = OutputColor();
+	OutData.color = OutputColorExt();
 #endif
 
 #if defined(OUT_TEXCOORD)

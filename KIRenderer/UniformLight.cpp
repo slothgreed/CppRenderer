@@ -34,7 +34,7 @@ void UniformLight::Set(ILight* pLight)
 	if (pLight->Type() == LIGHT_TYPE_DIRECTION)
 	{
 		DirectionLight* pDirection = (DirectionLight*)pLight;
-		light.direction = vec4(pDirection->Direction(), 1.0);
+		light.direction = vec3(pDirection->Direction());
 		light.ambient = pDirection->Ambient();
 		light.diffuse = pDirection->Diffuse();
 		light.specular = pDirection->Specular();

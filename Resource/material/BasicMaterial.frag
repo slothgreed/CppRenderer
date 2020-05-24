@@ -1,5 +1,5 @@
 #include "common\common.h"
-
+#include "common\struct.h"
 out vec4 outputColor;
 
 #ifdef VIEW_TEXTURE

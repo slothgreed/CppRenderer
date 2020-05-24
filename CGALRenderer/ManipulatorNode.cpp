@@ -84,7 +84,7 @@ void ManipulatorNode::GenManipulatorHandleVBO(
 
 }
 
-void ManipulatorNode::Draw()
+void ManipulatorNode::DrawCore()
 {
 	m_pMaterial->SetColor(vec4(1, 0, 0, 1));
 	m_pFaceDatas[MANIPULATOR_HANDLE_X]->Draw();

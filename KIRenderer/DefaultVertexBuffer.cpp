@@ -145,11 +145,6 @@ void DefaultVertexBuffer::SetInstanceMatrix(const vector<mat4>& matrix)
 		row1.push_back(vec4(matrix[i][1][0], matrix[i][1][1], matrix[i][1][2], matrix[i][1][3]));
 		row2.push_back(vec4(matrix[i][2][0], matrix[i][2][1], matrix[i][2][2], matrix[i][2][3]));
 		row3.push_back(vec4(matrix[i][3][0], matrix[i][3][1], matrix[i][3][2], matrix[i][3][3]));
-	
-		//row0.push_back(vec4(matrix[i][0][0], matrix[i][1][0], matrix[i][2][0], matrix[i][3][0]));
-		//row1.push_back(vec4(matrix[i][0][1], matrix[i][1][1], matrix[i][2][1], matrix[i][3][1]));
-		//row2.push_back(vec4(matrix[i][0][2], matrix[i][1][2], matrix[i][2][2], matrix[i][3][2]));
-		//row3.push_back(vec4(matrix[i][0][3], matrix[i][1][3], matrix[i][2][3], matrix[i][3][3]));
 	}
 
 	m_VertexInfo[VERTEX_ATTRIB_INSTANCE_MATRIX0]->Set(row0);
@@ -269,6 +264,10 @@ bool DefaultVertexBuffer::NewShaderCompare(IVertexBuffer* pTarget)
 	if (Layout() == pTargetBuffer->Layout())
 	{
 		return true;
+	}
+	else
+	{
+		return false;
 	}
 }
 }

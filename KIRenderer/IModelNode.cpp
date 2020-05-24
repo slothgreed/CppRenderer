@@ -37,6 +37,17 @@ void IModelNode::RemoveProperty(shared_ptr<IModelProperty> prop)
 		m_pProperty.erase(m_pProperty.begin() + dist);
 	}
 }
+void IModelNode::Draw()
+{
+	if (m_visible == false)
+	{
+		return;
+	}
+	else
+	{
+		DrawCore();
+	}
+}
 
 void IModelNode::DrawProperty()
 {

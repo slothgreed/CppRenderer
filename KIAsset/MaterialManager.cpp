@@ -31,7 +31,7 @@ void MaterialManager::Initialize()
 
 void MaterialManager::CreateSystemMaterial()
 {
-	auto pBasicMaterial = make_shared<BasicMaterial>(vec4(1, 0, 0, 1));;
+	auto pBasicMaterial = make_shared<BasicMaterial>(vec4(0, 1, 0, 1));
 
 	m_pMaterials[SYSTEM_MATERIAL_SELECTION] = pBasicMaterial;
 

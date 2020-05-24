@@ -13,7 +13,7 @@ PolygonModelNode::~PolygonModelNode()
 {
 }
 
-void PolygonModelNode::Draw()
+void PolygonModelNode::DrawCore()
 {
 	if (m_pFaceData != NULL)
 	{

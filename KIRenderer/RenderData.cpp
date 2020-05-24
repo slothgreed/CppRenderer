@@ -94,7 +94,7 @@ int RenderData::GetVertexSize()
 }
 void RenderData::DrawInternal(shared_ptr<IMaterial> pMaterial, int first, int count)
 {
-	if (pMaterial->NeedReCompileShader())
+	if (pMaterial->NeedReCompileShader() || m_pShader == nullptr)
 	{
 		auto pBuildInfo = make_shared<IShaderBuildInfo>();
 		pBuildInfo->SetVertexBuffer(m_pVertexBuffer);

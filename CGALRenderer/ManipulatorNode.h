@@ -10,8 +10,8 @@ public:
 	~ManipulatorNode();
 
 	virtual void ShowProperty() override;
-	virtual void Draw() override;
 private:
+	virtual void DrawCore() override;
 	void GenManipulatorHandleVBO(
 		RenderData* pFaceData,
 		RenderData* pEdgeData,

@@ -8,9 +8,9 @@ namespace Renderer
 
 enum BASIC_MATERIAL_TYPE : unsigned int 
 {
-	BASIC_COLOR_TYPE_FIXCOLOR,	// 固定色
-	BASIC_COLOR_TYPE_TEXTURE,	// テクスチャ色
-	BASIC_COLOR_TYPE_NUM,
+	BASIC_MATERIAL_TYPE_FIXCOLOR,	// 固定色
+	BASIC_MATERIAL_TYPE_TEXTURE,	// テクスチャ色
+	BASIC_MATERIAL_TYPE_NUM,
 };
 
 class DLL_EXPORT BasicMaterialFragCode : public IShaderCode
@@ -42,7 +42,6 @@ public:
 
 	~BasicMaterial();
 
-	MATERIAL_TYPE MaterialType() { return MATERIAL_TYPE::MATERIAL_TYPE_BASIC; };
 	BASIC_MATERIAL_TYPE ColorType() { return m_Type; }
 	void SetColor(const vec4& color);
 	void SetTexture(shared_ptr<Texture> pTexture);

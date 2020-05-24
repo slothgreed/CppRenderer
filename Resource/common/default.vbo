@@ -2,7 +2,7 @@
 #define DEFAULT_VBO_TXT
 
 #include "common.h"
-#include "struct.txt"
+#include "struct.h"
 
 layout(location = 0) in vec3 a_position;
 
