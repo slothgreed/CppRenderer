@@ -134,7 +134,11 @@ shared_ptr<IShaderCode> LambertMaterial::NewShaderCode(IShaderBuildInfo* pBuildI
 		}
 		else if(m_Type == LAMBERT_MATERIAL_TYPE_FIXCOLOR)
 		{
-			outLayout = VERTEX_LAYOUT_NONE;
+			outLayout = VERTEX_LAYOUT_NORMAL;
+		}
+		else
+		{
+			assert(0);
 		}
 
 		return make_shared<DefaultVertexCode>(outLayout);

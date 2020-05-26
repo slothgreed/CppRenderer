@@ -9,7 +9,7 @@ layout (std140) uniform SceneData
 
 layout (std140) uniform LightData
 {
-	vec3 Direction;
+	vec4 Direction;
 	vec4 Ambient;
 	vec4 Diffuse;
 	vec4 Specular;

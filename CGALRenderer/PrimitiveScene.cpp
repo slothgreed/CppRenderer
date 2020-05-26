@@ -87,6 +87,23 @@ void PrimitiveScene::Initialize(Project* m_pProject)
 
 	}
 
+	// sphere lambert
+	{
+		auto sphereData = make_shared<RenderData>();
+		ModelGenerator::Sphere(1, 36, 36, sphereData.get());
+		auto sphereNode = make_shared<PrimitiveNode>(sphereData);
+
+		auto pLambertMaterial = make_shared<LambertMaterial>(vec4(1, 0, 0, 1));
+		sphereData->SetMaterial(pLambertMaterial);
+		m_pScene->AddModelNode(sphereNode);
+
+		auto pLight = make_shared<DirectionLight>();
+		pLight->SetAmbient(vec4(0, 1, 0, 1));
+		pLight->SetDirection(vec3(1, 1, 1));
+
+		m_pScene->AddLight(pLight);
+	}
+
 	//BDB bdb(vec3(0), vec3(2));
 	//pCamera->FitToBDB(bdb);
 
@@ -94,13 +111,12 @@ void PrimitiveScene::Initialize(Project* m_pProject)
 
 	m_currentPrimitive = 0;
 	ShowPrimitive(m_currentPrimitive);
-
 }
 void PrimitiveScene::Invoke()
 {
-	m_pScene->Bind();
 	m_pBackTarget->Begin();
 	m_pBackTarget->Clear();
+	m_pScene->Bind();
 	m_pScene->Draw();
 	m_pScene->UnBind();
 }

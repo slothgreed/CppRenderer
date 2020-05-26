@@ -15,7 +15,7 @@ public:
 	virtual LIGHT_TYPE Type() override { return LIGHT_TYPE_DIRECTION; }
 
 	const vec3& Direction() { return m_direction; }
-	void Direction(vec3 direction) { m_direction = direction; }
+	void SetDirection(vec3 direction) { m_direction = direction; }
 private:
 	vec3 m_direction;
 };

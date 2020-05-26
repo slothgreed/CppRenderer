@@ -1,5 +1,5 @@
 #include "common\common.h"
-
+#include "common\struct.h"
 out vec4 outputColor;
 
 #ifdef IN_TEXTURE
@@ -19,6 +19,9 @@ in Data{
 
 #ifdef IN_FIXCOLOR
 uniform vec4 uFixColor;
+in Data{
+	in vec3 normal;
+}InData;
 #endif
 
 vec4 GetColor()
@@ -32,14 +35,15 @@ vec4 GetColor()
 #endif
 }
 
-vec4 Lambert()
+vec4 Lambert(vec4 surfaceColor)
 {
-	vec3 direction = light.Direction;
-	float diffuse = clamp(dot(InData.normal,direction),0.1);
-	return diffuse * GetColor();
+	vec3 direction = light.Direction.xyz;
+	vec3 normal = normalize(InData.normal);
+	float diffuse = clamp(dot(normal,direction),0.2,1.0);
+	return diffuse * (surfaceColor + light.Diffuse * light.Ambient);
 }
 
 void main()
 {
-	outputColor = Lambert();
+	outputColor = Lambert(GetColor());
 }
