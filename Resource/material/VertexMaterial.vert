@@ -35,7 +35,8 @@ vec4 OutputColorExt()
 #elif defined(VIEW_TEXCOLOR)
 	return vec4(a_texcoord.x,a_texcoord.y,0,1.0);
 #elif defined(VIEW_DEPTH)
-	return vec4(gl_Position.z,gl_Position.z,gl_Position.z,1.0);
+	float depth = gl_Position.z / gl_Position.w;
+	return vec4(depth,depth,depth,1.0);
 #else
 	return NotDefineColor();
 #endif
