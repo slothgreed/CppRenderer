@@ -82,6 +82,12 @@
     <Filter Include="ソース ファイル\Material">
       <UniqueIdentifier>{c98deb01-c0b0-4404-8717-c0b53b933979}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Node">
+      <UniqueIdentifier>{a414511b-fdd4-41f2-8546-92b7f3030b6c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Node">
+      <UniqueIdentifier>{4c25cb92-2ac1-429c-9b5e-dd005206ee65}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -142,9 +148,6 @@
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="IModel.h">
-      <Filter>ヘッダー ファイル\Interface</Filter>
-    </ClInclude>
-    <ClInclude Include="IModelNode.h">
       <Filter>ヘッダー ファイル\Interface</Filter>
     </ClInclude>
     <ClInclude Include="IModelProperty.h">
@@ -246,6 +249,15 @@
     <ClInclude Include="LambertMaterial.h">
       <Filter>ヘッダー ファイル\Material</Filter>
     </ClInclude>
+    <ClInclude Include="PhongMaterial.h">
+      <Filter>ヘッダー ファイル\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="NodeOperator.h">
+      <Filter>ヘッダー ファイル\Node</Filter>
+    </ClInclude>
+    <ClInclude Include="IModelNode.h">
+      <Filter>ヘッダー ファイル\Node</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -267,9 +279,6 @@
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="IMaterial.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="IModelNode.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="TextureGenerator.cpp">
@@ -370,6 +379,15 @@
     </ClCompile>
     <ClCompile Include="LambertMaterial.cpp">
       <Filter>ソース ファイル\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="PhongMaterial.cpp">
+      <Filter>ソース ファイル\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="NodeOperator.cpp">
+      <Filter>ソース ファイル\Node</Filter>
+    </ClCompile>
+    <ClCompile Include="IModelNode.cpp">
+      <Filter>ソース ファイル\Node</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

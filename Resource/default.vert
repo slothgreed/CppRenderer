@@ -4,6 +4,10 @@
 
 #if defined(OUT_NORMAL) || defined(OUT_COLOR) || defined(OUT_TEXCOORD) || defined(OUT_INSTANCE)
 out Data{
+
+#ifdef OUT_POSITION
+out vec3 position;
+#endif
 #ifdef OUT_NORMAL
 out vec3 normal;
 #endif
@@ -27,6 +31,11 @@ out vec4 instanceMatrix3;
 void main()
 {
 	gl_Position = OutputPosition();
+
+#if defined(OUT_POSITION)
+	OutData.position = gl_Position.xyz;
+	OutData.position /= gl_Position.w;
+#endif
 
 #if defined(OUT_NORMAL)
 	OutData.normal = OutputNormal();

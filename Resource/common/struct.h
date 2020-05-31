@@ -9,12 +9,23 @@ layout (std140) uniform SceneData
 
 layout (std140) uniform LightData
 {
-	vec4 Direction;
+	vec4 Position;
 	vec4 Ambient;
 	vec4 Diffuse;
 	vec4 Specular;
+	float ConstantAttenuation;
+	float LinearAttenuation;
+	float QuadraticAttenuation;
+	float SpotCutoff;
+	float SpotExponent;
+	vec4 SpotDirection;
 }light;
 
+layout (std140) uniform ModelData
+{
+	mat4 ModelMatrix;
+	mat3 NormalMatrix;
+}model;
 
 layout (std140) uniform MaterialData
 {
@@ -23,5 +34,6 @@ layout (std140) uniform MaterialData
 	vec4 Specular;
 	float Shinning;
 }material;
+
 
 #endif

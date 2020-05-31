@@ -21,7 +21,7 @@ public:
 	const vec4& Ambient() { return m_ambient; };
 	const vec4& Diffuse() { return m_diffuse; };
 	const vec4& Specular() { return m_speclular; };
-	void SetAmbient(vec4 value) { m_ambient = value; }
+	void SetAmbient(vec4 value) { m_diffuse = value; }
 	void SetDiffuse(vec4 value) { m_diffuse = value; }
 	void SetSpecular(vec4 value) { m_speclular = value; }
 private:

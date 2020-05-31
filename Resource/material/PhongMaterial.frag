@@ -5,7 +5,6 @@ out vec4 outputColor;
 #ifdef IN_TEXTURE
 uniform sampler2D uTexture0;
 in Data{
-	in vec3 position;
 	in vec3 normal;
 	in vec2 texcoord;
 }InData;
@@ -13,7 +12,6 @@ in Data{
 
 #ifdef IN_COLOR
 in Data{
-	in vec3 position;
 	in vec3 normal;
 	in vec4 color;
 }InData;
@@ -22,7 +20,6 @@ in Data{
 #ifdef IN_FIXCOLOR
 uniform vec4 uFixColor;
 in Data{
-	in vec3 position;
 	in vec3 normal;
 }InData;
 #endif
@@ -38,12 +35,22 @@ vec4 GetColor()
 #endif
 }
 
-vec4 Lambert(vec4 surfaceColor)
+vec4 Phong(vec4 ambient, vec4 diffuse, vec4 specular)
 {
-	vec3 direction = normalize(light.Position.xyz);
+	// ambient;
+	vec3 ambient = material.Ambient * light.Ambient;
+	
+	// diffuse;
+	float diffDot = max(dot(INData.normal,light.Direction.xyz),0.0);
+	vec3 diffuse = material.Diffuse * light.Diffuse * diffDot;
+	
+	// specular;
+	vec3 specular = 
+	
+	vec3 direction = light.Direction.xyz;
 	vec3 normal = normalize(InData.normal);
 	float diffuse = clamp(dot(normal,direction),0.2,1.0);
-	return diffuse * ((surfaceColor + light.Ambient)* light.Diffuse);
+	return ambient * diffuse * specular;
 }
 
 void main()

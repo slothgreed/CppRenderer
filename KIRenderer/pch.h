@@ -43,8 +43,8 @@ using namespace KI::Gfx;
 #include "IModelNode.h"
 #include "ILight.h"
 #include "IGeometryPath.h"
-
 #include "Vertex.h"
+#include "NodeOperator.h"
 
 #include "DirectionLight.h"
 #include "SpotLight.h"
@@ -99,6 +99,7 @@ using namespace KI::Gfx;
 #include "OutputMaterial.h"
 #include "GrayScaleMaterial.h"
 #include "BezierLineMaterial.h"
+#include "PhongMaterial.h"
 
 
 

@@ -18,6 +18,8 @@ public:
 	virtual void AddPartSelect(TOPOLOGY_TYPE type, int first, int count) {};
 	virtual void Update(void* sender, IEventArgs* args);
 	shared_ptr<IModel> GetModel() { return m_pModel; }
+	void SetModelMatrix(const mat4x4& matrix) { m_ModelMatrix = matrix; };
+	const mat4x4& GetModelMatrix() { return m_ModelMatrix; };
 	void SetVisible(bool value) { m_visible = value; }
 	bool Visible() { return m_visible; }
 protected:
@@ -31,6 +33,7 @@ private:
 	virtual void DrawCore() = 0;
 	bool m_visible;
 	vector<shared_ptr<IModelProperty>> m_pProperty;
+	mat4x4 m_ModelMatrix;
 };
 }
 }

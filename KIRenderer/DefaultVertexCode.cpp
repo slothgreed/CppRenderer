@@ -29,6 +29,7 @@ DefaultVertexCode::DefaultVertexCode(IVertexBuffer* pVertexBuffer)
 DefaultVertexCode::DefaultVertexCode(const string& shaderCode)
 	:IShaderCode(shaderCode)
 {
+	m_outPosition = false;
 	m_outNormal = false;
 	m_outColor = false;
 	m_planePosition = false;
@@ -46,6 +47,9 @@ void DefaultVertexCode::Initialize(GLuint programId)
 }
 void DefaultVertexCode::GetDefineCode(string& code)
 {
+	if (m_outPosition) {
+		code += OUT_POSITION;
+	}
 	if (m_outNormal) {
 		code += OUT_NORMAL;
 	}
@@ -71,7 +75,8 @@ bool DefaultVertexCode::Compare(IShaderCode* pShaderCode)
 		return false;
 	}
 
-	if (m_outNormal == pCode->m_outNormal &&
+	if (m_outPosition == pCode->m_outPosition &&
+		m_outNormal == pCode->m_outNormal &&
 		m_outColor == pCode->m_outColor &&
 		m_outTexcoord == pCode->m_outTexcoord &&
 		m_outInstance == pCode->m_outInstance &&
@@ -133,6 +138,10 @@ void DefaultVertexCode::UnBind(shared_ptr<IShaderChunk> pShaderChunk)
 
 void DefaultVertexCode::SetShaderDefine(VERTEX_LAYOUT layout)
 {
+	if (layout & VERTEX_LAYOUT_POSITION) 
+	{
+		m_outPosition = true;
+	}
 	if (layout & VERTEX_LAYOUT_NORMAL)
 	{
 		m_outNormal = true;

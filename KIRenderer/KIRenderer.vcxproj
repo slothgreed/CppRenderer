@@ -172,8 +172,10 @@
     <ClInclude Include="DefaultVertexCode.h" />
     <ClInclude Include="ICamera.h" />
     <ClInclude Include="CompositMaterial.h" />
+    <ClInclude Include="NodeOperator.h" />
     <ClInclude Include="NormalVisualizeMaterial.h" />
     <ClInclude Include="OutputMaterial.h" />
+    <ClInclude Include="PhongMaterial.h" />
     <ClInclude Include="ShaderCommon.h" />
     <ClInclude Include="ShaderStruct.h" />
     <ClInclude Include="DefaultVertexBuffer.h" />
@@ -228,8 +230,10 @@
     <ClCompile Include="DefaultVertexCode.cpp" />
     <ClCompile Include="ICamera.cpp" />
     <ClCompile Include="CompositMaterial.cpp" />
+    <ClCompile Include="NodeOperator.cpp" />
     <ClCompile Include="NormalVisualizeMaterial.cpp" />
     <ClCompile Include="OutputMaterial.cpp" />
+    <ClCompile Include="PhongMaterial.cpp" />
     <ClCompile Include="ShaderCommon.cpp" />
     <ClCompile Include="ShaderStruct.cpp" />
     <ClCompile Include="DefaultVertexBuffer.cpp" />

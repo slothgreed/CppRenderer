@@ -27,6 +27,7 @@ namespace Rednerer
 #define SHADER_PICK			"pick"
 #define SHADER_STRUCT		"common/struct.h"
 #define SHADER_BASICMATERIAL "material/basicmaterial"
+#define SHADER_PHONGMATERIAL "material/phongmaterial"
 #define SHADER_LAMBERTMATERIAL "material/lambertmaterial"
 #define SHADER_VERTEXMATERIAL "material/vertexmaterial"
 
@@ -39,6 +40,7 @@ namespace Rednerer
 #define IN_INSTANCE		"#define IN_INSTANCE\n"
 #define VIEW_NORMAL		"#define VIEW_NORMAL\n"
 
+#define OUT_POSITION		"#define OUT_POSITION\n"
 #define OUT_NORMAL			"#define OUT_NORMAL\n"
 #define OUT_COLOR			"#define OUT_COLOR\n"
 #define OUT_TEXCOORD		"#define OUT_TEXCOORD\n"

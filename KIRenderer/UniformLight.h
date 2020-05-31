@@ -5,12 +5,20 @@ namespace KI
 {
 namespace Renderer
 {
+
+// https://en.wikibooks.org/wiki/GLSL_Programming/GLUT/Smooth_Specular_Highlights
 struct DLL_EXPORT LightData
 {
-	vec4 direction;	// vec4 = for std140 alignment;
+	vec4 position;
 	vec4 ambient;
 	vec4 diffuse;
 	vec4 specular;
+	vec4 spotDirection;
+	float spotCutoff;
+	float spotExponent;
+	float constantAttenuation;
+	float linearAttenuation;
+	float quadraticAttenuation;
 };
 
 class DLL_EXPORT UniformLight : public UniformBuffer
