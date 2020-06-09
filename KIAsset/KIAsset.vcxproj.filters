@@ -130,7 +130,7 @@
       <Filter>ヘッダー ファイル\ShaderPass</Filter>
     </ClInclude>
     <ClInclude Include="Grid.h">
-      <Filter>ソース ファイル\Model\BasicObject</Filter>
+      <Filter>ヘッダー ファイル\Model\BasicObject</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -186,7 +186,7 @@
       <Filter>ソース ファイル\ShaderPass</Filter>
     </ClCompile>
     <ClCompile Include="Grid.cpp">
-      <Filter>ヘッダー ファイル\Model\BasicObject</Filter>
+      <Filter>ソース ファイル\Model\BasicObject</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

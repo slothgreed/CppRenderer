@@ -104,6 +104,13 @@ void PrimitiveScene::Initialize(Project* m_pProject)
 		m_pScene->AddLight(pLight);
 	}
 
+	// grid
+	{
+		auto grid = make_shared<Grid>(GridArgs(vec2(44, 4), vec2(2, 0.2)));
+		auto gridNode = make_shared<PrimitiveNode>(make_shared<PrimitiveModel>(grid));
+		m_pScene->AddModelNode(gridNode);
+	}
+
 	//BDB bdb(vec3(0), vec3(2));
 	//pCamera->FitToBDB(bdb);
 

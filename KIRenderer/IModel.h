@@ -15,14 +15,13 @@ enum MODEL_TYPE
 	MODEL_TYPE_PRIMITIVE
 };
 
-class DLL_EXPORT IModel : public ISubject, public IRaycastPick
+class DLL_EXPORT IModel : public ISubject
 {
 public:
 	IModel() { };
 	virtual ~IModel() {};
 	virtual MODEL_TYPE Type() = 0;
 	virtual void GetBDB(BDB& bdb) = 0;
-	virtual void RaycastPick(RaycastPickInfo& pickInfo) {};
 protected:
 	void SetBDB(BDB value) { m_bdb = value; };
 private:
