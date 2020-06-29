@@ -89,6 +89,8 @@ using namespace KI::Gfx;
 
 #include "RenderData.h"
 
+#include "Material.h"
+
 #include "OutputShading.h"
 #include "CompositShading.h"
 #include "SSLICShading.h"

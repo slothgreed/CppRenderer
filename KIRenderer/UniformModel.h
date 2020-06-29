@@ -9,9 +9,6 @@ struct ModelData
 {
 	mat4 modelMatrix;
 	mat3 normalMatrix;
-	mat4 ambient;
-	vec4 diffuse;
-	vec4 specular;
 };
 
 class DLL_EXPORT UniformModel : public UniformBuffer

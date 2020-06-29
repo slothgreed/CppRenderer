@@ -76,9 +76,6 @@
     <Filter Include="ソース ファイル\GeometryPath">
       <UniqueIdentifier>{310c0009-1e2d-4893-b574-5f7146af5e3b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ヘッダー ファイル\Material">
-      <UniqueIdentifier>{22d463b5-76f7-4cd9-93bf-45c73a703814}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ソース ファイル\Node">
       <UniqueIdentifier>{a414511b-fdd4-41f2-8546-92b7f3030b6c}</UniqueIdentifier>
     </Filter>
@@ -87,6 +84,15 @@
     </Filter>
     <Filter Include="ソース ファイル\Shading">
       <UniqueIdentifier>{c98deb01-c0b0-4404-8717-c0b53b933979}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Shading">
+      <UniqueIdentifier>{22d463b5-76f7-4cd9-93bf-45c73a703814}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Material">
+      <UniqueIdentifier>{43dacb1e-cefe-420e-ac4b-c3390f09142e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Material">
+      <UniqueIdentifier>{42f3d3a3-bb66-414b-bf38-68cd1d370657}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -229,33 +235,36 @@
       <Filter>ヘッダー ファイル\Interface</Filter>
     </ClInclude>
     <ClInclude Include="BasicShading.h">
-      <Filter>ヘッダー ファイル\Material</Filter>
+      <Filter>ヘッダー ファイル\Shading</Filter>
     </ClInclude>
     <ClInclude Include="BezierLineShading.h">
-      <Filter>ヘッダー ファイル\Material</Filter>
+      <Filter>ヘッダー ファイル\Shading</Filter>
     </ClInclude>
     <ClInclude Include="CompositShading.h">
-      <Filter>ヘッダー ファイル\Material</Filter>
+      <Filter>ヘッダー ファイル\Shading</Filter>
     </ClInclude>
     <ClInclude Include="GrayScaleShading.h">
-      <Filter>ヘッダー ファイル\Material</Filter>
+      <Filter>ヘッダー ファイル\Shading</Filter>
     </ClInclude>
     <ClInclude Include="LambertShading.h">
-      <Filter>ヘッダー ファイル\Material</Filter>
+      <Filter>ヘッダー ファイル\Shading</Filter>
     </ClInclude>
     <ClInclude Include="NormalVisualizeShading.h">
-      <Filter>ヘッダー ファイル\Material</Filter>
+      <Filter>ヘッダー ファイル\Shading</Filter>
     </ClInclude>
     <ClInclude Include="OutputShading.h">
-      <Filter>ヘッダー ファイル\Material</Filter>
+      <Filter>ヘッダー ファイル\Shading</Filter>
     </ClInclude>
     <ClInclude Include="PhongShading.h">
-      <Filter>ヘッダー ファイル\Material</Filter>
+      <Filter>ヘッダー ファイル\Shading</Filter>
     </ClInclude>
     <ClInclude Include="SSLICShading.h">
-      <Filter>ヘッダー ファイル\Material</Filter>
+      <Filter>ヘッダー ファイル\Shading</Filter>
     </ClInclude>
     <ClInclude Include="VertexShading.h">
+      <Filter>ヘッダー ファイル\Shading</Filter>
+    </ClInclude>
+    <ClInclude Include="Material.h">
       <Filter>ヘッダー ファイル\Material</Filter>
     </ClInclude>
   </ItemGroup>
@@ -388,6 +397,9 @@
     </ClCompile>
     <ClCompile Include="IShading.cpp">
       <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Material.cpp">
+      <Filter>ソース ファイル\Material</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
