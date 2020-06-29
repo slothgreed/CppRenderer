@@ -3,7 +3,7 @@ namespace KI
 {
 namespace Renderer
 {
-BasicMaterialFragCode::BasicMaterialFragCode(BASIC_MATERIAL_TYPE type)
+BasicFragCode::BasicFragCode(BASIC_MATERIAL_TYPE type)
 	:IShaderCode(
 		string(SHADER_DIRECTORY) +
 		string(SHADER_BASICMATERIAL) +
@@ -12,11 +12,11 @@ BasicMaterialFragCode::BasicMaterialFragCode(BASIC_MATERIAL_TYPE type)
 	m_Type = type;
 }
 
-BasicMaterialFragCode::~BasicMaterialFragCode()
+BasicFragCode::~BasicFragCode()
 {
 }
 
-void BasicMaterialFragCode::GetDefineCode(string& code)
+void BasicFragCode::GetDefineCode(string& code)
 {
 	if (m_Type == BASIC_MATERIAL_TYPE_FIXCOLOR)
 		code += "#define VIEW_FIXCOLOR\n";
@@ -24,9 +24,9 @@ void BasicMaterialFragCode::GetDefineCode(string& code)
 		code += "#define VIEW_TEXTURE\n";
 }
 
-bool BasicMaterialFragCode::Compare(IShaderCode* pShaderCode)
+bool BasicFragCode::Compare(IShaderCode* pShaderCode)
 {
-	auto pCode = dynamic_cast<BasicMaterialFragCode*>(pShaderCode);
+	auto pCode = dynamic_cast<BasicFragCode*>(pShaderCode);
 	if (pCode == nullptr)
 	{
 		return false;
@@ -41,7 +41,7 @@ bool BasicMaterialFragCode::Compare(IShaderCode* pShaderCode)
 	return false;
 }
 
-void BasicMaterialFragCode::Bind(shared_ptr<IShaderChunk> pShaderChunk)
+void BasicFragCode::Bind(shared_ptr<IShaderChunk> pShaderChunk)
 {
 	auto pMaterial = static_pointer_cast<BasicMaterial>(pShaderChunk);
 	if (pMaterial == nullptr)
@@ -61,7 +61,7 @@ void BasicMaterialFragCode::Bind(shared_ptr<IShaderChunk> pShaderChunk)
 
 }
 
-void BasicMaterialFragCode::UnBind(shared_ptr<IShaderChunk> pShaderChunk)
+void BasicFragCode::UnBind(shared_ptr<IShaderChunk> pShaderChunk)
 {
 	auto pMaterial = static_pointer_cast<BasicMaterial>(pShaderChunk);
 	if (pMaterial != nullptr)
@@ -73,7 +73,7 @@ void BasicMaterialFragCode::UnBind(shared_ptr<IShaderChunk> pShaderChunk)
 	}
 }
 
-void BasicMaterialFragCode::Initialize(GLuint programId)
+void BasicFragCode::Initialize(GLuint programId)
 {
 	m_uniformLocation.resize(BASIC_MATERIAL_TYPE_NUM);
 	m_uniformLocation[BASIC_MATERIAL_TYPE_TEXTURE] = glGetUniformLocation(programId, "uTexture0");
@@ -138,7 +138,7 @@ shared_ptr<IShaderCode> BasicMaterial::NewShaderCode(IShaderBuildInfo* pBuildInf
 	}
 	else if (type == SHADER_PROGRAM_FRAG)
 	{
-		return make_shared<BasicMaterialFragCode>(m_Type);
+		return make_shared<BasicFragCode>(m_Type);
 	}
 	else
 	{

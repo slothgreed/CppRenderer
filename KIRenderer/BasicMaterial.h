@@ -13,12 +13,12 @@ enum BASIC_MATERIAL_TYPE : unsigned int
 	BASIC_MATERIAL_TYPE_NUM,
 };
 
-class DLL_EXPORT BasicMaterialFragCode : public IShaderCode
+class DLL_EXPORT BasicFragCode : public IShaderCode
 {
 public:
 
-	BasicMaterialFragCode(BASIC_MATERIAL_TYPE type);
-	~BasicMaterialFragCode();
+	BasicFragCode(BASIC_MATERIAL_TYPE type);
+	~BasicFragCode();
 
 	virtual void Initialize(GLuint programId) override;
 	virtual void GetDefineCode(string& code) override;

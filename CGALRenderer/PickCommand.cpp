@@ -94,7 +94,8 @@ CommandResult PickCommand::Execute()
 		{
 			continue;
 		}
-		pModel->RaycastPick(pickInfo);
+		// TODO
+		//pModel->RaycastPick(pickInfo);
 		int first;
 		int count;
 		pickInfo.GetSelectRegion(first, count);

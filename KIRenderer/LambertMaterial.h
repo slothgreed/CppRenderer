@@ -8,16 +8,16 @@ namespace Renderer
 enum LAMBERT_MATERIAL_TYPE : unsigned int
 {
 	LAMBERT_MATERIAL_TYPE_VERTEXCOLOR,	// 頂点色
-	LAMBERT_MATERIAL_TYPE_FIXCOLOR,	// 固定色
+	LAMBERT_MATERIAL_TYPE_FIXCOLOR,		// 固定色
 	LAMBERT_MATERIAL_TYPE_TEXTURE,		// テクスチャ色
 	LAMBERT_MATERIAL_TYPE_NUM,
 };
 
-class DLL_EXPORT LambertMaterialFragCode : public IShaderCode
+class DLL_EXPORT LambertFragCode : public IShaderCode
 {
 public:
-	LambertMaterialFragCode(LAMBERT_MATERIAL_TYPE type);
-	~LambertMaterialFragCode();
+	LambertFragCode(LAMBERT_MATERIAL_TYPE type);
+	~LambertFragCode();
 
 	virtual void Initialize(GLuint programId) override;
 	virtual void GetDefineCode(string& code) override;

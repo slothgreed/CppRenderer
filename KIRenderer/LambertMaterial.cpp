@@ -4,7 +4,7 @@ namespace Renderer
 {
 
 
-LambertMaterialFragCode::LambertMaterialFragCode(LAMBERT_MATERIAL_TYPE type)
+LambertFragCode::LambertFragCode(LAMBERT_MATERIAL_TYPE type)
 	:IShaderCode(
 		string(SHADER_DIRECTORY) +
 		string(SHADER_LAMBERTMATERIAL) +
@@ -13,11 +13,11 @@ LambertMaterialFragCode::LambertMaterialFragCode(LAMBERT_MATERIAL_TYPE type)
 	m_Type = type;
 }
 
-LambertMaterialFragCode::~LambertMaterialFragCode()
+LambertFragCode::~LambertFragCode()
 {
 }
 
-void LambertMaterialFragCode::GetDefineCode(string& code)
+void LambertFragCode::GetDefineCode(string& code)
 {
 	if (m_Type == LAMBERT_MATERIAL_TYPE_FIXCOLOR)
 		code += "#define IN_FIXCOLOR\n";
@@ -27,9 +27,9 @@ void LambertMaterialFragCode::GetDefineCode(string& code)
 		code += "#define IN_COLOR\n";
 }
 
-bool LambertMaterialFragCode::Compare(IShaderCode* pShaderCode)
+bool LambertFragCode::Compare(IShaderCode* pShaderCode)
 {
-	auto pCode = dynamic_cast<LambertMaterialFragCode*>(pShaderCode);
+	auto pCode = dynamic_cast<LambertFragCode*>(pShaderCode);
 	if (pCode == nullptr)
 	{
 		return false;
@@ -44,7 +44,7 @@ bool LambertMaterialFragCode::Compare(IShaderCode* pShaderCode)
 	return false;
 }
 
-void LambertMaterialFragCode::Bind(shared_ptr<IShaderChunk> pShaderChunk)
+void LambertFragCode::Bind(shared_ptr<IShaderChunk> pShaderChunk)
 {
 	auto pMaterial = static_pointer_cast<LambertMaterial>(pShaderChunk);
 	if (pMaterial == nullptr)
@@ -64,7 +64,7 @@ void LambertMaterialFragCode::Bind(shared_ptr<IShaderChunk> pShaderChunk)
 
 }
 
-void LambertMaterialFragCode::UnBind(shared_ptr<IShaderChunk> pShaderChunk)
+void LambertFragCode::UnBind(shared_ptr<IShaderChunk> pShaderChunk)
 {
 	auto pMaterial = static_pointer_cast<LambertMaterial>(pShaderChunk);
 	if (pMaterial != nullptr)
@@ -76,7 +76,7 @@ void LambertMaterialFragCode::UnBind(shared_ptr<IShaderChunk> pShaderChunk)
 	}
 }
 
-void LambertMaterialFragCode::Initialize(GLuint programId)
+void LambertFragCode::Initialize(GLuint programId)
 {
 	m_uniformLocation.resize(LAMBERT_MATERIAL_TYPE_NUM);
 	m_uniformLocation[LAMBERT_MATERIAL_TYPE_TEXTURE] = glGetUniformLocation(programId, "uTexture0");
@@ -146,7 +146,7 @@ shared_ptr<IShaderCode> LambertMaterial::NewShaderCode(IShaderBuildInfo* pBuildI
 	}
 	else if (type == SHADER_PROGRAM_FRAG)
 	{
-		return make_shared<LambertMaterialFragCode>(m_Type);
+		return make_shared<LambertFragCode>(m_Type);
 	}
 	else
 	{
