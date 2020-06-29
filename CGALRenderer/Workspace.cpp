@@ -53,8 +53,8 @@ void Workspace::Initialize(Project* m_pProject)
 	texture->Begin();
 	texture->Set(data);
 	texture->End();
-	auto pBasicMaterial = make_shared<BasicMaterial>(texture);
-	model->SetMaterial(pBasicMaterial);
+	auto pBasicShading = make_shared<BasicShading>(texture);
+	model->SetShading(pBasicShading);
 	m_pScene->AddModelNode(pModelNode);
 
 	m_pRenderTarget = make_shared<RenderTarget>();
@@ -77,8 +77,8 @@ void Workspace::Initialize(Project* m_pProject)
 	m_pPfxRenderer->AddPostEffect(pSSLIC);
 	m_pPfxRenderer->AddPostEffect(pGrayScale);
 
-	auto pMaterial = make_shared<BasicMaterial>(m_pRenderTarget->ColorTexture(0));
-	m_pOutputPlane = make_shared<PfxPlane>(pMaterial);
+	auto pShading = make_shared<BasicShading>(m_pRenderTarget->ColorTexture(0));
+	m_pOutputPlane = make_shared<PfxPlane>(pShading);
 	m_pOutputPlane->Initialize();
 }
 

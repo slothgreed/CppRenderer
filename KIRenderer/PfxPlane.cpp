@@ -2,9 +2,9 @@ namespace KI
 {
 namespace Renderer
 {
-PfxPlane::PfxPlane(shared_ptr<IMaterial> pMaterial)
+PfxPlane::PfxPlane(shared_ptr<IShading> pShading)
 {
-	m_pMaterial = pMaterial;
+	m_pShading = pShading;
 	Initialize();
 }
 
@@ -16,7 +16,7 @@ void PfxPlane::Initialize()
 {
 	m_pRenderData = make_shared<RenderData>();
 	ModelGenerator::Plane(m_pRenderData.get(), VERTEX_LAYOUT_TEXCOORD);
-	m_pRenderData->SetMaterial(m_pMaterial);
+	m_pRenderData->SetShading(m_pShading);
 }
 void PfxPlane::Draw()
 {

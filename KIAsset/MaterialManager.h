@@ -1,34 +1,34 @@
-#ifndef MATERIAL_MANAGER_H
-#define MATERIAL_MANAGER_H
+#ifndef SHADING_MANAGER_H
+#define SHADING_MANAGER_H
 // todo : ˆÚ“®
 namespace KI
 {
 namespace Asset
 {
 
-enum SYSTEM_MATERIAL
+enum SYSTEM_SHADING
 {
-	SYSTEM_MATERIAL_SELECTION,
-	SYSTEM_MATERIAL_NUM
+	SYSTEM_SHADING_SELECTION,
+	SYSTEM_SHADING_NUM
 };
-class DLL_EXPORT MaterialManager
+class DLL_EXPORT ShadingManager
 {
 public:
-	MaterialManager();
-	~MaterialManager();
-	static MaterialManager* Instance();
+	ShadingManager();
+	~ShadingManager();
+	static ShadingManager* Instance();
 
 	void Initialize();
-	shared_ptr<IMaterial> GetSystemMaterial(SYSTEM_MATERIAL type);
+	shared_ptr<IShading> GetSystemShading(SYSTEM_SHADING type);
 
 private:
-	void CreateSystemMaterial();
-	map<SYSTEM_MATERIAL, shared_ptr<IMaterial>> m_pMaterials;
-	static MaterialManager* m_Instance;
+	void CreateSystemShading();
+	map<SYSTEM_SHADING, shared_ptr<IShading>> m_pShadings;
+	static ShadingManager* m_Instance;
 
 };
 
 }
 }
 
-#endif MATERIAL_MANAGER_H
+#endif SHADING_MANAGER_H

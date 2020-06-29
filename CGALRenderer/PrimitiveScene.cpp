@@ -43,8 +43,8 @@ void PrimitiveScene::Initialize(Project* m_pProject)
 		pTexture->Set(textureData);
 		pTexture->End();
 
-		auto pBasicMaterial = make_shared<BasicMaterial>(pTexture);
-		sphereData->SetMaterial(pBasicMaterial);
+		auto pBasicShading = make_shared<BasicShading>(pTexture);
+		sphereData->SetShading(pBasicShading);
 		m_pScene->AddModelNode(sphereNode);
 	}
 
@@ -60,8 +60,8 @@ void PrimitiveScene::Initialize(Project* m_pProject)
 
 		auto pRenderData = make_shared<RenderData>();
 		pRenderData->SetGeometryData(GL_TRIANGLES, pVertexBuffer, pIndexBuffer);
-		auto pVertexMaterial = make_shared<VertexMaterial>(VERTEX_MATERIAL_NORMAL);
-		pRenderData->SetMaterial(pVertexMaterial);
+		auto pVertexShading = make_shared<VertexShading>(VERTEX_SHADING_NORMAL);
+		pRenderData->SetShading(pVertexShading);
 		auto pPrimitiveNode = make_shared<PrimitiveNode>(pRenderData);
 		m_pScene->AddModelNode(pPrimitiveNode);
 	}
@@ -69,8 +69,8 @@ void PrimitiveScene::Initialize(Project* m_pProject)
 	// quad rendering
 	{
 		auto pRenderData = make_shared<RenderData>();
-		auto pBasicMaterial = make_shared<BasicMaterial>(vec4(1, 1, 0, 1));
-		pRenderData->SetMaterial(pBasicMaterial);
+		auto pBasicShading = make_shared<BasicShading>(vec4(1, 1, 0, 1));
+		pRenderData->SetShading(pBasicShading);
 		ModelGenerator::Plane(pRenderData.get(),VERTEX_LAYOUT_COLOR);
 		auto pPlaneNode = make_shared<PrimitiveNode>(
 			make_shared<PrimitiveModel>(
@@ -93,8 +93,8 @@ void PrimitiveScene::Initialize(Project* m_pProject)
 		ModelGenerator::Sphere(1, 36, 36, sphereData.get());
 		auto sphereNode = make_shared<PrimitiveNode>(sphereData);
 
-		auto pLambertMaterial = make_shared<LambertMaterial>(vec4(1, 0, 0, 1));
-		sphereData->SetMaterial(pLambertMaterial);
+		auto pLambertShading = make_shared<LambertShading>(vec4(1, 0, 0, 1));
+		sphereData->SetShading(pLambertShading);
 		m_pScene->AddModelNode(sphereNode);
 
 		auto pLight = make_shared<DirectionLight>();

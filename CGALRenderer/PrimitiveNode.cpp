@@ -5,9 +5,9 @@ PrimitiveNode::PrimitiveNode(shared_ptr<RenderData> pRenderData)
 {
 	m_name = "Primitive";
 	m_pRenderData = pRenderData;
-	if (pRenderData->GetMaterial() == nullptr)
+	if (pRenderData->GetShading() == nullptr)
 	{
-		m_pRenderData->SetMaterial(make_shared<BasicMaterial>(vec4(1, 0, 0, 1)));
+		m_pRenderData->SetShading(make_shared<BasicShading>(vec4(1, 0, 0, 1)));
 	}
 }
 
@@ -100,13 +100,13 @@ void PrimitiveNode::SetRenderData()
 	m_pRenderData->SetGeometryData(
 		pPrimitive->GetPrimitive()->GetDrawType(),
 		pVertexBuffer, pIndexBuffer);
-	m_pRenderData->SetMaterial(make_shared<BasicMaterial>(vec4(1, 0, 0, 1)));
+	m_pRenderData->SetShading(make_shared<BasicShading>(vec4(1, 0, 0, 1)));
 
 }
 
 void PrimitiveNode::AddPartSelect(TOPOLOGY_TYPE type, int first, int count)
 {
-	auto pMaterial = MaterialManager::Instance()->GetSystemMaterial(SYSTEM_MATERIAL::SYSTEM_MATERIAL_SELECTION);
+	auto pShading = ShadingManager::Instance()->GetSystemShading(SYSTEM_SHADING::SYSTEM_SHADING_SELECTION);
 	if (type == TOPOLOGY_TYPE::TOPOLOGY_TYPE_FACE)
 	{
 		if (m_pRenderData->HasRenderRegion())
@@ -114,7 +114,7 @@ void PrimitiveNode::AddPartSelect(TOPOLOGY_TYPE type, int first, int count)
 			m_pRenderData->ClearRenderRegion();
 		}
 
-		m_pRenderData->AddRenderRegion("Selection", pMaterial, first, count);
+		m_pRenderData->AddRenderRegion("Selection", pShading, first, count);
 	}
 	else
 	{

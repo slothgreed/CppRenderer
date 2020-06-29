@@ -165,27 +165,27 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="LambertMaterial.h" />
-    <ClInclude Include="BasicMaterial.h" />
-    <ClInclude Include="BezierLineMaterial.h" />
+    <ClInclude Include="LambertShading.h" />
+    <ClInclude Include="BasicShading.h" />
+    <ClInclude Include="BezierLineShading.h" />
     <ClInclude Include="DefaultVBOCode.h" />
     <ClInclude Include="DefaultVertexCode.h" />
     <ClInclude Include="ICamera.h" />
-    <ClInclude Include="CompositMaterial.h" />
+    <ClInclude Include="CompositShading.h" />
     <ClInclude Include="NodeOperator.h" />
-    <ClInclude Include="NormalVisualizeMaterial.h" />
-    <ClInclude Include="OutputMaterial.h" />
-    <ClInclude Include="PhongMaterial.h" />
+    <ClInclude Include="NormalVisualizeShading.h" />
+    <ClInclude Include="OutputShading.h" />
+    <ClInclude Include="PhongShading.h" />
     <ClInclude Include="ShaderCommon.h" />
     <ClInclude Include="ShaderStruct.h" />
     <ClInclude Include="DefaultVertexBuffer.h" />
     <ClInclude Include="Define.h" />
     <ClInclude Include="DirectionLight.h" />
     <ClInclude Include="GeometryPath.h" />
-    <ClInclude Include="GrayScaleMaterial.h" />
+    <ClInclude Include="GrayScaleShading.h" />
     <ClInclude Include="IGeometryPath.h" />
     <ClInclude Include="ILight.h" />
-    <ClInclude Include="IMaterial.h" />
+    <ClInclude Include="IShading.h" />
     <ClInclude Include="IShaderPass.h" />
     <ClInclude Include="IModel.h" />
     <ClInclude Include="IModelNode.h" />
@@ -211,7 +211,7 @@
     <ClInclude Include="ShaderManager.h" />
     <ClInclude Include="SimpleShaderCode.h" />
     <ClInclude Include="SpotLight.h" />
-    <ClInclude Include="SSLICMaterial.h" />
+    <ClInclude Include="SSLICShading.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="TextureGenerator.h" />
@@ -220,27 +220,27 @@
     <ClInclude Include="UniformModel.h" />
     <ClInclude Include="UniformScene.h" />
     <ClInclude Include="Vertex.h" />
-    <ClInclude Include="VertexMaterial.h" />
+    <ClInclude Include="VertexShading.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="LambertMaterial.cpp" />
-    <ClCompile Include="BasicMaterial.cpp" />
-    <ClCompile Include="BezierLineMaterial.cpp" />
+    <ClCompile Include="LambertShading.cpp" />
+    <ClCompile Include="BasicShading.cpp" />
+    <ClCompile Include="BezierLineShading.cpp" />
     <ClCompile Include="DefaultVBOCode.cpp" />
     <ClCompile Include="DefaultVertexCode.cpp" />
     <ClCompile Include="ICamera.cpp" />
-    <ClCompile Include="CompositMaterial.cpp" />
+    <ClCompile Include="CompositShading.cpp" />
     <ClCompile Include="NodeOperator.cpp" />
-    <ClCompile Include="NormalVisualizeMaterial.cpp" />
-    <ClCompile Include="OutputMaterial.cpp" />
-    <ClCompile Include="PhongMaterial.cpp" />
+    <ClCompile Include="NormalVisualizeShading.cpp" />
+    <ClCompile Include="OutputShading.cpp" />
+    <ClCompile Include="PhongShading.cpp" />
     <ClCompile Include="ShaderCommon.cpp" />
     <ClCompile Include="ShaderStruct.cpp" />
     <ClCompile Include="DefaultVertexBuffer.cpp" />
     <ClCompile Include="DirectionLight.cpp" />
     <ClCompile Include="GeometryPath.cpp" />
-    <ClCompile Include="GrayScaleMaterial.cpp" />
-    <ClCompile Include="IMaterial.cpp" />
+    <ClCompile Include="GrayScaleShading.cpp" />
+    <ClCompile Include="IShading.cpp" />
     <ClCompile Include="IModelNode.cpp" />
     <ClCompile Include="IGLPick.cpp" />
     <ClCompile Include="IRaycastPick.cpp" />
@@ -258,7 +258,7 @@
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="ShaderManager.cpp" />
     <ClCompile Include="SpotLight.cpp" />
-    <ClCompile Include="SSLICMaterial.cpp" />
+    <ClCompile Include="SSLICShading.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -270,7 +270,7 @@
     <ClCompile Include="UniformMaterial.cpp" />
     <ClCompile Include="UniformModel.cpp" />
     <ClCompile Include="UniformScene.cpp" />
-    <ClCompile Include="VertexMaterial.cpp" />
+    <ClCompile Include="VertexShading.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

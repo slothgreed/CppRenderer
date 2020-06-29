@@ -17,7 +17,7 @@ public:
 private:
 	void Build(IModelNode* pModelNode);
 	void SetVBOData(IModelNode* pModelNode);
-	shared_ptr<NormalVisualizeMaterial> m_pMaterial;
+	shared_ptr<NormalVisualizeShading> m_pShading;
 	shared_ptr<RenderData> m_pRenderData;
 };
 

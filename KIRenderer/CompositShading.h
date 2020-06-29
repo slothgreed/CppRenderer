@@ -39,10 +39,10 @@ private:
 	COMPOSIT_TYPE m_CompositType;
 };
 
-class DLL_EXPORT CompositMaterial : public IMaterial
+class DLL_EXPORT CompositShading : public IShading
 {
 public:
-	CompositMaterial(COMPOSIT_TYPE type) { m_Type = type; }
+	CompositShading(COMPOSIT_TYPE type) { m_Type = type; }
 	shared_ptr<Texture> GetSource() { return m_pSource; }
 	shared_ptr<Texture> GetDestination() { return m_pDestination; }
 	virtual shared_ptr<IShaderCode> NewShaderCode(IShaderBuildInfo* pBuildInfo,SHADER_PROGRAM_TYPE type) = 0;

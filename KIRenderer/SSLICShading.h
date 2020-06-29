@@ -6,7 +6,7 @@ namespace KI
 namespace Renderer
 {
 
-class DLL_EXPORT SSLICMaterial : public IMaterial
+class DLL_EXPORT SSLICShading : public IShading
 {
 public:
 	virtual shared_ptr<IShaderCode> NewShaderCode(IShaderBuildInfo* pBuildInfo,SHADER_PROGRAM_TYPE type);

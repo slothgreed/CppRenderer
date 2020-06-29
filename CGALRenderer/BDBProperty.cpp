@@ -43,7 +43,7 @@ void BDBProperty::Build(IModelNode* pModelNode)
 	pIndexBuffer->Set(index);
 
 	m_pRenderData = make_shared<RenderData>(GL_LINES, pVertexBuffer, pIndexBuffer);
-	m_pRenderData->SetMaterial(make_shared<BasicMaterial>(vec4(0, 0, 0, 1)));
+	m_pRenderData->SetShading(make_shared<BasicShading>(vec4(0, 0, 0, 1)));
 }
 
 void BDBProperty::GetBDBPosition(const BDB& bdb, vector<vec3>& position)

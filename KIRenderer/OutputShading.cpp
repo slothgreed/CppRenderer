@@ -15,42 +15,42 @@ bool OutputFragCode::Compare(IShaderCode* pShaderCode)
 }
 void OutputFragCode::Bind(shared_ptr<IShaderChunk> pShaderChunk)
 {
-	auto pMaterial = static_pointer_cast<OutputMaterial>(pShaderChunk);
-	if (pMaterial == nullptr)
+	auto pShading = static_pointer_cast<OutputShading>(pShaderChunk);
+	if (pShading == nullptr)
 	{
 		assert(0);
 		return;
 	}
 
-	pMaterial->GetTexture()->Begin();
+	pShading->GetTexture()->Begin();
 	IShaderCode::BindTexture(GL_TEXTURE0, m_uniformLocation[UNIFORM_LOCATION_COLOR_TEXTURE]);
 }
 
 void OutputFragCode::UnBind(shared_ptr<IShaderChunk> pShaderChunk)
 {
-	auto pMaterial = static_pointer_cast<OutputMaterial>(pShaderChunk);
-	if (pMaterial == nullptr)
+	auto pShading = static_pointer_cast<OutputShading>(pShaderChunk);
+	if (pShading == nullptr)
 	{
 		assert(0);
 		return;
 	}
 
-	pMaterial->GetTexture()->End();
+	pShading->GetTexture()->End();
 }
 
-OutputMaterial::~OutputMaterial()
+OutputShading::~OutputShading()
 {
 }
 
-OutputMaterial::OutputMaterial(shared_ptr<Texture> pTexture)
+OutputShading::OutputShading(shared_ptr<Texture> pTexture)
 {
 	SetTexture(pTexture);
 }
 
-bool OutputMaterial::Compare(IMaterial* pMaterial)
+bool OutputShading::Compare(IShading* pShading)
 {
-	auto pOutputMaterial = dynamic_cast<OutputMaterial*>(pMaterial);
-	if (pOutputMaterial == nullptr)
+	auto pOutputShading = dynamic_cast<OutputShading*>(pShading);
+	if (pOutputShading == nullptr)
 	{
 		return false;
 	}
@@ -58,13 +58,13 @@ bool OutputMaterial::Compare(IMaterial* pMaterial)
 	return true;
 }
 
-bool OutputMaterial::NewShaderCompare(IShaderChunk* pTarget)
+bool OutputShading::NewShaderCompare(IShaderChunk* pTarget)
 {
-	auto pOutputMaterial = dynamic_cast<OutputMaterial*>(pTarget);
-	return Compare(pOutputMaterial);
+	auto pOutputShading = dynamic_cast<OutputShading*>(pTarget);
+	return Compare(pOutputShading);
 }
 
-shared_ptr<IShaderCode> OutputMaterial::NewShaderCode(IShaderBuildInfo* pBuildInfo,SHADER_PROGRAM_TYPE type)
+shared_ptr<IShaderCode> OutputShading::NewShaderCode(IShaderBuildInfo* pBuildInfo,SHADER_PROGRAM_TYPE type)
 {
 	if (type == SHADER_PROGRAM_VERTEX)
 	{

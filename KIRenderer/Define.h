@@ -26,10 +26,10 @@ namespace Rednerer
 #define SHADER_OUTPUT		"output"
 #define SHADER_PICK			"pick"
 #define SHADER_STRUCT		"common/struct.h"
-#define SHADER_BASICMATERIAL "material/basicmaterial"
-#define SHADER_PHONGMATERIAL "material/phongmaterial"
-#define SHADER_LAMBERTMATERIAL "material/lambertmaterial"
-#define SHADER_VERTEXMATERIAL "material/vertexmaterial"
+#define SHADER_BASICSHADING "material/basicmaterial"
+#define SHADER_PHONGSHADING "material/phongmaterial"
+#define SHADER_LAMBERTSHADING "material/lambertmaterial"
+#define SHADER_VERTEXSHADING "material/vertexmaterial"
 
 
 #define GLSL_VERSION_400_CORE "#version 400 core\n"
@@ -54,7 +54,7 @@ namespace Rednerer
 #define SCENE_DATA_LOCATION		5
 #define LIGHT_DATA_LOCATION		6
 #define MODEL_DATA_LOCATION		7
-#define MATERIAL_DATA_LOCATION	8
+#define SHADING_DATA_LOCATION	8
 }
 }
 #endif RENDERER_DEFINE_H

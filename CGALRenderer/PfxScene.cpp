@@ -29,7 +29,7 @@ void PfxScene::Initialize(Project* m_pProject)
 
 	m_pOutputTexture = pGrayScale->RenderTexture();
 	m_pOutputPlane = make_shared<PfxPlane>(
-		make_shared<OutputMaterial>(m_pOutputTexture));
+		make_shared<OutputShading>(m_pOutputTexture));
 
 }
 

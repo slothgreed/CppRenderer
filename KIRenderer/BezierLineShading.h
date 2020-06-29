@@ -1,5 +1,5 @@
-#ifndef BEZIER_LINE_MATERIAL_H
-#define BEZIER_LINE_MATERIAL_H
+#ifndef BEZIER_LINE_SHADING_H
+#define BEZIER_LINE_SHADING_H
 
 namespace KI
 {
@@ -41,10 +41,10 @@ public:
 	virtual void UnBind(shared_ptr<IShaderChunk> pShaderChunk) override {};
 };
 
-class DLL_EXPORT BezierLineMaterial : public IMaterial
+class DLL_EXPORT BezierLineShading : public IShading
 {
 public:
-	BezierLineMaterial() : m_SegmentNum(10),m_StripNum(1), m_patchVertex(0) {}
+	BezierLineShading() : m_SegmentNum(10),m_StripNum(1), m_patchVertex(0) {}
 	SHADER_TYPE Type() { return SHADER_TYPE::SHADER_TYPE_BEZIERLINE; }
 
 	void SetSegmentNum(int value) { m_SegmentNum = value; };
@@ -67,4 +67,4 @@ private:
 }
 }
 
-#endif BEZIER_LINE_MATERIAL_H
+#endif BEZIER_LINE_SHADING_H

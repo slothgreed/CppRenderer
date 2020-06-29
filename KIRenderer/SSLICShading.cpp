@@ -26,28 +26,28 @@ void SSLICFragCode::Initialize(GLuint programId)
 
 void SSLICFragCode::Bind(shared_ptr<IShaderChunk> pShaderChunk)
 {
-	auto pMaterial = static_pointer_cast<SSLICMaterial>(pShaderChunk);
-	if (pMaterial == nullptr)
+	auto pShading = static_pointer_cast<SSLICShading>(pShaderChunk);
+	if (pShading == nullptr)
 	{
 		assert(0);
 	}
 
-	pMaterial->GetTexture()->Begin();
+	pShading->GetTexture()->Begin();
 	IShaderCode::BindTexture(GL_TEXTURE0, m_uniformLocation[SSLIC_UNIFORM_COLOR_TEXTURE]);
 }
 
 void SSLICFragCode::UnBind(shared_ptr<IShaderChunk> pShaderChunk)
 {
-	auto pMaterial = static_pointer_cast<SSLICMaterial>(pShaderChunk);
-	if (pMaterial == nullptr)
+	auto pShading = static_pointer_cast<SSLICShading>(pShaderChunk);
+	if (pShading == nullptr)
 	{
 		assert(0);
 	}
 
-	pMaterial->GetTexture()->End();
+	pShading->GetTexture()->End();
 }
 
-shared_ptr<IShaderCode> SSLICMaterial::NewShaderCode(IShaderBuildInfo* pBuildInfo,SHADER_PROGRAM_TYPE type)
+shared_ptr<IShaderCode> SSLICShading::NewShaderCode(IShaderBuildInfo* pBuildInfo,SHADER_PROGRAM_TYPE type)
 {
 	if (type == SHADER_PROGRAM_VERTEX)
 	{

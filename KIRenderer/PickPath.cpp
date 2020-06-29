@@ -17,7 +17,7 @@ PickPath::~PickPath()
 void PickPath::Initialize(int width, int height)
 {
 	auto pBuildInfo = make_shared<IShaderBuildInfo>();
-	pBuildInfo->SetShaderChunk(make_shared<BasicMaterial>(vec4(0, 0, 0, 1)));
+	pBuildInfo->SetShaderChunk(make_shared<BasicShading>(vec4(0, 0, 0, 1)));
 	pBuildInfo->SetVertexBuffer(nullptr);
 	m_pPickShader = ShaderManager::Instance()->FindOrNew(pBuildInfo);
 	m_pRenderTarget = make_shared<RenderTarget>();

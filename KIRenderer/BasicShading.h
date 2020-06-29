@@ -1,23 +1,23 @@
-#ifndef BASIC_MATERIAL_H
-#define BASIC_MATERIAL_H
+#ifndef BASIC_SHADING_H
+#define BASIC_SHADING_H
 
 namespace KI
 {
 namespace Renderer
 {
 
-enum BASIC_MATERIAL_TYPE : unsigned int 
+enum BASIC_SHADING_TYPE : unsigned int 
 {
-	BASIC_MATERIAL_TYPE_FIXCOLOR,	// 固定色
-	BASIC_MATERIAL_TYPE_TEXTURE,	// テクスチャ色
-	BASIC_MATERIAL_TYPE_NUM,
+	BASIC_SHADING_TYPE_FIXCOLOR,	// 固定色
+	BASIC_SHADING_TYPE_TEXTURE,	// テクスチャ色
+	BASIC_SHADING_TYPE_NUM,
 };
 
 class DLL_EXPORT BasicFragCode : public IShaderCode
 {
 public:
 
-	BasicFragCode(BASIC_MATERIAL_TYPE type);
+	BasicFragCode(BASIC_SHADING_TYPE type);
 	~BasicFragCode();
 
 	virtual void Initialize(GLuint programId) override;
@@ -25,40 +25,40 @@ public:
 	virtual bool Compare(IShaderCode* pShaderCode) override;
 	virtual void Bind(shared_ptr<IShaderChunk> pShaderChunk) override;
 	virtual void UnBind(shared_ptr<IShaderChunk> pShaderChunk) override;
-	BASIC_MATERIAL_TYPE Type() { return m_Type; }
+	BASIC_SHADING_TYPE Type() { return m_Type; }
 
 private:
-	BASIC_MATERIAL_TYPE m_Type;
+	BASIC_SHADING_TYPE m_Type;
 };
 
 
 // no shading
-class DLL_EXPORT BasicMaterial : public IMaterial
+class DLL_EXPORT BasicShading : public IShading
 {
 public:
 
-	BasicMaterial(const vec4& color);
-	BasicMaterial(shared_ptr<Texture> pTexture);
+	BasicShading(const vec4& color);
+	BasicShading(shared_ptr<Texture> pTexture);
 
-	~BasicMaterial();
+	~BasicShading();
 
-	BASIC_MATERIAL_TYPE ColorType() { return m_Type; }
+	BASIC_SHADING_TYPE ColorType() { return m_Type; }
 	void SetColor(const vec4& color);
 	void SetTexture(shared_ptr<Texture> pTexture);
 	const vec4& GetColor() { return m_color; }
 	shared_ptr<Texture> GetTexture() { return m_pTexture; }
-	virtual bool Compare(IMaterial* pMaterial);
+	virtual bool Compare(IShading* pShading);
 
 	virtual bool NewShaderCompare(IShaderChunk* pTarget) override;
 	virtual shared_ptr<IShaderCode> NewShaderCode(IShaderBuildInfo* pBuildInfo,SHADER_PROGRAM_TYPE type);
 private:
 	vec4 m_color;
 	shared_ptr<Texture> m_pTexture;
-	BASIC_MATERIAL_TYPE m_Type;
+	BASIC_SHADING_TYPE m_Type;
 
 };
 
 }
 }
 
-#endif BASIC_MATERIAL_H
+#endif BASIC_SHADING_H

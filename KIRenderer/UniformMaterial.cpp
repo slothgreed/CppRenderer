@@ -3,7 +3,7 @@ namespace KI
 namespace Renderer
 {
 UniformMaterial::UniformMaterial()
-	:UniformBuffer(MATERIAL_DATA_LOCATION)
+	:UniformBuffer(SHADING_DATA_LOCATION)
 {
 
 }

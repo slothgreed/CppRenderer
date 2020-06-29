@@ -29,7 +29,7 @@ void HalfEdgeProperty::Build(IModelNode* pModelNode)
 	auto pVertexBuffer = make_shared<DefaultVertexBuffer>();
 	pVertexBuffer->SetPosition(position);
 	pVertexBuffer->SetColor(color);
-	m_pRenderData->SetMaterial(make_shared<BasicMaterial>(vec4(0, 1, 0, 1)));
+	m_pRenderData->SetShading(make_shared<BasicShading>(vec4(0, 1, 0, 1)));
 
 }
 

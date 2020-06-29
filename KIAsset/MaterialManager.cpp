@@ -4,49 +4,49 @@ namespace KI
 namespace Asset
 {
 
-MaterialManager* MaterialManager::m_Instance = NULL;
+ShadingManager* ShadingManager::m_Instance = NULL;
 
-MaterialManager* MaterialManager::Instance()
+ShadingManager* ShadingManager::Instance()
 {
 	if (m_Instance == NULL)
 	{
-		m_Instance = new MaterialManager();
+		m_Instance = new ShadingManager();
 		m_Instance->Initialize();
 	}
 	return m_Instance;
 }
 
-MaterialManager::MaterialManager()
+ShadingManager::ShadingManager()
 {
 }
 
-MaterialManager::~MaterialManager()
+ShadingManager::~ShadingManager()
 {
 }
 
-void MaterialManager::Initialize()
+void ShadingManager::Initialize()
 {
-	CreateSystemMaterial();
+	CreateSystemShading();
 }
 
-void MaterialManager::CreateSystemMaterial()
+void ShadingManager::CreateSystemShading()
 {
-	auto pBasicMaterial = make_shared<BasicMaterial>(vec4(0, 1, 0, 1));
+	auto pBasicShading = make_shared<BasicShading>(vec4(0, 1, 0, 1));
 
-	m_pMaterials[SYSTEM_MATERIAL_SELECTION] = pBasicMaterial;
+	m_pShadings[SYSTEM_SHADING_SELECTION] = pBasicShading;
 
 }
 
-shared_ptr<IMaterial> MaterialManager::GetSystemMaterial(SYSTEM_MATERIAL  type)
+shared_ptr<IShading> ShadingManager::GetSystemShading(SYSTEM_SHADING  type)
 {
-	auto itr = m_pMaterials.find(type);
-	if (itr == m_pMaterials.end())
+	auto itr = m_pShadings.find(type);
+	if (itr == m_pShadings.end())
 	{
 		assert(0);
 		return nullptr;
 	}
 
-	return m_pMaterials[type];
+	return m_pShadings[type];
 }
 }
 }

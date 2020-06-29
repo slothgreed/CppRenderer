@@ -23,13 +23,13 @@ void NormalVisualizeGeomCode::Initialize(GLuint programId)
 
 void NormalVisualizeGeomCode::Bind(shared_ptr<IShaderChunk> pShaderChunk)
 {
-	auto pMaterial = dynamic_cast<NormalVisualizeMaterial*>(pShaderChunk.get());
-	if (pMaterial == nullptr)
+	auto pShading = dynamic_cast<NormalVisualizeShading*>(pShaderChunk.get());
+	if (pShading == nullptr)
 	{
 		return;
 	}
 
-	BindLength(pMaterial->GetLength());
+	BindLength(pShading->GetLength());
 }
 
 void NormalVisualizeGeomCode::BindLength(float length)
@@ -45,8 +45,8 @@ void NormalVisualizeGeomCode::BindLength(float length)
 
 bool NormalVisualizeGeomCode::Compare(IShaderCode* pShaderCode)
 {
-	auto pMaterial = dynamic_cast<NormalVisualizeGeomCode*>(pShaderCode);
-	if (pMaterial != nullptr)
+	auto pShading = dynamic_cast<NormalVisualizeGeomCode*>(pShaderCode);
+	if (pShading != nullptr)
 	{
 		return true;
 	}
@@ -54,9 +54,9 @@ bool NormalVisualizeGeomCode::Compare(IShaderCode* pShaderCode)
 	return false;
 }
 
-bool NormalVisualizeMaterial::NewShaderCompare(IShaderChunk* pTarget)
+bool NormalVisualizeShading::NewShaderCompare(IShaderChunk* pTarget)
 {
-	auto pTargetBuffer = dynamic_cast<NormalVisualizeMaterial*>(pTarget);
+	auto pTargetBuffer = dynamic_cast<NormalVisualizeShading*>(pTarget);
 	if (pTargetBuffer == nullptr)
 	{
 		return false;
@@ -64,7 +64,7 @@ bool NormalVisualizeMaterial::NewShaderCompare(IShaderChunk* pTarget)
 
 	return true;
 }
-shared_ptr<IShaderCode> NormalVisualizeMaterial::NewShaderCode(IShaderBuildInfo* pBuildInfo,SHADER_PROGRAM_TYPE type)
+shared_ptr<IShaderCode> NormalVisualizeShading::NewShaderCode(IShaderBuildInfo* pBuildInfo,SHADER_PROGRAM_TYPE type)
 {
 	if (type == SHADER_PROGRAM_VERTEX)
 	{
@@ -74,7 +74,7 @@ shared_ptr<IShaderCode> NormalVisualizeMaterial::NewShaderCode(IShaderBuildInfo*
 	}
 	else if (type == SHADER_PROGRAM_FRAG)
 	{
-		return make_shared<BasicFragCode>(BASIC_MATERIAL_TYPE::BASIC_MATERIAL_TYPE_FIXCOLOR);
+		return make_shared<BasicFragCode>(BASIC_SHADING_TYPE::BASIC_SHADING_TYPE_FIXCOLOR);
 	}
 	else if (type == SHADER_PROGRAM_GEOM)
 	{

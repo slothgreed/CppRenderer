@@ -5,7 +5,7 @@ namespace KI
 {
 namespace Renderer
 {
-class DLL_EXPORT GrayScaleMaterial : public IMaterial
+class DLL_EXPORT GrayScaleShading : public IShading
 {
 public:
 	SHADER_TYPE Type() { return SHADER_TYPE::SHADER_TYPE_GRAYSCALE; }

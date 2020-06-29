@@ -4,10 +4,10 @@ namespace KI
 
 BezierLineNode::BezierLineNode(shared_ptr<RenderData> pRenderData)
 {
-	m_pMaterial = make_shared<BezierLineMaterial>();
-	m_pMaterial->SetPatchVertices(4);
+	m_pShading = make_shared<BezierLineShading>();
+	m_pShading->SetPatchVertices(4);
 
-	pRenderData->SetMaterial(m_pMaterial);
+	pRenderData->SetShading(m_pShading);
 	m_pRenderData = pRenderData;
 }
 

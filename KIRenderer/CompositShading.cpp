@@ -62,31 +62,31 @@ void CompositFragCode::Initialize(GLuint programId)
 
 void CompositFragCode::Bind(shared_ptr<IShaderChunk> pShaderChunk)
 {
-	auto pMaterial = static_pointer_cast<CompositMaterial>(pShaderChunk);
+	auto pShading = static_pointer_cast<CompositShading>(pShaderChunk);
 	{
 		assert(0);
 		return;
 	}
 
-	pMaterial->GetSource()->Begin();
-	pMaterial->GetDestination()->Begin();
+	pShading->GetSource()->Begin();
+	pShading->GetDestination()->Begin();
 	IShaderCode::BindTexture(GL_TEXTURE0, m_uniformLocation[COMPOSIT_UNIFORM_SOURCE_TEXTURE]);
 	IShaderCode::BindTexture(GL_TEXTURE1, m_uniformLocation[COMPOSIT_UNIFORM_TARGET_TEXTURE]);
 }
 
 void CompositFragCode::UnBind(shared_ptr<IShaderChunk> pShaderChunk)
 {
-	auto pMaterial = static_pointer_cast<CompositMaterial>(pShaderChunk);
+	auto pShading = static_pointer_cast<CompositShading>(pShaderChunk);
 	{
 		assert(0);
 		return;
 	}
 
-	pMaterial->GetSource()->End();
-	pMaterial->GetDestination()->End();
+	pShading->GetSource()->End();
+	pShading->GetDestination()->End();
 }
 
-shared_ptr<IShaderCode> CompositMaterial::NewShaderCode(IShaderBuildInfo* pBuildInfo,SHADER_PROGRAM_TYPE type)
+shared_ptr<IShaderCode> CompositShading::NewShaderCode(IShaderBuildInfo* pBuildInfo,SHADER_PROGRAM_TYPE type)
 {
 	if (type == SHADER_PROGRAM_VERTEX)
 	{

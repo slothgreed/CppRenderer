@@ -1,11 +1,11 @@
-#ifndef NORMALVISUALIZE_MATERIAL_H
-#define NORMALVISUALIZE_MATERIAL_H
+#ifndef NORMALVISUALIZE_SHADING_H
+#define NORMALVISUALIZE_SHADING_H
 
 namespace KI
 {
 namespace Renderer
 {
-class DLL_EXPORT NormalVisualizeMaterial : public IMaterial
+class DLL_EXPORT NormalVisualizeShading : public IShading
 {
 public:
 	SHADER_TYPE Type() { return SHADER_TYPE::SHADER_TYPE_GRAYSCALE; }
@@ -48,4 +48,4 @@ private:
 };
 }
 }
-#endif NORMALVISUALIZE_MATERIAL_H
+#endif NORMALVISUALIZE_SHADING_H

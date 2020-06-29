@@ -1,5 +1,5 @@
-#ifndef UNIFORM_MATERIAL_H
-#define UNIFORM_MATERIAL_H
+#ifndef UNIFORM_SHADING_H
+#define UNIFORM_SHADING_H
 
 namespace KI
 {
@@ -24,4 +24,4 @@ public:
 }
 
 
-#endif UNIFORM_MATERIAL_H
+#endif UNIFORM_SHADING_H

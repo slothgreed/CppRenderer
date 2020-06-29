@@ -28,29 +28,29 @@ void GrayScaleFragCode::FetchUniformLocation(GLuint programId)
 
 void GrayScaleFragCode::Bind(shared_ptr<IShaderChunk> pShaderChunk)
 {
-	auto pMaterial = dynamic_cast<GrayScaleMaterial*>(pShaderChunk.get());
-	if (pMaterial == nullptr)
+	auto pShading = dynamic_cast<GrayScaleShading*>(pShaderChunk.get());
+	if (pShading == nullptr)
 	{
 		return;
 	}
 
-	pMaterial->GetTexture()->Begin();
+	pShading->GetTexture()->Begin();
 	BindColorTexture();
 }
 
 void GrayScaleFragCode::UnBind(shared_ptr<IShaderChunk> pShaderChunk)
 {
-	auto pMaterial = dynamic_cast<GrayScaleMaterial*>(pShaderChunk.get());
-	if (pMaterial == nullptr)
+	auto pShading = dynamic_cast<GrayScaleShading*>(pShaderChunk.get());
+	if (pShading == nullptr)
 	{
 		return;
 	}
-	pMaterial->GetTexture()->End();
+	pShading->GetTexture()->End();
 }
 
-bool GrayScaleMaterial::NewShaderCompare(IShaderChunk* pTarget)
+bool GrayScaleShading::NewShaderCompare(IShaderChunk* pTarget)
 {
-	auto pTargetBuffer = dynamic_cast<GrayScaleMaterial*>(pTarget);
+	auto pTargetBuffer = dynamic_cast<GrayScaleShading*>(pTarget);
 	if (pTargetBuffer == nullptr)
 	{
 		return false;
@@ -59,7 +59,7 @@ bool GrayScaleMaterial::NewShaderCompare(IShaderChunk* pTarget)
 	return true;
 }
 
-shared_ptr<IShaderCode> GrayScaleMaterial::NewShaderCode(IShaderBuildInfo* pBuildInfo,SHADER_PROGRAM_TYPE type)
+shared_ptr<IShaderCode> GrayScaleShading::NewShaderCode(IShaderBuildInfo* pBuildInfo,SHADER_PROGRAM_TYPE type)
 {
 	if (SHADER_PROGRAM_VERTEX == type)
 	{

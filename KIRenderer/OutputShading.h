@@ -1,5 +1,5 @@
-#ifndef OUTPUT_MATERIAL_H
-#define OUTPUT_MATERIAL_H
+#ifndef OUTPUT_SHADING_H
+#define OUTPUT_SHADING_H
 
 namespace KI
 {
@@ -27,17 +27,17 @@ public:
 	virtual void Bind(shared_ptr<IShaderChunk> pShaderChunk) override;
 	virtual void UnBind(shared_ptr<IShaderChunk> pShaderChunk) override;
 };
-class DLL_EXPORT OutputMaterial : public IMaterial
+class DLL_EXPORT OutputShading : public IShading
 {
 
 public:
-	OutputMaterial() {};
-	OutputMaterial(shared_ptr<Texture> pTexture);
-	~OutputMaterial();
+	OutputShading() {};
+	OutputShading(shared_ptr<Texture> pTexture);
+	~OutputShading();
 
 	virtual bool NewShaderCompare(IShaderChunk* pTarget);
 	virtual shared_ptr<IShaderCode> NewShaderCode(IShaderBuildInfo* pBuildInfo,SHADER_PROGRAM_TYPE type) override;
-	bool Compare(IMaterial* pMaterial);
+	bool Compare(IShading* pShading);
 	void SetTexture(shared_ptr<Texture> pTexture) { m_pTexture = pTexture; };
 	shared_ptr<Texture> GetTexture() { return m_pTexture; };
 private:
@@ -46,4 +46,4 @@ private:
 }
 }
 
-#endif OUTPUT_MATERIAL_H
+#endif OUTPUT_SHADING_H

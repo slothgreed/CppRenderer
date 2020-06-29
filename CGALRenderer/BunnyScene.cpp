@@ -63,8 +63,8 @@ void BunnyScene::Initialize(Project* m_pProject)
 		pTexture->Begin();
 		pTexture->Set(textureData);
 		pTexture->End();
-		auto pBasicMaterial = make_shared<BasicMaterial>(pTexture);
-		pRenderData->SetMaterial(pBasicMaterial);
+		auto pBasicShading = make_shared<BasicShading>(pTexture);
+		pRenderData->SetShading(pBasicShading);
 		m_pScene->AddModelNode(pCubeNode);
 	}
 
@@ -75,7 +75,7 @@ void BunnyScene::Initialize(Project* m_pProject)
 
 	auto axis = make_shared<RenderData>();
 	ModelGenerator::Axis(axis.get());
-	axis->SetMaterial(make_shared<VertexMaterial>(VERTEX_MATERIAL_TYPE::VERTEX_MATERIAL_COLOR));
+	axis->SetShading(make_shared<VertexShading>(VERTEX_SHADING_TYPE::VERTEX_SHADING_COLOR));
 	auto axisNode = make_shared<PrimitiveNode>(axis);
 	m_pScene->AddModelNode(axisNode);
 

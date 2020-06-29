@@ -28,14 +28,14 @@ void BezierLineTCSCode::Initialize(GLuint programId)
 
 void BezierLineTCSCode::Bind(shared_ptr<IShaderChunk> pShaderChunk)
 {
-	auto pMaterial = dynamic_cast<BezierLineMaterial*>(pShaderChunk.get());
-	if (pMaterial->GetPatchVertices() == 0)
+	auto pShading = dynamic_cast<BezierLineShading*>(pShaderChunk.get());
+	if (pShading->GetPatchVertices() == 0)
 	{
 		assert(0);
 		return;
 	}
 
-	glPatchParameteri(GL_PATCH_VERTICES, pMaterial->GetPatchVertices());
+	glPatchParameteri(GL_PATCH_VERTICES, pShading->GetPatchVertices());
 
 	if (m_uniformLocation[BEZIERLINE_UNIFORM_STRIP_NUM] == -1 ||
 		m_uniformLocation[BEZIERLINE_UNIFORM_SEGMENT_NUM] == -1)
@@ -44,8 +44,8 @@ void BezierLineTCSCode::Bind(shared_ptr<IShaderChunk> pShaderChunk)
 		return;
 	}
 
-	IShaderCode::BindInt(m_uniformLocation[BEZIERLINE_UNIFORM_STRIP_NUM], pMaterial->StripNum());
-	IShaderCode::BindInt(m_uniformLocation[BEZIERLINE_UNIFORM_SEGMENT_NUM], pMaterial->SegmentNum());
+	IShaderCode::BindInt(m_uniformLocation[BEZIERLINE_UNIFORM_STRIP_NUM], pShading->StripNum());
+	IShaderCode::BindInt(m_uniformLocation[BEZIERLINE_UNIFORM_SEGMENT_NUM], pShading->SegmentNum());
 	
 }
 
@@ -54,14 +54,14 @@ void BezierLineTCSCode::UnBind(shared_ptr<IShaderChunk> pShaderChunk)
 
 }
 
-void BezierLineMaterial::SetPatchVertices(GLuint patchVertex)
+void BezierLineShading::SetPatchVertices(GLuint patchVertex)
 {
 	m_patchVertex = patchVertex;
 }
 
-bool BezierLineMaterial::NewShaderCompare(IShaderChunk* pTarget)
+bool BezierLineShading::NewShaderCompare(IShaderChunk* pTarget)
 {
-	auto pTargetBuffer = dynamic_cast<BezierLineMaterial*>(pTarget);
+	auto pTargetBuffer = dynamic_cast<BezierLineShading*>(pTarget);
 	if (pTargetBuffer == nullptr)
 	{
 		return false;
@@ -70,14 +70,14 @@ bool BezierLineMaterial::NewShaderCompare(IShaderChunk* pTarget)
 	return true;
 }
 
-shared_ptr<IShaderCode> BezierLineMaterial::NewShaderCode(IShaderBuildInfo* pBuildInfo,SHADER_PROGRAM_TYPE type)
+shared_ptr<IShaderCode> BezierLineShading::NewShaderCode(IShaderBuildInfo* pBuildInfo,SHADER_PROGRAM_TYPE type)
 {
 	switch (type)
 	{
 	case SHADER_PROGRAM_VERTEX:
 		return make_shared<DefaultVertexCode>(pBuildInfo->GetVertexBuffer().get());
 	case SHADER_PROGRAM_FRAG:
-		return make_shared<BasicFragCode>(BASIC_MATERIAL_TYPE::BASIC_MATERIAL_TYPE_FIXCOLOR);
+		return make_shared<BasicFragCode>(BASIC_SHADING_TYPE::BASIC_SHADING_TYPE_FIXCOLOR);
 	case SHADER_PROGRAM_TCS:
 		return make_shared<BezierLineTCSCode>();
 	case SHADER_PROGRAM_TESS:

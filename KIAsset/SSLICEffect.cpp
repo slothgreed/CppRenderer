@@ -41,17 +41,17 @@ void SSLICEffect::Initialize(int width, int height)
 	m_pBlendTexture->Set(blendTexture);
 	m_pBlendTexture->End();
 
-	m_pBasicMaterial = make_shared<BasicMaterial>(m_pBlendTexture);
+	m_pBasicShading = make_shared<BasicShading>(m_pBlendTexture);
 
 
-	auto pSSLICMaterial = make_shared<BasicMaterial>(vec4(1,0,0,1));
+	auto pSSLICShading = make_shared<BasicShading>(vec4(1,0,0,1));
 
-	m_pPlaneData->SetMaterial(pSSLICMaterial);
+	m_pPlaneData->SetShading(pSSLICShading);
 }
 void SSLICEffect::SetRenderData(shared_ptr<RenderData> pRenderData)
 {
 	m_pModelData = pRenderData->Clone();
-	m_pModelData->SetMaterial(m_pBasicMaterial);
+	m_pModelData->SetShading(m_pBasicShading);
 }
 
 void SSLICEffect::Draw()

@@ -36,7 +36,7 @@ using namespace KI::Gfx;
 #include "IGLPick.h"
 #include "IRaycastPick.h"
 
-#include "IMaterial.h"
+#include "IShading.h"
 #include "IModel.h"
 #include "IShaderPass.h"
 #include "IModelProperty.h"
@@ -89,17 +89,17 @@ using namespace KI::Gfx;
 
 #include "RenderData.h"
 
-#include "OutputMaterial.h"
-#include "CompositMaterial.h"
-#include "SSLICMaterial.h"
-#include "VertexMaterial.h"
-#include "BasicMaterial.h"
-#include "LambertMaterial.h"
-#include "NormalVisualizeMaterial.h"
-#include "OutputMaterial.h"
-#include "GrayScaleMaterial.h"
-#include "BezierLineMaterial.h"
-#include "PhongMaterial.h"
+#include "OutputShading.h"
+#include "CompositShading.h"
+#include "SSLICShading.h"
+#include "VertexShading.h"
+#include "BasicShading.h"
+#include "LambertShading.h"
+#include "NormalVisualizeShading.h"
+#include "OutputShading.h"
+#include "GrayScaleShading.h"
+#include "BezierLineShading.h"
+#include "PhongShading.h"
 
 
 

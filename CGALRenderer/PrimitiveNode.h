@@ -11,7 +11,7 @@ public:
 	~PrimitiveNode();
 
 	virtual void Update(void* sender, IEventArgs* args);
-	shared_ptr<IMaterial> GetMaterial() { return m_pMaterial; }
+	shared_ptr<IShading> GetShading() { return m_pShading; }
 	shared_ptr<DefaultVertexBuffer> GetVertexBuffer();
 	IndexBuffer* GetIndexBuffer();
 	void SetRenderData();
@@ -22,7 +22,7 @@ private:
 	virtual void DrawCore() override;
 	string m_name;
 	shared_ptr<RenderData> m_pRenderData;
-	shared_ptr<IMaterial> m_pMaterial;
+	shared_ptr<IShading> m_pShading;
 	shared_ptr<IGLState> m_pState;
 };
 }

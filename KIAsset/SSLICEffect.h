@@ -24,7 +24,7 @@ private:
 	shared_ptr<RenderData> m_pPlaneData;
 	shared_ptr<RenderTarget> m_pRenderTarget;
 
-	shared_ptr<BasicMaterial> m_pBasicMaterial;
+	shared_ptr<BasicShading> m_pBasicShading;
 };
 }
 }

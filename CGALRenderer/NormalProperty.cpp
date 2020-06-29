@@ -10,11 +10,11 @@ NormalProperty::~NormalProperty()
 
 void NormalProperty::Build(IModelNode* pModelNode)
 {
-	m_pMaterial = make_shared<NormalVisualizeMaterial>();
-	m_pMaterial->SetLength(5.0f);
+	m_pShading = make_shared<NormalVisualizeShading>();
+	m_pShading->SetLength(5.0f);
 
 	m_pRenderData = make_shared<RenderData>();
-	m_pRenderData->SetMaterial(m_pMaterial);
+	m_pRenderData->SetShading(m_pShading);
 
 	SetVBOData(pModelNode);
 }

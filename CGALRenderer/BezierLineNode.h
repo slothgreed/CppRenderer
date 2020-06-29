@@ -12,7 +12,7 @@ public:
 
 private:
 	virtual void DrawCore() override;
-	shared_ptr<BezierLineMaterial> m_pMaterial;
+	shared_ptr<BezierLineShading> m_pShading;
 	shared_ptr<RenderData> m_pRenderData;
 };
 }

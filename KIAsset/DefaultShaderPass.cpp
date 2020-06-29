@@ -15,7 +15,7 @@ void DefaultShaderPass::CompileShader(shared_ptr<IVertexBuffer> pVertexBuffer)
 {
 	//auto pBuildInfo = make_shared<IShaderBuildInfo>();
 	//pBuildInfo->SetVertexBuffer(pVertexBuffer);
-	//pBuildInfo->SetShaderChunk(make_shared<BasicMaterial>(vec4(1, 1, 1, 0)));
+	//pBuildInfo->SetShaderChunk(make_shared<BasicShading>(vec4(1, 1, 1, 0)));
 	//SetShader(ShaderManager::Instance()->FindOrNew(pBuildInfo));
 }
 
