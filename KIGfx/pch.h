@@ -41,10 +41,10 @@ using namespace glm;
 #include "IndexBuffer.h"
 #include "ArrayBuffer.h"
 
+#include "IUniform.h"
 #include "IAttribute.h"
 #include "IShaderCode.h"
 #include "IShaderChunk.h"
-#include "IUniform.h"
 #include "IShaderBuildInfo.h"
 #include "IShaderDefine.h"
 #include "IShader.h"

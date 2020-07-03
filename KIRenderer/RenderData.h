@@ -31,9 +31,10 @@ public:
 	void AddRenderRegion(const string& descriptor, shared_ptr<IShading> pShading, int first, int count);
 	bool HasRenderRegion() { return m_pRenderRegion.size() != 0; };
 	void ClearRenderRegion();
-	void Draw();
-	void DrawInternal(shared_ptr<IShading> pShaderPass, int first, int count);
-	void DrawUseRegion();
+	//void Draw();
+	void Draw(const shared_ptr<IUniformStorage> pUniform);
+	void DrawInternal(shared_ptr<IShading> pShaderPass,shared_ptr<IUniformStorage> pUniform, int first, int count);
+	void DrawUseRegion(const shared_ptr<IUniformStorage> pUniform);
 	shared_ptr<RenderData> Clone();
 
 private:

@@ -43,13 +43,14 @@ void RenderData::SetGeometryData(GLuint primitiveType, shared_ptr<IVertexBuffer>
 	m_pIndexBuffer = pIndexBuffer;
 }
 
-void RenderData::DrawUseRegion()
+void RenderData::DrawUseRegion(const shared_ptr<IUniformStorage> pUniform)
 {
 	// •”•ªƒ}ƒeƒŠƒAƒ‹‚Å•`‰æ
 	for (int i = 0; i < m_pRenderRegion.size(); i++)
 	{
 		DrawInternal(
 			m_pRenderRegion[i].m_pShading,
+			pUniform,
 			m_pRenderRegion[i].m_first,
 			m_pRenderRegion[i].m_count);
 	}
@@ -58,7 +59,7 @@ void RenderData::DrawUseRegion()
 	{
 		if (m_pRenderRegion[0].m_first != 0)
 		{
-			DrawInternal(m_pShading, 0, m_pRenderRegion[0].m_first);
+			DrawInternal(m_pShading, pUniform, 0, m_pRenderRegion[0].m_first);
 		}
 
 		int first = 0;
@@ -68,7 +69,7 @@ void RenderData::DrawUseRegion()
 			first = m_pRenderRegion[i].m_first + m_pRenderRegion[i].m_count;
 			count = m_pRenderRegion[i + 1].m_first - first;
 
-			DrawInternal(m_pShading, first, count);
+			DrawInternal(m_pShading, pUniform, first, count);
 		}
 
 		int size = m_pRenderRegion.size() - 1;
@@ -76,7 +77,7 @@ void RenderData::DrawUseRegion()
 		count = GetVertexSize() - first;
 		if (first != GetVertexSize())
 		{
-			DrawInternal(m_pShading, first, count);
+			DrawInternal(m_pShading, pUniform, first, count);
 		}
 	}
 }
@@ -92,7 +93,7 @@ int RenderData::GetVertexSize()
 		return m_pIndexBuffer->Size();
 	}
 }
-void RenderData::DrawInternal(shared_ptr<IShading> pShading, int first, int count)
+void RenderData::DrawInternal(shared_ptr<IShading> pShading,shared_ptr<IUniformStorage> pUniform, int first, int count)
 {
 	if (pShading->NeedReCompileShader() || m_pShader == nullptr)
 	{
@@ -104,7 +105,7 @@ void RenderData::DrawInternal(shared_ptr<IShading> pShading, int first, int coun
 	}
 
 	m_pShader->Use();
-	m_pShader->Bind(pShading);
+	m_pShader->Bind(pShading, pUniform);
 
 	if (m_pIndexBuffer == nullptr)
 	{
@@ -115,14 +116,15 @@ void RenderData::DrawInternal(shared_ptr<IShading> pShading, int first, int coun
 		m_pVertexBuffer->DrawByIndexBuffer(m_pPrimitiveType, m_pIndexBuffer.get(), first, count);
 	}
 
-	m_pShader->UnBind(pShading);
+	m_pShader->UnBind(pShading, pUniform);
 	m_pShader->UnUse();
 }
-void RenderData::Draw()
+
+void RenderData::Draw(const shared_ptr<IUniformStorage> pUniform)
 {
 	if (m_pRenderRegion.size() != 0)
 	{
-		DrawUseRegion();
+		DrawUseRegion(pUniform);
 		return;
 	}
 
@@ -133,7 +135,7 @@ void RenderData::Draw()
 		return;
 	}
 
-	DrawInternal(m_pShading, 0, GetVertexSize());
+	DrawInternal(m_pShading, pUniform, 0, GetVertexSize());
 }
 
 shared_ptr<RenderData> RenderData::Clone()

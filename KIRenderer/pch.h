@@ -46,6 +46,11 @@ using namespace KI::Gfx;
 #include "Vertex.h"
 #include "NodeOperator.h"
 
+#include "UniformMaterial.h"
+#include "UniformModel.h"
+#include "UniformScene.h"
+#include "UniformLight.h"
+
 #include "DirectionLight.h"
 #include "SpotLight.h"
 #include "PointLight.h"
@@ -54,10 +59,6 @@ using namespace KI::Gfx;
 #include "TextureGenerator.h"
 #include "SampleModelGenerator.h"
 
-#include "UniformMaterial.h"
-#include "UniformModel.h"
-#include "UniformScene.h"
-#include "UniformLight.h"
 
 
 #include "ShaderCommon.h"

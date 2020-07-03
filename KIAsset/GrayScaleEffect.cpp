@@ -32,11 +32,11 @@ void GrayScaleEffect::Resize(int width, int height)
 {
 	m_pRenderTarget->Resize(width, height);
 }
-void GrayScaleEffect::Draw()
+void GrayScaleEffect::Draw(shared_ptr<IUniformStorage> pUniform)
 {
 	m_pRenderTarget->Begin();
 	m_pRenderTarget->Clear();
-	m_pPlane->Draw();
+	m_pPlane->Draw(pUniform);
 	m_pRenderTarget->End();
 }
 

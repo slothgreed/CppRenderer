@@ -13,7 +13,7 @@ bool OutputFragCode::Compare(IShaderCode* pShaderCode)
 {
 	return true;
 }
-void OutputFragCode::Bind(shared_ptr<IShaderChunk> pShaderChunk)
+void OutputFragCode::Bind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUniformStorage> pUniform)
 {
 	auto pShading = static_pointer_cast<OutputShading>(pShaderChunk);
 	if (pShading == nullptr)
@@ -26,7 +26,7 @@ void OutputFragCode::Bind(shared_ptr<IShaderChunk> pShaderChunk)
 	IShaderCode::BindTexture(GL_TEXTURE0, m_uniformLocation[UNIFORM_LOCATION_COLOR_TEXTURE]);
 }
 
-void OutputFragCode::UnBind(shared_ptr<IShaderChunk> pShaderChunk)
+void OutputFragCode::UnBind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUniformStorage> pUniform)
 {
 	auto pShading = static_pointer_cast<OutputShading>(pShaderChunk);
 	if (pShading == nullptr)

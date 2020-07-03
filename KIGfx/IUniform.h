@@ -4,14 +4,24 @@ namespace KI
 {
 namespace Gfx
 {
+
+class DLL_EXPORT IUniformStorage
+{
+public:
+	IUniformStorage();
+	~IUniformStorage();
+
+private:
+
+};
+
 class DLL_EXPORT IUniform
 {
 public:
 	IUniform() {};
 	~IUniform() {};
 
-	virtual SHADER_TYPE Type() = 0;
-	virtual bool ShaderDefineComare(IUniform* pUniform) = 0;
+	virtual bool ShaderDefineCompare(IUniform* pUniform) { return true; };
 
 private:
 

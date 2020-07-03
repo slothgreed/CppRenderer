@@ -17,8 +17,8 @@ public:
 	void Use();
 	void UnUse();
 	void Dispose();
-	void Bind(shared_ptr<IShaderChunk> pShaderChunk);
-	void UnBind(shared_ptr<IShaderChunk> pShaderChunk);
+	void Bind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUniformStorage> pUniform);
+	void UnBind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUniformStorage> pUniform);
 
 	void AddIncludeCode(shared_ptr<IShaderCode> pShaderCode) { m_pIncludeCode.push_back(pShaderCode); };
 	
@@ -31,6 +31,7 @@ public:
 private:
 	void GenerateShaderCode(IShaderBuildInfo* pShaderBuildInfo);
 	
+
 	shared_ptr<IShaderCode> m_pShaderCodes[SHADER_PROGRAM_NUM];
 	vector<shared_ptr<IShaderCode>> m_pIncludeCode;
 	string m_version;

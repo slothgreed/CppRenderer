@@ -24,7 +24,7 @@ void SSLICFragCode::Initialize(GLuint programId)
 }
 
 
-void SSLICFragCode::Bind(shared_ptr<IShaderChunk> pShaderChunk)
+void SSLICFragCode::Bind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUniformStorage> pUniform)
 {
 	auto pShading = static_pointer_cast<SSLICShading>(pShaderChunk);
 	if (pShading == nullptr)
@@ -36,7 +36,7 @@ void SSLICFragCode::Bind(shared_ptr<IShaderChunk> pShaderChunk)
 	IShaderCode::BindTexture(GL_TEXTURE0, m_uniformLocation[SSLIC_UNIFORM_COLOR_TEXTURE]);
 }
 
-void SSLICFragCode::UnBind(shared_ptr<IShaderChunk> pShaderChunk)
+void SSLICFragCode::UnBind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUniformStorage> pUniform)
 {
 	auto pShading = static_pointer_cast<SSLICShading>(pShaderChunk);
 	if (pShading == nullptr)

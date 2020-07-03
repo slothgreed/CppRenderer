@@ -41,7 +41,7 @@ bool BasicFragCode::Compare(IShaderCode* pShaderCode)
 	return false;
 }
 
-void BasicFragCode::Bind(shared_ptr<IShaderChunk> pShaderChunk)
+void BasicFragCode::Bind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUniformStorage> pUniform)
 {
 	auto pShading = static_pointer_cast<BasicShading>(pShaderChunk);
 	if (pShading == nullptr)
@@ -61,7 +61,7 @@ void BasicFragCode::Bind(shared_ptr<IShaderChunk> pShaderChunk)
 
 }
 
-void BasicFragCode::UnBind(shared_ptr<IShaderChunk> pShaderChunk)
+void BasicFragCode::UnBind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUniformStorage> pUniform)
 {
 	auto pShading = static_pointer_cast<BasicShading>(pShaderChunk);
 	if (pShading != nullptr)

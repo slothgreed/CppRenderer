@@ -10,7 +10,7 @@ public:
 	~HalfEdgeProperty() {};
 
 	virtual PROPERTY_TYPE Type() override { return PROPERTY_TYPE_HALFEDGE; }
-	virtual void Draw() override;
+	virtual void Draw(shared_ptr<IUniformStorage> pUniform) override;
 	virtual void Build(IModelNode* model) override;
 	virtual void Update(IModelNode* model) override;
 private:

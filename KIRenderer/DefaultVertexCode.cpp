@@ -126,12 +126,12 @@ shared_ptr<IShaderCode> DefaultVertexCode::GetVertexBufferCode(shared_ptr<IVerte
 	return pCode;
 }
 
-void DefaultVertexCode::Bind(shared_ptr<IShaderChunk> pShaderChunk)
+void DefaultVertexCode::Bind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUniformStorage> pUniform)
 {
 
 }
 
-void DefaultVertexCode::UnBind(shared_ptr<IShaderChunk> pShaderChunk)
+void DefaultVertexCode::UnBind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUniformStorage> pUniform)
 {
 
 }

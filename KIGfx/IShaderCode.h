@@ -5,6 +5,7 @@ namespace KI
 {
 namespace Gfx
 {
+class IUniform;
 class IVertexBuffer;
 class IShaderChunk;
 class DLL_EXPORT IShaderCode
@@ -21,8 +22,8 @@ public:
 	virtual void GetDefineCode(string& code) {};
 	virtual void Initialize(GLuint programId) = 0;
 	virtual bool Compare(IShaderCode* pShaderCode) = 0;
-	virtual void Bind(shared_ptr<IShaderChunk> pShaderChunk) = 0;
-	virtual void UnBind(shared_ptr<IShaderChunk> pShaderChunk) = 0;
+	virtual void Bind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUniformStorage> pUniform) = 0;
+	virtual void UnBind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUniformStorage> pUniform) = 0;
 protected:
 	vector<GLint> m_uniformLocation;
 	virtual void BindTexture(GLint activeNumber, GLint uniformId);

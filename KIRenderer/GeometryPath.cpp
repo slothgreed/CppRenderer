@@ -25,9 +25,10 @@ void GeometryPath::Draw(const vector<shared_ptr<IModelNode>>& modelNodes)
 {
 	m_pRenderTarget->Begin();
 	m_pRenderTarget->Clear();
+	auto pUniform = make_shared<IUniformStorage>();
 	for (int i = 0; i < modelNodes.size(); i++)
 	{
-		modelNodes[i]->Draw();
+		modelNodes[i]->Draw(pUniform);
 	}
 
 	m_pRenderTarget->End();

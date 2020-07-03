@@ -21,14 +21,14 @@ PrimitiveNode::~PrimitiveNode()
 {
 }
 
-void PrimitiveNode::DrawCore()
+void PrimitiveNode::DrawCore(shared_ptr<IUniformStorage> pUniform)
 {
 	if (m_pState != nullptr)
 	{
 		m_pState->Bind();
 	}
 
-	m_pRenderData->Draw();
+	m_pRenderData->Draw(pUniform);
 
 	if (m_pState != nullptr)
 	{

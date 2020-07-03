@@ -84,19 +84,19 @@ void ManipulatorNode::GenManipulatorHandleVBO(
 
 }
 
-void ManipulatorNode::DrawCore()
+void ManipulatorNode::DrawCore(shared_ptr<IUniformStorage> pUniform)
 {
 	m_pShading->SetColor(vec4(1, 0, 0, 1));
-	m_pFaceDatas[MANIPULATOR_HANDLE_X]->Draw();
-	m_pEdgeDatas[MANIPULATOR_HANDLE_X]->Draw();
+	m_pFaceDatas[MANIPULATOR_HANDLE_X]->Draw(pUniform);
+	m_pEdgeDatas[MANIPULATOR_HANDLE_X]->Draw(pUniform);
 
 	m_pShading->SetColor(vec4(0, 1, 0, 1));
-	m_pFaceDatas[MANIPULATOR_HANDLE_Y]->Draw();
-	m_pEdgeDatas[MANIPULATOR_HANDLE_Y]->Draw();
+	m_pFaceDatas[MANIPULATOR_HANDLE_Y]->Draw(pUniform);
+	m_pEdgeDatas[MANIPULATOR_HANDLE_Y]->Draw(pUniform);
 
 	m_pShading->SetColor(vec4(0, 0, 1, 1));
-	m_pFaceDatas[MANIPULATOR_HANDLE_Z]->Draw();
-	m_pEdgeDatas[MANIPULATOR_HANDLE_Z]->Draw();
+	m_pFaceDatas[MANIPULATOR_HANDLE_Z]->Draw(pUniform);
+	m_pEdgeDatas[MANIPULATOR_HANDLE_Z]->Draw(pUniform);
 }
 
 

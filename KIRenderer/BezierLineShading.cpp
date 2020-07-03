@@ -26,7 +26,7 @@ void BezierLineTCSCode::Initialize(GLuint programId)
 
 
 
-void BezierLineTCSCode::Bind(shared_ptr<IShaderChunk> pShaderChunk)
+void BezierLineTCSCode::Bind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUniformStorage> pUniform)
 {
 	auto pShading = dynamic_cast<BezierLineShading*>(pShaderChunk.get());
 	if (pShading->GetPatchVertices() == 0)
@@ -49,7 +49,7 @@ void BezierLineTCSCode::Bind(shared_ptr<IShaderChunk> pShaderChunk)
 	
 }
 
-void BezierLineTCSCode::UnBind(shared_ptr<IShaderChunk> pShaderChunk)
+void BezierLineTCSCode::UnBind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUniformStorage> pUniform)
 {
 
 }

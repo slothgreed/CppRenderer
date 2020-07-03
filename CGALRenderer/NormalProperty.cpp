@@ -42,8 +42,8 @@ void NormalProperty::SetVBOData(IModelNode* pModelNode)
 	m_pRenderData->SetGeometryData(GL_POINTS, pVertexBuffer);
 }
 
-void NormalProperty::Draw()
+void NormalProperty::Draw(shared_ptr<IUniformStorage> pUniform)
 {
-	m_pRenderData->Draw();
+	m_pRenderData->Draw(pUniform);
 }
 }

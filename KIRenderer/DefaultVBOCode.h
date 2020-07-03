@@ -15,8 +15,8 @@ public:
 	virtual void Initialize(GLuint programId) {};
 	virtual void GetDefineCode(string& code) override;
 	virtual bool Compare(IShaderCode* pShaderCode) override;
-	virtual void Bind(shared_ptr<IShaderChunk> pShaderChunk) override;
-	virtual void UnBind(shared_ptr<IShaderChunk> pShaderChunk) override;
+	virtual void Bind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUniformStorage> pUniform) override;
+	virtual void UnBind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUniformStorage> pUniform) override;
 	virtual void GetIncludeCode(vector<shared_ptr<IShaderCode>>& pShaderCodes);
 
 	void SetPlanePosition(bool value) { m_planePosition = value; }

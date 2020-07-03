@@ -20,7 +20,8 @@ void PfxPlane::Initialize()
 }
 void PfxPlane::Draw()
 {
-	m_pRenderData->Draw();
+	auto pUniform = make_shared<IUniformStorage>();
+	m_pRenderData->Draw(pUniform);
 
 	Logger::GLError();
 }

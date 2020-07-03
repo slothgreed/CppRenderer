@@ -18,7 +18,7 @@ public:
 
 	virtual PFX_TYPE Type() = 0;
 	virtual void Initialize(int width, int height) = 0;
-	virtual void Draw() = 0;
+	virtual void Draw(shared_ptr<IUniformStorage> pUniform) = 0;
 	virtual void Resize(int width, int height) = 0;
 	void SetApply(bool value) { m_apply = value; }
 	bool Apply() { return m_apply; }

@@ -13,19 +13,19 @@ PolygonModelNode::~PolygonModelNode()
 {
 }
 
-void PolygonModelNode::DrawCore()
+void PolygonModelNode::DrawCore(shared_ptr<IUniformStorage> pUniform)
 {
 	if (m_pFaceData != NULL)
 	{
-		m_pFaceData->Draw();
+		m_pFaceData->Draw(pUniform);
 	}
 
 	if (m_pEdgeData != NULL)
 	{
-		m_pEdgeData->Draw();
+		m_pEdgeData->Draw(pUniform);
 	}
 
-	DrawProperty();
+	DrawProperty(pUniform);
 
 }
 

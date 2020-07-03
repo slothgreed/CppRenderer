@@ -27,6 +27,7 @@ public:
 private:
 	shared_ptr<ICamera> m_pCamera;
 	shared_ptr<UniformScene> m_pUniformScene;
+	shared_ptr<UniformModel> m_pUniformModel;
 	shared_ptr<UniformLight> m_pUniformLight;
 	vector<shared_ptr<ILight>> m_pLights;
 	vector<shared_ptr<IModelNode>> m_pRenderList;

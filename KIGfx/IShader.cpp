@@ -105,8 +105,13 @@ void IShader::Initialize()
 	}
 }
 
-void IShader::Bind(shared_ptr<IShaderChunk> pShaderChunk)
+void IShader::Bind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUniformStorage> pUniform)
 {
+	for (int i = 0; i < m_pIncludeCode.size(); i++)
+	{
+		m_pIncludeCode[i]->Bind(pShaderChunk, pUniform);
+	}
+
 	for (int i = 0; i < SHADER_PROGRAM_NUM; i++)
 	{
 		if (m_pShaderCodes[i] == nullptr)
@@ -114,12 +119,17 @@ void IShader::Bind(shared_ptr<IShaderChunk> pShaderChunk)
 			continue;
 		}
 
-		m_pShaderCodes[i]->Bind(pShaderChunk);
+		m_pShaderCodes[i]->Bind(pShaderChunk, pUniform);
 	}
 }
 
-void IShader::UnBind(shared_ptr<IShaderChunk> pShaderChunk)
+void IShader::UnBind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUniformStorage> pUniform)
 {
+	for (int i = 0; i < m_pIncludeCode.size(); i++)
+	{
+		m_pIncludeCode[i]->UnBind(pShaderChunk, pUniform);
+	}
+
 	for (int i = 0; i < SHADER_PROGRAM_NUM; i++)
 	{
 		if (m_pShaderCodes[i] == nullptr)
@@ -127,7 +137,7 @@ void IShader::UnBind(shared_ptr<IShaderChunk> pShaderChunk)
 			continue;
 		}
 
-		m_pShaderCodes[i]->UnBind(pShaderChunk);
+		m_pShaderCodes[i]->UnBind(pShaderChunk, pUniform);
 	}
 }
 

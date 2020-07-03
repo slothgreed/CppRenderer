@@ -77,8 +77,8 @@ void BDBProperty::Update(IModelNode* pModelNode)
 	}
 }
 
-void BDBProperty::Draw()
+void BDBProperty::Draw(shared_ptr<IUniformStorage> pUniform)
 {
-	m_pRenderData->Draw();
+	m_pRenderData->Draw(pUniform);
 }
 }

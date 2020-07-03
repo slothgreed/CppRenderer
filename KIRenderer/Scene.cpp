@@ -15,6 +15,9 @@ void Scene::Initialize()
 	m_pUniformScene = make_shared<UniformScene>();
 	m_pUniformScene->Generate();
 
+	m_pUniformModel = make_shared<UniformModel>();
+	m_pUniformModel->Generate();
+
 }
 
 void Scene::AddModelNode(shared_ptr<IModelNode> pModelNode)
@@ -47,6 +50,7 @@ void Scene::Bind()
 	sceneData.viewMatrix = m_pCamera->ViewMatrix();
 	sceneData.projection = m_pCamera->Projection();
 	m_pUniformScene->Set(sceneData);
+	m_pUniformModel->SetViewMatrix(sceneData.viewMatrix);
 	m_pUniformScene->Bind();
 
 	if (m_pLights.size() != 0)
@@ -57,9 +61,15 @@ void Scene::Bind()
 }
 void Scene::Draw()
 {
+	shared_ptr<UniformStruct> m_pUniformStruct = make_shared<UniformStruct>();
+	m_pUniformStruct->SetLight(m_pUniformLight);
+	m_pUniformStruct->SetScene(m_pUniformScene);
+	m_pUniformStruct->SetModel(m_pUniformModel);
+	vector<IUniform*> pUniform;
+	pUniform.push_back(m_pUniformStruct.get());
 	for (int i = 0; i < m_pRenderList.size(); i++)
 	{
-		m_pRenderList[i]->Draw();
+		//m_pRenderList[i]->Draw(pUniform);
 	}
 }
 

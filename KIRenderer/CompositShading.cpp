@@ -60,7 +60,7 @@ void CompositFragCode::Initialize(GLuint programId)
 	Logger::GLError();
 }
 
-void CompositFragCode::Bind(shared_ptr<IShaderChunk> pShaderChunk)
+void CompositFragCode::Bind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUniformStorage> pUniform)
 {
 	auto pShading = static_pointer_cast<CompositShading>(pShaderChunk);
 	{
@@ -74,7 +74,7 @@ void CompositFragCode::Bind(shared_ptr<IShaderChunk> pShaderChunk)
 	IShaderCode::BindTexture(GL_TEXTURE1, m_uniformLocation[COMPOSIT_UNIFORM_TARGET_TEXTURE]);
 }
 
-void CompositFragCode::UnBind(shared_ptr<IShaderChunk> pShaderChunk)
+void CompositFragCode::UnBind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUniformStorage> pUniform)
 {
 	auto pShading = static_pointer_cast<CompositShading>(pShaderChunk);
 	{

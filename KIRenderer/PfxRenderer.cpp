@@ -47,11 +47,12 @@ IPostEffect* PfxRenderer::FindPostEffect(PFX_TYPE type)
 
 void PfxRenderer::Draw()
 {
+	auto pUniform = make_shared<IUniformStorage>();
 	for (int i = 0; i < m_pPfxLists.size(); i++)
 	{
 		if (m_pPfxLists[i]->Apply())
 		{
-			m_pPfxLists[i]->Draw();
+			m_pPfxLists[i]->Draw(pUniform);
 		}
 	}
 }

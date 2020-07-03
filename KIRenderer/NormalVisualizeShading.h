@@ -38,8 +38,8 @@ public:
 	virtual void Initialize(GLuint programId) override;
 
 	virtual bool Compare(IShaderCode* pShaderCode) override;
-	virtual void Bind(shared_ptr<IShaderChunk> pShaderChunk) override;
-	virtual void UnBind(shared_ptr<IShaderChunk> pShaderChunk) override {};
+	virtual void Bind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUniformStorage> pUniform) override;
+	virtual void UnBind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUniformStorage> pUniform) override {};
 
 
 private:

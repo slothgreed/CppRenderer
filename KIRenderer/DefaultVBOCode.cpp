@@ -73,12 +73,12 @@ void DefaultVBOCode::GetIncludeCode(vector<shared_ptr<IShaderCode>>& pShaderCode
 {
 }
 
-void DefaultVBOCode::Bind(shared_ptr<IShaderChunk> pShaderChunk)
+void DefaultVBOCode::Bind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUniformStorage> pUniform)
 {
 
 }
 
-void DefaultVBOCode::UnBind(shared_ptr<IShaderChunk> pShaderChunk)
+void DefaultVBOCode::UnBind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUniformStorage> pUniform)
 {
 
 }

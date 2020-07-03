@@ -26,7 +26,7 @@ void GrayScaleFragCode::FetchUniformLocation(GLuint programId)
 	Logger::GLError();
 }
 
-void GrayScaleFragCode::Bind(shared_ptr<IShaderChunk> pShaderChunk)
+void GrayScaleFragCode::Bind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUniformStorage> pUniform)
 {
 	auto pShading = dynamic_cast<GrayScaleShading*>(pShaderChunk.get());
 	if (pShading == nullptr)
@@ -38,7 +38,7 @@ void GrayScaleFragCode::Bind(shared_ptr<IShaderChunk> pShaderChunk)
 	BindColorTexture();
 }
 
-void GrayScaleFragCode::UnBind(shared_ptr<IShaderChunk> pShaderChunk)
+void GrayScaleFragCode::UnBind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUniformStorage> pUniform)
 {
 	auto pShading = dynamic_cast<GrayScaleShading*>(pShaderChunk.get());
 	if (pShading == nullptr)

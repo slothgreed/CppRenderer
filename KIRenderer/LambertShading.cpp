@@ -44,7 +44,7 @@ bool LambertFragCode::Compare(IShaderCode* pShaderCode)
 	return false;
 }
 
-void LambertFragCode::Bind(shared_ptr<IShaderChunk> pShaderChunk)
+void LambertFragCode::Bind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUniformStorage> pUniform)
 {
 	auto pShading = static_pointer_cast<LambertShading>(pShaderChunk);
 	if (pShading == nullptr)
@@ -64,7 +64,7 @@ void LambertFragCode::Bind(shared_ptr<IShaderChunk> pShaderChunk)
 
 }
 
-void LambertFragCode::UnBind(shared_ptr<IShaderChunk> pShaderChunk)
+void LambertFragCode::UnBind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUniformStorage> pUniform)
 {
 	auto pShading = static_pointer_cast<LambertShading>(pShaderChunk);
 	if (pShading != nullptr)

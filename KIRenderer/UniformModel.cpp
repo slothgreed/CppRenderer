@@ -13,6 +13,16 @@ UniformModel::~UniformModel()
 
 }
 
+void UniformModel::SetViewMatrix(const mat4x4& viewMatrix)
+{
+	m_viewMatrix = viewMatrix;
+}
+void UniformModel::SetModelMatrix(const mat4x4& data)
+{
+	m_ModelData.modelViewMatrix = m_viewMatrix * data;
+	m_ModelData.modelMatrix = data;
+	m_ModelData.normalMatrix = glm::inverse(glm::transpose(m_ModelData.modelMatrix));
+}
 void UniformModel::Set(const ModelData& data)
 {
 	if (m_Id == 0)

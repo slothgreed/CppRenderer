@@ -33,5 +33,14 @@ void ShaderStruct::BindLight(GLuint programId)
 	Logger::GLError();
 }
 
+void ShaderStruct::Bind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUniformStorage> pUniform)
+{
+
+}
+
+void ShaderStruct::UnBind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUniformStorage> pUniform)
+{
+
+}
 }
 }

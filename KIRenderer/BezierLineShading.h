@@ -21,9 +21,9 @@ public:
 	BezierLineTCSCode();
 	~BezierLineTCSCode();
 	virtual void Initialize(GLuint programId) override;
-	virtual void Bind(shared_ptr<IShaderChunk> pShaderChunk) override;
+	virtual void Bind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUniformStorage> pUniform) override;
 	virtual bool Compare(IShaderCode* pShaderCode) override { return true; };
-	virtual void UnBind(shared_ptr<IShaderChunk> pShaderChunk) override;
+	virtual void UnBind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUniformStorage> pUniform) override;
 private:
 };
 class DLL_EXPORT BezierLineTESCode : public IShaderCode
@@ -36,9 +36,9 @@ public:
 			string(SHADER_EXT_TES)) {};
 	~BezierLineTESCode() {};
 	virtual void Initialize(GLuint programId) override {};
-	virtual void Bind(shared_ptr<IShaderChunk> pShaderChunk) override {};
+	virtual void Bind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUniformStorage> pUniform) override {};
 	virtual bool Compare(IShaderCode* pShaderCode) override { return true; };
-	virtual void UnBind(shared_ptr<IShaderChunk> pShaderChunk) override {};
+	virtual void UnBind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUniformStorage> pUniform) override {};
 };
 
 class DLL_EXPORT BezierLineShading : public IShading

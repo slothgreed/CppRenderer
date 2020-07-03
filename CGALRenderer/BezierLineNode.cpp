@@ -15,9 +15,9 @@ BezierLineNode::~BezierLineNode()
 {
 }
 
-void BezierLineNode::DrawCore()
+void BezierLineNode::DrawCore(shared_ptr<IUniformStorage> pUniform)
 {
-	m_pRenderData->Draw();
+	m_pRenderData->Draw(pUniform);
 }
 
 }

@@ -54,13 +54,13 @@ void SSLICEffect::SetRenderData(shared_ptr<RenderData> pRenderData)
 	m_pModelData->SetShading(m_pBasicShading);
 }
 
-void SSLICEffect::Draw()
+void SSLICEffect::Draw(shared_ptr<IUniformStorage> pUniform)
 {
-	m_pModelData->Draw();
+	m_pModelData->Draw(pUniform);
 
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC1_ALPHA);
-	m_pPlaneData->Draw();
+	m_pPlaneData->Draw(pUniform);
 	glDisable(GL_BLEND);
 
 	m_pRenderTarget->CopyColorBuffer(0, m_pBlendTexture.get());

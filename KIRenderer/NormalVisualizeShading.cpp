@@ -21,7 +21,7 @@ void NormalVisualizeGeomCode::Initialize(GLuint programId)
 	m_uniformLocation[NORMAL_VISUALIZE_UNIFORM_LENGTH] = glGetUniformLocation(programId, "uLength");
 }
 
-void NormalVisualizeGeomCode::Bind(shared_ptr<IShaderChunk> pShaderChunk)
+void NormalVisualizeGeomCode::Bind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUniformStorage> pUniform)
 {
 	auto pShading = dynamic_cast<NormalVisualizeShading*>(pShaderChunk.get());
 	if (pShading == nullptr)

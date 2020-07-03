@@ -24,7 +24,7 @@ protected:
 	shared_ptr<RenderData> m_pEdgeData;
 
 private:
-	virtual void DrawCore() override;
+	virtual void DrawCore(shared_ptr<IUniformStorage> pUniform) override;
 	BDB m_bdb;
 	void SetRenderData();
 };

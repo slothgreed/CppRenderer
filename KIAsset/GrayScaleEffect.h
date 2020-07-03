@@ -13,7 +13,7 @@ public:
 
 	virtual PFX_TYPE Type() { return PFX_TYPE::PFX_TYPE_GRAYSCALE; }
 	virtual void Initialize(int width, int height) override;
-	virtual void Draw() override;
+	virtual void Draw(shared_ptr<IUniformStorage> pUniform) override;
 	void Resize(int width, int height) override;
 
 	void SetTexture(shared_ptr<Texture> texture);
