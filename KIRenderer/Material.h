@@ -1,3 +1,6 @@
+#ifndef KI_MATERIAL_H
+#define KI_MATERIAL_H
+
 namespace KI
 {
 namespace Renderer
@@ -27,3 +30,4 @@ private:
 };
 }
 }
+#endif KI_MATERIAL_H

@@ -1,9 +1,14 @@
-namespace KI {
+namespace KI 
+{
 namespace Renderer
 {
 
 Scene::Scene()
 {
+	m_pUniformBuilder = make_unique<UniformBuilder>();
+	m_pUniformStruct = m_pUniformBuilder->BuildStruct();
+	m_pUniformStruct->SetMaterial(m_pUniformBuilder->BuildMaterial());
+
 }
 
 Scene::~Scene()
@@ -12,12 +17,11 @@ Scene::~Scene()
 
 void Scene::Initialize()
 {
-	m_pUniformScene = make_shared<UniformScene>();
-	m_pUniformScene->Generate();
+	m_pUniformStruct->SetScene(m_pUniformBuilder->BuildScene());
+	m_pUniformStruct->GetScene()->Generate();
 
-	m_pUniformModel = make_shared<UniformModel>();
-	m_pUniformModel->Generate();
-
+	m_pUniformStruct->SetModel(m_pUniformBuilder->BuildModel());
+	m_pUniformStruct->GetModel()->Generate();
 }
 
 void Scene::AddModelNode(shared_ptr<IModelNode> pModelNode)
@@ -33,10 +37,10 @@ void Scene::RemoveModelNode(shared_ptr<IModelNode> pModelNode)
 void Scene::AddLight(shared_ptr<ILight> pLight)
 {
 	m_pLights.push_back(pLight);
-	if (m_pUniformLight == nullptr)
+	if (m_pUniformStruct->GetLight() == nullptr)
 	{
-		m_pUniformLight = make_shared<UniformLight>();
-		m_pUniformLight->Generate();
+		m_pUniformStruct->SetLight(m_pUniformBuilder->BuildLight());
+		m_pUniformStruct->GetLight()->Generate();
 	}
 }
 
@@ -46,41 +50,33 @@ void Scene::RemoveLight(shared_ptr<ILight> pLight)
 
 void Scene::Bind()
 {
-	SceneData sceneData;
-	sceneData.viewMatrix = m_pCamera->ViewMatrix();
-	sceneData.projection = m_pCamera->Projection();
-	m_pUniformScene->Set(sceneData);
-	m_pUniformModel->SetViewMatrix(sceneData.viewMatrix);
-	m_pUniformScene->Bind();
+	m_pUniformStruct->GetScene()->SetViewMatrix(m_pCamera->ViewMatrix());
+	m_pUniformStruct->GetScene()->SetProjection(m_pCamera->Projection());
+	m_pUniformStruct->GetScene()->Bind();
+	m_pUniformStruct->GetModel()->SetViewMatrix(m_pCamera->ViewMatrix());
 
 	if (m_pLights.size() != 0)
 	{
-		m_pUniformLight->Set(m_pLights[0].get());
-		m_pUniformLight->Bind();
+		//TODO : m_pUniformStruct->GetLight()->Set(m_pLights[0].get());
+		m_pUniformStruct->GetLight()->Bind();
 	}
 }
 void Scene::Draw()
 {
-	shared_ptr<UniformStruct> m_pUniformStruct = make_shared<UniformStruct>();
-	m_pUniformStruct->SetLight(m_pUniformLight);
-	m_pUniformStruct->SetScene(m_pUniformScene);
-	m_pUniformStruct->SetModel(m_pUniformModel);
-	vector<IUniform*> pUniform;
-	pUniform.push_back(m_pUniformStruct.get());
 	for (int i = 0; i < m_pRenderList.size(); i++)
 	{
-		//m_pRenderList[i]->Draw(pUniform);
+		m_pRenderList[i]->Draw(m_pUniformStruct);
 	}
 }
 
 void Scene::UnBind()
 {
-	if (m_pUniformLight != nullptr)
+	if (m_pUniformStruct->GetLight() != nullptr)
 	{
-		m_pUniformLight->UnBind();
+		m_pUniformStruct->GetLight()->UnBind();
 	}
 
-	m_pUniformScene->UnBind();
+	m_pUniformStruct->GetScene()->UnBind();
 }
 
 bool SceneModelIterator::HasNext()

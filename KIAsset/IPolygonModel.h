@@ -18,14 +18,9 @@ public:
 	virtual void GetEdgeIndexList(std::vector<int>& index) { assert(0); };
 	virtual void GetFaceIndexList(std::vector<int>& index) { assert(0); };
 	virtual void GetBDB(BDB& bdb) = 0;
-	virtual void SetShaderPass(shared_ptr<IShaderPass> shaderPass) { m_pShaderPass = shaderPass; };
 	virtual void RaycastPick(RaycastPickInfo& pickInfo) {};
-	shared_ptr<IShaderPass> GetShaderPass() { return m_pShaderPass; };
 
 	static bool IsPolygonModel(MODEL_TYPE type);
-
-private:
-	shared_ptr<IShaderPass> m_pShaderPass;
 };
 }
 }

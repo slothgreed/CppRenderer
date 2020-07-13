@@ -96,7 +96,7 @@
       <AdditionalIncludeDirectories>$(SolutionDir)extlibs\glfw-3.3\include;$(SolutionDir)extlibs\glm-0.9.9.6\glm;$(SolutionDir)extlibs\glew-2.1.0\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>KIFoundation.lib;KIGfx.lib;KIRenderer.lib;KITopology.lib;KIAlgorithm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>KIFoundation.lib;KIGfx.lib;KIRenderer.lib;KITopology.lib;KIAlgorithm.lib;KIShaderLib.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)extlibs\glfw-3.3\lib-vc2017;$(SolutionDir)extlibs\glew-2.1.0\lib\Release\x64;$(SolutionDir)$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>

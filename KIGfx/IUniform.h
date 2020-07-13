@@ -8,8 +8,8 @@ namespace Gfx
 class DLL_EXPORT IUniformStorage
 {
 public:
-	IUniformStorage();
-	~IUniformStorage();
+	IUniformStorage() {};
+	virtual ~IUniformStorage() {};
 
 private:
 

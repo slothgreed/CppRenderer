@@ -13,41 +13,17 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="ソース ファイル\LithingPass">
-      <UniqueIdentifier>{15cbb6b4-9d87-4e18-9e99-474a2c9130a8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ソース ファイル\Pfx">
       <UniqueIdentifier>{262e248b-a6b1-4710-86fa-0f9bb2ac8767}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ヘッダー ファイル\LightingPass">
-      <UniqueIdentifier>{5bfb11c7-31fe-4252-b942-3cd476f8a8b8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ヘッダー ファイル\Pfx">
       <UniqueIdentifier>{635ddab1-d2f7-49c4-afdf-ed6b86ec1adb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\Shader">
-      <UniqueIdentifier>{4b329bef-98ee-4ec3-bb06-d959c2f2649a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Shader">
-      <UniqueIdentifier>{1846ca08-c67c-444e-975b-cf9b23a2872b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\VertexBuffer">
-      <UniqueIdentifier>{2c719dbe-f652-4405-87e2-f651b5245831}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\VertexBuffer">
-      <UniqueIdentifier>{d05b78f2-694c-4213-b20c-433d2d635419}</UniqueIdentifier>
     </Filter>
     <Filter Include="ヘッダー ファイル\Utility">
       <UniqueIdentifier>{fcf80d6c-0fb2-461e-8df1-8a0ce6c347d0}</UniqueIdentifier>
     </Filter>
     <Filter Include="ソース ファイル\Utility">
       <UniqueIdentifier>{0c0fb3c2-0e2a-456a-b789-820004a224c6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\Uniform">
-      <UniqueIdentifier>{854495d0-0aa9-4a72-9b1e-78b75347a189}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Uniform">
-      <UniqueIdentifier>{8104edc0-d200-49dd-94ec-18b1e7e6cda1}</UniqueIdentifier>
     </Filter>
     <Filter Include="ヘッダー ファイル\Light">
       <UniqueIdentifier>{3b3c43cd-81be-4145-9adc-7e8c95bcbcdf}</UniqueIdentifier>
@@ -64,29 +40,11 @@
     <Filter Include="ヘッダー ファイル\Camera">
       <UniqueIdentifier>{09b11c40-c248-45b8-9183-0a012c490c83}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ヘッダー ファイル\Shader\Code">
-      <UniqueIdentifier>{bd641b93-83e7-45be-8c29-e22c2c2bb4f9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Shader\Code">
-      <UniqueIdentifier>{1187a1b2-bd71-4d30-b56d-e1e037930af8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\GeometryPath">
-      <UniqueIdentifier>{1edded72-4f99-4a21-ac21-9d22eb346b95}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GeometryPath">
-      <UniqueIdentifier>{310c0009-1e2d-4893-b574-5f7146af5e3b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ソース ファイル\Node">
       <UniqueIdentifier>{a414511b-fdd4-41f2-8546-92b7f3030b6c}</UniqueIdentifier>
     </Filter>
     <Filter Include="ヘッダー ファイル\Node">
       <UniqueIdentifier>{4c25cb92-2ac1-429c-9b5e-dd005206ee65}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Shading">
-      <UniqueIdentifier>{c98deb01-c0b0-4404-8717-c0b53b933979}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\Shading">
-      <UniqueIdentifier>{22d463b5-76f7-4cd9-93bf-45c73a703814}</UniqueIdentifier>
     </Filter>
     <Filter Include="ソース ファイル\Material">
       <UniqueIdentifier>{43dacb1e-cefe-420e-ac4b-c3390f09142e}</UniqueIdentifier>
@@ -102,13 +60,7 @@
     <ClInclude Include="targetver.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="LighthingPass.h">
-      <Filter>ヘッダー ファイル\LightingPass</Filter>
-    </ClInclude>
     <ClInclude Include="IPostEffect.h">
-      <Filter>ヘッダー ファイル\Pfx</Filter>
-    </ClInclude>
-    <ClInclude Include="PfxPlane.h">
       <Filter>ヘッダー ファイル\Pfx</Filter>
     </ClInclude>
     <ClInclude Include="PfxRenderer.h">
@@ -117,26 +69,17 @@
     <ClInclude Include="pch.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="DefaultVertexBuffer.h">
-      <Filter>ヘッダー ファイル\VertexBuffer</Filter>
-    </ClInclude>
     <ClInclude Include="RendererTypes.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="RenderSystem.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="ModelGenerator.h">
-      <Filter>ヘッダー ファイル\Utility</Filter>
-    </ClInclude>
     <ClInclude Include="TextureGenerator.h">
       <Filter>ヘッダー ファイル\Utility</Filter>
     </ClInclude>
     <ClInclude Include="ShaderManager.h">
       <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="UniformScene.h">
-      <Filter>ヘッダー ファイル\Uniform</Filter>
     </ClInclude>
     <ClInclude Include="SpotLight.h">
       <Filter>ヘッダー ファイル\Light</Filter>
@@ -159,18 +102,6 @@
     <ClInclude Include="IModelProperty.h">
       <Filter>ヘッダー ファイル\Interface</Filter>
     </ClInclude>
-    <ClInclude Include="UniformLight.h">
-      <Filter>ヘッダー ファイル\Uniform</Filter>
-    </ClInclude>
-    <ClInclude Include="Define.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="UniformMaterial.h">
-      <Filter>ヘッダー ファイル\Uniform</Filter>
-    </ClInclude>
-    <ClInclude Include="UniformModel.h">
-      <Filter>ヘッダー ファイル\Uniform</Filter>
-    </ClInclude>
     <ClInclude Include="OrthoCamera.h">
       <Filter>ヘッダー ファイル\Camera</Filter>
     </ClInclude>
@@ -180,50 +111,8 @@
     <ClInclude Include="ICamera.h">
       <Filter>ヘッダー ファイル\Camera</Filter>
     </ClInclude>
-    <ClInclude Include="Scene.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="DefaultVertexCode.h">
-      <Filter>ヘッダー ファイル\Shader\Code</Filter>
-    </ClInclude>
-    <ClInclude Include="PostProcessCode.h">
-      <Filter>ヘッダー ファイル\Shader\Code</Filter>
-    </ClInclude>
-    <ClInclude Include="SimpleShaderCode.h">
-      <Filter>ヘッダー ファイル\Shader\Code</Filter>
-    </ClInclude>
-    <ClInclude Include="SampleModelGenerator.h">
-      <Filter>ヘッダー ファイル\Utility</Filter>
-    </ClInclude>
     <ClInclude Include="RenderData.h">
       <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="PickPath.h">
-      <Filter>ヘッダー ファイル\GeometryPath</Filter>
-    </ClInclude>
-    <ClInclude Include="GeometryPath.h">
-      <Filter>ヘッダー ファイル\GeometryPath</Filter>
-    </ClInclude>
-    <ClInclude Include="IGeometryPath.h">
-      <Filter>ヘッダー ファイル\Interface</Filter>
-    </ClInclude>
-    <ClInclude Include="IRaycastPick.h">
-      <Filter>ヘッダー ファイル\Interface</Filter>
-    </ClInclude>
-    <ClInclude Include="IGLPick.h">
-      <Filter>ヘッダー ファイル\Interface</Filter>
-    </ClInclude>
-    <ClInclude Include="IShaderPass.h">
-      <Filter>ヘッダー ファイル\Interface</Filter>
-    </ClInclude>
-    <ClInclude Include="ShaderStruct.h">
-      <Filter>ヘッダー ファイル\Shader</Filter>
-    </ClInclude>
-    <ClInclude Include="ShaderCommon.h">
-      <Filter>ヘッダー ファイル\Shader</Filter>
-    </ClInclude>
-    <ClInclude Include="DefaultVBOCode.h">
-      <Filter>ヘッダー ファイル\Shader\Code</Filter>
     </ClInclude>
     <ClInclude Include="NodeOperator.h">
       <Filter>ヘッダー ファイル\Node</Filter>
@@ -231,58 +120,19 @@
     <ClInclude Include="IModelNode.h">
       <Filter>ヘッダー ファイル\Node</Filter>
     </ClInclude>
-    <ClInclude Include="IShading.h">
-      <Filter>ヘッダー ファイル\Interface</Filter>
-    </ClInclude>
-    <ClInclude Include="BasicShading.h">
-      <Filter>ヘッダー ファイル\Shading</Filter>
-    </ClInclude>
-    <ClInclude Include="BezierLineShading.h">
-      <Filter>ヘッダー ファイル\Shading</Filter>
-    </ClInclude>
-    <ClInclude Include="CompositShading.h">
-      <Filter>ヘッダー ファイル\Shading</Filter>
-    </ClInclude>
-    <ClInclude Include="GrayScaleShading.h">
-      <Filter>ヘッダー ファイル\Shading</Filter>
-    </ClInclude>
-    <ClInclude Include="LambertShading.h">
-      <Filter>ヘッダー ファイル\Shading</Filter>
-    </ClInclude>
-    <ClInclude Include="NormalVisualizeShading.h">
-      <Filter>ヘッダー ファイル\Shading</Filter>
-    </ClInclude>
-    <ClInclude Include="OutputShading.h">
-      <Filter>ヘッダー ファイル\Shading</Filter>
-    </ClInclude>
-    <ClInclude Include="PhongShading.h">
-      <Filter>ヘッダー ファイル\Shading</Filter>
-    </ClInclude>
-    <ClInclude Include="SSLICShading.h">
-      <Filter>ヘッダー ファイル\Shading</Filter>
-    </ClInclude>
-    <ClInclude Include="VertexShading.h">
-      <Filter>ヘッダー ファイル\Shading</Filter>
-    </ClInclude>
     <ClInclude Include="Material.h">
       <Filter>ヘッダー ファイル\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="LighthingPass.cpp">
-      <Filter>ソース ファイル\LithingPass</Filter>
-    </ClCompile>
     <ClCompile Include="PfxRenderer.cpp">
       <Filter>ソース ファイル\Pfx</Filter>
-    </ClCompile>
-    <ClCompile Include="PfxPlane.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="DefaultVertexBuffer.cpp">
-      <Filter>ソース ファイル\VertexBuffer</Filter>
     </ClCompile>
     <ClCompile Include="RenderSystem.cpp">
       <Filter>ソース ファイル</Filter>
@@ -290,14 +140,8 @@
     <ClCompile Include="TextureGenerator.cpp">
       <Filter>ソース ファイル\Utility</Filter>
     </ClCompile>
-    <ClCompile Include="ModelGenerator.cpp">
-      <Filter>ソース ファイル\Utility</Filter>
-    </ClCompile>
     <ClCompile Include="ShaderManager.cpp">
       <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="UniformScene.cpp">
-      <Filter>ソース ファイル\Uniform</Filter>
     </ClCompile>
     <ClCompile Include="DirectionLight.cpp">
       <Filter>ソース ファイル\Light</Filter>
@@ -308,15 +152,6 @@
     <ClCompile Include="SpotLight.cpp">
       <Filter>ソース ファイル\Light</Filter>
     </ClCompile>
-    <ClCompile Include="UniformLight.cpp">
-      <Filter>ソース ファイル\Uniform</Filter>
-    </ClCompile>
-    <ClCompile Include="UniformMaterial.cpp">
-      <Filter>ソース ファイル\Uniform</Filter>
-    </ClCompile>
-    <ClCompile Include="UniformModel.cpp">
-      <Filter>ソース ファイル\Uniform</Filter>
-    </ClCompile>
     <ClCompile Include="OrthoCamera.cpp">
       <Filter>ソース ファイル\Camera</Filter>
     </ClCompile>
@@ -326,38 +161,8 @@
     <ClCompile Include="ICamera.cpp">
       <Filter>ソース ファイル\Camera</Filter>
     </ClCompile>
-    <ClCompile Include="Scene.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="DefaultVertexCode.cpp">
-      <Filter>ソース ファイル\Shader\Code</Filter>
-    </ClCompile>
-    <ClCompile Include="SampleModelGenerator.cpp">
-      <Filter>ソース ファイル\Utility</Filter>
-    </ClCompile>
     <ClCompile Include="RenderData.cpp">
       <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="GeometryPath.cpp">
-      <Filter>ソース ファイル\GeometryPath</Filter>
-    </ClCompile>
-    <ClCompile Include="PickPath.cpp">
-      <Filter>ソース ファイル\GeometryPath</Filter>
-    </ClCompile>
-    <ClCompile Include="IGLPick.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="IRaycastPick.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="ShaderStruct.cpp">
-      <Filter>ソース ファイル\Shader</Filter>
-    </ClCompile>
-    <ClCompile Include="ShaderCommon.cpp">
-      <Filter>ソース ファイル\Shader</Filter>
-    </ClCompile>
-    <ClCompile Include="DefaultVBOCode.cpp">
-      <Filter>ソース ファイル\Shader\Code</Filter>
     </ClCompile>
     <ClCompile Include="NodeOperator.cpp">
       <Filter>ソース ファイル\Node</Filter>
@@ -365,41 +170,11 @@
     <ClCompile Include="IModelNode.cpp">
       <Filter>ソース ファイル\Node</Filter>
     </ClCompile>
-    <ClCompile Include="BasicShading.cpp">
-      <Filter>ソース ファイル\Shading</Filter>
-    </ClCompile>
-    <ClCompile Include="BezierLineShading.cpp">
-      <Filter>ソース ファイル\Shading</Filter>
-    </ClCompile>
-    <ClCompile Include="CompositShading.cpp">
-      <Filter>ソース ファイル\Shading</Filter>
-    </ClCompile>
-    <ClCompile Include="GrayScaleShading.cpp">
-      <Filter>ソース ファイル\Shading</Filter>
-    </ClCompile>
-    <ClCompile Include="LambertShading.cpp">
-      <Filter>ソース ファイル\Shading</Filter>
-    </ClCompile>
-    <ClCompile Include="NormalVisualizeShading.cpp">
-      <Filter>ソース ファイル\Shading</Filter>
-    </ClCompile>
-    <ClCompile Include="OutputShading.cpp">
-      <Filter>ソース ファイル\Shading</Filter>
-    </ClCompile>
-    <ClCompile Include="PhongShading.cpp">
-      <Filter>ソース ファイル\Shading</Filter>
-    </ClCompile>
-    <ClCompile Include="SSLICShading.cpp">
-      <Filter>ソース ファイル\Shading</Filter>
-    </ClCompile>
-    <ClCompile Include="VertexShading.cpp">
-      <Filter>ソース ファイル\Shading</Filter>
-    </ClCompile>
-    <ClCompile Include="IShading.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="Material.cpp">
       <Filter>ソース ファイル\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

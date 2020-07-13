@@ -6,7 +6,6 @@ namespace KI
 namespace Renderer
 {
 
-
 class DLL_EXPORT RenderData
 {
 public:
@@ -32,9 +31,9 @@ public:
 	bool HasRenderRegion() { return m_pRenderRegion.size() != 0; };
 	void ClearRenderRegion();
 	//void Draw();
-	void Draw(const shared_ptr<IUniformStorage> pUniform);
-	void DrawInternal(shared_ptr<IShading> pShaderPass,shared_ptr<IUniformStorage> pUniform, int first, int count);
-	void DrawUseRegion(const shared_ptr<IUniformStorage> pUniform);
+	void Draw(const shared_ptr<UniformStruct> pUniform);
+	void DrawInternal(shared_ptr<IShading> pShaderPass,shared_ptr<UniformStruct> pUniform, int first, int count);
+	void DrawUseRegion(const shared_ptr<UniformStruct> pUniform);
 	shared_ptr<RenderData> Clone();
 
 private:

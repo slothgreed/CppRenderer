@@ -11,7 +11,7 @@ public:
 	~BezierLineNode();
 
 private:
-	virtual void DrawCore(shared_ptr<IUniformStorage> pUniform) override;
+	virtual void DrawCore(shared_ptr<UniformStruct> pUniform) override;
 	shared_ptr<BezierLineShading> m_pShading;
 	shared_ptr<RenderData> m_pRenderData;
 };

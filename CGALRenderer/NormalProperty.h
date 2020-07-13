@@ -12,7 +12,7 @@ public:
 	~NormalProperty();
 
 	virtual PROPERTY_TYPE Type() override { return PROPERTY_TYPE_VECTOR; }
-	virtual void Draw(shared_ptr<IUniformStorage> pUniform);
+	virtual void Draw(shared_ptr<UniformStruct> pUniform);
 	virtual void Update(IModelNode* pModelNode);
 private:
 	void Build(IModelNode* pModelNode);

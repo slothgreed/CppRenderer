@@ -19,7 +19,7 @@ public:
 	virtual void AddPartSelect(TOPOLOGY_TYPE type, int first, int count);
 
 private:
-	virtual void DrawCore(shared_ptr<IUniformStorage> pUniform) override;
+	virtual void DrawCore(shared_ptr<UniformStruct> pUniform) override;
 	string m_name;
 	shared_ptr<RenderData> m_pRenderData;
 	shared_ptr<IShading> m_pShading;

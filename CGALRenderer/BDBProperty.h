@@ -10,7 +10,7 @@ public:
 	~BDBProperty();
 
 	virtual PROPERTY_TYPE Type() override { return PROPERTY_TYPE_BDB; }
-	virtual void Draw(shared_ptr<IUniformStorage> pUniform);
+	virtual void Draw(shared_ptr<UniformStruct> pUniform);
 	virtual void Update(IModelNode* pModel) override;
 private:
 	void GetBDBPosition(const BDB& bdb, vector<vec3>& position);

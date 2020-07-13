@@ -1,6 +1,7 @@
 #ifndef SCENE_H
 #define SCENE_H
-namespace KI{
+namespace KI
+{
 namespace Renderer
 {
 
@@ -26,11 +27,10 @@ public:
 	shared_ptr<ICamera> GetCamera() { return m_pCamera; };
 private:
 	shared_ptr<ICamera> m_pCamera;
-	shared_ptr<UniformScene> m_pUniformScene;
-	shared_ptr<UniformModel> m_pUniformModel;
-	shared_ptr<UniformLight> m_pUniformLight;
+	shared_ptr<UniformStruct> m_pUniformStruct;
 	vector<shared_ptr<ILight>> m_pLights;
 	vector<shared_ptr<IModelNode>> m_pRenderList;
+	unique_ptr<UniformBuilder> m_pUniformBuilder;
 };
 
 class DLL_EXPORT SceneModelIterator

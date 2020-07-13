@@ -21,7 +21,7 @@ public:
 	virtual PROPERTY_TYPE Type() = 0;
 	void SetVisible(bool value) { m_visible = value; }
 	bool Visible() { return m_visible; }
-	virtual void Draw(shared_ptr<IUniformStorage> pUniform) = 0;
+	virtual void Draw(shared_ptr<UniformStruct> pUniform) = 0;
 	virtual void Update(IModelNode* pModelNode) = 0;
 	virtual void Build(IModelNode* pModelNode) = 0;
 private:

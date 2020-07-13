@@ -21,7 +21,7 @@ PrimitiveNode::~PrimitiveNode()
 {
 }
 
-void PrimitiveNode::DrawCore(shared_ptr<IUniformStorage> pUniform)
+void PrimitiveNode::DrawCore(shared_ptr<UniformStruct> pUniform)
 {
 	if (m_pState != nullptr)
 	{

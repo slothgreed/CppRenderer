@@ -13,7 +13,7 @@ PolygonModelNode::~PolygonModelNode()
 {
 }
 
-void PolygonModelNode::DrawCore(shared_ptr<IUniformStorage> pUniform)
+void PolygonModelNode::DrawCore(shared_ptr<UniformStruct> pUniform)
 {
 	if (m_pFaceData != NULL)
 	{

@@ -43,17 +43,32 @@
     <Filter Include="ヘッダー ファイル\Pfx">
       <UniqueIdentifier>{2b34540f-0a76-44ea-87ca-c06a1054a67f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\ShaderPass">
-      <UniqueIdentifier>{26222bc2-e434-4adf-a309-3344e9ec795e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\ShaderPass">
-      <UniqueIdentifier>{6a8545eb-0366-4875-855e-344c8b905438}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ソース ファイル\Model\BasicObject">
       <UniqueIdentifier>{a782c782-cf44-43ec-9737-1639ea266dc3}</UniqueIdentifier>
     </Filter>
     <Filter Include="ヘッダー ファイル\Model\BasicObject">
       <UniqueIdentifier>{bcfc4b2c-1036-4c9b-8c03-b1f5747c3016}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\RenderPath">
+      <UniqueIdentifier>{f97767f5-c4bc-480d-97bf-9ba83636c833}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\RenderPath">
+      <UniqueIdentifier>{547fe05e-c79c-4d28-83e4-e053c3afa68c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\RenderPath\Geometry">
+      <UniqueIdentifier>{d36e21cf-618f-444b-a268-53c85d182dfc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\RenderPath\Lighthing">
+      <UniqueIdentifier>{c1ca7743-a77c-449a-9eeb-9869506af73e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\RenderPath\Geometry">
+      <UniqueIdentifier>{132027d5-2f52-433c-9b85-1d11dc2f50b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Utility">
+      <UniqueIdentifier>{15cecb3c-385e-4706-977f-dd4b7e7cc5ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Utility">
+      <UniqueIdentifier>{c2f073ee-fcd5-4041-b876-fb19d22313b3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -117,20 +132,35 @@
     <ClInclude Include="SSLICEffect.h">
       <Filter>ヘッダー ファイル\Pfx</Filter>
     </ClInclude>
-    <ClInclude Include="ShadingManager.h">
-      <Filter>ヘッダー ファイル\ShaderPass</Filter>
-    </ClInclude>
     <ClInclude Include="PrimitiveModel.h">
       <Filter>ヘッダー ファイル\Model\PolygonModel</Filter>
     </ClInclude>
-    <ClInclude Include="DefaultShaderPass.h">
-      <Filter>ヘッダー ファイル\ShaderPass</Filter>
-    </ClInclude>
-    <ClInclude Include="GeneralShaderPass.h">
-      <Filter>ヘッダー ファイル\ShaderPass</Filter>
-    </ClInclude>
     <ClInclude Include="Grid.h">
       <Filter>ヘッダー ファイル\Model\BasicObject</Filter>
+    </ClInclude>
+    <ClInclude Include="MaterialManager.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="GeometryPath.h">
+      <Filter>ヘッダー ファイル\RenderPath\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="PickPath.h">
+      <Filter>ヘッダー ファイル\RenderPath\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="IGLPick.h">
+      <Filter>ヘッダー ファイル\RenderPath\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="IRaycastPick.h">
+      <Filter>ヘッダー ファイル\RenderPath\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="SampleModelGenerator.h">
+      <Filter>ヘッダー ファイル\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelGenerator.h">
+      <Filter>ヘッダー ファイル\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="PfxPlane.h">
+      <Filter>ヘッダー ファイル\Pfx</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -173,20 +203,35 @@
     <ClCompile Include="SSLICEffect.cpp">
       <Filter>ソース ファイル\Pfx</Filter>
     </ClCompile>
-    <ClCompile Include="ShadingManager.cpp">
-      <Filter>ソース ファイル\ShaderPass</Filter>
-    </ClCompile>
     <ClCompile Include="PrimitiveModel.cpp">
       <Filter>ソース ファイル\Model\PolygonModel</Filter>
     </ClCompile>
-    <ClCompile Include="DefaultShaderPass.cpp">
-      <Filter>ソース ファイル\ShaderPass</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneralShaderPass.cpp">
-      <Filter>ソース ファイル\ShaderPass</Filter>
-    </ClCompile>
     <ClCompile Include="Grid.cpp">
       <Filter>ソース ファイル\Model\BasicObject</Filter>
+    </ClCompile>
+    <ClCompile Include="MaterialManager.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="GeometryPath.cpp">
+      <Filter>ソース ファイル\RenderPath\Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="PickPath.cpp">
+      <Filter>ソース ファイル\RenderPath\Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="IGLPick.cpp">
+      <Filter>ソース ファイル\RenderPath\Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="IRaycastPick.cpp">
+      <Filter>ソース ファイル\RenderPath\Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelGenerator.cpp">
+      <Filter>ソース ファイル\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="SampleModelGenerator.cpp">
+      <Filter>ソース ファイル\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="PfxPlane.cpp">
+      <Filter>ソース ファイル\Pfx</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

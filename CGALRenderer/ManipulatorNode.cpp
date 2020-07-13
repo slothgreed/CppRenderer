@@ -84,7 +84,7 @@ void ManipulatorNode::GenManipulatorHandleVBO(
 
 }
 
-void ManipulatorNode::DrawCore(shared_ptr<IUniformStorage> pUniform)
+void ManipulatorNode::DrawCore(shared_ptr<UniformStruct> pUniform)
 {
 	m_pShading->SetColor(vec4(1, 0, 0, 1));
 	m_pFaceDatas[MANIPULATOR_HANDLE_X]->Draw(pUniform);

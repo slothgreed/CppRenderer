@@ -25,11 +25,19 @@ using namespace glm;
 #include "../KIFoundation/pch.h"
 using namespace KI::Foundation;
 
+#include "../KIGfx/pch.h"
+using namespace KI::Gfx;
+
+#include "../KIShaderLib/pch.h"
+using namespace KI::ShaderLib;
+
 #include "../KIRenderer/pch.h"
 using namespace KI::Renderer;
 
 #include "../KITopology/pch.h"
 using namespace KI::Topology;
+
+#include "IRaycastPick.h"
 
 // asset
 #include "AssetTypes.h"
@@ -43,8 +51,6 @@ using namespace KI::Topology;
 #include "PrimitiveModel.h"
 
 #include "MaterialManager.h"
-#include "DefaultShaderPass.h"
-#include "GeneralShaderPass.h"
 
 // manipulator
 #include "MoveManipulator.h"
@@ -61,5 +67,15 @@ using namespace KI::Topology;
 
 #include "GrayScaleEffect.h"
 #include "SSLICEffect.h"
+
+#include "GeometryPath.h"
+#include "PickPath.h"
+
+#include "IGLPick.h"
+#include "PfxPlane.h"
+
+#include "ModelGenerator.h"
+#include "SampleModelGenerator.h"
+
 
 #endif // !KI_ASSET_PCH_H

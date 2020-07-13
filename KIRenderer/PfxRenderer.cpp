@@ -5,6 +5,7 @@ namespace Renderer
 {
 PfxRenderer::PfxRenderer()
 {
+	m_pUniformBuilder = make_unique<UniformBuilder>();
 }
 
 PfxRenderer::~PfxRenderer()
@@ -47,7 +48,7 @@ IPostEffect* PfxRenderer::FindPostEffect(PFX_TYPE type)
 
 void PfxRenderer::Draw()
 {
-	auto pUniform = make_shared<IUniformStorage>();
+	auto pUniform = m_pUniformBuilder->BuildStruct();
 	for (int i = 0; i < m_pPfxLists.size(); i++)
 	{
 		if (m_pPfxLists[i]->Apply())

@@ -13,6 +13,39 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="ソース ファイル\Shading">
+      <UniqueIdentifier>{0846e3bf-bab5-4d03-938c-90c9d0b0985c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Shader">
+      <UniqueIdentifier>{b686ff1c-3fda-4d2e-be9f-85ffd09b05db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Shader">
+      <UniqueIdentifier>{21c43186-420b-437b-a9ae-60e0839ccfca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Shading">
+      <UniqueIdentifier>{2a4d9ddd-de6d-4fa4-8b07-8dd00e92292e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Shader\Code">
+      <UniqueIdentifier>{8e96f7b7-6abe-4fbd-9bf2-a4db9eeb7abd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Shader\Code">
+      <UniqueIdentifier>{45e1b95f-b6fb-463d-8a73-b9dca76a4569}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\VertexBuffer">
+      <UniqueIdentifier>{5ef4f80f-9235-444a-886a-6aa6f8c7328f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\VertexBuffer">
+      <UniqueIdentifier>{cdfe9d9b-56a6-44b6-8457-3c75199a15d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Interface">
+      <UniqueIdentifier>{e6edf739-2925-4c95-b1a7-c825071f4e56}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Uniform">
+      <UniqueIdentifier>{ad1970fb-3803-4568-8221-80858c589577}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Uniform">
+      <UniqueIdentifier>{2a23bd81-8a18-4495-9e8e-c44f6f518c1e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -21,13 +54,148 @@
     <ClInclude Include="pch.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
+    <ClInclude Include="ShaderStruct.h">
+      <Filter>ヘッダー ファイル\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderCommon.h">
+      <Filter>ヘッダー ファイル\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="PostProcessCode.h">
+      <Filter>ヘッダー ファイル\Shader\Code</Filter>
+    </ClInclude>
+    <ClInclude Include="DefaultVBOCode.h">
+      <Filter>ヘッダー ファイル\Shader\Code</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleShaderCode.h">
+      <Filter>ヘッダー ファイル\Shader\Code</Filter>
+    </ClInclude>
+    <ClInclude Include="DefaultVertexCode.h">
+      <Filter>ヘッダー ファイル\Shader\Code</Filter>
+    </ClInclude>
+    <ClInclude Include="BezierLineShading.h">
+      <Filter>ヘッダー ファイル\Shading</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexShading.h">
+      <Filter>ヘッダー ファイル\Shading</Filter>
+    </ClInclude>
+    <ClInclude Include="SSLICShading.h">
+      <Filter>ヘッダー ファイル\Shading</Filter>
+    </ClInclude>
+    <ClInclude Include="OutputShading.h">
+      <Filter>ヘッダー ファイル\Shading</Filter>
+    </ClInclude>
+    <ClInclude Include="NormalVisualizeShading.h">
+      <Filter>ヘッダー ファイル\Shading</Filter>
+    </ClInclude>
+    <ClInclude Include="LambertShading.h">
+      <Filter>ヘッダー ファイル\Shading</Filter>
+    </ClInclude>
+    <ClInclude Include="GrayScaleShading.h">
+      <Filter>ヘッダー ファイル\Shading</Filter>
+    </ClInclude>
+    <ClInclude Include="CompositShading.h">
+      <Filter>ヘッダー ファイル\Shading</Filter>
+    </ClInclude>
+    <ClInclude Include="BasicShading.h">
+      <Filter>ヘッダー ファイル\Shading</Filter>
+    </ClInclude>
+    <ClInclude Include="PhongShading.h">
+      <Filter>ヘッダー ファイル\Shading</Filter>
+    </ClInclude>
+    <ClInclude Include="DefaultVertexBuffer.h">
+      <Filter>ヘッダー ファイル\VertexBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="Define.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="IShading.h">
+      <Filter>ヘッダー ファイル\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderLibTypes.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="UniformBuilder.h">
+      <Filter>ヘッダー ファイル\Uniform</Filter>
+    </ClInclude>
+    <ClInclude Include="UniformLight.h">
+      <Filter>ヘッダー ファイル\Uniform</Filter>
+    </ClInclude>
+    <ClInclude Include="UniformMaterial.h">
+      <Filter>ヘッダー ファイル\Uniform</Filter>
+    </ClInclude>
+    <ClInclude Include="UniformModel.h">
+      <Filter>ヘッダー ファイル\Uniform</Filter>
+    </ClInclude>
+    <ClInclude Include="UniformScene.h">
+      <Filter>ヘッダー ファイル\Uniform</Filter>
+    </ClInclude>
+    <ClInclude Include="UniformStruct.h">
+      <Filter>ヘッダー ファイル\Uniform</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="dllmain.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="pch.cpp">
       <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderStruct.cpp">
+      <Filter>ソース ファイル\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderCommon.cpp">
+      <Filter>ソース ファイル\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="DefaultVertexCode.cpp">
+      <Filter>ソース ファイル\Shader\Code</Filter>
+    </ClCompile>
+    <ClCompile Include="DefaultVBOCode.cpp">
+      <Filter>ソース ファイル\Shader\Code</Filter>
+    </ClCompile>
+    <ClCompile Include="SSLICShading.cpp">
+      <Filter>ソース ファイル\Shading</Filter>
+    </ClCompile>
+    <ClCompile Include="OutputShading.cpp">
+      <Filter>ソース ファイル\Shading</Filter>
+    </ClCompile>
+    <ClCompile Include="NormalVisualizeShading.cpp">
+      <Filter>ソース ファイル\Shading</Filter>
+    </ClCompile>
+    <ClCompile Include="LambertShading.cpp">
+      <Filter>ソース ファイル\Shading</Filter>
+    </ClCompile>
+    <ClCompile Include="GrayScaleShading.cpp">
+      <Filter>ソース ファイル\Shading</Filter>
+    </ClCompile>
+    <ClCompile Include="CompositShading.cpp">
+      <Filter>ソース ファイル\Shading</Filter>
+    </ClCompile>
+    <ClCompile Include="BezierLineShading.cpp">
+      <Filter>ソース ファイル\Shading</Filter>
+    </ClCompile>
+    <ClCompile Include="BasicShading.cpp">
+      <Filter>ソース ファイル\Shading</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexShading.cpp">
+      <Filter>ソース ファイル\Shading</Filter>
+    </ClCompile>
+    <ClCompile Include="PhongShading.cpp">
+      <Filter>ソース ファイル\Shading</Filter>
+    </ClCompile>
+    <ClCompile Include="DefaultVertexBuffer.cpp">
+      <Filter>ソース ファイル\VertexBuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="UniformBuilder.cpp">
+      <Filter>ソース ファイル\Uniform</Filter>
+    </ClCompile>
+    <ClCompile Include="UniformLight.cpp">
+      <Filter>ソース ファイル\Uniform</Filter>
+    </ClCompile>
+    <ClCompile Include="UniformMaterial.cpp">
+      <Filter>ソース ファイル\Uniform</Filter>
+    </ClCompile>
+    <ClCompile Include="UniformModel.cpp">
+      <Filter>ソース ファイル\Uniform</Filter>
+    </ClCompile>
+    <ClCompile Include="UniformScene.cpp">
+      <Filter>ソース ファイル\Uniform</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

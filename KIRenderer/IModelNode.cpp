@@ -37,7 +37,7 @@ void IModelNode::RemoveProperty(shared_ptr<IModelProperty> prop)
 		m_pProperty.erase(m_pProperty.begin() + dist);
 	}
 }
-void IModelNode::Draw(shared_ptr<IUniformStorage> pUniform)
+void IModelNode::Draw(shared_ptr<UniformStruct> pUniform)
 {
 	if (m_visible == false)
 	{
@@ -45,17 +45,19 @@ void IModelNode::Draw(shared_ptr<IUniformStorage> pUniform)
 	}
 	else
 	{
-		for (int i = 0; i < pUniform.size(); i++) {
-			auto pModelUniform = dynamic_cast<UniformModel*>(pUniform[i]);
-			if (pModelUniform) {
-				pModelUniform->SetModelMatrix(m_ModelMatrix);
+		if (pUniform != NULL)
+		{
+			if (pUniform->GetModel() != NULL)
+			{
+				pUniform->GetModel()->SetModelMatrix(m_ModelMatrix);
 			}
 		}
+
 		DrawCore(pUniform);
 	}
 }
 
-void IModelNode::DrawProperty(shared_ptr<IUniformStorage> pUniform)
+void IModelNode::DrawProperty(shared_ptr<UniformStruct> pUniform)
 {
 	for (int i = 0; i < m_pProperty.size(); i++)
 	{

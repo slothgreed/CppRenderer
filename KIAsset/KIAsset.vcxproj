@@ -98,7 +98,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)extlibs\glfw-3.3\lib-vc2017;$(SolutionDir)extlibs\glew-2.1.0\lib\Release\x64;$(SolutionDir)$(Platform)\$(Configuration)\;E:\Tools\CGAL4.11\build\lib;E:\Tools\CGAL4.11\auxiliary\gmp\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3.lib;glew32.lib;opengl32.lib;CGAL-vc140-mt-gd-4.11.lib;CGAL_ImageIO-vc140-mt-gd-4.11.lib;CGAL_Core-vc140-mt-gd-4.11.lib;CGAL_Qt5-vc140-mt-gd-4.11.lib;libgmp-10.lib;libmpfr-4.lib;KIFoundation.lib;KIGfx.lib;KITopology.lib;KIRenderer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3.lib;glew32.lib;opengl32.lib;CGAL-vc140-mt-gd-4.11.lib;CGAL_ImageIO-vc140-mt-gd-4.11.lib;CGAL_Core-vc140-mt-gd-4.11.lib;CGAL_Qt5-vc140-mt-gd-4.11.lib;libgmp-10.lib;libmpfr-4.lib;KIFoundation.lib;KIGfx.lib;KITopology.lib;KIRenderer.lib;KIShaderLib.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Lib>
       <AdditionalLibraryDirectories>$(SolutionDir)extlibs\glfw-3.3\lib-vc2017;$(SolutionDir)extlibs\glew-2.1.0\lib\Release\x64;E:\Tools\CGAL4.11\build\lib;E:\Tools\CGAL4.11\auxiliary\gmp\lib\;$(SolutionDir)$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -157,7 +157,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)extlibs\glfw-3.3\lib-vc2017;$(SolutionDir)extlibs\glew-2.1.0\lib\Release\x64;$(SolutionDir)$(Platform)\$(Configuration)\;E:\Tools\CGAL4.11\build\lib;E:\Tools\CGAL4.11\auxiliary\gmp\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3.lib;glew32.lib;opengl32.lib;CGAL-vc140-mt-gd-4.11.lib;CGAL_ImageIO-vc140-mt-gd-4.11.lib;CGAL_Core-vc140-mt-gd-4.11.lib;CGAL_Qt5-vc140-mt-gd-4.11.lib;libgmp-10.lib;libmpfr-4.lib;KIFoundation.lib;KIGfx.lib;KITopology.lib;KIRenderer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3.lib;glew32.lib;opengl32.lib;CGAL-vc140-mt-gd-4.11.lib;CGAL_ImageIO-vc140-mt-gd-4.11.lib;CGAL_Core-vc140-mt-gd-4.11.lib;CGAL_Qt5-vc140-mt-gd-4.11.lib;libgmp-10.lib;libmpfr-4.lib;KIFoundation.lib;KIGfx.lib;KITopology.lib;KIRenderer.lib;KIShaderLib.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Lib>
       <AdditionalLibraryDirectories>$(SolutionDir)extlibs\glfw-3.3\lib-vc2017;$(SolutionDir)extlibs\glew-2.1.0\lib\Release\x64;E:\Tools\CGAL4.11\build\lib;E:\Tools\CGAL4.11\auxiliary\gmp\lib\;$(SolutionDir)$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -165,7 +165,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="GeneralShaderPass.h" />
+    <ClInclude Include="GeometryPath.h" />
     <ClInclude Include="GrayScaleEffect.h" />
     <ClInclude Include="Grid.h" />
     <ClInclude Include="IAnimation.h" />
@@ -174,17 +174,22 @@
     <ClInclude Include="CGALLinearCellComplex.h" />
     <ClInclude Include="CGALModel.h" />
     <ClInclude Include="CGALPolyhedron.h" />
-    <ClInclude Include="DefaultShaderPass.h" />
     <ClInclude Include="HalfEdgeModel.h" />
+    <ClInclude Include="IGLPick.h" />
     <ClInclude Include="IManipulatorModel.h" />
     <ClInclude Include="IPolygonModel.h" />
+    <ClInclude Include="IRaycastPick.h" />
     <ClInclude Include="KeyFrame.h" />
     <ClInclude Include="MaterialManager.h" />
     <ClInclude Include="ModelAnimation.h" />
+    <ClInclude Include="ModelGenerator.h" />
     <ClInclude Include="MoveManipulator.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="PfxPlane.h" />
+    <ClInclude Include="PickPath.h" />
     <ClInclude Include="PrimitiveModel.h" />
     <ClInclude Include="RotateManipulator.h" />
+    <ClInclude Include="SampleModelGenerator.h" />
     <ClInclude Include="ScaleManipulator.h" />
     <ClInclude Include="SSLICEffect.h" />
     <ClInclude Include="stdafx.h" />
@@ -195,17 +200,22 @@
     <ClCompile Include="CGALGeneralizedMaps.cpp" />
     <ClCompile Include="CGALLinearCellComplex.cpp" />
     <ClCompile Include="CGALPolyhedron.cpp" />
-    <ClCompile Include="DefaultShaderPass.cpp" />
-    <ClCompile Include="GeneralShaderPass.cpp" />
+    <ClCompile Include="GeometryPath.cpp" />
     <ClCompile Include="GrayScaleEffect.cpp" />
     <ClCompile Include="Grid.cpp" />
     <ClCompile Include="HalfEdgeModel.cpp" />
+    <ClCompile Include="IGLPick.cpp" />
     <ClCompile Include="IPolygonModel.cpp" />
+    <ClCompile Include="IRaycastPick.cpp" />
     <ClCompile Include="MaterialManager.cpp" />
     <ClCompile Include="ModelAnimation.cpp" />
+    <ClCompile Include="ModelGenerator.cpp" />
     <ClCompile Include="MoveManipulator.cpp" />
+    <ClCompile Include="PfxPlane.cpp" />
+    <ClCompile Include="PickPath.cpp" />
     <ClCompile Include="PrimitiveModel.cpp" />
     <ClCompile Include="RotateManipulator.cpp" />
+    <ClCompile Include="SampleModelGenerator.cpp" />
     <ClCompile Include="ScaleManipulator.cpp" />
     <ClCompile Include="SSLICEffect.cpp" />
     <ClCompile Include="stdafx.cpp">

@@ -13,7 +13,7 @@ public:
 	IModelNode(shared_ptr<IModel> model);
 	virtual ~IModelNode();
 
-	void Draw(shared_ptr<IUniformStorage> pUniform);
+	void Draw(shared_ptr<UniformStruct> pUniform);
 	virtual void ShowProperty() {};
 	virtual void AddPartSelect(TOPOLOGY_TYPE type, int first, int count) {};
 	virtual void Update(void* sender, IEventArgs* args);
@@ -25,12 +25,12 @@ public:
 protected:
 	void AddProperty(shared_ptr<IModelProperty> prop);
 	void RemoveProperty(shared_ptr<IModelProperty> prop);
-	virtual void DrawProperty(shared_ptr<IUniformStorage> pUniform);
+	virtual void DrawProperty(shared_ptr<UniformStruct> pUniform);
 	virtual void UpdateProperty();
 	shared_ptr<IModel> m_pModel;
 
 private:
-	virtual void DrawCore(shared_ptr<IUniformStorage> pUniform) = 0;
+	virtual void DrawCore(shared_ptr<UniformStruct> pUniform) = 0;
 	bool m_visible;
 	vector<shared_ptr<IModelProperty>> m_pProperty;
 	mat4x4 m_ModelMatrix;

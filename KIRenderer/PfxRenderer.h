@@ -20,7 +20,7 @@ public:
 	void Resize(int width, int height);
 
 private:
-	
+	unique_ptr<UniformBuilder> m_pUniformBuilder;
 	vector<shared_ptr<IPostEffect>> m_pPfxLists;
 };
 }

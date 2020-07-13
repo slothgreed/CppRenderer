@@ -42,6 +42,9 @@ using namespace KI::Foundation;
 #include "../KIGfx/pch.h"
 using namespace KI::Gfx;
 
+#include "../KIShaderLib/pch.h"
+using namespace KI::ShaderLib;
+
 #include "../KIRenderer/pch.h"
 using namespace KI::Renderer;
 

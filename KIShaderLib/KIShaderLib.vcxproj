@@ -91,11 +91,15 @@
       <PreprocessorDefinitions>_DEBUG;KISHADERLIB_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(SolutionDir)extlibs\glfw-3.3\include;$(SolutionDir)extlibs\glm-0.9.9.6\glm;$(SolutionDir)extlibs\glew-2.1.0\include;$(SolutionDir)extlibs\stb</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>pch.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
+      <AdditionalDependencies>glfw3.lib;glew32.lib;opengl32.lib;KIFoundation.lib;KIGfx.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)extlibs\glfw-3.3\lib-vc2017;$(SolutionDir)extlibs\glew-2.1.0\lib\Release\x64;$(SolutionDir)$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -145,6 +149,8 @@
       <PreprocessorDefinitions>NDEBUG;KISHADERLIB_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(SolutionDir)extlibs\glfw-3.3\include;$(SolutionDir)extlibs\glm-0.9.9.6\glm;$(SolutionDir)extlibs\glew-2.1.0\include;$(SolutionDir)extlibs\stb</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>pch.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -152,20 +158,67 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
+      <AdditionalDependencies>glfw3.lib;glew32.lib;opengl32.lib;KIFoundation.lib;KIGfx.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)extlibs\glfw-3.3\lib-vc2017;$(SolutionDir)extlibs\glew-2.1.0\lib\Release\x64;$(SolutionDir)$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BasicShading.h" />
+    <ClInclude Include="BezierLineShading.h" />
+    <ClInclude Include="CompositShading.h" />
+    <ClInclude Include="DefaultVBOCode.h" />
+    <ClInclude Include="DefaultVertexBuffer.h" />
+    <ClInclude Include="DefaultVertexCode.h" />
+    <ClInclude Include="Define.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="GrayScaleShading.h" />
+    <ClInclude Include="IShading.h" />
+    <ClInclude Include="LambertShading.h" />
+    <ClInclude Include="NormalVisualizeShading.h" />
+    <ClInclude Include="OutputShading.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="PhongShading.h" />
+    <ClInclude Include="PostProcessCode.h" />
+    <ClInclude Include="ShaderCommon.h" />
+    <ClInclude Include="ShaderLibTypes.h" />
+    <ClInclude Include="ShaderStruct.h" />
+    <ClInclude Include="SimpleShaderCode.h" />
+    <ClInclude Include="SSLICShading.h" />
+    <ClInclude Include="UniformBuilder.h" />
+    <ClInclude Include="UniformLight.h" />
+    <ClInclude Include="UniformMaterial.h" />
+    <ClInclude Include="UniformModel.h" />
+    <ClInclude Include="UniformScene.h" />
+    <ClInclude Include="UniformStruct.h" />
+    <ClInclude Include="VertexShading.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="BasicShading.cpp" />
+    <ClCompile Include="BezierLineShading.cpp" />
+    <ClCompile Include="CompositShading.cpp" />
+    <ClCompile Include="DefaultVBOCode.cpp" />
+    <ClCompile Include="DefaultVertexBuffer.cpp" />
+    <ClCompile Include="DefaultVertexCode.cpp" />
+    <ClCompile Include="GrayScaleShading.cpp" />
+    <ClCompile Include="LambertShading.cpp" />
+    <ClCompile Include="NormalVisualizeShading.cpp" />
+    <ClCompile Include="OutputShading.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="PhongShading.cpp" />
+    <ClCompile Include="ShaderCommon.cpp" />
+    <ClCompile Include="ShaderStruct.cpp" />
+    <ClCompile Include="SSLICShading.cpp" />
+    <ClCompile Include="UniformBuilder.cpp" />
+    <ClCompile Include="UniformLight.cpp" />
+    <ClCompile Include="UniformMaterial.cpp" />
+    <ClCompile Include="UniformModel.cpp" />
+    <ClCompile Include="UniformScene.cpp" />
+    <ClCompile Include="VertexShading.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

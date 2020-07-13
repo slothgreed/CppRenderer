@@ -29,46 +29,26 @@ using namespace KI::Foundation;
 #include "../KIGfx/pch.h"
 using namespace KI::Gfx;
 
+#include "../KIShaderLib/pch.h"
+using namespace KI::ShaderLib;
 
-#include "Define.h"
+
 #include "RendererTypes.h"
 
-#include "IGLPick.h"
-#include "IRaycastPick.h"
-
-#include "IShading.h"
 #include "IModel.h"
-#include "IShaderPass.h"
+
+
 #include "IModelProperty.h"
 #include "IModelNode.h"
-#include "ILight.h"
-#include "IGeometryPath.h"
 #include "Vertex.h"
 #include "NodeOperator.h"
 
-#include "UniformMaterial.h"
-#include "UniformModel.h"
-#include "UniformScene.h"
-#include "UniformLight.h"
-
+#include "ILight.h"
 #include "DirectionLight.h"
 #include "SpotLight.h"
 #include "PointLight.h"
 
-#include "ModelGenerator.h"
 #include "TextureGenerator.h"
-#include "SampleModelGenerator.h"
-
-
-
-#include "ShaderCommon.h"
-#include "ShaderStruct.h"
-#include "DefaultVBOCode.h"
-#include "DefaultVertexCode.h"
-#include "DefaultVertexBuffer.h"
-
-#include "PostProcessCode.h"
-#include "SimpleShaderCode.h"
 
 #include "ShaderManager.h"
 
@@ -78,32 +58,15 @@ using namespace KI::Gfx;
 #include "OrthoCamera.h"
 
 // Renderer
-#include "PfxPlane.h"
 #include "IPostEffect.h"
-#include "GeometryPath.h"
-#include "PickPath.h"
+
 #include "RenderSystem.h"
 #include "PfxRenderer.h"
-#include "LighthingPass.h"
-
-#include "Scene.h"
 
 #include "RenderData.h"
 
 #include "Material.h"
 
-#include "OutputShading.h"
-#include "CompositShading.h"
-#include "SSLICShading.h"
-#include "VertexShading.h"
-#include "BasicShading.h"
-#include "LambertShading.h"
-#include "NormalVisualizeShading.h"
-#include "OutputShading.h"
-#include "GrayScaleShading.h"
-#include "BezierLineShading.h"
-#include "PhongShading.h"
-
-
+#include "Scene.h"
 
 #endif KI_RENDERER_PCH_H

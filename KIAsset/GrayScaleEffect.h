@@ -13,14 +13,14 @@ public:
 
 	virtual PFX_TYPE Type() { return PFX_TYPE::PFX_TYPE_GRAYSCALE; }
 	virtual void Initialize(int width, int height) override;
-	virtual void Draw(shared_ptr<IUniformStorage> pUniform) override;
+	virtual void Draw(shared_ptr<UniformStruct> pUniform) override;
 	void Resize(int width, int height) override;
 
 	void SetTexture(shared_ptr<Texture> texture);
 	shared_ptr<Texture> RenderTexture() { return m_pRenderTarget->ColorTexture(0); };
 
 private:
-	shared_ptr<GrayScaleShading> m_pShading;
+	//shared_ptr<GrayScaleShading> m_pShading;
 	shared_ptr<RenderTarget> m_pRenderTarget;
 	shared_ptr<RenderData> m_pPlane;
 };

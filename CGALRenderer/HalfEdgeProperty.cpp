@@ -101,7 +101,7 @@ void HalfEdgeProperty::GetVBOData(HalfEdgeDS* model, vector<vec3>& position, vec
 	}
 }
 
-void HalfEdgeProperty::Draw(shared_ptr<IUniformStorage> pUniform)
+void HalfEdgeProperty::Draw(shared_ptr<UniformStruct> pUniform)
 {
 	m_pShader->Use();
 	m_pRenderData->Draw(pUniform);

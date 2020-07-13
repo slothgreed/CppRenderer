@@ -11,7 +11,7 @@ public:
 
 	virtual void ShowProperty() override;
 private:
-	virtual void DrawCore(shared_ptr<IUniformStorage> pUniform) override;
+	virtual void DrawCore(shared_ptr<UniformStruct> pUniform) override;
 	void GenManipulatorHandleVBO(
 		RenderData* pFaceData,
 		RenderData* pEdgeData,

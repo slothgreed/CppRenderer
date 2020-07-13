@@ -43,7 +43,7 @@ void RenderData::SetGeometryData(GLuint primitiveType, shared_ptr<IVertexBuffer>
 	m_pIndexBuffer = pIndexBuffer;
 }
 
-void RenderData::DrawUseRegion(const shared_ptr<IUniformStorage> pUniform)
+void RenderData::DrawUseRegion(const shared_ptr<UniformStruct> pUniform)
 {
 	// •”•ªƒ}ƒeƒŠƒAƒ‹‚Å•`‰æ
 	for (int i = 0; i < m_pRenderRegion.size(); i++)
@@ -93,7 +93,7 @@ int RenderData::GetVertexSize()
 		return m_pIndexBuffer->Size();
 	}
 }
-void RenderData::DrawInternal(shared_ptr<IShading> pShading,shared_ptr<IUniformStorage> pUniform, int first, int count)
+void RenderData::DrawInternal(shared_ptr<IShading> pShading,shared_ptr<UniformStruct> pUniform, int first, int count)
 {
 	if (pShading->NeedReCompileShader() || m_pShader == nullptr)
 	{
@@ -120,7 +120,7 @@ void RenderData::DrawInternal(shared_ptr<IShading> pShading,shared_ptr<IUniformS
 	m_pShader->UnUse();
 }
 
-void RenderData::Draw(const shared_ptr<IUniformStorage> pUniform)
+void RenderData::Draw(const shared_ptr<UniformStruct> pUniform)
 {
 	if (m_pRenderRegion.size() != 0)
 	{
