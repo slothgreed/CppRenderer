@@ -47,6 +47,8 @@ namespace ShaderLib
 #define OUT_TEXTURE0		"#define OUT_TEXTURE0\n"
 #define OUT_INSTANCE		"#define OUT_INSTANCE\n"
 #define OUT_PLANE_POSITION	"#define OUT_PLANE_POSITION\n"
+#define OUT_WORLD_POSITION	"#define OUT_WORLD_POSITION\n"
+
 
 #define USE_GBUFFER		"#define USE_GBUFFER\n"
 #define USE_SHADING		"#define USE_SHADING\n"

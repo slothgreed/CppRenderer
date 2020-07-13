@@ -47,6 +47,7 @@ using namespace KI::Gfx;
 #include "UniformStruct.h"
 #include "UniformBuilder.h"
 
+#include "GetColorCode.h"
 #include "ShaderCommon.h"
 #include "ShaderStruct.h"
 #include "DefaultVBOCode.h"

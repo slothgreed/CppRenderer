@@ -33,6 +33,7 @@ DefaultVertexCode::DefaultVertexCode(const string& shaderCode)
 	m_outNormal = false;
 	m_outColor = false;
 	m_planePosition = false;
+	m_worldPosition = false;
 	m_outTexcoord = false;
 	m_outInstance = false;
 }
@@ -81,7 +82,8 @@ bool DefaultVertexCode::Compare(IShaderCode* pShaderCode)
 		m_outTexcoord == pCode->m_outTexcoord &&
 		m_outInstance == pCode->m_outInstance &&
 		m_outInstance == pCode->m_outInstance &&
-		m_planePosition == pCode->m_planePosition)
+		m_planePosition == pCode->m_planePosition &&
+		m_worldPosition == pCode->m_worldPosition)
 	{
 		return true;
 	}
@@ -122,6 +124,7 @@ shared_ptr<IShaderCode> DefaultVertexCode::GetVertexBufferCode(shared_ptr<IVerte
 {
 	auto pCode =  make_shared<DefaultVBOCode>(pVertexBuffer.get());
 	pCode->SetPlanePosition(m_planePosition);
+	pCode->SetWorldPosition(m_worldPosition);
 
 	return pCode;
 }

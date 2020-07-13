@@ -104,6 +104,21 @@ void PrimitiveScene::Initialize(Project* m_pProject)
 		m_pScene->AddLight(pLight);
 	}
 
+	// sphere phong
+	{
+		auto sphereData = make_shared<RenderData>();
+		ModelGenerator::Sphere(1, 36, 36, sphereData.get());
+		auto sphereNode = make_shared<PrimitiveNode>(sphereData);
+
+		auto pPhongShading =
+			make_shared<PhongShading>(
+				PHONG_SHADING_TYPE_BLIN,
+				SHADING_COLOR_TYPE_VERTEXCOLOR,
+				ADSShadingData());
+		sphereData->SetShading(pPhongShading);
+		m_pScene->AddModelNode(sphereNode);
+	}
+
 	// grid
 	{
 		auto grid = make_shared<Grid>(GridArgs(vec2(44, 4), vec2(2, 0.2)));

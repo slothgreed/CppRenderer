@@ -24,6 +24,7 @@ public:
 	virtual void UnBind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUniformStorage> pUniform) override;
 	void SetOutInstance(bool value) { m_outInstance = value; }
 	void SetPlanePosition(bool value) { m_planePosition = value; }
+	void SetWorldPosition(bool value) { m_worldPosition = value; }
 
 	bool OutPosition() const { return m_outPosition; }
 	bool OutNormal() const { return m_outNormal; };
@@ -32,12 +33,14 @@ public:
 	bool OutTexcoord() const { return m_outTexcoord; };
 	bool OutInstance() const { return m_outInstance; };
 	bool OutPlanePosition() const { return m_planePosition; };
+	bool OutWorldPosition() const { return m_worldPosition; };
 
 	void SetShaderDefine(VERTEX_LAYOUT layout);
 private:
 	bool m_outPosition;
 	bool m_outNormal;
 	bool m_planePosition;	// ˆÊ’u‚ð‚»‚Ì‚Ü‚Ü‚É‚µ‚Ägl_Position‚É—¬‚·‚©‚Ç‚¤‚©
+	bool m_worldPosition;	// ˆÊ’u‚ð‚»‚Ì‚Ü‚Ü‚É‚µ‚Ägl_Position‚É—¬‚·‚©‚Ç‚¤‚©
 	bool m_outColor;
 	bool m_outTexcoord;
 	bool m_outInstance;

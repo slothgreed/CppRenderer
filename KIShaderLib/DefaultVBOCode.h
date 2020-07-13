@@ -20,8 +20,7 @@ public:
 	virtual void GetIncludeCode(vector<shared_ptr<IShaderCode>>& pShaderCodes);
 
 	void SetPlanePosition(bool value) { m_planePosition = value; }
-
-
+	void SetWorldPosition(bool value) { m_worldPosition = value; }
 	bool InNormal() const	{ return m_inNormal; };
 	bool InColor() const	{ return m_inColor; };
 	bool InTexcoord() const { return m_inTexcoord; };
@@ -34,6 +33,7 @@ private:
 	bool m_inTexcoord;
 	bool m_inInstance;
 	bool m_planePosition;	// ˆÊ’u‚ð‚»‚Ì‚Ü‚Ü‚É‚µ‚Ägl_Position‚É—¬‚·‚©‚Ç‚¤‚©
+	bool m_worldPosition;
 };
 }
 }

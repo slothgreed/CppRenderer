@@ -43,7 +43,7 @@ vec4 Lambert(vec4 surfaceColor)
 	vec3 direction = normalize(light.Position.xyz);
 	vec3 normal = normalize(InData.normal);
 	float diffuse = clamp(dot(normal,direction),0.2,1.0);
-	return diffuse * ((surfaceColor + light.Ambient)* light.Diffuse);
+	return diffuse * ((surfaceColor + light.Ambient) * light.Diffuse);
 }
 
 void main()

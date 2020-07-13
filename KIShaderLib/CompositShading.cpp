@@ -62,7 +62,7 @@ void CompositFragCode::Initialize(GLuint programId)
 
 void CompositFragCode::Bind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUniformStorage> pUniform)
 {
-	auto pShading = static_pointer_cast<CompositShading>(pShaderChunk);
+	auto pShading = dynamic_cast<CompositShading*>(pShaderChunk.get());
 	{
 		assert(0);
 		return;
@@ -76,7 +76,7 @@ void CompositFragCode::Bind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUn
 
 void CompositFragCode::UnBind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUniformStorage> pUniform)
 {
-	auto pShading = static_pointer_cast<CompositShading>(pShaderChunk);
+	auto pShading = dynamic_cast<CompositShading*>(pShaderChunk.get());
 	{
 		assert(0);
 		return;

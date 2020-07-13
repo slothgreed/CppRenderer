@@ -15,7 +15,7 @@ bool OutputFragCode::Compare(IShaderCode* pShaderCode)
 }
 void OutputFragCode::Bind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUniformStorage> pUniform)
 {
-	auto pShading = static_pointer_cast<OutputShading>(pShaderChunk);
+	auto pShading = dynamic_cast<OutputShading*>(pShaderChunk.get());
 	if (pShading == nullptr)
 	{
 		assert(0);
@@ -28,7 +28,7 @@ void OutputFragCode::Bind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUnif
 
 void OutputFragCode::UnBind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUniformStorage> pUniform)
 {
-	auto pShading = static_pointer_cast<OutputShading>(pShaderChunk);
+	auto pShading = dynamic_cast<OutputShading*>(pShaderChunk.get());
 	if (pShading == nullptr)
 	{
 		assert(0);

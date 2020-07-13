@@ -25,7 +25,7 @@ void GrayScaleEffect::Initialize(int width, int height)
 
 void GrayScaleEffect::SetTexture(shared_ptr<Texture> pTexture)
 {
-	//m_pShading->SetTexture(pTexture);
+	m_pShading->SetTexture(pTexture);
 }
 
 void GrayScaleEffect::Resize(int width, int height)

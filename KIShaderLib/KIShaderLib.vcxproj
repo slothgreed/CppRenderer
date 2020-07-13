@@ -171,6 +171,7 @@
     <ClInclude Include="DefaultVertexCode.h" />
     <ClInclude Include="Define.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="GetColorCode.h" />
     <ClInclude Include="GrayScaleShading.h" />
     <ClInclude Include="IShading.h" />
     <ClInclude Include="LambertShading.h" />
@@ -199,6 +200,7 @@
     <ClCompile Include="DefaultVBOCode.cpp" />
     <ClCompile Include="DefaultVertexBuffer.cpp" />
     <ClCompile Include="DefaultVertexCode.cpp" />
+    <ClCompile Include="GetColorCode.cpp" />
     <ClCompile Include="GrayScaleShading.cpp" />
     <ClCompile Include="LambertShading.cpp" />
     <ClCompile Include="NormalVisualizeShading.cpp" />

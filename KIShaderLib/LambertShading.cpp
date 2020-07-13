@@ -4,13 +4,13 @@ namespace ShaderLib
 {
 
 
-LambertFragCode::LambertFragCode(LAMBERT_SHADING_TYPE type)
+LambertFragCode::LambertFragCode(SHADING_COLOR_TYPE type)
 	:IShaderCode(
 		string(SHADER_DIRECTORY) +
 		string(SHADER_LAMBERTSHADING) +
 		string(SHADER_EXT_FRAG))
 {
-	m_Type = type;
+	m_pColorCode = make_shared<GetColorCode>(type);
 }
 
 LambertFragCode::~LambertFragCode()
@@ -19,12 +19,7 @@ LambertFragCode::~LambertFragCode()
 
 void LambertFragCode::GetDefineCode(string& code)
 {
-	if (m_Type == LAMBERT_SHADING_TYPE_FIXCOLOR)
-		code += "#define IN_FIXCOLOR\n";
-	if (m_Type == LAMBERT_SHADING_TYPE_TEXTURE)
-		code += "#define IN_TEXTURE\n";
-	if (m_Type == LAMBERT_SHADING_TYPE_VERTEXCOLOR)
-		code += "#define IN_COLOR\n";
+	m_pColorCode->GetDefineCode(code);
 }
 
 bool LambertFragCode::Compare(IShaderCode* pShaderCode)
@@ -35,53 +30,22 @@ bool LambertFragCode::Compare(IShaderCode* pShaderCode)
 		return false;
 	}
 
-	if (m_Type == pCode->Type())
-	{
-		return true;
-	}
-
-
-	return false;
+	return pCode->m_pColorCode->Compare(m_pColorCode.get());
 }
 
 void LambertFragCode::Bind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUniformStorage> pUniform)
 {
-	auto pShading = static_pointer_cast<LambertShading>(pShaderChunk);
-	if (pShading == nullptr)
-	{
-		assert(0);
-	}
-
-	if (m_Type == LAMBERT_SHADING_TYPE_FIXCOLOR)
-	{
-		IShaderCode::BindVector4(m_uniformLocation[LAMBERT_SHADING_TYPE_FIXCOLOR], pShading->GetColor());
-	}
-	else
-	{
-		pShading->GetTexture()->Begin();
-		IShaderCode::BindTexture(GL_TEXTURE0, m_uniformLocation[LAMBERT_SHADING_TYPE_TEXTURE]);
-	}
-
+	m_pColorCode->Bind(pShaderChunk, pUniform);
 }
 
 void LambertFragCode::UnBind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUniformStorage> pUniform)
 {
-	auto pShading = static_pointer_cast<LambertShading>(pShaderChunk);
-	if (pShading != nullptr)
-	{
-		if (m_Type == LAMBERT_SHADING_TYPE_TEXTURE)
-		{
-			pShading->GetTexture()->End();
-		}
-	}
+	m_pColorCode->UnBind(pShaderChunk, pUniform);
 }
 
 void LambertFragCode::Initialize(GLuint programId)
 {
-	m_uniformLocation.resize(LAMBERT_SHADING_TYPE_NUM);
-	m_uniformLocation[LAMBERT_SHADING_TYPE_TEXTURE] = glGetUniformLocation(programId, "uTexture0");
-	m_uniformLocation[LAMBERT_SHADING_TYPE_FIXCOLOR] = glGetUniformLocation(programId, "uFixColor");
-	Logger::GLError();
+	m_pColorCode->Initialize(programId);
 }
 
 LambertShading::LambertShading(const vec4& color)
@@ -97,13 +61,13 @@ LambertShading::LambertShading(shared_ptr<Texture> pTexture)
 void LambertShading::SetColor(const vec4& color)
 {
 	m_color = color;
-	m_Type = LAMBERT_SHADING_TYPE_FIXCOLOR;
+	m_Type = SHADING_COLOR_TYPE::SHADING_COLOR_TYPE_FIXCOLOR;
 }
 
 void LambertShading::SetTexture(shared_ptr<Texture> pTexture)
 {
 	m_pTexture = pTexture;
-	m_Type = LAMBERT_SHADING_TYPE_TEXTURE;
+	m_Type = SHADING_COLOR_TYPE::SHADING_COLOR_TYPE_TEXTURE;
 }
 
 bool LambertShading::Compare(IShading* pShading)
@@ -124,15 +88,15 @@ shared_ptr<IShaderCode> LambertShading::NewShaderCode(IShaderBuildInfo* pBuildIn
 	if (type == SHADER_PROGRAM_VERTEX)
 	{
 		VERTEX_LAYOUT outLayout = VERTEX_LAYOUT_NONE;
-		if (m_Type == LAMBERT_SHADING_TYPE_VERTEXCOLOR)
+		if (m_Type == SHADING_COLOR_TYPE::SHADING_COLOR_TYPE_VERTEXCOLOR)
 		{
 			outLayout = (VERTEX_LAYOUT)(VERTEX_LAYOUT_POSITION | VERTEX_LAYOUT_NORMAL | VERTEX_LAYOUT_COLOR);
 		}
-		else if (m_Type == LAMBERT_SHADING_TYPE_TEXTURE)
+		else if (m_Type == SHADING_COLOR_TYPE::SHADING_COLOR_TYPE_TEXTURE)
 		{
 			outLayout = (VERTEX_LAYOUT)(VERTEX_LAYOUT_POSITION | VERTEX_LAYOUT_NORMAL | VERTEX_LAYOUT_TEXCOORD);
 		}
-		else if(m_Type == LAMBERT_SHADING_TYPE_FIXCOLOR)
+		else if(m_Type == SHADING_COLOR_TYPE::SHADING_COLOR_TYPE_FIXCOLOR)
 		{
 			outLayout = (VERTEX_LAYOUT)(VERTEX_LAYOUT_POSITION | VERTEX_LAYOUT_NORMAL);
 		}

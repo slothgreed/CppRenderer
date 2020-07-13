@@ -34,7 +34,9 @@ vec4 OutputPosition()
 	mat4 vp = scene.Projection * scene.ViewMatrix;
 	mat4 instanceMatrix = mat4(a_instanceMatrix0,a_instanceMatrix1,a_instanceMatrix2,a_instanceMatrix3);
 	return vp * instanceMatrix * vec4(a_position,1.0);
-#else
+#elif defined(OUT_WORLD_POSITION)
+	return scene.ViewMatrix * vec4(a_position,1.0);
+#else 
 	mat4 vp = scene.Projection * scene.ViewMatrix;
 	return vp * vec4(a_position,1.0);
 #endif

@@ -15,7 +15,7 @@ DefaultVBOCode::DefaultVBOCode(IVertexBuffer* pVertexBuffer)
 	m_inTexcoord = false;
 	m_inInstance = false;
 	m_planePosition = false;
-
+	m_worldPosition = false;
 	auto pDefault = dynamic_cast<DefaultVertexBuffer*>(pVertexBuffer);
 	if (pDefault != nullptr)
 	{
@@ -31,6 +31,10 @@ void DefaultVBOCode::GetDefineCode(string& code)
 {
 	if (m_planePosition){
 		code += OUT_PLANE_POSITION;
+	}
+	
+	if (m_worldPosition){
+		code += OUT_WORLD_POSITION;
 	}
 
 	if (m_inNormal) {
@@ -61,7 +65,8 @@ bool DefaultVBOCode::Compare(IShaderCode* pShaderCode)
 		m_inColor		== pCode->m_inColor &&
 		m_inTexcoord	== pCode->m_inTexcoord &&
 		m_inInstance	== pCode->m_inInstance &&
-		m_planePosition == pCode->m_planePosition)
+		m_planePosition == pCode->m_planePosition &&
+		m_worldPosition == pCode->m_worldPosition)
 	{
 		return true;
 	}

@@ -46,6 +46,12 @@
     <Filter Include="ヘッダー ファイル\Uniform">
       <UniqueIdentifier>{2a23bd81-8a18-4495-9e8e-c44f6f518c1e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Shading\Component">
+      <UniqueIdentifier>{2c328f40-213a-467e-9bee-7a529fd010ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Shading\Component">
+      <UniqueIdentifier>{384676e6-16b1-4d21-8018-57191212ebfd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -132,6 +138,9 @@
     <ClInclude Include="UniformStruct.h">
       <Filter>ヘッダー ファイル\Uniform</Filter>
     </ClInclude>
+    <ClInclude Include="GetColorCode.h">
+      <Filter>ヘッダー ファイル\Shading\Component</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -196,6 +205,9 @@
     </ClCompile>
     <ClCompile Include="UniformScene.cpp">
       <Filter>ソース ファイル\Uniform</Filter>
+    </ClCompile>
+    <ClCompile Include="GetColorCode.cpp">
+      <Filter>ソース ファイル\Shading\Component</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

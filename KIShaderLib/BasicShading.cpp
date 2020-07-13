@@ -43,7 +43,7 @@ bool BasicFragCode::Compare(IShaderCode* pShaderCode)
 
 void BasicFragCode::Bind(shared_ptr<IShaderChunk> pShaderChunk, shared_ptr<IUniformStorage> pUniform)
 {
-	auto pShading = static_pointer_cast<BasicShading>(pShaderChunk);
+	auto pShading = dynamic_cast<BasicShading*>(pShaderChunk.get());
 	if (pShading == nullptr)
 	{
 		assert(0);
@@ -63,7 +63,7 @@ void BasicFragCode::Bind(shared_ptr<IShaderChunk> pShaderChunk, shared_ptr<IUnif
 
 void BasicFragCode::UnBind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUniformStorage> pUniform)
 {
-	auto pShading = static_pointer_cast<BasicShading>(pShaderChunk);
+	auto pShading = dynamic_cast<BasicShading*>(pShaderChunk.get());
 	if (pShading != nullptr)
 	{
 		if (m_Type == BASIC_SHADING_TYPE_TEXTURE)

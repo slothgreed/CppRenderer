@@ -26,7 +26,7 @@ void SSLICFragCode::Initialize(GLuint programId)
 
 void SSLICFragCode::Bind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUniformStorage> pUniform)
 {
-	auto pShading = static_pointer_cast<SSLICShading>(pShaderChunk);
+	auto pShading = dynamic_cast<SSLICShading*>(pShaderChunk.get());
 	if (pShading == nullptr)
 	{
 		assert(0);
@@ -38,7 +38,7 @@ void SSLICFragCode::Bind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUnifo
 
 void SSLICFragCode::UnBind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUniformStorage> pUniform)
 {
-	auto pShading = static_pointer_cast<SSLICShading>(pShaderChunk);
+	auto pShading = dynamic_cast<SSLICShading*>(pShaderChunk.get());
 	if (pShading == nullptr)
 	{
 		assert(0);

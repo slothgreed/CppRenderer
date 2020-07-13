@@ -5,18 +5,11 @@ namespace KI
 {
 namespace ShaderLib
 {
-enum LAMBERT_SHADING_TYPE : unsigned int
-{
-	LAMBERT_SHADING_TYPE_VERTEXCOLOR,	// 頂点色
-	LAMBERT_SHADING_TYPE_FIXCOLOR,		// 固定色
-	LAMBERT_SHADING_TYPE_TEXTURE,		// テクスチャ色
-	LAMBERT_SHADING_TYPE_NUM,
-};
 
 class DLL_EXPORT LambertFragCode : public IShaderCode
 {
 public:
-	LambertFragCode(LAMBERT_SHADING_TYPE type);
+	LambertFragCode(SHADING_COLOR_TYPE type);
 	~LambertFragCode();
 
 	virtual void Initialize(GLuint programId) override;
@@ -24,10 +17,9 @@ public:
 	virtual bool Compare(IShaderCode* pShaderCode) override;
 	virtual void Bind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUniformStorage> pUniform) override;
 	virtual void UnBind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUniformStorage> pUniform) override;
-	LAMBERT_SHADING_TYPE Type() { return m_Type; }
 
 private:
-	LAMBERT_SHADING_TYPE m_Type;
+	shared_ptr<GetColorCode> m_pColorCode;
 };
 
 class DLL_EXPORT LambertShading : public IShading
@@ -39,7 +31,7 @@ public:
 
 	~LambertShading() {};
 
-	LAMBERT_SHADING_TYPE ColorType() { return m_Type; }
+	SHADING_COLOR_TYPE ColorType() { return m_Type; }
 	void SetColor(const vec4& color);
 	void SetTexture(shared_ptr<Texture> pTexture);
 	const vec4& GetColor() { return m_color; }
@@ -51,7 +43,7 @@ public:
 private:
 	vec4 m_color;
 	shared_ptr<Texture> m_pTexture;
-	LAMBERT_SHADING_TYPE m_Type;
+	SHADING_COLOR_TYPE m_Type;
 };
 }
 }
