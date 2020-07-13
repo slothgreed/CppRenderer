@@ -21,6 +21,7 @@ public:
 	void AddLight(shared_ptr<ILight> pLight);
 	void RemoveLight(shared_ptr<ILight> pLight);
 	const vector<shared_ptr<IModelNode>>& ModelNodes() { return m_pRenderList; };
+	void SetLight();
 	void Draw();
 	void Bind();
 	void UnBind();

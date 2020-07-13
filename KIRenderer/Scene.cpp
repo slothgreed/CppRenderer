@@ -55,11 +55,27 @@ void Scene::Bind()
 	m_pUniformStruct->GetScene()->Bind();
 	m_pUniformStruct->GetModel()->SetViewMatrix(m_pCamera->ViewMatrix());
 
-	if (m_pLights.size() != 0)
+	SetLight();
+}
+
+void Scene::SetLight()
+{
+	if (m_pLights.size() != 1)
 	{
-		//TODO : m_pUniformStruct->GetLight()->Set(m_pLights[0].get());
-		m_pUniformStruct->GetLight()->Bind();
+		return;
 	}
+
+	LightData light;
+	if (m_pLights[0]->Type() == LIGHT_TYPE_DIRECTION)
+	{
+		DirectionLight* pDirection = (DirectionLight*)m_pLights[0].get();
+		light.position = vec4(pDirection->Direction(), 1.0);
+		light.ambient = pDirection->Ambient();
+		light.diffuse = pDirection->Diffuse();
+		light.specular = pDirection->Specular();
+	}
+	m_pUniformStruct->GetLight()->Set(light);
+	m_pUniformStruct->GetLight()->Bind();
 }
 void Scene::Draw()
 {

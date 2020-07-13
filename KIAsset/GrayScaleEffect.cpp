@@ -15,12 +15,12 @@ void GrayScaleEffect::Initialize(int width, int height)
 	m_pPlane = make_shared<RenderData>();
 	ModelGenerator::Plane(m_pPlane.get(), VERTEX_LAYOUT_TEXCOORD);
 
-	//m_pShading = make_shared<GrayScaleShading>();
+	m_pShading = make_shared<GrayScaleShading>();
 
 	m_pRenderTarget = make_shared<RenderTarget>();
 	m_pRenderTarget->Initialize(1, width, height);
 
-	//m_pPlane->SetShading(m_pShading);
+	m_pPlane->SetShading(m_pShading);
 }
 
 void GrayScaleEffect::SetTexture(shared_ptr<Texture> pTexture)

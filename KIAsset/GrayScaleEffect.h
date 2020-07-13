@@ -20,7 +20,7 @@ public:
 	shared_ptr<Texture> RenderTexture() { return m_pRenderTarget->ColorTexture(0); };
 
 private:
-	//shared_ptr<GrayScaleShading> m_pShading;
+	shared_ptr<GrayScaleShading> m_pShading;
 	shared_ptr<RenderTarget> m_pRenderTarget;
 	shared_ptr<RenderData> m_pPlane;
 };
