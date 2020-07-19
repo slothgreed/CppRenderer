@@ -13,6 +13,22 @@ enum SHADING_COLOR_TYPE : unsigned int
 	SHADING_COLOR_TYPE_NUM,
 };
 
+// ShadingÇ™åpè≥Ç∑ÇÈÅB
+class DLL_EXPORT IHasGetColor
+{
+public:
+	SHADING_COLOR_TYPE ColorType() { return m_ColorType; }
+	virtual void SetColor(const vec4& color);
+	virtual void SetTexture(shared_ptr<Texture> pTexture);
+	virtual const vec4& GetColor() { return m_color; }
+	virtual shared_ptr<Texture> GetTexture() { return m_pTexture;}
+private:
+	vec4 m_color;
+	shared_ptr<Texture> m_pTexture;
+	SHADING_COLOR_TYPE m_ColorType;
+};
+
+//ShadingCodeÇ™åpè≥Ç∑ÇÈÅB
 class DLL_EXPORT GetColorCode : public IShaderCode
 {
 public:

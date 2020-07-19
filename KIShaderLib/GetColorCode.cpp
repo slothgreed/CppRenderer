@@ -3,6 +3,19 @@ namespace KI
 namespace ShaderLib
 {
 
+void IHasGetColor::SetColor(const vec4& color)
+{
+	m_color = color;
+	m_ColorType = SHADING_COLOR_TYPE::SHADING_COLOR_TYPE_FIXCOLOR;
+}
+
+void IHasGetColor::SetTexture(shared_ptr<Texture> pTexture)
+{
+	m_pTexture = pTexture;
+	m_ColorType = SHADING_COLOR_TYPE::SHADING_COLOR_TYPE_TEXTURE;
+}
+
+
 GetColorCode::GetColorCode(SHADING_COLOR_TYPE type)
 	:IShaderCode(
 		string(SHADER_DIRECTORY) +
@@ -53,7 +66,7 @@ bool GetColorCode::Compare(IShaderCode* pShaderCode)
 
 void GetColorCode::Bind(shared_ptr<IShaderChunk> pShaderChunk, shared_ptr<IUniformStorage> pUniform)
 {
-	auto pShading = dynamic_cast<LambertShading*>(pShaderChunk.get());
+	auto pShading = dynamic_cast<IHasGetColor*>(pShaderChunk.get());
 	if (pShading == nullptr)
 	{
 		assert(0);

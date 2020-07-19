@@ -114,7 +114,8 @@ void PrimitiveScene::Initialize(Project* m_pProject)
 			make_shared<PhongShading>(
 				PHONG_SHADING_TYPE_BLIN,
 				SHADING_COLOR_TYPE_VERTEXCOLOR,
-				ADSShadingData());
+				ADSMaterial());
+		pPhongShading->SetColor(vec4(1, 0, 0, 1));
 		sphereData->SetShading(pPhongShading);
 		m_pScene->AddModelNode(sphereNode);
 	}

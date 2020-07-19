@@ -22,6 +22,9 @@ void Scene::Initialize()
 
 	m_pUniformStruct->SetModel(m_pUniformBuilder->BuildModel());
 	m_pUniformStruct->GetModel()->Generate();
+
+	m_pUniformStruct->SetMaterial(m_pUniformBuilder->BuildMaterial());
+	m_pUniformStruct->GetMaterial()->Generate();
 }
 
 void Scene::AddModelNode(shared_ptr<IModelNode> pModelNode)

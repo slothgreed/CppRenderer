@@ -22,7 +22,7 @@ private:
 	shared_ptr<GetColorCode> m_pColorCode;
 };
 
-class DLL_EXPORT LambertShading : public IShading
+class DLL_EXPORT LambertShading : public IShading, public IHasGetColor
 {
 
 public:
@@ -31,19 +31,11 @@ public:
 
 	~LambertShading() {};
 
-	SHADING_COLOR_TYPE ColorType() { return m_Type; }
-	void SetColor(const vec4& color);
-	void SetTexture(shared_ptr<Texture> pTexture);
-	const vec4& GetColor() { return m_color; }
 	virtual bool Compare(IShading* pShading);
-	shared_ptr<Texture> GetTexture() { return m_pTexture; }
 	virtual bool NewShaderCompare(IShaderChunk* pTarget) override;
 	virtual shared_ptr<IShaderCode> NewShaderCode(IShaderBuildInfo* pBuildInfo,SHADER_PROGRAM_TYPE type) override;
 
 private:
-	vec4 m_color;
-	shared_ptr<Texture> m_pTexture;
-	SHADING_COLOR_TYPE m_Type;
 };
 }
 }

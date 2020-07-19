@@ -18,6 +18,8 @@ public:
 private:
 	void BindScene(GLuint programId);
 	void BindLight(GLuint programId);
+	void BindMaterial(GLuint programId);
+	void BindModel(GLuint programId);
 };
 
 

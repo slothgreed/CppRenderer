@@ -9,7 +9,7 @@ class IModelProperty;
 class DLL_EXPORT IModelNode : public IObserver
 {
 public:
-	IModelNode() {};
+	IModelNode();
 	IModelNode(shared_ptr<IModel> model);
 	virtual ~IModelNode();
 

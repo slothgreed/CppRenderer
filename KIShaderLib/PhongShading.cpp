@@ -3,7 +3,7 @@ namespace KI
 namespace ShaderLib
 {
 
-PhongShadingFragCode::PhongShadingFragCode(PHONG_SHADING_TYPE type, SHADING_COLOR_TYPE colorType)
+PhongShadingFragCode::PhongShadingFragCode(PHONG_SHADING_TYPE type, SHADING_COLOR_TYPE colorType, const MaterialData& data)
 	:IShaderCode(
 		string(SHADER_DIRECTORY) +
 		string(SHADER_PHONGSHADING) +
@@ -11,7 +11,7 @@ PhongShadingFragCode::PhongShadingFragCode(PHONG_SHADING_TYPE type, SHADING_COLO
 {
 	m_Type = type;
 	m_pColorCode = make_shared<GetColorCode>(colorType);
-
+	m_Material = data;
 }
 
 PhongShadingFragCode::~PhongShadingFragCode()
@@ -60,11 +60,29 @@ bool PhongShadingFragCode::Compare(IShaderCode* pShaderCode)
 void PhongShadingFragCode::Bind(shared_ptr<IShaderChunk> pShaderChunk, shared_ptr<IUniformStorage> pUniform)
 {
 	m_pColorCode->Bind(pShaderChunk, pUniform);
+
+	auto pUniformStruct = dynamic_cast<UniformStruct*>(pUniform.get());
+	if (pUniform != nullptr)
+	{
+		if (pUniformStruct->GetMaterial() != nullptr)
+		{
+			pUniformStruct->GetMaterial()->Set(m_Material);
+			pUniformStruct->GetMaterial()->Bind();
+		}
+	}
 }
 
 void PhongShadingFragCode::UnBind(shared_ptr<IShaderChunk> pShaderChunk, shared_ptr<IUniformStorage> pUniform)
 {
 	m_pColorCode->UnBind(pShaderChunk, pUniform);
+	auto pUniformStruct = dynamic_cast<UniformStruct*>(pUniform.get());
+	if (pUniform != nullptr)
+	{
+		if (pUniformStruct->GetMaterial() != nullptr)
+		{
+			pUniformStruct->GetMaterial()->UnBind();
+		}
+	}
 }
 
 void PhongShadingFragCode::Initialize(GLuint programId)
@@ -73,7 +91,7 @@ void PhongShadingFragCode::Initialize(GLuint programId)
 }
 
 
-PhongShading::PhongShading(PHONG_SHADING_TYPE type, SHADING_COLOR_TYPE colorType, const ADSShadingData& data)
+PhongShading::PhongShading(PHONG_SHADING_TYPE type, SHADING_COLOR_TYPE colorType, const ADSMaterial& data)
 {
 	m_Type = type;
 	m_ColorType = colorType;
@@ -84,11 +102,10 @@ PhongShading::~PhongShading()
 {
 }
 
-void PhongShading::Set(const ADSShadingData& adsData)
+void PhongShading::Set(const ADSMaterial& adsMaterial)
 {
-	m_ADSData = adsData;
+	m_ADSMaterial = adsMaterial;
 }
-
 
 bool PhongShading::NewShaderCompare(IShaderChunk* pTarget)
 {
@@ -129,10 +146,16 @@ shared_ptr<IShaderCode> PhongShading::NewShaderCode(IShaderBuildInfo* pBuildInfo
 
 		auto pCode = make_shared<DefaultVertexCode>(outLayout);
 		pCode->SetWorldPosition(true);
+		return pCode;
 	}
 	else if (type == SHADER_PROGRAM_FRAG)
 	{
-		return make_shared<PhongShadingFragCode>(m_Type, m_ColorType);
+		MaterialData material;
+		material.ambient = m_ADSMaterial.GetAmbient();
+		material.diffuse = m_ADSMaterial.GetDiffuse();
+		material.specular = m_ADSMaterial.GetSpecular();
+		material.shining = m_ADSMaterial.GetShinning();
+		return make_shared<PhongShadingFragCode>(m_Type, m_ColorType, material);
 	}
 	else
 	{

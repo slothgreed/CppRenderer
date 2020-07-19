@@ -2,7 +2,12 @@ namespace KI
 {
 namespace Renderer
 {
+IModelNode::IModelNode()
+{
+	m_ModelMatrix = mat4x4(1.0);
+}
 IModelNode::IModelNode(shared_ptr<IModel> model)
+	: IModelNode()
 {
 	m_pModel = model;
 	m_pModel->AddObserver(this);
@@ -50,10 +55,19 @@ void IModelNode::Draw(shared_ptr<UniformStruct> pUniform)
 			if (pUniform->GetModel() != NULL)
 			{
 				pUniform->GetModel()->SetModelMatrix(m_ModelMatrix);
+				pUniform->GetModel()->Bind();
 			}
 		}
 
 		DrawCore(pUniform);
+
+		if (pUniform != NULL)
+		{
+			if (pUniform->GetModel() != NULL)
+			{
+				pUniform->GetModel()->UnBind();
+			}
+		}
 	}
 }
 

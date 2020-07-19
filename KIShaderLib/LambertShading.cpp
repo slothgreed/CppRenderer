@@ -58,24 +58,12 @@ LambertShading::LambertShading(shared_ptr<Texture> pTexture)
 	SetTexture(pTexture);
 }
 
-void LambertShading::SetColor(const vec4& color)
-{
-	m_color = color;
-	m_Type = SHADING_COLOR_TYPE::SHADING_COLOR_TYPE_FIXCOLOR;
-}
-
-void LambertShading::SetTexture(shared_ptr<Texture> pTexture)
-{
-	m_pTexture = pTexture;
-	m_Type = SHADING_COLOR_TYPE::SHADING_COLOR_TYPE_TEXTURE;
-}
-
 bool LambertShading::Compare(IShading* pShading)
 {
 	auto pLambertShading = dynamic_cast<LambertShading*>(pShading);
 	if (pLambertShading != nullptr)
 	{
-		if (m_Type == pLambertShading->ColorType())
+		if (ColorType() == pLambertShading->ColorType())
 		{
 			return true;
 		}
@@ -88,15 +76,15 @@ shared_ptr<IShaderCode> LambertShading::NewShaderCode(IShaderBuildInfo* pBuildIn
 	if (type == SHADER_PROGRAM_VERTEX)
 	{
 		VERTEX_LAYOUT outLayout = VERTEX_LAYOUT_NONE;
-		if (m_Type == SHADING_COLOR_TYPE::SHADING_COLOR_TYPE_VERTEXCOLOR)
+		if (ColorType() == SHADING_COLOR_TYPE::SHADING_COLOR_TYPE_VERTEXCOLOR)
 		{
 			outLayout = (VERTEX_LAYOUT)(VERTEX_LAYOUT_POSITION | VERTEX_LAYOUT_NORMAL | VERTEX_LAYOUT_COLOR);
 		}
-		else if (m_Type == SHADING_COLOR_TYPE::SHADING_COLOR_TYPE_TEXTURE)
+		else if (ColorType() == SHADING_COLOR_TYPE::SHADING_COLOR_TYPE_TEXTURE)
 		{
 			outLayout = (VERTEX_LAYOUT)(VERTEX_LAYOUT_POSITION | VERTEX_LAYOUT_NORMAL | VERTEX_LAYOUT_TEXCOORD);
 		}
-		else if(m_Type == SHADING_COLOR_TYPE::SHADING_COLOR_TYPE_FIXCOLOR)
+		else if(ColorType() == SHADING_COLOR_TYPE::SHADING_COLOR_TYPE_FIXCOLOR)
 		{
 			outLayout = (VERTEX_LAYOUT)(VERTEX_LAYOUT_POSITION | VERTEX_LAYOUT_NORMAL);
 		}
@@ -110,7 +98,7 @@ shared_ptr<IShaderCode> LambertShading::NewShaderCode(IShaderBuildInfo* pBuildIn
 	}
 	else if (type == SHADER_PROGRAM_FRAG)
 	{
-		return make_shared<LambertFragCode>(m_Type);
+		return make_shared<LambertFragCode>(ColorType());
 	}
 	else
 	{

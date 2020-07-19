@@ -23,7 +23,7 @@ void UniformModel::SetModelMatrix(const mat4x4& data)
 	m_ModelData.modelMatrix = data;
 	m_ModelData.normalMatrix = glm::inverse(glm::transpose(m_ModelData.modelMatrix));
 }
-void UniformModel::Set(const ModelData& data)
+void UniformModel::Bind()
 {
 	if (m_Id == 0)
 	{
@@ -33,9 +33,11 @@ void UniformModel::Set(const ModelData& data)
 	}
 
 	glBindBuffer(GL_UNIFORM_BUFFER, m_Id);
-	glBufferData(GL_UNIFORM_BUFFER, sizeof(ModelData), &data, GL_STATIC_DRAW);
+	glBufferData(GL_UNIFORM_BUFFER, sizeof(ModelData), &m_ModelData, GL_STATIC_DRAW);
 	glBindBuffer(GL_UNIFORM_BUFFER, 0);
 	Logger::GLError();
+
+	UniformBuffer::Bind();
 }
 
 }

@@ -19,7 +19,7 @@ public:
 	~UniformModel();
 	void SetViewMatrix(const mat4x4& viewMatrix);
 	void SetModelMatrix(const mat4x4& viewMatrix);
-	void Set(const ModelData& data);
+	virtual void Bind() override;
 private:
 	mat4x4 m_viewMatrix;
 	ModelData m_ModelData;
