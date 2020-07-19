@@ -8,10 +8,11 @@ namespace Topology
 class DLL_EXPORT CubeArgs
 {
 public:
-	CubeArgs() : min(), max(){};
+	CubeArgs() : m_min(), m_max(){};
+	CubeArgs(vec3 min, vec3 max) :m_min(min), m_max(max) {};
 	~CubeArgs() {};
-	vec3 min;
-	vec3 max;
+	vec3 m_min;
+	vec3 m_max;
 };
 class DLL_EXPORT Cube : public IPrimitive
 {

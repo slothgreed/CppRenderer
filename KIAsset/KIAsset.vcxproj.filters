@@ -70,6 +70,12 @@
     <Filter Include="ソース ファイル\Utility">
       <UniqueIdentifier>{c2f073ee-fcd5-4041-b876-fb19d22313b3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Model\Light">
+      <UniqueIdentifier>{da20e0ef-009d-484b-a262-d12171323933}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Model\Light">
+      <UniqueIdentifier>{a68e590b-33ca-4efd-a132-f6971de44134}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -162,6 +168,9 @@
     <ClInclude Include="PfxPlane.h">
       <Filter>ヘッダー ファイル\Pfx</Filter>
     </ClInclude>
+    <ClInclude Include="DirectionalLightModel.h">
+      <Filter>ヘッダー ファイル\Model\Light</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -232,6 +241,9 @@
     </ClCompile>
     <ClCompile Include="PfxPlane.cpp">
       <Filter>ソース ファイル\Pfx</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectionalLightModel.cpp">
+      <Filter>ソース ファイル\Model\BasicObject</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

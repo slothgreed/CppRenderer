@@ -99,7 +99,7 @@ void Voxelize::GetVertexList(vector<vec3>& position, vector<int>& index)
 			continue;
 		}
 
-		GetPosition(voxelIndex.x, voxelIndex.y, voxelIndex.z, args.min, args.max);
+		GetPosition(voxelIndex.x, voxelIndex.y, voxelIndex.z, args.m_min, args.m_max);
 		cube.SetIndexOffset(counter * 8);
 		cube.Build(args);
 		position.insert(position.end(), cube.Position().begin(), cube.Position().end());

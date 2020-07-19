@@ -68,10 +68,6 @@ void PrimitiveScene::Initialize(Project* m_pProject)
 
 	// quad rendering
 	{
-		auto pRenderData = make_shared<RenderData>();
-		auto pBasicShading = make_shared<BasicShading>(vec4(1, 1, 0, 1));
-		pRenderData->SetShading(pBasicShading);
-		ModelGenerator::Plane(pRenderData.get(),VERTEX_LAYOUT_COLOR);
 		auto pPlaneNode = make_shared<PrimitiveNode>(
 			make_shared<PrimitiveModel>(
 				make_shared<Quad>(
@@ -86,6 +82,16 @@ void PrimitiveScene::Initialize(Project* m_pProject)
 		m_pScene->AddModelNode(pManipulatorNode);
 
 	}
+
+	// directional light
+	{
+		auto pDirectionLightNode =
+			make_shared<PrimitiveNode>(
+				make_shared<PrimitiveModel>(
+					make_shared<DirectionalLightModel>()));
+		m_pScene->AddModelNode(pDirectionLightNode);
+	}
+
 
 	// sphere lambert
 	{

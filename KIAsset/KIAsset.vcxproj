@@ -165,6 +165,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="DirectionalLightModel.h" />
     <ClInclude Include="GeometryPath.h" />
     <ClInclude Include="GrayScaleEffect.h" />
     <ClInclude Include="Grid.h" />
@@ -200,6 +201,7 @@
     <ClCompile Include="CGALGeneralizedMaps.cpp" />
     <ClCompile Include="CGALLinearCellComplex.cpp" />
     <ClCompile Include="CGALPolyhedron.cpp" />
+    <ClCompile Include="DirectionalLightModel.cpp" />
     <ClCompile Include="GeometryPath.cpp" />
     <ClCompile Include="GrayScaleEffect.cpp" />
     <ClCompile Include="Grid.cpp" />

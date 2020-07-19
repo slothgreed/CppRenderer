@@ -5,6 +5,9 @@ namespace KI
 {
 namespace Topology
 {
+// radius = x around;
+// height = y value;
+//
 class DLL_EXPORT Cone : public IPrimitive
 {
 public:

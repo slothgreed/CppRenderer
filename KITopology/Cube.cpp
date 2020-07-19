@@ -17,15 +17,15 @@ Cube::~Cube()
 void Cube::Build(const CubeArgs& args)
 {
 	m_position.resize(8);
-	m_position[0] = (args.min);
-	m_position[1] = (vec3(args.max.x, args.min.y, args.min.z));
-	m_position[2] = (vec3(args.max.x, args.max.y, args.min.z));
-	m_position[3] = (vec3(args.min.x, args.max.y, args.min.z));
+	m_position[0] = (args.m_min);
+	m_position[1] = (vec3(args.m_max.x, args.m_min.y, args.m_min.z));
+	m_position[2] = (vec3(args.m_max.x, args.m_max.y, args.m_min.z));
+	m_position[3] = (vec3(args.m_min.x, args.m_max.y, args.m_min.z));
 
-	m_position[4] = (vec3(args.min.x, args.min.y, args.max.z));
-	m_position[5] = (vec3(args.max.x, args.min.y, args.max.z));
-	m_position[6] = (args.max);
-	m_position[7] = (vec3(args.min.x, args.max.y, args.max.z));
+	m_position[4] = (vec3(args.m_min.x, args.m_min.y, args.m_max.z));
+	m_position[5] = (vec3(args.m_max.x, args.m_min.y, args.m_max.z));
+	m_position[6] = (args.m_max);
+	m_position[7] = (vec3(args.m_min.x, args.m_max.y, args.m_max.z));
 
 	m_index.resize(36);
 	AddTrianlgeIndexFromRectangle(0, 0 + IndexOffset(), 3 + IndexOffset(), 2 + IndexOffset(), 1 + IndexOffset());

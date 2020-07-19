@@ -8,19 +8,19 @@ namespace Topology
 class DLL_EXPORT IPrimitive
 {
 public:
-	IPrimitive(int indexOffset = 0) { m_indexOffset = indexOffset; };
+	IPrimitive(int indexOffset = 0);
 	~IPrimitive() {};
 
 public:
-	GLuint GetDrawType() { return m_drawType; };
+	GLuint GetDrawType();
 	virtual vector<vec3>& Position() { return m_position; };
 	virtual vector<vec3>& Normal() { return m_normal; };
 	virtual vector<vec2>& Texcoord() { return m_texcoord; };
 	virtual vector<int>& Index() { return m_index; };
 	void Multi(const mat4x4& matrix);
 	void SetIndexOffset(int indexOffset) { m_indexOffset = indexOffset; };
-protected:
 	int IndexOffset() { return m_indexOffset; };
+protected:
 
 	GLuint m_drawType;
 	vector<vec3> m_position;

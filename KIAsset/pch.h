@@ -77,5 +77,6 @@ using namespace KI::Topology;
 #include "ModelGenerator.h"
 #include "SampleModelGenerator.h"
 
+#include "DirectionalLightModel.h"
 
 #endif // !KI_ASSET_PCH_H
