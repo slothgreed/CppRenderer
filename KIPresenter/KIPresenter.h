@@ -53,8 +53,8 @@ namespace KIPresenter {
 				if (_dataModel->SetValue(value)) {
 					Cube cube;
 					CubeArgs args;
-					args.min = vec3(0);
-					args.max = vec3(1);
+					args.m_min = vec3(0);
+					args.m_max = vec3(1);
 					cube.Build(args);
 					PropertyChanged(this, gcnew PropertyChangedEventArgs("Value"));
 				}

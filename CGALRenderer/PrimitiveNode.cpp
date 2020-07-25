@@ -17,6 +17,13 @@ PrimitiveNode::PrimitiveNode(shared_ptr<PrimitiveModel> pPrimitive)
 	SetRenderData();
 }
 
+PrimitiveNode::PrimitiveNode(shared_ptr<PrimitiveModel> pPrimitive, shared_ptr<IShading> pShading)
+	: IModelNode(pPrimitive)
+{
+	SetRenderData();
+	m_pRenderData->SetShading(pShading);
+}
+
 PrimitiveNode::~PrimitiveNode()
 {
 }

@@ -66,6 +66,17 @@ void PrimitiveScene::Initialize(Project* m_pProject)
 		m_pScene->AddModelNode(pPrimitiveNode);
 	}
 
+
+	// Torus rendering
+	{
+		auto pTorusNode = make_shared<PrimitiveNode>(
+			make_shared<PrimitiveModel>(
+				make_shared<Torus>(
+					TorusArgs(0.5f,1.0f,32,32)))
+			,make_shared<VertexShading>(VERTEX_SHADING_TYPE::VERTEX_SHADING_NORMAL));
+		m_pScene->AddModelNode(pTorusNode);
+	}
+
 	// quad rendering
 	{
 		auto pPlaneNode = make_shared<PrimitiveNode>(

@@ -16,7 +16,7 @@ void MoveManipulator::Build()
 	// x axis
 	xDirection.position.push_back(vec3(0, 0, 0));
 	xDirection.position.push_back(vec3(1, 0, 0));
-	xDirection.cone.Build(1, 1, 10);
+	xDirection.cone.Build(ConeArgs(1, 1, 10));
 	mat4x4 xMatrix = mat4x4(1);
 	xMatrix = glm::translate(xMatrix, vec3(1, 0, 0));
 	xMatrix = glm::scale(xMatrix, vec3(0.1f));
@@ -26,7 +26,7 @@ void MoveManipulator::Build()
 	// y axis
 	yDirection.position.push_back(vec3(0, 0, 0));
 	yDirection.position.push_back(vec3(0, 1, 0));
-	yDirection.cone.Build(1, 1, 10);
+	yDirection.cone.Build(ConeArgs(1, 1, 10));
 	mat4x4 yMatrix = mat4x4(1);
 	yMatrix = glm::translate(yMatrix, vec3(0, 1, 0));
 	yMatrix = glm::scale(yMatrix, vec3(0.1f));
@@ -35,7 +35,7 @@ void MoveManipulator::Build()
 	// z axis
 	zDirection.position.push_back(vec3(0, 0, 0));
 	zDirection.position.push_back(vec3(0, 0, 1));
-	zDirection.cone.Build(1, 1, 10);
+	zDirection.cone.Build(ConeArgs(1, 1, 10));
 	mat4x4 zMatrix = mat4x4(1);
 	zMatrix = glm::translate(zMatrix, vec3(0, 0, 1));
 	zMatrix = glm::scale(zMatrix, vec3(0.1f));

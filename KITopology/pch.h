@@ -33,6 +33,8 @@ using namespace KI::Foundation;
 #include "Cone.h"
 #include "Cube.h"
 #include "Quad.h"
+#include "Torus.h"
+
 #include "Icosahedron.h"
 #include "HalfEdge.h"
 #include "HalfEdgeFace.h"

@@ -14,7 +14,7 @@ DirectionalLightModel::~DirectionalLightModel()
 void DirectionalLightModel::Build()
 {
 	Cone cone;
-	cone.Build(1, 1, 4);
+	cone.Build(ConeArgs(1, 1, 4));
 	mat4x4 xMatrix = mat4x4(1);
 	xMatrix = glm::rotate(xMatrix, pi<float>() / 2, vec3(0, 0, 1));
 	xMatrix = glm::translate(xMatrix, vec3(0, -1.1, 0));

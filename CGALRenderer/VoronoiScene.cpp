@@ -87,7 +87,7 @@ void VoronoiScene::GenerateVoronoiPoint(vector<vec3>& position, int size)
 void VoronoiScene::GenerateVoronoiCone(const vector<vec3>& pointPosition, vector<vec3>& position, vector<vec3>& color, vector<mat4x4>& matrix, vector<int>& index)
 {
 	Cone cone;
-	cone.Build(5, 10, 50);
+	cone.Build(ConeArgs(5, 10, 50));
 	std::copy(cone.Position().begin(), cone.Position().end(), back_inserter(position));
 	std::copy(cone.Index().begin(), cone.Index().end(), back_inserter(index));
 

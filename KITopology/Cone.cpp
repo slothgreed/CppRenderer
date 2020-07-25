@@ -10,26 +10,26 @@ Cone::~Cone()
 {
 }
 
-void Cone::Build(float radius, float height, int partition)
+void Cone::Build(const ConeArgs& args)
 {
 	m_position.clear();
 	m_index.clear();
-	m_position.push_back(vec3(0, height, 0));
+	m_position.push_back(vec3(0, args.height, 0));
 	m_position.push_back(vec3(0, 0, 0));
 
-	float rad = 2 * pi<float>() / partition;
+	float rad = 2 * pi<float>() / args.partition;
 	float theta = 0;
 
-	for (int i = 0; i <= partition; i++)
+	for (int i = 0; i <= args.partition; i++)
 	{
 		vec3 position;
-		MathHelper::SphericalToCartesian(radius, -(i * rad), pi<float>()/2, position);
+		MathHelper::SphericalToCartesian(args.radius, -(i * rad), pi<float>()/2, position);
 		m_position.push_back(position);
 	}
 
 	int index1;
 	int index2;
-	for (int i = 0; i <= partition; i++)
+	for (int i = 0; i <= args.partition; i++)
 	{
 
 		index1 = 2 + i;

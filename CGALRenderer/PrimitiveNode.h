@@ -7,6 +7,7 @@ class PrimitiveNode : public IModelNode
 public:
 	PrimitiveNode(shared_ptr<RenderData> pRenderData);
 	PrimitiveNode(shared_ptr<PrimitiveModel> pPrimitive);
+	PrimitiveNode(shared_ptr<PrimitiveModel> pPrimitive, shared_ptr<IShading> pShading);
 
 	~PrimitiveNode();
 
