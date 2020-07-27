@@ -225,6 +225,10 @@ void PrimitiveScene::ProcessMouseEvent(const MouseInput& input)
 			if (input.Press(MOUSE_BUTTON_RIGHT))
 			{
 				NextModel();
+				//m_pCommandManager->Execute(
+				//	make_shared<SaveImageCommand>(
+				//		make_shared<SaveImageCommandArgs>(
+				//			m_pBackTarget,"E:\\MyProgram\\KIProject\\CGALRenderer\\test.bmp")));
 			}
 		}
 	}

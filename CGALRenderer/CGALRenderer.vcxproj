@@ -108,7 +108,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)extlibs\glfw-3.3\include;$(SolutionDir)extlibs\glm-0.9.9.6\glm;$(SolutionDir)extlibs\glew-2.1.0\include;E:\Tools\boost\boost_1_64_0;E:\Tools\boost\boost_1_64_0\boost;$(SolutionDir)extlibs;E:\Tools\CGAL4.11\include;E:\Tools\CGAL4.11\build\include;E:\Tools\CGAL4.11\auxiliary\gmp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)extlibs\stb;$(SolutionDir)extlibs\glfw-3.3\include;$(SolutionDir)extlibs\glm-0.9.9.6\glm;$(SolutionDir)extlibs\glew-2.1.0\include;E:\Tools\boost\boost_1_64_0;E:\Tools\boost\boost_1_64_0\boost;$(SolutionDir)extlibs;E:\Tools\CGAL4.11\include;E:\Tools\CGAL4.11\build\include;E:\Tools\CGAL4.11\auxiliary\gmp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>pch.h</ForcedIncludeFiles>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
@@ -150,7 +150,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)extlibs\glfw-3.3\include;$(SolutionDir)extlibs\glm-0.9.9.6\glm;$(SolutionDir)extlibs\glew-2.1.0\include;E:\Tools\CGAL4.11\include;E:\Tools\CGAL4.11\build\include;E:\Tools\CGAL4.11\auxiliary\gmp\include;E:\Tools\boost\boost_1_64_0;%(AdditionalIncludeDirectories);$(SolutionDir)KIFoundation</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)extlibs\stb;$(SolutionDir)extlibs\glfw-3.3\include;$(SolutionDir)extlibs\glm-0.9.9.6\glm;$(SolutionDir)extlibs\glew-2.1.0\include;E:\Tools\CGAL4.11\include;E:\Tools\CGAL4.11\build\include;E:\Tools\CGAL4.11\auxiliary\gmp\include;E:\Tools\boost\boost_1_64_0;%(AdditionalIncludeDirectories);$(SolutionDir)KIFoundation</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>pch.h</ForcedIncludeFiles>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
@@ -184,6 +184,7 @@
     <ClInclude Include="PickCommand.h" />
     <ClInclude Include="PrimitiveScene.h" />
     <ClInclude Include="RungeKuttaScene.h" />
+    <ClInclude Include="SaveImageCommand.h" />
     <ClInclude Include="SpecialUtility.h" />
     <ClInclude Include="PrimitiveNode.h" />
     <ClInclude Include="pch.h" />
@@ -223,6 +224,7 @@
     <ClCompile Include="Project.cpp" />
     <ClCompile Include="PolygonModelNode.cpp" />
     <ClCompile Include="RungeKuttaScene.cpp" />
+    <ClCompile Include="SaveImageCommand.cpp" />
     <ClCompile Include="SpecialUtility.cpp" />
     <ClCompile Include="SubdivisionCommand.cpp" />
     <ClCompile Include="NormalProperty.cpp" />

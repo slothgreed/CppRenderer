@@ -170,9 +170,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="ArrayBuffer.h" />
+    <ClInclude Include="BufferState.h" />
+    <ClInclude Include="CullState.h" />
+    <ClInclude Include="DepthState.h" />
     <ClInclude Include="FrameBuffer.h" />
     <ClInclude Include="GfxTypes.h" />
+    <ClInclude Include="GLEx.h" />
     <ClInclude Include="GLIterator.h" />
+    <ClInclude Include="GLStruct.h" />
     <ClInclude Include="IAttribute.h" />
     <ClInclude Include="IGLObject.h" />
     <ClInclude Include="IGLState.h" />
@@ -189,6 +194,7 @@
     <ClInclude Include="LineState.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="PointState.h" />
+    <ClInclude Include="PolygonState.h" />
     <ClInclude Include="RenderBuffer.h" />
     <ClInclude Include="RenderTarget.h" />
     <ClInclude Include="RenderTexture.h" />
@@ -203,9 +209,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ArrayBuffer.cpp" />
+    <ClCompile Include="BufferState.cpp" />
+    <ClCompile Include="CullState.cpp" />
+    <ClCompile Include="DepthState.cpp" />
     <ClCompile Include="FrameBuffer.cpp" />
+    <ClCompile Include="glEx.cpp" />
     <ClCompile Include="GLIterator.cpp" />
     <ClCompile Include="GLObject.cpp" />
+    <ClCompile Include="GLSruct.cpp" />
     <ClCompile Include="IndexBuffer.cpp" />
     <ClCompile Include="IRenderTarget.cpp" />
     <ClCompile Include="IShader.cpp" />
@@ -215,6 +226,7 @@
     <ClCompile Include="IVertexBuffer.cpp" />
     <ClCompile Include="LineState.cpp" />
     <ClCompile Include="PointState.cpp" />
+    <ClCompile Include="PolygonState.cpp" />
     <ClCompile Include="RenderBuffer.cpp" />
     <ClCompile Include="RenderTarget.cpp" />
     <ClCompile Include="RenderTexture.cpp" />

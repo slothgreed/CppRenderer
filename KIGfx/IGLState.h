@@ -18,7 +18,15 @@ public:
 private:
 
 };
+class DLL_EXPORT IPixOps : public IGLState
+{
+public:
+	IPixOps() {};
+	~IPixOps() {};
 
+private:
+
+};
 class DLL_EXPORT IRasterState : public IGLState
 {
 public:

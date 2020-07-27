@@ -28,6 +28,8 @@ using namespace KI::Foundation;
 using namespace std;
 using namespace glm;
 
+#include "GLStruct.h"
+#include "GLEx.h"
 #include "GLTypes.h"
 #include "GfxTypes.h"
 #include "ShaderUtility.h"
@@ -51,6 +53,10 @@ using namespace glm;
 #include "IVertexBuffer.h"
 
 #include "IGLState.h"
+#include "BufferState.h"
+#include "CullState.h"
+#include "PolygonState.h"
+#include "DepthState.h"
 #include "LineState.h"
 #include "PointState.h"
 

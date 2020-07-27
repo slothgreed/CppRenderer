@@ -132,6 +132,24 @@
     <ClInclude Include="IShaderChunk.h">
       <Filter>ヘッダー ファイル\Interface</Filter>
     </ClInclude>
+    <ClInclude Include="GLEx.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="GLStruct.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="DepthState.h">
+      <Filter>ヘッダー ファイル\GLState</Filter>
+    </ClInclude>
+    <ClInclude Include="PolygonState.h">
+      <Filter>ヘッダー ファイル\GLState</Filter>
+    </ClInclude>
+    <ClInclude Include="CullState.h">
+      <Filter>ヘッダー ファイル\GLState</Filter>
+    </ClInclude>
+    <ClInclude Include="BufferState.h">
+      <Filter>ヘッダー ファイル\GLState</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -202,6 +220,24 @@
     </ClCompile>
     <ClCompile Include="GLIterator.cpp">
       <Filter>ソース ファイル\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="glEx.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="GLSruct.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="DepthState.cpp">
+      <Filter>ソース ファイル\GLState</Filter>
+    </ClCompile>
+    <ClCompile Include="PolygonState.cpp">
+      <Filter>ソース ファイル\GLState</Filter>
+    </ClCompile>
+    <ClCompile Include="CullState.cpp">
+      <Filter>ソース ファイル\GLState</Filter>
+    </ClCompile>
+    <ClCompile Include="BufferState.cpp">
+      <Filter>ソース ファイル\GLState</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

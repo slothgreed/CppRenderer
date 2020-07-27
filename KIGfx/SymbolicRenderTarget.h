@@ -14,6 +14,9 @@ public:
 
 	virtual void Resize(int width, int height);
 	virtual void Dispose();
+	virtual int ColorTextureNum() override { return 1; };
+	virtual bool GetPixels(ReadPixelArgs& args, RENDER_TEXTURE_TYPE type, int index = 0);
+
 protected:
 	virtual void Bind();
 	virtual void UnBind();

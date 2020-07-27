@@ -169,13 +169,27 @@ void CGALRenderer::SetWorkspace(shared_ptr<IWorkspace> pWorkspace)
 bool CGALRenderer::Run()
 {
 	// tell GL to only draw onto a pixel if the shape is closer to the viewer
-	glEnable(GL_DEPTH_TEST); // enable depth-testing
-	glDepthFunc(GL_LESS); // depth-testing interprets a smaller value as "closer"
-	glClearColor(1, 1, 1, 1);
-	glEnable(GL_CULL_FACE);
-	glCullFace(GL_BACK);
-	glEnable(GL_POLYGON_OFFSET_FILL);
-	glPolygonOffset(1.0, 1.0);
+	
+	BufferState bufferState;
+	bufferState.ClearColor(vec4(1, 1, 1, 1));
+	bufferState.Bind();
+
+	DepthState depthState;
+	depthState.DepthTest(true);
+	depthState.DepthFunc(COMP_FUNC::COMP_FUNC_LESS);
+	depthState.Bind();
+
+	CullState cullState;
+	cullState.CullEnable(true);
+	cullState.CullFace(CULL_MODE::CULL_MODE_BACK);
+	cullState.FrontFace(FRONT_FACE_CCW);
+	cullState.Bind();
+
+	PolygonState polyState;
+	polyState.OffsetFill(true);
+	polyState.Offset(1.0, 1.0);
+	polyState.Bind();
+
 	//glEnable(GL_TEXTURE_2D);
 
 	/* OTHER STUFF GOES HERE NEXT */

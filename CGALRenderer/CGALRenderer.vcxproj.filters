@@ -156,6 +156,9 @@
     <ClInclude Include="RungeKuttaScene.h">
       <Filter>ヘッダー ファイル\Application\InitApp</Filter>
     </ClInclude>
+    <ClInclude Include="SaveImageCommand.h">
+      <Filter>ヘッダー ファイル\Application\Logic\Command</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -241,6 +244,9 @@
     </ClCompile>
     <ClCompile Include="RungeKuttaScene.cpp">
       <Filter>ソース ファイル\Application\InitApp</Filter>
+    </ClCompile>
+    <ClCompile Include="SaveImageCommand.cpp">
+      <Filter>ソース ファイル\Application\Logic\Command</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

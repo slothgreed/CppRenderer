@@ -50,7 +50,8 @@ public:
 
 	int Width() { return m_data.width; };
 	int Height() { return m_data.height; };
-
+	GLuint Format() { return m_data.format; };
+	GLuint ColorComponentType() { return m_data.type; };
 	void Set(const TextureData& data);
 	void SetSampler(shared_ptr<Sampler> pSampler);
 protected:

@@ -22,6 +22,8 @@ void RenderTarget::Resize(int width, int height)
 	{
 		m_pDepthBuffer->Resize(width, height);
 	}
+
+	SetSize(width, height);
 }
 
 void RenderTarget::Initialize(int outputBufferNum, int width, int height)
@@ -119,6 +121,11 @@ void RenderTarget::Dispose()
 
 shared_ptr<RenderTexture> RenderTarget::ColorTexture(int index)
 {
+	if (index < 0 || m_pOutputBuffer.size() <= index) {
+		assert(0);
+		return nullptr;
+	}
+
 	return m_pOutputBuffer[index];
 }
 
@@ -167,6 +174,28 @@ void RenderTarget::CopyDepthBuffer(Texture* texture)
 		data.height);
 	texture->End();
 	m_pFrameBuffer->End();
+}
+
+bool RenderTarget::GetPixels(ReadPixelArgs& args, RENDER_TEXTURE_TYPE type, int index)
+{
+	RenderTexture* pRenderTexture = nullptr;
+	if (type == RENDER_TEXTURE_TYPE::RENDER_COLOR_TEXTURE) {
+		pRenderTexture = ColorTexture(index).get();
+	}
+	else if(type == RENDER_TEXTURE_TYPE::RENDER_DEPTH_TEXTURE)
+	{
+		pRenderTexture = m_pDepthBuffer.get();
+	}
+	else
+	{
+		assert(0);
+		return false;
+	}
+
+	args.format = pRenderTexture->Format();
+	args.type = pRenderTexture->ColorComponentType();
+
+	return IRenderTarget::GetPixels(args);
 }
 }
 };

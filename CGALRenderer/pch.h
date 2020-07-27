@@ -86,6 +86,7 @@ using namespace KI::Asset;
 #include "PickCommand.h"
 #include "VoxelCommand.h"
 #include "LogicEventArgs.h"
+#include "SaveImageCommand.h"
 
 template<class T, class U>
 weak_ptr<T>
