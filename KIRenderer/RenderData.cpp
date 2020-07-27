@@ -2,7 +2,7 @@ namespace KI
 {
 namespace Renderer
 {
-RenderData::RenderData(GLuint primitiveType, shared_ptr<IVertexBuffer> pVertexBuffer, shared_ptr<IndexBuffer> pIndexBuffer)
+RenderData::RenderData(PRIM_TYPE primitiveType, shared_ptr<IVertexBuffer> pVertexBuffer, shared_ptr<IndexBuffer> pIndexBuffer)
 {
 	SetGeometryData(primitiveType, pVertexBuffer, pIndexBuffer);
 }
@@ -18,7 +18,7 @@ void RenderData::SetShading(shared_ptr<IShading> pShading)
 
 void RenderData::AddRenderRegion(const string& descriptor, shared_ptr<IShading> pShading, int first, int count)
 {
-	if (GetPrimitiveType() != GL_TRIANGLES)
+	if (GetPrimitiveType() != PRIM_TYPE_TRIANGLES)
 	{
 		assert(0);
 		return;
@@ -36,7 +36,7 @@ void RenderData::ClearRenderRegion()
 	m_pRenderRegion.clear();
 }
 
-void RenderData::SetGeometryData(GLuint primitiveType, shared_ptr<IVertexBuffer> pVertexBuffer, shared_ptr<IndexBuffer> pIndexBuffer)
+void RenderData::SetGeometryData(PRIM_TYPE primitiveType, shared_ptr<IVertexBuffer> pVertexBuffer, shared_ptr<IndexBuffer> pIndexBuffer)
 {
 	m_pPrimitiveType = primitiveType;
 	m_pVertexBuffer = pVertexBuffer;

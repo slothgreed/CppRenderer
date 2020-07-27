@@ -42,7 +42,7 @@ void BDBProperty::Build(IModelNode* pModelNode)
 	auto pIndexBuffer = make_shared<IndexBuffer>();
 	pIndexBuffer->Set(index);
 
-	m_pRenderData = make_shared<RenderData>(GL_LINES, pVertexBuffer, pIndexBuffer);
+	m_pRenderData = make_shared<RenderData>(PRIM_TYPE_LINES, pVertexBuffer, pIndexBuffer);
 	m_pRenderData->SetShading(make_shared<BasicShading>(vec4(0, 0, 0, 1)));
 }
 

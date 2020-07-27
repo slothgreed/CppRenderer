@@ -150,6 +150,9 @@
     <ClInclude Include="BufferState.h">
       <Filter>ヘッダー ファイル\GLState</Filter>
     </ClInclude>
+    <ClInclude Include="GLTypeUtility.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -238,6 +241,9 @@
     </ClCompile>
     <ClCompile Include="BufferState.cpp">
       <Filter>ソース ファイル\GLState</Filter>
+    </ClCompile>
+    <ClCompile Include="GLTypeUtility.cpp">
+      <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

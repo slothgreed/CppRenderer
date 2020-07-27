@@ -11,7 +11,7 @@ class DLL_EXPORT RenderData
 public:
 	RenderData() {};
 	~RenderData();
-	RenderData(GLuint primitiveType, shared_ptr<IVertexBuffer> pVertexBuffer, shared_ptr<IndexBuffer> pIndexBuffer = nullptr);
+	RenderData(PRIM_TYPE primitiveType, shared_ptr<IVertexBuffer> pVertexBuffer, shared_ptr<IndexBuffer> pIndexBuffer = nullptr);
 
 	class DLL_EXPORT RenderRegion
 	{
@@ -22,8 +22,8 @@ public:
 		int m_count;
 	};
 	void SetShading(shared_ptr<IShading> pShading);
-	void SetGeometryData(GLuint primitiveType, shared_ptr<IVertexBuffer> pVertexBuffer, shared_ptr<IndexBuffer> pIndexBuffer = nullptr);
-	GLuint GetPrimitiveType() { return m_pPrimitiveType; }
+	void SetGeometryData(PRIM_TYPE primitiveType, shared_ptr<IVertexBuffer> pVertexBuffer, shared_ptr<IndexBuffer> pIndexBuffer = nullptr);
+	PRIM_TYPE GetPrimitiveType() { return m_pPrimitiveType; }
 	shared_ptr<IVertexBuffer> GetVertexBuffer() { return m_pVertexBuffer; }
 	shared_ptr<IndexBuffer> GetIndexBuffer() { return m_pIndexBuffer; }
 	shared_ptr<IShading> GetShading() { return m_pShading; }
@@ -40,7 +40,7 @@ private:
 	bool m_bRecompileShader;
 	shared_ptr<IShader> m_pShader;
 	int GetVertexSize();
-	GLuint	m_pPrimitiveType;
+	PRIM_TYPE	m_pPrimitiveType;
 	shared_ptr<IndexBuffer> m_pIndexBuffer;
 	shared_ptr<IVertexBuffer> m_pVertexBuffer;
 	shared_ptr<IShading> m_pShading;

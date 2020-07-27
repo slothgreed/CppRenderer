@@ -178,6 +178,7 @@
     <ClInclude Include="GLEx.h" />
     <ClInclude Include="GLIterator.h" />
     <ClInclude Include="GLStruct.h" />
+    <ClInclude Include="GLTypeUtility.h" />
     <ClInclude Include="IAttribute.h" />
     <ClInclude Include="IGLObject.h" />
     <ClInclude Include="IGLState.h" />
@@ -217,6 +218,7 @@
     <ClCompile Include="GLIterator.cpp" />
     <ClCompile Include="GLObject.cpp" />
     <ClCompile Include="GLSruct.cpp" />
+    <ClCompile Include="GLTypeUtility.cpp" />
     <ClCompile Include="IndexBuffer.cpp" />
     <ClCompile Include="IRenderTarget.cpp" />
     <ClCompile Include="IShader.cpp" />

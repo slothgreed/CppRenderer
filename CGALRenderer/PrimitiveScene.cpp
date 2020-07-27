@@ -59,7 +59,7 @@ void PrimitiveScene::Initialize(Project* m_pProject)
 		pIndexBuffer->Set(icosahedron.Index());
 
 		auto pRenderData = make_shared<RenderData>();
-		pRenderData->SetGeometryData(GL_TRIANGLES, pVertexBuffer, pIndexBuffer);
+		pRenderData->SetGeometryData(PRIM_TYPE_TRIANGLES, pVertexBuffer, pIndexBuffer);
 		auto pVertexShading = make_shared<VertexShading>(VERTEX_SHADING_NORMAL);
 		pRenderData->SetShading(pVertexShading);
 		auto pPrimitiveNode = make_shared<PrimitiveNode>(pRenderData);

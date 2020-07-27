@@ -39,7 +39,7 @@ void NormalProperty::SetVBOData(IModelNode* pModelNode)
 	}
 
 	auto pVertexBuffer = pPolygonModel->GetVertexBuffer();
-	m_pRenderData->SetGeometryData(GL_POINTS, pVertexBuffer);
+	m_pRenderData->SetGeometryData(PRIM_TYPE_POINTS, pVertexBuffer);
 }
 
 void NormalProperty::Draw(shared_ptr<UniformStruct> pUniform)

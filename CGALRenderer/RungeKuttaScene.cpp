@@ -19,7 +19,7 @@ void RungeKuttaScene::Initialize(Project* m_pProject)
 	m_pScene->SetCamera(pCamera);
 
 	auto pBasicShading = make_shared<BasicShading>(vec4(1, 0, 0, 1));
-	auto pPointData = make_shared<RenderData>(GL_POINTS, make_shared<DefaultVertexBuffer>());
+	auto pPointData = make_shared<RenderData>(PRIM_TYPE_POINTS, make_shared<DefaultVertexBuffer>());
 	pPointData->SetShading(pBasicShading);
 	m_pPointNode = make_shared<PrimitiveNode>(pPointData);
 	m_pScene->AddModelNode(m_pPointNode);

@@ -45,7 +45,7 @@ CommandResult VoxelCommand::Execute()
 	pIndexBuffer->Set(indexBuffer);
 	auto pShading = make_shared<BasicShading>(vec4(1, 0, 0, 1));
 
-	pRenderData->SetGeometryData(GL_TRIANGLES, pVertexBuffer, pIndexBuffer);
+	pRenderData->SetGeometryData(PRIM_TYPE_TRIANGLES, pVertexBuffer, pIndexBuffer);
 	pRenderData->SetShading(pShading);
 	auto pModelNode = make_shared<PrimitiveNode>(pRenderData);
 	

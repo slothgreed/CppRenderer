@@ -45,7 +45,7 @@ void ModelGenerator::Axis(RenderData* pRenderData)
 	auto pVertexBuffer = make_shared<DefaultVertexBuffer>();
 	pVertexBuffer->SetPosition(position);
 	pVertexBuffer->SetColor(color);
-	pRenderData->SetGeometryData(GL_LINES, pVertexBuffer);
+	pRenderData->SetGeometryData(PRIM_TYPE_LINES, pVertexBuffer);
 }
 
 void ModelGenerator::Plane(RenderData* pRenderData, VERTEX_LAYOUT layout)
@@ -89,7 +89,7 @@ void ModelGenerator::Plane(RenderData* pRenderData, VERTEX_LAYOUT layout)
 
 	}
 
-	pRenderData->SetGeometryData(GL_TRIANGLE_STRIP, pVertexBuffer);
+	pRenderData->SetGeometryData(PRIM_TYPE_TRIANGLE_STRIP, pVertexBuffer);
 
 }
 
@@ -183,7 +183,7 @@ void ModelGenerator::CubeSpace(const BDB& size, RenderData* pRenderData)
 	auto pIndexBuffer = make_shared<IndexBuffer>();
 	pIndexBuffer->Set(index);
 
-	pRenderData->SetGeometryData(GL_TRIANGLES, pVertexBuffer, pIndexBuffer);
+	pRenderData->SetGeometryData(PRIM_TYPE_TRIANGLES, pVertexBuffer, pIndexBuffer);
 }
 
 // reference : http://www.songho.ca/opengl/gl_sphere.html
@@ -258,7 +258,7 @@ void ModelGenerator::Sphere(float radius, int sectorNum, int stackNum, RenderDat
 	auto pIndexBuffer = make_shared<IndexBuffer>();
 	pIndexBuffer->Set(indexs);
 
-	pRenderData->SetGeometryData(GL_TRIANGLES, pVertexBuffer, pIndexBuffer);
+	pRenderData->SetGeometryData(PRIM_TYPE_TRIANGLES, pVertexBuffer, pIndexBuffer);
 
 }
 }

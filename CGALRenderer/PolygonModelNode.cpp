@@ -88,7 +88,7 @@ void PolygonModelNode::SetRenderData()
 		auto pFaceBuffer = make_shared<DefaultVertexBuffer>();
 		pFaceBuffer->SetPosition(facet);
 		pFaceBuffer->SetNormal(normal);
-		m_pFaceData = make_shared <RenderData>(GL_TRIANGLES, pFaceBuffer);
+		m_pFaceData = make_shared <RenderData>(PRIM_TYPE_TRIANGLES, pFaceBuffer);
 		m_pFaceData->SetShading(make_shared<BasicShading>(vec4(0.7f, 0.7f, 0.7f, 1)));
 
 		vector<vec3> edge;
@@ -97,7 +97,7 @@ void PolygonModelNode::SetRenderData()
 		pEdgeBuffer->SetPosition(edge);
 
 		auto pEdgeShading = make_shared<BasicShading>(vec4(0, 1, 0, 1));
-		m_pEdgeData = make_shared <RenderData>(GL_LINES, pEdgeBuffer);
+		m_pEdgeData = make_shared <RenderData>(PRIM_TYPE_LINES, pEdgeBuffer);
 		m_pEdgeData->SetShading(pEdgeShading);
 	}
 	else
@@ -121,7 +121,7 @@ void PolygonModelNode::SetRenderData()
 		
 		auto pFaceIndex = make_shared <IndexBuffer>();
 		pFaceIndex->Set(index);
-		m_pFaceData = make_shared <RenderData>(GL_TRIANGLES, pFaceBuffer, pFaceIndex);
+		m_pFaceData = make_shared <RenderData>(PRIM_TYPE_TRIANGLES, pFaceBuffer, pFaceIndex);
 		m_pFaceData->SetShading(make_shared<BasicShading>(vec4(0.7f, 0.7f, 0.7f, 1)));
 
 		vector<vec3> edge;
@@ -130,7 +130,7 @@ void PolygonModelNode::SetRenderData()
 		pEdgeBuffer->SetPosition(edge);
 
 		auto pEdgeShading = make_shared<BasicShading>(vec4(0, 1, 0, 1));
-		m_pEdgeData = make_shared <RenderData>(GL_LINES, pEdgeBuffer);
+		m_pEdgeData = make_shared <RenderData>(PRIM_TYPE_LINES, pEdgeBuffer);
 		m_pEdgeData->SetShading(pEdgeShading);
 	}
 

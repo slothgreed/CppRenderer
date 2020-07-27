@@ -10,7 +10,7 @@ void VoronoiScene::Initialize(Project* m_pProject)
 	m_pScene->SetCamera(pCamera);
 
 	auto pRenderData = make_shared<RenderData>(
-		GL_TRIANGLES,
+		PRIM_TYPE_TRIANGLES,
 		make_shared<DefaultVertexBuffer>(),
 		make_shared<IndexBuffer>());
 	pRenderData->SetShading(make_shared<VertexShading>(VERTEX_SHADING_COLOR));
@@ -19,7 +19,7 @@ void VoronoiScene::Initialize(Project* m_pProject)
 
 	auto pBasicShading = make_shared<BasicShading>(vec4(0, 1, 0, 1));
 	auto pPointData = make_shared<RenderData>(
-		GL_POINTS,
+		PRIM_TYPE_POINTS,
 		make_shared<DefaultVertexBuffer>());
 	pPointData->SetShading(pBasicShading);
 	m_pPointNode = make_shared<PrimitiveNode>(pPointData);

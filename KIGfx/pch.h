@@ -31,6 +31,7 @@ using namespace glm;
 #include "GLStruct.h"
 #include "GLEx.h"
 #include "GLTypes.h"
+#include "GLTypeUtility.h"
 #include "GfxTypes.h"
 #include "ShaderUtility.h"
 

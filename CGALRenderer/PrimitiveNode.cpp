@@ -105,7 +105,7 @@ void PrimitiveNode::SetRenderData()
 	}
 
 	m_pRenderData->SetGeometryData(
-		pPrimitive->GetPrimitive()->GetDrawType(),
+		GLTypeUtility::PrimType(pPrimitive->GetPrimitive()->GetDrawType()),
 		pVertexBuffer, pIndexBuffer);
 	m_pRenderData->SetShading(make_shared<BasicShading>(vec4(1, 0, 0, 1)));
 

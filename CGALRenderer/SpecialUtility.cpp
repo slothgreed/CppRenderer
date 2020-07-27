@@ -33,6 +33,6 @@ void SpecialUtility::LoadVectorFieldSphere(RenderData* pRenderData)
 	auto pVertexBuffer = make_shared<DefaultVertexBuffer>();
 	pVertexBuffer->SetPosition(position);
 	pVertexBuffer->SetTexcoord(texcoord);
-	pRenderData->SetGeometryData(GL_TRIANGLES, pVertexBuffer);
+	pRenderData->SetGeometryData(PRIM_TYPE_TRIANGLES, pVertexBuffer);
 }
 }

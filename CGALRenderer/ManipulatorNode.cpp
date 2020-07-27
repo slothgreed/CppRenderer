@@ -71,7 +71,7 @@ void ManipulatorNode::GenManipulatorHandleVBO(
 	m_pManipulator->GetFaceList(facet, faceIndex, handle);
 	pFaceBuffer->SetPosition(facet);
 	pFaceIndexBuffer->Set(faceIndex);
-	pFaceData->SetGeometryData(GL_TRIANGLES, pFaceBuffer, pFaceIndexBuffer);
+	pFaceData->SetGeometryData(PRIM_TYPE_TRIANGLES, pFaceBuffer, pFaceIndexBuffer);
 
 	auto pEdgeBuffer = make_shared<DefaultVertexBuffer>();
 	auto pEdgeIndexBuffer = make_shared<IndexBuffer>();
@@ -80,7 +80,7 @@ void ManipulatorNode::GenManipulatorHandleVBO(
 	m_pManipulator->GetEdgeList(edge, edgeIndex, handle);
 	pEdgeBuffer->SetPosition(edge);
 	pEdgeIndexBuffer->Set(edgeIndex);
-	pEdgeData->SetGeometryData(GL_LINES, pEdgeBuffer, pFaceIndexBuffer);
+	pEdgeData->SetGeometryData(PRIM_TYPE_LINES, pEdgeBuffer, pFaceIndexBuffer);
 
 }
 
