@@ -101,28 +101,5 @@ void MoveManipulator::GetFaceList(vector<vec3>& faceList, vector<int>& faceIndex
 		assert(0);
 	}
 }
-
-void MoveManipulator::GetEdgeList(vector<vec3>& edgeList, vector<int>& edgeIndex, MANIPULATOR_HANDLE handle)
-{
-	if (handle == MANIPULATOR_HANDLE_X)
-	{
-		edgeList = xDirection.position;
-		edgeIndex.push_back(0); edgeIndex.push_back(1);
-	}
-	else if (handle == MANIPULATOR_HANDLE_Y)
-	{
-		edgeList = yDirection.position;
-		edgeIndex.push_back(0); edgeIndex.push_back(1);
-	}
-	else if (handle == MANIPULATOR_HANDLE_Z)
-	{
-		edgeList = zDirection.position;
-		edgeIndex.push_back(0); edgeIndex.push_back(1);
-	}
-	else
-	{
-		assert(0);
-	}
-}
 }
 }

@@ -31,7 +31,6 @@ public:
 	virtual void Build() = 0;
 	virtual void GetBDB(BDB& bdb) override { assert(0); };
 	virtual void GetFaceList(vector<vec3>& faceList, vector<int>& faceIndex, MANIPULATOR_HANDLE handle) = 0;
-	virtual void GetEdgeList(vector<vec3>& edgeList, vector<int>& edgeIndex, MANIPULATOR_HANDLE handle) = 0;
 
 private:
 

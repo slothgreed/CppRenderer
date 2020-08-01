@@ -12,7 +12,6 @@ public:
 	class ShapeData
 	{
 	public:
-		vector<vec3> position;
 		Cylinder cylinder;
 		Cone cone;
 	};
@@ -22,7 +21,6 @@ public:
 
 	virtual void Build() override;
 	virtual void GetFaceList(vector<vec3>& faceList, vector<int>& faceIndex, MANIPULATOR_HANDLE handle) override;
-	virtual void GetEdgeList(vector<vec3>& edgeList, vector<int>& edgeIndex, MANIPULATOR_HANDLE handle) override;
 private:
 	ShapeData xDirection;
 	ShapeData yDirection;

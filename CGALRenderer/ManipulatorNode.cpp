@@ -14,8 +14,7 @@ ManipulatorNode::ManipulatorNode(MANIPULATOR_TYPE type)
 	}
 	else if (m_ManipulatorType == MANIPULATOR_TYPE_SCALE)
 	{
-		assert(0);
-		//m_pManipulator = make_shared<ScaleManipulator>();
+		m_pManipulator = make_shared<ScaleManipulator>();
 	}
 	else
 	{

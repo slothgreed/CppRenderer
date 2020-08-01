@@ -30,7 +30,7 @@ void PrimitiveScene::Initialize(Project* m_pProject)
 	{
 		auto pMoveManipulator = make_shared<MoveManipulator>();
 		pMoveManipulator->Build();
-		auto pManipulatorNode = make_shared<ManipulatorNode>(MANIPULATOR_TYPE_MOVE);
+		auto pManipulatorNode = make_shared<ManipulatorNode>(MANIPULATOR_TYPE_SCALE);
 		m_pScene->AddModelNode(pManipulatorNode);
 	}
 
