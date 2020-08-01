@@ -33,7 +33,7 @@ private:
 
 };
 
-class ICommand
+class DLL_EXPORT ICommand
 {
 	friend class CommandManager;
 

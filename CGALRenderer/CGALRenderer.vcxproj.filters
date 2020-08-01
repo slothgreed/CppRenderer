@@ -22,44 +22,11 @@
     <Filter Include="ImGui">
       <UniqueIdentifier>{656166a6-9f61-46fb-a7c1-0f7601e5fe62}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\Application\Node">
-      <UniqueIdentifier>{d3157a13-966b-4bc9-ae1d-68a8a3a13336}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Application\Property">
-      <UniqueIdentifier>{4f1bb258-d428-4acd-80a1-d8f7959a29ee}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\Application\Node">
-      <UniqueIdentifier>{0801c496-2132-4217-aba6-bcf1a97358f4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\Application\Property">
-      <UniqueIdentifier>{80b8da82-a341-4ede-9246-ee8786962710}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ソース ファイル\Application\InitApp">
       <UniqueIdentifier>{9147df9e-f48e-491c-92db-9b63b1b9ed9e}</UniqueIdentifier>
     </Filter>
     <Filter Include="ヘッダー ファイル\Application\InitApp">
       <UniqueIdentifier>{19de7987-1a26-457e-82a7-84b5d081fc24}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\Application\Logic">
-      <UniqueIdentifier>{b221a6b8-5aa9-4643-9e55-f2c7eb1e8688}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\Application\Logic\Controller">
-      <UniqueIdentifier>{889ae879-9fe0-4f3f-91bd-21555781077d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\Application\Logic\Command">
-      <UniqueIdentifier>{d409e089-79cf-419d-8704-b2f369f49683}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\Application\Logic\EventArgs">
-      <UniqueIdentifier>{333ef0a2-1522-409b-83d0-8ebf0864a42f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Application\Logic">
-      <UniqueIdentifier>{a1cc98e4-476a-48c1-9504-3c9c8c97ca76}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Application\Logic\Controller">
-      <UniqueIdentifier>{58f66475-93b9-4ff2-ae92-99191381b19d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Application\Logic\Command">
-      <UniqueIdentifier>{11f506ae-202b-4fe6-b6c8-7d0af1ae3547}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -72,23 +39,8 @@
     <ClInclude Include="CGALRenderer.h">
       <Filter>ヘッダー ファイル\Application</Filter>
     </ClInclude>
-    <ClInclude Include="CameraController.h">
-      <Filter>ヘッダー ファイル\Application\Logic\Controller</Filter>
-    </ClInclude>
-    <ClInclude Include="SubdivisionCommand.h">
-      <Filter>ヘッダー ファイル\Application\Logic\Command</Filter>
-    </ClInclude>
-    <ClInclude Include="BDBProperty.h">
-      <Filter>ヘッダー ファイル\Application\Property</Filter>
-    </ClInclude>
-    <ClInclude Include="PrimitiveNode.h">
-      <Filter>ヘッダー ファイル\Application\Node</Filter>
-    </ClInclude>
     <ClInclude Include="SpecialUtility.h">
       <Filter>ヘッダー ファイル\Application</Filter>
-    </ClInclude>
-    <ClInclude Include="PickCommand.h">
-      <Filter>ヘッダー ファイル\Application\Logic\Command</Filter>
     </ClInclude>
     <ClInclude Include="BunnyScene.h">
       <Filter>ヘッダー ファイル\Application\InitApp</Filter>
@@ -98,27 +50,6 @@
     </ClInclude>
     <ClInclude Include="Workspace.h">
       <Filter>ヘッダー ファイル\Application\InitApp</Filter>
-    </ClInclude>
-    <ClInclude Include="HalfEdgeProperty.h">
-      <Filter>ヘッダー ファイル\Application\Property</Filter>
-    </ClInclude>
-    <ClInclude Include="HalfEdgeDSNode.h">
-      <Filter>ヘッダー ファイル\Application\Node</Filter>
-    </ClInclude>
-    <ClInclude Include="NormalProperty.h">
-      <Filter>ヘッダー ファイル\Application\Property</Filter>
-    </ClInclude>
-    <ClInclude Include="PolygonModelNode.h">
-      <Filter>ヘッダー ファイル\Application\Node</Filter>
-    </ClInclude>
-    <ClInclude Include="ManipulatorNode.h">
-      <Filter>ヘッダー ファイル\Application\Node</Filter>
-    </ClInclude>
-    <ClInclude Include="VoxelCommand.h">
-      <Filter>ヘッダー ファイル\Application\Logic\Command</Filter>
-    </ClInclude>
-    <ClInclude Include="LogicEventArgs.h">
-      <Filter>ヘッダー ファイル\Application\Logic\EventArgs</Filter>
     </ClInclude>
     <ClInclude Include="..\extlibs\imgui\imconfig.h">
       <Filter>ImGui</Filter>
@@ -150,14 +81,8 @@
     <ClInclude Include="TessellationScene.h">
       <Filter>ヘッダー ファイル\Application\InitApp</Filter>
     </ClInclude>
-    <ClInclude Include="BezierLineNode.h">
-      <Filter>ヘッダー ファイル\Application\Node</Filter>
-    </ClInclude>
     <ClInclude Include="RungeKuttaScene.h">
       <Filter>ヘッダー ファイル\Application\InitApp</Filter>
-    </ClInclude>
-    <ClInclude Include="SaveImageCommand.h">
-      <Filter>ヘッダー ファイル\Application\Logic\Command</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -173,47 +98,14 @@
     <ClCompile Include="CGALRenderer.cpp">
       <Filter>ソース ファイル\Application</Filter>
     </ClCompile>
-    <ClCompile Include="CameraController.cpp">
-      <Filter>ソース ファイル\Application\Logic\Controller</Filter>
-    </ClCompile>
-    <ClCompile Include="SubdivisionCommand.cpp">
-      <Filter>ソース ファイル\Application\Logic\Command</Filter>
-    </ClCompile>
-    <ClCompile Include="PrimitiveNode.cpp">
-      <Filter>ソース ファイル\Application\Node</Filter>
-    </ClCompile>
-    <ClCompile Include="BDBProperty.cpp">
-      <Filter>ソース ファイル\Application\Property</Filter>
-    </ClCompile>
     <ClCompile Include="SpecialUtility.cpp">
       <Filter>ソース ファイル\Application</Filter>
-    </ClCompile>
-    <ClCompile Include="PickCommand.cpp">
-      <Filter>ソース ファイル\Application\Logic\Command</Filter>
     </ClCompile>
     <ClCompile Include="BunnyScene.cpp">
       <Filter>ソース ファイル\Application\InitApp</Filter>
     </ClCompile>
     <ClCompile Include="Workspace.cpp">
       <Filter>ソース ファイル\Application\InitApp</Filter>
-    </ClCompile>
-    <ClCompile Include="HalfEdgeProperty.cpp">
-      <Filter>ソース ファイル\Application\Property</Filter>
-    </ClCompile>
-    <ClCompile Include="HalfEdgeDSNode.cpp">
-      <Filter>ソース ファイル\Application\Node</Filter>
-    </ClCompile>
-    <ClCompile Include="NormalProperty.cpp">
-      <Filter>ソース ファイル\Application\Property</Filter>
-    </ClCompile>
-    <ClCompile Include="PolygonModelNode.cpp">
-      <Filter>ソース ファイル\Application\Node</Filter>
-    </ClCompile>
-    <ClCompile Include="ManipulatorNode.cpp">
-      <Filter>ソース ファイル\Application\Node</Filter>
-    </ClCompile>
-    <ClCompile Include="VoxelCommand.cpp">
-      <Filter>ソース ファイル\Application\Logic\Command</Filter>
     </ClCompile>
     <ClCompile Include="..\extlibs\imgui\imgui.cpp">
       <Filter>ImGui</Filter>
@@ -239,14 +131,8 @@
     <ClCompile Include="TessellationScene.cpp">
       <Filter>ソース ファイル\Application\InitApp</Filter>
     </ClCompile>
-    <ClCompile Include="BezierLineNode.cpp">
-      <Filter>ソース ファイル\Application\Node</Filter>
-    </ClCompile>
     <ClCompile Include="RungeKuttaScene.cpp">
       <Filter>ソース ファイル\Application\InitApp</Filter>
-    </ClCompile>
-    <ClCompile Include="SaveImageCommand.cpp">
-      <Filter>ソース ファイル\Application\Logic\Command</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

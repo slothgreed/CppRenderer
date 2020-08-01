@@ -2,7 +2,7 @@
 #include "common\struct.h"
 #include "common\default.vbo"
 
-#if defined(OUT_NORMAL) || defined(OUT_COLOR) || defined(OUT_TEXCOORD) || defined(OUT_INSTANCE)
+#if defined(OUT_POSITION) || defined(OUT_NORMAL) || defined(OUT_COLOR) || defined(OUT_TEXCOORD) || defined(OUT_INSTANCE)
 out Data{
 
 #ifdef OUT_POSITION

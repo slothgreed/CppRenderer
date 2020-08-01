@@ -57,15 +57,11 @@ using namespace KI::Algorithm;
 #include "../KIAsset/pch.h"
 using namespace KI::Asset;
 
-// model (mvc)
-#include "BDBProperty.h"
-#include "NormalProperty.h"
-#include "HalfEdgeProperty.h"
-#include "PrimitiveNode.h"
-#include "PolygonModelNode.h"
-#include "HalfEdgeDSNode.h"
-#include "ManipulatorNode.h"
-#include "BezierLineNode.h"
+#include "../RenderModel/pch.h"
+using namespace KI::RenderModel;
+
+#include "../RenderLogic/pch.h"
+using namespace KI::Logic;
 
 // application
 #include "IWorkspace.h"
@@ -80,13 +76,6 @@ using namespace KI::Asset;
 #include "Project.h"
 #include "SpecialUtility.h"
 
-// logic
-#include "CameraController.h"
-#include "SubdivisionCommand.h"
-#include "PickCommand.h"
-#include "VoxelCommand.h"
-#include "LogicEventArgs.h"
-#include "SaveImageCommand.h"
 
 template<class T, class U>
 weak_ptr<T>

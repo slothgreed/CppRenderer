@@ -1,3 +1,5 @@
+#ifndef DIRECTIONAL_LIGHT_MODEL_H
+#define DIRECTIONAL_LIGHT_MODEL_H
 namespace KI
 {
 namespace Asset
@@ -16,3 +18,5 @@ private:
 
 }
 }
+
+#endif DIRECTIONAL_LIGHT_MODEL_H

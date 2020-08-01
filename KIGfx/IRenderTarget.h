@@ -13,7 +13,7 @@ public:
 
 	void Begin();
 	void End();
-	const vec2& GetSize() { return m_size; };
+	const ivec2& GetSize() { return m_size; };
 	virtual void Resize(int width, int height) = 0;
 	virtual void Dispose() = 0;
 	virtual void Clear(GLbitfield clear = GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -25,12 +25,12 @@ protected:
 	virtual void UnBind() = 0;
 	bool GetPixels(ReadPixelArgs& args);
 	bool Modifing() { return m_modifing; }
-	void SetSize(int width, int height) { m_size.x = (int)width; m_size.y = (int)height; }
+	void SetSize(int width, int height) { m_size.x = width; m_size.y = height; }
 	vec4 m_pClearColor;
 
 private:
 	bool m_modifing;
-	vec2 m_size;
+	ivec2 m_size;
 
 };
 }
