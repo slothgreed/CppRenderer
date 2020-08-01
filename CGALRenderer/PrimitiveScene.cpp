@@ -26,6 +26,14 @@ void PrimitiveScene::Initialize(Project* m_pProject)
 	shared_ptr<IControllerArgs> args = make_shared<CameraControllerArgs>(pCamera);
 	m_pController[CONTROLER_TYPE::CAMERA_CONTROLER]->SetArgs(args);
 
+	// manipulator rendering
+	{
+		auto pMoveManipulator = make_shared<MoveManipulator>();
+		pMoveManipulator->Build();
+		auto pManipulatorNode = make_shared<ManipulatorNode>(MANIPULATOR_TYPE_MOVE);
+		m_pScene->AddModelNode(pManipulatorNode);
+	}
+
 	// sphere rendering
 	{
 		auto sphereData = make_shared<RenderData>();
@@ -70,7 +78,7 @@ void PrimitiveScene::Initialize(Project* m_pProject)
 	{
 		auto pCylinderNode = make_shared<PrimitiveNode>(
 			make_shared<PrimitiveModel>(
-				make_shared<Cylinder>(CylinderArgs(5,1,5,10)))
+				make_shared<Cylinder>(CylinderArgs(5, 1, 5, 10)))
 			, make_shared<VertexShading>(VERTEX_SHADING_TYPE::VERTEX_SHADING_POSITION));
 		m_pScene->AddModelNode(pCylinderNode);
 	}
@@ -92,14 +100,6 @@ void PrimitiveScene::Initialize(Project* m_pProject)
 				make_shared<Quad>(
 					QuadArgs(vec2(-1), vec2(1)))));
 		m_pScene->AddModelNode(pPlaneNode);
-	}
-
-	{
-		auto pMoveManipulator = make_shared<MoveManipulator>();
-		pMoveManipulator->Build();
-		auto pManipulatorNode = make_shared<ManipulatorNode>(MANIPULATOR_TYPE_MOVE);
-		m_pScene->AddModelNode(pManipulatorNode);
-
 	}
 
 	// directional light
@@ -232,7 +232,7 @@ void PrimitiveScene::ProcessMouseEvent(const MouseInput& input)
 		{
 			if (input.Press(MOUSE_BUTTON_RIGHT))
 			{
-				NextModel();
+				//NextModel();
 				//m_pCommandManager->Execute(
 				//	make_shared<SaveImageCommand>(
 				//		make_shared<SaveImageCommandArgs>(

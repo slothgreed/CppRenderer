@@ -34,6 +34,7 @@ public:
 class DLL_EXPORT Cylinder : public IPrimitive
 {
 public:
+	Cylinder() {}
 	Cylinder(const CylinderArgs& args);
 	~Cylinder();
 

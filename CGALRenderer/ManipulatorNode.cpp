@@ -44,20 +44,16 @@ void ManipulatorNode::SetRenderData()
 		MANIPULATOR_HANDLE handle = (MANIPULATOR_HANDLE)i;
 		m_pFaceDatas[handle] = make_shared<RenderData>();
 		m_pFaceDatas[handle]->SetShading(m_pShading);
-		m_pEdgeDatas[handle] = make_shared<RenderData>();
-		m_pEdgeDatas[handle]->SetShading(m_pShading);
 
-		GenManipulatorHandleVBO(m_pFaceDatas[handle].get(), m_pEdgeDatas[handle].get(), handle);
+		GenManipulatorHandleVBO(m_pFaceDatas[handle].get(), handle);
 	}
 }
 
 void ManipulatorNode::GenManipulatorHandleVBO(
 	RenderData* pFaceData,
-	RenderData* pEdgeData,
 	MANIPULATOR_HANDLE handle)
 {
-	if (pFaceData == nullptr ||
-		pEdgeData == nullptr)
+	if (pFaceData == nullptr)
 	{
 		assert(0);
 		return;
@@ -72,31 +68,18 @@ void ManipulatorNode::GenManipulatorHandleVBO(
 	pFaceBuffer->SetPosition(facet);
 	pFaceIndexBuffer->Set(faceIndex);
 	pFaceData->SetGeometryData(PRIM_TYPE_TRIANGLES, pFaceBuffer, pFaceIndexBuffer);
-
-	auto pEdgeBuffer = make_shared<DefaultVertexBuffer>();
-	auto pEdgeIndexBuffer = make_shared<IndexBuffer>();
-	vector<vec3> edge;
-	vector<int> edgeIndex;
-	m_pManipulator->GetEdgeList(edge, edgeIndex, handle);
-	pEdgeBuffer->SetPosition(edge);
-	pEdgeIndexBuffer->Set(edgeIndex);
-	pEdgeData->SetGeometryData(PRIM_TYPE_LINES, pEdgeBuffer, pFaceIndexBuffer);
-
 }
 
 void ManipulatorNode::DrawCore(shared_ptr<UniformStruct> pUniform)
 {
 	m_pShading->SetColor(vec4(1, 0, 0, 1));
 	m_pFaceDatas[MANIPULATOR_HANDLE_X]->Draw(pUniform);
-	m_pEdgeDatas[MANIPULATOR_HANDLE_X]->Draw(pUniform);
 
 	m_pShading->SetColor(vec4(0, 1, 0, 1));
 	m_pFaceDatas[MANIPULATOR_HANDLE_Y]->Draw(pUniform);
-	m_pEdgeDatas[MANIPULATOR_HANDLE_Y]->Draw(pUniform);
 
 	m_pShading->SetColor(vec4(0, 0, 1, 1));
 	m_pFaceDatas[MANIPULATOR_HANDLE_Z]->Draw(pUniform);
-	m_pEdgeDatas[MANIPULATOR_HANDLE_Z]->Draw(pUniform);
 }
 
 

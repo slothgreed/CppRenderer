@@ -42,44 +42,44 @@ void Cylinder::Build(const CylinderArgs& args)
 	for (int i = 0; i < args.slices - 1; i++)
 	{
 		// ’ê–Ê
-		m_index.push_back(0);
-		m_index.push_back(k);
-		m_index.push_back(k + 2);
+		m_index.push_back(IndexOffset() + 0);
+		m_index.push_back(IndexOffset() + k);
+		m_index.push_back(IndexOffset() + k + 2);
 
 		// ã–Ê
-		m_index.push_back(1);
-		m_index.push_back(k + 3);
-		m_index.push_back(k + 1);
+		m_index.push_back(IndexOffset() + 1);
+		m_index.push_back(IndexOffset() + k + 3);
+		m_index.push_back(IndexOffset() + k + 1);
 
 		//// ‘¤–Ê
-		m_index.push_back(k);
-		m_index.push_back(k + 1);
-		m_index.push_back(k + 2);
+		m_index.push_back(IndexOffset() + k);
+		m_index.push_back(IndexOffset() + k + 1);
+		m_index.push_back(IndexOffset() + k + 2);
 						  
-		m_index.push_back(k + 2);
-		m_index.push_back(k + 1);
-		m_index.push_back(k + 3);
+		m_index.push_back(IndexOffset() + k + 2);
+		m_index.push_back(IndexOffset() + k + 1);
+		m_index.push_back(IndexOffset() + k + 3);
 		k += 2;
 	}
 
 	// ’ê–Ê
-	m_index.push_back(0);
-	m_index.push_back(k);
-	m_index.push_back(2);
+	m_index.push_back(IndexOffset() + 0);
+	m_index.push_back(IndexOffset() + k);
+	m_index.push_back(IndexOffset() + 2);
 
 	// ã–Ê
-	m_index.push_back(1);
-	m_index.push_back(3);
-	m_index.push_back(k + 1);
+	m_index.push_back(IndexOffset() + 1);
+	m_index.push_back(IndexOffset() + 3);
+	m_index.push_back(IndexOffset() + k + 1);
 
 	//// ‘¤–Ê
-	m_index.push_back(k);
-	m_index.push_back(k + 1);
-	m_index.push_back(2);
+	m_index.push_back(IndexOffset() + k);
+	m_index.push_back(IndexOffset() + k + 1);
+	m_index.push_back(IndexOffset() + 2);
 
-	m_index.push_back(k + 1);
-	m_index.push_back(3);
-	m_index.push_back(2);
+	m_index.push_back(IndexOffset() + k + 1);
+	m_index.push_back(IndexOffset() + 3);
+	m_index.push_back(IndexOffset() + 2);
 
 	m_drawType = GL_TRIANGLES;
 }

@@ -13,6 +13,7 @@ public:
 	{
 	public:
 		vector<vec3> position;
+		Cylinder cylinder;
 		Cone cone;
 	};
 
