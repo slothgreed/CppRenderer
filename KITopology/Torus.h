@@ -22,6 +22,7 @@ public:
 class DLL_EXPORT Torus : public IPrimitive
 {
 public:
+	Torus() {};
 	Torus(const TorusArgs& args);
 	~Torus();
 

@@ -12,8 +12,7 @@ public:
 	class ShapeData
 	{
 	public:
-		Cylinder cylinder;
-		Cone cone;
+		Torus torus;
 	};
 
 	RotateManipulator();

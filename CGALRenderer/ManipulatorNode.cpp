@@ -9,8 +9,7 @@ ManipulatorNode::ManipulatorNode(MANIPULATOR_TYPE type)
 	}
 	else if(m_ManipulatorType == MANIPULATOR_TYPE_ROTATE)
 	{
-		assert(0);
-		//m_pManipulator = make_shared<RotateManipulator>();
+		m_pManipulator = make_shared<RotateManipulator>();
 	}
 	else if (m_ManipulatorType == MANIPULATOR_TYPE_SCALE)
 	{
