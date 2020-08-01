@@ -66,6 +66,14 @@ void PrimitiveScene::Initialize(Project* m_pProject)
 		m_pScene->AddModelNode(pPrimitiveNode);
 	}
 
+	// Cylinder 
+	{
+		auto pCylinderNode = make_shared<PrimitiveNode>(
+			make_shared<PrimitiveModel>(
+				make_shared<Cylinder>(CylinderArgs(5,1,5,10)))
+			, make_shared<VertexShading>(VERTEX_SHADING_TYPE::VERTEX_SHADING_POSITION));
+		m_pScene->AddModelNode(pCylinderNode);
+	}
 
 	// Torus rendering
 	{

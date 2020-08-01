@@ -81,6 +81,9 @@
     <ClInclude Include="Torus.h">
       <Filter>ヘッダー ファイル\Primitive</Filter>
     </ClInclude>
+    <ClInclude Include="Cylinder.h">
+      <Filter>ヘッダー ファイル\Primitive</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -120,6 +123,9 @@
       <Filter>ソース ファイル\Primitive</Filter>
     </ClCompile>
     <ClCompile Include="Torus.cpp">
+      <Filter>ソース ファイル\Primitive</Filter>
+    </ClCompile>
+    <ClCompile Include="Cylinder.cpp">
       <Filter>ソース ファイル\Primitive</Filter>
     </ClCompile>
   </ItemGroup>

@@ -34,14 +34,14 @@ void Torus::Build(const TorusArgs& args)
 			m_normal.push_back(vec3(rx, ry, rz));
 
 			if (i != args.nsides && j != args.rings) {
-				r = (args.rings + 1) * i + j;
-				m_index.push_back(r);
-				m_index.push_back(r + args.rings + 1);
-				m_index.push_back(r + 1);
+				int index = (args.rings + 1) * i + j;
+				m_index.push_back(index);
+				m_index.push_back(index + args.rings + 1);
+				m_index.push_back(index + 1);
 
-				m_index.push_back(r + args.rings + 1);
-				m_index.push_back(r + args.rings + 2);
-				m_index.push_back(r + 1);
+				m_index.push_back(index + args.rings + 1);
+				m_index.push_back(index + args.rings + 2);
+				m_index.push_back(index + 1);
 			}
 		}
 	}

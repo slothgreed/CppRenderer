@@ -25,7 +25,7 @@ protected:
 	virtual void UnBind() = 0;
 	bool GetPixels(ReadPixelArgs& args);
 	bool Modifing() { return m_modifing; }
-	void SetSize(int width, int height) { m_size.x = width; m_size.y = height; }
+	void SetSize(int width, int height) { m_size.x = (int)width; m_size.y = (int)height; }
 	vec4 m_pClearColor;
 
 private:

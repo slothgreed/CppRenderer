@@ -24,7 +24,7 @@ void RenderData::AddRenderRegion(const string& descriptor, shared_ptr<IShading> 
 		return;
 	}
 	m_pRenderRegion.push_back(RenderRegion());
-	int size = m_pRenderRegion.size() - 1;
+	int size = (int)m_pRenderRegion.size() - 1;
 	m_pRenderRegion[size].m_descriptor = descriptor;
 	m_pRenderRegion[size].m_pShading = pShading;
 	m_pRenderRegion[size].m_first = first;
@@ -72,7 +72,7 @@ void RenderData::DrawUseRegion(const shared_ptr<UniformStruct> pUniform)
 			DrawInternal(m_pShading, pUniform, first, count);
 		}
 
-		int size = m_pRenderRegion.size() - 1;
+		int size = (int)m_pRenderRegion.size() - 1;
 		first = m_pRenderRegion[size].m_first + m_pRenderRegion[size].m_count;
 		count = GetVertexSize() - first;
 		if (first != GetVertexSize())

@@ -36,6 +36,7 @@ PRIM_TYPE GLTypeUtility::PrimType(GLuint value)
 	else
 	{
 		assert(0);
+		return PRIM_TYPE_POINTS;
 	}
 }
 
