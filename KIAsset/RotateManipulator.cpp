@@ -12,7 +12,6 @@ RotateManipulator::~RotateManipulator()
 
 void RotateManipulator::Build()
 {
-	vector<vec3> position;
 	// x axis
 	mat4x4 xMatrix = mat4x4(1);
 	xDirection.torus.Build(TorusArgs(0.09f, 1, 32, 32));

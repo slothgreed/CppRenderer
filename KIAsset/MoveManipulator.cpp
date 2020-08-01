@@ -12,7 +12,6 @@ MoveManipulator::~MoveManipulator()
 
 void MoveManipulator::Build()
 {
-	vector<vec3> position;
 	// x axis
 	mat4x4 xMatrix = mat4x4(1);
 	xDirection.cone.Build(ConeArgs(1, 2, 10));

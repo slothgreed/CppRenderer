@@ -12,7 +12,6 @@ ScaleManipulator::~ScaleManipulator()
 
 void ScaleManipulator::Build()
 {
-	vector<vec3> position;
 	// x axis
 	mat4x4 xMatrix = mat4x4(1);
 	xDirection.cube.Build(CubeArgs(vec3(-0.5), vec3(0.5)));
