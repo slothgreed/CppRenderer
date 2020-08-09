@@ -19,6 +19,7 @@ public:
 	virtual vector<int>& Index() { return m_index; };
 	void Multi(const mat4x4& matrix);
 	void SetIndexOffset(int indexOffset) { m_indexOffset = indexOffset; };
+	void SetIndexOffset(size_t indexOffset) { m_indexOffset = (int)indexOffset; };
 	int IndexOffset() { return m_indexOffset; };
 protected:
 

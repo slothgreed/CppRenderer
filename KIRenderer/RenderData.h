@@ -32,11 +32,13 @@ public:
 	void ClearRenderRegion();
 	//void Draw();
 	void Draw(const shared_ptr<UniformStruct> pUniform);
-	void DrawInternal(shared_ptr<IShading> pShaderPass,shared_ptr<UniformStruct> pUniform, int first, int count);
-	void DrawUseRegion(const shared_ptr<UniformStruct> pUniform);
+	void Draw(shared_ptr<IShader> pShader, shared_ptr<IShading> pShading, shared_ptr<UniformStruct> pUniform, int first = -1, int count = -1);
 	shared_ptr<RenderData> Clone();
 
+
 private:
+	void FindOrNewShader(shared_ptr<IShading> pShading);
+	void DrawUseRegion(const shared_ptr<UniformStruct> pUniform);
 	bool m_bRecompileShader;
 	shared_ptr<IShader> m_pShader;
 	int GetVertexSize();

@@ -4,11 +4,11 @@ namespace KI
 {
 namespace Asset
 {
-class DLL_EXPORT CGALModel : public IPolygonModel
+class DLL_EXPORT ExtLibsModel : public IPolygonModel
 {
 public:
-	CGALModel() {};
-	~CGALModel() {};
+	ExtLibsModel() {};
+	~ExtLibsModel() {};
 
 	virtual void GenSampleModel() = 0;
 };

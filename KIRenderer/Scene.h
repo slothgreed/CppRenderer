@@ -21,12 +21,14 @@ public:
 	void AddLight(shared_ptr<ILight> pLight);
 	void RemoveLight(shared_ptr<ILight> pLight);
 	const vector<shared_ptr<IModelNode>>& ModelNodes() { return m_pRenderList; };
-	void SetLight();
 	void Draw();
+	void PickDraw(shared_ptr<IShader> pShader);
 	void Bind();
 	void UnBind();
 	shared_ptr<ICamera> GetCamera() { return m_pCamera; };
+	shared_ptr<UniformStruct> GetUniformStruct() { return m_pUniformStruct; }
 private:
+	void BindLight();
 	shared_ptr<ICamera> m_pCamera;
 	shared_ptr<UniformStruct> m_pUniformStruct;
 	vector<shared_ptr<ILight>> m_pLights;

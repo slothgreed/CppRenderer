@@ -22,11 +22,8 @@ public:
 	shared_ptr<IVertexBuffer> GetVertexBuffer();
 protected:
 	string m_name;
-	shared_ptr<RenderData> m_pFaceData;
-	shared_ptr<RenderData> m_pEdgeData;
 
 private:
-	virtual void DrawCore(shared_ptr<UniformStruct> pUniform) override;
 	BDB m_bdb;
 	void SetRenderData();
 };

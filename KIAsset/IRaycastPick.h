@@ -8,7 +8,7 @@ namespace Topology
 	class Ray;
 };
 
-namespace Renderer
+namespace Asset
 {
 
 class DLL_EXPORT RaycastPickInfo

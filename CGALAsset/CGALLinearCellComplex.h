@@ -1,16 +1,16 @@
-#ifndef CGAL_GENERALIZED_MAPS_H
-#define CGAL_GENERALIZED_MAPS_H
+#ifndef CGAL_LINEAR_CELL_COMPLEX_H
+#define CGAL_LINEAR_CELL_COMPLEX_H
 namespace KI
 {
 namespace Asset
 {
-class DLL_EXPORT CGALGeneralizedMaps : public CGALModel
+class DLL_EXPORT CGALLinearCellComplex : public ExtLibsModel
 {
 public:
-	CGALGeneralizedMaps();
-	~CGALGeneralizedMaps();
+	CGALLinearCellComplex();
+	~CGALLinearCellComplex();
 
-	virtual MODEL_TYPE Type() override { return MODEL_TYPE::MODEL_TYPE_GENERALIZEDMAPS; };
+	virtual MODEL_TYPE Type() override { return MODEL_TYPE::MODEL_TYPE_CGAL_LINEARCELLCOMPLEX; };
 	virtual void Load(const std::string& filePath);
 	virtual void GenSampleModel();
 	virtual void GetFacetList(std::vector<vec3>& position, std::vector<vec3>& normal);
@@ -22,4 +22,4 @@ private:
 };
 }
 }
-#endif CGAL_GENERALIZED_MAPS_H
+#endif CGAL_LINEAR_CELL_COMPLEX_H

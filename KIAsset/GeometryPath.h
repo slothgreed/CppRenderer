@@ -3,9 +3,9 @@
 
 namespace KI
 {
-namespace Asset
+namespace Renderer
 {
-	class DLL_EXPORT GeometryPath
+class DLL_EXPORT GeometryPath
 {
 public:
 	GeometryPath();

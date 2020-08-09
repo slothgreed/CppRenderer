@@ -48,7 +48,7 @@ vec4 Phong(vec4 color)
 	vec3 diffuse = material.Diffuse.xyz * light.Diffuse.xyz * diffDot;
 	
 	// specular;
-	vec3 normal = normalize(model.NormalMatrix * InData.normal);
+	vec3 normal = normalize(model.NormalMatrix * vec4(InData.normal,1.0)).xyz;
 	vec3 position = normalize(-InData.position.xyz);
 	vec3 s = normalize(vec3(light.Position.xyz - position.xyz));
 	vec3 v = normalize(-position.xyz);

@@ -42,6 +42,52 @@ void IModelNode::RemoveProperty(shared_ptr<IModelProperty> prop)
 		m_pProperty.erase(m_pProperty.begin() + dist);
 	}
 }
+
+
+void IModelNode::BindModel(shared_ptr<UniformStruct> pUniform, int index)
+{
+	if (pUniform != NULL)
+	{
+		if (pUniform->GetModel() != NULL)
+		{
+			pUniform->GetModel()->SetModelMatrix(m_ModelMatrix);
+			pUniform->GetModel()->SetObjectId(GetPickID(index));
+			pUniform->GetModel()->Bind();
+		}
+	}
+}
+
+void IModelNode::UnBindModel(shared_ptr<UniformStruct> pUniform, int index)
+{
+	if (pUniform != NULL)
+	{
+		if (pUniform->GetModel() != NULL)
+		{
+			pUniform->GetModel()->UnBind();
+		}
+	}
+}
+
+void IModelNode::PickDraw(shared_ptr<IShader> pShader, shared_ptr<UniformStruct> pUniform)
+{
+	if (m_visible == false)
+	{
+		return;
+	}
+	else
+	{
+		for (int i = 0; i < m_pRenderData.size(); i++)
+		{
+			BindModel(pUniform, i);
+			m_pRenderData[i]->Draw(pShader, nullptr, pUniform);
+		}
+
+		UnBindModel(pUniform, 0);
+
+		DrawProperty(pUniform);
+	}
+}
+
 void IModelNode::Draw(shared_ptr<UniformStruct> pUniform)
 {
 	if (m_visible == false)
@@ -50,25 +96,37 @@ void IModelNode::Draw(shared_ptr<UniformStruct> pUniform)
 	}
 	else
 	{
-		if (pUniform != NULL)
+		for (int i = 0; i < m_pRenderData.size(); i++)
 		{
-			if (pUniform->GetModel() != NULL)
-			{
-				pUniform->GetModel()->SetModelMatrix(m_ModelMatrix);
-				pUniform->GetModel()->Bind();
-			}
+			BindModel(pUniform, i);
+			PreDraw(pUniform, i);
+			m_pRenderData[i]->Draw(pUniform);
+			PostDraw(pUniform, i);
 		}
 
-		DrawCore(pUniform);
+		UnBindModel(pUniform, 0);
 
-		if (pUniform != NULL)
-		{
-			if (pUniform->GetModel() != NULL)
-			{
-				pUniform->GetModel()->UnBind();
-			}
-		}
+		DrawProperty(pUniform);
 	}
+}
+
+void IModelNode::AddRenderData(int id, shared_ptr<RenderData> pRenderData)
+{
+	m_pRenderData[id] = pRenderData;
+}
+
+void IModelNode::RemoveRenderData(int id, shared_ptr<RenderData> pRenderData)
+{
+	assert(0);
+}
+
+shared_ptr<RenderData> IModelNode::GetRenderData(int id)
+{
+	if (m_pRenderData[id] == NULL) {
+		assert(0);
+		return nullptr;
+	}
+	return m_pRenderData[id];
 }
 
 void IModelNode::DrawProperty(shared_ptr<UniformStruct> pUniform)

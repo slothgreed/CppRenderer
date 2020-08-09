@@ -58,19 +58,6 @@ LambertShading::LambertShading(shared_ptr<Texture> pTexture)
 	SetTexture(pTexture);
 }
 
-bool LambertShading::Compare(IShading* pShading)
-{
-	auto pLambertShading = dynamic_cast<LambertShading*>(pShading);
-	if (pLambertShading != nullptr)
-	{
-		if (ColorType() == pLambertShading->ColorType())
-		{
-			return true;
-		}
-	}
-
-	return false;
-}
 shared_ptr<IShaderCode> LambertShading::NewShaderCode(IShaderBuildInfo* pBuildInfo,SHADER_PROGRAM_TYPE type)
 {
 	if (type == SHADER_PROGRAM_VERTEX)

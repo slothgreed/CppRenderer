@@ -43,10 +43,7 @@ using namespace KI::Topology;
 #include "AssetTypes.h"
 #include "IPolygonModel.h"
 #include "IManipulatorModel.h"
-#include "CGALModel.h"
-#include "CGALPolyhedron.h"
-#include "CGALLinearCellComplex.h"
-#include "CGALGeneralizedMaps.h"
+#include "ExtLibsModel.h"
 #include "HalfEdgeModel.h"
 #include "PrimitiveModel.h"
 
@@ -69,9 +66,6 @@ using namespace KI::Topology;
 #include "SSLICEffect.h"
 
 #include "GeometryPath.h"
-#include "PickPath.h"
-
-#include "IGLPick.h"
 #include "PfxPlane.h"
 
 #include "ModelGenerator.h"

@@ -21,12 +21,11 @@ public:
 	PickCommandArgs(
 		shared_ptr<Viewport> pViewport,
 		shared_ptr<Scene> pScene,
-		vec2 position)
-	{ 
-		m_pViewport = pViewport;
-		m_pScene = pScene;
-		screenPosition = position;
-	};
+		vec2 position) :
+		m_pViewport(pViewport),
+		m_pScene(pScene),
+		screenPosition(position) {};
+
 	~PickCommandArgs() {};
 
 	virtual COMMAND_TYPE Type() { return PICK_COMMAND; }

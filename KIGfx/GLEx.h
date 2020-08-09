@@ -4,7 +4,7 @@ namespace KI
 {
 namespace Gfx
 {
-static class DLL_EXPORT glEx
+class DLL_EXPORT glEx
 {
 public:
 	glEx() {};

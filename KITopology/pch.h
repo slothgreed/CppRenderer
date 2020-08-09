@@ -27,6 +27,7 @@ using namespace glm;
 #include "../KIFoundation/pch.h"
 using namespace KI::Foundation;
 
+
 #include "IPrimitive.h"
 #include "Ray.h"
 #include "Sphere.h"

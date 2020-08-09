@@ -62,13 +62,16 @@ void PhongShadingFragCode::Bind(shared_ptr<IShaderChunk> pShaderChunk, shared_pt
 	m_pColorCode->Bind(pShaderChunk, pUniform);
 
 	auto pUniformStruct = dynamic_cast<UniformStruct*>(pUniform.get());
-	if (pUniform != nullptr)
+	if (pUniformStruct == nullptr)
 	{
-		if (pUniformStruct->GetMaterial() != nullptr)
-		{
-			pUniformStruct->GetMaterial()->Set(m_Material);
-			pUniformStruct->GetMaterial()->Bind();
-		}
+		assert(0);
+		return;
+	}
+
+	if (pUniformStruct->GetMaterial() != nullptr)
+	{
+		pUniformStruct->GetMaterial()->Set(m_Material);
+		pUniformStruct->GetMaterial()->Bind();
 	}
 }
 
@@ -76,12 +79,15 @@ void PhongShadingFragCode::UnBind(shared_ptr<IShaderChunk> pShaderChunk, shared_
 {
 	m_pColorCode->UnBind(pShaderChunk, pUniform);
 	auto pUniformStruct = dynamic_cast<UniformStruct*>(pUniform.get());
-	if (pUniform != nullptr)
+	if (pUniformStruct == nullptr)
 	{
-		if (pUniformStruct->GetMaterial() != nullptr)
-		{
-			pUniformStruct->GetMaterial()->UnBind();
-		}
+		assert(0);
+		return;
+	}
+
+	if (pUniformStruct->GetMaterial() != nullptr)
+	{
+		pUniformStruct->GetMaterial()->UnBind();
 	}
 }
 

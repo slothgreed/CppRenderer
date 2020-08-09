@@ -1,6 +1,6 @@
 namespace KI
 {
-namespace Renderer
+namespace Asset
 {
 
 RaycastPickInfo::RaycastPickInfo(PICK_TYPE type, Topology::Ray* ray) 

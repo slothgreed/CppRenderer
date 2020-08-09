@@ -171,12 +171,8 @@
     <ClInclude Include="Grid.h" />
     <ClInclude Include="IAnimation.h" />
     <ClInclude Include="AssetTypes.h" />
-    <ClInclude Include="CGALGeneralizedMaps.h" />
-    <ClInclude Include="CGALLinearCellComplex.h" />
-    <ClInclude Include="CGALModel.h" />
-    <ClInclude Include="CGALPolyhedron.h" />
+    <ClInclude Include="ExtLibsModel.h" />
     <ClInclude Include="HalfEdgeModel.h" />
-    <ClInclude Include="IGLPick.h" />
     <ClInclude Include="IManipulatorModel.h" />
     <ClInclude Include="IPolygonModel.h" />
     <ClInclude Include="IRaycastPick.h" />
@@ -187,7 +183,6 @@
     <ClInclude Include="MoveManipulator.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="PfxPlane.h" />
-    <ClInclude Include="PickPath.h" />
     <ClInclude Include="PrimitiveModel.h" />
     <ClInclude Include="RotateManipulator.h" />
     <ClInclude Include="SampleModelGenerator.h" />
@@ -198,15 +193,11 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CGALGeneralizedMaps.cpp" />
-    <ClCompile Include="CGALLinearCellComplex.cpp" />
-    <ClCompile Include="CGALPolyhedron.cpp" />
     <ClCompile Include="DirectionalLightModel.cpp" />
     <ClCompile Include="GeometryPath.cpp" />
     <ClCompile Include="GrayScaleEffect.cpp" />
     <ClCompile Include="Grid.cpp" />
     <ClCompile Include="HalfEdgeModel.cpp" />
-    <ClCompile Include="IGLPick.cpp" />
     <ClCompile Include="IPolygonModel.cpp" />
     <ClCompile Include="IRaycastPick.cpp" />
     <ClCompile Include="MaterialManager.cpp" />
@@ -214,7 +205,6 @@
     <ClCompile Include="ModelGenerator.cpp" />
     <ClCompile Include="MoveManipulator.cpp" />
     <ClCompile Include="PfxPlane.cpp" />
-    <ClCompile Include="PickPath.cpp" />
     <ClCompile Include="PrimitiveModel.cpp" />
     <ClCompile Include="RotateManipulator.cpp" />
     <ClCompile Include="SampleModelGenerator.cpp" />

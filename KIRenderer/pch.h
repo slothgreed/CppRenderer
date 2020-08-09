@@ -39,6 +39,7 @@ using namespace KI::ShaderLib;
 
 
 #include "IModelProperty.h"
+#include "IGLPick.h"
 #include "IModelNode.h"
 #include "Vertex.h"
 #include "NodeOperator.h"
@@ -62,11 +63,10 @@ using namespace KI::ShaderLib;
 
 #include "RenderSystem.h"
 #include "PfxRenderer.h"
-
 #include "RenderData.h"
-
 #include "Material.h"
-
 #include "Scene.h"
+
+#include "PickPath.h"
 
 #endif KI_RENDERER_PCH_H

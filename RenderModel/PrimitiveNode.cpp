@@ -5,10 +5,10 @@ namespace RenderModel
 PrimitiveNode::PrimitiveNode(shared_ptr<RenderData> pRenderData)
 {
 	m_name = "Primitive";
-	m_pRenderData = pRenderData;
+	AddRenderData(0, pRenderData);
 	if (pRenderData->GetShading() == nullptr)
 	{
-		m_pRenderData->SetShading(make_shared<BasicShading>(vec4(1, 0, 0, 1)));
+		pRenderData->SetShading(make_shared<BasicShading>(vec4(1, 0, 0, 1)));
 	}
 }
 
@@ -22,22 +22,25 @@ PrimitiveNode::PrimitiveNode(shared_ptr<PrimitiveModel> pPrimitive, shared_ptr<I
 	: IModelNode(pPrimitive)
 {
 	SetRenderData();
-	m_pRenderData->SetShading(pShading);
+	GetRenderData(0)->SetShading(pShading);
 }
 
 PrimitiveNode::~PrimitiveNode()
 {
 }
 
-void PrimitiveNode::DrawCore(shared_ptr<UniformStruct> pUniform)
+void PrimitiveNode::PreDraw(shared_ptr<UniformStruct> pUniform, int index)
 {
 	if (m_pState != nullptr)
 	{
 		m_pState->Bind();
 	}
 
-	m_pRenderData->Draw(pUniform);
+	Logger::GLError();
+}
 
+void PrimitiveNode::PostDraw(shared_ptr<UniformStruct> pUniform, int index)
+{
 	if (m_pState != nullptr)
 	{
 		m_pState->UnBind();
@@ -48,35 +51,23 @@ void PrimitiveNode::DrawCore(shared_ptr<UniformStruct> pUniform)
 
 IndexBuffer* PrimitiveNode::GetIndexBuffer()
 {
-	if (m_pRenderData == nullptr)
-	{
-		assert(0);
-		return nullptr;
-	}
-
-	return m_pRenderData->GetIndexBuffer().get();
+	return GetRenderData(0)->GetIndexBuffer().get();
 }
 
 shared_ptr<DefaultVertexBuffer> PrimitiveNode::GetVertexBuffer()
 {
-	if (m_pRenderData == nullptr)
+	if (GetRenderData(0)->GetVertexBuffer()->Type() != VERTEX_BUFFER_TYPE_DEFAULT)
 	{
 		assert(0);
 		return nullptr;
 	}
 
-	if (m_pRenderData->GetVertexBuffer()->Type() != VERTEX_BUFFER_TYPE_DEFAULT)
-	{
-		assert(0);
-		return nullptr;
-	}
-
-	return static_pointer_cast<DefaultVertexBuffer>(m_pRenderData->GetVertexBuffer());
+	return static_pointer_cast<DefaultVertexBuffer>(GetRenderData(0)->GetVertexBuffer());
 }
 
 void PrimitiveNode::SetRenderData()
 {
-	m_pRenderData = make_shared<RenderData>();
+	auto pRenderData = make_shared<RenderData>();
 	auto pPrimitive = static_pointer_cast<PrimitiveModel>(m_pModel);
 
 	auto pVertexBuffer = make_shared<DefaultVertexBuffer>();
@@ -105,11 +96,12 @@ void PrimitiveNode::SetRenderData()
 		pIndexBuffer->Set(index);
 	}
 
-	m_pRenderData->SetGeometryData(
+	pRenderData->SetGeometryData(
 		GLTypeUtility::PrimType(pPrimitive->GetPrimitive()->GetDrawType()),
 		pVertexBuffer, pIndexBuffer);
-	m_pRenderData->SetShading(make_shared<BasicShading>(vec4(1, 0, 0, 1)));
+	pRenderData->SetShading(make_shared<BasicShading>(vec4(1, 0, 0, 1)));
 
+	AddRenderData(0, pRenderData);
 }
 
 void PrimitiveNode::AddPartSelect(TOPOLOGY_TYPE type, int first, int count)
@@ -117,12 +109,12 @@ void PrimitiveNode::AddPartSelect(TOPOLOGY_TYPE type, int first, int count)
 	auto pShading = ShadingManager::Instance()->GetSystemShading(SYSTEM_SHADING::SYSTEM_SHADING_SELECTION);
 	if (type == TOPOLOGY_TYPE::TOPOLOGY_TYPE_FACE)
 	{
-		if (m_pRenderData->HasRenderRegion())
+		if (GetRenderData(0)->HasRenderRegion())
 		{
-			m_pRenderData->ClearRenderRegion();
+			GetRenderData(0)->ClearRenderRegion();
 		}
 
-		m_pRenderData->AddRenderRegion("Selection", pShading, first, count);
+		GetRenderData(0)->AddRenderRegion("Selection", pShading, first, count);
 	}
 	else
 	{

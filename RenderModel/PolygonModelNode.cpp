@@ -15,21 +15,6 @@ PolygonModelNode::~PolygonModelNode()
 {
 }
 
-void PolygonModelNode::DrawCore(shared_ptr<UniformStruct> pUniform)
-{
-	if (m_pFaceData != NULL)
-	{
-		m_pFaceData->Draw(pUniform);
-	}
-
-	if (m_pEdgeData != NULL)
-	{
-		m_pEdgeData->Draw(pUniform);
-	}
-
-	DrawProperty(pUniform);
-
-}
 
 void PolygonModelNode::ShowProperty()
 {
@@ -59,13 +44,7 @@ void PolygonModelNode::VisibleBDB(bool visibility)
 
 shared_ptr<IVertexBuffer> PolygonModelNode::GetVertexBuffer()
 {
-	if (m_pFaceData == nullptr)
-	{
-		assert(0);
-		return nullptr;
-	}
-
-	return m_pFaceData->GetVertexBuffer(); 
+	return GetRenderData(0)->GetVertexBuffer(); 
 }
 
 void PolygonModelNode::VisibleNormal(bool visibility)
@@ -90,8 +69,9 @@ void PolygonModelNode::SetRenderData()
 		auto pFaceBuffer = make_shared<DefaultVertexBuffer>();
 		pFaceBuffer->SetPosition(facet);
 		pFaceBuffer->SetNormal(normal);
-		m_pFaceData = make_shared <RenderData>(PRIM_TYPE_TRIANGLES, pFaceBuffer);
-		m_pFaceData->SetShading(make_shared<BasicShading>(vec4(0.7f, 0.7f, 0.7f, 1)));
+		auto pFaceData = make_shared <RenderData>(PRIM_TYPE_TRIANGLES, pFaceBuffer);
+		pFaceData->SetShading(make_shared<BasicShading>(vec4(0.7f, 0.7f, 0.7f, 1)));
+		AddRenderData(0, pFaceData);
 
 		vector<vec3> edge;
 		GetModel()->GetEdgeList(edge);
@@ -99,8 +79,10 @@ void PolygonModelNode::SetRenderData()
 		pEdgeBuffer->SetPosition(edge);
 
 		auto pEdgeShading = make_shared<BasicShading>(vec4(0, 1, 0, 1));
-		m_pEdgeData = make_shared <RenderData>(PRIM_TYPE_LINES, pEdgeBuffer);
-		m_pEdgeData->SetShading(pEdgeShading);
+		auto pEdgeData = make_shared <RenderData>(PRIM_TYPE_LINES, pEdgeBuffer);
+		pEdgeData->SetShading(pEdgeShading);
+		AddRenderData(1, pEdgeData);
+
 	}
 	else
 	{
@@ -123,8 +105,9 @@ void PolygonModelNode::SetRenderData()
 		
 		auto pFaceIndex = make_shared <IndexBuffer>();
 		pFaceIndex->Set(index);
-		m_pFaceData = make_shared <RenderData>(PRIM_TYPE_TRIANGLES, pFaceBuffer, pFaceIndex);
-		m_pFaceData->SetShading(make_shared<BasicShading>(vec4(0.7f, 0.7f, 0.7f, 1)));
+		auto pFaceData = make_shared <RenderData>(PRIM_TYPE_TRIANGLES, pFaceBuffer, pFaceIndex);
+		pFaceData->SetShading(make_shared<BasicShading>(vec4(0.7f, 0.7f, 0.7f, 1)));
+		AddRenderData(0, pFaceData);
 
 		vector<vec3> edge;
 		GetModel()->GetEdgeList(edge);
@@ -132,8 +115,9 @@ void PolygonModelNode::SetRenderData()
 		pEdgeBuffer->SetPosition(edge);
 
 		auto pEdgeShading = make_shared<BasicShading>(vec4(0, 1, 0, 1));
-		m_pEdgeData = make_shared <RenderData>(PRIM_TYPE_LINES, pEdgeBuffer);
-		m_pEdgeData->SetShading(pEdgeShading);
+		auto pEdgeData = make_shared <RenderData>(PRIM_TYPE_LINES, pEdgeBuffer);
+		pEdgeData->SetShading(pEdgeShading);
+		AddRenderData(1, pEdgeData);
 	}
 
 }
@@ -153,12 +137,12 @@ void PolygonModelNode::AddPartSelect(TOPOLOGY_TYPE type, int first, int count)
 	auto pShading = ShadingManager::Instance()->GetSystemShading(SYSTEM_SHADING::SYSTEM_SHADING_SELECTION);
 	if (type == TOPOLOGY_TYPE::TOPOLOGY_TYPE_FACE)
 	{
-		if (m_pFaceData->HasRenderRegion())
+		if (GetRenderData(0)->HasRenderRegion())
 		{
-			m_pFaceData->ClearRenderRegion();
+			GetRenderData(0)->ClearRenderRegion();
 		}
 
-		m_pFaceData->AddRenderRegion("Selection", pShading, first, count);
+		GetRenderData(0)->AddRenderRegion("Selection", pShading, first, count);
 	}
 	else
 	{

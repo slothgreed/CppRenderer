@@ -232,7 +232,7 @@ void PrimitiveScene::ProcessMouseEvent(const MouseInput& input)
 		{
 			if (input.Press(MOUSE_BUTTON_RIGHT))
 			{
-				//NextModel();
+				NextModel();
 				//m_pCommandManager->Execute(
 				//	make_shared<SaveImageCommand>(
 				//		make_shared<SaveImageCommandArgs>(

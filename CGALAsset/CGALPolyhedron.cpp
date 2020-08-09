@@ -8,7 +8,7 @@ namespace Asset
 {
 
 CGALPolyhedron::CGALPolyhedron()
-	: CGALModel()
+	: ExtLibsModel()
 {
 }
 

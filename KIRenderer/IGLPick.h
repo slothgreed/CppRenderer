@@ -3,9 +3,9 @@
 
 namespace KI
 {
-namespace Asset
+namespace Renderer
 {
-
+class RenderData;
 // Selection Buffer ‚ð—˜—p‚µ‚½Picking
 class DLL_EXPORT GLPickInfo
 {
@@ -19,22 +19,21 @@ private:
 	vector<vec3> m_pPickInfo;
 };
 
+// uniform id ‚Æ primitive id ‚Å pick ‚·‚é
 class DLL_EXPORT IGLPick
 {
 public:
 	IGLPick() {};
 	~IGLPick() {};
 	
-	virtual void CalculatePickID(int startIndex, int& nextStartIndex) = 0;
-	virtual void PickDraw() = 0;
-	shared_ptr<RenderData> GetPickRenderData(int key);
+	void Clear() { m_pickId.clear(); }
+	virtual void AddPickID(int id) { m_pickId.push_back(id); };
+	int GetPickID(int index);
+	virtual void PickDraw(shared_ptr<IShader> pShader, shared_ptr<UniformStruct> pUniformStorage) = 0;
+	int Num() { return (int)m_pickId.size(); };
 
-protected:
-	vec3 IndexToColor(int index);
-	virtual void CalculateID(GLuint primitiveType, int indexNum, int startIndex, int& nextStartIndex, vector<vec3>& ids);
-	void BuildPickData(int key, shared_ptr<RenderData> pRenderData, const vector<vec3>& ids);
 private:
-	map<int, GLPickInfo> m_pPickInfo; // key = identifier, value = id;
+	vector<int> m_pickId;
 };
 
 }

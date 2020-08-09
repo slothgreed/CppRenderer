@@ -34,23 +34,23 @@ CommandResult SubdivisionCommand::Execute()
 {
 	auto args = static_pointer_cast<SubdivisionCommandArgs>(m_pArgs);
 
-	typedef CGAL::Exact_predicates_inexact_constructions_kernel Kernel;
-	typedef CGAL::Polyhedron_3<Kernel> Polyhedron;
+	//typedef CGAL::Exact_predicates_inexact_constructions_kernel Kernel;
+	//typedef CGAL::Polyhedron_3<Kernel> Polyhedron;
 
-	Polyhedron p;
-	auto model = static_pointer_cast<CGALPolyhedron>(args->m_pModel);
+	//Polyhedron p;
+	//auto model = static_pointer_cast<CGALPolyhedron>(args->m_pModel);
 
-	std::vector<Polyhedron::Facet_handle> Facets;
-	std::vector<Polyhedron::Vertex_handle> VertexHandle;
+	//std::vector<Polyhedron::Facet_handle> Facets;
+	//std::vector<Polyhedron::Vertex_handle> VertexHandle;
 
-	CGAL::Polygon_mesh_processing::refine(
-		*model->GetModel(),
-		faces(*model->GetModel()),
-		std::back_inserter(Facets),
-		std::back_inserter(VertexHandle),
-		CGAL::Polygon_mesh_processing::parameters::density_control_factor(2.));
+	//CGAL::Polygon_mesh_processing::refine(
+	//	*model->GetModel(),
+	//	faces(*model->GetModel()),
+	//	std::back_inserter(Facets),
+	//	std::back_inserter(VertexHandle),
+	//	CGAL::Polygon_mesh_processing::parameters::density_control_factor(2.));
 
-	args->m_pModel->Update(make_shared<TopologyModifiedEventArgs>().get());
+	//args->m_pModel->Update(make_shared<TopologyModifiedEventArgs>().get());
 
 	return CommandResult::Success;
 }

@@ -58,10 +58,10 @@ void Scene::Bind()
 	m_pUniformStruct->GetScene()->Bind();
 	m_pUniformStruct->GetModel()->SetViewMatrix(m_pCamera->ViewMatrix());
 
-	SetLight();
+	BindLight();
 }
 
-void Scene::SetLight()
+void Scene::BindLight()
 {
 	if (m_pLights.size() != 1)
 	{
@@ -85,6 +85,14 @@ void Scene::Draw()
 	for (int i = 0; i < m_pRenderList.size(); i++)
 	{
 		m_pRenderList[i]->Draw(m_pUniformStruct);
+	}
+}
+
+void Scene::PickDraw(shared_ptr<IShader> pShader)
+{
+	for (int i = 0; i < m_pRenderList.size(); i++)
+	{
+		m_pRenderList[i]->PickDraw(pShader, m_pUniformStruct);
 	}
 }
 

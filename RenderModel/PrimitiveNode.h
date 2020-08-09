@@ -20,11 +20,11 @@ public:
 	void SetRenderData();
 	void SetState(shared_ptr<IGLState> pState) { m_pState = pState; };
 	virtual void AddPartSelect(TOPOLOGY_TYPE type, int first, int count);
+	virtual void PreDraw(shared_ptr<UniformStruct> pUniform, int index);
+	virtual void PostDraw(shared_ptr<UniformStruct> pUniform, int index);
 
 private:
-	virtual void DrawCore(shared_ptr<UniformStruct> pUniform) override;
 	string m_name;
-	shared_ptr<RenderData> m_pRenderData;
 	shared_ptr<IShading> m_pShading;
 	shared_ptr<IGLState> m_pState;
 };

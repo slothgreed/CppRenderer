@@ -23,6 +23,11 @@ void UniformModel::SetModelMatrix(const mat4x4& data)
 	m_ModelData.modelMatrix = data;
 	m_ModelData.normalMatrix = glm::inverse(glm::transpose(m_ModelData.modelMatrix));
 }
+
+void UniformModel::SetObjectId(int id)
+{
+	m_ModelData.objectId = id;
+}
 void UniformModel::Bind()
 {
 	if (m_Id == 0)

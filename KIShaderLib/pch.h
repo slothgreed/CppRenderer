@@ -68,4 +68,5 @@ using namespace KI::Gfx;
 #include "GrayScaleShading.h"
 #include "BezierLineShading.h"
 #include "PhongShading.h"
+#include "PickShading.h"
 #endif //KI_SHADER_LIB_PCH_H

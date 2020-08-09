@@ -52,6 +52,12 @@
     <Filter Include="ヘッダー ファイル\Material">
       <UniqueIdentifier>{42f3d3a3-bb66-414b-bf38-68cd1d370657}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Path">
+      <UniqueIdentifier>{552b22c8-a2c1-49f5-82cf-b914743b2646}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Path">
+      <UniqueIdentifier>{9f799466-c834-4f22-bb5f-0c6ccb6eb659}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -126,6 +132,12 @@
     <ClInclude Include="Scene.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
+    <ClInclude Include="IGLPick.h">
+      <Filter>ヘッダー ファイル\Path</Filter>
+    </ClInclude>
+    <ClInclude Include="PickPath.h">
+      <Filter>ヘッダー ファイル\Path</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -175,6 +187,12 @@
     </ClCompile>
     <ClCompile Include="Scene.cpp">
       <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="IGLPick.cpp">
+      <Filter>ソース ファイル\Path</Filter>
+    </ClCompile>
+    <ClCompile Include="PickPath.cpp">
+      <Filter>ソース ファイル\Path</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

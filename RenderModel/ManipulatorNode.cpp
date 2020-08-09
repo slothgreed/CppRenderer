@@ -42,10 +42,12 @@ void ManipulatorNode::SetRenderData()
 	for (int i = 0; i < MANIPULATOR_HANDLE_NUM; i++)
 	{
 		MANIPULATOR_HANDLE handle = (MANIPULATOR_HANDLE)i;
-		m_pFaceDatas[handle] = make_shared<RenderData>();
-		m_pFaceDatas[handle]->SetShading(m_pShading);
+		auto pFaceDatas = make_shared<RenderData>();
+		pFaceDatas->SetShading(m_pShading);
 
-		GenManipulatorHandleVBO(m_pFaceDatas[handle].get(), handle);
+		GenManipulatorHandleVBO(pFaceDatas.get(), handle);
+
+		AddRenderData(i, pFaceDatas);
 	}
 }
 
@@ -70,16 +72,25 @@ void ManipulatorNode::GenManipulatorHandleVBO(
 	pFaceData->SetGeometryData(PRIM_TYPE_TRIANGLES, pFaceBuffer, pFaceIndexBuffer);
 }
 
-void ManipulatorNode::DrawCore(shared_ptr<UniformStruct> pUniform)
+void ManipulatorNode::PreDraw(shared_ptr<UniformStruct> pUniform, int index)
 {
-	m_pShading->SetColor(vec4(1, 0, 0, 1));
-	m_pFaceDatas[MANIPULATOR_HANDLE_X]->Draw(pUniform);
-
-	m_pShading->SetColor(vec4(0, 1, 0, 1));
-	m_pFaceDatas[MANIPULATOR_HANDLE_Y]->Draw(pUniform);
-
-	m_pShading->SetColor(vec4(0, 0, 1, 1));
-	m_pFaceDatas[MANIPULATOR_HANDLE_Z]->Draw(pUniform);
+	if (index == MANIPULATOR_HANDLE_X)
+	{
+		m_pShading->SetColor(vec4(1, 0, 0, 1));
+	}
+	else if (index == MANIPULATOR_HANDLE_Y)
+	{
+		m_pShading->SetColor(vec4(0, 1, 0, 1));
+	}
+	else if (index == MANIPULATOR_HANDLE_Z)
+	{
+		m_pShading->SetColor(vec4(0, 0, 1, 1));
+	}
+	else
+	{
+		assert(0);
+	}
 }
+
 }
 }

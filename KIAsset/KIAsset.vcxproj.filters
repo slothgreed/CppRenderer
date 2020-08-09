@@ -87,15 +87,6 @@
     <ClInclude Include="AssetTypes.h">
       <Filter>ヘッダー ファイル\Model</Filter>
     </ClInclude>
-    <ClInclude Include="CGALGeneralizedMaps.h">
-      <Filter>ヘッダー ファイル\Model\PolygonModel</Filter>
-    </ClInclude>
-    <ClInclude Include="CGALLinearCellComplex.h">
-      <Filter>ヘッダー ファイル\Model\PolygonModel</Filter>
-    </ClInclude>
-    <ClInclude Include="CGALPolyhedron.h">
-      <Filter>ヘッダー ファイル\Model\PolygonModel</Filter>
-    </ClInclude>
     <ClInclude Include="IPolygonModel.h">
       <Filter>ヘッダー ファイル\Model\PolygonModel</Filter>
     </ClInclude>
@@ -112,9 +103,6 @@
       <Filter>ヘッダー ファイル\Model\Manipulator</Filter>
     </ClInclude>
     <ClInclude Include="HalfEdgeModel.h">
-      <Filter>ヘッダー ファイル\Model\PolygonModel</Filter>
-    </ClInclude>
-    <ClInclude Include="CGALModel.h">
       <Filter>ヘッダー ファイル\Model\PolygonModel</Filter>
     </ClInclude>
     <ClInclude Include="pch.h">
@@ -150,12 +138,6 @@
     <ClInclude Include="GeometryPath.h">
       <Filter>ヘッダー ファイル\RenderPath\Geometry</Filter>
     </ClInclude>
-    <ClInclude Include="PickPath.h">
-      <Filter>ヘッダー ファイル\RenderPath\Geometry</Filter>
-    </ClInclude>
-    <ClInclude Include="IGLPick.h">
-      <Filter>ヘッダー ファイル\RenderPath\Geometry</Filter>
-    </ClInclude>
     <ClInclude Include="IRaycastPick.h">
       <Filter>ヘッダー ファイル\RenderPath\Geometry</Filter>
     </ClInclude>
@@ -171,19 +153,13 @@
     <ClInclude Include="DirectionalLightModel.h">
       <Filter>ヘッダー ファイル\Model\Light</Filter>
     </ClInclude>
+    <ClInclude Include="ExtLibsModel.h">
+      <Filter>ヘッダー ファイル\Model\PolygonModel</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="CGALGeneralizedMaps.cpp">
-      <Filter>ソース ファイル\Model\PolygonModel</Filter>
-    </ClCompile>
-    <ClCompile Include="CGALPolyhedron.cpp">
-      <Filter>ソース ファイル\Model\PolygonModel</Filter>
-    </ClCompile>
-    <ClCompile Include="CGALLinearCellComplex.cpp">
-      <Filter>ソース ファイル\Model\PolygonModel</Filter>
     </ClCompile>
     <ClCompile Include="MoveManipulator.cpp">
       <Filter>ソース ファイル\Model\Manipulator</Filter>
@@ -222,12 +198,6 @@
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="GeometryPath.cpp">
-      <Filter>ソース ファイル\RenderPath\Geometry</Filter>
-    </ClCompile>
-    <ClCompile Include="PickPath.cpp">
-      <Filter>ソース ファイル\RenderPath\Geometry</Filter>
-    </ClCompile>
-    <ClCompile Include="IGLPick.cpp">
       <Filter>ソース ファイル\RenderPath\Geometry</Filter>
     </ClCompile>
     <ClCompile Include="IRaycastPick.cpp">

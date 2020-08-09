@@ -31,7 +31,6 @@ public:
 
 	~LambertShading() {};
 
-	virtual bool Compare(IShading* pShading);
 	virtual bool NewShaderCompare(IShaderChunk* pTarget) override;
 	virtual shared_ptr<IShaderCode> NewShaderCode(IShaderBuildInfo* pBuildInfo,SHADER_PROGRAM_TYPE type) override;
 

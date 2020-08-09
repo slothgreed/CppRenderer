@@ -1,6 +1,6 @@
 namespace KI
 {
-namespace Asset
+namespace Renderer
 {
 GeometryPath::GeometryPath()
 {

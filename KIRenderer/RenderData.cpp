@@ -48,7 +48,8 @@ void RenderData::DrawUseRegion(const shared_ptr<UniformStruct> pUniform)
 	// •”•ªƒ}ƒeƒŠƒAƒ‹‚Å•`‰æ
 	for (int i = 0; i < m_pRenderRegion.size(); i++)
 	{
-		DrawInternal(
+		Draw(
+			m_pShader,
 			m_pRenderRegion[i].m_pShading,
 			pUniform,
 			m_pRenderRegion[i].m_first,
@@ -59,7 +60,7 @@ void RenderData::DrawUseRegion(const shared_ptr<UniformStruct> pUniform)
 	{
 		if (m_pRenderRegion[0].m_first != 0)
 		{
-			DrawInternal(m_pShading, pUniform, 0, m_pRenderRegion[0].m_first);
+			Draw(m_pShader, m_pShading, pUniform, 0, m_pRenderRegion[0].m_first);
 		}
 
 		int first = 0;
@@ -69,7 +70,7 @@ void RenderData::DrawUseRegion(const shared_ptr<UniformStruct> pUniform)
 			first = m_pRenderRegion[i].m_first + m_pRenderRegion[i].m_count;
 			count = m_pRenderRegion[i + 1].m_first - first;
 
-			DrawInternal(m_pShading, pUniform, first, count);
+			Draw(m_pShader, m_pShading, pUniform, first, count);
 		}
 
 		int size = (int)m_pRenderRegion.size() - 1;
@@ -77,7 +78,7 @@ void RenderData::DrawUseRegion(const shared_ptr<UniformStruct> pUniform)
 		count = GetVertexSize() - first;
 		if (first != GetVertexSize())
 		{
-			DrawInternal(m_pShading, pUniform, first, count);
+			Draw(m_pShader, m_pShading, pUniform, first, count);
 		}
 	}
 }
@@ -93,19 +94,22 @@ int RenderData::GetVertexSize()
 		return m_pIndexBuffer->Size();
 	}
 }
-void RenderData::DrawInternal(shared_ptr<IShading> pShading,shared_ptr<UniformStruct> pUniform, int first, int count)
+void RenderData::Draw(
+	shared_ptr<IShader> pShader,
+	shared_ptr<IShading> pShading,
+	shared_ptr<UniformStruct> pUniform,
+	int first, 
+	int count)
 {
-	if (pShading->NeedReCompileShader() || m_pShader == nullptr)
-	{
-		auto pBuildInfo = make_shared<IShaderBuildInfo>();
-		pBuildInfo->SetVertexBuffer(m_pVertexBuffer);
-		pBuildInfo->SetShaderChunk(pShading);
-		m_pShader = ShaderManager::Instance()->FindOrNew(pBuildInfo);
-		pShading->CompiledShader();
+	if (first == -1) {
+		first = 0;
+	}
+	if (count == -1) {
+		count = GetVertexSize();
 	}
 
-	m_pShader->Use();
-	m_pShader->Bind(pShading, pUniform);
+	pShader->Use();
+	pShader->Bind(pShading, pUniform);
 
 	if (m_pIndexBuffer == nullptr)
 	{
@@ -116,8 +120,20 @@ void RenderData::DrawInternal(shared_ptr<IShading> pShading,shared_ptr<UniformSt
 		m_pVertexBuffer->DrawByIndexBuffer(m_pPrimitiveType, m_pIndexBuffer.get(), first, count);
 	}
 
-	m_pShader->UnBind(pShading, pUniform);
-	m_pShader->UnUse();
+	pShader->UnBind(pShading, pUniform);
+	pShader->UnUse();
+}
+
+void RenderData::FindOrNewShader(shared_ptr<IShading> pShading)
+{
+	if (pShading->NeedReCompileShader() || m_pShader == nullptr)
+	{
+		auto pBuildInfo = make_shared<IShaderBuildInfo>();
+		pBuildInfo->SetVertexBuffer(m_pVertexBuffer);
+		pBuildInfo->SetShaderChunk(pShading);
+		m_pShader = ShaderManager::Instance()->FindOrNew(pBuildInfo);
+		pShading->CompiledShader();
+	}
 }
 
 void RenderData::Draw(const shared_ptr<UniformStruct> pUniform)
@@ -135,7 +151,8 @@ void RenderData::Draw(const shared_ptr<UniformStruct> pUniform)
 		return;
 	}
 
-	DrawInternal(m_pShading, pUniform, 0, GetVertexSize());
+	FindOrNewShader(m_pShading);
+	Draw(m_pShader, m_pShading, pUniform, 0, GetVertexSize());
 }
 
 shared_ptr<RenderData> RenderData::Clone()

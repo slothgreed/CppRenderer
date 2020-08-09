@@ -29,7 +29,7 @@ void Timer::WaitForFPS(int fps)
 		return;
 	}
 
-	m_latestFPS = 1000 / duration;
+	m_latestFPS = (int)(1000 / duration);
 
 	if (duration < fpsDuration)
 	{

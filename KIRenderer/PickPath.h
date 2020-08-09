@@ -3,7 +3,7 @@
 
 namespace KI
 {
-namespace Asset
+namespace Renderer
 {
 
 class DLL_EXPORT PickPath
@@ -14,8 +14,8 @@ public:
 
 	void Initialize(int width, int height);
 	void Resize(int width, int height);
-	void Draw(const vector<shared_ptr<IModelNode>>& modelNodes);
-	void ResetPickID(const vector<shared_ptr<IModelNode>> modelNodes);
+	void Draw(shared_ptr<Scene> pScene);
+	void ResetPickID(vector<shared_ptr<IGLPick>>& modelNodes);
 private:
 	shared_ptr<IShader> m_pPickShader;
 	shared_ptr<RenderTarget> m_pRenderTarget;

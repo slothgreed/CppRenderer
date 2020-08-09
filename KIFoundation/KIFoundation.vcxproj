@@ -164,6 +164,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="BDB.h" />
+    <ClInclude Include="ColorUtility.h" />
     <ClInclude Include="CommandManager.h" />
     <ClInclude Include="FileUtility.h" />
     <ClInclude Include="ICommand.h" />
@@ -185,6 +186,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BDB.cpp" />
+    <ClCompile Include="ColorUtility.cpp" />
     <ClCompile Include="CommandManager.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="FileUtility.cpp" />

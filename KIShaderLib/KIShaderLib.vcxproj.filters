@@ -141,6 +141,9 @@
     <ClInclude Include="GetColorCode.h">
       <Filter>ヘッダー ファイル\Shading\Component</Filter>
     </ClInclude>
+    <ClInclude Include="PickShading.h">
+      <Filter>ヘッダー ファイル\Shading</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -208,6 +211,9 @@
     </ClCompile>
     <ClCompile Include="GetColorCode.cpp">
       <Filter>ソース ファイル\Shading\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="PickShading.cpp">
+      <Filter>ソース ファイル\Shading</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

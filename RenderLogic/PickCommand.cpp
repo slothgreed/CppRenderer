@@ -85,6 +85,8 @@ CommandResult PickCommand::Execute()
 
 
 	Ray ray(near, far - near);
+
+
 	RaycastPickInfo pickInfo(PICK_TYPE::PICK_TYPE_FACE, &ray);
 
 	VisibleModelIterator itr(pArgs->m_pScene.get());

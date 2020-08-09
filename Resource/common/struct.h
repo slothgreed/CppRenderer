@@ -24,7 +24,8 @@ layout (std140) uniform LightData
 layout (std140) uniform ModelData
 {
 	mat4 ModelMatrix;
-	mat3 NormalMatrix;
+	mat4 NormalMatrix;
+	int reserve1;
 }model;
 
 layout (std140) uniform MaterialData

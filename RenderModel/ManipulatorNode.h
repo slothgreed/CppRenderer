@@ -12,13 +12,14 @@ public:
 	~ManipulatorNode();
 
 	virtual void ShowProperty() override;
+
+protected:
+	virtual void PreDraw(shared_ptr<UniformStruct> pUniform, int index) override;
 private:
-	virtual void DrawCore(shared_ptr<UniformStruct> pUniform) override;
 	void GenManipulatorHandleVBO(
 		RenderData* pFaceData,
 		MANIPULATOR_HANDLE handle);
 	void SetRenderData();
-	map<MANIPULATOR_HANDLE, shared_ptr<RenderData>> m_pFaceDatas;
 	MANIPULATOR_TYPE m_ManipulatorType;
 	shared_ptr<IManipulatorModel> m_pManipulator;
 	shared_ptr<BasicShading> m_pShading;

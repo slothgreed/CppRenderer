@@ -55,6 +55,7 @@ using namespace KI::Topology;
 using namespace KI::Algorithm;
 
 #include "../KIAsset/pch.h"
+#include "../CGALAsset/pch.h"
 using namespace KI::Asset;
 
 #include "../RenderModel/pch.h"

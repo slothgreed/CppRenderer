@@ -46,6 +46,7 @@ using namespace glm;
 #include "MouseInput.h"
 #include "WindowEvent.h"
 
+#include "ColorUtility.h"
 #include "FileUtility.h"
 
 #define RELEASE_INSTANCE(x) if(x != NULL) { delete x; x = NULL;}

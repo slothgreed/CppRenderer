@@ -179,6 +179,7 @@
     <ClInclude Include="OutputShading.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="PhongShading.h" />
+    <ClInclude Include="PickShading.h" />
     <ClInclude Include="PostProcessCode.h" />
     <ClInclude Include="ShaderCommon.h" />
     <ClInclude Include="ShaderLibTypes.h" />
@@ -212,6 +213,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="PhongShading.cpp" />
+    <ClCompile Include="PickShading.cpp" />
     <ClCompile Include="ShaderCommon.cpp" />
     <ClCompile Include="ShaderStruct.cpp" />
     <ClCompile Include="SSLICShading.cpp" />

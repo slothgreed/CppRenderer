@@ -5,14 +5,14 @@ namespace KI
 namespace Renderer
 {
 class IModelProperty;
-
-class DLL_EXPORT IModelNode : public IObserver
+class DLL_EXPORT IModelNode : public IGLPick, public IObserver
 {
 public:
 	IModelNode();
 	IModelNode(shared_ptr<IModel> model);
 	virtual ~IModelNode();
 
+	virtual void PickDraw(shared_ptr<IShader> pShader, shared_ptr<UniformStruct> pUniformStorage);
 	void Draw(shared_ptr<UniformStruct> pUniform);
 	virtual void ShowProperty() {};
 	virtual void AddPartSelect(TOPOLOGY_TYPE type, int first, int count) {};
@@ -28,12 +28,20 @@ protected:
 	virtual void DrawProperty(shared_ptr<UniformStruct> pUniform);
 	virtual void UpdateProperty();
 	shared_ptr<IModel> m_pModel;
+	virtual void BindModel(shared_ptr<UniformStruct> pUniform, int index);
+	virtual void UnBindModel(shared_ptr<UniformStruct> pUniform, int index);
+	void AddRenderData(int id, shared_ptr<RenderData> pRenderData);
+	void RemoveRenderData(int id, shared_ptr<RenderData> pRenderData);
+	shared_ptr<RenderData> GetRenderData(int id);
 
+	virtual void PreDraw(shared_ptr<UniformStruct> pUniform, int index) {};
+	virtual void PostDraw(shared_ptr<UniformStruct> pUniform, int index) {};
 private:
-	virtual void DrawCore(shared_ptr<UniformStruct> pUniform) = 0;
+	map<int, shared_ptr<RenderData>> m_pRenderData;
 	bool m_visible;
 	vector<shared_ptr<IModelProperty>> m_pProperty;
 	mat4x4 m_ModelMatrix;
+
 };
 }
 }
