@@ -50,6 +50,17 @@ void FrameBuffer::Clear()
 	Logger::GLError();
 }
 
+bool FrameBuffer::Validate()
+{
+	GLenum status = glCheckFramebufferStatus(GL_FRAMEBUFFER);
+	if (status != GL_FRAMEBUFFER_COMPLETE)
+	{
+		assert(0);
+		return false;
+	}
+
+	return true;
+}
 void FrameBuffer::Dispose()
 {
 	if (m_Id != 0)

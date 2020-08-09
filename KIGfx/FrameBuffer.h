@@ -15,7 +15,7 @@ public:
 	virtual void Bind();
 	virtual void UnBind();
 	virtual void Dispose();
-
+	bool Validate();
 	void Clear();
 
 private:

@@ -17,7 +17,7 @@ public:
 	void Resize(int width, int height) override;
 
 	void SetTexture(shared_ptr<Texture> texture);
-	shared_ptr<Texture> RenderTexture() { return m_pRenderTarget->ColorTexture(0); };
+	shared_ptr<Texture> RenderTexture() { return m_pRenderTarget->ColorTexture(FRAMEBUFFER_COLOR_ATTACHMENT0); };
 
 private:
 	shared_ptr<GrayScaleShading> m_pShading;

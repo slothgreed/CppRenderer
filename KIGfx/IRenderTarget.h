@@ -9,7 +9,7 @@ class DLL_EXPORT IRenderTarget
 {
 public:
 	IRenderTarget();
-	~IRenderTarget();
+	virtual ~IRenderTarget();
 
 	void Begin();
 	void End();
@@ -17,7 +17,7 @@ public:
 	virtual void Resize(int width, int height) = 0;
 	virtual void Dispose() = 0;
 	virtual void Clear(GLbitfield clear = GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	virtual bool GetPixels(ReadPixelArgs& args, RENDER_TEXTURE_TYPE type, int index = 0) = 0;
+	virtual bool GetPixels(ReadPixelArgs& args, RENDER_TEXTURE_TYPE type, FRAMEBUFFER_ATTACHMENT index = FRAMEBUFFER_COLOR_ATTACHMENT0) = 0;
 	void SetClearColor(vec4 color) { m_pClearColor = color; }
 	virtual int ColorTextureNum() = 0;
 protected:

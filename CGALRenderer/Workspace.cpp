@@ -71,13 +71,13 @@ void Workspace::Initialize(Project* m_pProject)
 
 	auto pGrayScale = make_shared<GrayScaleEffect>();
 	pGrayScale->Initialize(640, 480);
-	pGrayScale->SetTexture(m_pRenderTarget->ColorTexture(0));
+	pGrayScale->SetTexture(m_pRenderTarget->ColorTexture(FRAMEBUFFER_COLOR_ATTACHMENT0));
 
 	m_pPfxRenderer = make_shared<PfxRenderer>();
 	m_pPfxRenderer->AddPostEffect(pSSLIC);
 	m_pPfxRenderer->AddPostEffect(pGrayScale);
 
-	auto pShading = make_shared<BasicShading>(m_pRenderTarget->ColorTexture(0));
+	auto pShading = make_shared<BasicShading>(m_pRenderTarget->ColorTexture(FRAMEBUFFER_COLOR_ATTACHMENT0));
 	m_pOutputPlane = make_shared<PfxPlane>(pShading);
 	m_pOutputPlane->Initialize();
 }

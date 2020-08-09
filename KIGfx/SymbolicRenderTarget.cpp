@@ -39,7 +39,7 @@ void SymbolicRenderTarget::Dispose()
 
 }
 
-bool SymbolicRenderTarget::GetPixels(ReadPixelArgs& args, RENDER_TEXTURE_TYPE type, int index)
+bool SymbolicRenderTarget::GetPixels(ReadPixelArgs& args, RENDER_TEXTURE_TYPE type, FRAMEBUFFER_ATTACHMENT index)
 {
 	if (type != RENDER_TEXTURE_TYPE::RENDER_COLOR_TEXTURE) {
 		assert(0);

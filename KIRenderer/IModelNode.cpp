@@ -79,7 +79,9 @@ void IModelNode::PickDraw(shared_ptr<IShader> pShader, shared_ptr<UniformStruct>
 		for (int i = 0; i < m_pRenderData.size(); i++)
 		{
 			BindModel(pUniform, i);
+			PreDraw(pUniform, i);
 			m_pRenderData[i]->Draw(pShader, nullptr, pUniform);
+			PostDraw(pUniform, i);
 		}
 
 		UnBindModel(pUniform, 0);
@@ -126,6 +128,7 @@ shared_ptr<RenderData> IModelNode::GetRenderData(int id)
 		assert(0);
 		return nullptr;
 	}
+
 	return m_pRenderData[id];
 }
 

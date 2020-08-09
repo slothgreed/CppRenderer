@@ -54,6 +54,8 @@ enum PRIM_TYPE
 	PRIM_TYPE_TRIANGLE_FAN		= 0x0006,
 	PRIM_TYPE_PATCHES			= 0xE
 };
+
+
 }
 }
 

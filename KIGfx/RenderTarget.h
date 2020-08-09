@@ -5,27 +5,31 @@ namespace KI
 {
 namespace Gfx
 {
+
+
 class DLL_EXPORT RenderTarget : public IRenderTarget
 {
 public:
 	RenderTarget();
 	~RenderTarget();
+	void Initialize(map<FRAMEBUFFER_ATTACHMENT, shared_ptr<TextureData>>& pRenderTexture);
 	void Initialize(int outputBufferNum, int width, int height);
 	virtual void Resize(int width, int height);
 	virtual void Dispose();
-	shared_ptr<RenderTexture> ColorTexture(int index);
-	void CopyColorBuffer(int index, Texture* texture);
+	shared_ptr<RenderTexture> ColorTexture(FRAMEBUFFER_ATTACHMENT index);
+	void CopyColorBuffer(FRAMEBUFFER_ATTACHMENT index, Texture* texture);
 	void CopyDepthBuffer(Texture* texture);
 	virtual int ColorTextureNum() override { return (int)m_pOutputBuffer.size(); };
-	bool GetPixels(ReadPixelArgs& args, RENDER_TEXTURE_TYPE type, int index);
+	bool GetPixels(ReadPixelArgs& args, RENDER_TEXTURE_TYPE type, FRAMEBUFFER_ATTACHMENT index);
 
 protected:
 	virtual void Bind();
 	virtual void UnBind();
 
 private:
+	void SetRenderTexture(FRAMEBUFFER_ATTACHMENT attachment, const TextureData& textureData);
 	shared_ptr<FrameBuffer> m_pFrameBuffer;
-	vector<shared_ptr<RenderTexture>> m_pOutputBuffer;
+	map<FRAMEBUFFER_ATTACHMENT, shared_ptr<RenderTexture>> m_pOutputBuffer;
 	shared_ptr<RenderTexture> m_pDepthBuffer;
 };
 }

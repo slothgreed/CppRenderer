@@ -19,7 +19,24 @@ void PickPath::Initialize(int width, int height)
 	pBuildInfo->SetVertexBuffer(nullptr);
 	m_pPickShader = ShaderManager::Instance()->FindOrNew(pBuildInfo);
 	m_pRenderTarget = make_shared<RenderTarget>();
-	m_pRenderTarget->Initialize(1, width, height);
+	map<FRAMEBUFFER_ATTACHMENT, shared_ptr<TextureData>> renderTexture;
+
+	auto textureData = make_shared<TextureData>();
+	textureData->target = GL_TEXTURE_2D;
+	textureData->level = 0;
+	textureData->internalformat = GL_RGB32F;
+	textureData->width = width;
+	textureData->height = height;
+	textureData->border = 0;
+	textureData->format = GL_RGB;
+	textureData->type = GL_FLOAT;
+	textureData->pixels = 0;
+	renderTexture[FRAMEBUFFER_COLOR_ATTACHMENT0] = textureData;
+
+	auto depthData = make_shared<TextureData>(RenderTexture::DefaultDepthTextureData(width, height));
+	renderTexture[FRAMEBUFFER_DEPTH_ATTATCHMENT] = textureData;
+
+	m_pRenderTarget->Initialize(renderTexture);
 }
 
 void PickPath::Resize(int width, int height)

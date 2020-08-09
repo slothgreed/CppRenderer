@@ -63,7 +63,7 @@ void SSLICEffect::Draw(shared_ptr<UniformStruct> pUniform)
 	m_pPlaneData->Draw(pUniform);
 	glDisable(GL_BLEND);
 
-	m_pRenderTarget->CopyColorBuffer(0, m_pBlendTexture.get());
+	m_pRenderTarget->CopyColorBuffer(FRAMEBUFFER_COLOR_ATTACHMENT0, m_pBlendTexture.get());
 }
 
 void SSLICEffect::Resize(int width, int height)
