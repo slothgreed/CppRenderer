@@ -12,12 +12,31 @@ IShaderBuildInfo::~IShaderBuildInfo()
 
 bool IShaderBuildInfo::Compare(IShaderBuildInfo* pShaderBuildInfo)
 {
-	if (GetVertexBuffer()->NewShaderCompare(pShaderBuildInfo->GetVertexBuffer().get()) &&
-		GetShaderChunk()->NewShaderCompare(pShaderBuildInfo->GetShaderChunk().get())) {
-		return true;
+	bool vertexCompare = false;
+	bool chunkCompare = false;
+	if (GetVertexBuffer() != NULL && pShaderBuildInfo->GetVertexBuffer() != NULL) {
+		if (GetVertexBuffer()->NewShaderCompare(pShaderBuildInfo->GetVertexBuffer().get())) {
+			vertexCompare = true;
+		}
 	}
 
-	return false;
+	if (GetVertexBuffer() == NULL && pShaderBuildInfo->GetVertexBuffer() == NULL)
+	{
+		vertexCompare = true;
+	}
+	
+
+	if (GetShaderChunk() != NULL && pShaderBuildInfo->GetShaderChunk() != NULL) {
+		if (GetShaderChunk()->NewShaderCompare(pShaderBuildInfo->GetShaderChunk().get())) {
+			chunkCompare = true;
+		}
+	}
+
+	if (GetShaderChunk() == NULL && pShaderBuildInfo->GetShaderChunk() == NULL) {
+		chunkCompare = true;
+	}
+
+	return vertexCompare && chunkCompare;
 }
 
 }

@@ -6,16 +6,18 @@ namespace KI
 namespace Renderer
 {
 
-class DLL_EXPORT PickPath
+class DLL_EXPORT PickPath : public IRenderPath
 {
 public:
 	PickPath();
 	~PickPath();
 
-	void Initialize(int width, int height);
-	void Resize(int width, int height);
+	virtual void Initialize(int width, int height) override;
+	virtual void Resize(int width, int height) override;
 	void Draw(shared_ptr<Scene> pScene);
-	void ResetPickID(vector<shared_ptr<IGLPick>>& modelNodes);
+	void ResetPickID(shared_ptr<Scene> pScene);
+
+	shared_ptr<RenderTexture> GetPickTexture();
 private:
 	shared_ptr<IShader> m_pPickShader;
 	shared_ptr<RenderTarget> m_pRenderTarget;

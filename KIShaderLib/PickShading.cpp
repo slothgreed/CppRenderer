@@ -45,8 +45,7 @@ shared_ptr<IShaderCode> PickShading::NewShaderCode(IShaderBuildInfo* pBuildInfo,
 {
 	if (type == SHADER_PROGRAM_VERTEX)
 	{
-		return make_shared<DefaultVertexCode>(VERTEX_LAYOUT_POSITION);
-
+		return make_shared<DefaultVertexCode>(VERTEX_LAYOUT_NONE);
 	}
 	else if (type == SHADER_PROGRAM_FRAG)
 	{

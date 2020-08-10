@@ -35,7 +35,6 @@ void RenderTarget::SetRenderTexture(FRAMEBUFFER_ATTACHMENT attachment, const Tex
 	pRenderTexture->Generate();
 	pRenderTexture->Begin();
 	pRenderTexture->Set(textureData);
-	pRenderTexture->End();
 
 	if( attachment == FRAMEBUFFER_ATTACHMENT::FRAMEBUFFER_COLOR_ATTACHMENT0 ||
 		attachment == FRAMEBUFFER_ATTACHMENT::FRAMEBUFFER_COLOR_ATTACHMENT1 || 
@@ -56,6 +55,8 @@ void RenderTarget::SetRenderTexture(FRAMEBUFFER_ATTACHMENT attachment, const Tex
 	}
 
 	glFramebufferTexture2D(GL_FRAMEBUFFER, pRenderTexture->Attachment(), GL_TEXTURE_2D, pRenderTexture->ID(), 0);
+	
+	pRenderTexture->End();
 	Logger::GLError();
 }
 
@@ -78,6 +79,17 @@ void RenderTarget::Initialize(map<FRAMEBUFFER_ATTACHMENT, shared_ptr<TextureData
 	Logger::GLError();
 }
 
+shared_ptr<RenderTexture> RenderTarget::GetColorTexture(FRAMEBUFFER_ATTACHMENT attachment)
+{
+	auto itr = m_pOutputBuffer.find(attachment);
+	if (itr == m_pOutputBuffer.end())
+	{
+		assert(0);
+		return nullptr;
+	}
+
+	return m_pOutputBuffer[attachment];
+}
 
 void RenderTarget::Initialize(int outputBufferNum, int width, int height)
 {
@@ -91,6 +103,7 @@ void RenderTarget::Initialize(int outputBufferNum, int width, int height)
 	for (int i = 0; i < outputBufferNum; i++)
 	{
 		auto data = make_shared<TextureData>(RenderTexture::DefaultColorTextureData(width, height));
+		renderTextures[(FRAMEBUFFER_ATTACHMENT)i] = data;
 	}
 
 	auto data = make_shared<TextureData>(RenderTexture::DefaultDepthTextureData(width, height));
@@ -194,13 +207,16 @@ void RenderTarget::CopyDepthBuffer(Texture* texture)
 	m_pFrameBuffer->End();
 }
 
-bool RenderTarget::GetPixels(ReadPixelArgs& args, RENDER_TEXTURE_TYPE type, FRAMEBUFFER_ATTACHMENT index)
+bool RenderTarget::GetPixels(ReadPixelArgs& args, FRAMEBUFFER_ATTACHMENT index)
 {
 	RenderTexture* pRenderTexture = nullptr;
-	if (type == RENDER_TEXTURE_TYPE::RENDER_COLOR_TEXTURE) {
+	if (index == FRAMEBUFFER_ATTACHMENT::FRAMEBUFFER_COLOR_ATTACHMENT0 ||
+		index == FRAMEBUFFER_ATTACHMENT::FRAMEBUFFER_COLOR_ATTACHMENT1 ||
+		index == FRAMEBUFFER_ATTACHMENT::FRAMEBUFFER_COLOR_ATTACHMENT2 ||
+		index == FRAMEBUFFER_ATTACHMENT::FRAMEBUFFER_COLOR_ATTACHMENT3) {
 		pRenderTexture = ColorTexture(index).get();
 	}
-	else if(type == RENDER_TEXTURE_TYPE::RENDER_DEPTH_TEXTURE)
+	else if(index == FRAMEBUFFER_ATTACHMENT::FRAMEBUFFER_DEPTH_ATTATCHMENT)
 	{
 		pRenderTexture = m_pDepthBuffer.get();
 	}
@@ -213,7 +229,7 @@ bool RenderTarget::GetPixels(ReadPixelArgs& args, RENDER_TEXTURE_TYPE type, FRAM
 	args.format = pRenderTexture->Format();
 	args.type = pRenderTexture->ColorComponentType();
 
-	return IRenderTarget::GetPixels(args);
+	return pRenderTexture->GetPixels(args);
 }
 }
 };

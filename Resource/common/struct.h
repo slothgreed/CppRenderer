@@ -25,7 +25,7 @@ layout (std140) uniform ModelData
 {
 	mat4 ModelMatrix;
 	mat4 NormalMatrix;
-	int reserve1;
+	int objectId;
 }model;
 
 layout (std140) uniform MaterialData

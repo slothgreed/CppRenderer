@@ -138,6 +138,12 @@
     <ClInclude Include="PickPath.h">
       <Filter>ヘッダー ファイル\Path</Filter>
     </ClInclude>
+    <ClInclude Include="OutputPath.h">
+      <Filter>ヘッダー ファイル\Path</Filter>
+    </ClInclude>
+    <ClInclude Include="IRenderPath.h">
+      <Filter>ヘッダー ファイル\Path</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -192,6 +198,9 @@
       <Filter>ソース ファイル\Path</Filter>
     </ClCompile>
     <ClCompile Include="PickPath.cpp">
+      <Filter>ソース ファイル\Path</Filter>
+    </ClCompile>
+    <ClCompile Include="OutputPath.cpp">
       <Filter>ソース ファイル\Path</Filter>
     </ClCompile>
   </ItemGroup>

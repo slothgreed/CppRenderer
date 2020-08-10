@@ -15,7 +15,7 @@ public:
 	virtual void Resize(int width, int height);
 	virtual void Dispose();
 	virtual int ColorTextureNum() override { return 1; };
-	virtual bool GetPixels(ReadPixelArgs& args, RENDER_TEXTURE_TYPE type, FRAMEBUFFER_ATTACHMENT index = FRAMEBUFFER_COLOR_ATTACHMENT0);
+	virtual bool GetPixels(ReadPixelArgs& args, FRAMEBUFFER_ATTACHMENT index = FRAMEBUFFER_COLOR_ATTACHMENT0);
 
 protected:
 	virtual void Bind();

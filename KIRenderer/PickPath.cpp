@@ -15,8 +15,7 @@ PickPath::~PickPath()
 void PickPath::Initialize(int width, int height)
 {
 	auto pBuildInfo = make_shared<IShaderBuildInfo>();
-	pBuildInfo->SetShaderChunk(make_shared<BasicShading>(vec4(0, 0, 0, 1)));
-	pBuildInfo->SetVertexBuffer(nullptr);
+	pBuildInfo->SetShaderChunk(make_shared<PickShading>());
 	m_pPickShader = ShaderManager::Instance()->FindOrNew(pBuildInfo);
 	m_pRenderTarget = make_shared<RenderTarget>();
 	map<FRAMEBUFFER_ATTACHMENT, shared_ptr<TextureData>> renderTexture;
@@ -34,8 +33,7 @@ void PickPath::Initialize(int width, int height)
 	renderTexture[FRAMEBUFFER_COLOR_ATTACHMENT0] = textureData;
 
 	auto depthData = make_shared<TextureData>(RenderTexture::DefaultDepthTextureData(width, height));
-	renderTexture[FRAMEBUFFER_DEPTH_ATTATCHMENT] = textureData;
-
+	renderTexture[FRAMEBUFFER_ATTACHMENT::FRAMEBUFFER_DEPTH_ATTATCHMENT] = depthData;
 	m_pRenderTarget->Initialize(renderTexture);
 }
 
@@ -44,30 +42,26 @@ void PickPath::Resize(int width, int height)
 	m_pRenderTarget->Resize(width, height);
 }
 
-void PickPath::ResetPickID(vector<shared_ptr<IGLPick>>& modelNodes)
+shared_ptr<RenderTexture> PickPath::GetPickTexture()
 {
-	for (int i = 0; i < modelNodes.size(); i++)
+	return m_pRenderTarget->GetColorTexture(FRAMEBUFFER_COLOR_ATTACHMENT0);
+}
+
+void PickPath::ResetPickID(shared_ptr<Scene> pScene)
+{
+	for (int i = 0; i < pScene->ModelNodes().size(); i++)
 	{
-		modelNodes[i]->AddPickID(i);
+		pScene->ModelNodes()[i]->AddPickID(i);
 	}
 }
 
 void PickPath::Draw(shared_ptr<Scene> pScene)
 {
-	if (m_pPickShader == nullptr)
-	{
-		auto pBuildInfo = make_shared<IShaderBuildInfo>();
-		pBuildInfo->SetShaderChunk(make_shared<PickShading>());
-		m_pPickShader = ShaderManager::Instance()->FindOrNew(pBuildInfo);
-	}
-
-
 	m_pRenderTarget->Begin();
 	m_pRenderTarget->Clear();
-	m_pPickShader->Use();
+	
 	pScene->Bind();
 	pScene->PickDraw(m_pPickShader);
-	m_pPickShader->UnUse();
 	pScene->UnBind();
 	
 	m_pRenderTarget->End();

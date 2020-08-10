@@ -81,6 +81,11 @@ void BasicFragCode::Initialize(GLuint programId)
 	Logger::GLError();
 }
 
+BasicShading::BasicShading(BASIC_SHADING_TYPE type)
+{
+	m_Type = type;
+}
+
 BasicShading::BasicShading(const vec4& color)
 {
 	SetColor(color);

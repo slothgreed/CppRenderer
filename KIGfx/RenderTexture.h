@@ -13,9 +13,10 @@ public:
 	void Resize(int width, int height);
 	void SetAttachment(GLenum attachment) { m_attachment = attachment; }
 	GLenum Attachment() { return m_attachment; }
+	static bool GetPixels(ReadPixelArgs& args);
 
-	static const TextureData& DefaultColorTextureData(int width, int height);
-	static const TextureData& DefaultDepthTextureData(int width, int height);
+	static TextureData DefaultColorTextureData(int width, int height);
+	static TextureData DefaultDepthTextureData(int width, int height);
 private:
 	GLenum m_attachment;
 };

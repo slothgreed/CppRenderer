@@ -19,8 +19,9 @@ public:
 	shared_ptr<RenderTexture> ColorTexture(FRAMEBUFFER_ATTACHMENT index);
 	void CopyColorBuffer(FRAMEBUFFER_ATTACHMENT index, Texture* texture);
 	void CopyDepthBuffer(Texture* texture);
+	shared_ptr<RenderTexture> GetColorTexture(FRAMEBUFFER_ATTACHMENT attachment);
 	virtual int ColorTextureNum() override { return (int)m_pOutputBuffer.size(); };
-	bool GetPixels(ReadPixelArgs& args, RENDER_TEXTURE_TYPE type, FRAMEBUFFER_ATTACHMENT index);
+	bool GetPixels(ReadPixelArgs& args, FRAMEBUFFER_ATTACHMENT index);
 
 protected:
 	virtual void Bind();

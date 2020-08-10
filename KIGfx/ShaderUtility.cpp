@@ -93,7 +93,7 @@ void ShaderUtility::EmbeddedCode(string& code, const string& embeddedCode, const
 		return;
 	}
 
-	int pos = code.find(embeddedIdentifier);
+	size_t pos = code.find(embeddedIdentifier);
 	if (pos == -1)
 	{
 		return;
@@ -114,7 +114,7 @@ void ShaderUtility::ExpandShaderCode(const string& filePath, string& shaderCode)
 	FileUtility::GetDirectoryPath(filePath, directoryPath);
 	for (int i = 0; i < lines.size(); i++)
 	{
-		int pos = lines[i].find("#include");
+		size_t pos = lines[i].find("#include");
 		if (pos == -1)
 		{
 			shaderCode += lines[i] + "\n";
@@ -125,7 +125,7 @@ void ShaderUtility::ExpandShaderCode(const string& filePath, string& shaderCode)
 		string includePath = directoryPath;
 		int startPos = lines[i].find("\"");
 		includePath += lines[i].substr(startPos + 1, lines[i].length());
-		int endPos = includePath.find_last_of("\"");
+		size_t endPos = includePath.find_last_of("\"");
 		includePath = includePath.erase(endPos);
 		ShaderUtility::Load(includePath, shaderCode);
 	}

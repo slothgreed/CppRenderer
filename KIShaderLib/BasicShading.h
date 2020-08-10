@@ -37,6 +37,7 @@ class DLL_EXPORT BasicShading : public IShading
 {
 public:
 
+	BasicShading(BASIC_SHADING_TYPE type);
 	BasicShading(const vec4& color);
 	BasicShading(shared_ptr<Texture> pTexture);
 

@@ -167,6 +167,7 @@
   <ItemGroup>
     <ClInclude Include="ICamera.h" />
     <ClInclude Include="IGLPick.h" />
+    <ClInclude Include="IRenderPath.h" />
     <ClInclude Include="Material.h" />
     <ClInclude Include="NodeOperator.h" />
     <ClInclude Include="DirectionLight.h" />
@@ -176,6 +177,7 @@
     <ClInclude Include="IModelProperty.h" />
     <ClInclude Include="IPostEffect.h" />
     <ClInclude Include="OrthoCamera.h" />
+    <ClInclude Include="OutputPath.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="PerspectiveCamera.h" />
     <ClInclude Include="PfxRenderer.h" />
@@ -200,6 +202,7 @@
     <ClCompile Include="DirectionLight.cpp" />
     <ClCompile Include="IModelNode.cpp" />
     <ClCompile Include="OrthoCamera.cpp" />
+    <ClCompile Include="OutputPath.cpp" />
     <ClCompile Include="PerspectiveCamera.cpp" />
     <ClCompile Include="PfxRenderer.cpp" />
     <ClCompile Include="PickPath.cpp" />

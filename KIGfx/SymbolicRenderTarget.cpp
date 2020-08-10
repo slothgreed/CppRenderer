@@ -39,9 +39,9 @@ void SymbolicRenderTarget::Dispose()
 
 }
 
-bool SymbolicRenderTarget::GetPixels(ReadPixelArgs& args, RENDER_TEXTURE_TYPE type, FRAMEBUFFER_ATTACHMENT index)
+bool SymbolicRenderTarget::GetPixels(ReadPixelArgs& args, FRAMEBUFFER_ATTACHMENT index)
 {
-	if (type != RENDER_TEXTURE_TYPE::RENDER_COLOR_TEXTURE) {
+	if (index != FRAMEBUFFER_ATTACHMENT::FRAMEBUFFER_COLOR_ATTACHMENT0) {
 		assert(0);
 		return false;
 	}
@@ -56,7 +56,7 @@ bool SymbolicRenderTarget::GetPixels(ReadPixelArgs& args, RENDER_TEXTURE_TYPE ty
 	args.format = GL_RGB;
 	args.type = GL_UNSIGNED_BYTE;
 
-	return IRenderTarget::GetPixels(args);
+	return RenderTexture::GetPixels(args);
 }
 }
 }

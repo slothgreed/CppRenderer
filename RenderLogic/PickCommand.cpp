@@ -88,7 +88,6 @@ CommandResult PickCommand::Execute()
 
 
 	RaycastPickInfo pickInfo(PICK_TYPE::PICK_TYPE_FACE, &ray);
-
 	VisibleModelIterator itr(pArgs->m_pScene.get());
 	for (; itr.HasNext(); itr.Next())
 	{

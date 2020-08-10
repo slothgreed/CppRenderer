@@ -25,6 +25,7 @@ public:
 	void SetOutInstance(bool value) { m_outInstance = value; }
 	void SetPlanePosition(bool value) { m_planePosition = value; }
 	void SetWorldPosition(bool value) { m_worldPosition = value; }
+	void SetOutPosition(bool value) { m_outPosition = value; }
 
 	bool OutPosition() const { return m_outPosition; }
 	bool OutNormal() const { return m_outNormal; };

@@ -81,7 +81,6 @@ bool DefaultVertexCode::Compare(IShaderCode* pShaderCode)
 		m_outColor == pCode->m_outColor &&
 		m_outTexcoord == pCode->m_outTexcoord &&
 		m_outInstance == pCode->m_outInstance &&
-		m_outInstance == pCode->m_outInstance &&
 		m_planePosition == pCode->m_planePosition &&
 		m_worldPosition == pCode->m_worldPosition)
 	{

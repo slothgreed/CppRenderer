@@ -39,7 +39,7 @@ CommandResult SaveImageCommand::Execute()
 	args.y = 0;
 	args.width = pArgs->m_pRenderTarget->GetSize().x;
 	args.height = pArgs->m_pRenderTarget->GetSize().y;
-	pArgs->m_pRenderTarget->GetPixels(args, RENDER_TEXTURE_TYPE::RENDER_COLOR_TEXTURE);
+	pArgs->m_pRenderTarget->GetPixels(args, FRAMEBUFFER_ATTACHMENT::FRAMEBUFFER_COLOR_ATTACHMENT0);
 	int result = stbi_write_bmp(
 		pArgs->m_outputPath.data(), 
 		args.width, 

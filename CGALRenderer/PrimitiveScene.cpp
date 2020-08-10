@@ -159,14 +159,26 @@ void PrimitiveScene::Initialize(Project* m_pProject)
 
 	m_currentPrimitive = 0;
 	ShowPrimitive(m_currentPrimitive);
+
+	m_pPickPath = make_shared<PickPath>();
+	m_pPickPath->Initialize(640, 480);
+	m_pPickPath->ResetPickID(m_pScene);
+
+	m_pOutputPath = make_shared<OutputPath>();
+	m_pOutputPath->Initialize(640, 480);
+	m_pOutputPath->SetTexture(m_pPickPath->GetPickTexture());
+	m_pPlane = make_shared<RenderData>();
+	ModelGenerator::Plane(m_pPlane.get(), VERTEX_LAYOUT::VERTEX_LAYOUT_TEXCOORD);
 }
 void PrimitiveScene::Invoke()
 {
-	m_pBackTarget->Begin();
-	m_pBackTarget->Clear();
-	m_pScene->Bind();
-	m_pScene->Draw();
-	m_pScene->UnBind();
+	//m_pBackTarget->Begin();
+	//m_pBackTarget->Clear();
+	//m_pScene->Bind();
+	//m_pScene->Draw();
+	//m_pScene->UnBind();
+	m_pPickPath->Draw(m_pScene);
+	m_pOutputPath->Draw(m_pBackTarget, m_pPlane);
 }
 
 void PrimitiveScene::NextModel()
@@ -232,7 +244,7 @@ void PrimitiveScene::ProcessMouseEvent(const MouseInput& input)
 		{
 			if (input.Press(MOUSE_BUTTON_RIGHT))
 			{
-				NextModel();
+				//NextModel();
 				//m_pCommandManager->Execute(
 				//	make_shared<SaveImageCommand>(
 				//		make_shared<SaveImageCommandArgs>(

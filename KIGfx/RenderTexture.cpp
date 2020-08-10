@@ -10,7 +10,7 @@ RenderTexture::~RenderTexture()
 {
 }
 
-const TextureData& RenderTexture::DefaultColorTextureData(int width, int height)
+TextureData RenderTexture::DefaultColorTextureData(int width, int height)
 {
 	TextureData data;
 	data.target = GL_TEXTURE_2D;
@@ -24,7 +24,7 @@ const TextureData& RenderTexture::DefaultColorTextureData(int width, int height)
 	data.pixels = 0;
 	return data;
 }
-const TextureData& RenderTexture::DefaultDepthTextureData(int width, int height)
+TextureData RenderTexture::DefaultDepthTextureData(int width, int height)
 {
 	TextureData data;
 	data.target = GL_TEXTURE_2D;
@@ -34,7 +34,7 @@ const TextureData& RenderTexture::DefaultDepthTextureData(int width, int height)
 	data.height = height;
 	data.border = 0;
 	data.format = GL_DEPTH_COMPONENT;
-	data.type = GL_UNSIGNED_BYTE;
+	data.type = GL_FLOAT;
 	data.pixels = 0;
 
 	return data;
@@ -50,6 +50,43 @@ void RenderTexture::Resize(int width, int height)
 	Begin();
 	Set(textureData);
 	End();
+}
+
+bool RenderTexture::GetPixels(ReadPixelArgs& args)
+{
+	assert(0);
+	//args.width = 640;
+	//args.height = 480;
+	//if (m_data.width == 0 ||
+	//	m_data.height == 0 ||
+	//	m_data.width < args.width ||
+	//	m_data.height < args.height)
+	//{
+	//	assert(0);
+	//	return false;
+	//}
+
+	int dataSize = glEx::ColorFormatSize(args.format);
+
+	args.pixels = new GLubyte[
+			(args.width - args.x) *
+			(args.height - args.y) *
+			dataSize];
+
+	Logger::GLError();
+
+	glReadPixels(
+		args.x,
+		args.y,
+		args.width,
+		args.height,
+		args.format,
+		args.type,
+		args.pixels);
+
+	Logger::GLError();
+
+	return true;
 }
 }
 }
