@@ -123,7 +123,7 @@ void ShaderUtility::ExpandShaderCode(const string& filePath, string& shaderCode)
 
 		// include ‚ª‚ ‚Á‚½ê‡Ä‹A“Ç‚İ‚İ
 		string includePath = directoryPath;
-		int startPos = lines[i].find("\"");
+		size_t startPos = lines[i].find("\"");
 		includePath += lines[i].substr(startPos + 1, lines[i].length());
 		size_t endPos = includePath.find_last_of("\"");
 		includePath = includePath.erase(endPos);

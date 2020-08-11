@@ -13,9 +13,6 @@ public:
 	static void Axis(RenderData* pRenderData);
 	static void Plane(RenderData* pRenderData, VERTEX_LAYOUT layout); // ƒŒƒ“ƒ_ƒŠƒ“ƒO—p‚Ì•½–Ê
 	static void CubeSpace(const BDB& size, RenderData* pRenderData);
-	// sectorNum : ‰¡‚Ì•ªŠ„”
-	// stackNum : c‚Ì•ªŠ„”
-	static void Sphere(float radius, int sectorNum, int stackNum, RenderData* pRenderData);
 private:
 };
 }

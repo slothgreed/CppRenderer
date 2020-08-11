@@ -36,10 +36,6 @@ void PrimitiveScene::Initialize(Project* m_pProject)
 
 	// sphere rendering
 	{
-		auto sphereData = make_shared<RenderData>();
-		ModelGenerator::Sphere(1, 36, 36, sphereData.get());
-
-		auto sphereNode = make_shared<PrimitiveNode>(sphereData);
 
 		auto pTexture = make_shared<Texture>();
 		pTexture->Generate();
@@ -52,7 +48,10 @@ void PrimitiveScene::Initialize(Project* m_pProject)
 		pTexture->End();
 
 		auto pBasicShading = make_shared<BasicShading>(pTexture);
-		sphereData->SetShading(pBasicShading);
+		auto sphereNode = make_shared<PrimitiveNode>(
+			make_shared<PrimitiveModel>(
+				make_shared<Sphere>(SphereArgs(vec3(0), 1, 36, 36))),
+			pBasicShading);
 		m_pScene->AddModelNode(sphereNode);
 	}
 
@@ -114,12 +113,9 @@ void PrimitiveScene::Initialize(Project* m_pProject)
 
 	// sphere lambert
 	{
-		auto sphereData = make_shared<RenderData>();
-		ModelGenerator::Sphere(1, 36, 36, sphereData.get());
-		auto sphereNode = make_shared<PrimitiveNode>(sphereData);
-
 		auto pLambertShading = make_shared<LambertShading>(vec4(1, 0, 0, 1));
-		sphereData->SetShading(pLambertShading);
+		auto sphereNode = make_shared<PrimitiveNode>(
+			make_shared<PrimitiveModel>(make_shared<Sphere>(SphereArgs(vec3(0), 1, 36, 36))), pLambertShading);
 		m_pScene->AddModelNode(sphereNode);
 
 		auto pLight = make_shared<DirectionLight>();
@@ -131,17 +127,15 @@ void PrimitiveScene::Initialize(Project* m_pProject)
 
 	// sphere phong
 	{
-		auto sphereData = make_shared<RenderData>();
-		ModelGenerator::Sphere(1, 36, 36, sphereData.get());
-		auto sphereNode = make_shared<PrimitiveNode>(sphereData);
-
 		auto pPhongShading =
 			make_shared<PhongShading>(
 				PHONG_SHADING_TYPE_BLIN,
 				SHADING_COLOR_TYPE_VERTEXCOLOR,
 				ADSMaterial());
 		pPhongShading->SetColor(vec4(1, 0, 0, 1));
-		sphereData->SetShading(pPhongShading);
+		auto sphereNode = make_shared<PrimitiveNode>(
+			make_shared<PrimitiveModel>(make_shared<Sphere>(SphereArgs(vec3(0), 1, 36, 36))), pPhongShading);
+
 		m_pScene->AddModelNode(sphereNode);
 	}
 
@@ -172,13 +166,13 @@ void PrimitiveScene::Initialize(Project* m_pProject)
 }
 void PrimitiveScene::Invoke()
 {
-	//m_pBackTarget->Begin();
-	//m_pBackTarget->Clear();
-	//m_pScene->Bind();
-	//m_pScene->Draw();
-	//m_pScene->UnBind();
-	m_pPickPath->Draw(m_pScene);
-	m_pOutputPath->Draw(m_pBackTarget, m_pPlane);
+	m_pBackTarget->Begin();
+	m_pBackTarget->Clear();
+	m_pScene->Bind();
+	m_pScene->Draw();
+	m_pScene->UnBind();
+	//m_pPickPath->Draw(m_pScene);
+	//m_pOutputPath->Draw(m_pBackTarget, m_pPlane);
 }
 
 void PrimitiveScene::NextModel()
@@ -244,7 +238,7 @@ void PrimitiveScene::ProcessMouseEvent(const MouseInput& input)
 		{
 			if (input.Press(MOUSE_BUTTON_RIGHT))
 			{
-				//NextModel();
+				NextModel();
 				//m_pCommandManager->Execute(
 				//	make_shared<SaveImageCommand>(
 				//		make_shared<SaveImageCommandArgs>(
