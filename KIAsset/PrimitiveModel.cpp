@@ -7,10 +7,11 @@ PrimitiveModel::PrimitiveModel(shared_ptr<IPrimitive> pPrimitive)
 	m_pPrimitive = pPrimitive;
 }
 
-void PrimitiveModel::GetFaceList(vector<vec3>& position, vector<vec3>& normal, vector<vec2> texcoord)
+void PrimitiveModel::GetFaceList(vector<vec3>& position, vector<vec3>& normal, vector<vec3>& color, vector<vec2>& texcoord)
 {
 	position = m_pPrimitive->Position();
 	normal = m_pPrimitive->Normal();
+	color = m_pPrimitive->Color();
 	texcoord = m_pPrimitive->Texcoord();
 }
 

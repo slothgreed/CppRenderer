@@ -56,6 +56,8 @@ using namespace KI::Topology;
 
 // grid
 #include "Grid.h"
+#include "Axis.h"
+#include "CubeSpace.h"
 
 #include "KeyFrame.h"
 #include "IAnimation.h"

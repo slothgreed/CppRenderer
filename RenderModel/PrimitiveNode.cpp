@@ -73,13 +73,19 @@ void PrimitiveNode::SetRenderData()
 	auto pVertexBuffer = make_shared<DefaultVertexBuffer>();
 	vector<vec3> position;
 	vector<vec3> normal;
+	vector<vec3> color;
 	vector<vec2> texcoord;
 
-	pPrimitive->GetFaceList(position, normal, texcoord);
+	pPrimitive->GetFaceList(position, normal, color, texcoord);
 	pVertexBuffer->SetPosition(position);
 	if (normal.size() != 0)
 	{
 		pVertexBuffer->SetNormal(normal);
+	}
+
+	if (color.size() != 0) 
+	{
+		pVertexBuffer->SetColor(color);
 	}
 
 	if (texcoord.size() != 0)
@@ -99,7 +105,15 @@ void PrimitiveNode::SetRenderData()
 	pRenderData->SetGeometryData(
 		GLTypeUtility::PrimType(pPrimitive->GetPrimitive()->GetDrawType()),
 		pVertexBuffer, pIndexBuffer);
-	pRenderData->SetShading(make_shared<BasicShading>(vec4(1, 0, 0, 1)));
+
+	if (color.size() != 0)
+	{
+		pRenderData->SetShading(make_shared<VertexShading>(VERTEX_SHADING_COLOR));
+	}
+	else
+	{
+		pRenderData->SetShading(make_shared<BasicShading>(vec4(1, 0, 0, 1)));
+	}
 
 	AddRenderData(0, pRenderData);
 }

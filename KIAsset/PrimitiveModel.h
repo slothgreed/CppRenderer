@@ -12,7 +12,7 @@ public:
 	~PrimitiveModel() {};
 
 	virtual MODEL_TYPE Type() { return MODEL_TYPE_PRIMITIVE; };
-	virtual void GetFaceList(vector<vec3>& position, vector<vec3>& normal, vector<vec2> texcoord);
+	virtual void GetFaceList(vector<vec3>& position, vector<vec3>& normal, vector<vec3>& color, vector<vec2>& texcoord);
 	virtual void GetFaceIndexList(vector<int>& index);
 
 	shared_ptr<IPrimitive> GetPrimitive() { return m_pPrimitive; };

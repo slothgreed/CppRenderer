@@ -36,9 +36,7 @@ void Workspace::Initialize(Project* m_pProject)
 	//polyhedron->Load("E:\\cgModel\\StanfordBunny.off");
 	//polyhedron->GenSampleModel();
 
-	auto axis = make_shared<RenderData>();
-	ModelGenerator::Axis(axis.get());
-	auto axisNode = make_shared<PrimitiveNode>(axis);
+	auto axisNode = make_shared<PrimitiveNode>(make_shared<PrimitiveModel>(make_shared<Axis>(AxisArgs())));
 	m_pScene->AddModelNode(axisNode);
 
 	auto model = make_shared<RenderData>();

@@ -156,6 +156,12 @@
     <ClInclude Include="ExtLibsModel.h">
       <Filter>ヘッダー ファイル\Model\PolygonModel</Filter>
     </ClInclude>
+    <ClInclude Include="Axis.h">
+      <Filter>ヘッダー ファイル\Model\BasicObject</Filter>
+    </ClInclude>
+    <ClInclude Include="CubeSpace.h">
+      <Filter>ヘッダー ファイル\Model\BasicObject</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -213,6 +219,12 @@
       <Filter>ソース ファイル\Pfx</Filter>
     </ClCompile>
     <ClCompile Include="DirectionalLightModel.cpp">
+      <Filter>ソース ファイル\Model\BasicObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Axis.cpp">
+      <Filter>ソース ファイル\Model\BasicObject</Filter>
+    </ClCompile>
+    <ClCompile Include="CubeSpace.cpp">
       <Filter>ソース ファイル\Model\BasicObject</Filter>
     </ClCompile>
   </ItemGroup>

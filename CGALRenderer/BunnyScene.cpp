@@ -51,11 +51,8 @@ void BunnyScene::Initialize(Project* m_pProject)
 	pCamera->FitToBDB(modelSpace);
 
 	{
-		modelSpace.Set(vec3(-200), vec3(200));
-		auto pRenderData = make_shared<RenderData>();
-		ModelGenerator::CubeSpace(modelSpace, pRenderData.get());
 
-		auto pCubeNode = make_shared<PrimitiveNode>(pRenderData);
+
 		auto pTexture = make_shared<Texture>();
 		pTexture->Generate();
 		TextureData textureData;
@@ -64,7 +61,11 @@ void BunnyScene::Initialize(Project* m_pProject)
 		pTexture->Set(textureData);
 		pTexture->End();
 		auto pBasicShading = make_shared<BasicShading>(pTexture);
-		pRenderData->SetShading(pBasicShading);
+		auto pCubeNode = make_shared<PrimitiveNode>(
+			make_shared<PrimitiveModel>(
+				make_shared<CubeSpace>(
+					CubeSpaceArgs(BDB(vec3(-200), vec3(200))))),
+			pBasicShading);
 		m_pScene->AddModelNode(pCubeNode);
 	}
 
@@ -73,10 +74,7 @@ void BunnyScene::Initialize(Project* m_pProject)
 	//	m_pScene->AddModelNode(moveManipulator);
 	//}
 
-	auto axis = make_shared<RenderData>();
-	ModelGenerator::Axis(axis.get());
-	axis->SetShading(make_shared<VertexShading>(VERTEX_SHADING_TYPE::VERTEX_SHADING_COLOR));
-	auto axisNode = make_shared<PrimitiveNode>(axis);
+	auto axisNode = make_shared<PrimitiveNode>(make_shared<PrimitiveModel>(make_shared<Axis>(AxisArgs())));
 	m_pScene->AddModelNode(axisNode);
 
 	m_pBackTarget = make_shared<SymbolicRenderTarget>(GL_BACK);

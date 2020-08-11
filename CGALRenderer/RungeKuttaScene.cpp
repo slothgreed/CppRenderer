@@ -24,9 +24,7 @@ void RungeKuttaScene::Initialize(Project* m_pProject)
 	m_pPointNode = make_shared<PrimitiveNode>(pPointData);
 	m_pScene->AddModelNode(m_pPointNode);
 
-	auto pAxis = make_shared<RenderData>();
-	ModelGenerator::Axis(pAxis.get());
-	auto axisNode = make_shared<PrimitiveNode>(pAxis);
+	auto axisNode = make_shared<PrimitiveNode>(make_shared<PrimitiveModel>(make_shared<Axis>(AxisArgs())));
 	m_pScene->AddModelNode(axisNode);
 
 	m_pBackTarget = make_shared<SymbolicRenderTarget>(GL_BACK);

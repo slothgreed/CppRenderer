@@ -110,7 +110,6 @@ void PrimitiveScene::Initialize(Project* m_pProject)
 		m_pScene->AddModelNode(pDirectionLightNode);
 	}
 
-
 	// sphere lambert
 	{
 		auto pLambertShading = make_shared<LambertShading>(vec4(1, 0, 0, 1));
@@ -137,6 +136,14 @@ void PrimitiveScene::Initialize(Project* m_pProject)
 			make_shared<PrimitiveModel>(make_shared<Sphere>(SphereArgs(vec3(0), 1, 36, 36))), pPhongShading);
 
 		m_pScene->AddModelNode(sphereNode);
+	}
+
+	// axis
+	{
+		auto axisNode = make_shared<PrimitiveNode>(
+			make_shared<PrimitiveModel>(make_shared<Axis>(AxisArgs(vec3(0), vec3(1)))));
+		m_pScene->AddModelNode(axisNode);
+
 	}
 
 	// grid
