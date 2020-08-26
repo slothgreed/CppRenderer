@@ -106,6 +106,20 @@ void Scene::UnBind()
 	m_pUniformStruct->GetScene()->UnBind();
 }
 
+shared_ptr<IModelNode> Scene::GetObject(int objectId)
+{
+	assert(0);
+	int index;
+	for (int i = 0; i < m_pRenderList.size(); i++)
+	{
+		if (m_pRenderList[i]->HasPickID(objectId, &index)) {
+			return m_pRenderList[i];
+		}
+	}
+
+	return NULL;
+}
+
 bool SceneModelIterator::HasNext()
 {
 	if (m_pScene->m_pRenderList.size() > m_Index)
@@ -132,7 +146,6 @@ VisibleModelIterator::VisibleModelIterator(Scene* pScene)
 	: m_pScene(pScene), m_pNextModel(nullptr), m_NextIndex(0)
 {
 	Next();	// 1”Ô–Ú‚Ì—v‘f‚ğæ“¾‚µ‚Ä‚¨‚­B
-
 }
 
 bool VisibleModelIterator::HasNext()

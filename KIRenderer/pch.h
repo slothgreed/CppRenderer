@@ -57,6 +57,7 @@ using namespace KI::ShaderLib;
 #include "ICamera.h"
 #include "PerspectiveCamera.h"
 #include "OrthoCamera.h"
+#include "CameraUtility.h"
 
 // Renderer
 #include "IPostEffect.h"

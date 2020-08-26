@@ -12,7 +12,7 @@ public:
 	~ManipulatorNode();
 
 	virtual void ShowProperty() override;
-
+	virtual void AddPickID(int id, int& next);
 protected:
 	virtual void PreDraw(shared_ptr<UniformStruct> pUniform, int index) override;
 private:

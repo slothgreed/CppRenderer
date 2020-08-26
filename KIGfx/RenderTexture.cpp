@@ -54,23 +54,34 @@ void RenderTexture::Resize(int width, int height)
 
 bool RenderTexture::GetPixels(ReadPixelArgs& args)
 {
-	assert(0);
-	//args.width = 640;
-	//args.height = 480;
-	//if (m_data.width == 0 ||
-	//	m_data.height == 0 ||
-	//	m_data.width < args.width ||
-	//	m_data.height < args.height)
-	//{
-	//	assert(0);
-	//	return false;
-	//}
+	if (Width() == 0 ||
+		Height() == 0 ||
+		Width() < args.width ||
+		Height() < args.height)
+	{
+		assert(0);
+		return false;
+	}
+
+	if (args.format == 0) {
+		args.format = Format();
+	}
+
+	if (args.type == 0) {
+		args.type = ColorComponentType();
+	}
+
+	if (args.format != Format() ||
+		args.type != ColorComponentType()) {
+		assert(0);
+		return false;
+	}
 
 	int dataSize = glEx::ColorFormatSize(args.format);
 
-	args.pixels = new GLubyte[
-			(args.width - args.x) *
-			(args.height - args.y) *
+	GLfloat* pixels = new GLfloat[
+			(args.width) *
+			(args.height) *
 			dataSize];
 
 	Logger::GLError();
@@ -82,10 +93,10 @@ bool RenderTexture::GetPixels(ReadPixelArgs& args)
 		args.height,
 		args.format,
 		args.type,
-		args.pixels);
+		pixels);
 
+	args.pixels = pixels;
 	Logger::GLError();
-
 	return true;
 }
 }

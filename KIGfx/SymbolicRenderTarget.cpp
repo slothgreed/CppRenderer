@@ -56,7 +56,9 @@ bool SymbolicRenderTarget::GetPixels(ReadPixelArgs& args, FRAMEBUFFER_ATTACHMENT
 	args.format = GL_RGB;
 	args.type = GL_UNSIGNED_BYTE;
 
-	return RenderTexture::GetPixels(args);
+	assert(0);
+	return true;
+	//return RenderTexture::GetPixels(args);
 }
 }
 }

@@ -18,7 +18,7 @@ public:
 class DLL_EXPORT Icosahedron : public IPrimitive
 {
 public:
-	Icosahedron();
+	Icosahedron(const IcosahedronArgs& args);
 	~Icosahedron();
 
 	void Build(const IcosahedronArgs& args);

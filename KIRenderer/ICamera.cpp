@@ -21,6 +21,5 @@ void ICamera::LookAt(const vec3& eye, const vec3& center, const vec3& up)
 	m_distance = glm::length(m_eye - m_center);
 }
 
-
 }
 }

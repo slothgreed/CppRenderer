@@ -49,9 +49,10 @@ shared_ptr<RenderTexture> PickPath::GetPickTexture()
 
 void PickPath::ResetPickID(shared_ptr<Scene> pScene)
 {
+	int next = 0;
 	for (int i = 0; i < pScene->ModelNodes().size(); i++)
 	{
-		pScene->ModelNodes()[i]->AddPickID(i);
+		pScene->ModelNodes()[i]->AddPickID(next, &next);
 	}
 }
 

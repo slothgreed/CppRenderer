@@ -27,7 +27,8 @@ public:
 	~IGLPick() {};
 	
 	void Clear() { m_pickId.clear(); }
-	virtual void AddPickID(int id) { m_pickId.push_back(id); };
+	virtual void AddPickID(int start, int* next);
+	bool HasPickID(int id, int* index);
 	int GetPickID(int index);
 	virtual void PickDraw(shared_ptr<IShader> pShader, shared_ptr<UniformStruct> pUniformStorage) = 0;
 	int Num() { return (int)m_pickId.size(); };

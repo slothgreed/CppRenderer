@@ -71,41 +71,49 @@ CommandResult PickCommand::Execute()
 {
 	auto pArgs = static_pointer_cast<PickCommandArgs>(m_pArgs);
 
-	vec3 near = glm::unProject(
-		vec3(pArgs->screenPosition.x, pArgs->m_pViewport->Size().y - pArgs->screenPosition.y, 0),
-		pArgs->m_pScene->GetCamera()->ViewMatrix(),
-		pArgs->m_pScene->GetCamera()->Projection(),
-		pArgs->m_pViewport->GetScreen());
+	vec3 near;
+	vec3 far;
 
-	vec3 far = glm::unProject(
-		vec3(pArgs->screenPosition.x, pArgs->m_pViewport->Size().y - pArgs->screenPosition.y, 1),
-		pArgs->m_pScene->GetCamera()->ViewMatrix(),
-		pArgs->m_pScene->GetCamera()->Projection(),
-		pArgs->m_pViewport->GetScreen());
+	CameraUtility::CalcSceneRay(
+		pArgs->m_pScene->GetCamera().get(),
+		pArgs->m_pViewport.get(),
+		pArgs->screenPosition, &near, &far);
 
+	auto pPickPath = make_shared<PickPath>();
+	pPickPath->Initialize(
+		pArgs->m_pViewport->Size().x, 
+		pArgs->m_pViewport->Size().y);
+	pPickPath->ResetPickID(pArgs->m_pScene);
+	pPickPath->Draw(pArgs->m_pScene);
+
+	ReadPixelArgs pixelArgs;
+	pixelArgs.x = pArgs->screenPosition.x;
+	pixelArgs.y = pArgs->screenPosition.y;
+	pixelArgs.width	 = 1;
+	pixelArgs.height = 1;
+	pPickPath->GetPickTexture()->GetPixels(pixelArgs);
+	//pArgs->m_pScene->GetObject(((int*)(pixelArgs.pixels))[0]);
 
 	Ray ray(near, far - near);
-
-
 	RaycastPickInfo pickInfo(PICK_TYPE::PICK_TYPE_FACE, &ray);
-	VisibleModelIterator itr(pArgs->m_pScene.get());
-	for (; itr.HasNext(); itr.Next())
-	{
-		auto pModel = itr.Current().GetModel();
-		if (pModel == nullptr)
-		{
-			continue;
-		}
-		// TODO
-		//pModel->RaycastPick(pickInfo);
-		int first;
-		int count;
-		pickInfo.GetSelectRegion(first, count);
-		if (pickInfo.Success())
-		{
-			itr.Current().AddPartSelect(TOPOLOGY_TYPE_FACE, first, count);
-		}
-	}
+	//VisibleModelIterator itr(pArgs->m_pScene.get());
+	//for (; itr.HasNext(); itr.Next())
+	//{
+	//	auto pModel = itr.Current().GetModel();
+	//	if (pModel == nullptr)
+	//	{
+	//		continue;
+	//	}
+	//	// TODO
+	//	//pModel->RaycastPick(pickInfo);
+	//	int first;
+	//	int count;
+	//	pickInfo.GetSelectRegion(first, count);
+	//	if (pickInfo.Success())
+	//	{
+	//		itr.Current().AddPartSelect(TOPOLOGY_TYPE_FACE, first, count);
+	//	}
+	//}
 
 
 #ifdef DEBUG_RENDERING

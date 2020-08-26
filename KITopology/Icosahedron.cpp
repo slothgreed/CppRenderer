@@ -3,8 +3,9 @@ namespace KI
 namespace Topology
 {
 
-Icosahedron::Icosahedron()
+Icosahedron::Icosahedron(const IcosahedronArgs& args)
 {
+	Build(args);
 }
 
 

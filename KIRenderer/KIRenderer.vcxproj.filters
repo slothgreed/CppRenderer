@@ -144,6 +144,9 @@
     <ClInclude Include="IRenderPath.h">
       <Filter>ヘッダー ファイル\Path</Filter>
     </ClInclude>
+    <ClInclude Include="CameraUtility.h">
+      <Filter>ヘッダー ファイル\Camera</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -202,6 +205,9 @@
     </ClCompile>
     <ClCompile Include="OutputPath.cpp">
       <Filter>ソース ファイル\Path</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraUtility.cpp">
+      <Filter>ソース ファイル\Camera</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

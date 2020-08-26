@@ -57,19 +57,10 @@ void PrimitiveScene::Initialize(Project* m_pProject)
 
 	// icosahedron rendring
 	{
-		Icosahedron icosahedron;
-		icosahedron.Build(IcosahedronArgs());
-		auto pVertexBuffer = make_shared<DefaultVertexBuffer>();
-		pVertexBuffer->SetPosition(icosahedron.Position());
-		pVertexBuffer->SetNormal(icosahedron.Normal());
-		auto pIndexBuffer = make_shared<IndexBuffer>();
-		pIndexBuffer->Set(icosahedron.Index());
-
-		auto pRenderData = make_shared<RenderData>();
-		pRenderData->SetGeometryData(PRIM_TYPE_TRIANGLES, pVertexBuffer, pIndexBuffer);
-		auto pVertexShading = make_shared<VertexShading>(VERTEX_SHADING_NORMAL);
-		pRenderData->SetShading(pVertexShading);
-		auto pPrimitiveNode = make_shared<PrimitiveNode>(pRenderData);
+		auto pPrimitiveNode = make_shared<PrimitiveNode>(
+			make_shared<PrimitiveModel>(
+				make_shared<Icosahedron>(IcosahedronArgs()))
+			,make_shared<PickShading>());
 		m_pScene->AddModelNode(pPrimitiveNode);
 	}
 
