@@ -51,8 +51,6 @@ void BunnyScene::Initialize(Project* m_pProject)
 	pCamera->FitToBDB(modelSpace);
 
 	{
-
-
 		auto pTexture = make_shared<Texture>();
 		pTexture->Generate();
 		TextureData textureData;

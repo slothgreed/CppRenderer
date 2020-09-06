@@ -23,6 +23,7 @@ layout (std140) uniform LightData
 
 layout (std140) uniform ModelData
 {
+	mat4 ModelViewMatrix;
 	mat4 ModelMatrix;
 	mat4 NormalMatrix;
 	int objectId;

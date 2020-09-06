@@ -67,5 +67,26 @@ void PickPath::Draw(shared_ptr<Scene> pScene)
 	
 	m_pRenderTarget->End();
 }
+
+bool PickPath::GetPickResult(const vec2& position, PickResult* pickResult)
+{
+	m_pRenderTarget->Begin();
+
+	ReadPixelArgs pixelArgs;
+	pixelArgs.x = position.x;
+	pixelArgs.y = position.y;
+	pixelArgs.width = 1;
+	pixelArgs.height = 1;
+
+	GetPickTexture()->GetPixels(pixelArgs);
+
+	vec3 value = pixelArgs.pixels.GetVector3(0);
+	pickResult->objectID = value.x;
+	pickResult->primitiveID = value.y;
+	m_pRenderTarget->End();
+
+	Logger::Output(LOG_LEVEL::DEBUG, MathHelper::ToString(value) + "\n");
+	return true;
+}
 }
 }

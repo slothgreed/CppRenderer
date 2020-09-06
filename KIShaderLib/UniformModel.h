@@ -9,7 +9,7 @@ struct ModelData
 {
 	mat4 modelViewMatrix;
 	mat4 modelMatrix;
-	mat3 normalMatrix;
+	mat4 normalMatrix;
 	int objectId;
 };
 

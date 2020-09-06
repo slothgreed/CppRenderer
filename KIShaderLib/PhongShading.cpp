@@ -151,7 +151,8 @@ shared_ptr<IShaderCode> PhongShading::NewShaderCode(IShaderBuildInfo* pBuildInfo
 		}
 
 		auto pCode = make_shared<DefaultVertexCode>(outLayout);
-		pCode->SetWorldPosition(true);
+		// TODO : Devide gl_Position and Out.Position. 
+		//pCode->SetWorldPosition(true);
 		return pCode;
 	}
 	else if (type == SHADER_PROGRAM_FRAG)

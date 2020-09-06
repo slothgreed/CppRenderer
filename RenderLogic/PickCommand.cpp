@@ -86,16 +86,16 @@ CommandResult PickCommand::Execute()
 	pPickPath->ResetPickID(pArgs->m_pScene);
 	pPickPath->Draw(pArgs->m_pScene);
 
-	ReadPixelArgs pixelArgs;
-	pixelArgs.x = pArgs->screenPosition.x;
-	pixelArgs.y = pArgs->screenPosition.y;
-	pixelArgs.width	 = 1;
-	pixelArgs.height = 1;
-	pPickPath->GetPickTexture()->GetPixels(pixelArgs);
-	//pArgs->m_pScene->GetObject(((int*)(pixelArgs.pixels))[0]);
+	PickResult pickResult;
+	bool result = pPickPath->GetPickResult(pArgs->screenPosition, &pickResult);
 
-	Ray ray(near, far - near);
-	RaycastPickInfo pickInfo(PICK_TYPE::PICK_TYPE_FACE, &ray);
+	auto pModel = pArgs->m_pScene->GetModel(pickResult.objectID);
+	auto pShading = ShadingManager::Instance()->GetSystemShading(SYSTEM_SHADING::SYSTEM_SHADING_SELECTION);
+	pModel->AddPartSelect(TOPOLOGY_TYPE_FACE,
+		pShading, pickResult.objectID, (pickResult.primitiveID - 1) * 3, 3);
+
+	//Ray ray(near, far - near);
+	//RaycastPickInfo pickInfo(PICK_TYPE::PICK_TYPE_FACE, &ray);
 	//VisibleModelIterator itr(pArgs->m_pScene.get());
 	//for (; itr.HasNext(); itr.Next())
 	//{
@@ -120,7 +120,7 @@ CommandResult PickCommand::Execute()
 	DebugRendering(near, far, pArgs->screenPosition, pArgs->m_pViewport.get(), pArgs->m_pScene.get(), pickInfo);
 #endif DEBUG_RENDERING
 
-	if (pickInfo.Success())
+	if (result)
 	{
 		return CommandResult::Success;
 	}

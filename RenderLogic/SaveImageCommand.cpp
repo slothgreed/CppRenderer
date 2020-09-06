@@ -45,7 +45,7 @@ CommandResult SaveImageCommand::Execute()
 		args.width, 
 		args.height, 
 		glEx::ColorFormatSize(args.format),
-		args.pixels);
+		args.pixels.Data());
 
 	if (result == 0) {
 		return CommandResult::Failed;

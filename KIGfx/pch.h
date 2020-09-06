@@ -28,6 +28,7 @@ using namespace KI::Foundation;
 using namespace std;
 using namespace glm;
 
+#include "GLArray.h"
 #include "GLStruct.h"
 #include "GLEx.h"
 #include "GLTypes.h"

@@ -132,23 +132,6 @@ void PolygonModelNode::VisibleEdge(bool visibility)
 
 }
 
-void PolygonModelNode::AddPartSelect(TOPOLOGY_TYPE type, int first, int count)
-{
-	auto pShading = ShadingManager::Instance()->GetSystemShading(SYSTEM_SHADING::SYSTEM_SHADING_SELECTION);
-	if (type == TOPOLOGY_TYPE::TOPOLOGY_TYPE_FACE)
-	{
-		if (GetRenderData(0)->HasRenderRegion())
-		{
-			GetRenderData(0)->ClearRenderRegion();
-		}
-
-		GetRenderData(0)->AddRenderRegion("Selection", pShading, first, count);
-	}
-	else
-	{
-		assert(0);
-	}
-}
 
 void PolygonModelNode::Update(void* sender, IEventArgs* args)
 {

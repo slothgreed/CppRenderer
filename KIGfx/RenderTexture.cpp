@@ -54,6 +54,7 @@ void RenderTexture::Resize(int width, int height)
 
 bool RenderTexture::GetPixels(ReadPixelArgs& args)
 {
+	Begin();
 	if (Width() == 0 ||
 		Height() == 0 ||
 		Width() < args.width ||
@@ -78,11 +79,7 @@ bool RenderTexture::GetPixels(ReadPixelArgs& args)
 	}
 
 	int dataSize = glEx::ColorFormatSize(args.format);
-
-	GLfloat* pixels = new GLfloat[
-			(args.width) *
-			(args.height) *
-			dataSize];
+	args.pixels.NewArray(m_data.type, dataSize, args.width * args.height);
 
 	Logger::GLError();
 
@@ -93,10 +90,11 @@ bool RenderTexture::GetPixels(ReadPixelArgs& args)
 		args.height,
 		args.format,
 		args.type,
-		pixels);
+		args.pixels.Data());
 
-	args.pixels = pixels;
 	Logger::GLError();
+
+	End();
 	return true;
 }
 }

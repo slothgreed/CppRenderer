@@ -10,8 +10,8 @@ class DLL_EXPORT RenderData
 {
 public:
 	RenderData() {};
-	~RenderData();
 	RenderData(PRIM_TYPE primitiveType, shared_ptr<IVertexBuffer> pVertexBuffer, shared_ptr<IndexBuffer> pIndexBuffer = nullptr);
+	~RenderData();
 
 	class DLL_EXPORT RenderRegion
 	{
@@ -30,7 +30,6 @@ public:
 	void AddRenderRegion(const string& descriptor, shared_ptr<IShading> pShading, int first, int count);
 	bool HasRenderRegion() { return m_pRenderRegion.size() != 0; };
 	void ClearRenderRegion();
-	//void Draw();
 	void Draw(const shared_ptr<UniformStruct> pUniform);
 	void Draw(shared_ptr<IShader> pShader, shared_ptr<IShading> pShading, shared_ptr<UniformStruct> pUniform, int first = -1, int count = -1);
 	shared_ptr<RenderData> Clone();

@@ -106,9 +106,8 @@ void Scene::UnBind()
 	m_pUniformStruct->GetScene()->UnBind();
 }
 
-shared_ptr<IModelNode> Scene::GetObject(int objectId)
+shared_ptr<IModelNode> Scene::GetModel(int objectId)
 {
-	assert(0);
 	int index;
 	for (int i = 0; i < m_pRenderList.size(); i++)
 	{

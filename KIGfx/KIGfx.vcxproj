@@ -175,6 +175,7 @@
     <ClInclude Include="DepthState.h" />
     <ClInclude Include="FrameBuffer.h" />
     <ClInclude Include="GfxTypes.h" />
+    <ClInclude Include="GLArray.h" />
     <ClInclude Include="GLEx.h" />
     <ClInclude Include="GLIterator.h" />
     <ClInclude Include="GLStruct.h" />
@@ -214,6 +215,7 @@
     <ClCompile Include="CullState.cpp" />
     <ClCompile Include="DepthState.cpp" />
     <ClCompile Include="FrameBuffer.cpp" />
+    <ClCompile Include="GLArray.cpp" />
     <ClCompile Include="glEx.cpp" />
     <ClCompile Include="GLIterator.cpp" />
     <ClCompile Include="GLObject.cpp" />
