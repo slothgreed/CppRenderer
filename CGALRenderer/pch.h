@@ -64,6 +64,9 @@ using namespace KI::RenderModel;
 #include "../RenderLogic/pch.h"
 using namespace KI::Logic;
 
+#include "../RenderView/pch.h"
+using namespace KI::RenderView;
+
 // application
 #include "IWorkspace.h"
 #include "PfxScene.h"

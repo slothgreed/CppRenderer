@@ -55,7 +55,7 @@ void BezierLineTCSCode::UnBind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<
 BezierLineShading::BezierLineShading()
 	: m_SegmentNum(10), m_StripNum(1), m_patchVertex(0)
 {
-	m_pShading = make_shared<BasicShading>(BASIC_SHADING_TYPE::BASIC_SHADING_TYPE_FIXCOLOR);
+	m_pShading = make_shared<BasicShading>(vec4(1, 0, 0, 1));
 }
 void BezierLineShading::SetPatchVertices(GLuint patchVertex)
 {
