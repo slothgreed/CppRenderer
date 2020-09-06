@@ -24,8 +24,6 @@ void BezierLineTCSCode::Initialize(GLuint programId)
 	Logger::GLError();
 }
 
-
-
 void BezierLineTCSCode::Bind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUniformStorage> pUniform)
 {
 	auto pShading = dynamic_cast<BezierLineShading*>(pShaderChunk.get());
@@ -54,6 +52,11 @@ void BezierLineTCSCode::UnBind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<
 
 }
 
+BezierLineShading::BezierLineShading()
+	: m_SegmentNum(10), m_StripNum(1), m_patchVertex(0)
+{
+	m_pShading = make_shared<BasicShading>(BASIC_SHADING_TYPE::BASIC_SHADING_TYPE_FIXCOLOR);
+}
 void BezierLineShading::SetPatchVertices(GLuint patchVertex)
 {
 	m_patchVertex = patchVertex;
@@ -75,9 +78,9 @@ shared_ptr<IShaderCode> BezierLineShading::NewShaderCode(IShaderBuildInfo* pBuil
 	switch (type)
 	{
 	case SHADER_PROGRAM_VERTEX:
-		return make_shared<DefaultVertexCode>(pBuildInfo->GetVertexBuffer().get());
+		return m_pShading->NewShaderCode(pBuildInfo, type);
 	case SHADER_PROGRAM_FRAG:
-		return make_shared<BasicFragCode>(BASIC_SHADING_TYPE::BASIC_SHADING_TYPE_FIXCOLOR);
+		return m_pShading->NewShaderCode(pBuildInfo, type);
 	case SHADER_PROGRAM_TCS:
 		return make_shared<BezierLineTCSCode>();
 	case SHADER_PROGRAM_TESS:
@@ -88,5 +91,6 @@ shared_ptr<IShaderCode> BezierLineShading::NewShaderCode(IShaderBuildInfo* pBuil
 
 	return nullptr;
 }
+
 }
 }

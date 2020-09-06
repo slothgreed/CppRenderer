@@ -11,7 +11,7 @@ RenderData::~RenderData()
 {
 }
 
-void RenderData::SetShading(shared_ptr<IShading> pShading)
+void RenderData::SetShading(shared_ptr<IShaderChunk> pShading)
 {
 	m_pShading = pShading;
 }
@@ -96,7 +96,7 @@ int RenderData::GetVertexSize()
 }
 void RenderData::Draw(
 	shared_ptr<IShader> pShader,
-	shared_ptr<IShading> pShading,
+	shared_ptr<IShaderChunk> pShading,
 	shared_ptr<UniformStruct> pUniform,
 	int first, 
 	int count)
@@ -124,7 +124,7 @@ void RenderData::Draw(
 	pShader->UnUse();
 }
 
-void RenderData::FindOrNewShader(shared_ptr<IShading> pShading)
+void RenderData::FindOrNewShader(shared_ptr<IShaderChunk> pShading)
 {
 	if (pShading->NeedReCompileShader() || m_pShader == nullptr)
 	{

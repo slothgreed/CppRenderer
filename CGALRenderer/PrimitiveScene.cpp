@@ -26,62 +26,62 @@ void PrimitiveScene::Initialize(Project* m_pProject)
 	shared_ptr<IControllerArgs> args = make_shared<CameraControllerArgs>(pCamera);
 	m_pController[CONTROLER_TYPE::CAMERA_CONTROLER]->SetArgs(args);
 
-	//// manipulator rendering
-	//{
-	//	auto pMoveManipulator = make_shared<MoveManipulator>();
-	//	pMoveManipulator->Build();
-	//	auto pManipulatorNode = make_shared<ManipulatorNode>(MANIPULATOR_TYPE_ROTATE);
-	//	m_pScene->AddModelNode(pManipulatorNode);
-	//}
+	// manipulator rendering
+	{
+		auto pMoveManipulator = make_shared<MoveManipulator>();
+		pMoveManipulator->Build();
+		auto pManipulatorNode = make_shared<ManipulatorNode>(MANIPULATOR_TYPE_ROTATE);
+		m_pScene->AddModelNode(pManipulatorNode);
+	}
 
-	//// sphere rendering
-	//{
+	// sphere rendering
+	{
 
-	//	auto pTexture = make_shared<Texture>();
-	//	pTexture->Generate();
-	//	TextureData textureData;
-	//	//TextureGenerator::RandomTexture(8, 255, textureData);
-	//	TextureGenerator::Load("E:\\cgModel\\texture\\SkyBox\\moon1024.png", textureData);
-	//	//TextureGenerator::Load("E:\\cgModel\\texture\\SkyBox\\earth2048.png", textureData);
-	//	pTexture->Begin();
-	//	pTexture->Set(textureData);
-	//	pTexture->End();
+		auto pTexture = make_shared<Texture>();
+		pTexture->Generate();
+		TextureData textureData;
+		//TextureGenerator::RandomTexture(8, 255, textureData);
+		TextureGenerator::Load("E:\\cgModel\\texture\\SkyBox\\moon1024.png", textureData);
+		//TextureGenerator::Load("E:\\cgModel\\texture\\SkyBox\\earth2048.png", textureData);
+		pTexture->Begin();
+		pTexture->Set(textureData);
+		pTexture->End();
 
-	//	auto pBasicShading = make_shared<PickShading>();
-	//	auto sphereNode = make_shared<PrimitiveNode>(
-	//		make_shared<PrimitiveModel>(
-	//			make_shared<Sphere>(SphereArgs(vec3(0), 1, 36, 36))),
-	//		pBasicShading);
-	//	m_pScene->AddModelNode(sphereNode);
-	//}
+		auto pBasicShading = make_shared<PickShading>();
+		auto sphereNode = make_shared<PrimitiveNode>(
+			make_shared<PrimitiveModel>(
+				make_shared<Sphere>(SphereArgs(vec3(0), 1, 36, 36))),
+			pBasicShading);
+		m_pScene->AddModelNode(sphereNode);
+	}
 
-	//// icosahedron rendring
-	//{
-	//	auto pPrimitiveNode = make_shared<PrimitiveNode>(
-	//		make_shared<PrimitiveModel>(
-	//			make_shared<Icosahedron>(IcosahedronArgs()))
-	//		,make_shared<PickShading>());
-	//	m_pScene->AddModelNode(pPrimitiveNode);
-	//}
+	// icosahedron rendring
+	{
+		auto pPrimitiveNode = make_shared<PrimitiveNode>(
+			make_shared<PrimitiveModel>(
+				make_shared<Icosahedron>(IcosahedronArgs()))
+			,make_shared<PickShading>());
+		m_pScene->AddModelNode(pPrimitiveNode);
+	}
 
-	//// Cylinder 
-	//{
-	//	auto pCylinderNode = make_shared<PrimitiveNode>(
-	//		make_shared<PrimitiveModel>(
-	//			make_shared<Cylinder>(CylinderArgs(5, 1, 5, 10)))
-	//		, make_shared<VertexShading>(VERTEX_SHADING_TYPE::VERTEX_SHADING_POSITION));
-	//	m_pScene->AddModelNode(pCylinderNode);
-	//}
+	// Cylinder 
+	{
+		auto pCylinderNode = make_shared<PrimitiveNode>(
+			make_shared<PrimitiveModel>(
+				make_shared<Cylinder>(CylinderArgs(5, 1, 5, 10)))
+			, make_shared<VertexShading>(VERTEX_SHADING_TYPE::VERTEX_SHADING_POSITION));
+		m_pScene->AddModelNode(pCylinderNode);
+	}
 
-	//// Torus rendering
-	//{
-	//	auto pTorusNode = make_shared<PrimitiveNode>(
-	//		make_shared<PrimitiveModel>(
-	//			make_shared<Torus>(
-	//				TorusArgs(0.5f,1.0f,32,32)))
-	//		,make_shared<VertexShading>(VERTEX_SHADING_TYPE::VERTEX_SHADING_NORMAL));
-	//	m_pScene->AddModelNode(pTorusNode);
-	//}
+	// Torus rendering
+	{
+		auto pTorusNode = make_shared<PrimitiveNode>(
+			make_shared<PrimitiveModel>(
+				make_shared<Torus>(
+					TorusArgs(0.5f,1.0f,32,32)))
+			,make_shared<VertexShading>(VERTEX_SHADING_TYPE::VERTEX_SHADING_NORMAL));
+		m_pScene->AddModelNode(pTorusNode);
+	}
 
 	// quad rendering
 	{

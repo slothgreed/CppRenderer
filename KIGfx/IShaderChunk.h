@@ -14,7 +14,8 @@ public:
 	virtual shared_ptr<IShaderCode> NewShaderCode(IShaderBuildInfo* pBuildInfo,SHADER_PROGRAM_TYPE type) = 0;
 	void CompiledShader() { m_bNeedRecompileShader = false; }
 	bool NeedReCompileShader() { return m_bNeedRecompileShader; };
-
+	virtual bool IsShading() { return false; };	// Vertex and Frag shader
+	virtual bool HasShading() { return false; };  // geometry, tessellation
 private:
 	bool m_bNeedRecompileShader;
 

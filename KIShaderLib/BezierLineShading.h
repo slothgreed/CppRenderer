@@ -41,10 +41,10 @@ public:
 	virtual void UnBind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUniformStorage> pUniform) override {};
 };
 
-class DLL_EXPORT BezierLineShading : public IShading
+class DLL_EXPORT BezierLineShading : public IHasShading
 {
 public:
-	BezierLineShading() : m_SegmentNum(10),m_StripNum(1), m_patchVertex(0) {}
+	BezierLineShading();
 	SHADER_TYPE Type() { return SHADER_TYPE::SHADER_TYPE_BEZIERLINE; }
 
 	void SetSegmentNum(int value) { m_SegmentNum = value; };

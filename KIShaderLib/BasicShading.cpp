@@ -43,7 +43,16 @@ bool BasicFragCode::Compare(IShaderCode* pShaderCode)
 
 void BasicFragCode::Bind(shared_ptr<IShaderChunk> pShaderChunk, shared_ptr<IUniformStorage> pUniform)
 {
-	auto pShading = dynamic_cast<BasicShading*>(pShaderChunk.get());
+	BasicShading* pShading = nullptr;
+	if (pShaderChunk->IsShading())
+	{
+		pShading = dynamic_cast<BasicShading*>(pShaderChunk.get());
+	}
+	else if (pShaderChunk->HasShading())
+	{
+		auto pHasShading = dynamic_cast<IHasShading*>(pShaderChunk.get());
+		pShading = dynamic_cast<BasicShading*>(pHasShading->GetShading());
+	}
 	if (pShading == nullptr)
 	{
 		assert(0);
