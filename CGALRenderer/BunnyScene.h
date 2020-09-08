@@ -4,11 +4,11 @@
 namespace KI
 {
 
-class BunnyScene : public IWorkspace
+class BunnyScene : public ViewViewModel
 {
 public:
 	virtual ~BunnyScene();
-	virtual void Initialize(Project* m_pProejct) override;
+	virtual void Initialize() override;
 	virtual void Invoke() override;
 	virtual void ProcessMouseEvent(const MouseInput& input) override;
 private:

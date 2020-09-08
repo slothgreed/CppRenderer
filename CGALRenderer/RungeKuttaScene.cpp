@@ -9,7 +9,7 @@ RungeKuttaScene::~RungeKuttaScene()
 {
 }
 
-void RungeKuttaScene::Initialize(Project* m_pProject)
+void RungeKuttaScene::Initialize()
 {
 	m_pScene = make_shared<Scene>();
 	m_pScene->Initialize();

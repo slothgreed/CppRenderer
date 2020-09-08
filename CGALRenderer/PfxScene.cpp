@@ -1,6 +1,6 @@
 namespace KI
 {
-void PfxScene::Initialize(Project* m_pProject)
+void PfxScene::Initialize()
 {
 	m_pScene = make_shared<Scene>();
 	m_pScene->Initialize();

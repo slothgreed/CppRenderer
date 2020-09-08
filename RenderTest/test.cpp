@@ -8,7 +8,7 @@ TEST(renderTest, Test)
 {
 	int NEW_SCENE = 4;
 	std::cout << "Hello World!\n";
-	auto pTexture = new KI::CGALRenderer();
+	auto pTexture = new KI::Gfx::Texture();
 
 	//std::unique_ptr<CGALRenderer> renderer(new CGALRenderer());
 	//auto pProject = make_shared<Project>();

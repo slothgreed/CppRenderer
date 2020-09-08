@@ -4,13 +4,13 @@
 namespace KI
 {
 
-class TessellationScene : public IWorkspace
+class TessellationScene : public ViewViewModel
 {
 public:
 	TessellationScene();
 	~TessellationScene();
 
-	virtual void Initialize(Project* pProject) override;
+	virtual void Initialize() override;
 	virtual void Invoke() override;
 	virtual void ProcessMouseEvent(const MouseInput& input) override; 
 private:

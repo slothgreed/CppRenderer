@@ -8,42 +8,42 @@ int main()
 {
 	int NEW_SCENE = 6;
     std::cout << "Hello World!\n"; 
-	std::unique_ptr<CGALRenderer> renderer(new CGALRenderer());
+	std::unique_ptr<OpenGLView> renderer(new OpenGLView());
 	auto pProject = make_shared<Project>();
-	shared_ptr<IWorkspace> pWorkspace;
+	shared_ptr<ViewViewModel> pViewViewModel;
 	if (NEW_SCENE == 1)
 	{
-		pWorkspace = make_shared<Workspace>();
+		pViewViewModel = make_shared<SampleScene>();
 	}
 	else if(NEW_SCENE == 2)
 	{
-		pWorkspace = make_shared<BunnyScene>();
+		pViewViewModel = make_shared<BunnyScene>();
 	}
 	else if (NEW_SCENE == 3)
 	{
-		pWorkspace = make_shared<VoronoiScene>();
+		pViewViewModel = make_shared<VoronoiScene>();
 	}
 	else if (NEW_SCENE == 4)
 	{
-		pWorkspace = make_shared<PrimitiveScene>();
+		pViewViewModel = make_shared<PrimitiveScene>();
 	}
 	else if (NEW_SCENE == 5)
 	{
-		pWorkspace = make_shared<PfxScene>();
+		pViewViewModel = make_shared<PfxScene>();
 	}
 	else if (NEW_SCENE == 6)
 	{
-		pWorkspace = make_shared<TessellationScene>();
+		pViewViewModel = make_shared<TessellationScene>();
 	}
 	else if (NEW_SCENE == 7)
 	{
-		pWorkspace = make_shared<RungeKuttaScene>();
+		pViewViewModel = make_shared<RungeKuttaScene>();
 	}
 
 	renderer->Initialize();
-	renderer->SetWorkspace(pWorkspace);
+	renderer->SetViewModel(pViewViewModel);
 	pProject->Initialize();
-	pWorkspace->Initialize(pProject.get());
+	pViewViewModel->Initialize();
 
 	renderer->Run();
 	

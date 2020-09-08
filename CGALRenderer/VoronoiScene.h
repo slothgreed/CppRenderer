@@ -3,10 +3,10 @@
 
 namespace KI
 {
-class VoronoiScene : public IWorkspace
+class VoronoiScene : public ViewViewModel
 {
 public:
-	virtual void Initialize(Project* pProject) override;
+	virtual void Initialize() override;
 	virtual void Invoke() override;
 	virtual void ProcessMouseEvent(const MouseInput& input)override;
 

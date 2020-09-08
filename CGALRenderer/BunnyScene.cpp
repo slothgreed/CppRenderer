@@ -8,7 +8,7 @@ BunnyScene::~BunnyScene()
 	}
 }
 
-void BunnyScene::Initialize(Project* m_pProject)
+void BunnyScene::Initialize()
 {
 	m_pCommandManager = make_unique<CommandManager>();
 	m_pMouse = make_shared<Mouse>();

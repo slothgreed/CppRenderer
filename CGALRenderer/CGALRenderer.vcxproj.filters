@@ -36,19 +36,10 @@
     <ClInclude Include="Project.h">
       <Filter>ヘッダー ファイル\Application</Filter>
     </ClInclude>
-    <ClInclude Include="CGALRenderer.h">
-      <Filter>ヘッダー ファイル\Application</Filter>
-    </ClInclude>
     <ClInclude Include="SpecialUtility.h">
       <Filter>ヘッダー ファイル\Application</Filter>
     </ClInclude>
     <ClInclude Include="BunnyScene.h">
-      <Filter>ヘッダー ファイル\Application\InitApp</Filter>
-    </ClInclude>
-    <ClInclude Include="IWorkspace.h">
-      <Filter>ヘッダー ファイル\Application\InitApp</Filter>
-    </ClInclude>
-    <ClInclude Include="Workspace.h">
       <Filter>ヘッダー ファイル\Application\InitApp</Filter>
     </ClInclude>
     <ClInclude Include="..\extlibs\imgui\imconfig.h">
@@ -84,6 +75,9 @@
     <ClInclude Include="RungeKuttaScene.h">
       <Filter>ヘッダー ファイル\Application\InitApp</Filter>
     </ClInclude>
+    <ClInclude Include="SampleScene.h">
+      <Filter>ヘッダー ファイル\Application\InitApp</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -95,16 +89,10 @@
     <ClCompile Include="Project.cpp">
       <Filter>ソース ファイル\Application</Filter>
     </ClCompile>
-    <ClCompile Include="CGALRenderer.cpp">
-      <Filter>ソース ファイル\Application</Filter>
-    </ClCompile>
     <ClCompile Include="SpecialUtility.cpp">
       <Filter>ソース ファイル\Application</Filter>
     </ClCompile>
     <ClCompile Include="BunnyScene.cpp">
-      <Filter>ソース ファイル\Application\InitApp</Filter>
-    </ClCompile>
-    <ClCompile Include="Workspace.cpp">
       <Filter>ソース ファイル\Application\InitApp</Filter>
     </ClCompile>
     <ClCompile Include="..\extlibs\imgui\imgui.cpp">
@@ -132,6 +120,9 @@
       <Filter>ソース ファイル\Application\InitApp</Filter>
     </ClCompile>
     <ClCompile Include="RungeKuttaScene.cpp">
+      <Filter>ソース ファイル\Application\InitApp</Filter>
+    </ClCompile>
+    <ClCompile Include="SampleScene.cpp">
       <Filter>ソース ファイル\Application\InitApp</Filter>
     </ClCompile>
   </ItemGroup>

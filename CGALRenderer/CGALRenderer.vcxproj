@@ -116,7 +116,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)extlibs\glfw-3.3\lib-vc2017;$(SolutionDir)extlibs\glew-2.1.0\lib\Release\x64;E:\Tools\CGAL4.11\build\lib;E:\Tools\CGAL4.11\auxiliary\gmp\lib\;$(SolutionDir)$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3.lib;glew32.lib;opengl32.lib;KIFoundation.lib;KIGfx.lib;KIRenderer.lib;KITopology.lib;RenderView.lib;KIShaderLib.lib;KIAlgorithm.lib;KIAsset.lib;RenderModel.lib;RenderLogic.lib;CGALAsset.lib;libgmp-10.lib;libmpfr-4.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3.lib;glew32.lib;opengl32.lib;KIFoundation.lib;KIGfx.lib;KIRenderer.lib;KITopology.lib;KIShaderLib.lib;KIAlgorithm.lib;KIAsset.lib;RenderModel.lib;RenderLogic.lib;RenderView.lib;CGALAsset.lib;libgmp-10.lib;libmpfr-4.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <Profile>true</Profile>
     </Link>
   </ItemDefinitionGroup>
@@ -160,7 +160,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)extlibs\glfw-3.3\lib-vc2017;$(SolutionDir)extlibs\glew-2.1.0\lib\Release\x64;E:\Tools\CGAL4.11\build\lib;E:\Tools\CGAL4.11\auxiliary\gmp\lib\;$(SolutionDir)$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3.lib;glew32.lib;opengl32.lib;KIFoundation.lib;KIGfx.lib;KIRenderer.lib;KITopology.lib;RenderView.lib;KIAlgorithm.lib;KIAsset.lib;CGAL-vc140-mt-gd-4.11.lib;CGAL_ImageIO-vc140-mt-gd-4.11.lib;CGAL_Core-vc140-mt-gd-4.11.lib;CGAL_Qt5-vc140-mt-gd-4.11.lib;libgmp-10.lib;libmpfr-4.lib;KIFoundation.lib;KIGfx.lib;KIRenderer.lib;KITopology.lib;KIAlgorithm.lib;KIAsset.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3.lib;glew32.lib;opengl32.lib;KIFoundation.lib;KIGfx.lib;KIRenderer.lib;KITopology.lib;RenderView.lib;KIAlgorithm.lib;KIAsset.lib;CGAL-vc140-mt-gd-4.11.lib;CGAL_ImageIO-vc140-mt-gd-4.11.lib;CGAL_Core-vc140-mt-gd-4.11.lib;CGAL_Qt5-vc140-mt-gd-4.11.lib;libgmp-10.lib;libmpfr-4.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -171,8 +171,6 @@
     <ClInclude Include="..\extlibs\imgui\imstb_textedit.h" />
     <ClInclude Include="..\extlibs\imgui\imstb_truetype.h" />
     <ClInclude Include="BunnyScene.h" />
-    <ClInclude Include="CGALRenderer.h" />
-    <ClInclude Include="IWorkspace.h" />
     <ClInclude Include="PfxScene.h" />
     <ClInclude Include="PrimitiveScene.h" />
     <ClInclude Include="RungeKuttaScene.h" />
@@ -181,7 +179,7 @@
     <ClInclude Include="Project.h" />
     <ClInclude Include="TessellationScene.h" />
     <ClInclude Include="VoronoiScene.h" />
-    <ClInclude Include="Workspace.h" />
+    <ClInclude Include="SampleScene.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\extlibs\imgui\imgui.cpp" />
@@ -189,7 +187,6 @@
     <ClCompile Include="..\extlibs\imgui\imgui_draw.cpp" />
     <ClCompile Include="..\extlibs\imgui\imgui_widgets.cpp" />
     <ClCompile Include="BunnyScene.cpp" />
-    <ClCompile Include="CGALRenderer.cpp" />
     <ClCompile Include="PfxScene.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="pch.cpp">
@@ -204,7 +201,7 @@
     <ClCompile Include="SpecialUtility.cpp" />
     <ClCompile Include="TessellationScene.cpp" />
     <ClCompile Include="VoronoiScene.cpp" />
-    <ClCompile Include="Workspace.cpp" />
+    <ClCompile Include="SampleScene.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

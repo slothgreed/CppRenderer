@@ -3,14 +3,14 @@
 
 namespace KI
 {
-class RungeKuttaScene : public IWorkspace
+class RungeKuttaScene : public ViewViewModel
 {
 public:
 	RungeKuttaScene();
 	~RungeKuttaScene();
 
 public:
-	virtual void Initialize(Project* pProject) override;
+	virtual void Initialize() override;
 	virtual void Invoke() override;
 	virtual void ProcessMouseEvent(const MouseInput& input)override;
 

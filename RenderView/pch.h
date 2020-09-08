@@ -4,8 +4,8 @@
 // ただし、ここに一覧表示されているファイルは、ビルド間でいずれかが更新されると、すべてが再コンパイルされます。
 // 頻繁に更新するファイルをここに追加しないでください。追加すると、パフォーマンス上の利点がなくなります。
 
-#ifndef PCH_H
-#define PCH_H
+#ifndef RENDER_VIEW_PCH_H
+#define RENDER_VIEW_PCH_H
 
 #ifndef DLL_EXPORT
 #define DLL_EXPORT  __declspec(dllexport)
@@ -58,6 +58,8 @@ using namespace KI::RenderModel;
 #include "../RenderLogic/pch.h"
 using namespace KI::Logic;
 
+#include "IView.h"
 #include "ViewViewModel.h"
 #include "OpenGLView.h"
-#endif //PCH_H
+
+#endif //RENDER_VIEW_PCH_H

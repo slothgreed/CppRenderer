@@ -3,11 +3,11 @@
 
 namespace KI
 {
-class PrimitiveScene : public IWorkspace
+class PrimitiveScene : public ViewViewModel
 {
 public:
 	virtual ~PrimitiveScene();
-	virtual void Initialize(Project* m_pProejct) override;
+	virtual void Initialize() override;
 	virtual void Invoke() override;
 	virtual void ProcessMouseEvent(const MouseInput& input) override;
 private:

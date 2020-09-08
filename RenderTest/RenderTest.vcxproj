@@ -81,7 +81,7 @@
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
-      <AdditionalDependencies>glfw3.lib;glew32.lib;opengl32.lib;KIFoundation.lib;KIGfx.lib;KIRenderer.lib;KITopology.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3.lib;glew32.lib;opengl32.lib;KIFoundation.lib;KIGfx.lib;KIRenderer.lib;KITopology.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)extlibs\glfw-3.3\lib-vc2017;$(SolutionDir)extlibs\glew-2.1.0\lib\Release\x64;E:\Tools\CGAL4.11\build\lib;E:\Tools\CGAL4.11\auxiliary\gmp\lib\;$(SolutionDir)$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
@@ -116,7 +116,7 @@
       <SubSystem>Console</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
-      <AdditionalDependencies>glfw3.lib;glew32.lib;opengl32.lib;KIFoundation.lib;KIGfx.lib;KIRenderer.lib;KITopology.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3.lib;glew32.lib;opengl32.lib;KIFoundation.lib;KIGfx.lib;KIRenderer.lib;KITopology.lib;</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)extlibs\glfw-3.3\lib-vc2017;$(SolutionDir)extlibs\glew-2.1.0\lib\Release\x64;E:\Tools\CGAL4.11\build\lib;E:\Tools\CGAL4.11\auxiliary\gmp\lib\;$(SolutionDir)$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>

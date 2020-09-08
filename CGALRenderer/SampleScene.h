@@ -2,13 +2,12 @@
 #define WORKSPACE_H
 namespace KI
 {
-class CGALModelNode;
-class Workspace : public IWorkspace
+class SampleScene : public ViewViewModel
 {
 public:
-	Workspace();
-	~Workspace();
-	virtual void Initialize(Project* m_pProject) override;
+	SampleScene();
+	~SampleScene();
+	virtual void Initialize() override;
 	virtual void Invoke() override;
 	virtual void ProcessMouseEvent(const MouseInput& input) override;
 

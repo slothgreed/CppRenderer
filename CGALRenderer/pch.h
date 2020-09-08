@@ -68,15 +68,13 @@ using namespace KI::Logic;
 using namespace KI::RenderView;
 
 // application
-#include "IWorkspace.h"
 #include "PfxScene.h"
 #include "PrimitiveScene.h"
 #include "BunnyScene.h"
-#include "Workspace.h"
+#include "SampleScene.h"
 #include "VoronoiScene.h"
 #include "TessellationScene.h"
 #include "RungeKuttaScene.h"
-#include "CGALRenderer.h"
 #include "Project.h"
 #include "SpecialUtility.h"
 

@@ -8,7 +8,7 @@ PrimitiveScene::~PrimitiveScene()
 	}
 }
 
-void PrimitiveScene::Initialize(Project* m_pProject)
+void PrimitiveScene::Initialize()
 {
 	m_pCommandManager = make_unique<CommandManager>();
 	m_pMouse = make_shared<Mouse>();

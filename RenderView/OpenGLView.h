@@ -6,16 +6,16 @@ namespace KI
 namespace RenderView
 {
 
-class DLL_EXPORT OpenGLView
+class DLL_EXPORT OpenGLView : public IView
 {
 public:
 	OpenGLView();
 	~OpenGLView();
-	bool Initialize();
+	virtual bool Initialize() override;
 	void SetViewModel(std::shared_ptr<ViewViewModel> pWorkspace);
-	bool Run();
-	void ProcessMouseEvent(const MouseInput& input);
-	void ProcessWindowEvent(const WindowEvent& winEvent);
+	virtual bool Run() override;
+	virtual void ProcessMouseEvent(const MouseInput& input) override;
+	virtual void ProcessWindowEvent(const WindowEvent& winEvent) override;
 private:
 
 	GLFWwindow* m_window;

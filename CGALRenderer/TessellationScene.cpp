@@ -8,7 +8,7 @@ TessellationScene::~TessellationScene()
 {
 }
 
-void TessellationScene::Initialize(Project* pProject)
+void TessellationScene::Initialize()
 {
 	m_pScene = make_shared<Scene>();
 	m_pScene->Initialize();

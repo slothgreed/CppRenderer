@@ -1,10 +1,10 @@
 namespace KI
 {
-Workspace::Workspace()
+SampleScene::SampleScene()
 {
 }
 
-Workspace::~Workspace()
+SampleScene::~SampleScene()
 {
 	for (auto itr = m_pController.begin(); itr != m_pController.end(); itr++)
 	{
@@ -12,7 +12,7 @@ Workspace::~Workspace()
 	}
 }
 
-void Workspace::Initialize(Project* m_pProject)
+void SampleScene::Initialize()
 {
 	m_pCommandManager = make_unique<CommandManager>();
 	m_pMouse = make_shared<Mouse>();
@@ -80,7 +80,7 @@ void Workspace::Initialize(Project* m_pProject)
 	m_pOutputPlane->Initialize();
 }
 
-void Workspace::Invoke()
+void SampleScene::Invoke()
 {
 	m_pRenderTarget->Begin();
 	{
@@ -104,7 +104,7 @@ void Workspace::Invoke()
 	m_pBackTarget->End();
 }
 
-void Workspace::ProcessMouseEvent(const MouseInput& input)
+void SampleScene::ProcessMouseEvent(const MouseInput& input)
 {
 	m_pMouse->ApplyMouseInput(input);
 	if (input.Event() == MOUSE_EVENT_WHEEL) {
