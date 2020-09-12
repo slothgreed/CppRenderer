@@ -18,7 +18,6 @@ public:
 	void VisibleNormal(bool visibility);
 	void VisibleFace(bool visibility);
 	void VisibleEdge(bool visibility);
-	void AddPartSelect(TOPOLOGY_TYPE type, int first, int count);
 	shared_ptr<IVertexBuffer> GetVertexBuffer();
 protected:
 	string m_name;

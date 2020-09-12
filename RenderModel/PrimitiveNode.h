@@ -19,7 +19,7 @@ public:
 	IndexBuffer* GetIndexBuffer();
 	void SetRenderData();
 	void SetState(shared_ptr<IGLState> pState) { m_pState = pState; };
-	virtual void AddPartSelect(TOPOLOGY_TYPE type, int first, int count);
+	virtual void AddSelect(PICK_TYPE type, shared_ptr<IShading> pShading, int index, int first, int count);
 	virtual void PreDraw(shared_ptr<UniformStruct> pUniform, int index);
 	virtual void PostDraw(shared_ptr<UniformStruct> pUniform, int index);
 

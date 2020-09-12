@@ -140,7 +140,7 @@ void IModelNode::DrawProperty(shared_ptr<UniformStruct> pUniform)
 	}
 }
 
-void IModelNode::AddPartSelect(TOPOLOGY_TYPE type, shared_ptr<IShading> pShader, int index, int first, int count)
+void IModelNode::AddSelect(PICK_TYPE type, shared_ptr<IShading> pShader, int index, int first, int count)
 {
 	if (type == TOPOLOGY_TYPE::TOPOLOGY_TYPE_FACE)
 	{

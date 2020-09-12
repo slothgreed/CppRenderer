@@ -3,7 +3,7 @@ namespace KI
 namespace RenderModel
 {
 ManipulatorNode::ManipulatorNode(MANIPULATOR_TYPE type)
-	:m_ManipulatorType(type)
+	:m_ManipulatorType(type),m_SelectIndex(-1)
 {
 	if (m_ManipulatorType == MANIPULATOR_TYPE_MOVE)
 	{
@@ -90,6 +90,35 @@ void ManipulatorNode::PreDraw(shared_ptr<UniformStruct> pUniform, int index)
 	{
 		assert(0);
 	}
+}
+
+void ManipulatorNode::ClearSelect() 
+{
+	if (m_SelectIndex == -1) {
+		return;
+	}
+
+	if (GetRenderData(m_SelectIndex)->HasRenderRegion())
+	{
+		GetRenderData(m_SelectIndex)->ClearRenderRegion();
+	}
+
+	GetRenderData(m_SelectIndex)->SetShading(m_pShading);
+	m_SelectIndex = -1;
+}
+void ManipulatorNode::AddSelect(PICK_TYPE type, shared_ptr<IShading> pShading, int index, int first, int count)
+{
+	if (m_SelectIndex != -1) {
+		ClearSelect();
+	}
+
+	if (type != PICK_TYPE::PICK_TYPE_OBJECT)
+	{
+		assert(0);
+	}
+
+	GetRenderData(index)->SetShading(pShading);
+	m_SelectIndex = index;
 }
 
 void ManipulatorNode::AddPickID(int id, int* next)

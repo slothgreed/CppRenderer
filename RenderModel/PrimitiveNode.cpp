@@ -118,10 +118,10 @@ void PrimitiveNode::SetRenderData()
 	AddRenderData(0, pRenderData);
 }
 
-void PrimitiveNode::AddPartSelect(TOPOLOGY_TYPE type, int first, int count)
+void PrimitiveNode::AddSelect(PICK_TYPE type, shared_ptr<IShading> pShading, int index, int first, int count)
 {
-	auto pShading = ShadingManager::Instance()->GetSystemShading(SYSTEM_SHADING::SYSTEM_SHADING_SELECTION);
-	if (type == TOPOLOGY_TYPE::TOPOLOGY_TYPE_FACE)
+	if (type == PICK_TYPE::PICK_TYPE_OBJECT ||
+		type == PICK_TYPE::PICK_TYPE_FACE)
 	{
 		if (GetRenderData(0)->HasRenderRegion())
 		{

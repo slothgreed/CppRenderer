@@ -92,7 +92,9 @@ CommandResult PickCommand::Execute()
 
 	auto pModel = pArgs->m_pScene->GetModel(pickResult.objectID);
 	auto pShading = ShadingManager::Instance()->GetSystemShading(SYSTEM_SHADING::SYSTEM_SHADING_SELECTION);
-	pModel->AddPartSelect(TOPOLOGY_TYPE_FACE,
+	pModel->ClearSelect();
+
+	pModel->AddSelect(PICK_TYPE::PICK_TYPE_OBJECT,
 		pShading, pickResult.objectID, (pickResult.primitiveID - 1) * 3, 3);
 
 	//Ray ray(near, far - near);
@@ -112,7 +114,7 @@ CommandResult PickCommand::Execute()
 	//	pickInfo.GetSelectRegion(first, count);
 	//	if (pickInfo.Success())
 	//	{
-	//		itr.Current().AddPartSelect(TOPOLOGY_TYPE_FACE, first, count);
+	//		itr.Current().AddSelect(TOPOLOGY_TYPE_FACE, first, count);
 	//	}
 	//}
 

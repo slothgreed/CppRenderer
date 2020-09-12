@@ -11,6 +11,8 @@ public:
 	ManipulatorNode(MANIPULATOR_TYPE type);
 	~ManipulatorNode();
 
+	virtual void ClearSelect() override;
+	virtual void AddSelect(PICK_TYPE type, shared_ptr<IShading> pShading, int index, int first, int count) override;
 	virtual void ShowProperty() override;
 	virtual void AddPickID(int id, int* next) override;
 protected:
@@ -23,6 +25,7 @@ private:
 	MANIPULATOR_TYPE m_ManipulatorType;
 	shared_ptr<IManipulatorModel> m_pManipulator;
 	shared_ptr<BasicShading> m_pShading;
+	int m_SelectIndex;
 };
 }
 }

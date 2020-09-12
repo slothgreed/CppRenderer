@@ -15,7 +15,9 @@ public:
 	virtual void PickDraw(shared_ptr<IShader> pShader, shared_ptr<UniformStruct> pUniformStorage);
 	void Draw(shared_ptr<UniformStruct> pUniform);
 	virtual void ShowProperty() {};
-	virtual void AddPartSelect(TOPOLOGY_TYPE type, shared_ptr<IShading> pShader, int index, int first, int count);
+	
+	virtual void ClearSelect() {};
+	virtual void AddSelect(PICK_TYPE type, shared_ptr<IShading> pShader, int index, int first, int count);
 	virtual void Update(void* sender, IEventArgs* args);
 	shared_ptr<IModel> GetModel() { return m_pModel; }
 	void SetModelMatrix(const mat4x4& matrix) { m_ModelMatrix = matrix; };
