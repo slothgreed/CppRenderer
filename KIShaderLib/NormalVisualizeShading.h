@@ -5,16 +5,18 @@ namespace KI
 {
 namespace ShaderLib
 {
-class DLL_EXPORT NormalVisualizeShading : public IShading
+class DLL_EXPORT NormalVisualizeShading : public IHasShading
 {
 public:
 	SHADER_TYPE Type() { return SHADER_TYPE::SHADER_TYPE_GRAYSCALE; }
 
+	NormalVisualizeShading();
+	~NormalVisualizeShading() {};
 	void SetLength(float value) { m_Length = value; }
 	float GetLength() { return m_Length; }
 
 	virtual bool NewShaderCompare(IShaderChunk* pTarget) override;
-	virtual shared_ptr<IShaderCode> NewShaderCode(IShaderBuildInfo* pBuildInfo,SHADER_PROGRAM_TYPE type);
+	virtual shared_ptr<IShaderCode> NewShaderCode(IShaderBuildInfo* pBuildInfo,SHADER_PROGRAM_TYPE type) override;
 
 private:
 	float m_Length;

@@ -77,6 +77,7 @@ void CompositFragCode::Bind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUn
 void CompositFragCode::UnBind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUniformStorage> pUniform)
 {
 	auto pShading = dynamic_cast<CompositShading*>(pShaderChunk.get());
+	if(pShading == nullptr)
 	{
 		assert(0);
 		return;
@@ -90,7 +91,14 @@ shared_ptr<IShaderCode> CompositShading::NewShaderCode(IShaderBuildInfo* pBuildI
 {
 	if (type == SHADER_PROGRAM_VERTEX)
 	{
-		return make_shared<DefaultVertexCode>(pBuildInfo->GetVertexBuffer().get());
+		auto pDefaultCode = dynamic_cast<DefaultVertexBuffer*>(pBuildInfo->GetVertexBuffer().get());
+		if (pDefaultCode == nullptr)
+		{
+			assert(0);
+			return nullptr;
+		}
+
+		return make_shared<DefaultVertexCode>(pDefaultCode->Layout());
 	}
 	else if (type == SHADER_PROGRAM_FRAG)
 	{

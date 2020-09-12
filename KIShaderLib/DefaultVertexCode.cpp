@@ -12,19 +12,6 @@ DefaultVertexCode::DefaultVertexCode(VERTEX_LAYOUT layout)
 	SetShaderDefine(layout);
 }
 
-DefaultVertexCode::DefaultVertexCode(IVertexBuffer* pVertexBuffer)
-	:DefaultVertexCode(
-		string(SHADER_DIRECTORY) +
-		string(SHADER_DEFAULT) +
-		string(SHADER_EXT_VERTEX))
-{
-	auto pDefault = dynamic_cast<DefaultVertexBuffer*>(pVertexBuffer);
-	if (pDefault != NULL)
-	{
-		SetShaderDefine(pDefault->Layout());
-	}
-}
-
 
 DefaultVertexCode::DefaultVertexCode(const string& shaderCode)
 	:IShaderCode(shaderCode)

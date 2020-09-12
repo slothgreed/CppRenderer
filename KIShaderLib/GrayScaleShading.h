@@ -14,7 +14,7 @@ public:
 	shared_ptr<Texture> GetTexture() { return m_pTexture; }
 
 	virtual bool NewShaderCompare(IShaderChunk* pTarget) override;
-	virtual shared_ptr<IShaderCode> NewShaderCode(IShaderBuildInfo* pBuildInfo,SHADER_PROGRAM_TYPE type);
+	virtual shared_ptr<IShaderCode> NewShaderCode(IShaderBuildInfo* pBuildInfo,SHADER_PROGRAM_TYPE type) override;
 
 
 private:

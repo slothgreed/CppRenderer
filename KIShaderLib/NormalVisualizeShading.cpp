@@ -64,17 +64,24 @@ bool NormalVisualizeShading::NewShaderCompare(IShaderChunk* pTarget)
 
 	return true;
 }
+
+NormalVisualizeShading::NormalVisualizeShading()
+{
+	m_pShading = make_shared<BasicShading>(vec4(1,0,0,1));
+}
+
 shared_ptr<IShaderCode> NormalVisualizeShading::NewShaderCode(IShaderBuildInfo* pBuildInfo,SHADER_PROGRAM_TYPE type)
 {
 	if (type == SHADER_PROGRAM_VERTEX)
 	{
-		auto pCode = make_shared<DefaultVertexCode>(pBuildInfo->GetVertexBuffer().get());
-		pCode->SetPlanePosition(true);
+		auto pCode = m_pShading->NewShaderCode(pBuildInfo, type);
+		((DefaultVertexCode*)pCode.get())->SetShaderDefine(VERTEX_LAYOUT_NORMAL);
+		((DefaultVertexCode*)pCode.get())->SetPlanePosition(true);
 		return pCode;
 	}
 	else if (type == SHADER_PROGRAM_FRAG)
 	{
-		return make_shared<BasicFragCode>(BASIC_SHADING_TYPE::BASIC_SHADING_TYPE_FIXCOLOR);
+		return m_pShading->NewShaderCode(pBuildInfo, type);
 	}
 	else if (type == SHADER_PROGRAM_GEOM)
 	{

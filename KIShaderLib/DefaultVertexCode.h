@@ -8,7 +8,6 @@ namespace ShaderLib
 class DLL_EXPORT DefaultVertexCode : public IShaderCode
 {
 public:
-	DefaultVertexCode(IVertexBuffer* pVertexBuffer);
 	DefaultVertexCode(VERTEX_LAYOUT outLayout);
 protected:
 	DefaultVertexCode(const string& shaderCode);

@@ -9,7 +9,7 @@ namespace ShaderLib
 class DLL_EXPORT SSLICShading : public IShading
 {
 public:
-	virtual shared_ptr<IShaderCode> NewShaderCode(IShaderBuildInfo* pBuildInfo,SHADER_PROGRAM_TYPE type);
+	virtual shared_ptr<IShaderCode> NewShaderCode(IShaderBuildInfo* pBuildInfo,SHADER_PROGRAM_TYPE type) override;
 
 	void SetTexture(shared_ptr<Texture> value) { m_pTexture = value; };
 	shared_ptr<Texture> GetTexture() { return m_pTexture; };
