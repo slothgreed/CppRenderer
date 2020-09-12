@@ -13,12 +13,12 @@ enum PICK_TARGET
 	PICK_TARGET_MANIPULATOR	= 0x08,
 };
 
-class DLL_EXPORT PickCommandArgs : public ICommandArgs
+class DLL_EXPORT SelectCommandArgs : public ICommandArgs
 {
-	friend class PickCommand;
+	friend class SelectCommand;
 
 public:
-	PickCommandArgs(
+	SelectCommandArgs(
 		shared_ptr<Viewport> pViewport,
 		shared_ptr<Scene> pScene,
 		vec2 position) :
@@ -26,7 +26,7 @@ public:
 		m_pScene(pScene),
 		screenPosition(position) {};
 
-	~PickCommandArgs() {};
+	~SelectCommandArgs() {};
 
 	virtual COMMAND_TYPE Type() { return PICK_COMMAND; }
 
@@ -36,12 +36,12 @@ private:
 	vec2 screenPosition;
 };
 
-class DLL_EXPORT PickCommand : public ICommand
+class DLL_EXPORT SelectCommand : public ICommand
 {
 
 public :
-	PickCommand(shared_ptr<PickCommandArgs> args);
-	~PickCommand();
+	SelectCommand(shared_ptr<SelectCommandArgs> args);
+	~SelectCommand();
 
 	virtual COMMAND_TYPE Type() { return PICK_COMMAND; }
 

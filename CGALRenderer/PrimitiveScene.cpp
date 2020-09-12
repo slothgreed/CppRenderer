@@ -226,8 +226,8 @@ void PrimitiveScene::ProcessMouseEvent(const MouseInput& input)
 		if (input.Press(MOUSE_BUTTON_LEFT))
 		{
 			m_pCommandManager->Execute(
-				make_shared<PickCommand>(
-					make_shared<PickCommandArgs>(
+				make_shared<SelectCommand>(
+					make_shared<SelectCommandArgs>(
 						GetViewport(),
 						m_pScene,
 						input.Position())));

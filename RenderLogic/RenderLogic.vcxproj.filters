@@ -36,9 +36,6 @@
     <ClInclude Include="pch.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="PickCommand.h">
-      <Filter>ヘッダー ファイル\Command</Filter>
-    </ClInclude>
     <ClInclude Include="SaveImageCommand.h">
       <Filter>ヘッダー ファイル\Command</Filter>
     </ClInclude>
@@ -54,6 +51,12 @@
     <ClInclude Include="LogicEventArgs.h">
       <Filter>ヘッダー ファイル\EventArgs</Filter>
     </ClInclude>
+    <ClInclude Include="SelectCommand.h">
+      <Filter>ヘッダー ファイル\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="ClearSelectCommand.h">
+      <Filter>ヘッダー ファイル\Command</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -61,9 +64,6 @@
     </ClCompile>
     <ClCompile Include="pch.cpp">
       <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="PickCommand.cpp">
-      <Filter>ソース ファイル\Command</Filter>
     </ClCompile>
     <ClCompile Include="SaveImageCommand.cpp">
       <Filter>ソース ファイル\Command</Filter>
@@ -76,6 +76,12 @@
     </ClCompile>
     <ClCompile Include="CameraController.cpp">
       <Filter>ソース ファイル\Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectCommand.cpp">
+      <Filter>ソース ファイル\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="ClearSelectCommand.cpp">
+      <Filter>ソース ファイル\Command</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

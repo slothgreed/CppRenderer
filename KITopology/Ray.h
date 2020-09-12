@@ -8,7 +8,7 @@ namespace Topology
 class Ray
 {
 public:
-	Ray() {};
+	Ray() : m_origin(vec3(0)), m_direction(vec3(0)) {};
 	Ray(const vec3& origin, const vec3& direction) { Set(origin, direction); };
 	~Ray() {};
 

@@ -3,18 +3,18 @@ namespace KI
 namespace Logic
 {
 //#define DEBUG_RENDERING
-PickCommand::PickCommand(shared_ptr<PickCommandArgs> args)
+SelectCommand::SelectCommand(shared_ptr<SelectCommandArgs> args)
 	: ICommand(args)
 {
 
 }
 
-PickCommand::~PickCommand()
+SelectCommand::~SelectCommand()
 {
 
 }
 
-CommandResult PickCommand::CanExecute()
+CommandResult SelectCommand::CanExecute()
 {
 	if (m_pArgs->Type() != PICK_COMMAND)
 	{
@@ -67,9 +67,9 @@ void DebugRendering(vec3 near, vec3 far, vec2 screenPosition, Viewport* pViewpor
 }
 #endif // DEBUG_RENDERING
 
-CommandResult PickCommand::Execute()
+CommandResult SelectCommand::Execute()
 {
-	auto pArgs = static_pointer_cast<PickCommandArgs>(m_pArgs);
+	auto pArgs = static_pointer_cast<SelectCommandArgs>(m_pArgs);
 
 	vec3 near;
 	vec3 far;
@@ -96,28 +96,6 @@ CommandResult PickCommand::Execute()
 
 	pModel->AddSelect(PICK_TYPE::PICK_TYPE_OBJECT,
 		pShading, pickResult.objectID, (pickResult.primitiveID - 1) * 3, 3);
-
-	//Ray ray(near, far - near);
-	//RaycastPickInfo pickInfo(PICK_TYPE::PICK_TYPE_FACE, &ray);
-	//VisibleModelIterator itr(pArgs->m_pScene.get());
-	//for (; itr.HasNext(); itr.Next())
-	//{
-	//	auto pModel = itr.Current().GetModel();
-	//	if (pModel == nullptr)
-	//	{
-	//		continue;
-	//	}
-	//	// TODO
-	//	//pModel->RaycastPick(pickInfo);
-	//	int first;
-	//	int count;
-	//	pickInfo.GetSelectRegion(first, count);
-	//	if (pickInfo.Success())
-	//	{
-	//		itr.Current().AddSelect(TOPOLOGY_TYPE_FACE, first, count);
-	//	}
-	//}
-
 
 #ifdef DEBUG_RENDERING
 	DebugRendering(near, far, pArgs->screenPosition, pArgs->m_pViewport.get(), pArgs->m_pScene.get(), pickInfo);

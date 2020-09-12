@@ -42,8 +42,12 @@ using namespace KI::RenderModel;
 // logic
 #include "CameraController.h"
 #include "SubdivisionCommand.h"
-#include "PickCommand.h"
+
 #include "VoxelCommand.h"
 #include "LogicEventArgs.h"
 #include "SaveImageCommand.h"
+
+#include "SelectCommand.h"
+#include "ClearSelectCommand.h"
+
 #endif //RENDER_LOGIC_PCH_H
