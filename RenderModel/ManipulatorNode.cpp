@@ -92,15 +92,15 @@ void ManipulatorNode::PreDraw(shared_ptr<UniformStruct> pUniform, int index)
 	}
 }
 
-void ManipulatorNode::AddPickID(int id, int& next)
+void ManipulatorNode::AddPickID(int id, int* next)
 {
 	if (m_ManipulatorType == MANIPULATOR_TYPE_MOVE ||
 		m_ManipulatorType == MANIPULATOR_TYPE_SCALE ||
 		m_ManipulatorType == MANIPULATOR_TYPE_ROTATE)
 	{
-		IGLPick::AddPickID(id, &next);
-		IGLPick::AddPickID(id + 1, &next);
-		IGLPick::AddPickID(id + 2, &next);
+		IGLPick::AddPickID(id, next);
+		IGLPick::AddPickID(id + 1, next);
+		IGLPick::AddPickID(id + 2, next);
 	}
 	else
 	{

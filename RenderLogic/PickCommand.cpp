@@ -86,8 +86,9 @@ CommandResult PickCommand::Execute()
 	pPickPath->ResetPickID(pArgs->m_pScene);
 	pPickPath->Draw(pArgs->m_pScene);
 
+	vec2 pos = vec2(pArgs->screenPosition.x, pArgs->m_pViewport->Size().y - pArgs->screenPosition.y);
 	PickResult pickResult;
-	bool result = pPickPath->GetPickResult(pArgs->screenPosition, &pickResult);
+	bool result = pPickPath->GetPickResult(pos, &pickResult);
 
 	auto pModel = pArgs->m_pScene->GetModel(pickResult.objectID);
 	auto pShading = ShadingManager::Instance()->GetSystemShading(SYSTEM_SHADING::SYSTEM_SHADING_SELECTION);

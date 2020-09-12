@@ -31,7 +31,7 @@ void ShadingManager::Initialize()
 
 void ShadingManager::CreateSystemShading()
 {
-	auto pBasicShading = make_shared<BasicShading>(vec4(0, 1, 0, 1));
+	auto pBasicShading = make_shared<BasicShading>(vec4(1, 0, 1, 1));
 
 	m_pShadings[SYSTEM_SHADING_SELECTION] = pBasicShading;
 
