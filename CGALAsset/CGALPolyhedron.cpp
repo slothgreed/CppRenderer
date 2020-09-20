@@ -44,7 +44,7 @@ void CGALPolyhedron::Load(const string& filePath)
 
 	//if (m_model->is_tetrahedron(*m_halfEdge))
 	//{
-	//	Logger::Output(LOG_LEVEL::ERROR, "Failed Load CGALPolyhedron");
+	//	Logger::Output(LOG_LEVEL::LOG_LEVEL_ERROR, "Failed Load CGALPolyhedron");
 	//}
 
 }
@@ -90,7 +90,7 @@ void CGALPolyhedron::BuildFacet(const Facet_const_handle& facet, vector<vec3>& p
 	Halfedge_const_handle halfEdge = facet->facet_begin();
 	if (halfEdge == NULL)
 	{
-		Logger::Output(LOG_LEVEL::ERROR, "Can't read data");
+		Logger::Output(LOG_LEVEL::LOG_LEVEL_ERROR, "Can't read data");
 		return;
 	}
 

@@ -24,7 +24,7 @@ void UniformScene::Bind()
 {
 	if (m_Id == 0)
 	{
-		Logger::Output(LOG_LEVEL::ERROR, "not Generated");
+		Logger::Output(LOG_LEVEL::LOG_LEVEL_ERROR, "not Generated");
 		assert(0);
 		return;
 	}

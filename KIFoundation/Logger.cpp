@@ -15,7 +15,7 @@ void Logger::Output(LOG_LEVEL level, string message)
 {
 	USE_VAR(level);
 	printf(message.data());
-	if (level == LOG_LEVEL::ERROR)
+	if (level == LOG_LEVEL::LOG_LEVEL_ERROR)
 	{
 		assert(0);
 	}

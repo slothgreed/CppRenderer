@@ -15,7 +15,7 @@ void FrameBuffer::Generate()
 {
 	if (m_Id != 0)
 	{
-		Logger::Output(LOG_LEVEL::ERROR, "Already Generated");
+		Logger::Output(LOG_LEVEL::LOG_LEVEL_ERROR, "Already Generated");
 	}
 
 	glGenFramebuffers(1, &m_Id);

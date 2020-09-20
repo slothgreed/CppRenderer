@@ -15,7 +15,7 @@ void RenderBuffer::Generate()
 {
 	if (m_Id != 0)
 	{
-		Logger::Output(LOG_LEVEL::ERROR, "Already Generated");
+		Logger::Output(LOG_LEVEL::LOG_LEVEL_ERROR, "Already Generated");
 	}
 
 	glGenRenderbuffers(1, &m_Id);

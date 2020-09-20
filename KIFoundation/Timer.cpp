@@ -34,11 +34,11 @@ void Timer::WaitForFPS(int fps)
 	if (duration < fpsDuration)
 	{
 		std::this_thread::sleep_for(chrono::milliseconds((int)(fpsDuration - duration)));
-		//Logger::Output(LOG_LEVEL::DEBUG, "FPS " + to_string(m_latestFPS) + " : duration" + to_string(duration) + ": sleep" + to_string(fpsDuration - duration) + "\n");
+		//Logger::Output(LOG_LEVEL::LOG_LEVEL_DEBUG, "FPS " + to_string(m_latestFPS) + " : duration" + to_string(duration) + ": sleep" + to_string(fpsDuration - duration) + "\n");
 	}
 	else
 	{
-		//Logger::Output(LOG_LEVEL::DEBUG, "FPS " + to_string(m_latestFPS) + " : duration" + to_string(duration) + "\n");
+		//Logger::Output(LOG_LEVEL::LOG_LEVEL_DEBUG, "FPS " + to_string(m_latestFPS) + " : duration" + to_string(duration) + "\n");
 	}
 
 	m_beforeTime = current;

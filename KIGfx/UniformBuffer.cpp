@@ -16,7 +16,7 @@ void UniformBuffer::Generate()
 {
 	if (m_Id != 0)
 	{
-		Logger::Output(LOG_LEVEL::ERROR, "Already Created");
+		Logger::Output(LOG_LEVEL::LOG_LEVEL_ERROR, "Already Created");
 		assert(0);
 		return;
 	}
@@ -29,7 +29,7 @@ void UniformBuffer::Bind()
 {
 	if (m_Id == 0)
 	{
-		Logger::Output(LOG_LEVEL::ERROR, "not Generated");
+		Logger::Output(LOG_LEVEL::LOG_LEVEL_ERROR, "not Generated");
 		assert(0);
 		return;
 	}

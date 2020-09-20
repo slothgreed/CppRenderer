@@ -6,7 +6,7 @@ void ScrollCallBack(GLFWwindow* window, double x, double y)
 {
 	MouseInput input;
 	input.SetWheel((int)y);
-	input.SetEvent(MOUSE_EVENT::MOUSE_EVENT_WHEEL);
+	input.SetEvent(KI_MOUSE_EVENT::MOUSE_EVENT_WHEEL);
 	TheApp()->ProcessMouseEvent(input);
 }
 
@@ -14,33 +14,33 @@ void CursorPosCallBack(GLFWwindow* window, double xpos, double ypos)
 {
 	MouseInput input;
 	input.SetPosition((float)xpos, (float)ypos);
-	input.SetEvent(MOUSE_EVENT::MOUSE_EVENT_MOVE);
+	input.SetEvent(KI_MOUSE_EVENT::MOUSE_EVENT_MOVE);
 
 	if (GLFW_PRESS == glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT))
 	{
-		input.SetPress(MOUSE_BUTTON::MOUSE_BUTTON_LEFT);
+		input.SetPress(KI_MOUSE_BUTTON::MOUSE_BUTTON_LEFT);
 	}
 	else
 	{
-		input.SetRelease(MOUSE_BUTTON::MOUSE_BUTTON_LEFT);
+		input.SetRelease(KI_MOUSE_BUTTON::MOUSE_BUTTON_LEFT);
 	}
 
 	if (GLFW_PRESS == glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_MIDDLE))
 	{
-		input.SetPress(MOUSE_BUTTON::MOUSE_BUTTON_MIDDLE);
+		input.SetPress(KI_MOUSE_BUTTON::MOUSE_BUTTON_MIDDLE);
 	}
 	else
 	{
-		input.SetRelease(MOUSE_BUTTON::MOUSE_BUTTON_MIDDLE);
+		input.SetRelease(KI_MOUSE_BUTTON::MOUSE_BUTTON_MIDDLE);
 	}
 
 	if (GLFW_PRESS == glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_RIGHT))
 	{
-		input.SetPress(MOUSE_BUTTON::MOUSE_BUTTON_RIGHT);
+		input.SetPress(KI_MOUSE_BUTTON::MOUSE_BUTTON_RIGHT);
 	}
 	else
 	{
-		input.SetRelease(MOUSE_BUTTON::MOUSE_BUTTON_RIGHT);
+		input.SetRelease(KI_MOUSE_BUTTON::MOUSE_BUTTON_RIGHT);
 	}
 
 	TheApp()->ProcessMouseEvent(input);
@@ -56,7 +56,7 @@ void WindowSizeCallBack(GLFWwindow* window, int width, int height)
 
 void MouseButtonCallBack(GLFWwindow* window, int button, int action, int mods)
 {
-	MOUSE_BUTTON mouseButton;
+	KI_MOUSE_BUTTON mouseButton;
 	switch (button)
 	{
 	case GLFW_MOUSE_BUTTON_LEFT:
@@ -105,7 +105,7 @@ OpenGLView* TheApp()
 {
 	if (theApp == NULL)
 	{
-		Logger::Output(LOG_LEVEL::ERROR, "Not CGALRendererInitialized");
+		Logger::Output(LOG_LEVEL::LOG_LEVEL_ERROR, "Not CGALRendererInitialized");
 	}
 	return theApp;
 }
@@ -154,7 +154,6 @@ bool OpenGLView::Initialize()
 	glfwSetScrollCallback(m_window, ScrollCallBack);	// mouse wheel;
 	glfwSetWindowSizeCallback(m_window, WindowSizeCallBack);
 	glfwSetKeyCallback(m_window, KeyCallback);
-
 	m_pViewport = make_shared<Viewport>();
 	m_pViewport->SetPosition(0, 0);
 	m_pViewport->Resize(640, 480);

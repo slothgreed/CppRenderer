@@ -8,10 +8,10 @@ void MathHelper::SphericalToCartesian(float radius, float x, float y, vec3& resu
 	result.y = radius * cos(y);
 	result.z = radius * sin(y) * sin(x);
 
-	//Logger::Output(LOG_LEVEL::DEBUG, to_string(x) + "," + to_string(y) + "\n");
+	//Logger::Output(LOG_LEVEL::LOG_LEVEL_DEBUG, to_string(x) + "," + to_string(y) + "\n");
 	//float rad = 0;
 	//CartesianToSpherical(result, rad, x, y);
-	//Logger::Output(LOG_LEVEL::DEBUG, to_string(x) + "," + to_string(y) + "\n");
+	//Logger::Output(LOG_LEVEL::LOG_LEVEL_DEBUG, to_string(x) + "," + to_string(y) + "\n");
 }
 
 void MathHelper::CartesianToSpherical(const vec3& position, float& radian, float& theta, float& phi)

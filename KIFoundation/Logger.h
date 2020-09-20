@@ -6,9 +6,9 @@ namespace Foundation
 {
 enum LOG_LEVEL
 {
-	DEBUG,
-	WARNING,
-	ERROR
+	LOG_LEVEL_DEBUG,
+	LOG_LEVEL_WARNING,
+	LOG_LEVEL_ERROR
 };
 
 

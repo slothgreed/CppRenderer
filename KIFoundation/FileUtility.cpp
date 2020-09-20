@@ -16,7 +16,7 @@ bool FileUtility::Load(const string& filePath, string& contents)
 {
 	if (IsExist(filePath))
 	{
-		Logger::Output(LOG_LEVEL::ERROR, "file open error");
+		Logger::Output(LOG_LEVEL::LOG_LEVEL_ERROR, "file open error");
 		return false;
 	}
 
@@ -35,7 +35,7 @@ bool FileUtility::Load(const string& filePath, vector<string>& lines)
 {
 	if (IsExist(filePath) == false)
 	{
-		Logger::Output(LOG_LEVEL::ERROR, "file open error");
+		Logger::Output(LOG_LEVEL::LOG_LEVEL_ERROR, "file open error");
 		return false;
 	}
 

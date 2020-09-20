@@ -145,7 +145,7 @@ void IShader::Use()
 {
 	if (m_programId == 0)
 	{
-		Logger::Output(LOG_LEVEL::ERROR, "Not call Initialize");
+		Logger::Output(LOG_LEVEL::LOG_LEVEL_ERROR, "Not call Initialize");
 	}
 
 	glUseProgram(m_programId);

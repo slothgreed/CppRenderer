@@ -85,7 +85,7 @@ bool PickPath::GetPickResult(const vec2& position, PickResult* pickResult)
 	pickResult->primitiveID = value.y;
 	m_pRenderTarget->End();
 
-	Logger::Output(LOG_LEVEL::DEBUG, MathHelper::ToString(value) + "\n");
+	Logger::Output(LOG_LEVEL::LOG_LEVEL_DEBUG, MathHelper::ToString(value) + "\n");
 	return true;
 }
 }

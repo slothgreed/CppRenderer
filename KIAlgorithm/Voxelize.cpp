@@ -39,7 +39,7 @@ void Voxelize::Create(const vector<vec3>& positions, const BDB& bdb, int partiti
 		int x, y, z;
 		GetIndex(positions[i], x, y, z);
 		vec3 voxelIndex(x, y, z);
-		//Logger::Output(KI::LOG_LEVEL::DEBUG, MathHelper::ToString(voxelIndex) + "\n");
+		//Logger::Output(KI::LOG_LEVEL::LOG_LEVEL_DEBUG, MathHelper::ToString(voxelIndex) + "\n");
 		if (m_VoxelSpace[x][y][z] == nullptr)
 		{
 			m_VoxelSpace[x][y][z] = new Voxel();

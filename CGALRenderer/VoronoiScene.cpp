@@ -43,9 +43,9 @@ void VoronoiScene::Invoke()
 
 void VoronoiScene::ProcessMouseEvent(const MouseInput& input)
 {
-	if (input.Event() == MOUSE_EVENT::MOUSE_EVENT_DOWN)
+	if (input.Event() == KI_MOUSE_EVENT::MOUSE_EVENT_DOWN)
 	{
-		if (input.Press() == MOUSE_BUTTON::MOUSE_BUTTON_RIGHT)
+		if (input.Press() == KI_MOUSE_BUTTON::MOUSE_BUTTON_RIGHT)
 		{
 			GenerateVoronoiDiagram();
 		}

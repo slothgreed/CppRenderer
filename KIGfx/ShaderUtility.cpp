@@ -32,7 +32,7 @@ GLuint ShaderUtility::Compile(const string& code, GLuint shaderType)
 
 		GLchar* errorLog = new GLchar[maxLength];
 		glGetShaderInfoLog(id, maxLength, &maxLength, errorLog);
-		Logger::Output(LOG_LEVEL::ERROR, "DefaultShader Compile Error");
+		Logger::Output(LOG_LEVEL::LOG_LEVEL_ERROR, "DefaultShader Compile Error");
 		delete errorLog;
 		errorLog = nullptr;
 	}
@@ -78,7 +78,7 @@ GLuint ShaderUtility::Link(GLuint vertexId, GLuint tcsId, GLuint tesId, GLuint g
 
 		GLchar* errorLog = new GLchar[maxLength];
 		glGetProgramInfoLog(programId, maxLength, &maxLength, errorLog);
-		Logger::Output(LOG_LEVEL::ERROR, "DefaultShader Link Error");
+		Logger::Output(LOG_LEVEL::LOG_LEVEL_ERROR, "DefaultShader Link Error");
 		delete errorLog;
 		errorLog = nullptr;
 	}

@@ -4,7 +4,7 @@ namespace KI
 {
 namespace Foundation
 {
-enum MOUSE_BUTTON : unsigned int
+enum KI_MOUSE_BUTTON : unsigned int
 {
 	MOUSE_BUTTON_LEFT = 1,
 	MOUSE_BUTTON_RIGHT = 2,
@@ -12,7 +12,7 @@ enum MOUSE_BUTTON : unsigned int
 };
 
 
-enum MOUSE_EVENT
+enum KI_MOUSE_EVENT
 {
 	MOUSE_EVENT_WHEEL,
 	MOUSE_EVENT_DOWN,

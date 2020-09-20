@@ -15,7 +15,7 @@ void HalfEdgeDS::Load(const string& filePath)
 	ifstream binaryStream(filePath, ios::in | ios::binary);
 	if (!binaryStream)
 	{
-		Logger::Output(LOG_LEVEL::ERROR, "file open error");
+		Logger::Output(LOG_LEVEL::LOG_LEVEL_ERROR, "file open error");
 		return;
 	}
 

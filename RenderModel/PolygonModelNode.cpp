@@ -55,7 +55,7 @@ void PolygonModelNode::VisibleNormal(bool visibility)
 	}
 	else
 	{
-		Logger::Output(LOG_LEVEL::DEBUG, "don't have vertex list");
+		Logger::Output(LOG_LEVEL::LOG_LEVEL_DEBUG, "don't have vertex list");
 	}
 }
 

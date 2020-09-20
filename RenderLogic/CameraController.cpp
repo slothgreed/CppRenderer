@@ -17,7 +17,7 @@ void CameraController::SetArgs(shared_ptr<IControllerArgs> pArgs)
 }
 bool CameraController::Move(const Mouse& mouse)
 {
-	if (mouse.Press(MOUSE_BUTTON::MOUSE_BUTTON_RIGHT))
+	if (mouse.Press(KI_MOUSE_BUTTON::MOUSE_BUTTON_RIGHT))
 	{
 		vec2 move = mouse.Delta();
 		move.x *= 0.3f;

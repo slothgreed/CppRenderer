@@ -27,12 +27,12 @@ CommandResult SelectCommand::CanExecute()
 #ifdef DEBUG_RENDERING
 void DebugRendering(vec3 near, vec3 far, vec2 screenPosition, Viewport* pViewport, Scene* pScene, const RaycastPickInfo& pickInfo)
 {
-	Logger::Output(LOG_LEVEL::DEBUG, "Posi" + MathHelper::ToString(screenPosition) + "\n");
-	Logger::Output(LOG_LEVEL::DEBUG, "Scre" + MathHelper::ToString(pViewport->GetScreen()) + "\n");
-	Logger::Output(LOG_LEVEL::DEBUG, "Near" + MathHelper::ToString(near) + ", ");
-	Logger::Output(LOG_LEVEL::DEBUG, "Far" + MathHelper::ToString(far) + "\n");
-	Logger::Output(LOG_LEVEL::DEBUG, "Proj" + MathHelper::ToString(pScene->GetCamera()->Projection()) + "\n");
-	Logger::Output(LOG_LEVEL::DEBUG, "View" + MathHelper::ToString(pScene->GetCamera()->ViewMatrix()) + "\n");
+	Logger::Output(LOG_LEVEL::LOG_LEVEL_DEBUG, "Posi" + MathHelper::ToString(screenPosition) + "\n");
+	Logger::Output(LOG_LEVEL::LOG_LEVEL_DEBUG, "Scre" + MathHelper::ToString(pViewport->GetScreen()) + "\n");
+	Logger::Output(LOG_LEVEL::LOG_LEVEL_DEBUG, "Near" + MathHelper::ToString(near) + ", ");
+	Logger::Output(LOG_LEVEL::LOG_LEVEL_DEBUG, "Far" + MathHelper::ToString(far) + "\n");
+	Logger::Output(LOG_LEVEL::LOG_LEVEL_DEBUG, "Proj" + MathHelper::ToString(pScene->GetCamera()->Projection()) + "\n");
+	Logger::Output(LOG_LEVEL::LOG_LEVEL_DEBUG, "View" + MathHelper::ToString(pScene->GetCamera()->ViewMatrix()) + "\n");
 
 	{
 		auto pRayData = make_shared<RenderData>();
