@@ -121,21 +121,6 @@ void ManipulatorNode::AddSelect(PICK_TYPE type, shared_ptr<IShading> pShading, i
 	m_SelectIndex = index;
 }
 
-void ManipulatorNode::AddPickID(int id, int* next)
-{
-	if (m_ManipulatorType == MANIPULATOR_TYPE_MOVE ||
-		m_ManipulatorType == MANIPULATOR_TYPE_SCALE ||
-		m_ManipulatorType == MANIPULATOR_TYPE_ROTATE)
-	{
-		IGLPick::AddPickID(id, next);
-		IGLPick::AddPickID(id + 1, next);
-		IGLPick::AddPickID(id + 2, next);
-	}
-	else
-	{
-		assert(0);
-	}
-}
 
 }
 }

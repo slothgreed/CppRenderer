@@ -108,10 +108,9 @@ void Scene::UnBind()
 
 shared_ptr<IModelNode> Scene::GetModel(int objectId)
 {
-	int index;
 	for (int i = 0; i < m_pRenderList.size(); i++)
 	{
-		if (m_pRenderList[i]->HasPickID(objectId, &index)) {
+		if (m_pRenderList[i]->HasPickID(objectId)) {
 			return m_pRenderList[i];
 		}
 	}

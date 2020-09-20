@@ -5,7 +5,8 @@ namespace KI
 namespace Renderer
 {
 class IModelProperty;
-class DLL_EXPORT IModelNode : public IGLPick, public IObserver
+class RenderData;
+class DLL_EXPORT IModelNode : public IObserver
 {
 public:
 	IModelNode();
@@ -24,6 +25,8 @@ public:
 	const mat4x4& GetModelMatrix() { return m_ModelMatrix; };
 	void SetVisible(bool value) { m_visible = value; }
 	bool Visible() { return m_visible; }
+	void AddPickID(int start, int* next);
+	bool HasPickID(int index);
 protected:
 	void AddProperty(shared_ptr<IModelProperty> prop);
 	void RemoveProperty(shared_ptr<IModelProperty> prop);

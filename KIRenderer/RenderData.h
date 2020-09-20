@@ -34,7 +34,9 @@ public:
 	void Draw(shared_ptr<IShader> pShader, shared_ptr<IShaderChunk> pShading, shared_ptr<UniformStruct> pUniform, int first = -1, int count = -1);
 	shared_ptr<RenderData> Clone();
 
-
+	void Clear() { m_pickId = -1; }
+	virtual void SetPickID(int id) { m_pickId = id; };
+	int GetPickID() { return m_pickId; }
 private:
 	void FindOrNewShader(shared_ptr<IShaderChunk> pShading);
 	void DrawUseRegion(const shared_ptr<UniformStruct> pUniform);
@@ -46,6 +48,7 @@ private:
 	shared_ptr<IVertexBuffer> m_pVertexBuffer;
 	shared_ptr<IShaderChunk> m_pShading;
 	vector<RenderRegion> m_pRenderRegion;
+	int m_pickId;
 };
 }
 }

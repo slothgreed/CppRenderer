@@ -28,6 +28,7 @@ public:
 	shared_ptr<ICamera> GetCamera() { return m_pCamera; };
 	shared_ptr<UniformStruct> GetUniformStruct() { return m_pUniformStruct; }
 	shared_ptr<IModelNode> GetModel(int objectId);
+
 private:
 	void BindLight();
 	shared_ptr<ICamera> m_pCamera;

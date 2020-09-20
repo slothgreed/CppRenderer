@@ -167,7 +167,6 @@
   <ItemGroup>
     <ClInclude Include="CameraUtility.h" />
     <ClInclude Include="ICamera.h" />
-    <ClInclude Include="IGLPick.h" />
     <ClInclude Include="IRenderPath.h" />
     <ClInclude Include="Material.h" />
     <ClInclude Include="NodeOperator.h" />
@@ -198,7 +197,6 @@
   <ItemGroup>
     <ClCompile Include="CameraUtility.cpp" />
     <ClCompile Include="ICamera.cpp" />
-    <ClCompile Include="IGLPick.cpp" />
     <ClCompile Include="Material.cpp" />
     <ClCompile Include="NodeOperator.cpp" />
     <ClCompile Include="DirectionLight.cpp" />

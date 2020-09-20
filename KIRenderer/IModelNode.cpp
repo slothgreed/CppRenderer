@@ -51,7 +51,7 @@ void IModelNode::BindModel(shared_ptr<UniformStruct> pUniform, int index)
 		if (pUniform->GetModel() != NULL)
 		{
 			pUniform->GetModel()->SetModelMatrix(m_ModelMatrix);
-			pUniform->GetModel()->SetObjectId(GetPickID(index));
+			pUniform->GetModel()->SetObjectId(m_pRenderData[index]->GetPickID());
 			pUniform->GetModel()->Bind();
 		}
 	}
@@ -169,6 +169,30 @@ void IModelNode::UpdateProperty()
 	{
 		m_pProperty[i]->Update(this);
 	}
+}
+
+void IModelNode::AddPickID(int start, int* next)
+{
+	for (int i = 0; i < m_pRenderData.size(); i++)
+	{
+		m_pRenderData[i]->SetPickID(start);
+		start++;
+	}
+
+	*next = start;
+}
+
+bool IModelNode::HasPickID(int id)
+{
+	for (int i = 0; i < m_pRenderData.size(); i++)
+	{
+		if (m_pRenderData[i]->GetPickID() == id)
+		{
+			return true;
+		}
+	}
+
+	return false;
 }
 }
 }

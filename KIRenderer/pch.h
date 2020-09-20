@@ -39,7 +39,6 @@ using namespace KI::ShaderLib;
 
 
 #include "IModelProperty.h"
-#include "IGLPick.h"
 #include "IModelNode.h"
 #include "Vertex.h"
 #include "NodeOperator.h"
