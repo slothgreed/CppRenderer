@@ -1,3 +1,7 @@
+#define GLFW_EXPOSE_NATIVE_WGL
+#define GLFW_EXPOSE_NATIVE_WIN32
+
+#include "GLFW/glfw3native.h"
 namespace KI
 {
 namespace RenderView
@@ -154,6 +158,11 @@ bool OpenGLView::Initialize()
 	glfwSetScrollCallback(m_window, ScrollCallBack);	// mouse wheel;
 	glfwSetWindowSizeCallback(m_window, WindowSizeCallBack);
 	glfwSetKeyCallback(m_window, KeyCallback);
+	
+
+	SetDeviceContext(glfwGetWin32Window(m_window));
+	SetRenderContext(glfwGetWGLContext(m_window));
+	
 	m_pViewport = make_shared<Viewport>();
 	m_pViewport->SetPosition(0, 0);
 	m_pViewport->Resize(640, 480);

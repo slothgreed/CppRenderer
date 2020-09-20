@@ -58,6 +58,7 @@ using namespace KI::RenderModel;
 #include "../RenderLogic/pch.h"
 using namespace KI::Logic;
 
+#include <windows.h>
 #include "IView.h"
 #include "ViewViewModel.h"
 #include "OpenGLView.h"

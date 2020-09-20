@@ -14,7 +14,11 @@ public:
 	virtual bool Run() = 0;
 	virtual void ProcessMouseEvent(const MouseInput& input) {};
 	virtual void ProcessWindowEvent(const WindowEvent& winEvent) {};
+	void SetDeviceContext(HWND value) { m_hWnd = value; }
+	void SetRenderContext(HGLRC value) { m_hGlRc = value; }
 private:
+	HWND m_hWnd;
+	HGLRC m_hGlRc;
 };
 }
 }
