@@ -3,18 +3,18 @@ namespace KI
 namespace Logic
 {
 //#define DEBUG_RENDERING
-SelectCommand::SelectCommand(shared_ptr<SelectCommandArgs> args)
+PickCommand::PickCommand(shared_ptr<SelectCommandArgs> args)
 	: ICommand(args)
 {
 
 }
 
-SelectCommand::~SelectCommand()
+PickCommand::~PickCommand()
 {
 
 }
 
-CommandResult SelectCommand::CanExecute()
+CommandResult PickCommand::CanExecute()
 {
 	if (m_pArgs->Type() != PICK_COMMAND)
 	{
@@ -67,7 +67,7 @@ void DebugRendering(vec3 near, vec3 far, vec2 screenPosition, Viewport* pViewpor
 }
 #endif // DEBUG_RENDERING
 
-CommandResult SelectCommand::Execute()
+CommandResult PickCommand::Execute()
 {
 	auto pArgs = static_pointer_cast<SelectCommandArgs>(m_pArgs);
 

@@ -47,7 +47,7 @@ using namespace KI::RenderModel;
 #include "LogicEventArgs.h"
 #include "SaveImageCommand.h"
 
-#include "SelectCommand.h"
-#include "ClearSelectCommand.h"
+#include "PickCommand.h"
+#include "ClearPickCommand.h"
 
 #endif //RENDER_LOGIC_PCH_H

@@ -15,7 +15,7 @@ enum PICK_TARGET
 
 class DLL_EXPORT SelectCommandArgs : public ICommandArgs
 {
-	friend class SelectCommand;
+	friend class PickCommand;
 
 public:
 	SelectCommandArgs(
@@ -36,12 +36,12 @@ private:
 	vec2 screenPosition;
 };
 
-class DLL_EXPORT SelectCommand : public ICommand
+class DLL_EXPORT PickCommand : public ICommand
 {
 
 public :
-	SelectCommand(shared_ptr<SelectCommandArgs> args);
-	~SelectCommand();
+	PickCommand(shared_ptr<SelectCommandArgs> args);
+	~PickCommand();
 
 	virtual COMMAND_TYPE Type() { return PICK_COMMAND; }
 

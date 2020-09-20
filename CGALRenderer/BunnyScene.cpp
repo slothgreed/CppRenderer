@@ -108,7 +108,7 @@ void BunnyScene::ProcessMouseEvent(const MouseInput& input)
 	else if (input.Event() == MOUSE_EVENT_DOWN)
 	{
 		//m_pCommandManager->Execute(
-		//	make_shared<SelectCommand>(
+		//	make_shared<PickCommand>(
 		//		make_shared<SelectCommandArgs>(
 		//			GetViewport(),
 		//			m_pScene,

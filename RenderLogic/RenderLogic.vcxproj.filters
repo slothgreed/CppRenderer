@@ -51,10 +51,10 @@
     <ClInclude Include="LogicEventArgs.h">
       <Filter>ヘッダー ファイル\EventArgs</Filter>
     </ClInclude>
-    <ClInclude Include="SelectCommand.h">
+    <ClInclude Include="ClearPickCommand.h">
       <Filter>ヘッダー ファイル\Command</Filter>
     </ClInclude>
-    <ClInclude Include="ClearSelectCommand.h">
+    <ClInclude Include="PickCommand.h">
       <Filter>ヘッダー ファイル\Command</Filter>
     </ClInclude>
   </ItemGroup>
@@ -77,10 +77,10 @@
     <ClCompile Include="CameraController.cpp">
       <Filter>ソース ファイル\Controller</Filter>
     </ClCompile>
-    <ClCompile Include="SelectCommand.cpp">
+    <ClCompile Include="PickCommand.cpp">
       <Filter>ソース ファイル\Command</Filter>
     </ClCompile>
-    <ClCompile Include="ClearSelectCommand.cpp">
+    <ClCompile Include="ClearPickCommand.cpp">
       <Filter>ソース ファイル\Command</Filter>
     </ClCompile>
   </ItemGroup>
