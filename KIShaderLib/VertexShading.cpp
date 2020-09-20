@@ -1,3 +1,4 @@
+#define OUT_COLOR			"#define OUT_COLOR\n"
 
 namespace KI
 {

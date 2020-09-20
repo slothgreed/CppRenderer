@@ -19,8 +19,12 @@ public:
 	virtual void UnBind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUniformStorage> pUniform) override;
 	virtual void GetIncludeCode(vector<shared_ptr<IShaderCode>>& pShaderCodes);
 
-	void SetPlanePosition(bool value) { m_planePosition = value; }
-	void SetWorldPosition(bool value) { m_worldPosition = value; }
+	void SetPlaneGLPosition(bool value) { m_planeGlPosition = value; }
+	void SetWorldGLPosition(bool value) { m_worldGlPosition = value; }
+
+	void SetPlaneOutPosition(bool value) { m_planeOutPosition = value; }
+	void SetWorldOutPosition(bool value) { m_worldOutPosition = value; }
+
 	bool InNormal() const	{ return m_inNormal; };
 	bool InColor() const	{ return m_inColor; };
 	bool InTexcoord() const { return m_inTexcoord; };
@@ -32,8 +36,12 @@ private:
 	bool m_inColor;
 	bool m_inTexcoord;
 	bool m_inInstance;
-	bool m_planePosition;	// 位置をそのままにしてgl_Positionに流すかどうか
-	bool m_worldPosition;
+	bool m_planeGlPosition;	// 位置をそのままにしてgl_Positionに流すかどうか
+	bool m_worldGlPosition;
+
+	bool m_planeOutPosition;	// 位置をどのように次のシェーダステージに流すか
+	bool m_worldOutPosition;
+
 };
 }
 }

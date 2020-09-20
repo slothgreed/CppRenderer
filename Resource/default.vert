@@ -30,11 +30,10 @@ out vec4 instanceMatrix3;
 
 void main()
 {
-	gl_Position = OutputPosition();
+	gl_Position = OutGLPosition();
 
 #if defined(OUT_POSITION)
-	OutData.position = gl_Position.xyz;
-	OutData.position /= gl_Position.w;
+	OutData.position = OutputPosition();
 #endif
 
 #if defined(OUT_NORMAL)

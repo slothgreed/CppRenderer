@@ -76,7 +76,7 @@ shared_ptr<IShaderCode> NormalVisualizeShading::NewShaderCode(IShaderBuildInfo* 
 	{
 		auto pCode = m_pShading->NewShaderCode(pBuildInfo, type);
 		((DefaultVertexCode*)pCode.get())->SetShaderDefine(VERTEX_LAYOUT_NORMAL);
-		((DefaultVertexCode*)pCode.get())->SetPlanePosition(true);
+		((DefaultVertexCode*)pCode.get())->SetPlaneGLPosition(true);
 		return pCode;
 	}
 	else if (type == SHADER_PROGRAM_FRAG)

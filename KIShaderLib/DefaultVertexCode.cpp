@@ -1,3 +1,12 @@
+
+#define OUT_POSITION		"#define OUT_POSITION\n"
+#define OUT_NORMAL			"#define OUT_NORMAL\n"
+#define OUT_COLOR			"#define OUT_COLOR\n"
+#define OUT_TEXCOORD		"#define OUT_TEXCOORD\n"
+#define OUT_TEXTURE0		"#define OUT_TEXTURE0\n"
+#define OUT_INSTANCE		"#define OUT_INSTANCE\n"
+
+
 namespace KI
 {
 namespace ShaderLib
@@ -19,8 +28,10 @@ DefaultVertexCode::DefaultVertexCode(const string& shaderCode)
 	m_outPosition = false;
 	m_outNormal = false;
 	m_outColor = false;
-	m_planePosition = false;
-	m_worldPosition = false;
+	m_planeGlPosition = false;
+	m_worldGlPosition = false;
+	m_planeOutPosition = false;
+	m_worldOutPosition = false;
 	m_outTexcoord = false;
 	m_outInstance = false;
 }
@@ -68,8 +79,10 @@ bool DefaultVertexCode::Compare(IShaderCode* pShaderCode)
 		m_outColor == pCode->m_outColor &&
 		m_outTexcoord == pCode->m_outTexcoord &&
 		m_outInstance == pCode->m_outInstance &&
-		m_planePosition == pCode->m_planePosition &&
-		m_worldPosition == pCode->m_worldPosition)
+		m_planeGlPosition == pCode->m_planeGlPosition &&
+		m_worldGlPosition == pCode->m_worldGlPosition &&
+		m_planeOutPosition == pCode->m_planeOutPosition &&
+		m_worldOutPosition == pCode->m_worldOutPosition)
 	{
 		return true;
 	}
@@ -109,8 +122,10 @@ void DefaultVertexCode::GetIncludeCode(vector<shared_ptr<IShaderCode>>& pShaderC
 shared_ptr<IShaderCode> DefaultVertexCode::GetVertexBufferCode(shared_ptr<IVertexBuffer> pVertexBuffer)
 {
 	auto pCode =  make_shared<DefaultVBOCode>(pVertexBuffer.get());
-	pCode->SetPlanePosition(m_planePosition);
-	pCode->SetWorldPosition(m_worldPosition);
+	pCode->SetPlaneGLPosition(m_planeGlPosition);
+	pCode->SetWorldGLPosition(m_worldGlPosition);
+	pCode->SetPlaneOutPosition(m_planeOutPosition);
+	pCode->SetWorldOutPosition(m_worldOutPosition);
 
 	return pCode;
 }

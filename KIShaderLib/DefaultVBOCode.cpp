@@ -1,3 +1,8 @@
+#define OUT_PLANE_POSITION	"#define OUT_PLANE_POSITION\n"
+#define OUT_WORLD_POSITION	"#define OUT_WORLD_POSITION\n"
+
+#define OUT_GL_PLANE_POSITION	"#define OUT_GL_PLANE_POSITION\n"
+#define OUT_GL_WORLD_POSITION	"#define OUT_GL_WORLD_POSITION\n"
 namespace KI
 {
 namespace ShaderLib
@@ -14,8 +19,11 @@ DefaultVBOCode::DefaultVBOCode(IVertexBuffer* pVertexBuffer)
 	m_inColor = false;
 	m_inTexcoord = false;
 	m_inInstance = false;
-	m_planePosition = false;
-	m_worldPosition = false;
+	m_planeGlPosition = false;
+	m_worldGlPosition = false;
+	m_planeOutPosition = false;
+	m_worldOutPosition = false;
+	
 	auto pDefault = dynamic_cast<DefaultVertexBuffer*>(pVertexBuffer);
 	if (pDefault != nullptr)
 	{
@@ -29,13 +37,22 @@ DefaultVBOCode::~DefaultVBOCode()
 
 void DefaultVBOCode::GetDefineCode(string& code)
 {
-	if (m_planePosition){
-		code += OUT_PLANE_POSITION;
+	if (m_planeGlPosition){
+		code += OUT_GL_PLANE_POSITION;
 	}
 	
-	if (m_worldPosition){
+	if (m_worldGlPosition){
+		code += OUT_GL_WORLD_POSITION;
+	}
+
+	if (m_planeOutPosition) {
+		code += OUT_PLANE_POSITION;
+	}
+
+	if (m_worldOutPosition) {
 		code += OUT_WORLD_POSITION;
 	}
+
 
 	if (m_inNormal) {
 		code += IN_NORMAL;
@@ -65,8 +82,10 @@ bool DefaultVBOCode::Compare(IShaderCode* pShaderCode)
 		m_inColor		== pCode->m_inColor &&
 		m_inTexcoord	== pCode->m_inTexcoord &&
 		m_inInstance	== pCode->m_inInstance &&
-		m_planePosition == pCode->m_planePosition &&
-		m_worldPosition == pCode->m_worldPosition)
+		m_planeGlPosition == pCode->m_planeGlPosition &&
+		m_worldGlPosition == pCode->m_worldGlPosition &&
+		m_planeOutPosition == pCode->m_planeOutPosition &&
+		m_worldOutPosition == pCode->m_worldOutPosition)
 	{
 		return true;
 	}

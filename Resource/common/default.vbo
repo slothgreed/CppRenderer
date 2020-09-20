@@ -29,12 +29,33 @@ layout(location = 7) in vec4 a_instanceMatrix3;
 vec4 OutputPosition()
 {
 #if defined(OUT_PLANE_POSITION) 
+	vec4 pos = vec4(a_position,1.0);
+	pos /= pos.w;
+#elif defined(IN_INSTANCE)
+	mat4 vp = scene.Projection * scene.ViewMatrix;
+	mat4 instanceMatrix = mat4(a_instanceMatrix0,a_instanceMatrix1,a_instanceMatrix2,a_instanceMatrix3);
+	vec4 pos = vp * instanceMatrix * vec4(a_position,1.0);
+	pos /= pos.w;
+#elif defined(OUT_WORLD_POSITION)
+	vec4 pos = scene.ViewMatrix * vec4(a_position,1.0);
+	pos /= pos.w;
+#else 
+	mat4 vp = scene.Projection * scene.ViewMatrix;
+	vec4 pos = vp * vec4(a_position,1.0);
+	pos /= pos.w;
+#endif
+	return pos;
+}
+
+vec4 OutGLPosition()
+{
+#if defined(OUT_GL_PLANE_POSITION) 
 	return vec4(a_position,1.0);
 #elif defined(IN_INSTANCE)
 	mat4 vp = scene.Projection * scene.ViewMatrix;
 	mat4 instanceMatrix = mat4(a_instanceMatrix0,a_instanceMatrix1,a_instanceMatrix2,a_instanceMatrix3);
 	return vp * instanceMatrix * vec4(a_position,1.0);
-#elif defined(OUT_WORLD_POSITION)
+#elif defined(OUT_GL_WORLD_POSITION)
 	return scene.ViewMatrix * vec4(a_position,1.0);
 #else 
 	mat4 vp = scene.Projection * scene.ViewMatrix;

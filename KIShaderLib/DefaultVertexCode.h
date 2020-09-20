@@ -22,8 +22,12 @@ public:
 	virtual void Bind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUniformStorage> pUniform) override;
 	virtual void UnBind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUniformStorage> pUniform) override;
 	void SetOutInstance(bool value) { m_outInstance = value; }
-	void SetPlanePosition(bool value) { m_planePosition = value; }
-	void SetWorldPosition(bool value) { m_worldPosition = value; }
+	void SetPlaneGLPosition(bool value) { m_planeGlPosition = value; }
+	void SetWorldGLPosition(bool value) { m_worldGlPosition = value; }
+
+	void SetPlaneOutPosition(bool value) { m_planeOutPosition = value; }
+	void SetWorldOutPosition(bool value) { m_worldOutPosition = value; }
+
 	void SetOutPosition(bool value) { m_outPosition = value; }
 
 	bool OutPosition() const { return m_outPosition; }
@@ -32,15 +36,23 @@ public:
 	
 	bool OutTexcoord() const { return m_outTexcoord; };
 	bool OutInstance() const { return m_outInstance; };
-	bool OutPlanePosition() const { return m_planePosition; };
-	bool OutWorldPosition() const { return m_worldPosition; };
+
+	bool GLPlanePosition() const { return m_planeGlPosition; };
+	bool GLWorldPosition() const { return m_worldGlPosition; };
+
+	bool OutPlanePosition() const { return m_planeOutPosition; };
+	bool OutWorldPosition() const { return m_worldOutPosition; };
 
 	void SetShaderDefine(VERTEX_LAYOUT layout);
 private:
 	bool m_outPosition;
 	bool m_outNormal;
-	bool m_planePosition;	// 位置をそのままにしてgl_Positionに流すかどうか
-	bool m_worldPosition;	// 位置をそのままにしてgl_Positionに流すかどうか
+	bool m_planeGlPosition;	// 位置をそのままにしてgl_Positionに流すかどうか
+	bool m_worldGlPosition;	// 位置をそのままにしてgl_Positionに流すかどうか
+	
+	bool m_planeOutPosition;	// 位置をどのように次のシェーダに渡すか
+	bool m_worldOutPosition;	// 位置をどのように次のシェーダに渡すか
+
 	bool m_outColor;
 	bool m_outTexcoord;
 	bool m_outInstance;
