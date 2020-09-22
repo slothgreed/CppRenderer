@@ -16,7 +16,7 @@ public:
 	virtual void Draw(shared_ptr<UniformStruct> pUniform) override;
 	virtual void Resize(int width, int height) override;
 	void SetModelNode(shared_ptr<IModelNode> pModelNode);
-	virtual int RenderTextureNum() override { return 2; }
+	virtual int RenderTextureNum() override { return 3; }
 	virtual shared_ptr<Texture> RenderTexture(int index) override;
 
 private:

@@ -22,10 +22,10 @@ void PfxScene::Initialize()
 
 	// gray scale
 	{
-		auto pGrayScale = make_shared<GrayScaleEffect>();
-		pGrayScale->Initialize(640, 480);
-		pGrayScale->SetTexture(pTexture);
-		m_pPfxRenderer->AddPostEffect(pGrayScale);
+		//auto pGrayScale = make_shared<GrayScaleEffect>();
+		//pGrayScale->Initialize(640, 480);
+		//pGrayScale->SetTexture(pTexture);
+		//m_pPfxRenderer->AddPostEffect(pGrayScale);
 	}
 
 	// sslic effect
@@ -83,7 +83,10 @@ void PfxScene::NextPfx()
 {
 	if (SetOutputTexture(m_CurrentIndex + 1))
 	{
-		m_CurrentIndex++;
+		if (MaxOutputTextureNum() != m_CurrentIndex + 1)
+		{
+			m_CurrentIndex++;
+		}
 	}
 }
 
@@ -92,7 +95,7 @@ bool PfxScene::SetOutputTexture(int index)
 	int counter = 0;
 	for (int i = 0; i < m_pPfxRenderer->PostEffectNum(); i++)
 	{
-		auto pPfx = m_pPfxRenderer->FindPostEffectByIndex(index);
+		auto pPfx = m_pPfxRenderer->FindPostEffectByIndex(i);
 		if (pPfx == NULL)
 		{
 			return false;
@@ -103,27 +106,43 @@ bool PfxScene::SetOutputTexture(int index)
 			if (counter == index)
 			{
 				m_pOutputPlane->SetTexture(pPfx->RenderTexture(counter));
-				break;
+				return true;
 			}
 
 			counter++;
 		}
 	}
 
-	return true;
+	return false;
 }
 
+int PfxScene::MaxOutputTextureNum()
+{
+	int counter = 0;
+	for (int i = 0; i < m_pPfxRenderer->PostEffectNum(); i++)
+	{
+		auto pPfx = m_pPfxRenderer->FindPostEffectByIndex(i);
+		if (pPfx == NULL)
+		{
+			return false;
+		}
+
+		counter += pPfx->RenderTextureNum();
+	}
+
+	return counter;
+}
 void PfxScene::ProcessMouseEvent(const MouseInput& input)
 {
 	if (input.Event() == KI_MOUSE_EVENT::MOUSE_EVENT_DOWN)
 	{
 		if (input.Press() == KI_MOUSE_BUTTON::MOUSE_BUTTON_RIGHT)
 		{
-			PreviewPfx();
+			NextPfx();
 		}
 		else if(input.Press() == KI_MOUSE_BUTTON::MOUSE_BUTTON_LEFT)
 		{
-			NextPfx();
+			PreviewPfx();
 		}
 	}
 }

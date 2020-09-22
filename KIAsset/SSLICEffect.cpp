@@ -56,14 +56,20 @@ shared_ptr<Texture> SSLICEffect::RenderTexture(int index)
 {
 	if (index == 0)
 	{
-		return m_pNoizeTexture;
+		return m_pRenderTarget->ColorTexture(FRAMEBUFFER_COLOR_ATTACHMENT0);
 	}
 
 	if (index == 1)
 	{
+		return m_pNoizeTexture;
+	}
+
+	if (index == 2)
+	{
 		return m_pBlendTexture;
 	}
 
+	return nullptr;
 }
 void SSLICEffect::SetModelNode(shared_ptr<IModelNode> pModelNode)
 {
@@ -72,6 +78,8 @@ void SSLICEffect::SetModelNode(shared_ptr<IModelNode> pModelNode)
 
 void SSLICEffect::Draw(shared_ptr<UniformStruct> pUniform)
 {
+	m_pRenderTarget->Begin();
+	m_pRenderTarget->Clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	m_pModelNode->FixedShaderDraw(m_pBasicShader, m_pBasicShading, pUniform);
 
 	glEnable(GL_BLEND);
@@ -80,6 +88,7 @@ void SSLICEffect::Draw(shared_ptr<UniformStruct> pUniform)
 	glDisable(GL_BLEND);
 
 	m_pRenderTarget->CopyColorBuffer(FRAMEBUFFER_COLOR_ATTACHMENT0, m_pBlendTexture.get());
+	m_pRenderTarget->End();
 }
 
 void SSLICEffect::Resize(int width, int height)

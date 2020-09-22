@@ -14,6 +14,7 @@ public:
 	virtual void WindowResize(int width, int height);
 private:
 	bool SetOutputTexture(int index);
+	int MaxOutputTextureNum();
 	void PreviewPfx();
 	void NextPfx();
 	shared_ptr<IRenderTarget> m_pBackTarget;

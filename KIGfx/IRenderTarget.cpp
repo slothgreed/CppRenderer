@@ -28,6 +28,14 @@ void IRenderTarget::End()
 
 void IRenderTarget::Clear(GLbitfield clear)
 {
+	if (clear & GL_COLOR_BUFFER_BIT ||
+		clear & GL_DEPTH_BUFFER_BIT) {
+	}
+	else
+	{
+		assert(0);
+	}
+
 	if (Modifing() == false)
 	{
 		assert(0);
