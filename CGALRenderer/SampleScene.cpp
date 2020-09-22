@@ -39,8 +39,8 @@ void SampleScene::Initialize()
 	auto axisNode = make_shared<PrimitiveNode>(make_shared<PrimitiveModel>(make_shared<Axis>(AxisArgs())));
 	m_pScene->AddModelNode(axisNode);
 
-	auto model = make_shared<RenderData>();
 	//ModelGenerator::Plane(plane.get());
+	auto model = make_shared<RenderData>();
 	SpecialUtility::LoadVectorFieldSphere(model.get());
 
 	auto pModelNode = make_shared<PrimitiveNode>(model);
@@ -65,7 +65,7 @@ void SampleScene::Initialize()
 
 	auto pSSLIC = make_shared<SSLICEffect>();
 	pSSLIC->Initialize(64, 64);
-	pSSLIC->SetRenderData(model);
+	pSSLIC->SetModelNode(pModelNode);
 
 	auto pGrayScale = make_shared<GrayScaleEffect>();
 	pGrayScale->Initialize(640, 480);
@@ -75,8 +75,8 @@ void SampleScene::Initialize()
 	m_pPfxRenderer->AddPostEffect(pSSLIC);
 	m_pPfxRenderer->AddPostEffect(pGrayScale);
 
-	auto pShading = make_shared<BasicShading>(m_pRenderTarget->ColorTexture(FRAMEBUFFER_COLOR_ATTACHMENT0));
-	m_pOutputPlane = make_shared<PfxPlane>(pShading);
+	m_pOutputPlane = make_shared<PfxPlane>();
+	m_pOutputPlane->SetTexture(m_pRenderTarget->ColorTexture(FRAMEBUFFER_COLOR_ATTACHMENT0));
 	m_pOutputPlane->Initialize();
 }
 

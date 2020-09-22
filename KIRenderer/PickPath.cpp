@@ -63,7 +63,7 @@ void PickPath::Draw(shared_ptr<Scene> pScene)
 	m_pRenderTarget->Clear();
 	
 	pScene->Bind();
-	pScene->PickDraw(m_pPickShader);
+	pScene->FixedShaderDraw(m_pPickShader, nullptr);
 	pScene->UnBind();
 	
 	m_pRenderTarget->End();

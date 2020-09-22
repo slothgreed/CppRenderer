@@ -6,7 +6,7 @@
 using namespace KI;
 int main()
 {
-	int NEW_SCENE = 4;
+	int NEW_SCENE = 5;
     std::cout << "Hello World!\n"; 
 	std::unique_ptr<OpenGLView> renderer(new OpenGLView());
 	auto pProject = make_shared<Project>();

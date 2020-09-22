@@ -2,9 +2,9 @@ namespace KI
 {
 namespace Asset
 {
-PfxPlane::PfxPlane(shared_ptr<IShading> pShading)
+PfxPlane::PfxPlane()
 {
-	m_pShading = pShading;
+	m_pShading = make_shared<OutputShading>();
 	Initialize();
 }
 
@@ -20,9 +20,20 @@ void PfxPlane::Initialize()
 }
 void PfxPlane::Draw()
 {
+	if (m_pShading == nullptr ||
+		m_pShading->GetTexture() == nullptr)
+	{
+		assert(0);
+		return;
+	}
 	m_pRenderData->Draw(nullptr);
 
 	Logger::GLError();
+}
+
+void PfxPlane::SetTexture(shared_ptr<Texture> pTexture)
+{
+	m_pShading->SetTexture(pTexture);
 }
 }
 }

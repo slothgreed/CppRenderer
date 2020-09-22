@@ -13,7 +13,7 @@ public:
 	IModelNode(shared_ptr<IModel> model);
 	virtual ~IModelNode();
 
-	virtual void PickDraw(shared_ptr<IShader> pShader, shared_ptr<UniformStruct> pUniformStorage);
+	virtual void FixedShaderDraw(shared_ptr<IShader> pShader, shared_ptr<IShading> pShading, shared_ptr<UniformStruct> pUniformStorage);
 	void Draw(shared_ptr<UniformStruct> pUniform);
 	virtual void ShowProperty() {};
 	

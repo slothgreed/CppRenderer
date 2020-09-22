@@ -22,7 +22,7 @@ public:
 	void RemoveLight(shared_ptr<ILight> pLight);
 	const vector<shared_ptr<IModelNode>>& ModelNodes() { return m_pRenderList; };
 	void Draw();
-	void PickDraw(shared_ptr<IShader> pShader);
+	void FixedShaderDraw(shared_ptr<IShader> pShader, shared_ptr<IShading> pShading);
 	void Bind();
 	void UnBind();
 	shared_ptr<ICamera> GetCamera() { return m_pCamera; };

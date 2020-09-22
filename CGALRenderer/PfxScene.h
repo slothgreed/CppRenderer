@@ -13,14 +13,15 @@ public:
 	virtual void ProcessMouseEvent(const MouseInput& input) override;
 	virtual void WindowResize(int width, int height);
 private:
+	bool SetOutputTexture(int index);
 	void PreviewPfx();
 	void NextPfx();
 	shared_ptr<IRenderTarget> m_pBackTarget;
 	shared_ptr<RenderTarget> m_pRenderTarget;
 	shared_ptr<PfxPlane> m_pOutputPlane;
-	shared_ptr<Texture> m_pOutputTexture;
 	shared_ptr<PfxRenderer> m_pPfxRenderer;
 	shared_ptr<Scene> m_pScene;
+	int m_CurrentIndex;
 };
 }
 

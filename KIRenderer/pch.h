@@ -59,6 +59,7 @@ using namespace KI::ShaderLib;
 #include "CameraUtility.h"
 
 // Renderer
+#include "IRenderPath.h"
 #include "IPostEffect.h"
 
 #include "RenderSystem.h"
@@ -67,7 +68,6 @@ using namespace KI::ShaderLib;
 #include "Material.h"
 #include "Scene.h"
 
-#include "IRenderPath.h"
 #include "PickPath.h"
 #include "OutputPath.h"
 

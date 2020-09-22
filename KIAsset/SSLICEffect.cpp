@@ -43,20 +43,36 @@ void SSLICEffect::Initialize(int width, int height)
 
 	m_pBasicShading = make_shared<BasicShading>(m_pBlendTexture);
 
+	auto pBuildInfo = make_shared<IShaderBuildInfo>();
+	pBuildInfo->SetShaderChunk(m_pBasicShading);
+	m_pBasicShader = ShaderManager::Instance()->FindOrNew(pBuildInfo);
 
 	auto pSSLICShading = make_shared<BasicShading>(vec4(1,0,0,1));
 
 	m_pPlaneData->SetShading(pSSLICShading);
 }
-void SSLICEffect::SetRenderData(shared_ptr<RenderData> pRenderData)
+
+shared_ptr<Texture> SSLICEffect::RenderTexture(int index)
 {
-	m_pModelData = pRenderData->Clone();
-	m_pModelData->SetShading(m_pBasicShading);
+	if (index == 0)
+	{
+		return m_pNoizeTexture;
+	}
+
+	if (index == 1)
+	{
+		return m_pBlendTexture;
+	}
+
+}
+void SSLICEffect::SetModelNode(shared_ptr<IModelNode> pModelNode)
+{
+	m_pModelNode = pModelNode;
 }
 
 void SSLICEffect::Draw(shared_ptr<UniformStruct> pUniform)
 {
-	m_pModelData->Draw(pUniform);
+	m_pModelNode->FixedShaderDraw(m_pBasicShader, m_pBasicShading, pUniform);
 
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC1_ALPHA);

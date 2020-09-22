@@ -88,11 +88,11 @@ void Scene::Draw()
 	}
 }
 
-void Scene::PickDraw(shared_ptr<IShader> pShader)
+void Scene::FixedShaderDraw(shared_ptr<IShader> pShader, shared_ptr<IShading> pShading)
 {
 	for (int i = 0; i < m_pRenderList.size(); i++)
 	{
-		m_pRenderList[i]->PickDraw(pShader, m_pUniformStruct);
+		m_pRenderList[i]->FixedShaderDraw(pShader, pShading, m_pUniformStruct);
 	}
 }
 

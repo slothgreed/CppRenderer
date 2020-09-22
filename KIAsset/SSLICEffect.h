@@ -15,16 +15,19 @@ public:
 	virtual void Initialize(int width, int height) override;
 	virtual void Draw(shared_ptr<UniformStruct> pUniform) override;
 	virtual void Resize(int width, int height) override;
-	void SetRenderData(shared_ptr<RenderData> pRenderData);
+	void SetModelNode(shared_ptr<IModelNode> pModelNode);
+	virtual int RenderTextureNum() override { return 2; }
+	virtual shared_ptr<Texture> RenderTexture(int index) override;
 
 private:
 	shared_ptr<Texture> m_pNoizeTexture;
 	shared_ptr<Texture> m_pBlendTexture;
-	shared_ptr<RenderData> m_pModelData;
+	shared_ptr<IModelNode> m_pModelNode;
 	shared_ptr<RenderData> m_pPlaneData;
 	shared_ptr<RenderTarget> m_pRenderTarget;
 
-	shared_ptr<BasicShading> m_pBasicShading;
+	shared_ptr<IShader> m_pBasicShader;
+	shared_ptr<IShading> m_pBasicShading;
 };
 }
 }

@@ -13,7 +13,7 @@ public:
 	~PfxRenderer();
 
 	void AddPostEffect(shared_ptr<IPostEffect> postEffect);
-	IPostEffect* FindPostEffect(int index);
+	IPostEffect* FindPostEffectByIndex(int index);
 	IPostEffect* FindPostEffect(PFX_TYPE type);
 	int PostEffectNum();
 	void Draw();

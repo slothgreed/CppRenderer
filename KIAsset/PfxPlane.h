@@ -8,12 +8,13 @@ namespace Asset
 class DLL_EXPORT PfxPlane
 {
 public:
-	PfxPlane(shared_ptr<IShading> pShading);
+	PfxPlane();
 	~PfxPlane();
 	void Initialize();
 	void Draw();
+	void SetTexture(shared_ptr<Texture> pTexture);
 private:
-	shared_ptr<IShading> m_pShading;
+	shared_ptr<OutputShading> m_pShading;
 	shared_ptr<RenderData> m_pRenderData;
 };
 }

@@ -68,7 +68,7 @@ void IModelNode::UnBindModel(shared_ptr<UniformStruct> pUniform, int index)
 	}
 }
 
-void IModelNode::PickDraw(shared_ptr<IShader> pShader, shared_ptr<UniformStruct> pUniform)
+void IModelNode::FixedShaderDraw(shared_ptr<IShader> pShader, shared_ptr<IShading> pShading, shared_ptr<UniformStruct> pUniform)
 {
 	if (m_visible == false)
 	{
@@ -80,7 +80,7 @@ void IModelNode::PickDraw(shared_ptr<IShader> pShader, shared_ptr<UniformStruct>
 		{
 			BindModel(pUniform, i);
 			PreDraw(pUniform, i);
-			m_pRenderData[i]->Draw(pShader, nullptr, pUniform);
+			m_pRenderData[i]->Draw(pShader, pShading, pUniform);
 			PostDraw(pUniform, i);
 		}
 

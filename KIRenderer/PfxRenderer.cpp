@@ -17,11 +17,10 @@ void PfxRenderer::AddPostEffect(shared_ptr<IPostEffect> postEffect)
 	m_pPfxLists.push_back(postEffect);
 }
 
-IPostEffect* PfxRenderer::FindPostEffect(int index)
+IPostEffect* PfxRenderer::FindPostEffectByIndex(int index)
 {
 	if (m_pPfxLists.size() <= index)
 	{
-		assert(0);
 		return nullptr;
 	}
 
