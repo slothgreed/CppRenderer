@@ -106,7 +106,7 @@ void ManipulatorNode::ClearSelect()
 	GetRenderData(m_SelectIndex)->SetShading(m_pShading);
 	m_SelectIndex = -1;
 }
-void ManipulatorNode::AddSelect(PICK_TYPE type, shared_ptr<IShading> pShading, int index, int first, int count)
+void ManipulatorNode::AddSelect(PICK_TYPE type, shared_ptr<IShading> pShading, int pickId, int first, int count)
 {
 	if (m_SelectIndex != -1) {
 		ClearSelect();
@@ -117,8 +117,15 @@ void ManipulatorNode::AddSelect(PICK_TYPE type, shared_ptr<IShading> pShading, i
 		assert(0);
 	}
 
-	GetRenderData(index)->SetShading(pShading);
-	m_SelectIndex = index;
+	for (int i = 0; i < GetRenderDataNum(); i++)
+	{
+		if (GetRenderData(i)->GetPickID() == pickId)
+		{
+			GetRenderData(i)->SetShading(pShading);
+			m_SelectIndex = i;
+		}
+	}
+	
 }
 
 

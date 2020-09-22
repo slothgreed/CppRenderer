@@ -18,6 +18,7 @@ void PickPath::Initialize(int width, int height)
 	pBuildInfo->SetShaderChunk(make_shared<PickShading>());
 	m_pPickShader = ShaderManager::Instance()->FindOrNew(pBuildInfo);
 	m_pRenderTarget = make_shared<RenderTarget>();
+	m_pRenderTarget->SetClearColor(vec4(0));
 	map<FRAMEBUFFER_ATTACHMENT, shared_ptr<TextureData>> renderTexture;
 
 	auto textureData = make_shared<TextureData>();
@@ -49,7 +50,7 @@ shared_ptr<RenderTexture> PickPath::GetPickTexture()
 
 void PickPath::ResetPickID(shared_ptr<Scene> pScene)
 {
-	int next = 0;
+	int next = 1;
 	for (int i = 0; i < pScene->ModelNodes().size(); i++)
 	{
 		pScene->ModelNodes()[i]->AddPickID(next, &next);

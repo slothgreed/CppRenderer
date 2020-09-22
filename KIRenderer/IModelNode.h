@@ -37,6 +37,7 @@ protected:
 	virtual void UnBindModel(shared_ptr<UniformStruct> pUniform, int index);
 	void AddRenderData(int id, shared_ptr<RenderData> pRenderData);
 	void RemoveRenderData(int id, shared_ptr<RenderData> pRenderData);
+	int GetRenderDataNum() { return (int)m_pRenderData.size(); }
 	shared_ptr<RenderData> GetRenderData(int id);
 
 	virtual void PreDraw(shared_ptr<UniformStruct> pUniform, int index) {};
