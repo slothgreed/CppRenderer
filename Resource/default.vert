@@ -33,7 +33,7 @@ void main()
 	gl_Position = OutGLPosition();
 
 #if defined(OUT_POSITION)
-	OutData.position = OutputPosition();
+	OutData.position = OutputPosition().xyz;
 #endif
 
 #if defined(OUT_NORMAL)

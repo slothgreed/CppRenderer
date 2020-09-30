@@ -5,8 +5,9 @@ void PfxScene::Initialize()
 	m_pScene = make_shared<Scene>();
 	m_pScene->Initialize();
 	auto pCamera = make_shared<OrthoCamera>();
-	pCamera->LookAt(vec3(0, 0, 1), vec3(0), vec3(0, 1, 0));
-	pCamera->Ortho(-1, 1, -1, 1, -1, 1);
+	pCamera->LookAt(vec3(0, 0, -10), vec3(0), vec3(0, 1, 0));
+	pCamera->Ortho(-10, 10, -10, 10, -10, 10);
+
 	m_pScene->SetCamera(pCamera);
 
 	auto pTexture = make_shared<Texture>();
@@ -31,7 +32,7 @@ void PfxScene::Initialize()
 	// sslic effect
 	{
 		auto pSSLICEffect = make_shared<SSLICEffect>();
-		pSSLICEffect->Initialize(480, 480);
+		pSSLICEffect->Initialize(640, 480);
 		auto pModel = make_shared<RenderData>();
 		SpecialUtility::LoadVectorFieldSphere(pModel.get());
 
@@ -45,8 +46,6 @@ void PfxScene::Initialize()
 		texture->End();
 		auto pBasicShading = make_shared<BasicShading>(texture);
 		pModel->SetShading(pBasicShading);
-		m_pScene->AddModelNode(pModelNode);
-
 		pSSLICEffect->SetModelNode(pModelNode);
 		m_pPfxRenderer->AddPostEffect(pSSLICEffect);
 	}
@@ -60,12 +59,12 @@ void PfxScene::Initialize()
 
 void PfxScene::Invoke()
 {
+	m_pScene->Bind();
 	m_pPfxRenderer->Draw();
 
 	m_pBackTarget->Begin();
 	m_pBackTarget->Clear();
 
-	m_pScene->Bind(); 
 	m_pOutputPlane->Draw();
 	m_pScene->UnBind();
 	m_pBackTarget->End();

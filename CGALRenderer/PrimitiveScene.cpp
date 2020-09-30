@@ -22,9 +22,8 @@ void PrimitiveScene::Initialize()
 	m_pScene->SetCamera(pCamera);
 
 	m_pController[CONTROLER_TYPE::CAMERA_CONTROLER] = new CameraController();
+	m_pController[CONTROLER_TYPE::CAMERA_CONTROLER]->SetArgs(make_shared<CameraControllerArgs>(pCamera));
 	m_CurrentController = CONTROLER_TYPE::CAMERA_CONTROLER;
-	shared_ptr<IControllerArgs> args = make_shared<CameraControllerArgs>(pCamera);
-	m_pController[CONTROLER_TYPE::CAMERA_CONTROLER]->SetArgs(args);
 
 	// manipulator rendering
 	{

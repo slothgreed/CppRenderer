@@ -11,7 +11,9 @@ public:
 	~glEx() {};
 
 	static int ColorFormatSize(GLuint format);
-
+	static void GetDebugInfoSourceStr(GLenum source, string* str);
+	static void GetDebugInfoTypeStr(GLenum type, string* str);
+	static void GetDebugInfoSeverityStr(GLenum severity, string* str);
 private:
 
 };

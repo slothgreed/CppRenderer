@@ -12,13 +12,12 @@ SSLICEffect::~SSLICEffect()
 
 void SSLICEffect::Initialize(int width, int height)
 {
+	//if (width != height)
+	//{
+	//	assert(0);
+	//	width = height;
+	//}
 	TextureData textureData;
-	if (width != height)
-	{
-		assert(0);
-		width = height;
-	}
-
 	TextureGenerator::RandomTexture(width,15, textureData);
 	m_pNoizeTexture = make_shared<Texture>();
 	m_pNoizeTexture->Generate();
@@ -27,21 +26,21 @@ void SSLICEffect::Initialize(int width, int height)
 	m_pNoizeTexture->End();
 
 	m_pRenderTarget = make_shared<RenderTarget>();
-	m_pRenderTarget->Initialize(1, 256, 256);
+	m_pRenderTarget->Initialize(1, width, height);
 
 	m_pPlaneData = make_shared<RenderData>();
 	ModelGenerator::Plane(m_pPlaneData.get(), VERTEX_LAYOUT_TEXCOORD);
 
 	TextureData blendTexture;
-	blendTexture.width = 256;
-	blendTexture.height = 256;
+	blendTexture.width = width;
+	blendTexture.height = height;
 	m_pBlendTexture = make_shared<Texture>();
 	m_pBlendTexture->Generate();
 	m_pBlendTexture->Begin();
 	m_pBlendTexture->Set(blendTexture);
 	m_pBlendTexture->End();
 
-	m_pBasicShading = make_shared<BasicShading>(m_pBlendTexture);
+	m_pBasicShading = make_shared<BasicShading>(m_pRenderTarget->ColorTexture(FRAMEBUFFER_COLOR_ATTACHMENT0));
 
 	auto pBuildInfo = make_shared<IShaderBuildInfo>();
 	pBuildInfo->SetShaderChunk(m_pBasicShading);
@@ -81,11 +80,10 @@ void SSLICEffect::Draw(shared_ptr<UniformStruct> pUniform)
 	m_pRenderTarget->Begin();
 	m_pRenderTarget->Clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	m_pModelNode->FixedShaderDraw(m_pBasicShader, m_pBasicShading, pUniform);
-
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC1_ALPHA);
-	m_pPlaneData->Draw(pUniform);
-	glDisable(GL_BLEND);
+	//glEnable(GL_BLEND);
+	//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC1_ALPHA);
+	//m_pPlaneData->Draw(pUniform);
+	//glDisable(GL_BLEND);
 
 	m_pRenderTarget->CopyColorBuffer(FRAMEBUFFER_COLOR_ATTACHMENT0, m_pBlendTexture.get());
 	m_pRenderTarget->End();

@@ -122,6 +122,25 @@ OpenGLView::~OpenGLView()
 {
 }
 
+void DebugMessageCallback(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar* message, const void* userParam)
+{
+	string sourceStr;
+	string typeStr;
+	string severityStr;
+	string idStr;
+	string messageStr;
+	glEx::GetDebugInfoSourceStr(source, &sourceStr);
+	glEx::GetDebugInfoTypeStr(type, &typeStr);
+	glEx::GetDebugInfoSeverityStr(severity, &severityStr);
+
+	sourceStr = "Source : " + sourceStr + "\n";
+	typeStr = "Type : " + typeStr + "\n";
+	idStr = "ID : " + to_string(id) + "\n";
+	severityStr = "Severity : " + severityStr + "\n";
+	messageStr = "Message : " + string(message) + "\n";
+
+	Logger::Output(LOG_LEVEL_DEBUG, sourceStr + typeStr + idStr + severityStr + messageStr);
+}
 bool OpenGLView::Initialize()
 {
 	if (!glfwInit())
@@ -133,7 +152,7 @@ bool OpenGLView::Initialize()
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
 	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-
+	glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, 1);
 	m_window = glfwCreateWindow(640, 480, "Hello Triangle", NULL, NULL);
 	if (m_window == NULL)
 	{
@@ -158,7 +177,7 @@ bool OpenGLView::Initialize()
 	glfwSetScrollCallback(m_window, ScrollCallBack);	// mouse wheel;
 	glfwSetWindowSizeCallback(m_window, WindowSizeCallBack);
 	glfwSetKeyCallback(m_window, KeyCallback);
-	
+	glDebugMessageCallback(DebugMessageCallback, NULL);
 
 	SetDeviceContext(glfwGetWin32Window(m_window));
 	SetRenderContext(glfwGetWGLContext(m_window));
