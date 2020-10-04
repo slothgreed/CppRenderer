@@ -189,9 +189,9 @@ bool OpenGLView::Initialize()
 	return true;
 }
 
-void OpenGLView::SetViewModel(shared_ptr<ViewViewModel> pWorkspace)
+void OpenGLView::SetViewModel(shared_ptr<ViewViewModel> pViewModel)
 {
-	m_pViewModel = pWorkspace;
+	m_pViewModel = pViewModel;
 	m_pViewModel->SetViewport(m_pViewport);
 }
 

@@ -13,8 +13,8 @@ public:
 	HalfEdgeOperator();
 	~HalfEdgeOperator();
 
+	void SmoothingByGravity(HalfEdgeDS* halfEdgeDS, int loopNum);
 	void FaceSplit(HalfEdgeDS* halfEdgeDS, shared_ptr<HalfEdgeFace> face, vec3 position);
-
 	void EdgeFlips(HalfEdgeDS* halfEdgeDS, shared_ptr<HalfEdge> edge);
 
 private:

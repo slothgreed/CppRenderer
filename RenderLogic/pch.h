@@ -39,9 +39,10 @@ using namespace KI::Asset;
 #include "../RenderModel/pch.h"
 using namespace KI::RenderModel;
 
+#include "SubdivisionCommand.h"
+#include "SmoothingCommand.h"
 // logic
 #include "CameraController.h"
-#include "SubdivisionCommand.h"
 
 #include "VoxelCommand.h"
 #include "LogicEventArgs.h"
@@ -49,5 +50,7 @@ using namespace KI::RenderModel;
 
 #include "PickCommand.h"
 #include "ClearPickCommand.h"
+
+#include "SmoothingAlgorithm.h"
 
 #endif //RENDER_LOGIC_PCH_H

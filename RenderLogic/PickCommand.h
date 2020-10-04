@@ -45,6 +45,7 @@ public :
 
 	virtual COMMAND_TYPE Type() { return PICK_COMMAND; }
 
+protected:
 	virtual CommandResult CanExecute();
 	virtual CommandResult Execute();
 	virtual CommandResult Undo() { assert(0); return CommandResult::Failed; }

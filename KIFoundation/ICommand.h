@@ -18,7 +18,8 @@ enum COMMAND_TYPE : unsigned int
 	PICK_COMMAND		= 1,
 	VOXEL_COMMAND		= 2,
 	SAVE_IMAGE_COMMAND	= 3,
-	COMMAND_TYPE_NUM	= 4
+	SMOOTHING_COMMAND	= 4,
+	COMMAND_TYPE_NUM	= 5
 };
 
 class DLL_EXPORT ICommandArgs
@@ -43,12 +44,11 @@ public:
 
 	virtual COMMAND_TYPE Type() = 0;
 
-private:
+protected:
 	virtual CommandResult CanExecute() = 0;
 	virtual CommandResult Execute() = 0;
 	virtual CommandResult Undo() = 0;
 
-protected:
 	shared_ptr<ICommandArgs> m_pArgs;
 
 };

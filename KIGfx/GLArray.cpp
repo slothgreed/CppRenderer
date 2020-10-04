@@ -51,6 +51,7 @@ int GLArray::GetInt(int index)
 	else
 	{
 		assert(0);
+		return 0;
 	}
 }
 
@@ -63,6 +64,7 @@ float GLArray::GetFloat(int index)
 	else
 	{
 		assert(0);
+		return 0.0f;
 	}
 }
 
@@ -83,6 +85,7 @@ vec2 GLArray::GetVector2(int index)
 	else 
 	{
 		assert(0);
+		return vec2(0);
 	}
 }
 
@@ -106,6 +109,7 @@ vec3 GLArray::GetVector3(int index)
 	else
 	{
 		assert(0);
+		return vec3(0);
 	}
 }
 
@@ -131,6 +135,7 @@ vec4 GLArray::GetVector4(int index)
 	else
 	{
 		assert(0);
+		return vec4(0);
 	}
 }
 

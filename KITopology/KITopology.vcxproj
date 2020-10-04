@@ -172,6 +172,7 @@
     <ClInclude Include="HalfEdgeDS.h" />
     <ClInclude Include="HalfEdgeFace.h" />
     <ClInclude Include="HalfEdgeOperator.h" />
+    <ClInclude Include="HalfEdgeRepository.h" />
     <ClInclude Include="HalfEdgeVertex.h" />
     <ClInclude Include="Icosahedron.h" />
     <ClInclude Include="IPrimitive.h" />
@@ -191,6 +192,7 @@
     <ClCompile Include="HalfEdgeDS.cpp" />
     <ClCompile Include="HalfEdgeFace.cpp" />
     <ClCompile Include="HalfEdgeOperator.cpp" />
+    <ClCompile Include="HalfEdgeRepository.cpp" />
     <ClCompile Include="HalfEdgeVertex.cpp" />
     <ClCompile Include="Icosahedron.cpp" />
     <ClCompile Include="IPrimitive.cpp" />

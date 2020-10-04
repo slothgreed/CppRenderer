@@ -44,4 +44,6 @@ using namespace KI::Foundation;
 #include "HalfEdgeDS.h"
 #include "HalfEdgeOperator.h"
 
+#include "HalfEdgeRepository.h"
+
 #endif // KI_TOPOLOGY_PCH_H

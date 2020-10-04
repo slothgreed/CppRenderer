@@ -10,6 +10,37 @@ HalfEdgeOperator::~HalfEdgeOperator()
 {
 }
 
+
+void HalfEdgeOperator::SmoothingByGravity(HalfEdgeDS* halfEdgeDS, int loopNum)
+{
+	vector<vec3> gravitys(halfEdgeDS->VertexList().size());
+	for (int i = 0; i < halfEdgeDS->VertexList().size(); i++)
+	{
+		auto pVertex = halfEdgeDS->VertexList()[i];
+		VertexAroundEdgeIterator itr(pVertex.get());
+		vec3 sum = vec3(0);
+		int counter = 0;
+		for (itr; itr.HasNext(); itr.Next())
+		{
+			auto pEdge = itr.Current();
+			
+			sum += pEdge->End()->Position();
+			counter++;
+		}
+
+
+		gravitys[i].x = sum.x / counter;
+		gravitys[i].y = sum.y / counter;
+		gravitys[i].z = sum.z / counter;
+	}
+
+	for (int i = 0; i < halfEdgeDS->VertexList().size(); i++)
+	{
+		halfEdgeDS->VertexList()[i]->SetPosition(gravitys[i]);
+	}
+
+	halfEdgeDS->CalcElement();
+}
 void HalfEdgeOperator::FaceSplit(HalfEdgeDS* halfEdgeDS, shared_ptr<HalfEdgeFace> face, vec3 position)
 {
 

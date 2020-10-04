@@ -31,6 +31,12 @@
     <Filter Include="ヘッダー ファイル\Primitive">
       <UniqueIdentifier>{c16a354e-7343-48a3-a8f3-0bd9c458501d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Repository">
+      <UniqueIdentifier>{c956d6cb-6254-41f2-ab03-fe254ef32415}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Reository">
+      <UniqueIdentifier>{56d7e608-ee6f-408b-b52f-d3281a84405b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -84,6 +90,9 @@
     <ClInclude Include="Cylinder.h">
       <Filter>ヘッダー ファイル\Primitive</Filter>
     </ClInclude>
+    <ClInclude Include="HalfEdgeRepository.h">
+      <Filter>ヘッダー ファイル\Reository</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -127,6 +136,9 @@
     </ClCompile>
     <ClCompile Include="Cylinder.cpp">
       <Filter>ソース ファイル\Primitive</Filter>
+    </ClCompile>
+    <ClCompile Include="HalfEdgeRepository.cpp">
+      <Filter>ソース ファイル\Repository</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

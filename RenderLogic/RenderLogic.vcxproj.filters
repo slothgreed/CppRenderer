@@ -28,6 +28,12 @@
     <Filter Include="ヘッダー ファイル\EventArgs">
       <UniqueIdentifier>{aabb2e9b-c559-4638-9234-dc0394ac1e1d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Algorithm">
+      <UniqueIdentifier>{a6704889-eb05-4fff-8fd3-392236060bd6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Algorithm">
+      <UniqueIdentifier>{40448e22-7b18-4a75-be09-17a508c395c0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -57,6 +63,12 @@
     <ClInclude Include="PickCommand.h">
       <Filter>ヘッダー ファイル\Command</Filter>
     </ClInclude>
+    <ClInclude Include="SmoothingCommand.h">
+      <Filter>ヘッダー ファイル\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="SmoothingAlgorithm.h">
+      <Filter>ヘッダー ファイル\Algorithm</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -82,6 +94,12 @@
     </ClCompile>
     <ClCompile Include="ClearPickCommand.cpp">
       <Filter>ソース ファイル\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="SmoothingCommand.cpp">
+      <Filter>ソース ファイル\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="SmoothingAlgorithm.cpp">
+      <Filter>ソース ファイル\Algorithm</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

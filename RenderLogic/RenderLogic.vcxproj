@@ -166,6 +166,8 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="PickCommand.h" />
     <ClInclude Include="SaveImageCommand.h" />
+    <ClInclude Include="SmoothingAlgorithm.h" />
+    <ClInclude Include="SmoothingCommand.h" />
     <ClInclude Include="SubdivisionCommand.h" />
     <ClInclude Include="VoxelCommand.h" />
   </ItemGroup>
@@ -181,6 +183,8 @@
     </ClCompile>
     <ClCompile Include="PickCommand.cpp" />
     <ClCompile Include="SaveImageCommand.cpp" />
+    <ClCompile Include="SmoothingAlgorithm.cpp" />
+    <ClCompile Include="SmoothingCommand.cpp" />
     <ClCompile Include="SubdivisionCommand.cpp" />
     <ClCompile Include="VoxelCommand.cpp" />
   </ItemGroup>

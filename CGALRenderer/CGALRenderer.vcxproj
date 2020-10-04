@@ -170,6 +170,7 @@
     <ClInclude Include="..\extlibs\imgui\imstb_rectpack.h" />
     <ClInclude Include="..\extlibs\imgui\imstb_textedit.h" />
     <ClInclude Include="..\extlibs\imgui\imstb_truetype.h" />
+    <ClInclude Include="AlgorithmScene.h" />
     <ClInclude Include="BunnyScene.h" />
     <ClInclude Include="PfxScene.h" />
     <ClInclude Include="PrimitiveScene.h" />
@@ -186,6 +187,7 @@
     <ClCompile Include="..\extlibs\imgui\imgui_demo.cpp" />
     <ClCompile Include="..\extlibs\imgui\imgui_draw.cpp" />
     <ClCompile Include="..\extlibs\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="AlgorithmScene.cpp" />
     <ClCompile Include="BunnyScene.cpp" />
     <ClCompile Include="PfxScene.cpp" />
     <ClCompile Include="main.cpp" />

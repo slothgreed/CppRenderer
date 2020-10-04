@@ -91,6 +91,7 @@ void BunnyScene::Invoke()
 	m_pBackTarget->Clear();
 	m_pScene->Draw();
 	//m_pPickPath->Draw(m_pScene->ModelNodes());
+	m_pBackTarget->End();
 	m_pScene->UnBind();
 }
 

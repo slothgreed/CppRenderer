@@ -6,7 +6,7 @@
 using namespace KI;
 int main()
 {
-	int NEW_SCENE = 5;
+	int NEW_SCENE = 8;
     std::cout << "Hello World!\n"; 
 	std::unique_ptr<OpenGLView> renderer(new OpenGLView());
 	auto pProject = make_shared<Project>();
@@ -38,6 +38,10 @@ int main()
 	else if (NEW_SCENE == 7)
 	{
 		pViewViewModel = make_shared<RungeKuttaScene>();
+	}
+	else if (NEW_SCENE == 8)
+	{
+		pViewViewModel = make_shared<AlgorithmScene>();
 	}
 
 	renderer->Initialize();

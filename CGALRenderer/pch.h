@@ -77,7 +77,7 @@ using namespace KI::RenderView;
 #include "RungeKuttaScene.h"
 #include "Project.h"
 #include "SpecialUtility.h"
-
+#include "AlgorithmScene.h"
 
 template<class T, class U>
 weak_ptr<T>
