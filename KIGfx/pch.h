@@ -61,6 +61,7 @@ using namespace glm;
 #include "DepthState.h"
 #include "LineState.h"
 #include "PointState.h"
+#include "BlendState.h"
 
 #include "Viewport.h"
 #include "RenderTexture.h"

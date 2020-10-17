@@ -15,6 +15,7 @@ bool SmoothingAlgorithm::Execute()
 {
 	HalfEdgeRepository repository(REPOSITORY_DATA_POSITION, m_halfEdgeDS);
 	HalfEdgeOperator hoperator;
+	repository.Repository();
 	hoperator.SmoothingByGravity(m_halfEdgeDS, 1);
 	
 	repository.Undo();

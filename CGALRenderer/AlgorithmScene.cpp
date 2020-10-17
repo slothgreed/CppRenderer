@@ -28,8 +28,12 @@ void AlgorithmScene::Initialize()
 
 	auto pModel = make_shared<HalfEdgeModel>();
 	pModel->Load("E:\\cgModel\\bunny6000.half");
+	BDB bdb;
+	pModel->GetBDB(bdb);
+	m_pScene->GetCamera()->FitToBDB(bdb);
 	m_pScene->AddModelNode(make_shared<HalfEdgeDSNode>(pModel));
 	m_pBackTarget = make_shared<SymbolicRenderTarget>(GL_BACK);
+	
 }
 
 void AlgorithmScene::Invoke()

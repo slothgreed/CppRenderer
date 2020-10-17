@@ -5,8 +5,8 @@ void PfxScene::Initialize()
 	m_pScene = make_shared<Scene>();
 	m_pScene->Initialize();
 	auto pCamera = make_shared<OrthoCamera>();
-	pCamera->LookAt(vec3(0, 0, -10), vec3(0), vec3(0, 1, 0));
-	pCamera->Ortho(-10, 10, -10, 10, -10, 10);
+	pCamera->LookAt(vec3(0, 0, 1), vec3(0), vec3(0, 1, 0));
+	pCamera->Ortho(0, 1, 0, 1, -1, 1);
 
 	m_pScene->SetCamera(pCamera);
 
@@ -38,7 +38,9 @@ void PfxScene::Initialize()
 
 		auto pModelNode = make_shared<PrimitiveNode>(pModel);
 		TextureData data;
-		TextureGenerator::RandomTexture(8, 15, data);
+		//TextureGenerator::RandomTexture(8, 15, data);
+		TextureGenerator::Load("E:\\cgModel\\texturetest.png", data);
+
 		auto texture = make_shared<Texture>();
 		texture->Generate();
 		texture->Begin();
@@ -61,7 +63,7 @@ void PfxScene::Invoke()
 {
 	m_pScene->Bind();
 	m_pPfxRenderer->Draw();
-
+	
 	m_pBackTarget->Begin();
 	m_pBackTarget->Clear();
 

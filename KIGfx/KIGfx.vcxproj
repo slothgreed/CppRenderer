@@ -170,6 +170,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="ArrayBuffer.h" />
+    <ClInclude Include="BlendState.h" />
     <ClInclude Include="BufferState.h" />
     <ClInclude Include="CullState.h" />
     <ClInclude Include="DepthState.h" />
@@ -211,6 +212,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ArrayBuffer.cpp" />
+    <ClCompile Include="BlendState.cpp" />
     <ClCompile Include="BufferState.cpp" />
     <ClCompile Include="CullState.cpp" />
     <ClCompile Include="DepthState.cpp" />

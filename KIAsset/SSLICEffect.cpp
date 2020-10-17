@@ -1,3 +1,4 @@
+#include "../KIGfx/BlendState.h"
 namespace KI
 {
 namespace Asset
@@ -18,7 +19,7 @@ void SSLICEffect::Initialize(int width, int height)
 	//	width = height;
 	//}
 	TextureData textureData;
-	TextureGenerator::RandomTexture(width,15, textureData);
+	TextureGenerator::RandomTexture(64,15, textureData);
 	m_pNoizeTexture = make_shared<Texture>();
 	m_pNoizeTexture->Generate();
 	m_pNoizeTexture->Begin();
@@ -27,28 +28,26 @@ void SSLICEffect::Initialize(int width, int height)
 
 	m_pRenderTarget = make_shared<RenderTarget>();
 	m_pRenderTarget->Initialize(1, width, height);
+	m_pRenderTarget->SetClearColor(vec4(0));
 
-	m_pPlaneData = make_shared<RenderData>();
-	ModelGenerator::Plane(m_pPlaneData.get(), VERTEX_LAYOUT_TEXCOORD);
+	m_pPlaneData = make_shared<PfxPlane>();
+	m_pPlaneData->SetTexture(m_pNoizeTexture);
 
 	TextureData blendTexture;
 	blendTexture.width = width;
 	blendTexture.height = height;
+	blendTexture.internalformat = GL_RGB;
+	blendTexture.format = GL_RGB;
 	m_pBlendTexture = make_shared<Texture>();
 	m_pBlendTexture->Generate();
 	m_pBlendTexture->Begin();
 	m_pBlendTexture->Set(blendTexture);
 	m_pBlendTexture->End();
 
-	m_pBasicShading = make_shared<BasicShading>(m_pRenderTarget->ColorTexture(FRAMEBUFFER_COLOR_ATTACHMENT0));
-
-	auto pBuildInfo = make_shared<IShaderBuildInfo>();
-	pBuildInfo->SetShaderChunk(m_pBasicShading);
-	m_pBasicShader = ShaderManager::Instance()->FindOrNew(pBuildInfo);
-
-	auto pSSLICShading = make_shared<BasicShading>(vec4(1,0,0,1));
-
-	m_pPlaneData->SetShading(pSSLICShading);
+	//m_pBasicShading->SetTexture(m_pNoizeTexture);
+	
+	m_BlendState.Enable(true);
+	m_BlendState.BlendFunc(BLEND_FACTOR_SRC_ALPHA, BLEND_FACTOR_ONE_MINUS_SRC_ALPHA);
 }
 
 shared_ptr<Texture> SSLICEffect::RenderTexture(int index)
@@ -73,6 +72,13 @@ shared_ptr<Texture> SSLICEffect::RenderTexture(int index)
 void SSLICEffect::SetModelNode(shared_ptr<IModelNode> pModelNode)
 {
 	m_pModelNode = pModelNode;
+	//m_pBasicShading = make_shared<BasicShading>(m_pBlendTexture);
+	m_pBasicShading = make_shared<BasicShading>(m_pNoizeTexture);
+
+	auto pBuildInfo = make_shared<IShaderBuildInfo>();
+	pBuildInfo->SetVertexBuffer(m_pModelNode->GetRenderData(0)->GetVertexBuffer());
+	pBuildInfo->SetShaderChunk(m_pBasicShading);
+	m_pBasicShader = ShaderManager::Instance()->FindOrNew(pBuildInfo);
 }
 
 void SSLICEffect::Draw(shared_ptr<UniformStruct> pUniform)
@@ -80,12 +86,13 @@ void SSLICEffect::Draw(shared_ptr<UniformStruct> pUniform)
 	m_pRenderTarget->Begin();
 	m_pRenderTarget->Clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	m_pModelNode->FixedShaderDraw(m_pBasicShader, m_pBasicShading, pUniform);
-	//glEnable(GL_BLEND);
-	//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC1_ALPHA);
-	//m_pPlaneData->Draw(pUniform);
-	//glDisable(GL_BLEND);
+
+	m_BlendState.Bind();
+	m_pPlaneData->Draw();
+	m_BlendState.UnBind();
 
 	m_pRenderTarget->CopyColorBuffer(FRAMEBUFFER_COLOR_ATTACHMENT0, m_pBlendTexture.get());
+	
 	m_pRenderTarget->End();
 }
 

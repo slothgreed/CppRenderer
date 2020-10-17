@@ -46,7 +46,7 @@ void PrimitiveScene::Initialize()
 		pTexture->Set(textureData);
 		pTexture->End();
 
-		auto pBasicShading = make_shared<PickShading>();
+		auto pBasicShading = make_shared<BasicShading>(pTexture);
 		auto sphereNode = make_shared<PrimitiveNode>(
 			make_shared<PrimitiveModel>(
 				make_shared<Sphere>(SphereArgs(vec3(0), 1, 36, 36))),

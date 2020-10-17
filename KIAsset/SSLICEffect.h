@@ -5,6 +5,7 @@ namespace KI
 {
 namespace Asset
 {
+class PfxPlane;
 class DLL_EXPORT SSLICEffect : public IPostEffect
 {
 public:
@@ -23,11 +24,12 @@ private:
 	shared_ptr<Texture> m_pNoizeTexture;
 	shared_ptr<Texture> m_pBlendTexture;
 	shared_ptr<IModelNode> m_pModelNode;
-	shared_ptr<RenderData> m_pPlaneData;
+	shared_ptr<PfxPlane> m_pPlaneData;
 	shared_ptr<RenderTarget> m_pRenderTarget;
 
 	shared_ptr<IShader> m_pBasicShader;
-	shared_ptr<IShading> m_pBasicShading;
+	shared_ptr<BasicShading> m_pBasicShading;
+	BlendState m_BlendState;
 };
 }
 }

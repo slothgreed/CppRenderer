@@ -27,6 +27,8 @@ public:
 	bool Visible() { return m_visible; }
 	void AddPickID(int start, int* next);
 	bool HasPickID(int index);
+	int GetRenderDataNum() { return (int)m_pRenderData.size(); }
+	shared_ptr<RenderData> GetRenderData(int id);
 protected:
 	void AddProperty(shared_ptr<IModelProperty> prop);
 	void RemoveProperty(shared_ptr<IModelProperty> prop);
@@ -37,8 +39,7 @@ protected:
 	virtual void UnBindModel(shared_ptr<UniformStruct> pUniform, int index);
 	void AddRenderData(int id, shared_ptr<RenderData> pRenderData);
 	void RemoveRenderData(int id, shared_ptr<RenderData> pRenderData);
-	int GetRenderDataNum() { return (int)m_pRenderData.size(); }
-	shared_ptr<RenderData> GetRenderData(int id);
+
 
 	virtual void PreDraw(shared_ptr<UniformStruct> pUniform, int index) {};
 	virtual void PostDraw(shared_ptr<UniformStruct> pUniform, int index) {};
