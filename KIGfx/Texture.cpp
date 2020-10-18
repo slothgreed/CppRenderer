@@ -42,6 +42,22 @@ void Texture::UnBind()
 	Logger::GLError();
 }
 
+void Texture::Resize(const TextureData& data)
+{
+	Begin();
+	Set(data);
+	End();
+}
+void Texture::Resize(int width, int height)
+{
+	assert(width != 0);
+	assert(height != 0);
+	TextureData textureData = m_data;
+	textureData.width = width;
+	textureData.height = height;
+	textureData.pixels = 0;
+	Resize(textureData);
+}
 void Texture::Set(const TextureData& data)
 {
 	assert(m_modifing == true);

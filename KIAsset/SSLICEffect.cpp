@@ -19,7 +19,7 @@ void SSLICEffect::Initialize(int width, int height)
 	//	width = height;
 	//}
 	TextureData textureData;
-	TextureGenerator::RandomTexture(64,15, textureData);
+	TextureGenerator::RandomTexture(64, 15, textureData);
 	m_pNoizeTexture = make_shared<Texture>();
 	m_pNoizeTexture->Generate();
 	m_pNoizeTexture->Begin();
@@ -97,7 +97,8 @@ void SSLICEffect::Draw(shared_ptr<UniformStruct> pUniform)
 
 void SSLICEffect::Resize(int width, int height)
 {
-
+	m_pRenderTarget->Resize(width, height);
+	m_pBlendTexture->Resize(width, height);
 }
 
 }

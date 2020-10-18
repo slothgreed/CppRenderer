@@ -53,6 +53,8 @@ public:
 	GLuint Format() { return m_data.format; };
 	GLuint ColorComponentType() { return m_data.type; };
 	void Set(const TextureData& data);
+	void Resize(const TextureData& data);
+	void Resize(int width, int height);
 	void SetSampler(shared_ptr<Sampler> pSampler);
 protected:
 

@@ -10,7 +10,7 @@ class DLL_EXPORT RenderTexture : public Texture
 public:
 	RenderTexture();
 	~RenderTexture();
-	void Resize(int width, int height);
+
 	void SetAttachment(GLenum attachment) { m_attachment = attachment; }
 	GLenum Attachment() { return m_attachment; }
 	bool GetPixels(ReadPixelArgs& args);
