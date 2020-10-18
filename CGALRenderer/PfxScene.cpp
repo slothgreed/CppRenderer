@@ -13,7 +13,7 @@ void PfxScene::Initialize()
 	auto pTexture = make_shared<Texture>();
 	pTexture->Generate();
 	TextureData textureData;
-	TextureGenerator::Load("E:\\cgModel\\texture\\SkyBox\\earth2048.png",textureData);
+	TextureGenerator::Load("E:\\cgModel\\texture\\SkyBox\\earth2048.png", textureData);
 	pTexture->Begin();
 	pTexture->Set(textureData);
 	pTexture->End();

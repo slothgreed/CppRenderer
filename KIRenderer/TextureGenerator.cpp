@@ -113,5 +113,34 @@ void TextureGenerator::RandomTexture(int size, int alpha, TextureData& texture)
 		}
 	}
 }
+
+void TextureGenerator::FillTexture(vec4 color, TextureData& texture)
+{
+	assert(texture.width != 0);
+	assert(texture.height != 0);
+	assert(texture.pixels == NULL);
+	texture.target = GL_TEXTURE_2D;
+	texture.internalformat = GL_RGBA;
+	texture.format = GL_RGBA;
+	texture.border = 0;
+	texture.type = GL_UNSIGNED_INT;
+
+	GLubyte* pixel = new GLubyte[texture.width * texture.height * 4];
+	texture.pixels = pixel;
+	int width = 0;
+	int height = 0;
+	for (int i = 0; i < texture.width; i++)
+	{
+		width = i * 4 * texture.height;
+		for (int j = 0; j < texture.height; j++)
+		{
+			height = j * 4;
+			pixel[width + height + 0] = color.x;
+			pixel[width + height + 1] = color.y;
+			pixel[width + height + 2] = color.z;
+			pixel[width + height + 3] = color.w;
+		}
+	}
+}
 }
 }

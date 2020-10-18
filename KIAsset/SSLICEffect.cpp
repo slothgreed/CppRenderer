@@ -36,8 +36,8 @@ void SSLICEffect::Initialize(int width, int height)
 	TextureData blendTexture;
 	blendTexture.width = width;
 	blendTexture.height = height;
-	blendTexture.internalformat = GL_RGB;
-	blendTexture.format = GL_RGB;
+	//TextureGenerator::FillTexture(vec4(255), blendTexture);
+
 	m_pBlendTexture = make_shared<Texture>();
 	m_pBlendTexture->Generate();
 	m_pBlendTexture->Begin();
@@ -72,8 +72,7 @@ shared_ptr<Texture> SSLICEffect::RenderTexture(int index)
 void SSLICEffect::SetModelNode(shared_ptr<IModelNode> pModelNode)
 {
 	m_pModelNode = pModelNode;
-	//m_pBasicShading = make_shared<BasicShading>(m_pBlendTexture);
-	m_pBasicShading = make_shared<BasicShading>(m_pNoizeTexture);
+	m_pBasicShading = make_shared<BasicShading>(m_pBlendTexture);
 
 	auto pBuildInfo = make_shared<IShaderBuildInfo>();
 	pBuildInfo->SetVertexBuffer(m_pModelNode->GetRenderData(0)->GetVertexBuffer());

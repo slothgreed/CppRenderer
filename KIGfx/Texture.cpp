@@ -44,14 +44,9 @@ void Texture::UnBind()
 
 void Texture::Set(const TextureData& data)
 {
-	if (m_modifing == false)
-	{
-		assert(0);
-	}
-
-	if (data.width == 0 || data.height == 0) {
-		assert(0);
-	}
+	assert(m_modifing == true);
+	assert(data.width != 0);
+	assert(data.height != 0);
 
 	if (data.width == m_data.width &&
 		data.height == m_data.height)
