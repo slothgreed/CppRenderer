@@ -124,18 +124,36 @@ void HalfEdgeDS::CalcElement()
 		m_VertexList[i]->CalcElement();
 	}
 
-	m_allEdgeLength = CalcAllEdgeLength();
+	CalcEdgeParameter();
+	CalcFaceParameter();
 }
 
-float HalfEdgeDS::CalcAllEdgeLength()
+void HalfEdgeDS::CalcEdgeParameter()
 {
 	float edgeSum = 0;
+	
 	for (int i = 0; i < m_EdgeList.size(); i++)
 	{
 		edgeSum += m_EdgeList[i]->Length();
+		m_maxEdgeLength =  std::max<float>(m_maxEdgeLength,m_EdgeList[i]->Length());
 	}
 
-	return edgeSum / 2; // opposite ‚Ì‚à‚Ì‚àŠÜ‚Ü‚ê‚Ä‚¢‚é‚Ì‚Å/2
+	m_allEdgeLength = edgeSum;
+	m_averageEdgeLength = edgeSum / m_EdgeList.size();
+}
+
+void HalfEdgeDS::CalcFaceParameter()
+{
+	float faceSum = 0;
+	vec3 waitedCenter = vec3(0);
+	for (int i = 0; i < m_FaceList.size(); i++)
+	{
+		faceSum += m_FaceList[i]->Area();
+		waitedCenter += m_FaceList[i]->Area()* m_FaceList[i]->Gravity();
+	}
+
+	m_allSurfaceArea = faceSum;
+	m_waitedCenter = waitedCenter / m_allSurfaceArea;
 }
 
 void HalfEdgeDS::Normalize()

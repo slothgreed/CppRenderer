@@ -20,12 +20,9 @@ void PfxPlane::Initialize()
 }
 void PfxPlane::Draw()
 {
-	if (m_pShading == nullptr ||
-		m_pShading->GetTexture() == nullptr)
-	{
-		assert(0);
-		return;
-	}
+	assert(m_pShading != nullptr);
+	assert(m_pShading->GetTexture() != nullptr);
+
 	m_pRenderData->Draw(nullptr);
 
 	Logger::GLError();

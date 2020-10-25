@@ -20,10 +20,10 @@ void HalfEdgeFace::CalcElement()
 
 vec3 HalfEdgeFace::CalcNormal()
 {
-	vec3 v1 = Edge()->Start()->Position();
-	vec3 v2 = Edge()->End()->Position();
-	vec3 v3 = Edge()->Next()->End()->Position();
+	vec3 v1, v2, v3;
 	vec3 normal;
+	GetVertex(&v1, &v2, &v3);
+
 	MathHelper::CalcNormal(v1, v2, v3, normal);
 
 	return normalize(normal);
@@ -65,6 +65,22 @@ vec3 HalfEdgeFace::CalcCentroid()
 	centroid.z *= denom;
 
 	return centroid;
+}
+
+void HalfEdgeFace::GetVertex(vec3* v1, vec3* v2, vec3* v3)
+{
+	*v1 = Edge()->Start()->Position();
+	*v2 = Edge()->End()->Position();
+	*v3 = Edge()->Next()->End()->Position();
+}
+
+void HalfEdgeFace::CalcGravity()
+{
+	vec3 v1, v2, v3;
+	GetVertex(&v1, &v2, &v3);
+
+	m_gravity = (v1 + v2 + v3) / 3.0f;
+
 }
 
 int HalfEdgeFace::CalcVertexNum()

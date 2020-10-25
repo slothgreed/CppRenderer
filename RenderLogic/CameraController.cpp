@@ -2,9 +2,10 @@ namespace KI
 {
 namespace Logic
 {
-CameraController::CameraController()
+CameraController::CameraController(shared_ptr<CameraControllerArgs> pArgs)
 {
-	m_ZoomRatio = 1.0f;
+	m_pArgs = static_pointer_cast<CameraControllerArgs>(pArgs);
+	m_ZoomRatio = 0.1f;
 }
 
 CameraController::~CameraController()
@@ -36,11 +37,11 @@ bool CameraController::Wheel(const Mouse&  mouse)
 {
 	if (mouse.Wheel() > 0)
 	{
-		Zoom(1 + 0.1f * m_ZoomRatio);
+		Zoom(1 + m_ZoomRatio);
 	}
 	else
 	{
-		Zoom(1 - 0.1f * m_ZoomRatio);
+		Zoom(1 - m_ZoomRatio);
 	}
 
 	return true;
@@ -48,13 +49,32 @@ bool CameraController::Wheel(const Mouse&  mouse)
 
 void CameraController::Zoom(float ratio)
 {
-	auto pCamera = m_pArgs->m_pCamera.get();
-	vec3 eyeDirect = pCamera->Direction();
-	float len = pCamera->LookAtDistance() * ratio;
+	if (m_pArgs->m_pCamera->Type() == CAMERA_TYPE::CAMERA_TYPE_PERSPECTIVE)
+	{
+		auto pCamera = m_pArgs->m_pCamera.get();
+		vec3 eyeDirect = pCamera->Direction();
+		float len = pCamera->LookAtDistance() * ratio;
 
-	vec3 newEye = eyeDirect * len + pCamera->Center();
+		vec3 newEye = eyeDirect * len + pCamera->Center();
 
-	pCamera->LookAt(newEye, pCamera->Center(), pCamera->Up());
+		pCamera->LookAt(newEye, pCamera->Center(), pCamera->Up());
+	}
+	else
+	{
+		OrthoCamera* pCamera = (OrthoCamera*)m_pArgs->m_pCamera.get();
+		OrthoCamera::OrthoParameter param;
+		pCamera->GetOrtho(&param);
+
+		vec3 center = pCamera->GetCenter();
+
+		param.m_left	= center.x + (param.m_left - center.x) * ratio;
+		param.m_right	= center.x + (param.m_right - center.x) * ratio;
+		param.m_bottom	= center.y + (param.m_bottom - center.y) * ratio;
+		param.m_top		= center.y + (param.m_top - center.y) * ratio;
+
+		pCamera->Ortho(param);
+
+	}
 }
 
 void CameraController::Rotate(vec2 move)

@@ -4,9 +4,18 @@ void PfxScene::Initialize()
 {
 	m_pScene = make_shared<Scene>();
 	m_pScene->Initialize();
+	m_pMouse = make_shared<Mouse>();
+
 	auto pCamera = make_shared<OrthoCamera>();
 	pCamera->LookAt(vec3(0, 0, 1), vec3(0), vec3(0, 1, 0));
-	pCamera->Ortho(0, 1, 0, 1, -1, 1);
+	pCamera->Ortho(0, 1, 0, 1, -10, 10);
+	//pCamera->Perspective(glm::radians(60.0f), 1, 0.01f, 1000);
+
+
+	auto pCameraController = new CameraController(make_shared<CameraControllerArgs>(pCamera));
+	m_pController[CONTROLER_TYPE::CAMERA_CONTROLER] = pCameraController;
+	
+	m_CurrentController = CONTROLER_TYPE::CAMERA_CONTROLER;
 
 	m_pScene->SetCamera(pCamera);
 
@@ -146,6 +155,16 @@ void PfxScene::ProcessMouseEvent(const MouseInput& input)
 			PreviewPfx();
 		}
 	}
+
+	//m_pMouse->ApplyMouseInput(input);
+	//if (input.Event() == MOUSE_EVENT_WHEEL)
+	//{
+	//	m_pController[m_CurrentController]->Wheel(*m_pMouse.get());
+	//}
+	//else if (input.Event() == MOUSE_EVENT_MOVE)
+	//{
+	//	m_pController[m_CurrentController]->Move(*m_pMouse.get());
+	//}
 }
 
 void PfxScene::WindowResize(int width, int height)

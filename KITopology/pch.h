@@ -36,8 +36,8 @@ using namespace KI::Foundation;
 #include "Quad.h"
 #include "Torus.h"
 #include "Cylinder.h"
-
 #include "Icosahedron.h"
+
 #include "HalfEdge.h"
 #include "HalfEdgeFace.h"
 #include "HalfEdgeVertex.h"

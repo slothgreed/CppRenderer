@@ -26,7 +26,6 @@ void SpecialUtility::LoadVectorFieldSphere(RenderData* pRenderData)
 		binaryStream.read((char*)&x, sizeof(float));
 		binaryStream.read((char*)&y, sizeof(float));
 		binaryStream.read((char*)&z, sizeof(float));
-		vectorField.push_back(vec3(x, y, z));
 	}
 
 	binaryStream.close();

@@ -24,10 +24,8 @@ void SampleScene::Initialize()
 	pCamera->Perspective(glm::radians(60.0f), 1, 0.01f, 1000);
 	m_pScene->SetCamera(pCamera);
 
-	m_pController[CONTROLER_TYPE::CAMERA_CONTROLER] = new CameraController();
+	m_pController[CONTROLER_TYPE::CAMERA_CONTROLER] = new CameraController(make_shared<CameraControllerArgs>(pCamera));
 	m_CurrentController = CONTROLER_TYPE::CAMERA_CONTROLER;
-	shared_ptr<IControllerArgs> args = make_shared<CameraControllerArgs>(pCamera);
-	m_pController[CONTROLER_TYPE::CAMERA_CONTROLER]->SetArgs(args);
 
 	//shared_ptr<CGALModel> polyhedron = make_shared<CGALPolyhedron>();
 	//polyhedron->Load("E:\\cgModel\\StanfordBunny.off");

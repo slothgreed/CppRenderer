@@ -37,6 +37,12 @@
     <Filter Include="ヘッダー ファイル\Reository">
       <UniqueIdentifier>{56d7e608-ee6f-408b-b52f-d3281a84405b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Status">
+      <UniqueIdentifier>{4b414ea5-8764-48f4-b633-83fc150c534b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Status">
+      <UniqueIdentifier>{2439aa41-fd7b-4dd9-a862-8fea0defc001}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">

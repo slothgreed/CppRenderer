@@ -23,9 +23,9 @@ private:
 class DLL_EXPORT CameraController : public IController
 {
 public:
-	CameraController();
+	CameraController(shared_ptr<CameraControllerArgs> pArgs);
 	~CameraController();
-	virtual void SetArgs(std::shared_ptr<IControllerArgs> m_pArgs) override;
+	virtual void SetArgs(shared_ptr<IControllerArgs> pArgs) override;
 	virtual bool Move(const Mouse& mouse) override;
 	virtual bool Wheel(const Mouse&  mouse) override;
 private:

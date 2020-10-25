@@ -50,5 +50,10 @@ using namespace glm;
 #include "FileUtility.h"
 
 #define RELEASE_INSTANCE(x) if(x != NULL) { delete x; x = NULL;}
+#ifdef NDEBUG
+#define KI_ASSERT(x) if(x) {assert(0); retrun;}
+#else
+#define	KI_ASSERT(x) assert(x);
+#endif
 
 #endif //KI_FOUNDATION_PCH_H

@@ -10,7 +10,8 @@ public:
 
 	void Load(const string& filePath);
 	void CalcElement();
-	float CalcAllEdgeLength();
+	void CalcEdgeParameter();
+	void CalcFaceParameter();
 
 	const vector<shared_ptr<HalfEdge>>& EdgeList() { return m_EdgeList; }
 	const vector<shared_ptr<HalfEdgeFace>>& FaceList() { return m_FaceList; }
@@ -26,7 +27,11 @@ private:
 	vector<shared_ptr<HalfEdgeFace>> m_FaceList;
 	vector<shared_ptr<HalfEdgeVertex>> m_VertexList;
 
+	float m_averageEdgeLength;
 	float m_allEdgeLength;
+	float m_maxEdgeLength;
+	float m_allSurfaceArea;
+	vec3 m_waitedCenter;
 };
 }
 }
