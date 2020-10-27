@@ -1,7 +1,7 @@
-#include <CGAL/Exact_predicates_inexact_constructions_kernel.h>
-#include <CGAL/Polyhedron_3.h>
-#include <CGAL/Polygon_mesh_processing/refine.h>
-#include <CGAL/Polygon_mesh_processing/fair.h>
+//#include <CGAL/Exact_predicates_inexact_constructions_kernel.h>
+//#include <CGAL/Polyhedron_3.h>
+//#include <CGAL/Polygon_mesh_processing/refine.h>
+//#include <CGAL/Polygon_mesh_processing/fair.h>
 #include <fstream>
 #include <map>
 

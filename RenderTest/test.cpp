@@ -6,16 +6,16 @@ TEST(TestCaseName, TestName) {
 using namespace KI;
 TEST(renderTest, Test)
 {
-	int NEW_SCENE = 4;
-	std::cout << "Hello World!\n";
-	auto pTexture = new KI::Gfx::Texture();
+	//int NEW_SCENE = 4;
+	//std::cout << "Hello World!\n";
+	//auto pTexture = new KI::Gfx::Texture();
 
-	//std::unique_ptr<CGALRenderer> renderer(new CGALRenderer());
+	//std::unique_ptr<OpenGLView> renderer(new OpenGLView());
 	//auto pProject = make_shared<Project>();
-	//shared_ptr<IWorkspace> pWorkspace;
+	//shared_ptr<ViewViewModel> pWorkspace;
 	//if (NEW_SCENE == 1)
 	//{
-	//	pWorkspace = make_shared<Workspace>();
+	//	pWorkspace = make_shared<ViewViewModel>();
 	//}
 	//else if (NEW_SCENE == 2)
 	//{
@@ -43,9 +43,9 @@ TEST(renderTest, Test)
 	//}
 
 	//renderer->Initialize();
-	//renderer->SetWorkspace(pWorkspace);
+	//renderer->SetViewModel(pWorkspace);
 	//pProject->Initialize();
-	//pWorkspace->Initialize(pProject.get());
+	//pWorkspace->Initialize();
 
 	//renderer->Run();
 }
