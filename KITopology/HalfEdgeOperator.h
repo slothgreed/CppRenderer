@@ -19,6 +19,13 @@ public:
 	void EdgeFlips(HalfEdgeDS* halfEdgeDS, shared_ptr<HalfEdge> edge);
 
 private:
+	void MakeTriangle(shared_ptr<HalfEdgeFace> face,
+		shared_ptr<HalfEdge> edge0,
+		shared_ptr<HalfEdge> edge1,
+		shared_ptr<HalfEdge> edge2,
+		shared_ptr<HalfEdge> oppo0,
+		shared_ptr<HalfEdge> oppo1,
+		shared_ptr<HalfEdge> oppo2)
 };
 }
 }

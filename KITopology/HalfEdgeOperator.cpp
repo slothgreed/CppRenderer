@@ -54,6 +54,9 @@ void HalfEdgeOperator::MakeTriangle(shared_ptr<HalfEdgeFace> face,
 	shared_ptr<HalfEdge> oppo1,
 	shared_ptr<HalfEdge> oppo2)
 {
+	//ƒeƒXƒg‚µ‚Ä‚È‚¢
+	assert(0);
+
 	face->SetEdge(edge0);
 
 	edge0->SetFace(face);
