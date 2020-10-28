@@ -90,6 +90,12 @@ bool HalfEdgeVertex::Pick(const vec3& direction, float range, float& distance)
 	return true;
 }
 
+void HalfEdgeVertex::Validate()
+{
+	assert(m_Edge != NULL);
+	assert(m_Edge->Start().get() == this);
+}
+
 VertexAroundEdgeIterator::VertexAroundEdgeIterator(HalfEdgeVertex* pVertex)
 {
 	m_pVertex = pVertex;
@@ -120,5 +126,6 @@ HalfEdge* VertexAroundEdgeIterator::Current()
 {
 	return m_pEdgeItr;
 }
+
 }
 }

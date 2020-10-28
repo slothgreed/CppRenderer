@@ -19,8 +19,11 @@ public:
 		shared_ptr<HalfEdge> opposite,
 		shared_ptr<HalfEdgeFace> face );
 
+	void SetEnd(shared_ptr<HalfEdgeVertex> vertex);
 	void SetNext(shared_ptr<HalfEdge> end);
 	void SetBefore(shared_ptr<HalfEdge> end);
+	void SetOpposite(shared_ptr<HalfEdge> edge);
+	void SetFace(shared_ptr<HalfEdgeFace> face);
 
 	shared_ptr<HalfEdgeVertex> End() { return m_End; }
 	shared_ptr<HalfEdge> Next()		{ return m_Next; }
@@ -36,6 +39,7 @@ public:
 	int Index() { return m_Index; }
 	float Length() { return m_length; }
 	float Angle() { return m_angle; }
+	void Validate();
 private:
 
 	float CalcAngle();

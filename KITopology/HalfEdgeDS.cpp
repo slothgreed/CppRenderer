@@ -96,36 +96,65 @@ void HalfEdgeDS::Load(const string& filePath)
 
 	binaryStream.close();
 
-	//HalfEdgeOperator halfEdgeOperator;
-	//for (int i = 0; i < m_EdgeList.size(); i++)
-	//{
-	//	halfEdgeOperator.EdgeFlips(this, m_EdgeList[i]);
-	//}
+	HalfEdgeOperator halfEdgeOperator;
+	for (int i = 0; i < m_EdgeList.size(); i++)
+	{
+		halfEdgeOperator.EdgeFlips(this, m_EdgeList[i]);
+	}
 
 	//Normalize();
 }
 
 void HalfEdgeDS::CalcElement()
 {
-	// TODO : CalcElement がほかのものに依存する場合があるので順番を制御する必要がありそう。
 
+	// Edge Split Test
+	//bool fix = true;
+	//while (fix)
+	//{
+	//	fix = false;
+	//	int size = m_EdgeList.size();
+	//	vec3 position;
+	//	HalfEdgeOperator operate;
+	//	for (int i = 0; i < size; i++)
+	//	{
+	//		m_EdgeList[i]->CalcElement();
+	//		if (m_EdgeList[i]->Length() > 2.5)
+	//		{
+	//			position = (m_EdgeList[i]->Start()->Position() + m_EdgeList[i]->End()->Position()) * 0.5f;
+	//			operate.EdgeSplit(this, m_EdgeList[i], position);
+	//			fix = true;
+	//		}
+	//	}
+	//}
+
+	// TODO : CalcElement がほかのものに依存する場合があるので順番を制御する必要がありそう。
 	for (int i = 0; i < m_EdgeList.size(); i++)
 	{
 		m_EdgeList[i]->CalcElement();
+		m_EdgeList[i]->Validate();
 	}
+
 
 	for (int i = 0; i < m_FaceList.size(); i++)
 	{
 		m_FaceList[i]->CalcElement();
+		m_FaceList[i]->Validate();
 	}
 
 	for (int i = 0; i < m_VertexList.size(); i++)
 	{
 		m_VertexList[i]->CalcElement();
+		m_VertexList[i]->Validate();
 	}
 
 	CalcEdgeParameter();
 	CalcFaceParameter();
+
+	// 隣接行列
+	//AdjancyMatrix* pMatrix = new AdjancyMatrix(this);
+	//delete pMatrix;
+
 }
 
 void HalfEdgeDS::CalcEdgeParameter()
@@ -176,12 +205,28 @@ void HalfEdgeDS::Normalize()
 		m_VertexList[i]->SetPosition(position);
 	}
 }
+
+void HalfEdgeDS::AddVertex(shared_ptr<HalfEdgeVertex> pVertex)
+{
+	m_VertexList.push_back(pVertex);
+}
+
+void HalfEdgeDS::AddEdge(shared_ptr<HalfEdge> pEdge)
+{
+	m_EdgeList.push_back(pEdge);
+}
+
+void HalfEdgeDS::AddFace(shared_ptr<HalfEdgeFace> pFace)
+{
+	m_FaceList.push_back(pFace);
+}
+
 void HalfEdgeDS::RemoveVertex(int index)
 {
 
 }
 
-void HalfEdgeDS::RemoveMesh(int index)
+void HalfEdgeDS::RemoveFace(int index)
 {
 
 }

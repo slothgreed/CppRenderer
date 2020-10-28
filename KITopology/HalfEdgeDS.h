@@ -17,9 +17,13 @@ public:
 	const vector<shared_ptr<HalfEdgeFace>>& FaceList() { return m_FaceList; }
 	const vector<shared_ptr<HalfEdgeVertex>>& VertexList() { return m_VertexList; }
 
-	void RemoveMesh(int index);
+	void AddVertex(shared_ptr<HalfEdgeVertex> pVertex);
+	void AddEdge(shared_ptr<HalfEdge> pVertex);
+	void AddFace(shared_ptr<HalfEdgeFace> pVertex);
+
 	void RemoveVertex(int index);
 	void RemoveEdge(int index);
+	void RemoveFace(int index);
 
 	void Normalize();
 private:

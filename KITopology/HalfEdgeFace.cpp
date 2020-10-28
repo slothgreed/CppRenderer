@@ -67,6 +67,12 @@ vec3 HalfEdgeFace::CalcCentroid()
 	return centroid;
 }
 
+void HalfEdgeFace::Validate()
+{
+	assert(m_Edge != NULL);
+	assert(m_Edge->Face().get() == this);
+}
+
 void HalfEdgeFace::GetVertex(vec3* v1, vec3* v2, vec3* v3)
 {
 	*v1 = Edge()->Start()->Position();

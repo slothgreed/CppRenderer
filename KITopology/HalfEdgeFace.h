@@ -41,6 +41,7 @@ public:
 	vec3 Centroid() { return m_centroid; }
 	vec3 Normal() { return m_normal; }
 	float Area() { return m_area; }
+	void Validate();
 private:
 
 	void GetVertex(vec3* v1, vec3* v2, vec3* v3);
