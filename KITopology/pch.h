@@ -38,10 +38,12 @@ using namespace KI::Foundation;
 #include "Cylinder.h"
 #include "Icosahedron.h"
 
+
 #include "HalfEdge.h"
 #include "HalfEdgeFace.h"
 #include "HalfEdgeVertex.h"
 #include "HalfEdgeDS.h"
+#include "AdjancyMatrix.h"
 #include "HalfEdgeOperator.h"
 
 #include "HalfEdgeRepository.h"

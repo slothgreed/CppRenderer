@@ -99,6 +99,9 @@
     <ClInclude Include="HalfEdgeRepository.h">
       <Filter>ヘッダー ファイル\Reository</Filter>
     </ClInclude>
+    <ClInclude Include="AdjancyMatrix.h">
+      <Filter>ヘッダー ファイル\HalfEdge\Operator</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -145,6 +148,9 @@
     </ClCompile>
     <ClCompile Include="HalfEdgeRepository.cpp">
       <Filter>ソース ファイル\Repository</Filter>
+    </ClCompile>
+    <ClCompile Include="AdjancyMatrix.cpp">
+      <Filter>ソース ファイル\HalfEdge\Operator</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

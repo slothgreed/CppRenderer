@@ -40,6 +40,7 @@ CGALPolyhedron::CGALPolyhedron()
 
 CGALPolyhedron::~CGALPolyhedron()
 {
+	RELEASE_INSTANCE(m_pPrivate->m_model);
 	RELEASE_INSTANCE(m_pPrivate);
 }
 
