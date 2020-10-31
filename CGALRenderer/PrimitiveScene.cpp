@@ -2,10 +2,6 @@ namespace KI
 {
 PrimitiveScene::~PrimitiveScene()
 {
-	for (auto itr = m_pController.begin(); itr != m_pController.end(); itr++)
-	{
-		delete itr->second;
-	}
 }
 
 void PrimitiveScene::Initialize()
@@ -21,9 +17,7 @@ void PrimitiveScene::Initialize()
 	pCamera->Perspective(glm::radians(60.0f), 1, 0.01f, 1000);
 	m_pScene->SetCamera(pCamera);
 
-	m_pController[CONTROLER_TYPE::CAMERA_CONTROLER] = 
-		new CameraController(make_shared<CameraControllerArgs>(pCamera));
-	m_CurrentController = CONTROLER_TYPE::CAMERA_CONTROLER;
+	SetController(CONTROLER_TYPE::CAMERA_CONTROLER, new CameraController(make_shared<CameraControllerArgs>(pCamera)));
 
 	// manipulator rendering
 	{

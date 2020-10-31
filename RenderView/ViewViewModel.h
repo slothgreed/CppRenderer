@@ -15,11 +15,12 @@ public:
 	virtual void Invoke() {};
 	virtual void SetViewport(shared_ptr<Viewport> pViewport) { m_pViewport = pViewport; }
 	shared_ptr<Viewport> GetViewport() { return m_pViewport; }
+	void SetController(CONTROLER_TYPE type, IController* value); 
 protected:
 	shared_ptr<Mouse> m_pMouse;
 	CONTROLER_TYPE m_CurrentController;
-	map<CONTROLER_TYPE, IController*> m_pController;
 	unique_ptr<CommandManager> m_pCommandManager;
+	map<CONTROLER_TYPE, IController*> m_pController;
 
 private:
 	shared_ptr<Viewport> m_pViewport;

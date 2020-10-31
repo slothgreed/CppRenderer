@@ -11,9 +11,8 @@ void PfxScene::Initialize()
 	pCamera->Ortho(0, 1, 0, 1, -10, 10);
 	//pCamera->Perspective(glm::radians(60.0f), 1, 0.01f, 1000);
 
-
 	auto pCameraController = new CameraController(make_shared<CameraControllerArgs>(pCamera));
-	m_pController[CONTROLER_TYPE::CAMERA_CONTROLER] = pCameraController;
+	SetController(CONTROLER_TYPE::CAMERA_CONTROLER,pCameraController);
 	
 	m_CurrentController = CONTROLER_TYPE::CAMERA_CONTROLER;
 
