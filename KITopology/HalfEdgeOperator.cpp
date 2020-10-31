@@ -235,7 +235,7 @@ void HalfEdgeOperator::EdgeSplit(HalfEdgeDS* halfEdgeDS, shared_ptr<HalfEdge> ed
 }
 
 
-//         v2                    v2
+//         v1                    v1
 //    Å@  Å^Å_ Å@Å@	      Å@    Å^|Å_
 //      Å^  Å@Å_ Å@           Å^  |Å@Å_ 
 //    Å^  edge=>Å_          Å^  ^ | Å@ Å_ 
@@ -243,7 +243,7 @@ void HalfEdgeOperator::EdgeSplit(HalfEdgeDS* halfEdgeDS, shared_ptr<HalfEdge> ed
 //    Å_  <=op  Å^	        Å_ Å@ | Å@ Å^
 //    Å@Å_ Å@ Å^	       Å@ Å_  |  Å^
 //      Å@Å_Å^		          Å@Å_|Å^
-//         v1		              v1
+//         v2		              v2
 void HalfEdgeOperator::EdgeFlips(HalfEdgeDS* halfEdgeDS, shared_ptr<HalfEdge> edge)
 {
 	auto opposite = edge->Opposite();
@@ -258,48 +258,49 @@ void HalfEdgeOperator::EdgeFlips(HalfEdgeDS* halfEdgeDS, shared_ptr<HalfEdge> ed
 	auto v2 = edge->Before()->Start();
 	
 	// è„ÇÃÉRÉÅÉìÉgÇÃí∏ì_ : sv1 = (s => v1)ÇÃÉGÉbÉW
-	auto v2s = edge->Before();
-	auto sv1 = opposite->Next();
-	auto v1e = opposite->Before();
-	auto ev2 = edge->Next();
+	auto v1Tos = edge->Before();
+	auto sTov2 = opposite->Next();
+	auto v2Toe = opposite->Before();
+	auto eTov1 = edge->Next();
 
 	// ÉtÉäÉbÉvÉGÉbÉW
 	{
 		edge->Set(
-			v2, v2s, sv1,
+			v2, v1Tos, sTov2,
 			opposite,
 			edge->Face());
 		edge->Face()->SetEdge(edge);
 
 		opposite->Set(
-			v1, v1e, ev2,
+			v1, v2Toe, eTov1,
 			edge,
-			opposite->Face()
-		);
+			opposite->Face());
 		opposite->Face()->SetEdge(opposite);
 	}
 
 	// ÉtÉäÉbÉvà»äOÇÃÉGÉbÉW
 	{
-		v2s->SetBefore(edge);
-		v2s->SetNext(sv1);
+		v1Tos->SetBefore(edge);
+		v1Tos->SetNext(sTov2);
+		v1Tos->SetFace(edge->Face());
 
-		sv1->SetBefore(v2s);
-		sv1->SetNext(edge);
-		sv1->SetFace(edge->Face());
+		sTov2->SetBefore(v1Tos);
+		sTov2->SetNext(edge);
+		sTov2->SetFace(edge->Face());
 
-		v1e->SetBefore(opposite);
-		v1e->SetNext(ev2);
-		
-		ev2->SetBefore(v1e);
-		ev2->SetNext(opposite);
-		ev2->SetFace(opposite->Face());
+		v2Toe->SetBefore(opposite);
+		v2Toe->SetNext(eTov1);
+		v2Toe->SetFace(opposite->Face());
+
+		eTov1->SetBefore(v2Toe);
+		eTov1->SetNext(opposite);
+		eTov1->SetFace(opposite->Face());
 	}
 
 	edge->Validate();
 	opposite->Validate();
-	v2s->Validate(); sv1->Validate();
-	v1e->Validate(); ev2->Validate();
+	v1Tos->Validate(); sTov2->Validate();
+	v2Toe->Validate(); eTov1->Validate();
 }
 }
 }

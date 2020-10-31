@@ -25,7 +25,7 @@ private:
 		shared_ptr<HalfEdge> edge2,
 		shared_ptr<HalfEdge> oppo0,
 		shared_ptr<HalfEdge> oppo1,
-		shared_ptr<HalfEdge> oppo2)
+		shared_ptr<HalfEdge> oppo2);
 };
 }
 }

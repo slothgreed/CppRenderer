@@ -10,7 +10,6 @@
 #ifndef DLL_EXPORT
 #define DLL_EXPORT  __declspec(dllexport)
 #endif
-
 #include<memory>
 #include<string>
 #include <iostream>
