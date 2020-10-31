@@ -96,11 +96,11 @@ void HalfEdgeDS::Load(const string& filePath)
 
 	binaryStream.close();
 
-	HalfEdgeOperator halfEdgeOperator;
-	for (int i = 0; i < m_EdgeList.size(); i++)
-	{
-		halfEdgeOperator.EdgeFlips(this, m_EdgeList[i]);
-	}
+	//HalfEdgeOperator halfEdgeOperator;
+	//for (int i = 0; i < m_EdgeList.size(); i++)
+	//{
+	//	halfEdgeOperator.EdgeFlips(this, m_EdgeList[i]);
+	//}
 
 	//Normalize();
 }

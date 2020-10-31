@@ -6,9 +6,9 @@ namespace Foundation
 {
 enum CONTROLER_TYPE : unsigned int
 {
-	CAMERA_CONTROLER,
-	PICK_CONTROLER,
-	CONTROLER_TYPE_NUM
+	CAMERA_CONTROLER = 0x00,
+	PICK_CONTROLER = 0x01,
+	CONTROLER_TYPE_NUM = 0x02
 };
 
 class DLL_EXPORT IControllerArgs
