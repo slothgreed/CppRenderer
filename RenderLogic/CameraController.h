@@ -30,8 +30,8 @@ public:
 	virtual bool Wheel(const Mouse&  mouse) override;
 private:
 	void Zoom(float ratio);
-	void Rotate(vec2 move);
-	void Translate(vec2 move);
+	void Rotate(const vec2& move);
+	void Translate(const vec2& move);
 
 	std::shared_ptr<CameraControllerArgs> m_pArgs;
 

@@ -57,6 +57,9 @@
     <ClInclude Include="PrimitiveNode.h">
       <Filter>ヘッダー ファイル\Node</Filter>
     </ClInclude>
+    <ClInclude Include="CameraNode.h">
+      <Filter>ヘッダー ファイル\Node</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -87,6 +90,9 @@
       <Filter>ソース ファイル\Node</Filter>
     </ClCompile>
     <ClCompile Include="PrimitiveNode.cpp">
+      <Filter>ソース ファイル\Node</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraNode.cpp">
       <Filter>ソース ファイル\Node</Filter>
     </ClCompile>
   </ItemGroup>

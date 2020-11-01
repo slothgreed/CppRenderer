@@ -9,17 +9,20 @@ enum CAMERA_TYPE
 	CAMERA_TYPE_PERSPECTIVE,
 	CAMERA_TYPE_ORTHO
 };
-class DLL_EXPORT ICamera
+class DLL_EXPORT ICamera : public ISubject
 {
 public:
 	ICamera();
 	virtual ~ICamera();
 	void LookAt(const vec3& eye, const vec3& center, const vec3& up);
-	
+
 	virtual CAMERA_TYPE Type() = 0;
 	const mat4x4& ViewMatrix() const { return m_View; }
 	const mat4x4& Projection() const { return m_Project; }
 
+	vec3 XDirection();
+	vec3 YDirection();
+	vec3 ZDirection();
 	const vec3& Eye() { return m_eye; };
 	const vec3& Center() { return m_center; };
 	const vec3& Up() { return m_up; };

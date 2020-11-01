@@ -20,6 +20,7 @@ void OrthoCamera::Ortho(float left, float right, float bottom, float top, float 
 	m_ortho.m_top = top;
 	m_ortho.m_near = _near;
 	m_ortho.m_far = _far;
+	Update();
 }
 
 void OrthoCamera::Ortho(const OrthoCamera::OrthoParameter& parameter)
@@ -65,7 +66,13 @@ vec3 OrthoCamera::GetCenter()
 
 void OrthoCamera::FitToBDB(const BDB& bdb)
 {
-
+	Ortho(
+		bdb.Min().x,
+		bdb.Max().x,
+		bdb.Min().y,
+		bdb.Max().y,
+		bdb.Min().z,
+		bdb.Max().z);
 }
 }
 }

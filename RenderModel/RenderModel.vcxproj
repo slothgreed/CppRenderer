@@ -165,6 +165,7 @@
   <ItemGroup>
     <ClInclude Include="BDBProperty.h" />
     <ClInclude Include="BezierLineNode.h" />
+    <ClInclude Include="CameraNode.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="HalfEdgeDSNode.h" />
     <ClInclude Include="HalfEdgeProperty.h" />
@@ -177,6 +178,7 @@
   <ItemGroup>
     <ClCompile Include="BDBProperty.cpp" />
     <ClCompile Include="BezierLineNode.cpp" />
+    <ClCompile Include="CameraNode.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="HalfEdgeDSNode.cpp" />
     <ClCompile Include="HalfEdgeProperty.cpp" />
