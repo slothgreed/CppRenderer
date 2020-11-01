@@ -13,6 +13,8 @@ ViewViewModel::~ViewViewModel()
 	{
 		delete itr->second;
 	}
+
+	ShaderManager::Free();
 }
 
 void ViewViewModel::SetController(CONTROLER_TYPE type, IController* value)

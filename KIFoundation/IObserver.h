@@ -9,7 +9,7 @@ class DLL_EXPORT IObserver
 {
 public:
 	IObserver() {};
-	~IObserver() {};
+	virtual ~IObserver() {};
 
 	virtual void Update(void* sender, IEventArgs* args) = 0;
 private:
@@ -20,7 +20,7 @@ class DLL_EXPORT ISubject
 {
 public:
 	ISubject();
-	~ISubject();
+	virtual ~ISubject();
 
 	virtual void AddObserver(IObserver* observer);
 	virtual void RemoveObserver(IObserver* observer);

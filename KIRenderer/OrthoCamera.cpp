@@ -59,9 +59,9 @@ float OrthoCamera::GetDepth()
 vec3 OrthoCamera::GetCenter()
 {
 	return vec3(
-		m_ortho.m_left + m_ortho.m_right * 0.5,
-		m_ortho.m_bottom + m_ortho.m_top * 0.5,
-		m_ortho.m_near + m_ortho.m_far * 0.5);
+		(m_ortho.m_left + m_ortho.m_right) * 0.5,
+		(m_ortho.m_bottom + m_ortho.m_top) * 0.5,
+		(m_ortho.m_near + m_ortho.m_far) * 0.5);
 }
 
 void OrthoCamera::FitToBDB(const BDB& bdb)

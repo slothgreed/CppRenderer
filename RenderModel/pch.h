@@ -43,5 +43,6 @@ using namespace KI::Asset;
 #include "HalfEdgeDSNode.h"
 #include "ManipulatorNode.h"
 #include "BezierLineNode.h"
+#include "CameraNode.h"
 
 #endif //RENDER_MODEL_PCH_H

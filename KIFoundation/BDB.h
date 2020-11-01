@@ -10,7 +10,8 @@ public:
 	BDB();
 	BDB(vec3 min, vec3 max);
 	void Set(vec3 min, vec3 max);
-	void Apply(vec3 position);
+	void Apply(const vec3& position);
+	void Apply(const BDB& bdb);
 	const vec3& Min() const { return m_min; }
 	const vec3& Max() const { return m_max; }
 	const vec3& Center() const { return m_center; }

@@ -17,7 +17,7 @@ BDB::BDB(vec3 min, vec3 max)
 	Set(min, max);
 }
 
-void BDB::Apply(vec3 position)
+void BDB::Apply(const vec3& position)
 {
 	m_min.x = glm::min(m_min.x, position.x);
 	m_min.y = glm::min(m_min.y, position.y);
@@ -26,6 +26,20 @@ void BDB::Apply(vec3 position)
 	m_max.x = glm::max(m_max.x, position.x);
 	m_max.y = glm::max(m_max.y, position.y);
 	m_max.z = glm::max(m_max.z, position.z);
+	Set(m_min, m_max);
+}
+
+void BDB::Apply(const BDB& bdb)
+{
+	m_min.x = glm::min(m_min.x, bdb.Min().x);
+	m_min.y = glm::min(m_min.y, bdb.Min().y);
+	m_min.z = glm::min(m_min.z, bdb.Min().z);
+
+
+	m_max.x = glm::max(m_max.x, bdb.Max().x);
+	m_max.y = glm::max(m_max.y, bdb.Max().y);
+	m_max.z = glm::max(m_max.z, bdb.Max().z);
+
 	Set(m_min, m_max);
 }
 

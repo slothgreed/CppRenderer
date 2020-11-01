@@ -15,7 +15,7 @@ class DLL_EXPORT IControllerArgs
 {
 public:
 	IControllerArgs() {};
-	~IControllerArgs() {};
+	virtual ~IControllerArgs() {};
 
 private:
 
@@ -25,7 +25,7 @@ class DLL_EXPORT IController
 {
 public:
 	IController() {};
-	~IController() {};
+	virtual ~IController() {};
 
 	virtual void SetArgs(std::shared_ptr<IControllerArgs> value) { assert(0); }
 	virtual bool Down(const Mouse&  mouse) { return false; };

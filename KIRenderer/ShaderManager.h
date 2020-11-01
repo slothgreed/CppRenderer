@@ -12,6 +12,7 @@ private:
 	~ShaderManager();
 public:
 	static ShaderManager* Instance();
+	static void Free();
 	shared_ptr<IShader> FindOrNew(shared_ptr<IShaderBuildInfo> pBuildInfo);
 	void Dispose();
 private:

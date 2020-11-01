@@ -6,9 +6,11 @@
 using namespace KI;
 int main()
 {
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+
 	int NEW_SCENE = 2;
     std::cout << "Hello World!\n"; 
-	std::unique_ptr<OpenGLView> renderer(new OpenGLView());
+	OpenGLView* renderer = new OpenGLView();
 	auto pProject = make_shared<Project>();
 	shared_ptr<ViewViewModel> pViewViewModel;
 	if (NEW_SCENE == 1)
@@ -51,6 +53,7 @@ int main()
 
 	renderer->Run();
 	
+	RELEASE_INSTANCE(renderer);
 	return 0;
 }
 

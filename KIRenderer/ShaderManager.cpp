@@ -13,6 +13,10 @@ ShaderManager* ShaderManager::Instance()
 	return m_Instance;
 }
 
+void ShaderManager::Free()
+{
+	RELEASE_INSTANCE(m_Instance);
+}
 ShaderManager::ShaderManager()
 {
 	m_pShaderList.clear();
@@ -20,10 +24,6 @@ ShaderManager::ShaderManager()
 
 ShaderManager::~ShaderManager()
 {
-	if (m_pShaderList.size() != 0)
-	{
-		assert(0);
-	}
 }
 
 shared_ptr<IShader> ShaderManager::Generate(shared_ptr<IShaderBuildInfo> pBuildInfo)
