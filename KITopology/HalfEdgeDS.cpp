@@ -8,6 +8,25 @@ HalfEdgeDS::HalfEdgeDS()
 
 HalfEdgeDS::~HalfEdgeDS()
 {
+	// zŠÂQÆ‚µ‚Ä‚¢‚é‚½‚ßQÆ‚ğŠO‚·
+	for (int i = 0; i < m_VertexList.size(); i++)
+	{
+		m_VertexList[i]->SetEdge(NULL);
+	}
+
+	for (int i = 0; i < m_EdgeList.size(); i++)
+	{
+		m_EdgeList[i]->Set(NULL, NULL, NULL, NULL, NULL);
+	}
+
+	for (int i = 0; i < m_FaceList.size(); i++)
+	{
+		m_FaceList[i]->SetEdge(NULL);
+	}
+
+	m_VertexList.clear();
+	m_EdgeList.clear();
+	m_FaceList.clear();
 }
 
 void HalfEdgeDS::Load(const string& filePath)
