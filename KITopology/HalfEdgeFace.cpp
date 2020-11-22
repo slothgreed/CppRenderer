@@ -71,6 +71,7 @@ void HalfEdgeFace::Validate()
 {
 	assert(m_Edge != NULL);
 	assert(m_Edge->Face().get() == this);
+	assert(CalcVertexNum() == 3);
 }
 
 void HalfEdgeFace::GetVertex(vec3* v1, vec3* v2, vec3* v3)

@@ -3,13 +3,12 @@ namespace KI
 namespace Topology
 {
 
-AdjancyMatrix::AdjancyMatrix(HalfEdgeDS* pHalfEdgeDS)
+LinkArray::AdjancyMatrix(HalfEdgeDS* pHalfEdgeDS)
 	:m_pHalfEdgeDS(pHalfEdgeDS),
 	m_size(0),
 	m_Matrix(NULL)
 {
 	New();
-	Calculate();
 }
 
 AdjancyMatrix::~AdjancyMatrix()
@@ -24,10 +23,12 @@ void AdjancyMatrix::New()
 	m_Matrix = new int*[m_size];
 	for (int i = 0; i < m_size; i++)
 	{
-		m_Matrix[i] = new int[m_size];
-		for (int j = 0; j < m_size; j++)
+		int vertexNum = m_pHalfEdgeDS->VertexList()[i]->AroundVertexNum();
+		m_Matrix[i] = new int[vertexNum];
+		int j = 0;
+		for (auto itr = VertexAroundEdgeIterator(m_pHalfEdgeDS->VertexList[i]); itr.HasNext(); itr.Next())
 		{
-			m_Matrix[i][j] = 0;
+			m_Matrix[i][j] = itr.Current()->Index();
 		}
 	}
 }
@@ -39,30 +40,20 @@ void AdjancyMatrix::Delete()
 		for (int i = 0; i < m_size; i++)
 		{
 			delete m_Matrix[i];
+			m_Matrix[i] = nullptr;
 		}
 
 		delete m_Matrix;
+		m_Matrix = nullptr;
 	}
 
 	m_size = 0;
-}
-
-void AdjancyMatrix::Calculate()
-{
-	for (int i = 0; i < m_pHalfEdgeDS->EdgeList().size(); i++)
-	{
-		auto pEdge = m_pHalfEdgeDS->EdgeList()[i];
-
-		m_Matrix[pEdge->Start()->Index()][pEdge->End()->Index()] = 1;
-		m_Matrix[pEdge->End()->Index()][pEdge->Start()->Index()] = 1;
-	}
 }
 
 void AdjancyMatrix::Update()
 {
 	Delete();
 	New();
-	Calculate();
 }
 
 }

@@ -5,6 +5,8 @@ namespace KI
 {
 namespace Topology
 {
+// Has Link Array;
+// m_Matrix[i][j] = (vertex->Index(),vertex->AroundVertex(j)->Index());
 class AdjancyMatrix
 {
 public:
@@ -15,8 +17,6 @@ public:
 private:
 	void New();
 	void Delete();
-	void Initialize();
-	void Calculate();
 	HalfEdgeDS* m_pHalfEdgeDS;
 	int** m_Matrix;
 	int m_size;

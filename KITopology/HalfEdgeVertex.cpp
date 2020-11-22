@@ -70,6 +70,17 @@ vec3 HalfEdgeVertex::CalcNormal()
 	return normal;
 }
 
+int HalfEdgeVertex::AroundVertexNum()
+{
+	int num = 0;
+	for (auto itr = VertexAroundEdgeIterator(this); itr.HasNext(); itr.Next())
+	{
+		num++;
+	}
+
+	return num;
+}
+
 
 string HalfEdgeVertex::ToString()
 {
@@ -94,6 +105,12 @@ void HalfEdgeVertex::Validate()
 {
 	assert(m_Edge != NULL);
 	assert(m_Edge->Start().get() == this);
+	int i = 0;
+	for (auto itr = VertexAroundEdgeIterator(this); itr.HasNext(); itr.Next())
+	{
+		i++;
+		assert(i != 1000);	// also infinity loop
+	}
 }
 
 VertexAroundEdgeIterator::VertexAroundEdgeIterator(HalfEdgeVertex* pVertex)
@@ -126,6 +143,7 @@ HalfEdge* VertexAroundEdgeIterator::Current()
 {
 	return m_pEdgeItr;
 }
+
 
 }
 }
