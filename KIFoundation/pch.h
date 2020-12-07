@@ -7,7 +7,6 @@
 
 #pragma warning( disable : 4251 )
 #define USE_VAR(x) (void)x;
-
 #include<memory>
 #include<string>
 #include <iostream>
@@ -29,6 +28,8 @@ using namespace glm;
 
 #include "Random.h"
 #include "MathHelper.h"
+
+#include "PropertyBase.h"
 
 #include "Timer.h"
 #include "Interface.h"

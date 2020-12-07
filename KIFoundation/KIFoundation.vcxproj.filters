@@ -87,6 +87,9 @@
     <ClInclude Include="ColorUtility.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
+    <ClInclude Include="PropertyBase.h">
+      <Filter>ヘッダー ファイル\Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

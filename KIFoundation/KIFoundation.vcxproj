@@ -177,6 +177,7 @@
     <ClInclude Include="Mouse.h" />
     <ClInclude Include="MouseInput.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="PropertyBase.h" />
     <ClInclude Include="Random.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="SystemTypes.h" />
