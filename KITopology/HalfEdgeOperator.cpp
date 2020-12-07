@@ -302,5 +302,32 @@ void HalfEdgeOperator::EdgeFlips(HalfEdgeDS* halfEdgeDS, shared_ptr<HalfEdge> ed
 	v1Tos->Validate(); sTov2->Validate();
 	v2Toe->Validate(); eTov1->Validate();
 }
+
+void HalfEdgeOperator::SetRandomTangentForVertex(HalfEdgeDS* halfEdgeDS)
+{
+	for (size_t i = 0; i < halfEdgeDS->VertexList().size(); i++)
+	{
+		auto pVertex = halfEdgeDS->VertexList()[i];
+		vec3 normal = pVertex->Normal();
+		vec3 value1;
+		vec3 value2;
+		if (abs(normal.x) > abs(normal.y)) 
+		{
+			float invLength = 1.0f / std::sqrt(normal.x * normal.x + normal.z * normal.z);
+			value1 = vec3(normal.z * invLength, 0.0, -normal.x * invLength);
+		}
+		else
+		{
+			float invLength = 1.0f / std::sqrt(normal.y * normal.y + normal.z * normal.z);
+			value1 = vec3(0.0, normal.z * invLength, -normal.y * invLength);
+		}
+
+		float random = Gaccho::rnd(0, 1);
+		value2 = glm::cross(value1, normal);
+		float angle = Gaccho::rnd(0, 1) * 2 * pi<float>();
+		pVertex->SetTangent(value1 * std::cos(angle) + value2 * std::sin(angle));
+	}
+}
+
 }
 }

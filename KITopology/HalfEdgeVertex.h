@@ -40,6 +40,8 @@ public:
 	int AroundVertexNum();
 	vec3 Normal() { return m_normal; }
 	float Area() { return m_area; }
+	vec3 Tangent() { return m_tangent; }
+	void SetTangent(const vec3& value) { m_tangent = value; }
 	bool Pick(const vec3& direction, float range, float& distance);
 	void Validate();
 private:
@@ -50,6 +52,7 @@ private:
 	shared_ptr<HalfEdge> m_Edge;
 	vec3 m_position;
 	vec3 m_normal;
+	vec3 m_tangent;
 	float m_area;
 
 	int m_Index;

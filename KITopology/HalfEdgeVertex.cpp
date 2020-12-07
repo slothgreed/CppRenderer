@@ -39,11 +39,10 @@ float HalfEdgeVertex::CalcArea()
 	for (itr; itr.HasNext(); itr.Next())
 	{
 		HalfEdge* current = (HalfEdge*)itr.Current();
-		area = MathHelper::CalcTriangleArea(
+		area += MathHelper::CalcTriangleArea(
 			before->Start()->Position(),
 			before->End()->Position(),
 			current->End()->Position());
-		area++;
 	}
 
 	return area;
