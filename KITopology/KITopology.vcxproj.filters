@@ -102,6 +102,15 @@
     <ClInclude Include="AdjancyMatrix.h">
       <Filter>ヘッダー ファイル\HalfEdge\Operator</Filter>
     </ClInclude>
+    <ClInclude Include="DownSampling.h">
+      <Filter>ヘッダー ファイル\HalfEdge\Operator</Filter>
+    </ClInclude>
+    <ClInclude Include="HalfEdgeAdjancyMatrix.h">
+      <Filter>ヘッダー ファイル\HalfEdge\Operator</Filter>
+    </ClInclude>
+    <ClInclude Include="AlignOrientation.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -151,6 +160,15 @@
     </ClCompile>
     <ClCompile Include="AdjancyMatrix.cpp">
       <Filter>ソース ファイル\HalfEdge\Operator</Filter>
+    </ClCompile>
+    <ClCompile Include="DownSampling.cpp">
+      <Filter>ソース ファイル\HalfEdge\Operator</Filter>
+    </ClCompile>
+    <ClCompile Include="HalfEdgeAdjancyMatrix.cpp">
+      <Filter>ソース ファイル\HalfEdge\Operator</Filter>
+    </ClCompile>
+    <ClCompile Include="AlignOrientation.cpp">
+      <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -60,6 +60,12 @@
     <ClInclude Include="CameraNode.h">
       <Filter>ヘッダー ファイル\Node</Filter>
     </ClInclude>
+    <ClInclude Include="VertexTangentProperty.h">
+      <Filter>ヘッダー ファイル\Property</Filter>
+    </ClInclude>
+    <ClInclude Include="HalfEdgeClusterProperty.h">
+      <Filter>ヘッダー ファイル\Property</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -94,6 +100,12 @@
     </ClCompile>
     <ClCompile Include="CameraNode.cpp">
       <Filter>ソース ファイル\Node</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexTangentProperty.cpp">
+      <Filter>ソース ファイル\Property</Filter>
+    </ClCompile>
+    <ClCompile Include="HalfEdgeClusterProperty.cpp">
+      <Filter>ソース ファイル\Property</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

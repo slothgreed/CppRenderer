@@ -38,6 +38,9 @@ using namespace KI::Asset;
 #include "BDBProperty.h"
 #include "NormalProperty.h"
 #include "HalfEdgeProperty.h"
+#include "VertexTangentProperty.h"
+#include "HalfEdgeClusterProperty.h"
+
 #include "PrimitiveNode.h"
 #include "PolygonModelNode.h"
 #include "HalfEdgeDSNode.h"

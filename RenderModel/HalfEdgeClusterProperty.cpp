@@ -2,11 +2,11 @@ namespace KI
 {
 namespace RenderModel
 {
-HalfEdgeProperty::HalfEdgeProperty()
+HalfEdgeClusterProperty::HalfEdgeClusterProperty()
 {
 }
 
-void HalfEdgeProperty::Build(IModelNode* pModelNode, IPropertyArgs* pPropertyArgs)
+void HalfEdgeClusterProperty::Build(IModelNode* pModelNode, IPropertyArgs* pPropertyArgs)
 {
 	shared_ptr<HalfEdgeModel> pModel;
 	if (pModelNode->GetModel()->Type() == MODEL_TYPE_HALF_EDGE)
@@ -19,23 +19,30 @@ void HalfEdgeProperty::Build(IModelNode* pModelNode, IPropertyArgs* pPropertyArg
 		return;
 	}
 
+	HalfEdgeClusterPropertyArgs* pArgs = dynamic_cast<HalfEdgeClusterPropertyArgs*>(pPropertyArgs);
+	if(pArgs == nullptr)
+	{
+		assert(0);
+		return;
+	}
+
+
+	auto pRenderData = pModelNode->GetRenderData(0);
+	auto pMeshBuffer = pRenderData->GetVertexBuffer();
 	m_pRenderData = make_shared<RenderData>();
-	// geometry shader Ç≈Ç≈Ç´ÇªÇ§ÅB
-	vector<vec3> position;
 	vector<vec3> color;
-	GetVBOData(pModel->GetHalfEdgeDS().get(), position, color, true);
-	position.resize(pModel->GetHalfEdgeDS()->EdgeList().size() * 2);
-	color.resize(pModel->GetHalfEdgeDS()->EdgeList().size() * 2);
+	color.resize(pMeshBuffer->GetVertexSize());
+	
 
 	auto pVertexBuffer = make_shared<DefaultVertexBuffer>();
-	pVertexBuffer->SetPosition(position);
+	pVertexBuffer->SetArrayBuffer(VERTEX_ATTRIB::VERTEX_ATTRIB_POSITION, pMeshBuffer->GetArrayBuffer(VERTEX_ATTRIB::VERTEX_ATTRIB_POSITION));
 	pVertexBuffer->SetColor(color);
-	m_pRenderData->SetGeometryData(PRIM_TYPE_LINES, pVertexBuffer);
-	m_pRenderData->SetShading(make_shared<BasicShading>(vec4(0, 0, 0, 1)));
+	m_pRenderData->SetGeometryData(PRIM_TYPE_LINES, pVertexBuffer, pRenderData->GetIndexBuffer());
+	m_pRenderData->SetShading(make_shared<VertexShading>(VERTEX_SHADING_COLOR));
 
 }
 
-void HalfEdgeProperty::Update(IModelNode* pModelNode, IPropertyArgs* pPropertyArgs)
+void HalfEdgeClusterProperty::Update(IModelNode* pModelNode, IPropertyArgs* pPropertyArgs)
 {
 	vector<vec3> position;
 	vector<vec3> color;
@@ -64,7 +71,7 @@ void HalfEdgeProperty::Update(IModelNode* pModelNode, IPropertyArgs* pPropertyAr
 	}
 }
 
-void HalfEdgeProperty::GetVBOData(HalfEdgeDS* model, vector<vec3>& position, vector<vec3>& color, bool needColor)
+void HalfEdgeClusterProperty::GetVBOData(HalfEdgeDS* model, vector<vec3>& position, vector<vec3>& color, bool needColor)
 {
 	position.resize(model->EdgeList().size() * 2);
 	if (needColor)
@@ -103,7 +110,7 @@ void HalfEdgeProperty::GetVBOData(HalfEdgeDS* model, vector<vec3>& position, vec
 	}
 }
 
-void HalfEdgeProperty::Draw(shared_ptr<UniformStruct> pUniform)
+void HalfEdgeClusterProperty::Draw(shared_ptr<UniformStruct> pUniform)
 {
 	m_pRenderData->Draw(pUniform);
 }

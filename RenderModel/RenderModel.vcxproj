@@ -167,6 +167,7 @@
     <ClInclude Include="BezierLineNode.h" />
     <ClInclude Include="CameraNode.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="HalfEdgeClusterProperty.h" />
     <ClInclude Include="HalfEdgeDSNode.h" />
     <ClInclude Include="HalfEdgeProperty.h" />
     <ClInclude Include="ManipulatorNode.h" />
@@ -174,12 +175,14 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="PolygonModelNode.h" />
     <ClInclude Include="PrimitiveNode.h" />
+    <ClInclude Include="VertexTangentProperty.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BDBProperty.cpp" />
     <ClCompile Include="BezierLineNode.cpp" />
     <ClCompile Include="CameraNode.cpp" />
     <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="HalfEdgeClusterProperty.cpp" />
     <ClCompile Include="HalfEdgeDSNode.cpp" />
     <ClCompile Include="HalfEdgeProperty.cpp" />
     <ClCompile Include="ManipulatorNode.cpp" />
@@ -192,6 +195,7 @@
     </ClCompile>
     <ClCompile Include="PolygonModelNode.cpp" />
     <ClCompile Include="PrimitiveNode.cpp" />
+    <ClCompile Include="VertexTangentProperty.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

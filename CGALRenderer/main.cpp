@@ -7,8 +7,9 @@ using namespace KI;
 int main()
 {
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+	//_CrtSetBreakAlloc(5805);
 
-	int NEW_SCENE = 2;
+	int NEW_SCENE = 4;
     std::cout << "Hello World!\n"; 
 	OpenGLView* renderer = new OpenGLView();
 	auto pProject = make_shared<Project>();

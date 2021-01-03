@@ -29,7 +29,7 @@ bool CameraController::Move(const Mouse& mouse)
 	{
 		vec2 move = mouse.Delta();
 		move.x *= 0.3f;
-		move.y *= -0.3f;
+		move.y *= 0.3f;
 		Translate(move);
 	}
 

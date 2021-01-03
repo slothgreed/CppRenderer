@@ -22,11 +22,14 @@ public:
 	virtual void GetBDB(BDB& bdb);
 
 	shared_ptr<HalfEdgeDS> GetHalfEdgeDS() { return m_HalfEdgeDS; };
+	DownSampling* GetDownSampling() { return m_pDownSampling; }
 
+	void CalcDownSampling();
 	void RaycastPick(RaycastPickInfo& result) override;
 
 private:
 	shared_ptr<HalfEdgeDS> m_HalfEdgeDS;
+	DownSampling* m_pDownSampling;
 };
 }
 }

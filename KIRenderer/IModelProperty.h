@@ -8,7 +8,20 @@ enum PROPERTY_TYPE : unsigned int
 {
 	PROPERTY_TYPE_VECTOR = 0x00,
 	PROPERTY_TYPE_HALFEDGE = 0x01,
-	PROPERTY_TYPE_BDB = 0x02
+	PROPERTY_TYPE_HALFEDGE_CLUSTER = 0x03,
+	PROPERTY_TYPE_BDB = 0x04,
+	PROPERTY_TYPE_VERTEX_TANGENT = 0x05
+};
+
+class IPropertyArgs
+{
+public:
+	IPropertyArgs();
+	~IPropertyArgs();
+	virtual PROPERTY_TYPE Type() = 0;
+
+private:
+
 };
 
 class IModelNode;
@@ -22,8 +35,8 @@ public:
 	void SetVisible(bool value) { m_visible = value; }
 	bool Visible() { return m_visible; }
 	virtual void Draw(shared_ptr<UniformStruct> pUniform) = 0;
-	virtual void Update(IModelNode* pModelNode) = 0;
-	virtual void Build(IModelNode* pModelNode) = 0;
+	virtual void Update(IModelNode* pModelNode, IPropertyArgs* pPropertyArgs) = 0;
+	virtual void Build(IModelNode* pModelNode, IPropertyArgs* pPropertyArgs) = 0;
 private:
 	bool m_visible;
 };

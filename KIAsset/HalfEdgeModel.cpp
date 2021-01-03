@@ -4,6 +4,7 @@ namespace Asset
 {
 
 HalfEdgeModel::HalfEdgeModel()
+	:m_pDownSampling(NULL)
 {
 }
 
@@ -22,6 +23,7 @@ void HalfEdgeModel::Load(const string& filePath)
 	m_HalfEdgeDS = make_shared<HalfEdgeDS>();
 	m_HalfEdgeDS->Load(filePath);
 	m_HalfEdgeDS->CalcElement();
+	RELEASE_INSTANCE(m_pDownSampling);
 }
 
 void HalfEdgeModel::GetFacetList(vector<vec3>& facetList, vector<vec3>& normalList)
@@ -135,6 +137,12 @@ void HalfEdgeModel::RaycastPick(RaycastPickInfo& pickInfo)
 
 	}
 }
+
+void HalfEdgeModel::CalcDownSampling()
+{
+	m_pDownSampling = new DownSampling(m_HalfEdgeDS.get(), 10);
+}
+
 
 
 }

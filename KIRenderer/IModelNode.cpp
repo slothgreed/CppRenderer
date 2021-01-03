@@ -23,13 +23,23 @@ IModelNode::~IModelNode()
 
 void IModelNode::AddProperty(shared_ptr<IModelProperty> prop)
 {
-	auto itr = std::find_if(m_pProperty.begin(), m_pProperty.end(), 
-		[&prop](shared_ptr<IModelProperty> value) {return value->Type() == prop->Type(); });
-	if (itr == m_pProperty.end())
+	if (!HasProperty(prop->Type()))
 	{
 		prop->Build(this);
 		m_pProperty.push_back(prop);
 	}
+}
+
+bool IModelNode::HasProperty(PROPERTY_TYPE type)
+{
+	auto itr = std::find_if(m_pProperty.begin(), m_pProperty.end(),
+		[type](shared_ptr<IModelProperty> value) {return value->Type() == type; });
+	if (itr == m_pProperty.end())
+	{
+		return true;
+	}
+
+	return false;
 }
 
 void IModelNode::RemoveProperty(shared_ptr<IModelProperty> prop)

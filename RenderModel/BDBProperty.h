@@ -12,11 +12,11 @@ public:
 	~BDBProperty();
 
 	virtual PROPERTY_TYPE Type() override { return PROPERTY_TYPE_BDB; }
+	virtual void Build(IModelNode* pModel, IPropertyArgs* pPropertyArgs) override;
+	virtual void Update(IModelNode* pModel, IPropertyArgs* pPropertyArgs) override;
 	virtual void Draw(shared_ptr<UniformStruct> pUniform);
-	virtual void Update(IModelNode* pModel) override;
 private:
 	void GetBDBPosition(const BDB& bdb, vector<vec3>& position);
-	void Build(IModelNode* pModel);
 	shared_ptr<RenderData> m_pRenderData;
 };
 }

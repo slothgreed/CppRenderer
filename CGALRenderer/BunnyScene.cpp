@@ -12,17 +12,21 @@ void BunnyScene::Initialize()
 	m_pScene = make_shared<Scene>();
 	m_pScene->Initialize();
 
-	auto pCamera = make_shared<PerspectiveCamera>();
+	auto pCamera = make_shared<OrthoCamera>();
 	pCamera->LookAt(vec3(0, 0, -2), vec3(0, 0, 0), vec3(0, 1, 0));
-	pCamera->Perspective(glm::radians(60.0f), 1, 0.01f, 1000);
+	//pCamera->Perspective(glm::radians(60.0f), 1, 0.01f, 1000);
+	pCamera->Ortho(-1000, 1000, -1000, 1000, -1000, 1000);
 	m_pScene->SetCamera(pCamera);
 
 	SetController(CONTROLER_TYPE::CAMERA_CONTROLER, new CameraController(make_shared<CameraControllerArgs>(pCamera)));
 
-
 	auto directionLight = make_shared<DirectionLight>();
 	directionLight->SetDirection(vec3(1, 1, 1));
 	m_pScene->AddLight(directionLight);
+
+
+	auto pCameraNode = make_shared<CameraNode>(pCamera);
+	m_pScene->AddModelNode(pCameraNode);
 
 	BDB modelSpace(vec3(0), vec3(1));
 	{
@@ -43,6 +47,7 @@ void BunnyScene::Initialize()
 	}
 	pCamera->FitToBDB(modelSpace);
 
+	BDB cubebdb(vec3(0), vec3(1));
 	{
 		auto pTexture = make_shared<Texture>();
 		pTexture->Generate();
@@ -57,16 +62,20 @@ void BunnyScene::Initialize()
 				make_shared<CubeSpace>(
 					CubeSpaceArgs(BDB(vec3(-200), vec3(200))))),
 			pBasicShading);
+		pCubeNode->GetModel()->GetBDB(cubebdb);
 		m_pScene->AddModelNode(pCubeNode);
 	}
+	modelSpace.Apply(cubebdb);
+
+	pCamera->FitToBDB(modelSpace);
 
 	//{
 	//	auto moveManipulator = make_shared<ManipulatorNode>();
 	//	m_pScene->AddModelNode(moveManipulator);
 	//}
 
-	auto axisNode = make_shared<PrimitiveNode>(make_shared<PrimitiveModel>(make_shared<Axis>(AxisArgs())));
-	m_pScene->AddModelNode(axisNode);
+	//auto axisNode = make_shared<PrimitiveNode>(make_shared<PrimitiveModel>(make_shared<Axis>(AxisArgs())));
+	//m_pScene->AddModelNode(axisNode);
 
 	m_pBackTarget = make_shared<SymbolicRenderTarget>(GL_BACK);
 	m_pGeometryPath = make_shared<GeometryPath>();

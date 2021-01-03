@@ -7,8 +7,8 @@ PolygonModelNode::PolygonModelNode(shared_ptr<IModel> model)
 {
 	m_name = "PolygonModelNode";
 	SetRenderData();
-	VisibleBDB(true);
-	VisibleNormal(true);
+	//VisibleBDB(true);
+	//VisibleNormal(true);
 }
 
 PolygonModelNode::~PolygonModelNode()

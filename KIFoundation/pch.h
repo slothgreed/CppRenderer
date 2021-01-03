@@ -40,6 +40,7 @@ using namespace glm;
 #include "IObserver.h"
 
 #include "BDB.h"
+#include "AnyTreeNode.h"
 
 #include "SystemTypes.h"
 #include "Logger.h"
@@ -51,6 +52,7 @@ using namespace glm;
 #include "FileUtility.h"
 
 #define RELEASE_INSTANCE(x) if(x != NULL) { delete x; x = NULL;}
+#define RELEASE_ARRAY_INSTANCE(x,size) for(int i = 0; i < size; i++){RELEASE_INSTANCE(x);} size = 0;
 #ifdef NDEBUG
 #define KI_ASSERT(x) if(x) {assert(0); retrun;}
 #else

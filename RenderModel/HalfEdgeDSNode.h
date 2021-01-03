@@ -10,8 +10,11 @@ class DLL_EXPORT HalfEdgeDSNode : public PolygonModelNode
 public :
 	HalfEdgeDSNode(shared_ptr<HalfEdgeModel> model);
 	~HalfEdgeDSNode();
-private:
+
 	void VisibleHalfEdgeLine(bool visibility);
+	void VisibleCluster(bool visible, int level);
+private:
+	
 
 };
 }

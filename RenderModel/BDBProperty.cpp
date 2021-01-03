@@ -61,7 +61,7 @@ void BDBProperty::GetBDBPosition(const BDB& bdb, vector<vec3>& position)
 	position[6] = bdb.Max();
 	position[7] = vec3(bdb.Min().x, bdb.Max().y, bdb.Max().z);
 }
-void BDBProperty::Update(IModelNode* pModelNode)
+void BDBProperty::Update(IModelNode* pModelNode, IPropertyArgs* pPropertyArgs)
 {
 	vector<vec3> position;
 	BDB bdb;

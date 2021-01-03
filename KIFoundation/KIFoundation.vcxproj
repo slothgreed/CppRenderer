@@ -163,6 +163,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AnyTreeNode.h" />
     <ClInclude Include="BDB.h" />
     <ClInclude Include="ColorUtility.h" />
     <ClInclude Include="CommandManager.h" />
@@ -186,6 +187,7 @@
     <ClInclude Include="WindowEvent.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AnyTreeNode.cpp" />
     <ClCompile Include="BDB.cpp" />
     <ClCompile Include="ColorUtility.cpp" />
     <ClCompile Include="CommandManager.cpp" />

@@ -27,6 +27,7 @@ HalfEdgeDS::~HalfEdgeDS()
 	m_VertexList.clear();
 	m_EdgeList.clear();
 	m_FaceList.clear();
+
 }
 
 void HalfEdgeDS::Load(const string& filePath)
