@@ -18,9 +18,9 @@ public:
 			:m_start(start), m_end(end), m_weight(weight) {};
 		~Link() {};
 		void Set(int start, int end, float weight);
-		void SetStart(int start) { m_start = start; }
-		void SetEnd(int end) { m_end = end; }
-		void SetWeight(float weight) { m_weight = weight; }
+		void SetStart(int start);
+		void SetEnd(int end);
+		void SetWeight(float weight);
 		int GetStart() { return m_start; };
 		int GetEnd() { return m_end; };
 		float GetWeight() { return m_weight; };

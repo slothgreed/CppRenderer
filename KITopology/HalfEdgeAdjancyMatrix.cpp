@@ -11,10 +11,6 @@ HalfEdgeAdjancyMatrix::HalfEdgeAdjancyMatrix(HalfEdgeDS* pHalfEdgeDS)
 	New();
 }
 
-HalfEdgeAdjancyMatrix::~HalfEdgeAdjancyMatrix()
-{
-}
-
 void HalfEdgeAdjancyMatrix::New()
 {
 	assert(m_Matrix == NULL);

@@ -25,7 +25,7 @@ void IModelNode::AddProperty(shared_ptr<IModelProperty> prop)
 {
 	if (!HasProperty(prop->Type()))
 	{
-		prop->Build(this);
+		prop->Build(this, nullptr);
 		m_pProperty.push_back(prop);
 	}
 }
@@ -177,7 +177,7 @@ void IModelNode::UpdateProperty()
 {
 	for (int i = 0; i < m_pProperty.size(); i++)
 	{
-		m_pProperty[i]->Update(this);
+		m_pProperty[i]->Update(this, nullptr);
 	}
 }
 

@@ -2,9 +2,10 @@ namespace KI
 {
 namespace Topology
 {
-AlignOrientation::AlignOrientation(HalfEdgeDS* pHalfEdgeDS)
+AlignOrientation::AlignOrientation(HalfEdgeDS* pHalfEdgeDS, DownSampling* pDownSampling)
 {
 	m_pHalfEdgeDS = pHalfEdgeDS;
+	m_pDownSampling = pDownSampling;
 }
 
 AlignOrientation::~AlignOrientation()
@@ -51,7 +52,7 @@ void AlignOrientation::AssignLowerByUpper(int upperIndex)
 	// upper‚ðŠî‚É1ŠK‘w‰º(×‚©‚¢)‚Ì‚à‚Ì‚É”½‰f‚·‚éB
 	int upperLevel = upperIndex;
 	int lowerLevel = upperIndex + 1;
-	auto pResolution = m_pHalfEdgeDS->GetDownSampling()->GetResolution(upperLevel);
+	auto pResolution = m_pDownSampling->GetResolution(upperLevel);
 	auto pVertexList = m_pHalfEdgeDS->VertexList();
 
 	auto pAdjancyMatrix = pResolution->GetAdjancyMatrix();
@@ -74,9 +75,9 @@ void AlignOrientation::AssignLowerByUpper(int upperIndex)
 }
 void AlignOrientation::Calculate(int globalItrNum, int localItrNum)
 {
-	assert(m_pHalfEdgeDS->GetDownSampling() != NULL);
+	assert(m_pDownSampling != NULL);
 
-	int resolutionIndex = m_pHalfEdgeDS->GetDownSampling()->GetResolutionNum() - 1;
+	int resolutionIndex = m_pDownSampling->GetResolutionNum() - 1;
 	for (int i = 0; i < globalItrNum; i++)
 	{
 		
@@ -93,8 +94,7 @@ void AlignOrientation::Calculate(int globalItrNum, int localItrNum)
 
 void AlignOrientation::LocalAlignment(int resolution)
 {
-	auto pDownSampling = m_pHalfEdgeDS->GetDownSampling();
-	auto pResolution = pDownSampling->GetResolution(resolution);
+	auto pResolution = m_pDownSampling->GetResolution(resolution);
 	auto pAdjancyMatrix = pResolution->GetAdjancyMatrix();
 	auto pVertexList = m_pHalfEdgeDS->VertexList();
 	vec3 orient1;
