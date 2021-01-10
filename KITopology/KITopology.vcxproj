@@ -166,6 +166,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AdjancyMatrix.h" />
+    <ClInclude Include="AdjancyMatrixCSVIO.h" />
     <ClInclude Include="AlignOrientation.h" />
     <ClInclude Include="HalfEdgeAdjancyMatrix.h" />
     <ClInclude Include="Cone.h" />
@@ -190,6 +191,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AdjancyMatrix.cpp" />
+    <ClCompile Include="AdjancyMatrixCSVIO.cpp" />
     <ClCompile Include="AlignOrientation.cpp" />
     <ClCompile Include="Cone.cpp" />
     <ClCompile Include="Cube.cpp" />

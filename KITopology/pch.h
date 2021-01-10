@@ -43,11 +43,16 @@ using namespace KI::Foundation;
 #include "HalfEdgeFace.h"
 #include "HalfEdgeVertex.h"
 #include "HalfEdgeDS.h"
+
+#include "HalfEdgeOperator.h"
+
+
 #include "AdjancyMatrix.h"
 #include "HalfEdgeAdjancyMatrix.h"
+#include "AdjancyMatrixCSVIO.h"
+
 #include "DownSampling.h"
 #include "AlignOrientation.h"
-#include "HalfEdgeOperator.h"
 
 #include "HalfEdgeRepository.h"
 

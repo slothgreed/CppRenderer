@@ -96,7 +96,7 @@ DownSampling::DownSampling(HalfEdgeDS* pHalfEdgeDS, int maxLevel)
 
 void DownSampling::Generate()
 {
-	auto pOrgMatrix = make_shared<HalfEdgeAdjancyMatrix>();
+	auto pOrgMatrix = make_shared<AdjancyMatrix>();
 	auto pOrgResolution = make_shared<DownSampling::Resolution>();
 	m_pResolution.push_back(pOrgResolution);
 	for (int i = 1; i < m_maxLevel; i++)
@@ -130,7 +130,6 @@ void DownSampling::CreateResolution(shared_ptr<DownSampling::Resolution> pOrgRes
 	for (int i = 0; i < vertexNum; i++)
 	{
 		int startIndex = pOrgMatrix->Get(i, 0)->GetStart();
-		// 0,0Ç‡ä‹ÇﬂÇÈÅB
 		for (int j = 0; j < pOrgMatrix->ColumnNum(i); j++)
 		{
 			int endIndex = pOrgMatrix->Get(i, j)->GetEnd();
@@ -139,7 +138,7 @@ void DownSampling::CreateResolution(shared_ptr<DownSampling::Resolution> pOrgRes
 			float area1 = vertexList[startIndex]->Area();
 			float area2 = vertexList[endIndex]->Area();
 			float ratio = area1 > area2 ? area1 / area2 : area2 / area1;
-			entries[startIndex + endIndex] = Entry(i, j, nDot*ratio);
+			entries[startIndex + endIndex] = Entry(i, j, nDot * ratio);
 		}
 	}
 
@@ -176,7 +175,7 @@ void DownSampling::CreateResolution(shared_ptr<DownSampling::Resolution> pOrgRes
 			 vertex2->Normal() * vertex2->Area());
 		newNormal = glm::normalize(newNormal);
 
-		pResolution->SetToUpper(entry.m_i, entry.m_j, i);
+		pResolution->SetToUpper(i, entry.m_i, entry.m_j);
 		pResolution->SetToLower(entry.m_i, i);
 		pResolution->SetToLower(entry.m_j, i);
 		pResolution->GetData(i)->Set(newPosition, newNormal, newArea);
@@ -184,57 +183,54 @@ void DownSampling::CreateResolution(shared_ptr<DownSampling::Resolution> pOrgRes
 
 	delete entries;
 
-	AdjancyMatrix* pMatrix = pResolution->GetAdjancyMatrix();
-	pMatrix->NewRow(newPositionNum);
-	// calculate neighborhood;
-	for (int i = 0; i < newPositionNum; i++)
-	{
-		vector<AdjancyMatrix::Link> newLink;
-		for (int j = 0; j < pResolution->GetClusterNum(); j++)
-		{
-			for (int k = 0; k < pResolution->GetChildNum(); k++)
-			{
-				int upper = pResolution->GetToUpper(k, j);
-				int linkNum = pOrgMatrix->ColumnNum(upper);
-				for (int lnkIdx = 0; lnkIdx < linkNum; lnkIdx++)
-				{
-					auto link = pOrgMatrix->Get(upper, lnkIdx);
-					newLink.push_back(AdjancyMatrix::Link(
-						pResolution->GetToLower(link->GetStart()),
-						pResolution->GetToLower(link->GetEnd()),link->GetWeight()));
-				}
-			}
+	//AdjancyMatrix* pMatrix = pResolution->GetAdjancyMatrix();
+	//pMatrix->NewRow(newPositionNum);
+	//// calculate neighborhood;
+	//for (int i = 0; i < pResolution->GetClusterNum(); i++)
+	//{
+	//	vector<AdjancyMatrix::Link> newLink;
+	//	for (int j = 0; j < pResolution->GetBranchNum(); j++)
+	//	{
+	//		int upper = pResolution->GetToUpper(i, j);
+	//		int linkNum = pOrgMatrix->ColumnNum(upper);
+	//		for (int lnkIdx = 0; lnkIdx < linkNum; lnkIdx++)
+	//		{
+	//			auto link = pOrgMatrix->Get(upper, lnkIdx);
+	//			newLink.push_back(AdjancyMatrix::Link(
+	//				pResolution->GetToLower(link->GetStart()),
+	//				pResolution->GetToLower(link->GetEnd()), link->GetWeight()));
+	//		}
+	//	}
 
-			std::sort(newLink.begin(), newLink.end());
-			int id = -1; 
-			int size = 0;
-			for (auto &link : newLink) {
-				if (id != link.GetEnd() && link.GetEnd() != i) {
-					id = link.GetEnd();
-					size++;
-				}
-			}
+	//	std::sort(newLink.begin(), newLink.end());
+	//	int id = -1;
+	//	int size = 0;
+	//	for (auto &link : newLink) {
+	//		if (id != link.GetEnd() && link.GetEnd() != i) {
+	//			id = link.GetEnd();
+	//			size++;
+	//		}
+	//	}
 
-			pMatrix->NewColumn(i, size);
-			int k = 0;
-			for (auto &link : newLink)
-			{
-				if (link.GetEnd() != i)
-				{
-					if (id != link.GetEnd())
-					{
-						pMatrix->Set(i, k, link);
-						id = link.GetEnd();
-						k++;
-					}
-					else
-					{
-						pMatrix->Get(i, k - 1)->SetWeight(pMatrix->Get(i, k - 1)->GetWeight() + link.GetWeight());
-					}
-				}
-			}
-		}
-	}
+	//	pMatrix->NewColumn(i, size);
+	//	int k = 0;
+	//	for (auto &link : newLink)
+	//	{
+	//		if (link.GetEnd() != i)
+	//		{
+	//			if (id != link.GetEnd())
+	//			{
+	//				pMatrix->Set(i, k, link);
+	//				id = link.GetEnd();
+	//				k++;
+	//			}
+	//			else
+	//			{
+	//				pMatrix->Get(i, k - 1)->SetWeight(pMatrix->Get(i, k - 1)->GetWeight() + link.GetWeight());
+	//			}
+	//		}
+	//	}
+	//}
 }
 
 shared_ptr<DownSampling::Resolution> DownSampling::GetResolution(int level)
@@ -256,7 +252,7 @@ void DownSampling::GetCluster(int level, std::vector<int>& index)
 		auto pCurrent = m_pResolution[level - 1];	// ex : 3
 		for (int i = 0; i < pCurrent->GetClusterNum(); i++)
 		{
-			for (int j = 0; j < pCurrent->GetChildNum(); i++)
+			for (int j = 0; j < pCurrent->GetBranchNum(); i++)
 			{
 				int value = pCurrent->GetToUpper(i, j);
 				GetClusterRecursive(level - 2, value, i, index);
@@ -279,7 +275,7 @@ void DownSampling::GetClusterRecursive(int level, int parentClusterIndex, int cl
 		auto pCurrent = m_pResolution[level - 1];	// ex : 1
 		for (int i = 0; i < pCurrent->GetClusterNum(); i++)
 		{
-			for (int j = 0; j < pCurrent->GetChildNum(); i++)
+			for (int j = 0; j < pCurrent->GetBranchNum(); i++)
 			{
 				int value = pCurrent->GetToUpper(i, j);
 				GetClusterRecursive(level - 2, value, i, index);

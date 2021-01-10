@@ -6,7 +6,7 @@ namespace KI
 namespace Topology
 {
 
-class DownSampling
+class DLL_EXPORT DownSampling
 {
 public:
 
@@ -43,7 +43,7 @@ public:
 		void SetToLower(int index, int value);
 		int GetToLower(int index);
 		int GetClusterNum() { return m_UpperNum; }
-		int GetChildNum() { return 2; }
+		int GetBranchNum() { return 2; }
 		AdjancyMatrix* GetAdjancyMatrix();
 		void NewData(int positionNum, int originalPosNum);
 		void FreeData();

@@ -4,27 +4,26 @@ namespace Topology
 {
 
 HalfEdgeAdjancyMatrix::HalfEdgeAdjancyMatrix(HalfEdgeDS* pHalfEdgeDS)
-	:m_sizeW(0),
-	m_sizeH(0),
-	m_Matrix(NULL)
+	: m_pHalfEdgeDS(pHalfEdgeDS)
 {
 	New();
 }
 
 void HalfEdgeAdjancyMatrix::New()
 {
-	assert(m_Matrix == NULL);
-	m_sizeW = m_pHalfEdgeDS->VertexList().size();
-	m_Matrix = new Link*[m_sizeW];
-	for (int i = 0; i < m_sizeW; i++)
+	assert(m_pHalfEdgeDS != NULL);
+	NewRow(m_pHalfEdgeDS->VertexList().size());
+	for (int i = 0; i < RowNum(); i++)
 	{
 		auto vertex = m_pHalfEdgeDS->VertexList()[i];
-		m_sizeH = vertex->AroundVertexNum();
-		m_Matrix[i] = new Link[m_sizeH];
+		int sizeH = vertex->AroundVertexNum();
+
+		NewColumn(i, sizeH);
 		int j = 0;
 		for (auto itr = VertexAroundEdgeIterator(vertex.get()); itr.HasNext(); itr.Next())
 		{
-			m_Matrix[i][j] = Link(vertex->Index(), itr.Current()->Index(), 0);
+			Set(i, j, Link(vertex->Index(), itr.Current()->Index(), 0));
+			j++;
 		}
 	}
 }

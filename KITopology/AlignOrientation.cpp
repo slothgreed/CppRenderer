@@ -60,11 +60,11 @@ void AlignOrientation::AssignLowerByUpper(int upperIndex)
 	for (int i = 0; i < pAdjancyMatrix->RowNum(); i++)
 	{
 		auto pLink1 = pAdjancyMatrix->Get(i, 0);
-		for (int j = 0; j < pResolution->GetDataNum(); j++)
+		for (int j = 0; j < pResolution->GetClusterNum(); j++)
 		{
-			for (int k = 0; k < 2; k++)
+			for (int k = 0; k < pResolution->GetBranchNum(); k++)
 			{
-				auto pVertexIndex = pResolution->GetUpper(pLink1->GetEnd(), k);
+				auto pVertexIndex = pResolution->GetToUpper(pLink1->GetEnd(), k);
 				auto pVertex = pVertexList[pLink1->GetStart()];
 				vec3 tangent = pVertex->Tangent();
 				vec3 normal = pVertexList[pVertexIndex]->Normal();

@@ -168,6 +168,7 @@
     <ClInclude Include="ColorUtility.h" />
     <ClInclude Include="CommandManager.h" />
     <ClInclude Include="FileUtility.h" />
+    <ClInclude Include="FileWriter.h" />
     <ClInclude Include="ICommand.h" />
     <ClInclude Include="IController.h" />
     <ClInclude Include="IEventArgs.h" />
@@ -193,6 +194,7 @@
     <ClCompile Include="CommandManager.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="FileUtility.cpp" />
+    <ClCompile Include="FileWriter.cpp" />
     <ClCompile Include="KIFoundation.cpp" />
     <ClCompile Include="Logger.cpp" />
     <ClCompile Include="MathHelper.cpp" />

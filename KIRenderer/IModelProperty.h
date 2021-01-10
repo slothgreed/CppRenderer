@@ -13,11 +13,11 @@ enum PROPERTY_TYPE : unsigned int
 	PROPERTY_TYPE_VERTEX_TANGENT = 0x05
 };
 
-class IPropertyArgs
+class DLL_EXPORT IPropertyArgs
 {
 public:
-	IPropertyArgs();
-	~IPropertyArgs();
+	IPropertyArgs() {};
+	~IPropertyArgs() {};
 	virtual PROPERTY_TYPE Type() = 0;
 
 private:
@@ -35,8 +35,8 @@ public:
 	void SetVisible(bool value) { m_visible = value; }
 	bool Visible() { return m_visible; }
 	virtual void Draw(shared_ptr<UniformStruct> pUniform) = 0;
-	virtual void Update(IModelNode* pModelNode, IPropertyArgs* pPropertyArgs) = 0;
 	virtual void Build(IModelNode* pModelNode, IPropertyArgs* pPropertyArgs) = 0;
+	virtual void Update(IModelNode* pModelNode, IPropertyArgs* pPropertyArgs) = 0;
 private:
 	bool m_visible;
 };

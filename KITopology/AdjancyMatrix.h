@@ -7,10 +7,10 @@ namespace Topology
 {
 // Has Link Array;
 // m_Matrix[i][j] = (vertex->Index(),vertex->AroundVertex(j)->Index());
-class AdjancyMatrix
+class DLL_EXPORT AdjancyMatrix
 {
 public:
-	class Link
+	class DLL_EXPORT Link
 	{
 	public:
 		Link() :m_start(-1), m_end(-1), m_weight(0.0f) {};
@@ -37,15 +37,15 @@ public:
 
 	void Set(int row, int column, const Link& link);
 	int RowNum() { return m_sizeRow; }
-	int ColumnNum(int i) { return m_Matrix[i + 1] - m_Matrix[i]; }
+	int ColumnNum(int i);
 	AdjancyMatrix::Link* Get(int row, int column);
 	virtual void NewRow(int num);
 	virtual void NewColumn(int index, int num);
 protected:
 	virtual void Delete();
+	std::vector<std::vector<AdjancyMatrix::Link>> m_Matrix;
 private:
 	HalfEdgeDS* m_pHalfEdgeDS;
-	Link** m_Matrix;
 	int m_sizeRow;
 };
 }

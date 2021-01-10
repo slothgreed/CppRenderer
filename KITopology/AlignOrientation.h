@@ -15,7 +15,7 @@ public:
 	void LocalAlignment(int resolution);
 	void GlobalAlignment();
 private:
-	void AssignLowerByUpper(DownSampling* pDownSampling);
+	void AssignLowerByUpper(int upperIndex);
 	void ClosestDirection(
 		vec3 tangent1, vec3 normal1, 
 		vec3 tangent2, vec3 normal2,

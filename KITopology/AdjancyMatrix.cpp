@@ -16,49 +16,41 @@ AdjancyMatrix::~AdjancyMatrix()
 
 void AdjancyMatrix::NewRow(int num)
 {
-	assert(m_Matrix == NULL);
-	assert(num == 0);
-	assert(m_sizeRow != 0);
+	assert(num != 0);
+	assert(m_sizeRow == 0);
 	m_sizeRow = num;
-	m_Matrix = new Link*[m_sizeRow];
-	
+
+	m_Matrix.resize(num);
 }
 
 void AdjancyMatrix::NewColumn(int index, int size)
 {
-	assert(index < size);
-	assert(index != 0);
-	m_Matrix[index] = new Link[size];
+	assert(index < m_sizeRow);
+	m_Matrix[index].resize(size);
 }
 
 void AdjancyMatrix::Set(int row, int column, const Link& link)
 {
-	assert(m_sizeRow < row);
-	assert(ColumnNum(row) < column);
+	assert(m_sizeRow > row);
+	assert(ColumnNum(row) > column);
 	m_Matrix[row][column] = link;
+}
+
+int AdjancyMatrix::ColumnNum(int i)
+{
+	return (int)m_Matrix[i].size();
 }
 
 void AdjancyMatrix::Delete()
 {
-	if (m_Matrix != NULL)
-	{
-		for (int i = 0; i < m_sizeRow; i++)
-		{
-			delete m_Matrix[i];
-			m_Matrix[i] = nullptr;
-		}
-
-		delete m_Matrix;
-		m_Matrix = nullptr;
-	}
-
+	m_Matrix.clear();
 	m_sizeRow = 0;
 }
 
 AdjancyMatrix::Link* AdjancyMatrix::Get(int row, int column)
 {
-	assert(m_sizeRow < row);
-	assert(ColumnNum(row) < column);
+	assert(m_sizeRow >= row);
+	assert(ColumnNum(row) >= column);
 	return &m_Matrix[row][column];
 }
 

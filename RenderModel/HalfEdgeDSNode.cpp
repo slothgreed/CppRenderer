@@ -24,7 +24,9 @@ void HalfEdgeDSNode::VisibleCluster(bool visibility, int level)
 	}
 	else
 	{
-		AddProperty(make_shared<HalfEdgeClusterProperty>(level));
+		auto pProperty = make_shared<HalfEdgeClusterProperty>();
+		pProperty->Build(this, &HalfEdgeClusterPropertyArgs(level));
+		AddProperty(pProperty);
 	}
 }
 }

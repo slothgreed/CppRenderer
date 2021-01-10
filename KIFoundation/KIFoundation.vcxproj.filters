@@ -93,6 +93,9 @@
     <ClInclude Include="AnyTreeNode.h">
       <Filter>ヘッダー ファイル\Core</Filter>
     </ClInclude>
+    <ClInclude Include="FileWriter.h">
+      <Filter>ヘッダー ファイル\Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -132,6 +135,9 @@
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="AnyTreeNode.cpp">
+      <Filter>ソース ファイル\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="FileWriter.cpp">
       <Filter>ソース ファイル\Core</Filter>
     </ClCompile>
   </ItemGroup>

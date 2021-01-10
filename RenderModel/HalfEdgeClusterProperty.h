@@ -6,7 +6,7 @@ namespace KI
 namespace RenderModel
 {
 
-class HalfEdgeClusterPropertyArgs : public IPropertyArgs
+class DLL_EXPORT HalfEdgeClusterPropertyArgs : public IPropertyArgs
 {
 public:
 	HalfEdgeClusterPropertyArgs(int level) :m_level(level) {};
