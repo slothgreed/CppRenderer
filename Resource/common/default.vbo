@@ -37,8 +37,7 @@ vec4 OutputPosition()
 	vec4 pos = vp * instanceMatrix * vec4(a_position,1.0);
 	pos /= pos.w;
 #elif defined(OUT_WORLD_POSITION)
-	vec4 pos = scene.ViewMatrix * vec4(a_position,1.0);
-	pos /= pos.w;
+	vec4 pos = WorldPosition(viewMatrix,a_position);
 #else 
 	mat4 vp = scene.Projection * scene.ViewMatrix;
 	vec4 pos = vp * vec4(a_position,1.0);

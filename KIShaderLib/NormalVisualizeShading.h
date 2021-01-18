@@ -8,7 +8,7 @@ namespace ShaderLib
 class DLL_EXPORT NormalVisualizeShading : public IHasShading
 {
 public:
-	SHADER_TYPE Type() { return SHADER_TYPE::SHADER_TYPE_GRAYSCALE; }
+	SHADER_TYPE Type() { return SHADER_TYPE::SHADER_TYPE_NORMALVISUALIZE; }
 
 	NormalVisualizeShading();
 	~NormalVisualizeShading() {};
@@ -35,7 +35,7 @@ public:
 	NormalVisualizeGeomCode();
 	~NormalVisualizeGeomCode();
 
-	virtual SHADER_TYPE Type() { return SHADER_TYPE::SHADER_TYPE_GRAYSCALE; }
+	virtual SHADER_TYPE Type() { return SHADER_TYPE::SHADER_TYPE_NORMALVISUALIZE; }
 
 	virtual void Initialize(GLuint programId) override;
 

@@ -13,6 +13,7 @@ public:
 	class DLL_EXPORT Link
 	{
 	public:
+		static const int INVALID = -1;
 		Link() :m_start(-1), m_end(-1), m_weight(0.0f) {};
 		Link(int start, int end, float weight)
 			:m_start(start), m_end(end), m_weight(weight) {};
@@ -37,6 +38,7 @@ public:
 
 	void Set(int row, int column, const Link& link);
 	int RowNum() { return m_sizeRow; }
+	int Size() { return m_size; }
 	int ColumnNum(int i);
 	AdjancyMatrix::Link* Get(int row, int column);
 	virtual void NewRow(int num);
@@ -47,6 +49,7 @@ protected:
 private:
 	HalfEdgeDS* m_pHalfEdgeDS;
 	int m_sizeRow;
+	int m_size;
 };
 }
 }

@@ -167,7 +167,7 @@
     <ClInclude Include="BezierLineNode.h" />
     <ClInclude Include="CameraNode.h" />
     <ClInclude Include="framework.h" />
-    <ClInclude Include="HalfEdgeClusterProperty.h" />
+    <ClInclude Include="HalfEdgeResolutionProperty.h" />
     <ClInclude Include="HalfEdgeDSNode.h" />
     <ClInclude Include="HalfEdgeProperty.h" />
     <ClInclude Include="ManipulatorNode.h" />
@@ -182,7 +182,7 @@
     <ClCompile Include="BezierLineNode.cpp" />
     <ClCompile Include="CameraNode.cpp" />
     <ClCompile Include="dllmain.cpp" />
-    <ClCompile Include="HalfEdgeClusterProperty.cpp" />
+    <ClCompile Include="HalfEdgeResolutionProperty.cpp" />
     <ClCompile Include="HalfEdgeDSNode.cpp" />
     <ClCompile Include="HalfEdgeProperty.cpp" />
     <ClCompile Include="ManipulatorNode.cpp" />

@@ -26,12 +26,16 @@ void AlgorithmScene::Initialize()
 
 	auto pModel = make_shared<HalfEdgeModel>();
 	pModel->Load("E:\\cgModel\\bunny6000.half");
+	//pModel->Load("E:\\cgModel\\cube.half");
 	BDB bdb;
 	pModel->GetBDB(bdb);
 	m_pScene->GetCamera()->FitToBDB(bdb);
-	m_pScene->AddModelNode(make_shared<HalfEdgeDSNode>(pModel));
+	m_pTargetNode = make_shared<HalfEdgeDSNode>(pModel);
+
+	m_pScene->AddModelNode(m_pTargetNode);
+
 	m_pBackTarget = make_shared<SymbolicRenderTarget>(GL_BACK);
-	
+	m_level = 0;
 }
 
 void AlgorithmScene::Invoke()
@@ -60,10 +64,18 @@ void AlgorithmScene::ProcessMouseEvent(const MouseInput& input)
 	{
 		if (input.Press(MOUSE_BUTTON_LEFT))
 		{
-			auto pCommand = make_shared<SmoothingCommand>(
-				make_shared<SmoothingCommandArgs>(m_pScene->ModelNodes()[0]));
+			//auto pCommand = make_shared<SmoothingCommand>(
+			//	make_shared<SmoothingCommandArgs>(m_pScene->ModelNodes()[0]));
 
-			m_pCommandManager->Execute(pCommand);
+			//m_pCommandManager->Execute(pCommand);
+		}
+		else if (input.Press(MOUSE_BUTTON_RIGHT))
+		{
+			m_pTargetNode->VisibleCluster(true, m_level);
+			m_level++;
+			if (m_level == 20) {
+				m_level = 0;
+			}
 		}
 	}
 }

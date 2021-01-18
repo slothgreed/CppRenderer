@@ -46,7 +46,7 @@ void NormalProperty::SetVBOData(IModelNode* pModelNode)
 
 void NormalProperty::Draw(shared_ptr<UniformStruct> pUniform)
 {
-	//m_pRenderData->Draw(pUniform);
+	m_pRenderData->Draw(pUniform);
 }
 }
 }

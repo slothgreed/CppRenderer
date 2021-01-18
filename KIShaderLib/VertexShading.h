@@ -21,14 +21,13 @@ public:
 	VertexShading(VERTEX_SHADING_TYPE type);
 	~VertexShading();
 
-	bool Compare(IShading* pShading);
-
 	VERTEX_SHADING_TYPE Type() { return m_Type; }
 
 	virtual bool NewShaderCompare(IShaderChunk* pTarget) override;
 	virtual shared_ptr<IShaderCode> NewShaderCode(IShaderBuildInfo* pBuildInfo,SHADER_PROGRAM_TYPE type) override;
 
 private:
+	bool Compare(IShading* pShading);
 	VERTEX_SHADING_TYPE m_Type;
 
 };

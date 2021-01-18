@@ -14,7 +14,7 @@ public :
 	void VisibleHalfEdgeLine(bool visibility);
 	void VisibleCluster(bool visible, int level);
 private:
-	
+	shared_ptr<HalfEdgeResolutionProperty> m_pProperty;
 
 };
 }

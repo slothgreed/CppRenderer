@@ -19,11 +19,11 @@ void ShaderManager::Free()
 }
 ShaderManager::ShaderManager()
 {
-	m_pShaderList.clear();
 }
 
 ShaderManager::~ShaderManager()
 {
+	Dispose();
 }
 
 shared_ptr<IShader> ShaderManager::Generate(shared_ptr<IShaderBuildInfo> pBuildInfo)
@@ -59,8 +59,6 @@ void ShaderManager::Dispose()
 	}
 
 	m_pShaderList.clear();
-
-	RELEASE_INSTANCE(m_Instance);
 }
 }
 }

@@ -31,6 +31,7 @@ public:
 	shared_ptr<RenderData> GetRenderData(int id);
 protected:
 	void AddProperty(shared_ptr<IModelProperty> prop);
+	void AddProperty(shared_ptr<IModelProperty> prop, IPropertyArgs* propArgs);
 	bool HasProperty(PROPERTY_TYPE type);
 	void RemoveProperty(shared_ptr<IModelProperty> prop);
 	virtual void DrawProperty(shared_ptr<UniformStruct> pUniform);

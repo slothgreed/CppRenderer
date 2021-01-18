@@ -7,7 +7,7 @@ using namespace KI;
 int main()
 {
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
-	//_CrtSetBreakAlloc(5805);
+	//_CrtSetBreakAlloc(9542);
 
 	int NEW_SCENE = 8;
     std::cout << "Hello World!\n"; 

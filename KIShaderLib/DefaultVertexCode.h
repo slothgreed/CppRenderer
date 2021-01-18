@@ -47,8 +47,8 @@ public:
 private:
 	bool m_outPosition;
 	bool m_outNormal;
-	bool m_planeGlPosition;	// 位置をそのままにしてgl_Positionに流すかどうか
-	bool m_worldGlPosition;	// 位置をそのままにしてgl_Positionに流すかどうか
+	bool m_planeGlPosition;	// 位置をそのままにしてgl_Positionに流すかどうか 優先度1
+	bool m_worldGlPosition;	// ワールド座標をgl_Positionに流すかどうか		 優先度2
 	
 	bool m_planeOutPosition;	// 位置をどのように次のシェーダに渡すか
 	bool m_worldOutPosition;	// 位置をどのように次のシェーダに渡すか

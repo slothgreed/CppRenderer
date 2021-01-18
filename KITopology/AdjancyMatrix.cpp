@@ -5,6 +5,7 @@ namespace Topology
 
 AdjancyMatrix::AdjancyMatrix()
 	: m_sizeRow(0),
+	m_size(0),
 	m_Matrix(NULL)
 {
 }
@@ -27,6 +28,7 @@ void AdjancyMatrix::NewColumn(int index, int size)
 {
 	assert(index < m_sizeRow);
 	m_Matrix[index].resize(size);
+	m_size += size;
 }
 
 void AdjancyMatrix::Set(int row, int column, const Link& link)
@@ -45,6 +47,7 @@ void AdjancyMatrix::Delete()
 {
 	m_Matrix.clear();
 	m_sizeRow = 0;
+	m_size = 0;
 }
 
 AdjancyMatrix::Link* AdjancyMatrix::Get(int row, int column)

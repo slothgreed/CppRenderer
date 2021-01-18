@@ -63,7 +63,7 @@
     <ClInclude Include="VertexTangentProperty.h">
       <Filter>ヘッダー ファイル\Property</Filter>
     </ClInclude>
-    <ClInclude Include="HalfEdgeClusterProperty.h">
+    <ClInclude Include="HalfEdgeResolutionProperty.h">
       <Filter>ヘッダー ファイル\Property</Filter>
     </ClInclude>
   </ItemGroup>
@@ -104,7 +104,7 @@
     <ClCompile Include="VertexTangentProperty.cpp">
       <Filter>ソース ファイル\Property</Filter>
     </ClCompile>
-    <ClCompile Include="HalfEdgeClusterProperty.cpp">
+    <ClCompile Include="HalfEdgeResolutionProperty.cpp">
       <Filter>ソース ファイル\Property</Filter>
     </ClCompile>
   </ItemGroup>

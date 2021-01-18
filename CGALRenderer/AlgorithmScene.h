@@ -16,6 +16,8 @@ public:
 private:
 	shared_ptr<IRenderTarget> m_pBackTarget;
 	shared_ptr<Scene> m_pScene;
+	shared_ptr<HalfEdgeDSNode> m_pTargetNode;
+	int m_level;
 };
 
 }

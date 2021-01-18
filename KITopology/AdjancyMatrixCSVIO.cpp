@@ -24,6 +24,19 @@ void AdjancyMatrixCSVIO::Output(const std::string& filePath, AdjancyMatrix* pMat
 				writer.Write(",");
 			}
 		}
+
+		for (int j = 0; j < pMatrix->ColumnNum(i); j++)
+		{
+			auto pData = pMatrix->Get(i, j);
+			writer.Write(std::to_string(pData->GetWeight()));
+
+			if (j == pMatrix->ColumnNum(i) - 1) {
+				writer.Write("", true);
+			}
+			else {
+				writer.Write(",");
+			}
+		}
 	}
 
 	writer.Close();

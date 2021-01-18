@@ -5,7 +5,8 @@ namespace RenderModel
 HalfEdgeDSNode::HalfEdgeDSNode(shared_ptr<HalfEdgeModel> model)
 	:PolygonModelNode(static_pointer_cast<IModel>(model))
 {
-	VisibleHalfEdgeLine(true);
+	//VisibleHalfEdgeLine(true);
+	model->CalcDownSampling();
 }
 
 HalfEdgeDSNode::~HalfEdgeDSNode()
@@ -21,12 +22,12 @@ void HalfEdgeDSNode::VisibleCluster(bool visibility, int level)
 {
 	if (HasProperty(PROPERTY_TYPE::PROPERTY_TYPE_HALFEDGE_CLUSTER))
 	{
+		m_pProperty->Update(this,&HalfEdgeResolutionPropertyArgs(level));
 	}
 	else
 	{
-		auto pProperty = make_shared<HalfEdgeClusterProperty>();
-		pProperty->Build(this, &HalfEdgeClusterPropertyArgs(level));
-		AddProperty(pProperty);
+		m_pProperty = make_shared<HalfEdgeResolutionProperty>();
+		AddProperty(m_pProperty, &HalfEdgeResolutionPropertyArgs(level));
 	}
 }
 }

@@ -14,7 +14,9 @@ public:
 	virtual void Update(IModelNode* pModel, IPropertyArgs* pPropertyArgs) override;
 	virtual void Draw(shared_ptr<UniformStruct> pUniform);
 private:
-
+	void SetVBOData(IModelNode* pModelNode);
+	shared_ptr<TangentVisualizeShading> m_pShading;
+	shared_ptr<RenderData> m_pRenderData;
 };
 
 }

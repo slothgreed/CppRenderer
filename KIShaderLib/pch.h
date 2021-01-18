@@ -63,10 +63,11 @@ using namespace KI::Gfx;
 #include "VertexShading.h"
 #include "BasicShading.h"
 #include "LambertShading.h"
-#include "NormalVisualizeShading.h"
 #include "OutputShading.h"
 #include "GrayScaleShading.h"
 #include "BezierLineShading.h"
 #include "PhongShading.h"
 #include "PickShading.h"
+#include "TangentVisualizeShading.h"
+#include "NormalVisualizeShading.h"
 #endif //KI_SHADER_LIB_PCH_H

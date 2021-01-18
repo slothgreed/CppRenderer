@@ -39,7 +39,7 @@ using namespace KI::Asset;
 #include "NormalProperty.h"
 #include "HalfEdgeProperty.h"
 #include "VertexTangentProperty.h"
-#include "HalfEdgeClusterProperty.h"
+#include "HalfEdgeResolutionProperty.h"
 
 #include "PrimitiveNode.h"
 #include "PolygonModelNode.h"

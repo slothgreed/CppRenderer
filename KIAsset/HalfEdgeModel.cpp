@@ -10,6 +10,7 @@ HalfEdgeModel::HalfEdgeModel()
 
 HalfEdgeModel::~HalfEdgeModel()
 {
+	RELEASE_INSTANCE(m_pDownSampling);
 }
 
 void HalfEdgeModel::Load(const string& filePath)
@@ -23,7 +24,6 @@ void HalfEdgeModel::Load(const string& filePath)
 	m_HalfEdgeDS = make_shared<HalfEdgeDS>();
 	m_HalfEdgeDS->Load(filePath);
 	m_HalfEdgeDS->CalcElement();
-	RELEASE_INSTANCE(m_pDownSampling);
 }
 
 void HalfEdgeModel::GetFacetList(vector<vec3>& facetList, vector<vec3>& normalList)

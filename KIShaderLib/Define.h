@@ -22,6 +22,7 @@ namespace ShaderLib
 #define SHADER_COMPOSIT		"composit"
 #define SHADER_SSLIC		"sslic"
 #define SHADER_NORMALVIS	"normalvisualize"
+#define SHADER_TANGENTVIS	"tangentvisualize"
 #define SHADER_BEZIERLINE	"bezierline"
 #define SHADER_OUTPUT		"output"
 #define SHADER_PICK			"pick"

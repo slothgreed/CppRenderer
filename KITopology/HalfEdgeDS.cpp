@@ -170,12 +170,6 @@ void HalfEdgeDS::CalcElement()
 
 	CalcEdgeParameter();
 	CalcFaceParameter();
-
-	// —×Ús—ñ
-	auto pMatrix = new HalfEdgeAdjancyMatrix(this);
-	AdjancyMatrixCSVIO::Output("C:\\Users\\stmnd\\Desktop\\adjancyMatrix.txt",pMatrix);
-	delete pMatrix;
-
 }
 
 void HalfEdgeDS::CalcEdgeParameter()

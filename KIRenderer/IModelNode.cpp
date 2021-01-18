@@ -23,9 +23,14 @@ IModelNode::~IModelNode()
 
 void IModelNode::AddProperty(shared_ptr<IModelProperty> prop)
 {
+	AddProperty(prop, nullptr);
+}
+
+void IModelNode::AddProperty(shared_ptr<IModelProperty> prop, IPropertyArgs* propArgs)
+{
 	if (!HasProperty(prop->Type()))
 	{
-		prop->Build(this, nullptr);
+		prop->Build(this, propArgs);
 		m_pProperty.push_back(prop);
 	}
 }
@@ -36,10 +41,10 @@ bool IModelNode::HasProperty(PROPERTY_TYPE type)
 		[type](shared_ptr<IModelProperty> value) {return value->Type() == type; });
 	if (itr == m_pProperty.end())
 	{
-		return true;
+		return false;
 	}
 
-	return false;
+	return true;
 }
 
 void IModelNode::RemoveProperty(shared_ptr<IModelProperty> prop)
@@ -112,7 +117,7 @@ void IModelNode::Draw(shared_ptr<UniformStruct> pUniform)
 		{
 			BindModel(pUniform, i);
 			PreDraw(pUniform, i);
-			m_pRenderData[i]->Draw(pUniform);
+			//m_pRenderData[i]->Draw(pUniform);
 			PostDraw(pUniform, i);
 		}
 
