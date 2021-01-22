@@ -15,6 +15,9 @@ public:
 	virtual void Draw(shared_ptr<UniformStruct> pUniform);
 private:
 	void SetVBOData(IModelNode* pModelNode);
+
+	shared_ptr<IVertexBuffer> m_pVertexBuffer;
+	shared_ptr<ArrayBuffer> m_pTangentBuffer;
 	shared_ptr<TangentVisualizeShading> m_pShading;
 	shared_ptr<RenderData> m_pRenderData;
 };

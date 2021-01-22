@@ -3,7 +3,11 @@ namespace KI
 namespace ShaderLib
 {
 
-
+void TangentVisualizeVertexCode::GetIncludeCode(vector<shared_ptr<IShaderCode>>& pShaderCodes)
+{
+	pShaderCodes.push_back(make_shared<ShaderCommon>());
+	pShaderCodes.push_back(make_shared<ShaderStruct>());
+}
 TangentVisualizeGeomCode::TangentVisualizeGeomCode(bool visibleNormal)
 	:m_visibleNormal(visibleNormal),
 	IShaderCode(
@@ -32,7 +36,7 @@ void TangentVisualizeGeomCode::Initialize(GLuint programId)
 
 void TangentVisualizeGeomCode::Bind(shared_ptr<IShaderChunk> pShaderChunk, shared_ptr<IUniformStorage> pUniform)
 {
-	auto pShading = dynamic_cast<NormalVisualizeShading*>(pShaderChunk.get());
+	auto pShading = dynamic_cast<TangentVisualizeShading*>(pShaderChunk.get());
 	if (pShading == nullptr)
 	{
 		return;
@@ -92,11 +96,7 @@ shared_ptr<IShaderCode> TangentVisualizeShading::NewShaderCode(IShaderBuildInfo*
 {
 	if (type == SHADER_PROGRAM_VERTEX)
 	{
-		auto pCode = m_pShading->NewShaderCode(pBuildInfo, type);
-		// –@ü‚Å‘ã—p‚µ‚Ä‚¨‚­B
-		((DefaultVertexCode*)pCode.get())->SetShaderDefine(VERTEX_LAYOUT_NORMAL);
-		((DefaultVertexCode*)pCode.get())->SetPlaneGLPosition(true);
-		return pCode;
+		return make_shared<TangentVisualizeVertexCode>();
 	}
 	else if (type == SHADER_PROGRAM_FRAG)
 	{
@@ -104,7 +104,7 @@ shared_ptr<IShaderCode> TangentVisualizeShading::NewShaderCode(IShaderBuildInfo*
 	}
 	else if (type == SHADER_PROGRAM_GEOM)
 	{
-		return make_shared<TangentVisualizeGeomCode>();
+		return make_shared<TangentVisualizeGeomCode>(m_visibleNormal);
 	}
 
 	return false;

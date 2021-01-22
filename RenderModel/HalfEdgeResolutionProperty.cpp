@@ -31,8 +31,6 @@ void HalfEdgeResolutionProperty::Build(IModelNode* pModelNode, IPropertyArgs* pP
 	//m_pRenderData->SetGeometryData(PRIM_TYPE_POINTS, pVertexBuffer);
 	m_pRenderData->SetGeometryData(PRIM_TYPE_TRIANGLES, pVertexBuffer, pRenderData->GetIndexBuffer());
 
-
-
 	m_pRenderData->SetShading(make_shared<VertexShading>(VERTEX_SHADING_COLOR));
 
 }

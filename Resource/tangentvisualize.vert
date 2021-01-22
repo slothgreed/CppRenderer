@@ -1,6 +1,5 @@
 #include "common\common.h"
 #include "common\struct.h"
-#include "common\default.vbo"
 
 layout(location = 0) in vec3 a_position;
 layout(location = 1) in vec3 a_normal;
@@ -13,8 +12,7 @@ out vec3 tangent;
 
 void main()
 {
-	gl_Position = WorldPosition(scene.ViewMatrix, a_position);
-
+	gl_Position = vec4(a_position,1.0);
 	OutData.normal = a_normal;
 	OutData.tangent = a_tangent;
 

@@ -13,8 +13,11 @@ public :
 
 	void VisibleHalfEdgeLine(bool visibility);
 	void VisibleCluster(bool visible, int level);
+	void VisibleTangent(bool visible);
+
 private:
 	shared_ptr<HalfEdgeResolutionProperty> m_pProperty;
+	shared_ptr<VertexTangentProperty> m_pTangentProperty;
 
 };
 }

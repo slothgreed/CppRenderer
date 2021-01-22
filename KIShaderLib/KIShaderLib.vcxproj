@@ -186,6 +186,7 @@
     <ClInclude Include="ShaderStruct.h" />
     <ClInclude Include="SimpleShaderCode.h" />
     <ClInclude Include="SSLICShading.h" />
+    <ClInclude Include="TangentVisualizeShading.h" />
     <ClInclude Include="UniformBuilder.h" />
     <ClInclude Include="UniformLight.h" />
     <ClInclude Include="UniformMaterial.h" />
@@ -217,6 +218,7 @@
     <ClCompile Include="ShaderCommon.cpp" />
     <ClCompile Include="ShaderStruct.cpp" />
     <ClCompile Include="SSLICShading.cpp" />
+    <ClCompile Include="TangentVisualizeShading.cpp" />
     <ClCompile Include="UniformBuilder.cpp" />
     <ClCompile Include="UniformLight.cpp" />
     <ClCompile Include="UniformMaterial.cpp" />

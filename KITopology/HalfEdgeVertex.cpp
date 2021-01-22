@@ -6,6 +6,7 @@ namespace Topology
 HalfEdgeVertex::HalfEdgeVertex(int index)
 {
 	m_Index = index;
+	m_tangent = vec3(1, 0, 0);
 }
 
 HalfEdgeVertex::~HalfEdgeVertex()

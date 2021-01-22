@@ -6,6 +6,7 @@ HalfEdgeDSNode::HalfEdgeDSNode(shared_ptr<HalfEdgeModel> model)
 	:PolygonModelNode(static_pointer_cast<IModel>(model))
 {
 	//VisibleHalfEdgeLine(true);
+	VisibleTangent(true);
 	model->CalcDownSampling();
 }
 
@@ -28,6 +29,19 @@ void HalfEdgeDSNode::VisibleCluster(bool visibility, int level)
 	{
 		m_pProperty = make_shared<HalfEdgeResolutionProperty>();
 		AddProperty(m_pProperty, &HalfEdgeResolutionPropertyArgs(level));
+	}
+}
+
+void HalfEdgeDSNode::VisibleTangent(bool visibility)
+{
+	if (HasProperty(PROPERTY_TYPE::PROPERTY_TYPE_VERTEX_TANGENT))
+	{
+		m_pTangentProperty->Update(this, nullptr);
+	}
+	else
+	{
+		m_pTangentProperty = make_shared<VertexTangentProperty>();
+		AddProperty(m_pTangentProperty, nullptr);
 	}
 }
 }

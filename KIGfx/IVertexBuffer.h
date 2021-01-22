@@ -8,12 +8,13 @@ namespace Gfx
 class DLL_EXPORT IVertexBuffer : public IAttribute
 {
 public:
-	IVertexBuffer(const string& filePath);
+	IVertexBuffer(const string& name);
 	virtual ~IVertexBuffer() {};
 
-	virtual bool NewShaderCompare(IVertexBuffer* pTarget) = 0;
-	virtual void SetArrayBuffer(GLuint location, shared_ptr<ArrayBuffer> pArrayBuffer) { assert(0); };
-	virtual shared_ptr<ArrayBuffer> GetArrayBuffer(GLuint location) { assert(0); return nullptr; };
+	virtual VERTEX_BUFFER_TYPE Type() { return VERTEX_BUFFER_TYPE::VERTEX_BUFFER_TYPE_NONE; };
+	virtual bool NewShaderCompare(IVertexBuffer* pTarget) { return true; };
+	virtual void SetArrayBuffer(GLuint location, shared_ptr<ArrayBuffer> pArrayBuffer);
+	virtual shared_ptr<ArrayBuffer> GetArrayBuffer(GLuint location);
 	virtual void Add(GLuint location, shared_ptr<ArrayBuffer> arrayBuffer);
 	virtual void Remove(GLuint location);
 	virtual bool IsInstanceDraw() { return m_instanceNum > 1; };
@@ -34,7 +35,7 @@ private:
 	GLuint m_VertexSize;
 	GLuint m_vaoId;
 	GLuint m_instanceNum;
-	string m_filePath;
+	string m_name;
 };
 }
 }

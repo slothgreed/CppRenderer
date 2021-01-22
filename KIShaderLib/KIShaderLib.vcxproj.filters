@@ -144,6 +144,9 @@
     <ClInclude Include="PickShading.h">
       <Filter>ヘッダー ファイル\Shading</Filter>
     </ClInclude>
+    <ClInclude Include="TangentVisualizeShading.h">
+      <Filter>ヘッダー ファイル\Shading</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -213,6 +216,9 @@
       <Filter>ソース ファイル\Shading\Component</Filter>
     </ClCompile>
     <ClCompile Include="PickShading.cpp">
+      <Filter>ソース ファイル\Shading</Filter>
+    </ClCompile>
+    <ClCompile Include="TangentVisualizeShading.cpp">
       <Filter>ソース ファイル\Shading</Filter>
     </ClCompile>
   </ItemGroup>

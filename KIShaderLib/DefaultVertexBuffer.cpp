@@ -3,11 +3,11 @@ namespace KI
 namespace ShaderLib
 {
 DefaultVertexBuffer::DefaultVertexBuffer()
-	:IVertexBuffer(
-		string(SHADER_DIRECTORY)+
-		string(SHADER_DEFAULT)+
-		string(SHADER_EXT_VBO))
+	:IVertexBuffer("Default")
 {
+	m_filePath = string(SHADER_DIRECTORY) +
+		string(SHADER_DEFAULT) +
+		string(SHADER_EXT_VBO);
 }
 
 DefaultVertexBuffer::~DefaultVertexBuffer()
@@ -17,13 +17,6 @@ DefaultVertexBuffer::~DefaultVertexBuffer()
 
 void DefaultVertexBuffer::SetArrayBuffer(GLuint layout, shared_ptr<ArrayBuffer> pArrayBuffer)
 {
-	if (pArrayBuffer->IsGenerated() == false)
-	{
-		// need set value;
-		assert(0);
-		return;
-	}
-
 	bool varidator = false;
 	for (int i = 0; i < VERTEX_ATTRIB_NUM; i++)
 	{
@@ -38,11 +31,7 @@ void DefaultVertexBuffer::SetArrayBuffer(GLuint layout, shared_ptr<ArrayBuffer> 
 		assert(0);
 	}
 
-	if (m_VertexInfo[layout] == nullptr)
-	{
-		Add(layout, pArrayBuffer);
-		BindToVAO(layout);
-	}
+	IVertexBuffer::SetArrayBuffer(layout, pArrayBuffer);
 }
 
 shared_ptr<ArrayBuffer> DefaultVertexBuffer::GetArrayBuffer(GLuint location)
@@ -61,8 +50,7 @@ shared_ptr<ArrayBuffer> DefaultVertexBuffer::GetArrayBuffer(GLuint location)
 		assert(0);
 	}
 
-	return m_VertexInfo[location];
-
+	return IVertexBuffer::GetArrayBuffer(location);
 }
 void DefaultVertexBuffer::SetPosition(const vector<vec3>& position)
 {

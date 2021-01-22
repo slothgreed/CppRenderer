@@ -11,7 +11,8 @@ public:
 	SHADER_TYPE Type() { return SHADER_TYPE::SHADER_TYPE_TANGENTVISUALIZE; }
 
 	TangentVisualizeShading(vec4 color, bool visibleNormal);
-	~TangentVisualizeShading() {};
+	~TangentVisualizeShading();
+
 	void SetLength(float value) { m_Length = value; }
 	float GetLength() { return m_Length; }
 	bool GetVisualizeNormal() { return m_visibleNormal; }
@@ -27,6 +28,13 @@ private:
 class TangentVisualizeVertexCode : public IShaderCode
 {
 public:
+	enum ATTRIBUTE
+	{
+		POSITION = 0,
+		NORMAL = 1,
+		TANGENT = 2,
+	};
+
 	TangentVisualizeVertexCode()
 		:IShaderCode(
 			string(SHADER_DIRECTORY) +
@@ -34,10 +42,12 @@ public:
 			string(SHADER_EXT_VERTEX)) {};
 	~TangentVisualizeVertexCode() {};
 	virtual SHADER_TYPE Type() { return SHADER_TYPE::SHADER_TYPE_TANGENTVISUALIZE; }
+	
 
 private:
 	virtual void Initialize(GLuint programId) override {};
 	virtual bool Compare(IShaderCode* pShaderCode) override { return true; };
+	virtual void GetIncludeCode(vector<shared_ptr<IShaderCode>>& pShaderCodes);
 	virtual void Bind(shared_ptr<IShaderChunk> pShaderChunk, shared_ptr<IUniformStorage> pUniform) override {};
 	virtual void UnBind(shared_ptr<IShaderChunk> pShaderChunk, shared_ptr<IUniformStorage> pUniform) override {};
 };

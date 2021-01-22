@@ -2,13 +2,40 @@ namespace KI
 {
 namespace Gfx
 {
-IVertexBuffer::IVertexBuffer(const string& filePath)
+IVertexBuffer::IVertexBuffer(const string& name)
 {
 	m_vaoId = 0;
 	m_VertexSize = 0;
 	m_instanceNum = 1;
-	m_filePath = filePath;
+	m_name = name;
 }
+
+void IVertexBuffer::SetArrayBuffer(GLuint layout, shared_ptr<ArrayBuffer> pArrayBuffer)
+{
+	if (pArrayBuffer->IsGenerated() == false)
+	{
+		// need set value;
+		assert(0);
+		return;
+	}
+
+	if (m_VertexInfo[layout] == nullptr)
+	{
+		Add(layout, pArrayBuffer);
+		BindToVAO(layout);
+	}
+	else
+	{
+		assert(0);
+		return; // debug;
+	}
+}
+
+shared_ptr<ArrayBuffer> IVertexBuffer::GetArrayBuffer(GLuint location)
+{
+	return m_VertexInfo[location];
+}
+
 void IVertexBuffer::Add(GLuint location, shared_ptr<ArrayBuffer> arrayBuffer)
 {
 	if (location > 16)
