@@ -37,6 +37,7 @@ using namespace KI::Foundation;
 #include "Torus.h"
 #include "Cylinder.h"
 #include "Icosahedron.h"
+#include "Triangle.h"
 
 
 #include "HalfEdge.h"
@@ -53,7 +54,7 @@ using namespace KI::Foundation;
 
 #include "DownSampling.h"
 #include "AlignOrientation.h"
-
+#include "BVH.h"
 #include "HalfEdgeRepository.h"
 
 #endif // KI_TOPOLOGY_PCH_H

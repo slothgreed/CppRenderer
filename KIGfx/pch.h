@@ -69,6 +69,4 @@ using namespace glm;
 #include "RenderTarget.h"
 #include "SymbolicRenderTarget.h"
 
-#include "GLIterator.h"
-
 #endif KI_GFX_PCH_H

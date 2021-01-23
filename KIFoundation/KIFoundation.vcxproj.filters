@@ -25,6 +25,12 @@
     <Filter Include="ヘッダー ファイル\Extlibs">
       <UniqueIdentifier>{083920dd-10fc-4146-87eb-a0cda312299c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\Iterator">
+      <UniqueIdentifier>{5033f190-8156-4bfc-a170-595c6522d9e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Iterator">
+      <UniqueIdentifier>{2a9e6ba5-bd7e-4e7d-877b-ffbd1113c312}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -139,6 +145,12 @@
     </ClCompile>
     <ClCompile Include="FileWriter.cpp">
       <Filter>ソース ファイル\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="TriangleIterator.h">
+      <Filter>ヘッダー ファイル\Iterator</Filter>
+    </ClCompile>
+    <ClCompile Include="TriangleIterator.cpp">
+      <Filter>ソース ファイル\Iterator</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -32,7 +32,7 @@ GLuint ShaderUtility::Compile(const string& code, GLuint shaderType)
 
 		GLchar* errorLog = new GLchar[maxLength];
 		glGetShaderInfoLog(id, maxLength, &maxLength, errorLog);
-		Logger::Output(LOG_LEVEL::LOG_LEVEL_ERROR, "DefaultShader Compile Error");
+		Logger::Output(LOG_LEVEL::LOG_LEVEL_ERROR, std::string(errorLog));
 		delete errorLog;
 		errorLog = nullptr;
 	}

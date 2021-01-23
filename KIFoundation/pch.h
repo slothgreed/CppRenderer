@@ -53,6 +53,8 @@ using namespace glm;
 #include "FileUtility.h"
 #include "FileWriter.h"
 
+#include "TriangleIterator.h"
+
 #define RELEASE_INSTANCE(x) if(x != NULL) { delete x; x = NULL;}
 #define RELEASE_ARRAY_INSTANCE(x,size) for(int i = 0; i < size; i++){RELEASE_INSTANCE(x);} size = 0;
 #ifdef NDEBUG

@@ -178,7 +178,6 @@
     <ClInclude Include="GfxTypes.h" />
     <ClInclude Include="GLArray.h" />
     <ClInclude Include="GLEx.h" />
-    <ClInclude Include="GLIterator.h" />
     <ClInclude Include="GLStruct.h" />
     <ClInclude Include="GLTypeUtility.h" />
     <ClInclude Include="IAttribute.h" />
@@ -219,7 +218,6 @@
     <ClCompile Include="FrameBuffer.cpp" />
     <ClCompile Include="GLArray.cpp" />
     <ClCompile Include="glEx.cpp" />
-    <ClCompile Include="GLIterator.cpp" />
     <ClCompile Include="GLObject.cpp" />
     <ClCompile Include="GLSruct.cpp" />
     <ClCompile Include="GLTypeUtility.cpp" />

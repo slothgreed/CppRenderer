@@ -108,11 +108,20 @@
     <ClInclude Include="HalfEdgeAdjancyMatrix.h">
       <Filter>ヘッダー ファイル\HalfEdge\Operator</Filter>
     </ClInclude>
-    <ClInclude Include="AlignOrientation.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="AdjancyMatrixCSVIO.h">
       <Filter>ヘッダー ファイル\HalfEdge\Operator</Filter>
+    </ClInclude>
+    <ClInclude Include="AlignOrientation.h">
+      <Filter>ヘッダー ファイル\HalfEdge\Operator</Filter>
+    </ClInclude>
+    <ClInclude Include="BVH.h">
+      <Filter>ヘッダー ファイル\HalfEdge\Operator</Filter>
+    </ClInclude>
+    <ClInclude Include="TopologyIterator.h">
+      <Filter>ヘッダー ファイル\HalfEdge\Operator</Filter>
+    </ClInclude>
+    <ClInclude Include="Triangle.h">
+      <Filter>ヘッダー ファイル\Primitive</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -170,10 +179,13 @@
     <ClCompile Include="HalfEdgeAdjancyMatrix.cpp">
       <Filter>ソース ファイル\HalfEdge\Operator</Filter>
     </ClCompile>
-    <ClCompile Include="AlignOrientation.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="AdjancyMatrixCSVIO.cpp">
+      <Filter>ソース ファイル\HalfEdge\Operator</Filter>
+    </ClCompile>
+    <ClCompile Include="AlignOrientation.cpp">
+      <Filter>ソース ファイル\HalfEdge\Operator</Filter>
+    </ClCompile>
+    <ClCompile Include="BVH.cpp">
       <Filter>ソース ファイル\HalfEdge\Operator</Filter>
     </ClCompile>
   </ItemGroup>

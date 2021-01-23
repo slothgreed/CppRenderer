@@ -17,4 +17,4 @@ private:
 }
 }
 
-#endif ISHADER_H
+#endif IATTRONITE_H

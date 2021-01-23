@@ -66,6 +66,12 @@
     <ClInclude Include="HalfEdgeResolutionProperty.h">
       <Filter>ヘッダー ファイル\Property</Filter>
     </ClInclude>
+    <ClInclude Include="BVHProperty.cpp">
+      <Filter>ソース ファイル\Property</Filter>
+    </ClInclude>
+    <ClInclude Include="BVHProperty.h">
+      <Filter>ヘッダー ファイル\Property</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">

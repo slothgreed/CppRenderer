@@ -31,13 +31,13 @@ void PrimitiveModel::RaycastPick(RaycastPickInfo& pickInfo)
 		
 		if (pickInfo.Type() & PICK_TYPE_FACE)
 		{
-			GL_TRIANGLES_Iterator itr = GL_TRIANGLES_Iterator(
+			TriangleIterator itr = TriangleIterator(
 				m_pPrimitive->GetDrawType(), positions.data(), indexs.data(), indexs.size());
 
 			while (itr.HasNext())
 			{
 				vec3 pos0, pos1, pos2;
-				itr.Current(pos0, pos1, pos2);
+				itr.Current(&pos0, &pos1, &pos2);
 				bool result = MathHelper::IntersectionRayToTriangle(
 					pickInfo.GetRay().Origin(), pickInfo.GetRay().Direction(),
 					pos0, pos1, pos2, position, distance);

@@ -48,10 +48,13 @@ void BDB::Set(vec3 min, vec3 max)
 	m_min = min;
 	m_max = max;
 	m_center = vec3(
-		m_min.x + m_max.x * 0.5,
-		m_min.y + m_max.y * 0.5,
-		m_min.z + m_max.z * 0.5
+		(m_min.x + m_max.x) * 0.5,
+		(m_min.y + m_max.y) * 0.5,
+		(m_min.z + m_max.z) * 0.5
 	);
+
+	vec3 dist = m_max - m_min;
+	m_surfaceArea = 2 * (dist.x * dist.y + dist.y * dist.z + dist.x + dist.z);
 }
 
 float BDB::MaxEdgeLength()

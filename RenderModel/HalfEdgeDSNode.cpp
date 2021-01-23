@@ -8,6 +8,12 @@ HalfEdgeDSNode::HalfEdgeDSNode(shared_ptr<HalfEdgeModel> model)
 	//VisibleHalfEdgeLine(true);
 	VisibleTangent(true);
 	model->CalcDownSampling();
+	BVH bvh;
+	vector<vec3> position;
+	vector<int> index;
+	model->GetPositionList(position);
+	model->GetFaceIndexList(index);
+	bvh.Calculate(position, index);
 }
 
 HalfEdgeDSNode::~HalfEdgeDSNode()
