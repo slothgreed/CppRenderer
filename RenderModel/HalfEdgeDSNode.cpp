@@ -7,6 +7,7 @@ HalfEdgeDSNode::HalfEdgeDSNode(shared_ptr<HalfEdgeModel> model)
 {
 	//VisibleHalfEdgeLine(true);
 	model->CalcDownSampling();
+	model->CalcAlignOrientation();
 	model->CalcBVH();
 	VisibleTangent(true);
 	VisibleBVH(true);

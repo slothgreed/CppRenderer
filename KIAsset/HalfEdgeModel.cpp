@@ -12,6 +12,7 @@ HalfEdgeModel::~HalfEdgeModel()
 {
 	RELEASE_INSTANCE(m_pDownSampling);
 	RELEASE_INSTANCE(m_pBVH);
+	RELEASE_INSTANCE(m_pAlignOrientation);
 }
 
 void HalfEdgeModel::Load(const string& filePath)
@@ -150,6 +151,14 @@ void HalfEdgeModel::CalcBVH()
 void HalfEdgeModel::CalcDownSampling()
 {
 	m_pDownSampling = new DownSampling(m_HalfEdgeDS.get(), 10);
+}
+
+void HalfEdgeModel::CalcAlignOrientation()
+{
+	assert(m_pDownSampling != nullptr);
+	m_pAlignOrientation = new AlignOrientation(m_HalfEdgeDS.get(), m_pDownSampling);
+	m_pAlignOrientation->Calculate(10, 10);
+
 }
 
 

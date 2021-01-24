@@ -22,16 +22,20 @@ public:
 	virtual void GetBDB(BDB& bdb);
 
 	shared_ptr<HalfEdgeDS> GetHalfEdgeDS() { return m_HalfEdgeDS; };
+	BVH* GetBVH() { return m_pBVH; }
+	AlignOrientation* GetAlignOrientation() { return m_pAlignOrientation; }
 	DownSampling* GetDownSampling() { return m_pDownSampling; }
-	BVH*		  GetBVH() { return m_pBVH; }
-	void CalcDownSampling();
+	
 	void CalcBVH();
+	void CalcDownSampling();
+	void CalcAlignOrientation();
 
 	void RaycastPick(RaycastPickInfo& result) override;
 
 private:
 	shared_ptr<HalfEdgeDS> m_HalfEdgeDS;
 	DownSampling* m_pDownSampling;
+	AlignOrientation* m_pAlignOrientation;
 	BVH*		  m_pBVH;
 };
 }

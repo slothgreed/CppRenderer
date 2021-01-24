@@ -73,23 +73,39 @@ void AlignOrientation::AssignLowerByUpper(int upperIndex)
 		}
 	}
 }
+
+void AlignOrientation::SetRandomTangent()
+{
+	for (int i = 0; i < m_pHalfEdgeDS->VertexList().size(); i++)
+	{
+		auto pVertex = m_pHalfEdgeDS->VertexList()[i];
+
+		vec3 end = pVertex->Edge()->End()->Position();
+		vec3 vector = end - pVertex->Position();
+		// By. Discrete Differential-Geometry Operators for Triangulated 2 - Manifolds 5 - 3, dij
+		vec3 tangent = vector - pVertex->Normal() * glm::dot(vector, pVertex->Normal());
+		tangent = glm::normalize(tangent);
+		m_pHalfEdgeDS->VertexList()[i]->SetTangent(tangent);
+	}
+}
 void AlignOrientation::Calculate(int globalItrNum, int localItrNum)
 {
 	assert(m_pDownSampling != NULL);
+	SetRandomTangent();
 
-	int resolutionIndex = m_pDownSampling->GetResolutionNum() - 1;
-	for (int i = 0; i < globalItrNum; i++)
-	{
-		
-		for (int j = localItrNum; j < localItrNum; j++)
-		{
-			LocalAlignment(resolutionIndex);
-		}
+	//int resolutionIndex = m_pDownSampling->GetResolutionNum() - 1;
+	//for (int i = 0; i < globalItrNum; i++)
+	//{
+	//	
+	//	for (int j = localItrNum; j < localItrNum; j++)
+	//	{
+	//		LocalAlignment(resolutionIndex);
+	//	}
 
-		AssignLowerByUpper(resolutionIndex);
+	//	AssignLowerByUpper(resolutionIndex);
 
-		resolutionIndex--;
-	}
+	//	resolutionIndex--;
+	//}
 }
 
 void AlignOrientation::LocalAlignment(int resolution)

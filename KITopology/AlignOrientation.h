@@ -5,7 +5,7 @@ namespace KI
 {
 namespace Topology
 {
-class AlignOrientation
+class DLL_EXPORT AlignOrientation
 {
 public:
 	AlignOrientation(HalfEdgeDS* pHalfEdgeDS, DownSampling* pDownSampling);
@@ -15,6 +15,7 @@ public:
 	void LocalAlignment(int resolution);
 	void GlobalAlignment();
 private:
+	void SetRandomTangent();
 	void AssignLowerByUpper(int upperIndex);
 	void ClosestDirection(
 		vec3 tangent1, vec3 normal1, 
