@@ -23,6 +23,7 @@ public:
 	};
 	void SetShading(shared_ptr<IShaderChunk> pShading);
 	void SetGeometryData(PRIM_TYPE primitiveType, shared_ptr<IVertexBuffer> pVertexBuffer, shared_ptr<IndexBuffer> pIndexBuffer = nullptr);
+	void SetIndexBuffer(PRIM_TYPE primitiveType, shared_ptr<IndexBuffer> pIndexBuffer);
 	PRIM_TYPE GetPrimitiveType() { return m_pPrimitiveType; }
 	shared_ptr<IVertexBuffer> GetVertexBuffer() { return m_pVertexBuffer; }
 	shared_ptr<IndexBuffer> GetIndexBuffer() { return m_pIndexBuffer; }

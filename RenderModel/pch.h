@@ -40,6 +40,7 @@ using namespace KI::Asset;
 #include "HalfEdgeProperty.h"
 #include "VertexTangentProperty.h"
 #include "HalfEdgeResolutionProperty.h"
+#include "BVHProperty.h"
 
 #include "PrimitiveNode.h"
 #include "PolygonModelNode.h"

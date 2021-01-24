@@ -23,13 +23,16 @@ public:
 
 	shared_ptr<HalfEdgeDS> GetHalfEdgeDS() { return m_HalfEdgeDS; };
 	DownSampling* GetDownSampling() { return m_pDownSampling; }
-
+	BVH*		  GetBVH() { return m_pBVH; }
 	void CalcDownSampling();
+	void CalcBVH();
+
 	void RaycastPick(RaycastPickInfo& result) override;
 
 private:
 	shared_ptr<HalfEdgeDS> m_HalfEdgeDS;
 	DownSampling* m_pDownSampling;
+	BVH*		  m_pBVH;
 };
 }
 }

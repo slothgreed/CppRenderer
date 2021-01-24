@@ -11,6 +11,7 @@ HalfEdgeModel::HalfEdgeModel()
 HalfEdgeModel::~HalfEdgeModel()
 {
 	RELEASE_INSTANCE(m_pDownSampling);
+	RELEASE_INSTANCE(m_pBVH);
 }
 
 void HalfEdgeModel::Load(const string& filePath)
@@ -137,7 +138,15 @@ void HalfEdgeModel::RaycastPick(RaycastPickInfo& pickInfo)
 
 	}
 }
-
+void HalfEdgeModel::CalcBVH()
+{
+	m_pBVH = new BVH();
+	vector<vec3> position;
+	vector<int> index;
+	GetPositionList(position);
+	GetFaceIndexList(index);
+	m_pBVH->Calculate(position, index);
+}
 void HalfEdgeModel::CalcDownSampling()
 {
 	m_pDownSampling = new DownSampling(m_HalfEdgeDS.get(), 10);

@@ -1,4 +1,3 @@
-#include "BVH.h"
 namespace KI
 {
 namespace Topology
@@ -30,6 +29,7 @@ void BVH::MakeTriangleList(const vector<vec3>& positions, const vector<int>& ind
 
 void BVH::CalculateRoot()
 {
+	m_root.m_Index = 0;
 	m_root.m_triangleIndex.resize(m_triangles.size());
 	for (int i = 0; i < m_triangles.size(); i++) {
 		m_root.m_triangleIndex[i] = i;
@@ -57,52 +57,59 @@ void BVH::CalculateRecursive(BVH::Node* pNode, int axis)
 		// 終了条件
 		return;
 	}
-	
+
 	pNode->m_left = new BVH::Node();
 	pNode->m_right = new BVH::Node();
-	bool splited = false;
-	while (splited == false) {
-		for (int i = 0; i < pNode->m_triangleIndex.size(); i++) {
-			int index = pNode->m_triangleIndex[i];
-			vec3 gravity = m_triangles[index].Gravity();
-			if (axis == 0)	// x 軸
-			{
-				if (gravity.x < pNode->m_bdb.Center().x) {
-					pNode->m_left->m_triangleIndex.push_back(index);
-				}
-				else {
-					pNode->m_right->m_triangleIndex.push_back(index);
-				}
+	pNode->m_left->m_Index = pNode->m_Index + 1;
+	pNode->m_right->m_Index = pNode->m_Index + 1;
+
+	for (int i = 0; i < pNode->m_triangleIndex.size(); i++) {
+		int index = pNode->m_triangleIndex[i];
+		vec3 gravity = m_triangles[index].Gravity();
+		if (axis == 0)	// x 軸
+		{
+			if (gravity.x < pNode->m_bdb.Center().x) {
+				pNode->m_left->m_triangleIndex.push_back(index);
 			}
-			else if (axis == 1) { // y 軸
-				if (gravity.y < pNode->m_bdb.Center().y) {
-					pNode->m_left->m_triangleIndex.push_back(index);
-				}
-				else {
-					pNode->m_right->m_triangleIndex.push_back(index);
-				}
-			}
-			else if (axis == 2) {  // z 軸
-				if (gravity.z < pNode->m_bdb.Center().z) {
-					pNode->m_left->m_triangleIndex.push_back(index);
-				}
-				else {
-					pNode->m_right->m_triangleIndex.push_back(index);
-				}
+			else {
+				pNode->m_right->m_triangleIndex.push_back(index);
 			}
 		}
-
-		if (pNode->m_left->m_triangleIndex.size() != pNode->m_triangleIndex.size() &&
-			pNode->m_right->m_triangleIndex.size() != pNode->m_triangleIndex.size()) {
-			splited = true;
-		} else {
-			assert(0);
-			// 分割できなかった場合は軸を変えて再計算
+		else if (axis == 1) { // y 軸
+			if (gravity.y < pNode->m_bdb.Center().y) {
+				pNode->m_left->m_triangleIndex.push_back(index);
+			}
+			else {
+				pNode->m_right->m_triangleIndex.push_back(index);
+			}
+		}
+		else if (axis == 2) {  // z 軸
+			if (gravity.z < pNode->m_bdb.Center().z) {
+				pNode->m_left->m_triangleIndex.push_back(index);
+			}
+			else {
+				pNode->m_right->m_triangleIndex.push_back(index);
+			}
+		}
+	
+		if (pNode->m_left->m_triangleIndex.size() == pNode->m_triangleIndex.size() ||
+			pNode->m_right->m_triangleIndex.size() == pNode->m_triangleIndex.size()) {
+			// 分割できなかった場合は単純に分ける
 			pNode->m_left->m_triangleIndex.clear();
 			pNode->m_right->m_triangleIndex.clear();
-			axis = (axis + 1) % 3;
+			for (int i = 0; i < pNode->m_triangleIndex.size(); i++) {
+				int index = pNode->m_triangleIndex[i];
+				if (i < pNode->m_triangleIndex.size() / 2) {
+					pNode->m_left->m_triangleIndex.push_back(index);
+				}
+				else {
+					pNode->m_right->m_triangleIndex.push_back(index);
+				}
+			}
 		}
 	}
+
+
 
 	// x,y,z,x,y,z の順で再帰的に実行
 	CalculateRecursive(pNode->m_left, (axis + 1) % 3);
@@ -114,10 +121,28 @@ void BVH::CalculateBDB(BVH::Node* pNode)
 {
 	vec3 pos0, pos1, pos2;
 	for (int i = 0; i < pNode->m_triangleIndex.size(); i++) {
-		pNode->m_bdb.Apply(m_triangles[pNode->m_triangleIndex[i]].Gravity());
+		m_triangles[pNode->m_triangleIndex[i]].GetPosition(&pos0, &pos1, &pos2);
+		pNode->m_bdb.Apply(pos0);
+		pNode->m_bdb.Apply(pos1);
+		pNode->m_bdb.Apply(pos2);
 	}
 }
 
+void BVH::GetBVHBoundingBox(int level, std::vector<BDB>& bdbs)
+{
+	GetBVHBoundingBoxRecursive(&m_root, level, bdbs);
+}
+
+void BVH::GetBVHBoundingBoxRecursive(Node* pNode, int level, std::vector<BDB>& bdbs)
+{
+	if (pNode->m_Index == level) {
+		bdbs.push_back(pNode->m_bdb);
+		return;
+	}
+
+	GetBVHBoundingBoxRecursive(pNode->m_left, level, bdbs);
+	GetBVHBoundingBoxRecursive(pNode->m_right, level, bdbs);
+}
 
 
 }

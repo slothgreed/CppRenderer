@@ -8,6 +8,7 @@ class DLL_EXPORT DefaultVertexBuffer : public IVertexBuffer
 {
 public:
 	DefaultVertexBuffer();
+	DefaultVertexBuffer(std::string name);
 	~DefaultVertexBuffer();
 	virtual VERTEX_BUFFER_TYPE Type() { return VERTEX_BUFFER_TYPE::VERTEX_BUFFER_TYPE_DEFAULT; }
 	virtual void BindAttribDivisor() override;

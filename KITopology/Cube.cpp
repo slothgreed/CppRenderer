@@ -2,6 +2,10 @@ namespace KI
 {
 namespace Topology
 {
+CubeArgs::CubeArgs(vec3 min, vec3 max, PrimitiveType type)
+	:m_min(min), m_max(max), m_primType(type)
+{
+}
 Cube::Cube(int indexOffset)
 	:IPrimitive(indexOffset)
 {
@@ -27,15 +31,42 @@ void Cube::Build(const CubeArgs& args)
 	m_position[6] = (args.m_max);
 	m_position[7] = (vec3(args.m_min.x, args.m_max.y, args.m_max.z));
 
-	m_index.resize(36);
-	AddTrianlgeIndexFromRectangle(0, 0 + IndexOffset(), 3 + IndexOffset(), 2 + IndexOffset(), 1 + IndexOffset());
-	AddTrianlgeIndexFromRectangle(1, 0 + IndexOffset(), 4 + IndexOffset(), 7 + IndexOffset(), 3 + IndexOffset());
-	AddTrianlgeIndexFromRectangle(2, 4 + IndexOffset(), 5 + IndexOffset(), 6 + IndexOffset(), 7 + IndexOffset());
-	AddTrianlgeIndexFromRectangle(3, 1 + IndexOffset(), 2 + IndexOffset(), 6 + IndexOffset(), 5 + IndexOffset());
-	AddTrianlgeIndexFromRectangle(4, 2 + IndexOffset(), 3 + IndexOffset(), 7 + IndexOffset(), 6 + IndexOffset());
-	AddTrianlgeIndexFromRectangle(5, 1 + IndexOffset(), 5 + IndexOffset(), 4 + IndexOffset(), 0 + IndexOffset());
+	if (args.m_primType == CubeArgs::PrimitiveType::TRIANGLES) {
+		m_index.resize(36);
+		AddTrianlgeIndexFromRectangle(0, 0 + IndexOffset(), 3 + IndexOffset(), 2 + IndexOffset(), 1 + IndexOffset());
+		AddTrianlgeIndexFromRectangle(1, 0 + IndexOffset(), 4 + IndexOffset(), 7 + IndexOffset(), 3 + IndexOffset());
+		AddTrianlgeIndexFromRectangle(2, 4 + IndexOffset(), 5 + IndexOffset(), 6 + IndexOffset(), 7 + IndexOffset());
+		AddTrianlgeIndexFromRectangle(3, 1 + IndexOffset(), 2 + IndexOffset(), 6 + IndexOffset(), 5 + IndexOffset());
+		AddTrianlgeIndexFromRectangle(4, 2 + IndexOffset(), 3 + IndexOffset(), 7 + IndexOffset(), 6 + IndexOffset());
+		AddTrianlgeIndexFromRectangle(5, 1 + IndexOffset(), 5 + IndexOffset(), 4 + IndexOffset(), 0 + IndexOffset());
+		m_drawType = GL_TRIANGLES;
+	}
+	else
+	{
+		m_index.resize(24);
+		int index = 0;
+		// front
+		m_index[index++] = 0; m_index[index++] = 1;
+		m_index[index++] = 1; m_index[index++] = 2;
+		m_index[index++] = 2; m_index[index++] = 3;
+		m_index[index++] = 3; m_index[index++] = 0;
+
+		// back
+		m_index[index++] = 4; m_index[index++] = 5;
+		m_index[index++] = 5; m_index[index++] = 6;
+		m_index[index++] = 6; m_index[index++] = 7;
+		m_index[index++] = 7; m_index[index++] = 4;
+
+		// depth
+		m_index[index++] = 0; m_index[index++] = 4;
+		m_index[index++] = 1; m_index[index++] = 5;
+		m_index[index++] = 2; m_index[index++] = 6;
+		m_index[index++] = 3; m_index[index++] = 7;
+
+
+		m_drawType = GL_LINES;
+	}
 	
-	m_drawType = GL_TRIANGLES;
 }
 
 void Cube::AddTrianlgeIndexFromRectangle(int index, int vertex0, int vertex1, int vertex2, int vertex3)

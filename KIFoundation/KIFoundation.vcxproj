@@ -165,6 +165,7 @@
   <ItemGroup>
     <ClInclude Include="AnyTreeNode.h" />
     <ClInclude Include="BDB.h" />
+    <ClInclude Include="BDBUtility.h" />
     <ClInclude Include="ColorUtility.h" />
     <ClInclude Include="CommandManager.h" />
     <ClInclude Include="FileUtility.h" />
@@ -190,6 +191,7 @@
   <ItemGroup>
     <ClCompile Include="AnyTreeNode.cpp" />
     <ClCompile Include="BDB.cpp" />
+    <ClCompile Include="BDBUtility.cpp" />
     <ClCompile Include="ColorUtility.cpp" />
     <ClCompile Include="CommandManager.cpp" />
     <ClCompile Include="dllmain.cpp" />

@@ -43,6 +43,13 @@ void RenderData::SetGeometryData(PRIM_TYPE primitiveType, shared_ptr<IVertexBuff
 	m_pIndexBuffer = pIndexBuffer;
 }
 
+void RenderData::SetIndexBuffer(PRIM_TYPE primitiveType, shared_ptr<IndexBuffer> pIndexBuffer)
+{
+	m_pPrimitiveType = primitiveType;
+	m_pIndexBuffer = pIndexBuffer;
+}
+
+
 void RenderData::DrawUseRegion(const shared_ptr<UniformStruct> pUniform)
 {
 	// •”•ªƒ}ƒeƒŠƒAƒ‹‚Å•`‰æ

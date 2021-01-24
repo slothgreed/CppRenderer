@@ -6,14 +6,10 @@ HalfEdgeDSNode::HalfEdgeDSNode(shared_ptr<HalfEdgeModel> model)
 	:PolygonModelNode(static_pointer_cast<IModel>(model))
 {
 	//VisibleHalfEdgeLine(true);
-	VisibleTangent(true);
 	model->CalcDownSampling();
-	BVH bvh;
-	vector<vec3> position;
-	vector<int> index;
-	model->GetPositionList(position);
-	model->GetFaceIndexList(index);
-	bvh.Calculate(position, index);
+	model->CalcBVH();
+	VisibleTangent(true);
+	VisibleBVH(true);
 }
 
 HalfEdgeDSNode::~HalfEdgeDSNode()
@@ -48,6 +44,18 @@ void HalfEdgeDSNode::VisibleTangent(bool visibility)
 	{
 		m_pTangentProperty = make_shared<VertexTangentProperty>();
 		AddProperty(m_pTangentProperty, nullptr);
+	}
+}
+void HalfEdgeDSNode::VisibleBVH(bool visible)
+{
+	if (HasProperty(PROPERTY_TYPE::PROPERTY_TYPE_BVH))
+	{
+		m_pBVHProperty->Update(this, nullptr);
+	}
+	else
+	{
+		m_pBVHProperty = make_shared<BVHProperty>();
+		AddProperty(m_pBVHProperty, nullptr);
 	}
 }
 }

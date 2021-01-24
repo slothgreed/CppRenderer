@@ -10,6 +10,13 @@ DefaultVertexBuffer::DefaultVertexBuffer()
 		string(SHADER_EXT_VBO);
 }
 
+DefaultVertexBuffer::DefaultVertexBuffer(std::string name)
+	:IVertexBuffer(name)
+{
+	m_filePath = string(SHADER_DIRECTORY) +
+		string(SHADER_DEFAULT) +
+		string(SHADER_EXT_VBO);
+}
 DefaultVertexBuffer::~DefaultVertexBuffer()
 {
 	Dispose();

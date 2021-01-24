@@ -40,6 +40,7 @@ using namespace glm;
 #include "IObserver.h"
 
 #include "BDB.h"
+#include "BDBUtility.h"
 #include "AnyTreeNode.h"
 
 #include "SystemTypes.h"

@@ -13,17 +13,18 @@ public:
 	~BVH();
 
 	void Calculate(const vector<vec3>& positions, const vector<int>& index);
+	void GetBVHBoundingBox(int level, std::vector<BDB>& bdb);
 private:
 
-	struct Node
+	struct DLL_EXPORT Node
 	{
-		Node() :m_left(NULL), m_right(NULL) {}
+		Node() :m_left(NULL), m_right(NULL), m_Index(0) {}
 		~Node()
 		{
 			RELEASE_INSTANCE(m_left);
 			RELEASE_INSTANCE(m_right);
 		}
-		const int INVALID = -1;
+		int m_Index;
 		BDB m_bdb;
 		Node* m_left;
 		Node* m_right;
@@ -34,6 +35,7 @@ private:
 	void CalculateRoot();
 	void CalculateBDB(Node* pNode);
 	void CalculateRecursive(Node* pNode, int index);
+	void GetBVHBoundingBoxRecursive(Node* pNode, int level, std::vector<BDB>& bdb);
 	BVH::Node m_root;
 	std::vector<Triangle> m_triangles;
 };

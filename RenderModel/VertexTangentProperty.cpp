@@ -14,11 +14,11 @@ VertexTangentProperty::~VertexTangentProperty()
 
 void VertexTangentProperty::Build(IModelNode* pModelNode, IPropertyArgs* pPropertyArgs)
 {
-	m_pShading = make_shared<TangentVisualizeShading>(vec4(0, 1, 0, 1), false);
-	m_pShading->SetLength(1.0f);
+	auto pShading = make_shared<TangentVisualizeShading>(vec4(0, 1, 0, 1), false);
+	pShading->SetLength(1.0f);
 
 	m_pRenderData = make_shared<RenderData>();
-	m_pRenderData->SetShading(m_pShading);
+	m_pRenderData->SetShading(pShading);
 
 	SetVBOData(pModelNode);
 }

@@ -8,11 +8,18 @@ namespace Topology
 class DLL_EXPORT CubeArgs
 {
 public:
+	enum PrimitiveType
+	{
+		TRIANGLES,
+		LINES,
+	};
 	CubeArgs() : m_min(), m_max(){};
-	CubeArgs(vec3 min, vec3 max) :m_min(min), m_max(max) {};
+	CubeArgs(vec3 min, vec3 max) :m_min(min), m_max(max), m_primType(CubeArgs::PrimitiveType::TRIANGLES) {};
+	CubeArgs(vec3 min, vec3 max, PrimitiveType type);
 	~CubeArgs() {};
 	vec3 m_min;
 	vec3 m_max;
+	PrimitiveType m_primType;
 };
 class DLL_EXPORT Cube : public IPrimitive
 {

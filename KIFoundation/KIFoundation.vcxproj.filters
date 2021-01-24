@@ -102,6 +102,9 @@
     <ClInclude Include="FileWriter.h">
       <Filter>ヘッダー ファイル\Core</Filter>
     </ClInclude>
+    <ClInclude Include="BDBUtility.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -151,6 +154,9 @@
     </ClCompile>
     <ClCompile Include="TriangleIterator.cpp">
       <Filter>ソース ファイル\Iterator</Filter>
+    </ClCompile>
+    <ClCompile Include="BDBUtility.cpp">
+      <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
