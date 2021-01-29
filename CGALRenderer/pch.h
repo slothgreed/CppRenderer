@@ -28,10 +28,6 @@
 #include <glm/glm.hpp>
 #include <glm/gtx/transform.hpp>
 
-#include "ImGui/imgui.h"
-#include "ImGui/examples/imgui_impl_glfw.h"
-#include "ImGui/examples/imgui_impl_opengl3.h"
-
 using namespace std;
 using namespace glm;
 

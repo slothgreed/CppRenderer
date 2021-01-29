@@ -49,4 +49,7 @@ using namespace KI::Asset;
 #include "BezierLineNode.h"
 #include "CameraNode.h"
 
+#include "imgui.h"
+#include "backends/imgui_impl_glfw.h"
+#include "backends/imgui_impl_opengl3.h"
 #endif //RENDER_MODEL_PCH_H

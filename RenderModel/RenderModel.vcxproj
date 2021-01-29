@@ -40,13 +40,13 @@
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -91,7 +91,7 @@
       <PreprocessorDefinitions>_DEBUG;RENDERMODEL_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)extlibs\stb;$(SolutionDir)extlibs\glfw-3.3\include;$(SolutionDir)extlibs\glm-0.9.9.6\glm;$(SolutionDir)extlibs\glew-2.1.0\include;E:\Tools\boost\boost_1_64_0;E:\Tools\boost\boost_1_64_0\boost;$(SolutionDir)extlibs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)extlibs\imgui;$(SolutionDir)extlibs\stb;$(SolutionDir)extlibs\glfw-3.3\include;$(SolutionDir)extlibs\glm-0.9.9.6\glm;$(SolutionDir)extlibs\glew-2.1.0\include;E:\Tools\boost\boost_1_64_0;E:\Tools\boost\boost_1_64_0\boost;$(SolutionDir)extlibs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>pch.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
@@ -149,7 +149,7 @@
       <PreprocessorDefinitions>NDEBUG;RENDERMODEL_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)extlibs\stb;$(SolutionDir)extlibs\glfw-3.3\include;$(SolutionDir)extlibs\glm-0.9.9.6\glm;$(SolutionDir)extlibs\glew-2.1.0\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)extlibs\imgui;$(SolutionDir)extlibs\stb;$(SolutionDir)extlibs\glfw-3.3\include;$(SolutionDir)extlibs\glm-0.9.9.6\glm;$(SolutionDir)extlibs\glew-2.1.0\include</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>pch.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
@@ -163,6 +163,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\extlibs\imgui\backends\imgui_impl_glfw.h" />
+    <ClInclude Include="..\extlibs\imgui\backends\imgui_impl_opengl3.h" />
+    <ClInclude Include="..\extlibs\imgui\imconfig.h" />
+    <ClInclude Include="..\extlibs\imgui\imgui.h" />
+    <ClInclude Include="..\extlibs\imgui\imgui_internal.h" />
+    <ClInclude Include="..\extlibs\imgui\imstb_rectpack.h" />
+    <ClInclude Include="..\extlibs\imgui\imstb_textedit.h" />
+    <ClInclude Include="..\extlibs\imgui\imstb_truetype.h" />
     <ClInclude Include="BDBProperty.h" />
     <ClInclude Include="BezierLineNode.h" />
     <ClInclude Include="BVHProperty.h" />
@@ -179,6 +187,13 @@
     <ClInclude Include="VertexTangentProperty.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\extlibs\imgui\backends\imgui_impl_glfw.cpp" />
+    <ClCompile Include="..\extlibs\imgui\backends\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="..\extlibs\imgui\imgui.cpp" />
+    <ClCompile Include="..\extlibs\imgui\imgui_demo.cpp" />
+    <ClCompile Include="..\extlibs\imgui\imgui_draw.cpp" />
+    <ClCompile Include="..\extlibs\imgui\imgui_tables.cpp" />
+    <ClCompile Include="..\extlibs\imgui\imgui_widgets.cpp" />
     <ClCompile Include="BDBProperty.cpp" />
     <ClCompile Include="BezierLineNode.cpp" />
     <ClCompile Include="BVHProperty.cpp" />
