@@ -24,5 +24,6 @@ void ViewViewModel::SetController(CONTROLER_TYPE type, IController* value)
 
 }
 
+
 }
 }

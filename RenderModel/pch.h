@@ -35,6 +35,7 @@ using namespace KI::Algorithm;
 #include "../KIAsset/pch.h"
 using namespace KI::Asset;
 
+#include "IRenderModelProperty.h"
 #include "BDBProperty.h"
 #include "NormalProperty.h"
 #include "HalfEdgeProperty.h"
@@ -42,6 +43,7 @@ using namespace KI::Asset;
 #include "HalfEdgeResolutionProperty.h"
 #include "BVHProperty.h"
 
+#include "IRenderModelNode.h"
 #include "PrimitiveNode.h"
 #include "PolygonModelNode.h"
 #include "HalfEdgeDSNode.h"

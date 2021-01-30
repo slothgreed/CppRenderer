@@ -6,9 +6,26 @@ namespace Renderer
 {
 class IModelProperty;
 class RenderData;
+
+class DLL_EXPORT PropertyIterator : IIterator<IModelProperty*>
+{
+public:
+	PropertyIterator(IModelNode* pNode);
+
+	virtual bool HasNext();
+	virtual void Next();
+	virtual IModelProperty* Current();
+
+private:
+	IModelNode*	m_pNode;
+	int m_index;
+};
+
+
 class DLL_EXPORT IModelNode : public IObserver
 {
 public:
+	friend class PropertyIterator;
 	IModelNode();
 	IModelNode(shared_ptr<IModel> model);
 	virtual ~IModelNode();
@@ -32,7 +49,8 @@ public:
 protected:
 	void AddProperty(shared_ptr<IModelProperty> prop);
 	void AddProperty(shared_ptr<IModelProperty> prop, IPropertyArgs* propArgs);
-	bool HasProperty(PROPERTY_TYPE type);
+	bool HasProperty(unsigned int type);
+	shared_ptr<IModelProperty> GetProperty(unsigned int type);
 	void RemoveProperty(shared_ptr<IModelProperty> prop);
 	virtual void DrawProperty(shared_ptr<UniformStruct> pUniform);
 	virtual void UpdateProperty();

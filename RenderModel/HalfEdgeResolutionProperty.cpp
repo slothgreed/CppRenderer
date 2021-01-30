@@ -2,6 +2,12 @@ namespace KI
 {
 namespace RenderModel
 {
+HalfEdgeResolutionPropertyArgs& HalfEdgeResolutionProperty::DefaultArgs()
+{
+	static HalfEdgeResolutionPropertyArgs defaultArgs(0);
+
+	return defaultArgs;
+}
 HalfEdgeResolutionProperty::HalfEdgeResolutionProperty()
 {
 }
@@ -19,11 +25,22 @@ void HalfEdgeResolutionProperty::Build(IModelNode* pModelNode, IPropertyArgs* pP
 		m_colorMap[i].z = Gaccho::rnd(0, 255) / 255.0;
 	}
 
+	shared_ptr<HalfEdgeModel> pModel;
+	if (pModelNode->GetModel()->Type() == MODEL_TYPE_HALF_EDGE)
+	{
+		pModel = static_pointer_cast<HalfEdgeModel>(pModelNode->GetModel());
+		pModel->CalcDownSampling();
+	}
+	else
+	{
+		assert(0);
+		return;
+	}
+
 	vector<vec3> colors;
 	GetClusterColor(pModelNode, pPropertyArgs, colors);
 
-
-
+	
 	auto pVertexBuffer = make_shared<DefaultVertexBuffer>();
 	pVertexBuffer->SetArrayBuffer(VERTEX_ATTRIB::VERTEX_ATTRIB_POSITION, pMeshBuffer->GetArrayBuffer(VERTEX_ATTRIB::VERTEX_ATTRIB_POSITION));
 	pVertexBuffer->SetVertexSize(pMeshBuffer->GetVertexSize());
@@ -68,8 +85,7 @@ void HalfEdgeResolutionProperty::GetClusterColor(IModelNode* pModelNode, IProper
 	auto pArgs = dynamic_cast<HalfEdgeResolutionPropertyArgs*>(pPropertyArgs);
 	if (pArgs == nullptr)
 	{
-		assert(0);
-		return;
+		pArgs = &DefaultArgs();
 	}
 
 	auto pDownSampling = pModel->GetDownSampling();
@@ -94,5 +110,11 @@ void HalfEdgeResolutionProperty::Draw(shared_ptr<UniformStruct> pUniform)
 	m_pRenderData->Draw(pUniform);
 }
 
+void HalfEdgeResolutionProperty::ShowUI()
+{
+	if (ImGui::SliderInt("Level", &m_ui.level, 0, 20)) {
+		Update(nullptr, &HalfEdgeResolutionPropertyArgs(m_ui.level));
+	}
+}
 }
 }

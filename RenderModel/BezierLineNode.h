@@ -5,7 +5,7 @@ namespace KI
 {
 namespace RenderModel
 {
-class DLL_EXPORT BezierLineNode : public IModelNode
+class DLL_EXPORT BezierLineNode : public IRenderModelNode
 {
 public:
 	BezierLineNode(shared_ptr<RenderData> pVertexBuffer);

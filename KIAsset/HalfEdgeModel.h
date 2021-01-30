@@ -26,9 +26,9 @@ public:
 	AlignOrientation* GetAlignOrientation() { return m_pAlignOrientation; }
 	DownSampling* GetDownSampling() { return m_pDownSampling; }
 	
-	void CalcBVH();
-	void CalcDownSampling();
-	void CalcAlignOrientation();
+	bool CalcBVH();
+	bool CalcDownSampling();
+	bool CalcAlignOrientation();
 
 	void RaycastPick(RaycastPickInfo& result) override;
 

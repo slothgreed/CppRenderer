@@ -5,7 +5,7 @@ namespace KI
 {
 namespace RenderModel
 {
-class DLL_EXPORT ManipulatorNode : public IModelNode
+class DLL_EXPORT ManipulatorNode : public IRenderModelNode
 {
 public:
 	ManipulatorNode(MANIPULATOR_TYPE type);

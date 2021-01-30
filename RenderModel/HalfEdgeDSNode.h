@@ -11,16 +11,16 @@ public :
 	HalfEdgeDSNode(shared_ptr<HalfEdgeModel> model);
 	~HalfEdgeDSNode();
 
-	void VisibleHalfEdgeLine(bool visibility);
-	void VisibleCluster(bool visible, int level);
-	void VisibleTangent(bool visible);
-	void VisibleBVH(bool visible);
-
+	virtual void ShowUI() override;
 private:
-	shared_ptr<HalfEdgeResolutionProperty> m_pProperty;
-	shared_ptr<VertexTangentProperty> m_pTangentProperty;
-	shared_ptr<BVHProperty> m_pBVHProperty;
+	struct UI
+	{
+		UI() : visibleHalfEdge(false), visibleResolution(false){}
+		bool visibleHalfEdge;
+		bool visibleResolution;
+	};
 
+	UI m_ui;
 };
 }
 }

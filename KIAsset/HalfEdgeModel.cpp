@@ -4,7 +4,9 @@ namespace Asset
 {
 
 HalfEdgeModel::HalfEdgeModel()
-	:m_pDownSampling(NULL)
+	:m_pDownSampling(NULL),
+	m_pBVH(NULL),
+	m_pAlignOrientation(NULL)
 {
 }
 
@@ -139,26 +141,40 @@ void HalfEdgeModel::RaycastPick(RaycastPickInfo& pickInfo)
 
 	}
 }
-void HalfEdgeModel::CalcBVH()
+
+bool HalfEdgeModel::CalcBVH()
 {
-	m_pBVH = new BVH();
-	vector<vec3> position;
-	vector<int> index;
-	GetPositionList(position);
-	GetFaceIndexList(index);
-	m_pBVH->Calculate(position, index);
+	if (m_pBVH == nullptr) {
+		m_pBVH = new BVH();
+		vector<vec3> position;
+		vector<int> index;
+		GetPositionList(position);
+		GetFaceIndexList(index);
+		m_pBVH->Calculate(position, index);
+		return true;
+	}
+
+	return false;
 }
-void HalfEdgeModel::CalcDownSampling()
+bool HalfEdgeModel::CalcDownSampling()
 {
-	m_pDownSampling = new DownSampling(m_HalfEdgeDS.get(), 10);
+	if (m_pDownSampling == nullptr) {
+		m_pDownSampling = new DownSampling(m_HalfEdgeDS.get(), 10);
+		return true;
+	}
+
+	return false;
 }
 
-void HalfEdgeModel::CalcAlignOrientation()
+bool HalfEdgeModel::CalcAlignOrientation()
 {
-	assert(m_pDownSampling != nullptr);
-	m_pAlignOrientation = new AlignOrientation(m_HalfEdgeDS.get(), m_pDownSampling);
-	m_pAlignOrientation->Calculate(10, 10);
+	if (m_pDownSampling == nullptr) {
+		m_pAlignOrientation = new AlignOrientation(m_HalfEdgeDS.get(), m_pDownSampling);
+		m_pAlignOrientation->Calculate(10, 10);
+		return true;
+	}
 
+	return false;
 }
 
 

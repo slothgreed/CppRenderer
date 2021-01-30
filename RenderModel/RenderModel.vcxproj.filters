@@ -96,6 +96,12 @@
     <ClInclude Include="..\extlibs\imgui\backends\imgui_impl_opengl3.h">
       <Filter>ヘッダー ファイル\ImGui</Filter>
     </ClInclude>
+    <ClInclude Include="IRenderModelNode.h">
+      <Filter>ヘッダー ファイル\Node</Filter>
+    </ClInclude>
+    <ClInclude Include="IRenderModelProperty.h">
+      <Filter>ヘッダー ファイル\Property</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -160,6 +166,12 @@
     </ClCompile>
     <ClCompile Include="..\extlibs\imgui\backends\imgui_impl_glfw.cpp">
       <Filter>ヘッダー ファイル\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="IRenderModelProperty.cpp">
+      <Filter>ソース ファイル\Property</Filter>
+    </ClCompile>
+    <ClCompile Include="IRenderModelNode.cpp">
+      <Filter>ソース ファイル\Node</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

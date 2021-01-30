@@ -2,6 +2,38 @@ namespace KI
 {
 namespace Renderer
 {
+
+PropertyIterator::PropertyIterator(IModelNode* pNode)
+{
+	m_pNode = pNode;
+	m_index = 0;
+}
+
+bool PropertyIterator::HasNext() 
+{
+	if (m_pNode->m_pProperty.size() == 0) {
+		return false;
+	}
+
+	if (m_index >= m_pNode->m_pProperty.size()) {
+		return false;
+	}
+
+	return true;
+}
+
+void PropertyIterator::Next()
+{
+	m_index++;
+}
+
+
+IModelProperty* PropertyIterator::Current()
+{
+	return m_pNode->m_pProperty[m_index].get();
+}
+
+
 IModelNode::IModelNode()
 {
 	m_ModelMatrix = mat4x4(1.0);
@@ -35,7 +67,19 @@ void IModelNode::AddProperty(shared_ptr<IModelProperty> prop, IPropertyArgs* pro
 	}
 }
 
-bool IModelNode::HasProperty(PROPERTY_TYPE type)
+shared_ptr<IModelProperty> IModelNode::GetProperty(unsigned int type)
+{
+	auto itr = std::find_if(m_pProperty.begin(), m_pProperty.end(),
+		[type](shared_ptr<IModelProperty> value) {return value->Type() == type; });
+	if (itr == m_pProperty.end())
+	{
+		return nullptr;
+	}
+
+	return *itr;
+}
+
+bool IModelNode::HasProperty(unsigned int type)
 {
 	auto itr = std::find_if(m_pProperty.begin(), m_pProperty.end(),
 		[type](shared_ptr<IModelProperty> value) {return value->Type() == type; });
@@ -117,7 +161,7 @@ void IModelNode::Draw(shared_ptr<UniformStruct> pUniform)
 		{
 			BindModel(pUniform, i);
 			PreDraw(pUniform, i);
-			//m_pRenderData[i]->Draw(pUniform);
+			m_pRenderData[i]->Draw(pUniform);
 			PostDraw(pUniform, i);
 		}
 
@@ -151,6 +195,10 @@ void IModelNode::DrawProperty(shared_ptr<UniformStruct> pUniform)
 {
 	for (int i = 0; i < m_pProperty.size(); i++)
 	{
+		if (!m_pProperty[i]->Visible()) {
+			continue;
+		}
+
 		m_pProperty[i]->Draw(pUniform);
 	}
 }

@@ -179,6 +179,8 @@
     <ClInclude Include="HalfEdgeResolutionProperty.h" />
     <ClInclude Include="HalfEdgeDSNode.h" />
     <ClInclude Include="HalfEdgeProperty.h" />
+    <ClInclude Include="IRenderModelNode.h" />
+    <ClInclude Include="IRenderModelProperty.h" />
     <ClInclude Include="ManipulatorNode.h" />
     <ClInclude Include="NormalProperty.h" />
     <ClInclude Include="pch.h" />
@@ -202,6 +204,8 @@
     <ClCompile Include="HalfEdgeResolutionProperty.cpp" />
     <ClCompile Include="HalfEdgeDSNode.cpp" />
     <ClCompile Include="HalfEdgeProperty.cpp" />
+    <ClCompile Include="IRenderModelNode.cpp" />
+    <ClCompile Include="IRenderModelProperty.cpp" />
     <ClCompile Include="ManipulatorNode.cpp" />
     <ClCompile Include="NormalProperty.cpp" />
     <ClCompile Include="pch.cpp">

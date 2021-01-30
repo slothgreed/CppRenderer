@@ -6,36 +6,46 @@ namespace KI
 namespace RenderModel
 {
 
-class DLL_EXPORT HalfEdgeResolutionPropertyArgs : public IPropertyArgs
+class DLL_EXPORT HalfEdgeResolutionPropertyArgs : public IRenderModelPropertyArgs
 {
 	friend class HalfEdgeResolutionProperty;
 public:
+	HalfEdgeResolutionPropertyArgs() :m_level(0) {};
 	HalfEdgeResolutionPropertyArgs(int level) :m_level(level) {};
 	~HalfEdgeResolutionPropertyArgs() {};
-	virtual PROPERTY_TYPE Type() override { return PROPERTY_TYPE_HALFEDGE_CLUSTER; }
-
+	virtual PROPERTY_TYPE PropertyType() override { return PROPERTY_TYPE_RESOLUTION; }
 	int Level() { return m_level; }
 private:
 	int m_level;
 };
 
-class DLL_EXPORT HalfEdgeResolutionProperty : public IModelProperty
+class DLL_EXPORT HalfEdgeResolutionProperty : public IRenderModelProperty
 {
 public:
 	HalfEdgeResolutionProperty();
 	~HalfEdgeResolutionProperty() {};
 
-	virtual PROPERTY_TYPE Type() override { return PROPERTY_TYPE_HALFEDGE_CLUSTER; }
+	virtual PROPERTY_TYPE PropertyType() override { return PROPERTY_TYPE_RESOLUTION; }
 	virtual void Draw(shared_ptr<UniformStruct> pUniform) override;
 	virtual void Build(IModelNode* pModel, IPropertyArgs* pPropertyArgs) override;
 	virtual void Update(IModelNode* pModel, IPropertyArgs* pPropertyArgs) override;
-
+	virtual void ShowUI() override;
 private:
+
+	struct UI
+	{
+		UI() :level(0) {}
+		int level;
+	};
+
+	static HalfEdgeResolutionPropertyArgs& DefaultArgs();
 	void GetClusterColor(IModelNode* pModelNode, IPropertyArgs* pPropertyArgs, vector<vec3>& color);
 
+	UI m_ui;
 	shared_ptr<IShader> m_pShader;
 	shared_ptr<RenderData> m_pRenderData;
 	std::vector<vec3> m_colorMap;
+
 };
 }
 }

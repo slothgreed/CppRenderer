@@ -4,7 +4,7 @@ namespace KI
 {
 namespace RenderModel
 {
-class DLL_EXPORT PrimitiveNode : public IModelNode
+class DLL_EXPORT PrimitiveNode : public IRenderModelNode
 {
 public:
 	PrimitiveNode(shared_ptr<RenderData> pRenderData);

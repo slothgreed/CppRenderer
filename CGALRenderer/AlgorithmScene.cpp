@@ -69,14 +69,14 @@ void AlgorithmScene::ProcessMouseEvent(const MouseInput& input)
 
 			//m_pCommandManager->Execute(pCommand);
 		}
-		else if (input.Press(MOUSE_BUTTON_RIGHT))
-		{
-			m_pTargetNode->VisibleCluster(true, m_level);
-			m_level++;
-			if (m_level == 20) {
-				m_level = 0;
-			}
-		}
 	}
+}
+
+void AlgorithmScene::ShowUI(ImGuiContext* context)
+{
+	ImGui::SetCurrentContext(context);
+	ImGui::Begin("Algorithm Scene");
+	m_pTargetNode->ShowUI();
+	ImGui::End();
 }
 }

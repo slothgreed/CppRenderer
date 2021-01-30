@@ -3,11 +3,10 @@ namespace KI
 namespace RenderModel
 {
 PolygonModelNode::PolygonModelNode(shared_ptr<IModel> model)
-	: IModelNode(model)
+	: IRenderModelNode(model)
 {
 	m_name = "PolygonModelNode";
 	SetRenderData();
-	//VisibleBDB(true);
 	//VisibleNormal(true);
 }
 
@@ -18,9 +17,9 @@ PolygonModelNode::~PolygonModelNode()
 
 void PolygonModelNode::ShowProperty()
 {
-	//ImGui::Begin(m_name.data());
-	//ImGui::Text(m_bdb.ToString().data());
-	//ImGui::End();
+	ImGui::Begin(m_name.data());
+	ImGui::Text(m_bdb.ToString().data());
+	ImGui::End();
 }
 
 IPolygonModel* PolygonModelNode::GetModel()
@@ -36,12 +35,6 @@ IPolygonModel* PolygonModelNode::GetModel()
 	}
 }
 
-void PolygonModelNode::VisibleBDB(bool visibility)
-{
-	GetModel()->GetBDB(m_bdb);
-	AddProperty(make_shared<BDBProperty>());
-}
-
 shared_ptr<IVertexBuffer> PolygonModelNode::GetVertexBuffer()
 {
 	return GetRenderData(0)->GetVertexBuffer(); 
@@ -51,7 +44,7 @@ void PolygonModelNode::VisibleNormal(bool visibility)
 {
 	if (GetModel()->HasVertexList())
 	{
-		AddProperty(make_shared<NormalProperty>());
+		VisibleProperty(PROPERTY_TYPE::PROPERTY_TYPE_NORMAL, m_ui.visibleNormal);
 	}
 	else
 	{
@@ -132,6 +125,16 @@ void PolygonModelNode::VisibleEdge(bool visibility)
 
 }
 
+void PolygonModelNode::ShowUI()
+{
+	if (ImGui::Checkbox("Visible BDB", &m_ui.visibleBDB)) {
+		VisibleProperty(PROPERTY_TYPE::PROPERTY_TYPE_BDB, m_ui.visibleBDB);
+	}
+
+	if (ImGui::Checkbox("Visible Normal", &m_ui.visibleNormal)) {
+		VisibleNormal(m_ui.visibleNormal);
+	}
+}
 
 void PolygonModelNode::Update(void* sender, IEventArgs* args)
 {

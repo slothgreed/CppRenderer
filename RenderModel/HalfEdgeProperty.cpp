@@ -108,5 +108,7 @@ void HalfEdgeProperty::Draw(shared_ptr<UniformStruct> pUniform)
 	m_pRenderData->Draw(pUniform);
 }
 
+
+
 }
 }

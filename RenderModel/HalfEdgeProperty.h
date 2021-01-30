@@ -5,17 +5,16 @@ namespace KI
 {
 namespace RenderModel
 {
-class DLL_EXPORT HalfEdgeProperty : public IModelProperty
+class DLL_EXPORT HalfEdgeProperty : public IRenderModelProperty
 {
 public:
 	HalfEdgeProperty();
 	~HalfEdgeProperty() {};
 
-	virtual PROPERTY_TYPE Type() override { return PROPERTY_TYPE_HALFEDGE; }
+	virtual PROPERTY_TYPE PropertyType() override { return PROPERTY_TYPE_HALFEDGE; }
 	virtual void Draw(shared_ptr<UniformStruct> pUniform) override;
 	virtual void Build(IModelNode* pModel, IPropertyArgs* pPropertyArgs) override;
 	virtual void Update(IModelNode* pModel, IPropertyArgs* pPropertyArgs) override;
-
 private:
 	void GetVBOData(HalfEdgeDS* model, vector<vec3>& position, vector<vec3>& color, bool needColor);
 

@@ -5,7 +5,7 @@ namespace KI
 {
 namespace RenderModel
 {
-class DLL_EXPORT CameraNode : public IModelNode
+class DLL_EXPORT CameraNode : public IRenderModelNode
 {
 public:
 	CameraNode(shared_ptr<ICamera> pCamera);

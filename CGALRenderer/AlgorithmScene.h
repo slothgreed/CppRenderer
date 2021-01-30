@@ -10,6 +10,7 @@ public:
 	AlgorithmScene();
 	virtual ~AlgorithmScene();
 	virtual void Initialize() override;
+	virtual void ShowUI(ImGuiContext* context) override;
 	virtual void Invoke() override;
 	virtual void ProcessMouseEvent(const MouseInput& input) override;
 

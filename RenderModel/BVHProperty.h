@@ -4,13 +4,13 @@ namespace KI
 {
 namespace RenderModel
 {
-class BVHProperty : public IModelProperty
+class BVHProperty : public IRenderModelProperty
 {
 public:
 	BVHProperty();
 	~BVHProperty();
 
-	virtual PROPERTY_TYPE Type() override { return PROPERTY_TYPE_BVH; }
+	virtual PROPERTY_TYPE PropertyType() override { return PROPERTY_TYPE_BVH; }
 	virtual void Build(IModelNode* pModel, IPropertyArgs* pPropertyArgs) override;
 	virtual void Update(IModelNode* pModel, IPropertyArgs* pPropertyArgs) override;
 	virtual void Draw(shared_ptr<UniformStruct> pUniform);
