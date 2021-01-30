@@ -17,7 +17,7 @@ void HalfEdgeResolutionProperty::Build(IModelNode* pModelNode, IPropertyArgs* pP
 	auto pRenderData = pModelNode->GetRenderData(0);
 	auto pMeshBuffer = pRenderData->GetVertexBuffer();
 	m_pRenderData = make_shared<RenderData>();
-
+	SetModel(pModelNode);
 	m_colorMap.resize(pMeshBuffer->GetVertexSize());
 	for (int i = 0; i < m_colorMap.size(); i++) {
 		m_colorMap[i].x = Gaccho::rnd(0, 255) / 255.0;
@@ -25,37 +25,26 @@ void HalfEdgeResolutionProperty::Build(IModelNode* pModelNode, IPropertyArgs* pP
 		m_colorMap[i].z = Gaccho::rnd(0, 255) / 255.0;
 	}
 
-	shared_ptr<HalfEdgeModel> pModel;
-	if (pModelNode->GetModel()->Type() == MODEL_TYPE_HALF_EDGE)
-	{
-		pModel = static_pointer_cast<HalfEdgeModel>(pModelNode->GetModel());
-		pModel->CalcDownSampling();
-	}
-	else
-	{
-		assert(0);
-		return;
-	}
+	m_pModel->CalcDownSampling();
 
 	vector<vec3> colors;
-	GetClusterColor(pModelNode, pPropertyArgs, colors);
+	GetClusterColor(pPropertyArgs, colors);
 
 	
 	auto pVertexBuffer = make_shared<DefaultVertexBuffer>();
 	pVertexBuffer->SetArrayBuffer(VERTEX_ATTRIB::VERTEX_ATTRIB_POSITION, pMeshBuffer->GetArrayBuffer(VERTEX_ATTRIB::VERTEX_ATTRIB_POSITION));
 	pVertexBuffer->SetVertexSize(pMeshBuffer->GetVertexSize());
 	pVertexBuffer->SetColor(colors);
-	//m_pRenderData->SetGeometryData(PRIM_TYPE_POINTS, pVertexBuffer);
 	m_pRenderData->SetGeometryData(PRIM_TYPE_TRIANGLES, pVertexBuffer, pRenderData->GetIndexBuffer());
 
-	m_pRenderData->SetShading(make_shared<VertexShading>(VERTEX_SHADING_COLOR));
+	m_pRenderData->SetShading(make_shared<BasicShading>(vec4(0.7f, 0.7f, 0.7f, 1)));
 
 }
 
 void HalfEdgeResolutionProperty::Update(IModelNode* pModelNode, IPropertyArgs* pPropertyArgs)
 {
 	vector<vec3> colors;
-	GetClusterColor(pModelNode, pPropertyArgs, colors);
+	GetClusterColor(pPropertyArgs, colors);
 
 	auto pVertexBuffer = m_pRenderData->GetVertexBuffer();
 	if (pVertexBuffer->Type() == VERTEX_BUFFER_TYPE_DEFAULT)
@@ -69,26 +58,27 @@ void HalfEdgeResolutionProperty::Update(IModelNode* pModelNode, IPropertyArgs* p
 	}
 }
 
-void HalfEdgeResolutionProperty::GetClusterColor(IModelNode* pModelNode, IPropertyArgs* pPropertyArgs, vector<vec3>& colors)
+void HalfEdgeResolutionProperty::SetModel(IModelNode* pModelNode)
 {
-	shared_ptr<HalfEdgeModel> pModel;
 	if (pModelNode->GetModel()->Type() == MODEL_TYPE_HALF_EDGE)
 	{
-		pModel = static_pointer_cast<HalfEdgeModel>(pModelNode->GetModel());
+		m_pModel = static_pointer_cast<HalfEdgeModel>(pModelNode->GetModel());
 	}
 	else
 	{
 		assert(0);
 		return;
 	}
-
+}
+void HalfEdgeResolutionProperty::GetClusterColor(IPropertyArgs* pPropertyArgs, vector<vec3>& colors)
+{
 	auto pArgs = dynamic_cast<HalfEdgeResolutionPropertyArgs*>(pPropertyArgs);
 	if (pArgs == nullptr)
 	{
 		pArgs = &DefaultArgs();
 	}
 
-	auto pDownSampling = pModel->GetDownSampling();
+	auto pDownSampling = m_pModel->GetDownSampling();
 	if (pDownSampling == nullptr)
 	{
 		assert(0);

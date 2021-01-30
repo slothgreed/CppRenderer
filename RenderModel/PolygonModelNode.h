@@ -14,21 +14,25 @@ public:
 	virtual void Update(void* sender, IEventArgs* args) override;
 	IPolygonModel* GetModel();
 
-	void VisibleBDB(bool visibility);
 	void VisibleNormal(bool visibility);
-	void VisibleFace(bool visibility);
-	void VisibleEdge(bool visibility);
 	shared_ptr<IVertexBuffer> GetVertexBuffer();
 protected:
 	string m_name;
 
 private:
+	enum RENDER_DATA
+	{
+		MESH = 0,
+		Edge = 1,
+	};
 
 	struct UI
 	{
 		UI() : visibleBDB(false), visibleNormal(false) {}
 		bool visibleBDB;
 		bool visibleNormal;
+		bool visibleMesh;
+		bool visibleEdge;
 	};
 
 	UI m_ui;

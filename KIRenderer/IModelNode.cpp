@@ -110,7 +110,7 @@ void IModelNode::BindModel(shared_ptr<UniformStruct> pUniform, int index)
 		if (pUniform->GetModel() != NULL)
 		{
 			pUniform->GetModel()->SetModelMatrix(m_ModelMatrix);
-			pUniform->GetModel()->SetObjectId(m_pRenderData[index]->GetPickID());
+			pUniform->GetModel()->SetObjectId(m_pRenderData[index].pRenderData->GetPickID());
 			pUniform->GetModel()->Bind();
 		}
 	}
@@ -137,9 +137,14 @@ void IModelNode::FixedShaderDraw(shared_ptr<IShader> pShader, shared_ptr<IShadin
 	{
 		for (int i = 0; i < m_pRenderData.size(); i++)
 		{
+			if (m_pRenderData[i].visible == false ||
+				m_pRenderData[i].pRenderData == nullptr) {
+				continue;
+			}
+
 			BindModel(pUniform, i);
 			PreDraw(pUniform, i);
-			m_pRenderData[i]->Draw(pShader, pShading, pUniform);
+			m_pRenderData[i].pRenderData->Draw(pShader, pShading, pUniform);
 			PostDraw(pUniform, i);
 		}
 
@@ -159,21 +164,35 @@ void IModelNode::Draw(shared_ptr<UniformStruct> pUniform)
 	{
 		for (int i = 0; i < m_pRenderData.size(); i++)
 		{
+			if (m_pRenderData[i].visible == false ||
+				m_pRenderData[i].pRenderData == nullptr) {
+				continue;
+			}
+
 			BindModel(pUniform, i);
-			PreDraw(pUniform, i);
-			m_pRenderData[i]->Draw(pUniform);
+			PreDraw(pUniform, i); 
+			m_pRenderData[i].pRenderData->Draw(pUniform);
+			DrawProperty(pUniform);
 			PostDraw(pUniform, i);
 		}
 
 		UnBindModel(pUniform, 0);
 
-		DrawProperty(pUniform);
 	}
+}
+
+void IModelNode::SetVisible(int id, bool visible)
+{
+	m_pRenderData[id].visible = visible;
+}
+bool IModelNode::Visible(int id)
+{
+	return m_pRenderData[id].visible;
 }
 
 void IModelNode::AddRenderData(int id, shared_ptr<RenderData> pRenderData)
 {
-	m_pRenderData[id] = pRenderData;
+	m_pRenderData[id] = RenderDataInfo(pRenderData);
 }
 
 void IModelNode::RemoveRenderData(int id, shared_ptr<RenderData> pRenderData)
@@ -183,12 +202,12 @@ void IModelNode::RemoveRenderData(int id, shared_ptr<RenderData> pRenderData)
 
 shared_ptr<RenderData> IModelNode::GetRenderData(int id)
 {
-	if (m_pRenderData[id] == NULL) {
+	if (m_pRenderData[id].pRenderData == NULL) {
 		assert(0);
 		return nullptr;
 	}
 
-	return m_pRenderData[id];
+	return m_pRenderData[id].pRenderData;
 }
 
 void IModelNode::DrawProperty(shared_ptr<UniformStruct> pUniform)
@@ -238,7 +257,7 @@ void IModelNode::AddPickID(int start, int* next)
 {
 	for (int i = 0; i < m_pRenderData.size(); i++)
 	{
-		m_pRenderData[i]->SetPickID(start);
+		m_pRenderData[i].pRenderData->SetPickID(start);
 		start++;
 	}
 
@@ -249,7 +268,7 @@ bool IModelNode::HasPickID(int id)
 {
 	for (int i = 0; i < m_pRenderData.size(); i++)
 	{
-		if (m_pRenderData[i]->GetPickID() == id)
+		if (m_pRenderData[i].pRenderData->GetPickID() == id)
 		{
 			return true;
 		}

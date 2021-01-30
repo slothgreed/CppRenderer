@@ -18,8 +18,8 @@ void HalfEdgeDSNode::ShowUI()
 		VisibleProperty(PROPERTY_TYPE::PROPERTY_TYPE_HALFEDGE, m_ui.visibleHalfEdge);
 	}
 
-	if (ImGui::Checkbox("Visible Cluster", &m_ui.visibleResolution)) {
-		VisibleProperty(PROPERTY_TYPE::PROPERTY_TYPE_RESOLUTION, m_ui.visibleHalfEdge);
+	if (ImGui::Checkbox("Visible Resolution", &m_ui.visibleResolution)) {
+		VisibleProperty(PROPERTY_TYPE::PROPERTY_TYPE_RESOLUTION, m_ui.visibleResolution);
 	}
 
 	PropertyIterator itr(this);

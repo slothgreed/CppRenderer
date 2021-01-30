@@ -7,7 +7,6 @@ PolygonModelNode::PolygonModelNode(shared_ptr<IModel> model)
 {
 	m_name = "PolygonModelNode";
 	SetRenderData();
-	//VisibleNormal(true);
 }
 
 PolygonModelNode::~PolygonModelNode()
@@ -115,18 +114,16 @@ void PolygonModelNode::SetRenderData()
 
 }
 
-void PolygonModelNode::VisibleFace(bool visibility)
-{
-
-}
-
-void PolygonModelNode::VisibleEdge(bool visibility)
-{
-
-}
-
 void PolygonModelNode::ShowUI()
 {
+	if (ImGui::Checkbox("Visible Mesh", &m_ui.visibleMesh)) {
+		SetVisible(RENDER_DATA::MESH, m_ui.visibleMesh);
+	}
+
+	if (ImGui::Checkbox("Visible Edge", &m_ui.visibleEdge)) {
+		SetVisible(RENDER_DATA::MESH, m_ui.visibleEdge);
+	}
+
 	if (ImGui::Checkbox("Visible BDB", &m_ui.visibleBDB)) {
 		VisibleProperty(PROPERTY_TYPE::PROPERTY_TYPE_BDB, m_ui.visibleBDB);
 	}

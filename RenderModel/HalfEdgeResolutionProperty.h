@@ -31,6 +31,7 @@ public:
 	virtual void Update(IModelNode* pModel, IPropertyArgs* pPropertyArgs) override;
 	virtual void ShowUI() override;
 private:
+	void SetModel(IModelNode* pModelNode);
 
 	struct UI
 	{
@@ -39,9 +40,10 @@ private:
 	};
 
 	static HalfEdgeResolutionPropertyArgs& DefaultArgs();
-	void GetClusterColor(IModelNode* pModelNode, IPropertyArgs* pPropertyArgs, vector<vec3>& color);
+	void GetClusterColor(IPropertyArgs* pPropertyArgs, vector<vec3>& color);
 
 	UI m_ui;
+	shared_ptr<HalfEdgeModel> m_pModel;
 	shared_ptr<IShader> m_pShader;
 	shared_ptr<RenderData> m_pRenderData;
 	std::vector<vec3> m_colorMap;
