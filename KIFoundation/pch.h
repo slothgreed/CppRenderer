@@ -53,6 +53,7 @@ using namespace glm;
 
 #include "FileUtility.h"
 #include "FileWriter.h"
+#include "ArrayCSVIO.h"
 
 #include "TriangleIterator.h"
 

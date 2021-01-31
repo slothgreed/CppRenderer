@@ -63,7 +63,7 @@ void PolygonModelNode::SetRenderData()
 		pFaceBuffer->SetNormal(normal);
 		auto pFaceData = make_shared <RenderData>(PRIM_TYPE_TRIANGLES, pFaceBuffer);
 		pFaceData->SetShading(make_shared<BasicShading>(vec4(0.7f, 0.7f, 0.7f, 1)));
-		AddRenderData(0, pFaceData);
+		AddRenderData(RENDER_DATA::MESH, pFaceData);
 
 		vector<vec3> edge;
 		GetModel()->GetEdgeList(edge);
@@ -73,7 +73,7 @@ void PolygonModelNode::SetRenderData()
 		auto pEdgeShading = make_shared<BasicShading>(vec4(0, 1, 0, 1));
 		auto pEdgeData = make_shared <RenderData>(PRIM_TYPE_LINES, pEdgeBuffer);
 		pEdgeData->SetShading(pEdgeShading);
-		AddRenderData(1, pEdgeData);
+		AddRenderData(RENDER_DATA::Edge, pEdgeData);
 
 	}
 	else
@@ -99,7 +99,7 @@ void PolygonModelNode::SetRenderData()
 		pFaceIndex->Set(index);
 		auto pFaceData = make_shared <RenderData>(PRIM_TYPE_TRIANGLES, pFaceBuffer, pFaceIndex);
 		pFaceData->SetShading(make_shared<BasicShading>(vec4(0.7f, 0.7f, 0.7f, 1)));
-		AddRenderData(0, pFaceData);
+		AddRenderData(RENDER_DATA::MESH, pFaceData);
 
 		vector<vec3> edge;
 		GetModel()->GetEdgeList(edge);
@@ -109,7 +109,7 @@ void PolygonModelNode::SetRenderData()
 		auto pEdgeShading = make_shared<BasicShading>(vec4(0, 1, 0, 1));
 		auto pEdgeData = make_shared <RenderData>(PRIM_TYPE_LINES, pEdgeBuffer);
 		pEdgeData->SetShading(pEdgeShading);
-		AddRenderData(1, pEdgeData);
+		AddRenderData(RENDER_DATA::Edge, pEdgeData);
 	}
 
 }
@@ -121,7 +121,7 @@ void PolygonModelNode::ShowUI()
 	}
 
 	if (ImGui::Checkbox("Visible Edge", &m_ui.visibleEdge)) {
-		SetVisible(RENDER_DATA::MESH, m_ui.visibleEdge);
+		SetVisible(RENDER_DATA::Edge, m_ui.visibleEdge);
 	}
 
 	if (ImGui::Checkbox("Visible BDB", &m_ui.visibleBDB)) {

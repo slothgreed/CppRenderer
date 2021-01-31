@@ -13,12 +13,12 @@ layout (std140) uniform LightData
 	vec4 Ambient;
 	vec4 Diffuse;
 	vec4 Specular;
+	vec4 SpotDirection;
 	float ConstantAttenuation;
 	float LinearAttenuation;
 	float QuadraticAttenuation;
 	float SpotCutoff;
 	float SpotExponent;
-	vec4 SpotDirection;
 }light;
 
 layout (std140) uniform ModelData

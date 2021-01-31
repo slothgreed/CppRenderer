@@ -170,15 +170,15 @@ void IModelNode::Draw(shared_ptr<UniformStruct> pUniform)
 			}
 
 			BindModel(pUniform, i);
-			PreDraw(pUniform, i); 
+			PreDraw(pUniform, i);
 			m_pRenderData[i].pRenderData->Draw(pUniform);
-			DrawProperty(pUniform);
 			PostDraw(pUniform, i);
 		}
 
 		UnBindModel(pUniform, 0);
-
 	}
+
+	DrawProperty(pUniform);
 }
 
 void IModelNode::SetVisible(int id, bool visible)

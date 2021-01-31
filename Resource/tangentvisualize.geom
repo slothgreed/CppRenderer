@@ -31,7 +31,7 @@ void main()
 	EmitVertex();
 	EndPrimitive();
 
-	vec3 tangent2 = cross(InData[0].normal,InData[0].tangent);
+	vec3 tangent2 = normalize(cross(InData[0].normal,InData[0].tangent));
 	gl_Position = vp * gl_in[0].gl_Position;
 	EmitVertex();
 	

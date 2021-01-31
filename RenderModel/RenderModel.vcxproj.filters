@@ -28,6 +28,9 @@
     <Filter Include="ヘッダー ファイル\ImGui">
       <UniqueIdentifier>{40aa6e2a-5bc2-4ddd-aca3-0757ba7a9d5a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\ImGuiEx">
+      <UniqueIdentifier>{e4dc9f31-9555-4637-b079-24fe76756ce2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -102,6 +105,9 @@
     <ClInclude Include="IRenderModelProperty.h">
       <Filter>ヘッダー ファイル\Property</Filter>
     </ClInclude>
+    <ClInclude Include="ImGuiEx.h">
+      <Filter>ヘッダー ファイル\ImGuiEx</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -143,9 +149,6 @@
     <ClCompile Include="HalfEdgeResolutionProperty.cpp">
       <Filter>ソース ファイル\Property</Filter>
     </ClCompile>
-    <ClCompile Include="BVHProperty.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="..\extlibs\imgui\imgui.cpp">
       <Filter>ヘッダー ファイル\ImGui</Filter>
     </ClCompile>
@@ -172,6 +175,9 @@
     </ClCompile>
     <ClCompile Include="IRenderModelNode.cpp">
       <Filter>ソース ファイル\Node</Filter>
+    </ClCompile>
+    <ClCompile Include="BVHProperty.cpp">
+      <Filter>ソース ファイル\Property</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

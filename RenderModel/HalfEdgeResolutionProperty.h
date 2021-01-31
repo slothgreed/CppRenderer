@@ -35,13 +35,13 @@ private:
 
 	struct UI
 	{
-		UI() :level(0) {}
-		int level;
+		UI(){}
+		SliderUI<int> resolution;
 	};
 
 	static HalfEdgeResolutionPropertyArgs& DefaultArgs();
 	void GetClusterColor(IPropertyArgs* pPropertyArgs, vector<vec3>& color);
-
+	void InitializeUI();
 	UI m_ui;
 	shared_ptr<HalfEdgeModel> m_pModel;
 	shared_ptr<IShader> m_pShader;

@@ -15,9 +15,12 @@ public :
 private:
 	struct UI
 	{
-		UI() : visibleHalfEdge(false), visibleResolution(false){}
+		UI() : visibleHalfEdge(false), visibleResolution(false), visibleBVH(false), visibleTangent(false){}
 		bool visibleHalfEdge;
 		bool visibleResolution;
+		bool visibleBVH;
+		bool visibleTangent;
+		bool calcAlignment;
 	};
 
 	UI m_ui;

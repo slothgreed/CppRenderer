@@ -14,6 +14,7 @@ HalfEdgeResolutionProperty::HalfEdgeResolutionProperty()
 
 void HalfEdgeResolutionProperty::Build(IModelNode* pModelNode, IPropertyArgs* pPropertyArgs)
 {
+	assert(pModelNode != nullptr);
 	auto pRenderData = pModelNode->GetRenderData(0);
 	auto pMeshBuffer = pRenderData->GetVertexBuffer();
 	m_pRenderData = make_shared<RenderData>();
@@ -37,8 +38,9 @@ void HalfEdgeResolutionProperty::Build(IModelNode* pModelNode, IPropertyArgs* pP
 	pVertexBuffer->SetColor(colors);
 	m_pRenderData->SetGeometryData(PRIM_TYPE_TRIANGLES, pVertexBuffer, pRenderData->GetIndexBuffer());
 
-	m_pRenderData->SetShading(make_shared<BasicShading>(vec4(0.7f, 0.7f, 0.7f, 1)));
+	m_pRenderData->SetShading(make_shared<VertexShading>(VERTEX_SHADING_COLOR));
 
+	InitializeUI();
 }
 
 void HalfEdgeResolutionProperty::Update(IModelNode* pModelNode, IPropertyArgs* pPropertyArgs)
@@ -100,10 +102,18 @@ void HalfEdgeResolutionProperty::Draw(shared_ptr<UniformStruct> pUniform)
 	m_pRenderData->Draw(pUniform);
 }
 
+void HalfEdgeResolutionProperty::InitializeUI()
+{
+	m_ui.resolution.label = "Level";
+	m_ui.resolution.min = 0;
+	m_ui.resolution.value = m_ui.resolution.min;
+	m_ui.resolution.max = m_pModel->GetDownSampling()->GetResolutionNum();
+
+}
 void HalfEdgeResolutionProperty::ShowUI()
 {
-	if (ImGui::SliderInt("Level", &m_ui.level, 0, 20)) {
-		Update(nullptr, &HalfEdgeResolutionPropertyArgs(m_ui.level));
+	if (ImGui::SliderInt("Level", &m_ui.resolution.value, m_ui.resolution.min, m_ui.resolution.max)) {
+		Update(nullptr, &HalfEdgeResolutionPropertyArgs(m_ui.resolution.value));
 	}
 }
 }

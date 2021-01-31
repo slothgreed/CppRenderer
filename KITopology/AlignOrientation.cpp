@@ -41,8 +41,7 @@ void AlignOrientation::ClosestDirection(vec3 tangent1, vec3 normal1,
 	if (maxInner > 0) {
 		*orient2 = orients2[max2];
 	}
-	else
-	{
+	else {
 		*orient2 = -orients2[max2];
 	}
 }
@@ -65,10 +64,13 @@ void AlignOrientation::AssignLowerByUpper(int upperIndex)
 			for (int k = 0; k < pResolution->GetBranchNum(); k++)
 			{
 				auto pVertexIndex = pResolution->GetToUpper(pLink1->GetEnd(), k);
+				if (pVertexIndex == AdjancyMatrix::Link::INVALID) {
+					continue;
+				}
 				auto pVertex = pVertexList[pLink1->GetStart()];
 				vec3 tangent = pVertex->Tangent();
 				vec3 normal = pVertexList[pVertexIndex]->Normal();
-				pVertex->SetTangent(pVertex->Tangent() - normal * glm::dot(normal, tangent));
+				pVertex->SetTangent(glm::normalize(pVertex->Tangent() - normal * glm::dot(normal, tangent)));
 			}
 		}
 	}
@@ -93,19 +95,18 @@ void AlignOrientation::Calculate(int globalItrNum, int localItrNum)
 	assert(m_pDownSampling != NULL);
 	SetRandomTangent();
 
-	//int resolutionIndex = m_pDownSampling->GetResolutionNum() - 1;
-	//for (int i = 0; i < globalItrNum; i++)
-	//{
-	//	
-	//	for (int j = localItrNum; j < localItrNum; j++)
-	//	{
-	//		LocalAlignment(resolutionIndex);
-	//	}
+	int resolutionIndex = m_pDownSampling->GetResolutionNum() - 1;
+	for (int i = 0; i < globalItrNum; i++)
+	{
+		for (int j = localItrNum; j < localItrNum; j++)
+		{
+			LocalAlignment(resolutionIndex);
+		}
 
-	//	AssignLowerByUpper(resolutionIndex);
+		AssignLowerByUpper(resolutionIndex);
 
-	//	resolutionIndex--;
-	//}
+		resolutionIndex--;
+	}
 }
 
 void AlignOrientation::LocalAlignment(int resolution)
@@ -144,7 +145,6 @@ void AlignOrientation::LocalAlignment(int resolution)
 		if (weight > 0) {
 			pVertex1->SetTangent(tangent);
 		}
-
 	}
 
 }
@@ -152,6 +152,22 @@ void AlignOrientation::LocalAlignment(int resolution)
 void AlignOrientation::GlobalAlignment()
 {
 
+}
+
+float AlignOrientation::ErrorValue()
+{
+	for (int i = 0; i < m_pDownSampling->GetResolutionNum(); i++) {
+		auto pResolution = m_pDownSampling->GetResolution(i);
+		for (int j = 0; j < pResolution->GetClusterNum(); j++)
+		{
+			for (int k = 0; k < pResolution->GetBranchNum(); k++)
+			{
+
+			}
+		}
+	}
+
+	return 0.0f;
 }
 }
 }

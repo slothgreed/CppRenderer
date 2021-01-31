@@ -13,12 +13,22 @@ public:
 	virtual void Build(IModelNode* pModel, IPropertyArgs* pPropertyArgs) override;
 	virtual void Update(IModelNode* pModel, IPropertyArgs* pPropertyArgs) override;
 	virtual void Draw(shared_ptr<UniformStruct> pUniform);
+	virtual void ShowUI();
 private:
-	void SetVBOData(IModelNode* pModelNode);
 
+	struct UI
+	{
+		SliderUI<float> tangent;
+		float	color[3];
+	};
+
+	UI m_ui;
+	void SetVBOData(IModelNode* pModelNode);
+	void InitializeUI();
 	shared_ptr<IVertexBuffer> m_pVertexBuffer;
 	shared_ptr<ArrayBuffer> m_pTangentBuffer;
 	shared_ptr<RenderData> m_pRenderData;
+	shared_ptr<TangentVisualizeShading> m_pShading;
 };
 
 }

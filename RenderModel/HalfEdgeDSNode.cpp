@@ -22,6 +22,21 @@ void HalfEdgeDSNode::ShowUI()
 		VisibleProperty(PROPERTY_TYPE::PROPERTY_TYPE_RESOLUTION, m_ui.visibleResolution);
 	}
 
+	if (ImGui::Checkbox("Visible Tangent", &m_ui.visibleTangent)) {
+		VisibleProperty(PROPERTY_TYPE::PROPERTY_TYPE_VERTEX_TANGENT, m_ui.visibleTangent);
+	}
+
+	if (ImGui::Checkbox("Visible BVH", &m_ui.visibleBVH)) {
+		VisibleProperty(PROPERTY_TYPE::PROPERTY_TYPE_BVH, m_ui.visibleBVH);
+	}
+
+	if (ImGui::SmallButton("Calc Alignment")) {
+		auto pModel = ((HalfEdgeModel*)m_pModel.get());
+		pModel->CalcAlignOrientation();
+		auto pProperty = GetProperty(PROPERTY_TYPE::PROPERTY_TYPE_VERTEX_TANGENT);
+		pProperty->Update(this, nullptr);
+	}
+
 	PropertyIterator itr(this);
 	for (; itr.HasNext(); itr.Next()) {
 		auto pProperty = dynamic_cast<IRenderModelProperty*>(itr.Current());

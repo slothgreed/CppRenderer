@@ -47,7 +47,7 @@ vec4 OutputColorExt()
 
 void main()
 {
-	gl_Position = OutputPosition();
+	gl_Position = OutGLPosition();
 
 #if defined(OUT_POSITION)
 	OutData.position = gl_Position.xyz;

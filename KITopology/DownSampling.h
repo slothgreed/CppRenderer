@@ -67,7 +67,7 @@ public:
 		shared_ptr<AdjancyMatrix> m_pMatrix;
 	};
 
-	DownSampling(HalfEdgeDS* pHalfEdgeDS, int maxLevel);
+	DownSampling(HalfEdgeDS* pHalfEdgeDS);
 	~DownSampling() {};
 	void Generate();
 	shared_ptr<DownSampling::Resolution> GetResolution(int level);
@@ -79,7 +79,6 @@ private:
 	void CreateResolution(int level, shared_ptr<DownSampling::Resolution> pOrgResolution, shared_ptr<DownSampling::Resolution> pResolution);
 	HalfEdgeDS* m_pHalfEdgeDS;
 	vector<shared_ptr<DownSampling::Resolution>> m_pResolution;	// index‚ª‘å‚«‚¢‚Ù‚Çr‚¢
-	int m_maxLevel;
 	
 };
 

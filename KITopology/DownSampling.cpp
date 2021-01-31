@@ -89,10 +89,9 @@ DownSampling::SampleData* DownSampling::Resolution::GetData(int index)
 }
 
 
-DownSampling::DownSampling(HalfEdgeDS* pHalfEdgeDS, int maxLevel)
-	:m_pResolution(50),
-	m_pHalfEdgeDS(pHalfEdgeDS),
-	m_maxLevel(50)
+DownSampling::DownSampling(HalfEdgeDS* pHalfEdgeDS)
+	:m_pResolution(0),
+	m_pHalfEdgeDS(pHalfEdgeDS)
 {
 	Generate();
 }
@@ -114,23 +113,29 @@ void DownSampling::Generate()
 	auto pOrgMatrix = make_shared<AdjancyMatrix>();
 	auto pOrgResolution = make_shared<DownSampling::Resolution>();
 	InitialResolution(pOrgResolution, m_pHalfEdgeDS);
-	m_pResolution[0] = pOrgResolution;
-	for (int i = 1; i < m_maxLevel; i++)
+	m_pResolution.push_back(pOrgResolution);
+	int i = 1;
+	// ‘å‘Ì‚Ì”‚±‚êˆÈã‚É‚È‚é‚È‚ç•]‰¿•û–@‚ð•Ï‚¦‚½‚Ù‚¤‚ª—Ç‚¢
+	int maybeNum = std::log2(m_pHalfEdgeDS->VertexList().size()) * 2;
+	while (true)
 	{
 		auto pResolution = make_shared<DownSampling::Resolution>();
-		m_pResolution[i] = pResolution;
+		m_pResolution.push_back(pResolution);
 
-		CreateResolution(i,pOrgResolution, pResolution);
+		CreateResolution(i, pOrgResolution, pResolution);
 		pOrgResolution = pResolution;
 		if (pResolution->GetAdjancyMatrix()->Size() == 0) {
 			break;
 		}
 
+		i++;
+
 		//AdjancyMatrixCSVIO val;
 		//val.Output("C:\\Users\\stmnd\\Desktop\\Adjancy\\test" + std::to_string(i) + ".txt", pOrgResolution->GetAdjancyMatrix().get());
+		if (maybeNum == i) {
+			assert(0);
+		}
 	}
-
-	
 }
 
 
@@ -164,10 +169,10 @@ void DownSampling::CreateResolution(int level,
 			vec3 normal2 = pOrgResolution->GetData(endIndex)->Normal();
 			float area2 = pOrgResolution->GetData(endIndex)->Area();
 			
-			float nDot = glm::dot(normal1, normal2);
-			float ratio = area1 + area2;// ? area1 / area2 : area2 / area1;
+			float nDot = std::abs(glm::dot(normal1, normal2));
+			float ratio = area1 + area2; //? area1 / area2 : area2 / area1;
 			assert(startIndex + endIndex < pOrgMatrix->Size());
-			entries[counter] = Entry(startIndex, endIndex, /*nDot **/ ratio);
+			entries[counter] = Entry(startIndex, endIndex, nDot * ratio);
 			counter++;
 		}
 	}
@@ -237,6 +242,12 @@ void DownSampling::CreateResolution(int level,
 
 
 	auto pMatrix = pResolution->GetAdjancyMatrix();
+
+	if (clusterNum == 1) {
+		// cluster ‚ª 1ŒÂ‚Ìê‡‚Í—×Ús—ñ‚ðì‚ç‚È‚¢B
+		return;
+	}
+
 	pMatrix->NewRow(clusterNum);
 	// calculate neighborhood;
 	for (int i = 0; i < pResolution->GetClusterNum(); i++)
@@ -292,13 +303,16 @@ void DownSampling::CreateResolution(int level,
 
 shared_ptr<DownSampling::Resolution> DownSampling::GetResolution(int level)
 {
-	assert(level > m_pResolution.size());
+	assert(level < m_pResolution.size());
 	return m_pResolution[level];
 }
 
 void DownSampling::GetCluster(int level, std::vector<int>& index)
 {
 	index.resize(m_pHalfEdgeDS->VertexList().size());
+	if (level == m_pResolution.size()) {
+		return;
+	}
 	if (level == 0) {
 		for (int i = 0; i < m_pHalfEdgeDS->VertexList().size(); i++) {
 			index[i] = i;

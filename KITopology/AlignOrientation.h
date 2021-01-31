@@ -25,6 +25,8 @@ private:
 	HalfEdgeDS* m_pHalfEdgeDS;
 	DownSampling* m_pDownSampling;
 	int m_locelItrNum;
+	float ErrorValue();
+
 };
 }
 }

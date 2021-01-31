@@ -14,13 +14,15 @@ VertexTangentProperty::~VertexTangentProperty()
 
 void VertexTangentProperty::Build(IModelNode* pModelNode, IPropertyArgs* pPropertyArgs)
 {
-	auto pShading = make_shared<TangentVisualizeShading>(vec4(0, 1, 0, 1), false);
-	pShading->SetLength(1.0f);
+	m_pShading = make_shared<TangentVisualizeShading>(vec4(0, 0, 0, 1), false);
+	m_pShading->SetLength(1.0f);
 
 	m_pRenderData = make_shared<RenderData>();
-	m_pRenderData->SetShading(pShading);
+	m_pRenderData->SetShading(m_pShading);
 
 	SetVBOData(pModelNode);
+
+	InitializeUI();
 }
 
 void VertexTangentProperty::Update(IModelNode* pModelNode, IPropertyArgs* pPropertyArgs)
@@ -60,6 +62,7 @@ void VertexTangentProperty::SetVBOData(IModelNode* pModelNode)
 		m_pVertexBuffer->SetVertexSize(pModel->GetHalfEdgeDS()->VertexList().size());
 		m_pTangentBuffer = make_shared<ArrayBuffer>(GL_FLOAT, 3);
 		m_pTangentBuffer->Generate();
+		m_pVertexBuffer->SetArrayBuffer(TangentVisualizeVertexCode::ATTRIBUTE::TANGENT, m_pTangentBuffer);
 	}
 
 	std::vector<vec3> tangents;
@@ -69,7 +72,6 @@ void VertexTangentProperty::SetVBOData(IModelNode* pModelNode)
 	}
 
 	m_pTangentBuffer->Set(tangents);
-	m_pVertexBuffer->SetArrayBuffer(TangentVisualizeVertexCode::ATTRIBUTE::TANGENT, m_pTangentBuffer);
 
 	m_pRenderData->SetGeometryData(PRIM_TYPE_POINTS, m_pVertexBuffer);
 }
@@ -77,6 +79,25 @@ void VertexTangentProperty::SetVBOData(IModelNode* pModelNode)
 void VertexTangentProperty::Draw(shared_ptr<UniformStruct> pUniform)
 {
 	m_pRenderData->Draw(pUniform);
+}
+
+void VertexTangentProperty::InitializeUI()
+{
+	m_ui.tangent.label = "Length";
+	m_ui.tangent.min = 0.0;
+	m_ui.tangent.max = 1.0;
+	m_ui.tangent.value = 0.5;
+
+	m_ui.color[0] = 0;
+	m_ui.color[1] = 0;
+	m_ui.color[2] = 0;
+}
+
+void VertexTangentProperty::ShowUI()
+{
+	if (ImGui::SliderFloat(m_ui.tangent.label.data(), &m_ui.tangent.value, m_ui.tangent.min, m_ui.tangent.max, "%lf", 1.0f)) {
+		m_pShading->SetLength(m_ui.tangent.value);
+	}
 }
 
 }

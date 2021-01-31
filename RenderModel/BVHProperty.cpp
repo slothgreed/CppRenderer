@@ -15,6 +15,7 @@ void BVHProperty::Build(IModelNode* pModelNode, IPropertyArgs* pPropertyArgs)
 
 	m_pVertexBuffer = make_shared<DefaultVertexBuffer>("BVH");
 	auto pIndexBuffer = make_shared<IndexBuffer>();
+	SetInstanceBuffer(pModelNode);
 	SetBoxBuffer(m_pVertexBuffer, pIndexBuffer);
 	m_pRenderData = make_shared<RenderData>();
 	m_pRenderData->SetShading(pShading);
@@ -41,6 +42,8 @@ void BVHProperty::SetInstanceBuffer(IModelNode* pModelNode)
 		return;
 	}
 
+	pModel->CalcBVH();
+
 	PolygonModelNode* pPolygonModel = nullptr;
 	if (IPolygonModel::IsPolygonModel(pModelNode->GetModel()->Type()))
 	{
@@ -52,8 +55,6 @@ void BVHProperty::SetInstanceBuffer(IModelNode* pModelNode)
 		return;
 	}
 	
-	
-
 	std::vector<BDB> bdbs;
 	pModel->GetBVH()->GetBVHBoundingBox(0, bdbs);
 	m_pMatrixBuffer.resize(bdbs.size());
