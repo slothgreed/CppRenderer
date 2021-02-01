@@ -13,7 +13,7 @@ public:
 	virtual bool HasNext() override;
 	virtual void Next() override;
 	virtual HalfEdge* Current() override;
-
+	virtual HalfEdge* CurrentNext();	// Œ»İ‚ÌŸC‚È‚·Šp‚ğ‹‚ß‚½‚¢‚È‚Ç
 private:
 	HalfEdgeVertex*	m_pVertex;
 	HalfEdge* m_pEdgeItr;

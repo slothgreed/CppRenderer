@@ -325,7 +325,8 @@ void HalfEdgeOperator::SetRandomTangentForVertex(HalfEdgeDS* halfEdgeDS)
 		float random = Gaccho::rnd(0, 1);
 		value2 = glm::cross(value1, normal);
 		float angle = Gaccho::rnd(0, 1) * 2 * pi<float>();
-		pVertex->SetTangent(value1 * std::cos(angle) + value2 * std::sin(angle));
+		vec3 tangent = glm::normalize(value1 * std::cos(angle) + value2 * std::sin(angle));
+		pVertex->SetTangent(tangent);
 	}
 }
 

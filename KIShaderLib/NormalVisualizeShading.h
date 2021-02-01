@@ -17,7 +17,6 @@ public:
 
 	virtual bool NewShaderCompare(IShaderChunk* pTarget) override;
 	virtual shared_ptr<IShaderCode> NewShaderCode(IShaderBuildInfo* pBuildInfo,SHADER_PROGRAM_TYPE type) override;
-
 private:
 	float m_Length;
 };

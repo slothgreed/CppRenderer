@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -164,6 +164,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AnyTreeNode.h" />
+    <ClInclude Include="ArrayCSVIO.h" />
     <ClInclude Include="BDB.h" />
     <ClInclude Include="BDBUtility.h" />
     <ClInclude Include="ColorUtility.h" />
@@ -190,6 +191,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AnyTreeNode.cpp" />
+    <ClCompile Include="ArrayCSVIO.cpp" />
     <ClCompile Include="BDB.cpp" />
     <ClCompile Include="BDBUtility.cpp" />
     <ClCompile Include="ColorUtility.cpp" />

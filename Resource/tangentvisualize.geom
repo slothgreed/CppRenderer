@@ -37,6 +37,6 @@ void main()
 	
 	gl_Position = vp * vec4(gl_in[0].gl_Position.xyz + tangent2 * uLength,1.0);
 	EmitVertex();
-	
 	EndPrimitive();
+
 }

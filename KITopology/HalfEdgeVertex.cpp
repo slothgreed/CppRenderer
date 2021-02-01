@@ -57,7 +57,14 @@ vec3 HalfEdgeVertex::CalcNormal()
 	for (auto itr = VertexAroundEdgeIterator(this); itr.HasNext(); itr.Next())
 	{
 		face = ((HalfEdge*)itr.Current())->Face().get();
-		sum += face->Normal();
+		auto pEdge1 = itr.Current();
+		auto pEdge2 = itr.CurrentNext();
+		auto pVector1 = pEdge1->End()->Position() - pEdge1->Start()->Position();
+		auto pVector2 = pEdge2->End()->Position() - pEdge2->Start()->Position();
+
+		float inner = glm::dot(pVector1, pVector2);
+		float value = std::acos(inner / (glm::length(pVector1) *glm::length(pVector2)));
+		sum += face->Normal() * value;
 		num++;
 	}
 
@@ -67,7 +74,7 @@ vec3 HalfEdgeVertex::CalcNormal()
 	normal.y = sum.y * denom;
 	normal.z = sum.z * denom;
 
-	return normal;
+	return glm::normalize(normal);
 }
 
 int HalfEdgeVertex::AroundVertexNum()
@@ -115,6 +122,7 @@ void HalfEdgeVertex::Validate()
 
 VertexAroundEdgeIterator::VertexAroundEdgeIterator(HalfEdgeVertex* pVertex)
 {
+	assert(pVertex->Edge() != nullptr);
 	m_pVertex = pVertex;
 	m_pEdgeItr = m_pVertex->Edge().get();
 	m_init = true;
@@ -123,6 +131,7 @@ VertexAroundEdgeIterator::VertexAroundEdgeIterator(HalfEdgeVertex* pVertex)
 
 bool VertexAroundEdgeIterator::HasNext()
 {
+	assert(m_pVertex->Edge() != nullptr);
 	if (m_pEdgeItr == m_pVertex->Edge().get() && m_init == false)
 	{
 		return false;
@@ -135,6 +144,9 @@ bool VertexAroundEdgeIterator::HasNext()
 
 void VertexAroundEdgeIterator::Next()
 {
+	assert(m_pEdgeItr != nullptr);
+	assert(m_pEdgeItr->Opposite() != nullptr);
+	assert(m_pEdgeItr->Opposite()->Next() != nullptr);
 	m_pEdgeItr = m_pEdgeItr->Opposite()->Next().get();
 	m_init = false;
 }
@@ -143,6 +155,15 @@ HalfEdge* VertexAroundEdgeIterator::Current()
 {
 	return m_pEdgeItr;
 }
+
+HalfEdge* VertexAroundEdgeIterator::CurrentNext()
+{
+	assert(m_pEdgeItr != nullptr);
+	assert(m_pEdgeItr->Opposite() != nullptr);
+	assert(m_pEdgeItr->Opposite()->Next() != nullptr);
+	return m_pEdgeItr->Opposite()->Next().get();
+}
+
 
 
 }

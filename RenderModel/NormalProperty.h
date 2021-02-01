@@ -16,8 +16,16 @@ public:
 	virtual void Draw(shared_ptr<UniformStruct> pUniform);
 	virtual void Build(IModelNode* pModel, IPropertyArgs* pPropertyArgs) override;
 	virtual void Update(IModelNode* pModel, IPropertyArgs* pPropertyArgs) override;
-
+	virtual void InitializeUI();
+	virtual void ShowUI() override;
 private:
+
+	struct UI
+	{
+		SliderUI<float> length;
+	};
+
+	UI m_ui;
 	void SetVBOData(IModelNode* pModelNode);
 	shared_ptr<NormalVisualizeShading> m_pShading;
 	shared_ptr<RenderData> m_pRenderData;
