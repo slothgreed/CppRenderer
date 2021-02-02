@@ -32,7 +32,6 @@ public:
 
 	virtual void FixedShaderDraw(shared_ptr<IShader> pShader, shared_ptr<IShading> pShading, shared_ptr<UniformStruct> pUniformStorage);
 	void Draw(shared_ptr<UniformStruct> pUniform);
-	virtual void ShowProperty() {};
 	
 	virtual void ClearSelect() {};
 	virtual void AddSelect(PICK_TYPE type, shared_ptr<IShading> pShader, int index, int first, int count);

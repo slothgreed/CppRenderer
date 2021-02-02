@@ -69,7 +69,7 @@ void PickPath::Draw(shared_ptr<Scene> pScene)
 	m_pRenderTarget->End();
 }
 
-bool PickPath::GetPickResult(const vec2& position, PickResult* pickResult)
+bool PickPath::GetPickResult(const ivec2& position, PickResult* pickResult)
 {
 	m_pRenderTarget->Begin();
 

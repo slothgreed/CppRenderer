@@ -14,7 +14,7 @@ public:
 	{
 	public:
 		static const int INVALID = -1;
-		Link() :m_start(-1), m_end(-1), m_weight(0.0f) {};
+		Link() :m_start(-1), m_end(-1), m_weight(1.0f) {};
 		Link(int start, int end, float weight)
 			:m_start(start), m_end(end), m_weight(weight) {};
 		~Link() {};

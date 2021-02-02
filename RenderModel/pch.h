@@ -39,8 +39,9 @@ using namespace KI::Asset;
 #include "imgui.h"
 #include "backends/imgui_impl_glfw.h"
 #include "backends/imgui_impl_opengl3.h"
-#include "ImGuiEx.h"
-using namespace ImGuiEx;
+#include "SliderUI.h"
+#include "CheckBoxUI.h"
+using namespace KI::ImGuiEx;
 
 #include "IRenderModelProperty.h"
 #include "BDBProperty.h"

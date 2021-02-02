@@ -22,7 +22,7 @@ private:
 
 	struct UI
 	{
-		SliderUI<float> length;
+		SliderFloatUI length;
 	};
 
 	UI m_ui;

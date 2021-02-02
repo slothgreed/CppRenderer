@@ -21,7 +21,7 @@ public:
 	virtual void Resize(int width, int height) override;
 	void Draw(shared_ptr<Scene> pScene);
 	void ResetPickID(shared_ptr<Scene> pScene);
-	bool GetPickResult(const vec2& position, PickResult* pickResult);
+	bool GetPickResult(const ivec2& position, PickResult* pickResult);
 	shared_ptr<RenderTexture> GetPickTexture();
 
 private:

@@ -24,7 +24,7 @@ void main()
 	EndPrimitive();
 #endif
 	
-	gl_Position = vp * gl_in[0].gl_Position;
+	gl_Position = vp * vec4(gl_in[0].gl_Position.xyz - InData[0].tangent * uLength,1.0);
 	EmitVertex();
 	
 	gl_Position = vp * vec4(gl_in[0].gl_Position.xyz + InData[0].tangent * uLength,1.0);
@@ -32,7 +32,7 @@ void main()
 	EndPrimitive();
 
 	vec3 tangent2 = normalize(cross(InData[0].normal,InData[0].tangent));
-	gl_Position = vp * gl_in[0].gl_Position;
+	gl_Position = vp * vec4(gl_in[0].gl_Position.xyz - tangent2 * uLength,1.0);
 	EmitVertex();
 	
 	gl_Position = vp * vec4(gl_in[0].gl_Position.xyz + tangent2 * uLength,1.0);

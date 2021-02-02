@@ -42,7 +42,7 @@ public:
 
 	vec3 Gravity()
 	{
-		return (m_position0 + m_position1 + m_position2) * vec3(1.0 / 3);
+		return (m_position0 + m_position1 + m_position2) * vec3(1.0f / 3);
 	}
 private:
 	int m_Index;

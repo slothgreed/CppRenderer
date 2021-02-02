@@ -18,7 +18,7 @@ private:
 
 	struct UI
 	{
-		SliderUI<float> tangent;
+		SliderFloatUI tangent;
 		float	color[3];
 	};
 

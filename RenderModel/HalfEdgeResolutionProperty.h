@@ -36,7 +36,7 @@ private:
 	struct UI
 	{
 		UI(){}
-		SliderUI<int> resolution;
+		SliderIntUI resolution;
 	};
 
 	static HalfEdgeResolutionPropertyArgs& DefaultArgs();

@@ -13,14 +13,6 @@ PolygonModelNode::~PolygonModelNode()
 {
 }
 
-
-void PolygonModelNode::ShowProperty()
-{
-	ImGui::Begin(m_name.data());
-	ImGui::Text(m_bdb.ToString().data());
-	ImGui::End();
-}
-
 IPolygonModel* PolygonModelNode::GetModel()
 {
 	if (IPolygonModel::IsPolygonModel(m_pModel->Type()))

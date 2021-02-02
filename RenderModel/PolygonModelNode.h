@@ -9,7 +9,6 @@ class DLL_EXPORT PolygonModelNode : public IRenderModelNode
 public:
 	PolygonModelNode(shared_ptr<IModel> model);
 	~PolygonModelNode();
-	virtual void ShowProperty() override;
 	virtual void ShowUI() override;
 	virtual void Update(void* sender, IEventArgs* args) override;
 	IPolygonModel* GetModel();

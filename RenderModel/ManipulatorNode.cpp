@@ -29,11 +29,6 @@ ManipulatorNode::~ManipulatorNode()
 {
 }
 
-void ManipulatorNode::ShowProperty()
-{
-	//assert(0);
-}
-
 void ManipulatorNode::SetRenderData()
 {
 	m_pManipulator->Build();

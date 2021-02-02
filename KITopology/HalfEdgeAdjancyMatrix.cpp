@@ -22,7 +22,7 @@ void HalfEdgeAdjancyMatrix::New()
 		int j = 0;
 		for (auto itr = VertexAroundEdgeIterator(vertex.get()); itr.HasNext(); itr.Next())
 		{
-			Set(i, j, Link(vertex->Index(), itr.Current()->End()->Index(), 0));
+			Set(i, j, Link(vertex->Index(), itr.Current()->End()->Index(), 1.0));
 			j++;
 		}
 	}

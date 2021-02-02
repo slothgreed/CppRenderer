@@ -13,7 +13,6 @@ public:
 
 	virtual void ClearSelect() override;
 	virtual void AddSelect(PICK_TYPE type, shared_ptr<IShading> pShading, int index, int first, int count) override;
-	virtual void ShowProperty() override;
 protected:
 	virtual void PreDraw(shared_ptr<UniformStruct> pUniform, int index) override;
 private:

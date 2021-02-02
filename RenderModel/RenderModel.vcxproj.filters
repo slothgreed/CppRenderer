@@ -31,6 +31,9 @@
     <Filter Include="ヘッダー ファイル\ImGuiEx">
       <UniqueIdentifier>{e4dc9f31-9555-4637-b079-24fe76756ce2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\ImGuiEx">
+      <UniqueIdentifier>{58b5c20b-1b8a-4a19-bff8-5069ac6d13e4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -105,7 +108,10 @@
     <ClInclude Include="IRenderModelProperty.h">
       <Filter>ヘッダー ファイル\Property</Filter>
     </ClInclude>
-    <ClInclude Include="ImGuiEx.h">
+    <ClInclude Include="SliderUI.h">
+      <Filter>ヘッダー ファイル\ImGuiEx</Filter>
+    </ClInclude>
+    <ClInclude Include="CheckBoxUI.h">
       <Filter>ヘッダー ファイル\ImGuiEx</Filter>
     </ClInclude>
   </ItemGroup>
@@ -178,6 +184,12 @@
     </ClCompile>
     <ClCompile Include="BVHProperty.cpp">
       <Filter>ソース ファイル\Property</Filter>
+    </ClCompile>
+    <ClCompile Include="SliderUI.cpp">
+      <Filter>ソース ファイル\ImGuiEx</Filter>
+    </ClCompile>
+    <ClCompile Include="CheckBoxUI.cpp">
+      <Filter>ソース ファイル\ImGuiEx</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

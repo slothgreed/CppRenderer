@@ -27,7 +27,7 @@ void AlignOrientation::ClosestDirection(vec3 tangent1, vec3 normal1,
 		for (int j = 0; j < 2; j++)
 		{
 			float inner = std::abs(glm::dot(orients1[i], orients2[j]));
-			if (maxInner > inner) {
+			if (maxInner < inner) {
 				max1 = i;
 				max2 = j;
 				maxInner = inner;
@@ -36,6 +36,9 @@ void AlignOrientation::ClosestDirection(vec3 tangent1, vec3 normal1,
 	}
 
 	maxInner = glm::dot(orients1[max1], orients2[max2]);
+	if (maxInner > 1.5f) {
+		int a = 0;
+	}
 
 	*orient1 = orients1[max1];
 	if (maxInner > 0) {
@@ -74,6 +77,7 @@ void AlignOrientation::AssignLowerByUpper(int upperIndex)
 			}
 		}
 	}
+
 }
 
 void AlignOrientation::SetRandomTangent()
@@ -98,7 +102,7 @@ void AlignOrientation::Calculate(int globalItrNum, int localItrNum)
 	int resolutionIndex = m_pDownSampling->GetResolutionNum() - 1;
 	for (int i = 0; i < globalItrNum; i++)
 	{
-		for (int j = localItrNum; j < localItrNum; j++)
+		for (int j = 0; j < localItrNum; j++)
 		{
 			LocalAlignment(resolutionIndex);
 		}
@@ -139,6 +143,7 @@ void AlignOrientation::LocalAlignment(int resolution)
 			tangent = tangent - pVertex1->Normal() * glm::dot(pVertex1->Normal(), tangent);
 			weight += pLink2->GetWeight();
 
+			assert(weight != 0.0f && pLink2->GetWeight() != 0.0f);	// tangent‚Ì’·‚³‚ª0‚É‚È‚éB
 			tangent = glm::normalize(tangent);
 		}
 

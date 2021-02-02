@@ -83,10 +83,10 @@ void VertexTangentProperty::Draw(shared_ptr<UniformStruct> pUniform)
 
 void VertexTangentProperty::InitializeUI()
 {
-	m_ui.tangent.label = "Length";
-	m_ui.tangent.min = 0.0;
-	m_ui.tangent.max = 1.0;
-	m_ui.tangent.value = 0.5;
+	m_ui.tangent.SetLabel("Length");
+	m_ui.tangent.SetMin(0.0);
+	m_ui.tangent.SetMax(1.0);
+	m_ui.tangent.SetValue(0.5);
 
 	m_ui.color[0] = 0;
 	m_ui.color[1] = 0;
@@ -95,8 +95,8 @@ void VertexTangentProperty::InitializeUI()
 
 void VertexTangentProperty::ShowUI()
 {
-	if (ImGui::SliderFloat(m_ui.tangent.label.data(), &m_ui.tangent.value, m_ui.tangent.min, m_ui.tangent.max, "%lf", 1.0f)) {
-		m_pShading->SetLength(m_ui.tangent.value);
+	if (m_ui.tangent.Show()) {
+		m_pShading->SetLength(m_ui.tangent.Value());
 	}
 }
 
