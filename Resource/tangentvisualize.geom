@@ -4,6 +4,7 @@ layout(points) in;
 layout(line_strip, max_vertices = 6) out;
 
 uniform float uLength;
+uniform float uOffset;
 in Data
 {
 	vec3 normal;
@@ -19,23 +20,25 @@ void main()
 	gl_Position = vp * gl_in[0].gl_Position;
 	EmitVertex();
 	
-	gl_Position = vp * vec4(gl_in[0].gl_Position.xyz + InData[0].normal * uLength,1.0);
+	gl_Position = vp * vec4(gl_in[0].gl_Position.xyz + InData[0].normal * uLength, 1.0);
 	EmitVertex();
 	EndPrimitive();
 #endif
 	
-	gl_Position = vp * vec4(gl_in[0].gl_Position.xyz - InData[0].tangent * uLength,1.0);
+	vec3 offsetNormal = InData[0].normal * uOffset;
+	
+	gl_Position = vp * vec4(gl_in[0].gl_Position.xyz - InData[0].tangent * uLength + offsetNormal,1.0);
 	EmitVertex();
 	
-	gl_Position = vp * vec4(gl_in[0].gl_Position.xyz + InData[0].tangent * uLength,1.0);
+	gl_Position = vp * vec4(gl_in[0].gl_Position.xyz + InData[0].tangent * uLength + offsetNormal, 1.0);
 	EmitVertex();
 	EndPrimitive();
 
 	vec3 tangent2 = normalize(cross(InData[0].normal,InData[0].tangent));
-	gl_Position = vp * vec4(gl_in[0].gl_Position.xyz - tangent2 * uLength,1.0);
+	gl_Position = vp * vec4(gl_in[0].gl_Position.xyz - tangent2 * uLength + offsetNormal, 1.0);
 	EmitVertex();
 	
-	gl_Position = vp * vec4(gl_in[0].gl_Position.xyz + tangent2 * uLength,1.0);
+	gl_Position = vp * vec4(gl_in[0].gl_Position.xyz + tangent2 * uLength + offsetNormal, 1.0);
 	EmitVertex();
 	EndPrimitive();
 

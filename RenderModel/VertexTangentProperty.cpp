@@ -88,6 +88,11 @@ void VertexTangentProperty::InitializeUI()
 	m_ui.tangent.SetMax(1.0);
 	m_ui.tangent.SetValue(0.5);
 
+	m_ui.offset.SetLabel("Offset Normal");
+	m_ui.offset.SetMin(0.0);
+	m_ui.offset.SetMax(1.0);
+	m_ui.offset.SetValue(0.1);
+
 	m_ui.color[0] = 0;
 	m_ui.color[1] = 0;
 	m_ui.color[2] = 0;
@@ -97,6 +102,10 @@ void VertexTangentProperty::ShowUI()
 {
 	if (m_ui.tangent.Show()) {
 		m_pShading->SetLength(m_ui.tangent.Value());
+	}
+
+	if (m_ui.offset.Show()) {
+		m_pShading->SetOffset(m_ui.offset.Value());
 	}
 }
 

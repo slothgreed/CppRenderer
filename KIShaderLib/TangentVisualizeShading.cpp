@@ -32,6 +32,7 @@ void TangentVisualizeGeomCode::Initialize(GLuint programId)
 {
 	m_uniformLocation.resize(TANGENT_VISUALIZE_UNIFORM_NUM);
 	m_uniformLocation[TANGENT_VISUALIZE_UNIFORM_LENGTH] = glGetUniformLocation(programId, "uLength");
+	m_uniformLocation[TANGENT_VISUALIZE_UNIFORM_OFFSET] = glGetUniformLocation(programId, "uOffset");
 }
 
 void TangentVisualizeGeomCode::Bind(shared_ptr<IShaderChunk> pShaderChunk, shared_ptr<IUniformStorage> pUniform)
@@ -43,6 +44,7 @@ void TangentVisualizeGeomCode::Bind(shared_ptr<IShaderChunk> pShaderChunk, share
 	}
 
 	BindLength(pShading->GetLength());
+	BindOffset(pShading->GetOffset());
 }
 
 void TangentVisualizeGeomCode::BindLength(float length)
@@ -54,6 +56,17 @@ void TangentVisualizeGeomCode::BindLength(float length)
 	}
 
 	IShaderCode::BindFloat(m_uniformLocation[TANGENT_VISUALIZE_UNIFORM_LENGTH], length);
+}
+
+void TangentVisualizeGeomCode::BindOffset(float offset)
+{
+	if (m_uniformLocation[TANGENT_VISUALIZE_UNIFORM_LENGTH] == -1)
+	{
+		assert(0);
+		return;
+	}
+
+	IShaderCode::BindFloat(m_uniformLocation[TANGENT_VISUALIZE_UNIFORM_OFFSET], offset);
 }
 
 bool TangentVisualizeGeomCode::Compare(IShaderCode* pShaderCode)

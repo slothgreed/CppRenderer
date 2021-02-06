@@ -13,7 +13,10 @@ public:
 	TangentVisualizeShading(vec4 color, bool visibleNormal);
 	~TangentVisualizeShading();
 
+	void SetOffset(float offset) { m_Offset = offset; }
 	void SetLength(float value) { m_Length = value; }
+
+	float GetOffset() { return m_Offset; }
 	float GetLength() { return m_Length; }
 	bool GetVisualizeNormal() { return m_visibleNormal; }
 
@@ -21,6 +24,7 @@ public:
 	virtual shared_ptr<IShaderCode> NewShaderCode(IShaderBuildInfo* pBuildInfo,SHADER_PROGRAM_TYPE type) override;
 
 private:
+	float m_Offset;
 	float m_Length;
 	bool m_visibleNormal;
 };
@@ -57,6 +61,7 @@ class DLL_EXPORT TangentVisualizeGeomCode : public IShaderCode
 	enum TANGENT_VISUALIZE_UNIFORM : unsigned short
 	{
 		TANGENT_VISUALIZE_UNIFORM_LENGTH,
+		TANGENT_VISUALIZE_UNIFORM_OFFSET,
 		TANGENT_VISUALIZE_UNIFORM_NUM
 	};
 
@@ -77,6 +82,7 @@ public:
 private:
 	bool m_visibleNormal;
 	void BindLength(float length);
+	void BindOffset(float length);
 	shared_ptr<Texture> m_pSource;
 };
 }
