@@ -10,22 +10,22 @@ class DLL_EXPORT AlignOrientation
 public:
 	AlignOrientation(HalfEdgeDS* pHalfEdgeDS, DownSampling* pDownSampling);
 	~AlignOrientation();
-
+	const std::vector<float>& ErrorValue() { return m_error; }
 	void Calculate(int globalItrNum, int localItrNum);
 	void LocalAlignment(int resolution);
-	void GlobalAlignment();
 private:
 	void SetRandomTangent();
 	void AssignLowerByUpper(int upperIndex);
 	void ClosestDirection(
-		vec3 tangent1, vec3 normal1, 
-		vec3 tangent2, vec3 normal2,
+		const vec3& tangent1, const vec3& normal1,
+		const vec3& tangent2, const vec3& normal2,
 		vec3* orient1, vec3* orient2);
-	
+	void CalcErrorValue();
+
 	HalfEdgeDS* m_pHalfEdgeDS;
 	DownSampling* m_pDownSampling;
 	int m_locelItrNum;
-	float ErrorValue();
+	std::vector<float> m_error;
 
 };
 }

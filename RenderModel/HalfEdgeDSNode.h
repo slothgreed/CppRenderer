@@ -24,6 +24,7 @@ private:
 		PlotLineUI plot;
 	};
 
+	std::vector<float> m_orientateError;
 	UI m_ui;
 };
 }

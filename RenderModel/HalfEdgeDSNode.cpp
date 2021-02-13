@@ -49,6 +49,10 @@ void HalfEdgeDSNode::ShowUI()
 		if (pProperty)
 			pProperty->ShowUI();
 	}
+
+	auto pModel = ((HalfEdgeModel*)m_pModel.get());
+
+	m_ui.plot.Show(pModel->GetOrientationError());
 }
 }
 }

@@ -181,6 +181,11 @@ bool HalfEdgeModel::CalcAlignOrientation()
 	return true;
 }
 
+const std::vector<float>& HalfEdgeModel::GetOrientationError()
+{
+	assert(m_pAlignOrientation != nullptr);
+	return m_pAlignOrientation->ErrorValue();
+}
 
 
 }

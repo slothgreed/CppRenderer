@@ -6,14 +6,15 @@ AlignOrientation::AlignOrientation(HalfEdgeDS* pHalfEdgeDS, DownSampling* pDownS
 {
 	m_pHalfEdgeDS = pHalfEdgeDS;
 	m_pDownSampling = pDownSampling;
+	SetRandomTangent();
 }
 
 AlignOrientation::~AlignOrientation()
 {
 }
 
-void AlignOrientation::ClosestDirection(vec3 tangent1, vec3 normal1,
-										vec3 tangent2, vec3 normal2,
+void AlignOrientation::ClosestDirection(const vec3& tangent1, const vec3& normal1,
+										const vec3& tangent2, const vec3& normal2,
 										vec3* orient1, vec3* orient2)
 {
 	vec3 orients1[2] = { tangent1, glm::cross(tangent1,normal1) };
@@ -36,9 +37,7 @@ void AlignOrientation::ClosestDirection(vec3 tangent1, vec3 normal1,
 	}
 
 	maxInner = glm::dot(orients1[max1], orients2[max2]);
-	if (maxInner > 1.5f) {
-		int a = 0;
-	}
+	assert(maxInner < 1.5);
 
 	*orient1 = orients1[max1];
 	if (maxInner > 0) {
@@ -55,26 +54,20 @@ void AlignOrientation::AssignLowerByUpper(int upperIndex)
 	int upperLevel = upperIndex;
 	int lowerLevel = upperIndex + 1;
 	auto pResolution = m_pDownSampling->GetResolution(upperLevel);
-	auto pVertexList = m_pHalfEdgeDS->VertexList();
 
-	auto pAdjancyMatrix = pResolution->GetAdjancyMatrix();
-
-	for (int i = 0; i < pAdjancyMatrix->RowNum(); i++)
+	for (int j = 0; j < pResolution->GetClusterNum(); j++)
 	{
-		auto pLink1 = pAdjancyMatrix->Get(i, 0);
-		for (int j = 0; j < pResolution->GetClusterNum(); j++)
+		for (int k = 0; k < pResolution->GetBranchNum(); k++)
 		{
-			for (int k = 0; k < pResolution->GetBranchNum(); k++)
-			{
-				auto pVertexIndex = pResolution->GetToUpper(pLink1->GetEnd(), k);
-				if (pVertexIndex == AdjancyMatrix::Link::INVALID) {
-					continue;
-				}
-				auto pVertex = pVertexList[pLink1->GetStart()];
-				vec3 tangent = pVertex->Tangent();
-				vec3 normal = pVertexList[pVertexIndex]->Normal();
-				pVertex->SetTangent(glm::normalize(pVertex->Tangent() - normal * glm::dot(normal, tangent)));
+			auto pVertexIndex = pResolution->GetToUpper(j, k);
+			if (pVertexIndex == AdjancyMatrix::Link::INVALID) {
+				continue;
 			}
+
+			//auto pVertex = pVertexIndex[pLink1->GetStart()];
+			//vec3 tangent = pVertex->Tangent();
+			//vec3 normal = pVertexList[pVertexIndex]->Normal();
+			//pVertex->SetTangent(glm::normalize(pVertex->Tangent() - normal * glm::dot(normal, tangent)));
 		}
 	}
 
@@ -97,7 +90,6 @@ void AlignOrientation::SetRandomTangent()
 void AlignOrientation::Calculate(int globalItrNum, int localItrNum)
 {
 	assert(m_pDownSampling != NULL);
-	SetRandomTangent();
 
 	int resolutionIndex = m_pDownSampling->GetResolutionNum() - 1;
 	for (int i = 0; i < globalItrNum; i++)
@@ -107,7 +99,14 @@ void AlignOrientation::Calculate(int globalItrNum, int localItrNum)
 			LocalAlignment(resolutionIndex);
 		}
 
-		AssignLowerByUpper(resolutionIndex);
+		int globalItr = resolutionIndex;
+		while (globalItr != 0)
+		{
+			AssignLowerByUpper(globalItr);
+			globalItr--;
+		}
+
+		CalcErrorValue();
 
 		resolutionIndex--;
 	}
@@ -154,25 +153,38 @@ void AlignOrientation::LocalAlignment(int resolution)
 
 }
 
-void AlignOrientation::GlobalAlignment()
+void AlignOrientation::CalcErrorValue()
 {
-
-}
-
-float AlignOrientation::ErrorValue()
-{
-	for (int i = 0; i < m_pDownSampling->GetResolutionNum(); i++) {
-		auto pResolution = m_pDownSampling->GetResolution(i);
-		for (int j = 0; j < pResolution->GetClusterNum(); j++)
+	assert(m_pHalfEdgeDS != nullptr);
+	auto pVertexs = m_pHalfEdgeDS->VertexList();
+	float sum = 0;
+	for (int i = 0; i < pVertexs.size(); i++)
+	{
+		VertexAroundEdgeIterator itr(pVertexs[i].get());
+		for (; itr.HasNext(); itr.Next())
 		{
-			for (int k = 0; k < pResolution->GetBranchNum(); k++)
-			{
+			auto pEdge1 = itr.Current();
+			auto pEdge2 = itr.CurrentNext();
 
-			}
+			vec3 orient1, orient2;
+			ClosestDirection(
+				pEdge1->End()->Tangent(), pEdge1->End()->Normal(),
+				pEdge2->End()->Tangent(), pEdge2->End()->Normal(),
+				&orient1, &orient2);
+
+			float inner = glm::dot(orient1, orient2);
+			assert(inner < 2);
+			float angle = 0;
+			if (inner > 1) {
+				inner = 1;
+			} 
+			
+			angle = MathHelper::ToAngle(std::acos(inner));
+			sum += angle * angle;
 		}
 	}
 
-	return 0.0f;
+	m_error.push_back(sum);
 }
 }
 }

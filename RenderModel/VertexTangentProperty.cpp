@@ -16,6 +16,7 @@ void VertexTangentProperty::BuildCore(IModelNode* pModelNode, IPropertyArgs* pPr
 {
 	m_pShading = make_shared<TangentVisualizeShading>(vec4(0, 0, 0, 1), false);
 	m_pShading->SetLength(1.0f);
+	m_pShading->SetOffset(0.1);
 
 	m_pRenderData = make_shared<RenderData>();
 	m_pRenderData->SetShading(m_pShading);

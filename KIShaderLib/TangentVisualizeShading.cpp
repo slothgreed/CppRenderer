@@ -100,9 +100,11 @@ TangentVisualizeShading::~TangentVisualizeShading()
 }
 
 TangentVisualizeShading::TangentVisualizeShading(vec4 color, bool visibleNormal)
+	:m_Length(1.0f),
+	m_Offset(0.1f),
+	m_visibleNormal(visibleNormal)
 {
 	m_pShading = make_shared<BasicShading>(color);
-	m_visibleNormal = visibleNormal;
 }
 
 shared_ptr<IShaderCode> TangentVisualizeShading::NewShaderCode(IShaderBuildInfo* pBuildInfo, SHADER_PROGRAM_TYPE type)

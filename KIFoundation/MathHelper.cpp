@@ -51,6 +51,16 @@ float MathHelper::CalcRadian(const vec3& v1, const vec3& v2)
 	return acos(rad);
 }
 
+float MathHelper::ToRadian(float angle)
+{
+	return angle * glm::pi<float>() / 180;
+}
+
+float MathHelper::ToAngle(float rad)
+{
+	return rad * 180 / glm::pi<float>();
+}
+
 float MathHelper::CramesDet(vec3 a, vec3 b, vec3 c)
 {
 	return (

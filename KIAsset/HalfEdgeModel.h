@@ -29,7 +29,7 @@ public:
 	bool CalcBVH();
 	bool CalcDownSampling();
 	bool CalcAlignOrientation();
-
+	const std::vector<float>& GetOrientationError();
 	void RaycastPick(RaycastPickInfo& result) override;
 
 private:

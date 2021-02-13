@@ -16,6 +16,9 @@ public:
 	static void CalcNormal(const vec3& v1, const vec3& v2, const vec3& v3, vec3& normal); // counter cloclk wise
 	static float CalcRadian(const vec3& v1, const vec3& v2);
 	static float CramesDet(vec3 a, vec3 b, vec3 c);
+	static float ToRadian(float angle);
+	static float ToAngle(float rad);
+
 	static string ToString(const vec2& value);
 	static string ToString(const vec3& value);
 	static string ToString(const ivec4& value);
