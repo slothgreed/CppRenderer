@@ -15,8 +15,7 @@ public:
 	public:
 		static const int INVALID = -1;
 		Link() :m_start(-1), m_end(-1), m_weight(1.0f) {};
-		Link(int start, int end, float weight)
-			:m_start(start), m_end(end), m_weight(weight) {};
+		Link(int start, int end, float weight);
 		~Link() {};
 		void Set(int start, int end, float weight);
 		void SetStart(int start);

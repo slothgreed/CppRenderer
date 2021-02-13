@@ -7,8 +7,8 @@ namespace Foundation
 class DLL_EXPORT ArrayCSVIO
 {
 public:
-	ArrayCSVIO();
-	~ArrayCSVIO();
+	ArrayCSVIO() {};
+	~ArrayCSVIO() {};
 	static void Output(const std::string& filePath, const vector<vec3>& value);
 
 private:

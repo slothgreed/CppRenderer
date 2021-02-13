@@ -35,8 +35,9 @@ IModelProperty* PropertyIterator::Current()
 
 
 IModelNode::IModelNode()
+	:m_ModelMatrix(mat4x4(1.0)),
+	m_visible(true)
 {
-	m_ModelMatrix = mat4x4(1.0);
 }
 IModelNode::IModelNode(shared_ptr<IModel> model)
 	: IModelNode()

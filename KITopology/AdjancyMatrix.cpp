@@ -1,3 +1,4 @@
+#include "AdjancyMatrix.h"
 namespace KI
 {
 namespace Topology
@@ -57,9 +58,13 @@ AdjancyMatrix::Link* AdjancyMatrix::Get(int row, int column)
 	return &m_Matrix[row][column];
 }
 
+AdjancyMatrix::Link::Link(int start, int end, float weight)
+	:m_start(start), m_end(end), m_weight(weight)
 
+{
+}
 
-void AdjancyMatrix::Link::Set(int start, int end, float weight) 
+void AdjancyMatrix::Link::Set(int start, int end, float weight)
 {
 	m_start = start;
 	m_end = end;
