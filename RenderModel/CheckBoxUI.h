@@ -7,8 +7,8 @@ namespace ImGuiEx
 class CheckBoxUI
 {
 public:
-	CheckBoxUI();
-	~CheckBoxUI();
+	CheckBoxUI() {};
+	~CheckBoxUI() {};
 
 	void SetLabel(const std::string& value) { m_label = value; }
 	void SeValue(bool value) { m_value = value; }

@@ -6,7 +6,7 @@ HalfEdgeProperty::HalfEdgeProperty()
 {
 }
 
-void HalfEdgeProperty::Build(IModelNode* pModelNode, IPropertyArgs* pPropertyArgs)
+void HalfEdgeProperty::BuildCore(IModelNode* pModelNode, IPropertyArgs* pPropertyArgs)
 {
 	shared_ptr<HalfEdgeModel> pModel;
 	if (pModelNode->GetModel()->Type() == MODEL_TYPE_HALF_EDGE)

@@ -12,7 +12,7 @@ VertexTangentProperty::~VertexTangentProperty()
 
 }
 
-void VertexTangentProperty::Build(IModelNode* pModelNode, IPropertyArgs* pPropertyArgs)
+void VertexTangentProperty::BuildCore(IModelNode* pModelNode, IPropertyArgs* pPropertyArgs)
 {
 	m_pShading = make_shared<TangentVisualizeShading>(vec4(0, 0, 0, 1), false);
 	m_pShading->SetLength(1.0f);
@@ -21,8 +21,6 @@ void VertexTangentProperty::Build(IModelNode* pModelNode, IPropertyArgs* pProper
 	m_pRenderData->SetShading(m_pShading);
 
 	SetVBOData(pModelNode);
-
-	InitializeUI();
 }
 
 void VertexTangentProperty::Update(IModelNode* pModelNode, IPropertyArgs* pPropertyArgs)
@@ -93,9 +91,8 @@ void VertexTangentProperty::InitializeUI()
 	m_ui.offset.SetMax(1.0);
 	m_ui.offset.SetValue(0.1);
 
-	m_ui.color[0] = 0;
-	m_ui.color[1] = 0;
-	m_ui.color[2] = 0;
+	m_ui.color.SetLabel("Color");
+	m_ui.color.SeValue(vec4(0, 0, 0, 0));
 }
 
 void VertexTangentProperty::ShowUI()
@@ -106,6 +103,10 @@ void VertexTangentProperty::ShowUI()
 
 	if (m_ui.offset.Show()) {
 		m_pShading->SetOffset(m_ui.offset.Value());
+	}
+
+	if (m_ui.color.Show()) {
+		m_pShading->SetColor(m_ui.color.Value());
 	}
 }
 

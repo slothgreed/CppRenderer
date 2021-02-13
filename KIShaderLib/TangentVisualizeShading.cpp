@@ -123,5 +123,13 @@ shared_ptr<IShaderCode> TangentVisualizeShading::NewShaderCode(IShaderBuildInfo*
 	return false;
 }
 
+void TangentVisualizeShading::SetColor(const vec4& color)
+{
+	auto pShading = dynamic_cast<BasicShading*>(m_pShading.get());
+	if (pShading) {
+		pShading->SetColor(color);
+	}
+}
+
 }
 }

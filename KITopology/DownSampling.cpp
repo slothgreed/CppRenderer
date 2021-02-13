@@ -3,12 +3,12 @@ namespace KI
 {
 namespace Topology
 {
-
 DownSampling::SampleData::SampleData(int positionNum)
-	: m_Index(0),
-	m_Position(vec3(0)),
-	m_Normal(vec3(0)),
-	m_Area(0)
+	: m_index(0),
+	m_position(vec3(0)),
+	m_normal(vec3(0)),
+	m_area(0),
+	m_tangent(vec3(0))
 {
 }
 DownSampling::SampleData::~SampleData()
@@ -17,10 +17,10 @@ DownSampling::SampleData::~SampleData()
 
 void DownSampling::SampleData::Set(int index, const vec3& position, const vec3& normal, float area)
 {
-	m_Index = index;
-	m_Position = position;
-	m_Normal = normal;
-	m_Area = area;
+	m_index = index;
+	m_position = position;
+	m_normal = normal;
+	m_area = area;
 }
 
 DownSampling::Resolution::Resolution()
@@ -88,7 +88,6 @@ DownSampling::SampleData* DownSampling::Resolution::GetData(int index)
 	return &m_pSampleData[index];
 }
 
-
 DownSampling::DownSampling(HalfEdgeDS* pHalfEdgeDS)
 	:m_pResolution(0),
 	m_pHalfEdgeDS(pHalfEdgeDS)
@@ -102,11 +101,10 @@ void DownSampling::InitialResolution(shared_ptr<DownSampling::Resolution> pResol
 	for (int i = 0; i < pResolution->GetClusterNum(); i++)
 	{
 		auto pVertex = pHalfEdgeDS->VertexList()[i];
-		pResolution->GetData(i)->Set(i, pVertex->Position(),pVertex->Normal(),pVertex->Area());
+		pResolution->GetData(i)->Set(i, pVertex->Position(), pVertex->Normal(), pVertex->Area());
 	}
 
 	pResolution->SetAdjancyMatrix(make_shared<HalfEdgeAdjancyMatrix>(m_pHalfEdgeDS));
-
 }
 void DownSampling::Generate()
 {
@@ -138,7 +136,6 @@ void DownSampling::Generate()
 	}
 }
 
-
 void DownSampling::CreateResolution(int level,
 	shared_ptr<DownSampling::Resolution> pOrgResolution,
 	shared_ptr<DownSampling::Resolution> pResolution)
@@ -168,7 +165,7 @@ void DownSampling::CreateResolution(int level,
 			int endIndex = pOrgMatrix->Get(i, j)->GetEnd();
 			vec3 normal2 = pOrgResolution->GetData(endIndex)->Normal();
 			float area2 = pOrgResolution->GetData(endIndex)->Area();
-			
+
 			float nDot = std::abs(glm::dot(normal1, normal2));
 			float ratio = area1 + area2; //? area1 / area2 : area2 / area1;
 			assert(startIndex + endIndex < pOrgMatrix->Size());
@@ -189,7 +186,7 @@ void DownSampling::CreateResolution(int level,
 	int collapseNum = 0;
 	for (int i = 0; i < entries.size(); i++)
 	{
-		const Entry &e = entries[i];
+		const Entry& e = entries[i];
 		if (mergeFlag[e.m_i] || mergeFlag[e.m_j]) {
 			continue;
 		}
@@ -211,12 +208,12 @@ void DownSampling::CreateResolution(int level,
 		vec3 pos1 = data1->Position();
 		vec3 pos2 = data2->Position();
 
-		vec3 newPosition = 
+		vec3 newPosition =
 			(data1->Position() * data1->Area() +
-			 data2->Position() * data2->Area()) / newArea;
+				data2->Position() * data2->Area()) / newArea;
 		vec3 newNormal =
 			(data1->Normal() * data1->Area() +
-			 data2->Normal() * data2->Area());
+				data2->Normal() * data2->Area());
 		newNormal = glm::normalize(newNormal);
 
 		pResolution->SetToUpper(i, entry.m_i, entry.m_j);
@@ -234,12 +231,10 @@ void DownSampling::CreateResolution(int level,
 			auto data = pOrgResolution->GetData(i);
 			pResolution->GetData(isolateIndex)->Set(isolateIndex, data->Position(), data->Normal(), data->Area());
 			pResolution->SetToUpper(isolateIndex, i, AdjancyMatrix::Link::INVALID);
-			pResolution->SetToLower(i,isolateIndex);
+			pResolution->SetToLower(i, isolateIndex);
 			isolateIndex++;
 		}
 	}
-
-
 
 	auto pMatrix = pResolution->GetAdjancyMatrix();
 
@@ -272,7 +267,7 @@ void DownSampling::CreateResolution(int level,
 		std::sort(newLink.begin(), newLink.end());
 		int vertexId = -1;
 		int size = 0;
-		for (auto &link : newLink) {
+		for (auto& link : newLink) {
 			if (vertexId != link.GetEnd() && link.GetEnd() != i) {
 				vertexId = link.GetEnd();
 				size++;
@@ -282,7 +277,7 @@ void DownSampling::CreateResolution(int level,
 		pMatrix->NewColumn(i, size);
 		int k = 0;
 		vertexId = -1;
-		for (auto &link : newLink)
+		for (auto& link : newLink)
 		{
 			if (link.GetEnd() != i)
 			{
@@ -320,7 +315,7 @@ void DownSampling::GetCluster(int level, std::vector<int>& index)
 	}
 	else
 	{
-		auto pCurrent = m_pResolution[level];	// ex : 3
+		auto pCurrent = m_pResolution[level];	// ex : 1
 		if (pCurrent == NULL) {
 			return;
 		}
@@ -329,37 +324,32 @@ void DownSampling::GetCluster(int level, std::vector<int>& index)
 		{
 			for (int j = 0; j < pCurrent->GetBranchNum(); j++)
 			{
-				int value = pCurrent->GetToUpper(i, j);
-				if (AdjancyMatrix::Link::INVALID == value)
+				int _upper = pCurrent->GetToUpper(i, j);
+				if (AdjancyMatrix::Link::INVALID == _upper)
 					continue;
-				GetClusterRecursive(level-1, 0, value, clusterIndex, index);
-				clusterIndex++;
+				GetClusterRecursive(level - 1, _upper, clusterIndex, index);
 			}
+			clusterIndex++;
 		}
 	}
 }
 
-void DownSampling::GetClusterRecursive(int level, int targetLevel, int upper, int clusterIndex, std::vector<int>& index)
+void DownSampling::GetClusterRecursive(int level, int upper, int clusterIndex, std::vector<int>& index)
 {
 	if (level == 0) {
-		auto pCurrent = m_pResolution[level];
 		index[upper] = clusterIndex;
 	}
 	else
 	{
-		auto pCurrent = m_pResolution[level];	// ex : 1
-		//for (int i = 0; i < pCurrent->GetClusterNum(); i++)
+		auto pCurrent = m_pResolution[level];	// ex : 0
+		for (int j = 0; j < pCurrent->GetBranchNum(); j++)
 		{
-			for (int j = 0; j < pCurrent->GetBranchNum(); j++)
-			{
-				int value = pCurrent->GetToUpper(upper, j);
-				if (AdjancyMatrix::Link::INVALID == value)
-					continue;
-				GetClusterRecursive(level - 1, targetLevel, value, clusterIndex, index);
-			}
+			int _upper = pCurrent->GetToUpper(upper, j);
+			if (AdjancyMatrix::Link::INVALID == _upper)
+				continue;
+			GetClusterRecursive(level - 1, _upper, clusterIndex, index);
 		}
 	}
 }
-
 }
 }

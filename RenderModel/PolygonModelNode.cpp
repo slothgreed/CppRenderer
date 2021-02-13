@@ -7,6 +7,7 @@ PolygonModelNode::PolygonModelNode(shared_ptr<IModel> model)
 {
 	m_name = "PolygonModelNode";
 	SetRenderData();
+	InitializeUI();
 }
 
 PolygonModelNode::~PolygonModelNode()
@@ -35,7 +36,7 @@ void PolygonModelNode::VisibleNormal(bool visibility)
 {
 	if (GetModel()->HasVertexList())
 	{
-		VisibleProperty(PROPERTY_TYPE::PROPERTY_TYPE_NORMAL, m_ui.visibleNormal);
+		VisibleProperty(PROPERTY_TYPE::PROPERTY_TYPE_NORMAL, visibility);
 	}
 	else
 	{
@@ -106,22 +107,50 @@ void PolygonModelNode::SetRenderData()
 
 }
 
+void PolygonModelNode::InitializeUI()
+{
+	m_ui.meshVisibility.SetLabel("Mesh Visibility");
+	m_ui.meshVisibility.SeValue(true);
+
+	m_ui.meshColor.SetLabel("Mesh Color");
+	m_ui.meshColor.SeValue(vec4(0.7f, 0.7f, 0.7f, 1.0f));
+
+	m_ui.edgeVisibility.SetLabel("Edge Visibility");
+	m_ui.edgeVisibility.SeValue(true);
+
+	m_ui.edgeColor.SetLabel("Edge Color");
+	m_ui.edgeColor.SeValue(vec4(0, 1, 0, 1));
+
+	m_ui.normalVisibility.SetLabel("Normal Visibility");
+	m_ui.normalVisibility.SeValue(true);
+
+	m_ui.normalColor.SetLabel("Normal Color");
+	m_ui.normalColor.SeValue(vec4(0.7f, 0.7f, 0.7f, 1.0f));
+
+	m_ui.bdbVisibility.SetLabel("BDB Visibility");
+	m_ui.bdbVisibility.SeValue(true);
+
+	m_ui.bdbColor.SetLabel("BDB Color");
+	m_ui.bdbColor.SeValue(vec4(0.0f));
+
+}
+
 void PolygonModelNode::ShowUI()
 {
-	if (ImGui::Checkbox("Visible Mesh", &m_ui.visibleMesh)) {
-		SetVisible(RENDER_DATA::MESH, m_ui.visibleMesh);
+	if (m_ui.meshVisibility.Show()) {
+		SetVisible(RENDER_DATA::MESH, m_ui.meshVisibility.Value());
 	}
 
-	if (ImGui::Checkbox("Visible Edge", &m_ui.visibleEdge)) {
-		SetVisible(RENDER_DATA::Edge, m_ui.visibleEdge);
+	if (m_ui.edgeVisibility.Show()) {
+		SetVisible(RENDER_DATA::Edge, m_ui.edgeVisibility.Value());
 	}
 
-	if (ImGui::Checkbox("Visible BDB", &m_ui.visibleBDB)) {
-		VisibleProperty(PROPERTY_TYPE::PROPERTY_TYPE_BDB, m_ui.visibleBDB);
+	if (m_ui.bdbVisibility.Show()) {
+		VisibleProperty(PROPERTY_TYPE::PROPERTY_TYPE_BDB, m_ui.bdbVisibility.Value());
 	}
 
-	if (ImGui::Checkbox("Visible Normal", &m_ui.visibleNormal)) {
-		VisibleNormal(m_ui.visibleNormal);
+	if (m_ui.normalVisibility.Show()) {
+		VisibleNormal(m_ui.normalVisibility.Value());
 	}
 }
 

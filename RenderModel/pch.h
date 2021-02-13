@@ -41,6 +41,8 @@ using namespace KI::Asset;
 #include "backends/imgui_impl_opengl3.h"
 #include "SliderUI.h"
 #include "CheckBoxUI.h"
+#include "ColorPickerUI.h"
+#include "PlotUI.h"
 using namespace KI::ImGuiEx;
 
 #include "IRenderModelProperty.h"

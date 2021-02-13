@@ -31,8 +31,11 @@ public:
 
 	IRenderModelProperty() {};
 	~IRenderModelProperty() {};
+	void Build(IModelNode* pModelNode, IPropertyArgs* pPropertyArgs) override;
+	virtual void BuildCore(IModelNode* pModelNode, IPropertyArgs* pPropertyArgs) = 0;
 	virtual PROPERTY_TYPE PropertyType() = 0;
 	virtual unsigned int Type() { return (unsigned int)PropertyType(); }
+	virtual void InitializeUI() {};
 	virtual void ShowUI() {};
 
 	static shared_ptr<IModelProperty> Create(PROPERTY_TYPE type);

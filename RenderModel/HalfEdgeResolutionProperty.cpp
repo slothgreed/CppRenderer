@@ -12,7 +12,7 @@ HalfEdgeResolutionProperty::HalfEdgeResolutionProperty()
 {
 }
 
-void HalfEdgeResolutionProperty::Build(IModelNode* pModelNode, IPropertyArgs* pPropertyArgs)
+void HalfEdgeResolutionProperty::BuildCore(IModelNode* pModelNode, IPropertyArgs* pPropertyArgs)
 {
 	assert(pModelNode != nullptr);
 	auto pRenderData = pModelNode->GetRenderData(0);
@@ -39,8 +39,6 @@ void HalfEdgeResolutionProperty::Build(IModelNode* pModelNode, IPropertyArgs* pP
 	m_pRenderData->SetGeometryData(PRIM_TYPE_TRIANGLES, pVertexBuffer, pRenderData->GetIndexBuffer());
 
 	m_pRenderData->SetShading(make_shared<VertexShading>(VERTEX_SHADING_COLOR));
-
-	InitializeUI();
 }
 
 void HalfEdgeResolutionProperty::Update(IModelNode* pModelNode, IPropertyArgs* pPropertyArgs)
@@ -107,7 +105,7 @@ void HalfEdgeResolutionProperty::InitializeUI()
 	m_ui.resolution.SetLabel("Level");
 	m_ui.resolution.SetMin(0);
 	m_ui.resolution.SetValue(0);
-	m_ui.resolution.SetMax(m_pModel->GetDownSampling()->GetResolutionNum());
+	m_ui.resolution.SetMax(m_pModel->GetDownSampling()->GetResolutionNum() - 1);
 
 }
 void HalfEdgeResolutionProperty::ShowUI()

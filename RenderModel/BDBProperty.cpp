@@ -10,7 +10,7 @@ BDBProperty::~BDBProperty()
 {
 }
 
-void BDBProperty::Build(IModelNode* pModelNode, IPropertyArgs* pPropertyArgs)
+void BDBProperty::BuildCore(IModelNode* pModelNode, IPropertyArgs* pPropertyArgs)
 {
 	auto pVertexBuffer = make_shared<DefaultVertexBuffer>();
 	

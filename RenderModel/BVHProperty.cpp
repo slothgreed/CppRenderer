@@ -9,7 +9,7 @@ BVHProperty::BVHProperty()
 BVHProperty::~BVHProperty()
 {
 }
-void BVHProperty::Build(IModelNode* pModelNode, IPropertyArgs* pPropertyArgs)
+void BVHProperty::BuildCore(IModelNode* pModelNode, IPropertyArgs* pPropertyArgs)
 {
 	auto pShading = make_shared<BasicShading>(vec4(0, 1, 0, 1));
 

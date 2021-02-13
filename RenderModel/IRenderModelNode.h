@@ -12,6 +12,7 @@ public:
 	IRenderModelNode(shared_ptr<IModel> model) :IModelNode(model) {};
 
 	~IRenderModelNode() {};
+	virtual void InitializeUI() {};
 	virtual void ShowUI() {}
 	void VisibleProperty(PROPERTY_TYPE type, bool visible);
 private:

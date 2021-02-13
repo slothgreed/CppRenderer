@@ -15,7 +15,7 @@ public:
 
 	void SetOffset(float offset) { m_Offset = offset; }
 	void SetLength(float value) { m_Length = value; }
-
+	void SetColor(const vec4& color);
 	float GetOffset() { return m_Offset; }
 	float GetLength() { return m_Length; }
 	bool GetVisualizeNormal() { return m_visibleNormal; }
@@ -26,6 +26,7 @@ public:
 private:
 	float m_Offset;
 	float m_Length;
+	vec4 m_Color;
 	bool m_visibleNormal;
 };
 

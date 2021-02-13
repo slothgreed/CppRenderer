@@ -17,16 +17,18 @@ public:
 		SampleData(int positionNum);
 		~SampleData();
 		void Set(int index, const vec3& position, const vec3& normal, float area);
-		int Index() { return m_Index; }
-		float Area() { return m_Area; }
-		vec3 Position() { return m_Position; }
-		vec3 Normal() { return m_Normal; }
-
+		void SetTangent(const vec3& tangent) { m_tangent = tangent; }
+		int Index() { return m_index; }
+		float Area() { return m_area; }
+		vec3 Position() { return m_position; }
+		vec3 Normal() { return m_normal; }
+		vec3 Tangent() { return m_tangent; }
 	private:
-		int m_Index;
-		float m_Area;
-		vec3 m_Position;
-		vec3 m_Normal;
+		int m_index;
+		float m_area;
+		vec3 m_position;
+		vec3 m_normal;
+		vec3 m_tangent;
 	};
 
 	// 木構造の深さ毎の情報を持つ
@@ -61,8 +63,8 @@ public:
 		// to_upper : (0,1) (2,6) (3,7) (4,5)
 		// to_lower : 0, 0, 1, 2, 3, 3, 1, 2
 		// index    : 0, 1, 2, 3, 4, 5, 6, 7
-		std::vector<ivec2> m_toUpper;  // Resolution 2 のとき a
-		std::vector<int> m_toLower;	  // Resolution 2 のとき (d,e)(f,g)
+		std::vector<ivec2> m_toUpper;  // Resolution 2 のとき a = To Detail 細かい方へのインデックス
+		std::vector<int> m_toLower;	  // Resolution 2 のとき 荒い方へのインデックス
 		std::vector<SampleData> m_pSampleData;
 		shared_ptr<AdjancyMatrix> m_pMatrix;
 	};
@@ -75,7 +77,7 @@ public:
 	void GetCluster(int level, std::vector<int>& index);	// original 頂点の順番
 private:
 	void InitialResolution(shared_ptr<DownSampling::Resolution> pResolution, HalfEdgeDS* pHalfEdgeDS);
-	void GetClusterRecursive(int level, int targetLevel, int upper, int clusterIndex, std::vector<int>& index);
+	void GetClusterRecursive(int level, int upper, int clusterIndex, std::vector<int>& index);
 	void CreateResolution(int level, shared_ptr<DownSampling::Resolution> pOrgResolution, shared_ptr<DownSampling::Resolution> pResolution);
 	HalfEdgeDS* m_pHalfEdgeDS;
 	vector<shared_ptr<DownSampling::Resolution>> m_pResolution;	// indexが大きいほど荒い

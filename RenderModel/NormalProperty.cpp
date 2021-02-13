@@ -10,7 +10,7 @@ NormalProperty::~NormalProperty()
 {
 }
 
-void NormalProperty::Build(IModelNode* pModelNode, IPropertyArgs* pPropertyArgs)
+void NormalProperty::BuildCore(IModelNode* pModelNode, IPropertyArgs* pPropertyArgs)
 {
 	m_pShading = make_shared<NormalVisualizeShading>();
 	m_pShading->SetLength(5.0f);
@@ -19,7 +19,6 @@ void NormalProperty::Build(IModelNode* pModelNode, IPropertyArgs* pPropertyArgs)
 	m_pRenderData->SetShading(m_pShading);
 
 	SetVBOData(pModelNode);
-	InitializeUI();
 }
 
 void NormalProperty::Update(IModelNode* pModelNode, IPropertyArgs* pPropertyArgs)

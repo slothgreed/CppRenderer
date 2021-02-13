@@ -12,7 +12,7 @@ public:
 	~BDBProperty();
 
 	virtual PROPERTY_TYPE PropertyType() override { return PROPERTY_TYPE_BDB; }
-	virtual void Build(IModelNode* pModel, IPropertyArgs* pPropertyArgs) override;
+	virtual void BuildCore(IModelNode* pModel, IPropertyArgs* pPropertyArgs) override;
 	virtual void Update(IModelNode* pModel, IPropertyArgs* pPropertyArgs) override;
 	virtual void Draw(shared_ptr<UniformStruct> pUniform);
 private:

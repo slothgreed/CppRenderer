@@ -21,6 +21,7 @@ private:
 		bool visibleBVH;
 		bool visibleTangent;
 		bool calcAlignment;
+		PlotLineUI plot;
 	};
 
 	UI m_ui;

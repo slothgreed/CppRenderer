@@ -176,6 +176,7 @@
     <ClInclude Include="BVHProperty.h" />
     <ClInclude Include="CameraNode.h" />
     <ClInclude Include="CheckBoxUI.h" />
+    <ClInclude Include="ColorPickerUI.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="HalfEdgeResolutionProperty.h" />
     <ClInclude Include="HalfEdgeDSNode.h" />
@@ -185,6 +186,7 @@
     <ClInclude Include="ManipulatorNode.h" />
     <ClInclude Include="NormalProperty.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="PlotUI.h" />
     <ClInclude Include="PolygonModelNode.h" />
     <ClInclude Include="PrimitiveNode.h" />
     <ClInclude Include="SliderUI.h" />
@@ -203,6 +205,7 @@
     <ClCompile Include="BVHProperty.cpp" />
     <ClCompile Include="CameraNode.cpp" />
     <ClCompile Include="CheckBoxUI.cpp" />
+    <ClCompile Include="ColorPickerUI.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="HalfEdgeResolutionProperty.cpp" />
     <ClCompile Include="HalfEdgeDSNode.cpp" />
@@ -217,6 +220,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="PlotUI.cpp" />
     <ClCompile Include="PolygonModelNode.cpp" />
     <ClCompile Include="PrimitiveNode.cpp" />
     <ClCompile Include="SliderUI.cpp" />

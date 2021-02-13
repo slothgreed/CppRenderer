@@ -114,6 +114,12 @@
     <ClInclude Include="CheckBoxUI.h">
       <Filter>ヘッダー ファイル\ImGuiEx</Filter>
     </ClInclude>
+    <ClInclude Include="ColorPickerUI.h">
+      <Filter>ヘッダー ファイル\ImGuiEx</Filter>
+    </ClInclude>
+    <ClInclude Include="PlotUI.h">
+      <Filter>ヘッダー ファイル\ImGuiEx</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -189,6 +195,12 @@
       <Filter>ソース ファイル\ImGuiEx</Filter>
     </ClCompile>
     <ClCompile Include="CheckBoxUI.cpp">
+      <Filter>ソース ファイル\ImGuiEx</Filter>
+    </ClCompile>
+    <ClCompile Include="ColorPickerUI.cpp">
+      <Filter>ソース ファイル\ImGuiEx</Filter>
+    </ClCompile>
+    <ClCompile Include="PlotUI.cpp">
       <Filter>ソース ファイル\ImGuiEx</Filter>
     </ClCompile>
   </ItemGroup>

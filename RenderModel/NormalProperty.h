@@ -14,7 +14,7 @@ public:
 
 	virtual PROPERTY_TYPE PropertyType() override { return PROPERTY_TYPE_NORMAL; }
 	virtual void Draw(shared_ptr<UniformStruct> pUniform);
-	virtual void Build(IModelNode* pModel, IPropertyArgs* pPropertyArgs) override;
+	virtual void BuildCore(IModelNode* pModel, IPropertyArgs* pPropertyArgs) override;
 	virtual void Update(IModelNode* pModel, IPropertyArgs* pPropertyArgs) override;
 	virtual void InitializeUI();
 	virtual void ShowUI() override;

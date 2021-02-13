@@ -27,8 +27,9 @@ public:
 
 	virtual PROPERTY_TYPE PropertyType() override { return PROPERTY_TYPE_RESOLUTION; }
 	virtual void Draw(shared_ptr<UniformStruct> pUniform) override;
-	virtual void Build(IModelNode* pModel, IPropertyArgs* pPropertyArgs) override;
+	virtual void BuildCore(IModelNode* pModel, IPropertyArgs* pPropertyArgs) override;
 	virtual void Update(IModelNode* pModel, IPropertyArgs* pPropertyArgs) override;
+	virtual void InitializeUI() override;
 	virtual void ShowUI() override;
 private:
 	void SetModel(IModelNode* pModelNode);
@@ -41,7 +42,6 @@ private:
 
 	static HalfEdgeResolutionPropertyArgs& DefaultArgs();
 	void GetClusterColor(IPropertyArgs* pPropertyArgs, vector<vec3>& color);
-	void InitializeUI();
 	UI m_ui;
 	shared_ptr<HalfEdgeModel> m_pModel;
 	shared_ptr<IShader> m_pShader;
