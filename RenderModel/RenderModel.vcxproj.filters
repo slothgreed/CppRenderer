@@ -120,6 +120,12 @@
     <ClInclude Include="PlotUI.h">
       <Filter>ヘッダー ファイル\ImGuiEx</Filter>
     </ClInclude>
+    <ClInclude Include="VertexIndexProperty.h">
+      <Filter>ヘッダー ファイル\Property</Filter>
+    </ClInclude>
+    <ClInclude Include="TextUI.h">
+      <Filter>ヘッダー ファイル\ImGuiEx</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -201,6 +207,12 @@
       <Filter>ソース ファイル\ImGuiEx</Filter>
     </ClCompile>
     <ClCompile Include="PlotUI.cpp">
+      <Filter>ソース ファイル\ImGuiEx</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexIndexProperty.cpp">
+      <Filter>ソース ファイル\Property</Filter>
+    </ClCompile>
+    <ClCompile Include="TextUI.cpp">
       <Filter>ソース ファイル\ImGuiEx</Filter>
     </ClCompile>
   </ItemGroup>

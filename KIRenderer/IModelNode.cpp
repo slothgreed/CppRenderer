@@ -34,13 +34,14 @@ IModelProperty* PropertyIterator::Current()
 }
 
 
-IModelNode::IModelNode()
-	:m_ModelMatrix(mat4x4(1.0)),
+IModelNode::IModelNode(shared_ptr<Scene> pScene)
+	:m_pScene(pScene),
+	m_ModelMatrix(mat4x4(1.0)),
 	m_visible(true)
 {
 }
-IModelNode::IModelNode(shared_ptr<IModel> model)
-	: IModelNode()
+IModelNode::IModelNode(shared_ptr<Scene> pScene, shared_ptr<IModel> model)
+	: IModelNode(pScene)
 {
 	m_pModel = model;
 	m_pModel->AddObserver(this);

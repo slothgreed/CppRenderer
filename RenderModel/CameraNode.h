@@ -12,7 +12,7 @@ public:
 	~CameraNode();
 	void SetRenderData();
 	virtual void Update(void* sender, IEventArgs* args);
-
+	const ICamera* GetCamera() const { return m_pCamera.get(); }
 private:
 	shared_ptr<ICamera> m_pCamera;
 	shared_ptr<DefaultVertexBuffer> m_pVertexBuffer;

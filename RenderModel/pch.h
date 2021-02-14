@@ -43,6 +43,7 @@ using namespace KI::Asset;
 #include "CheckBoxUI.h"
 #include "ColorPickerUI.h"
 #include "PlotUI.h"
+#include "TextUI.h"
 using namespace KI::ImGuiEx;
 
 #include "IRenderModelProperty.h"
@@ -50,6 +51,7 @@ using namespace KI::ImGuiEx;
 #include "NormalProperty.h"
 #include "HalfEdgeProperty.h"
 #include "VertexTangentProperty.h"
+#include "VertexIndexProperty.h"
 #include "HalfEdgeResolutionProperty.h"
 #include "BVHProperty.h"
 

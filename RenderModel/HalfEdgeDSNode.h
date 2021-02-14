@@ -15,10 +15,11 @@ public :
 private:
 	struct UI
 	{
-		UI() : visibleHalfEdge(false), visibleResolution(false), visibleBVH(false), visibleTangent(false){}
+		UI() : visibleHalfEdge(false), visibleResolution(false), visibleBVH(false), visibleTangent(false), visibleIndex(false){}
 		bool visibleHalfEdge;
 		bool visibleResolution;
 		bool visibleBVH;
+		bool visibleIndex;
 		bool visibleTangent;
 		bool calcAlignment;
 		PlotLineUI plot;

@@ -19,6 +19,8 @@ shared_ptr<IModelProperty> IRenderModelProperty::Create(PROPERTY_TYPE type)
 		return make_shared<VertexTangentProperty>();
 	case KI::RenderModel::PROPERTY_TYPE_BVH:
 		return make_shared<BVHProperty>();
+	case KI::RenderModel::PROPERTY_TYPE_VERTEX_INDEX:
+		return make_shared<VertexIndexProperty>();
 	default:
 		assert(0);
 		break;

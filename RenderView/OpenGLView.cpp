@@ -243,6 +243,11 @@ bool OpenGLView::Run()
 		m_pViewModel->Invoke();
 		m_pViewModel->ShowUI(ImGui::GetCurrentContext());
 
+		ImGui::SetNextWindowBgAlpha(1.0f);
+		bool flag;
+		ImGui::Begin("Alpha Window", &flag, ImGuiWindowFlags_::ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_::ImGuiWindowFlags_NoResize);
+		ImGui::TextColored(ImVec4(1, 0, 0, 1), "value");
+		ImGui::End();
 		//{
 		//	static float f = 0.0f;
 		//	static int counter = 0;

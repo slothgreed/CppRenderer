@@ -102,7 +102,8 @@ void AlignOrientation::SetRandomTangent()
 		pData->SetTangent(m_pHalfEdgeDS->VertexList()[i]->Tangent());
 	}
 }
-void AlignOrientation::Calculate(int globalItrNum, int localItrNum)
+int g_index = 0;
+void AlignOrientation::Calculate(int localItrNum)
 {
 	assert(m_pDownSampling != NULL);
 

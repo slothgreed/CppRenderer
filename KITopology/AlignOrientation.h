@@ -11,7 +11,7 @@ public:
 	AlignOrientation(HalfEdgeDS* pHalfEdgeDS, DownSampling* pDownSampling);
 	~AlignOrientation();
 	const std::vector<float>& ErrorValue() { return m_error; }
-	void Calculate(int globalItrNum, int localItrNum);
+	void Calculate(int localItrNum);
 	void LocalAlignment(int resolution);
 private:
 	void SetRandomTangent();

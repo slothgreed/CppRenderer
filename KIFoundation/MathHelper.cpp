@@ -72,6 +72,13 @@ float MathHelper::CramesDet(vec3 a, vec3 b, vec3 c)
 		- (a.z * b.y * c.x));
 }
 
+vec4 MathHelper::WorldToScreenPos(const mat4x4& proj, const mat4x4& view, const mat4x4& model, const vec3& value)
+{
+	vec4  result = proj * view * model * vec4(value.x, value.y, value.z, 1.0);
+
+	return result / result.w;
+}
+
 string MathHelper::ToString(const vec2& value)
 {
 	// (x, y)

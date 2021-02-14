@@ -1,3 +1,5 @@
+#ifndef VERTEX_TANGENT_PROPERTY_H
+#define VERTEX_TANGENT_PROPERTY_H
 namespace KI
 {
 namespace RenderModel
@@ -34,3 +36,5 @@ private:
 
 }
 }
+
+#endif VERTEX_TANGENT_PROPERTY_H

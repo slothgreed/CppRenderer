@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -190,6 +190,8 @@
     <ClInclude Include="PolygonModelNode.h" />
     <ClInclude Include="PrimitiveNode.h" />
     <ClInclude Include="SliderUI.h" />
+    <ClInclude Include="TextUI.h" />
+    <ClInclude Include="VertexIndexProperty.h" />
     <ClInclude Include="VertexTangentProperty.h" />
   </ItemGroup>
   <ItemGroup>
@@ -224,6 +226,8 @@
     <ClCompile Include="PolygonModelNode.cpp" />
     <ClCompile Include="PrimitiveNode.cpp" />
     <ClCompile Include="SliderUI.cpp" />
+    <ClCompile Include="TextUI.cpp" />
+    <ClCompile Include="VertexIndexProperty.cpp" />
     <ClCompile Include="VertexTangentProperty.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

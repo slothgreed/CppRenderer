@@ -8,8 +8,8 @@ namespace RenderModel
 class DLL_EXPORT IRenderModelNode : public IModelNode
 {
 public:
-	IRenderModelNode() {};
-	IRenderModelNode(shared_ptr<IModel> model) :IModelNode(model) {};
+	IRenderModelNode(shared_ptr<Scene> scene) :IModelNode(scene) {};
+	IRenderModelNode(shared_ptr<Scene> scene, shared_ptr<IModel> model) :IModelNode(scene,model) {};
 
 	~IRenderModelNode() {};
 	virtual void InitializeUI() {};

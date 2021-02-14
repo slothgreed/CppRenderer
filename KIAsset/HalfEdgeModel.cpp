@@ -176,7 +176,7 @@ bool HalfEdgeModel::CalcAlignOrientation()
 		m_pAlignOrientation = new AlignOrientation(m_HalfEdgeDS.get(), m_pDownSampling);
 	}
 
-	m_pAlignOrientation->Calculate(10, 10);
+	//m_pAlignOrientation->Calculate(6);
 
 	return true;
 }

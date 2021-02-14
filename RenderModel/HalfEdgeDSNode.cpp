@@ -43,6 +43,10 @@ void HalfEdgeDSNode::ShowUI()
 		pProperty->Update(this, nullptr);
 	}
 
+	if (ImGui::Checkbox("Vertex Index", &m_ui.visibleIndex)) {
+		VisibleProperty(PROPERTY_TYPE::PROPERTY_TYPE_VERTEX_INDEX, m_ui.visibleBVH);
+	}
+
 	PropertyIterator itr(this);
 	for (; itr.HasNext(); itr.Next()) {
 		auto pProperty = dynamic_cast<IRenderModelProperty*>(itr.Current());

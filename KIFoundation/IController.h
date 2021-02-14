@@ -31,7 +31,7 @@ public:
 	virtual bool Down(const Mouse&  mouse) { return false; };
 	virtual bool Up(const Mouse&  mouse) { return false; };
 	virtual bool Move(const Mouse&  mouse) { return false; };
-	virtual bool Wheel(const Mouse&  mouse) { return false; }
+	virtual bool Wheel(const Mouse& mouse) { return false; };
 private:
 
 };

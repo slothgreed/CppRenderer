@@ -34,5 +34,5 @@ private:
 }
 
 
-#endif // !VECTOR_PROPERTY_H
+#endif // !NORMAL_PROPERTY_H
 

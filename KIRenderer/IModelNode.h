@@ -21,13 +21,13 @@ private:
 	int m_index;
 };
 
-
+class Scene;
 class DLL_EXPORT IModelNode : public IObserver
 {
 public:
 	friend class PropertyIterator;
-	IModelNode();
-	IModelNode(shared_ptr<IModel> model);
+	IModelNode(shared_ptr<Scene> pScene);
+	IModelNode(shared_ptr<Scene> pScene, shared_ptr<IModel> model);
 	virtual ~IModelNode();
 
 	virtual void FixedShaderDraw(shared_ptr<IShader> pShader, shared_ptr<IShading> pShading, shared_ptr<UniformStruct> pUniformStorage);
@@ -78,7 +78,7 @@ private:
 	bool m_visible;
 	vector<shared_ptr<IModelProperty>> m_pProperty;
 	mat4x4 m_ModelMatrix;
-
+	shared_ptr<Scene> m_pScene;
 };
 }
 }

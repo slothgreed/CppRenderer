@@ -76,7 +76,6 @@ void CameraController::Zoom(float ratio)
 		param.m_top		= center.y + (param.m_top - center.y) * ratio;
 
 		pCamera->Ortho(param);
-
 	}
 }
 

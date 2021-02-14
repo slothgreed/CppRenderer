@@ -18,7 +18,7 @@ public:
 	static float CramesDet(vec3 a, vec3 b, vec3 c);
 	static float ToRadian(float angle);
 	static float ToAngle(float rad);
-
+	static vec4 WorldToScreenPos(const mat4x4& proj, const mat4x4& view, const mat4x4& model, const vec3& value);
 	static string ToString(const vec2& value);
 	static string ToString(const vec3& value);
 	static string ToString(const ivec4& value);
