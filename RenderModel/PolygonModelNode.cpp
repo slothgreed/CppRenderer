@@ -156,7 +156,7 @@ void PolygonModelNode::ShowUI()
 
 void PolygonModelNode::Update(void* sender, IEventArgs* args)
 {
-	SetRenderData();
+	//SetRenderData();
 
 	IModelNode::Update(sender, args);
 }

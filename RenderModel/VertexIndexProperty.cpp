@@ -1,9 +1,24 @@
+#include <ft2build.h>
+#include FT_FREETYPE_H  
 namespace KI
 {
 namespace RenderModel
 {
 VertexIndexProperty::VertexIndexProperty()
 {
+	FT_Library ft;
+	if (FT_Init_FreeType(&ft))
+	{
+		std::cout << "ERROR::FREETYPE: Could not init FreeType Library" << std::endl;
+		return ;
+	}
+
+	//FT_Face face;
+	//if (FT_New_Face(ft, "fonts/arial.ttf", 0, &face))
+	//{
+	//	std::cout << "ERROR::FREETYPE: Failed to load font" << std::endl;
+	//	return;
+	//}
 }
 
 VertexIndexProperty::~VertexIndexProperty()
@@ -14,13 +29,13 @@ VertexIndexProperty::~VertexIndexProperty()
 void VertexIndexProperty::BuildCore(IModelNode* pModelNode, IPropertyArgs* pPropertyArgs)
 {
 	VertexIndexPropertyArgs* pArgs = nullptr;
-	if (pPropertyArgs->Type() == PROPERTY_TYPE_VERTEX_INDEX)
+	if (pPropertyArgs && pPropertyArgs->Type() == PROPERTY_TYPE_VERTEX_INDEX)
 	{
 		pArgs = dynamic_cast<VertexIndexPropertyArgs*>(pPropertyArgs);
 	}
 	else
 	{
-		assert(0);
+		//assert(0);
 		return;
 	}
 
@@ -43,6 +58,14 @@ void VertexIndexProperty::Update(IModelNode* pModelNode, IPropertyArgs* pPropert
 	SetIndexText(pModelNode, pArgs->Camera()->GetCamera());
 }
 
+void VertexIndexProperty::Update(void* sender, IEventArgs* pArgs)
+{
+	auto pCameraEvent = down_cast(CameraChangeEventArgs*, pArgs);
+	if (pCameraEvent) {
+		SetIndexText(ModelNode(), static_cast<ICamera*>(sender));
+	}
+
+}
 void VertexIndexProperty::SetIndexText(IModelNode* pModelNode, const ICamera* pCamera)
 {
 	assert(pCamera != nullptr);
@@ -63,7 +86,7 @@ void VertexIndexProperty::SetIndexText(IModelNode* pModelNode, const ICamera* pC
 	for (int i = 0; i < m_indexText.size(); i++) {
 		auto pVertex = pModel->GetHalfEdgeDS()->VertexList()[i];
 		vec3 screenPos = MathHelper::WorldToScreenPos(pCamera->Projection(), pCamera->ViewMatrix(), pModelNode->GetModelMatrix(), pVertex->Position());
-		m_indexText[i].SetPosition(screenPos);
+		m_indexText[i].SetPosition(vec2(screenPos.x * 600,screenPos.y * 600));
 		m_indexText[i].SetValue(std::to_string(pVertex->Index()));
 	}
 }

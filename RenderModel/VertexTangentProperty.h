@@ -17,6 +17,7 @@ public:
 	virtual void Draw(shared_ptr<UniformStruct> pUniform);
 	virtual void InitializeUI();
 	virtual void ShowUI();
+
 private:
 
 	struct UI

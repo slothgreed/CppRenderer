@@ -3,7 +3,7 @@ namespace KI
 namespace RenderModel
 {
 
-void IRenderModelNode::VisibleProperty(PROPERTY_TYPE type, bool visible)
+void IRenderModelNode::VisibleProperty(PROPERTY_TYPE type, bool visible, IPropertyArgs* pArgs)
 {
 	auto pProperty = GetProperty(type);
 	
@@ -12,7 +12,7 @@ void IRenderModelNode::VisibleProperty(PROPERTY_TYPE type, bool visible)
 		if (pProperty == nullptr)
 		{
 			pProperty = IRenderModelProperty::Create(type);
-			AddProperty(pProperty);
+			AddProperty(pProperty, pArgs);
 		}
 		
 		pProperty->SetVisible(visible);

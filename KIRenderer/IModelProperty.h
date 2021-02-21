@@ -16,7 +16,7 @@ private:
 };
 
 class IModelNode;
-class DLL_EXPORT IModelProperty
+class DLL_EXPORT IModelProperty : public IObserver
 {
 public:
 	IModelProperty() {};
@@ -28,7 +28,12 @@ public:
 	virtual void Draw(shared_ptr<UniformStruct> pUniform) = 0;
 	virtual void Build(IModelNode* pModelNode, IPropertyArgs* pPropertyArgs) = 0;
 	virtual void Update(IModelNode* pModelNode, IPropertyArgs* pPropertyArgs) = 0;
+	virtual void Update(void* sender, IEventArgs* pArgs) {};
+	IModelNode* ModelNode() { return m_pModelNode; }
+protected:
+	virtual void SetModelNode(IModelNode* pModelNode) { m_pModelNode = pModelNode; }
 private:
+	IModelNode* m_pModelNode;
 	bool m_visible;
 };
 }

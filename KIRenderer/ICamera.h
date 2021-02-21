@@ -15,7 +15,7 @@ public:
 	ICamera();
 	virtual ~ICamera();
 	void LookAt(const vec3& eye, const vec3& center, const vec3& up);
-
+	void SetProject(const mat4x4 proj);
 	virtual CAMERA_TYPE Type() = 0;
 	const mat4x4& ViewMatrix() const { return m_View; }
 	const mat4x4& Projection() const { return m_Project; }
@@ -31,10 +31,9 @@ public:
 	const float LookAtDistance() const { return m_distance; }
 
 	virtual void FitToBDB(const BDB& bdb) = 0;
-protected:
-	mat4x4 m_Project;
 private:
 	mat4x4 m_View;
+	mat4x4 m_Project;
 
 	vec3 m_eye;
 	vec3 m_center;

@@ -26,8 +26,8 @@ class DLL_EXPORT IModelNode : public IObserver
 {
 public:
 	friend class PropertyIterator;
-	IModelNode(shared_ptr<Scene> pScene);
-	IModelNode(shared_ptr<Scene> pScene, shared_ptr<IModel> model);
+	IModelNode();
+	IModelNode(shared_ptr<IModel> model);
 	virtual ~IModelNode();
 
 	virtual void FixedShaderDraw(shared_ptr<IShader> pShader, shared_ptr<IShading> pShading, shared_ptr<UniformStruct> pUniformStorage);
@@ -36,9 +36,9 @@ public:
 	virtual void ClearSelect() {};
 	virtual void AddSelect(PICK_TYPE type, shared_ptr<IShading> pShader, int index, int first, int count);
 	virtual void Update(void* sender, IEventArgs* args);
-	shared_ptr<IModel> GetModel() { return m_pModel; }
+	const shared_ptr<IModel> const GetModel() { return m_pModel; }
 	void SetModelMatrix(const mat4x4& matrix) { m_ModelMatrix = matrix; };
-	const mat4x4& GetModelMatrix() { return m_ModelMatrix; };
+	const mat4x4& GetModelMatrix() const { return m_ModelMatrix; };
 	void SetVisible(bool value) { m_visible = value; }
 	bool Visible() { return m_visible; }
 	void SetVisible(int id, bool visible);
@@ -48,13 +48,12 @@ public:
 	int GetRenderDataNum() { return (int)m_pRenderData.size(); }
 	shared_ptr<RenderData> GetRenderData(int id);
 protected:
-	void AddProperty(shared_ptr<IModelProperty> prop);
 	void AddProperty(shared_ptr<IModelProperty> prop, IPropertyArgs* propArgs);
 	bool HasProperty(unsigned int type);
 	shared_ptr<IModelProperty> GetProperty(unsigned int type);
 	void RemoveProperty(shared_ptr<IModelProperty> prop);
 	virtual void DrawProperty(shared_ptr<UniformStruct> pUniform);
-	virtual void UpdateProperty();
+	virtual void UpdateProperty(void* sender, IEventArgs* args);
 	shared_ptr<IModel> m_pModel;
 	virtual void BindModel(shared_ptr<UniformStruct> pUniform, int index);
 	virtual void UnBindModel(shared_ptr<UniformStruct> pUniform, int index);
@@ -78,7 +77,6 @@ private:
 	bool m_visible;
 	vector<shared_ptr<IModelProperty>> m_pProperty;
 	mat4x4 m_ModelMatrix;
-	shared_ptr<Scene> m_pScene;
 };
 }
 }

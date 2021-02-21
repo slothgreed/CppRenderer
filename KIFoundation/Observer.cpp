@@ -2,13 +2,6 @@ namespace KI
 {
 namespace Foundation
 {
-ISubject::ISubject()
-{
-}
-
-ISubject::~ISubject()
-{
-}
 
 void ISubject::AddObserver(IObserver* observer)
 {

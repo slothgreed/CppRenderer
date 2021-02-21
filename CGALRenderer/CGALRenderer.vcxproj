@@ -108,15 +108,15 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)extlibs\imgui;$(SolutionDir)extlibs\stb;$(SolutionDir)extlibs\glfw-3.3\include;$(SolutionDir)extlibs\glm-0.9.9.6\glm;$(SolutionDir)extlibs\glew-2.1.0\include;E:\Tools\boost\boost_1_64_0;E:\Tools\boost\boost_1_64_0\boost;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)extlibs\imgui;$(SolutionDir)extlibs\stb;$(SolutionDir)extlibs\glfw-3.3\include;$(SolutionDir)extlibs\glm-0.9.9.6\glm;$(SolutionDir)extlibs\glew-2.1.0\include;E:\Tools\boost\boost_1_64_0;E:\Tools\boost\boost_1_64_0\boost;$(SolutionDir)\extlibs\freetype\lib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>pch.h</ForcedIncludeFiles>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)extlibs\glfw-3.3\lib-vc2017;$(SolutionDir)extlibs\glew-2.1.0\lib\Release\x64;$(SolutionDir)$(Platform)\$(Configuration)\;E:\download\assimp-4.0.1\assimp-4.0.1\samples\glut;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3dll.lib;glew32.lib;opengl32.lib;KIFoundation.lib;KIGfx.lib;KIRenderer.lib;KITopology.lib;KIShaderLib.lib;KIAlgorithm.lib;KIAsset.lib;RenderModel.lib;RenderLogic.lib;RenderView.lib;CGALAsset.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)extlibs\glfw-3.3\lib-vc2017;$(SolutionDir)extlibs\glew-2.1.0\lib\Release\x64;$(SolutionDir)$(Platform)\$(Configuration)\;E:\download\assimp-4.0.1\assimp-4.0.1\samples\glut;$(SolutionDir)extlibs\freetype\lib;$(SolutionDir)extlibs\zlib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3dll.lib;glew32.lib;opengl32.lib;KIFoundation.lib;KIGfx.lib;KIRenderer.lib;KITopology.lib;KIShaderLib.lib;KIAlgorithm.lib;KIAsset.lib;RenderModel.lib;RenderLogic.lib;RenderView.lib;CGALAsset.lib;freetype.lib;zlib.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <Profile>true</Profile>
     </Link>
   </ItemDefinitionGroup>
@@ -159,8 +159,8 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)extlibs\glfw-3.3\lib-vc2017;$(SolutionDir)extlibs\glew-2.1.0\lib\Release\x64;$(SolutionDir)$(Platform)\$(Configuration)\;E:\download\assimp-4.0.1\assimp-4.0.1\samples\glut;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3dll.lib;glew32.lib;opengl32.lib;KIFoundation.lib;KIGfx.lib;KIRenderer.lib;KITopology.lib;KIShaderLib.lib;KIAlgorithm.lib;KIAsset.lib;RenderModel.lib;RenderLogic.lib;RenderView.lib;CGALAsset.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)extlibs\glfw-3.3\lib-vc2017;$(SolutionDir)extlibs\glew-2.1.0\lib\Release\x64;$(SolutionDir)$(Platform)\$(Configuration)\;E:\download\assimp-4.0.1\assimp-4.0.1\samples\glut;$(SolutionDir)extlibs\freetype\lib;$(SolutionDir)extlibs\zlib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3dll.lib;glew32.lib;opengl32.lib;KIFoundation.lib;KIGfx.lib;KIRenderer.lib;KITopology.lib;KIShaderLib.lib;KIAlgorithm.lib;KIAsset.lib;RenderModel.lib;RenderLogic.lib;RenderView.lib;CGALAsset.lib;freetype.lib;zlib.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>

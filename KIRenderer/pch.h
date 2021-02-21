@@ -32,7 +32,7 @@ using namespace KI::Gfx;
 #include "../KIShaderLib/pch.h"
 using namespace KI::ShaderLib;
 
-
+#include "RendererEventArgs.h"
 #include "RendererTypes.h"
 
 #include "IModel.h"

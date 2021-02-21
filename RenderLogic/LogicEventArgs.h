@@ -1,5 +1,5 @@
-#ifndef LOGIC_EVENT_ARGS_COMMAND_H
-#define LOGIC_EVENT_ARGS_COMMAND_H
+#ifndef LOGIC_EVENT_ARGS_H
+#define LOGIC_EVENT_ARGS_H
 
 namespace KI
 {
@@ -32,4 +32,4 @@ public:
 }
 
 
-#endif // !LOGIC_EVENT_ARGS_COMMAND_H
+#endif // !LOGIC_EVENT_ARGS_H

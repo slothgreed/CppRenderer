@@ -20,7 +20,13 @@ void ICamera::LookAt(const vec3& eye, const vec3& center, const vec3& up)
 	m_direction = glm::normalize(m_eye - m_center);
 	m_distance = glm::length(m_eye - m_center);
 
-	Update();
+	Update(&CameraChangeEventArgs());
+}
+
+void ICamera::SetProject(mat4x4 proj)
+{
+	m_Project = proj;
+	Update(&CameraChangeEventArgs());
 }
 
 vec3 ICamera::XDirection()

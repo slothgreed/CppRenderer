@@ -8,11 +8,14 @@ Scene::Scene()
 	m_pUniformBuilder = make_unique<UniformBuilder>();
 	m_pUniformStruct = m_pUniformBuilder->BuildStruct();
 	m_pUniformStruct->SetMaterial(m_pUniformBuilder->BuildMaterial());
-
 }
 
 Scene::~Scene()
 {
+	if (m_pCamera != nullptr) 
+	{
+		m_pCamera->RemoveObserver(this);
+	}
 }
 
 void Scene::Initialize()
@@ -26,6 +29,18 @@ void Scene::Initialize()
 	m_pUniformStruct->SetMaterial(m_pUniformBuilder->BuildMaterial());
 	m_pUniformStruct->GetMaterial()->Generate();
 }
+
+void Scene::SetCamera(shared_ptr<ICamera> pCamera)
+{
+	if (m_pCamera != nullptr)
+	{
+		m_pCamera->RemoveObserver(this);
+	}
+
+	m_pCamera = pCamera;
+	m_pCamera->AddObserver(this);
+}
+
 
 void Scene::AddModelNode(shared_ptr<IModelNode> pModelNode)
 {
@@ -106,6 +121,14 @@ void Scene::UnBind()
 	m_pUniformStruct->GetScene()->UnBind();
 }
 
+void Scene::Update(void* sender, IEventArgs* pArgs)
+{
+	for (int i = 0; i < m_pRenderList.size(); i++)
+	{
+		m_pRenderList[i]->Update(sender, pArgs);
+	}
+}
+
 shared_ptr<IModelNode> Scene::GetModel(int objectId)
 {
 	for (int i = 0; i < m_pRenderList.size(); i++)
@@ -181,7 +204,6 @@ void VisibleModelIterator::Next()
 	{
 		m_pNextModel = nullptr;
 	}
-
 }
 }
 }

@@ -19,8 +19,8 @@ private:
 class DLL_EXPORT ISubject
 {
 public:
-	ISubject();
-	virtual ~ISubject();
+	ISubject() {};
+	virtual ~ISubject() {};
 
 	virtual void AddObserver(IObserver* observer);
 	virtual void RemoveObserver(IObserver* observer);

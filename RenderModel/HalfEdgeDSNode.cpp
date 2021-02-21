@@ -44,7 +44,7 @@ void HalfEdgeDSNode::ShowUI()
 	}
 
 	if (ImGui::Checkbox("Vertex Index", &m_ui.visibleIndex)) {
-		VisibleProperty(PROPERTY_TYPE::PROPERTY_TYPE_VERTEX_INDEX, m_ui.visibleBVH);
+		VisibleProperty(PROPERTY_TYPE::PROPERTY_TYPE_VERTEX_INDEX, m_ui.visibleIndex);
 	}
 
 	PropertyIterator itr(this);

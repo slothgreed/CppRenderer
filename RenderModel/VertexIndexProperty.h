@@ -6,7 +6,7 @@ namespace KI
 namespace RenderModel
 {
 class CameraNode;
-class DLL_EXPORT VertexIndexPropertyArgs : public IPropertyArgs
+class DLL_EXPORT VertexIndexPropertyArgs : public IRenderModelPropertyArgs
 {
 public:
 
@@ -29,6 +29,7 @@ public:
 	virtual void BuildCore(IModelNode* pModel, IPropertyArgs* pPropertyArgs) override;
 	virtual void Update(IModelNode* pModel, IPropertyArgs* pPropertyArgs) override;
 	virtual void Draw(shared_ptr<UniformStruct> pUniform);
+	virtual void Update(void* sender, IEventArgs* pArgs);
 private:
 	void SetIndexText(IModelNode* pModelNode, const ICamera* pCamera);
 	std::vector<NoWindowTextUI> m_indexText;

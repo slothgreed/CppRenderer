@@ -2,6 +2,7 @@
 #define GLFW_EXPOSE_NATIVE_WIN32
 
 #include "GLFW/glfw3native.h"
+#include "imgui_internal.h"
 namespace KI
 {
 namespace RenderView
@@ -247,6 +248,33 @@ bool OpenGLView::Run()
 		bool flag;
 		ImGui::Begin("Alpha Window", &flag, ImGuiWindowFlags_::ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_::ImGuiWindowFlags_NoResize);
 		ImGui::TextColored(ImVec4(1, 0, 0, 1), "value");
+		ImGui::End();
+
+		ImGui::Begin("Example Bug");
+
+		static int dot_count = 10;
+		ImGui::SliderInt("Number of dots", &dot_count, 1, 50000);
+
+		auto window = ImGui::GetCurrentWindow();
+
+		auto& cmd_buffer = window->DrawList->CmdBuffer;
+
+		for (int i = 0; i < dot_count; i++) {
+			auto& draw_cmd = cmd_buffer.Data[cmd_buffer.Size - 1];
+
+
+			constexpr int kCircleRadius = 400;
+			ImVec2 dot_position{};
+			dot_position.x = std::sin(i / (double)dot_count * 2 * 3.14) * kCircleRadius + kCircleRadius;
+			dot_position.y = std::cos(i / (double)dot_count * 2 * 3.14) * kCircleRadius + kCircleRadius;
+			//dot_position += window->DC.CursorPos;
+			const int red_value = (i / (double)dot_count) * 255;
+			window->DrawList->AddQuad(dot_position, ImVec2(dot_position.x + 1, dot_position.y), ImVec2(dot_position.x, dot_position.y + 1), ImVec2(dot_position.x,dot_position.y+1), 1);
+		}
+
+		auto& draw_cmd = cmd_buffer.Data[cmd_buffer.Size - 1];
+		printf("draw_cmd.ElemCount      %d\n", draw_cmd.ElemCount);
+
 		ImGui::End();
 		//{
 		//	static float f = 0.0f;

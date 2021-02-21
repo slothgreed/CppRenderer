@@ -184,6 +184,7 @@
     <ClInclude Include="PickPath.h" />
     <ClInclude Include="PointLight.h" />
     <ClInclude Include="RenderData.h" />
+    <ClInclude Include="RendererEventArgs.h" />
     <ClInclude Include="RenderSystem.h" />
     <ClInclude Include="RendererTypes.h" />
     <ClInclude Include="Scene.h" />

@@ -31,6 +31,8 @@ shared_ptr<IModelProperty> IRenderModelProperty::Create(PROPERTY_TYPE type)
 
 void IRenderModelProperty::Build(IModelNode* pModelNode, IPropertyArgs* pPropertyArgs)
 {
+
+	SetModelNode(pModelNode);
 	BuildCore(pModelNode, pPropertyArgs);
 	InitializeUI();
 }

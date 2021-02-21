@@ -59,6 +59,8 @@ using namespace glm;
 
 #define RELEASE_INSTANCE(x) if(x != NULL) { delete x; x = NULL;}
 #define RELEASE_ARRAY_INSTANCE(x,size) for(int i = 0; i < size; i++){RELEASE_INSTANCE(x);} size = 0;
+#define down_cast(Type,Value) dynamic_cast<Type>(Value)
+
 #ifdef NDEBUG
 #define KI_ASSERT(x) if(x) {assert(0); retrun;}
 #else

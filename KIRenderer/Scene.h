@@ -5,7 +5,7 @@ namespace KI
 namespace Renderer
 {
 
-class DLL_EXPORT Scene
+class DLL_EXPORT Scene : public IObserver
 {
 	friend class VisibleModelIterator;
 	friend class SceneModelIterator;
@@ -14,7 +14,7 @@ public:
 	~Scene();
 
 	void Initialize();
-	void SetCamera(shared_ptr<ICamera> pCamera) { m_pCamera = pCamera; };
+	void SetCamera(shared_ptr<ICamera> pCamera);
 	void AddModelNode(shared_ptr<IModelNode> pModelNode);
 	void RemoveModelNode(shared_ptr<IModelNode> pModelNode);
 	int  ModelNum() { return (int)m_pRenderList.size(); };
@@ -28,7 +28,7 @@ public:
 	shared_ptr<ICamera> GetCamera() { return m_pCamera; };
 	shared_ptr<UniformStruct> GetUniformStruct() { return m_pUniformStruct; }
 	shared_ptr<IModelNode> GetModel(int objectId);
-
+	virtual void Update(void* sender, IEventArgs* pArgs) override;
 private:
 	void BindLight();
 	shared_ptr<ICamera> m_pCamera;

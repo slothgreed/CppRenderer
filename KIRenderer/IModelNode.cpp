@@ -1,3 +1,4 @@
+#include "IModelNode.h"
 namespace KI
 {
 namespace Renderer
@@ -34,14 +35,13 @@ IModelProperty* PropertyIterator::Current()
 }
 
 
-IModelNode::IModelNode(shared_ptr<Scene> pScene)
-	:m_pScene(pScene),
-	m_ModelMatrix(mat4x4(1.0)),
+IModelNode::IModelNode()
+	:m_ModelMatrix(mat4x4(1.0)),
 	m_visible(true)
 {
 }
-IModelNode::IModelNode(shared_ptr<Scene> pScene, shared_ptr<IModel> model)
-	: IModelNode(pScene)
+IModelNode::IModelNode(shared_ptr<IModel> model)
+	: IModelNode()
 {
 	m_pModel = model;
 	m_pModel->AddObserver(this);
@@ -55,10 +55,6 @@ IModelNode::~IModelNode()
 	}
 }
 
-void IModelNode::AddProperty(shared_ptr<IModelProperty> prop)
-{
-	AddProperty(prop, nullptr);
-}
 
 void IModelNode::AddProperty(shared_ptr<IModelProperty> prop, IPropertyArgs* propArgs)
 {
@@ -244,14 +240,14 @@ void IModelNode::AddSelect(PICK_TYPE type, shared_ptr<IShading> pShader, int ind
 
 void IModelNode::Update(void* sender, IEventArgs* args)
 {
-	UpdateProperty();
+	UpdateProperty(sender, args);
 }
 
-void IModelNode::UpdateProperty()
+void IModelNode::UpdateProperty(void* sender, IEventArgs* args)
 {
 	for (int i = 0; i < m_pProperty.size(); i++)
 	{
-		m_pProperty[i]->Update(this, nullptr);
+		m_pProperty[i]->Update(sender, args);
 	}
 }
 

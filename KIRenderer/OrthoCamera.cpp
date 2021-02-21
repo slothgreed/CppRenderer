@@ -13,7 +13,7 @@ OrthoCamera::~OrthoCamera()
 
 void OrthoCamera::Ortho(float left, float right, float bottom, float top, float _near, float _far)
 {
-	m_Project = glm::ortho(left, right, bottom, top, _near, _far);
+	SetProject(glm::ortho(left, right, bottom, top, _near, _far));
 	m_ortho.m_left = left;
 	m_ortho.m_right = right;
 	m_ortho.m_bottom = bottom;

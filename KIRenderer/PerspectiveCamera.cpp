@@ -9,7 +9,7 @@ PerspectiveCamera::PerspectiveCamera()
 }
 void PerspectiveCamera::Perspective(float fov, float aspect, float _near, float _far)
 {
-	m_Project = glm::perspective(fov, aspect, _near, _far);
+	SetProject(glm::perspective(fov, aspect, _near, _far));
 	m_fov = fov;
 	m_aspect = aspect;
 	m_near = _near;

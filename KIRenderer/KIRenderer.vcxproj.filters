@@ -58,6 +58,9 @@
     <Filter Include="ヘッダー ファイル\Path">
       <UniqueIdentifier>{9f799466-c834-4f22-bb5f-0c6ccb6eb659}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\Event">
+      <UniqueIdentifier>{52030772-20c4-4e4b-808d-adfc0f3af378}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -143,6 +146,9 @@
     </ClInclude>
     <ClInclude Include="CameraUtility.h">
       <Filter>ヘッダー ファイル\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="RendererEventArgs.h">
+      <Filter>ヘッダー ファイル\Event</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

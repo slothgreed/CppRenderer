@@ -9,7 +9,7 @@ class DLL_EXPORT IEventArgs
 {
 public:
 	IEventArgs() {};
-	~IEventArgs() {};
+	virtual ~IEventArgs() {};
 
 private:
 
