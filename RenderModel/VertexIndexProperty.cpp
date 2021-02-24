@@ -1,24 +1,12 @@
-#include <ft2build.h>
-#include FT_FREETYPE_H  
+
 namespace KI
 {
 namespace RenderModel
 {
 VertexIndexProperty::VertexIndexProperty()
 {
-	FT_Library ft;
-	if (FT_Init_FreeType(&ft))
-	{
-		std::cout << "ERROR::FREETYPE: Could not init FreeType Library" << std::endl;
-		return ;
-	}
-
-	//FT_Face face;
-	//if (FT_New_Face(ft, "fonts/arial.ttf", 0, &face))
-	//{
-	//	std::cout << "ERROR::FREETYPE: Failed to load font" << std::endl;
-	//	return;
-	//}
+	TextObjectArgs textArgs("012", vec2(0));
+	TextObject obj = TextObject(textArgs);
 }
 
 VertexIndexProperty::~VertexIndexProperty()
@@ -81,22 +69,22 @@ void VertexIndexProperty::SetIndexText(IModelNode* pModelNode, const ICamera* pC
 		assert(0);
 		return;
 	}
-	mat4x4 matrix = pCamera->Projection()* pCamera->ViewMatrix() * pModelNode->GetModelMatrix();
-	m_indexText.resize(pModel->GetHalfEdgeDS()->VertexList().size());
-	for (int i = 0; i < m_indexText.size(); i++) {
-		auto pVertex = pModel->GetHalfEdgeDS()->VertexList()[i];
-		vec3 screenPos = MathHelper::WorldToScreenPos(pCamera->Projection(), pCamera->ViewMatrix(), pModelNode->GetModelMatrix(), pVertex->Position());
-		m_indexText[i].SetPosition(vec2(screenPos.x * 600,screenPos.y * 600));
-		m_indexText[i].SetValue(std::to_string(pVertex->Index()));
-	}
+	//mat4x4 matrix = pCamera->Projection()* pCamera->ViewMatrix() * pModelNode->GetModelMatrix();
+	//m_indexText.resize(pModel->GetHalfEdgeDS()->VertexList().size());
+	//for (int i = 0; i < m_indexText.size(); i++) {
+	//	auto pVertex = pModel->GetHalfEdgeDS()->VertexList()[i];
+	//	vec3 screenPos = MathHelper::WorldToScreenPos(pCamera->Projection(), pCamera->ViewMatrix(), pModelNode->GetModelMatrix(), pVertex->Position());
+	//	m_indexText[i].SetPosition(vec2(screenPos.x * 600,screenPos.y * 600));
+	//	m_indexText[i].SetValue(std::to_string(pVertex->Index()));
+	//}
 }
 
 void VertexIndexProperty::Draw(shared_ptr<UniformStruct> pUniform)
 {
-	for (int i = 0; i < m_indexText.size(); i++)
-	{
-		m_indexText[i].ShowUI();
-	}
+	//for (int i = 0; i < m_indexText.size(); i++)
+	//{
+	//	m_indexText[i].ShowUI();
+	//}
 }
 
 }

@@ -58,6 +58,7 @@ using namespace KI::Topology;
 #include "Grid.h"
 #include "Axis.h"
 #include "CubeSpace.h"
+#include "TextObject.h"
 
 #include "KeyFrame.h"
 #include "IAnimation.h"
@@ -72,6 +73,7 @@ using namespace KI::Topology;
 
 #include "ModelGenerator.h"
 #include "SampleModelGenerator.h"
+#include "TextTextureGenerator.h"
 
 #include "DirectionalLightModel.h"
 

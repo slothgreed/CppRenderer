@@ -162,6 +162,12 @@
     <ClInclude Include="CubeSpace.h">
       <Filter>ヘッダー ファイル\Model\BasicObject</Filter>
     </ClInclude>
+    <ClInclude Include="TextObject.h">
+      <Filter>ヘッダー ファイル\Model\BasicObject</Filter>
+    </ClInclude>
+    <ClInclude Include="TextTextureGenerator.h">
+      <Filter>ヘッダー ファイル\Utility</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -226,6 +232,12 @@
     </ClCompile>
     <ClCompile Include="CubeSpace.cpp">
       <Filter>ソース ファイル\Model\BasicObject</Filter>
+    </ClCompile>
+    <ClCompile Include="TextObject.cpp">
+      <Filter>ソース ファイル\Model\BasicObject</Filter>
+    </ClCompile>
+    <ClCompile Include="TextTextureGenerator.cpp">
+      <Filter>ソース ファイル\Utility</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

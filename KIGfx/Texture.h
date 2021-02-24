@@ -33,7 +33,7 @@ public:
 	{
 		if (pixels != 0)
 		{
-			delete pixels;
+			delete[] pixels;
 			pixels = 0;
 		}
 	}

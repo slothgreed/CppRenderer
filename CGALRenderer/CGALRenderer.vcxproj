@@ -108,7 +108,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)extlibs\imgui;$(SolutionDir)extlibs\stb;$(SolutionDir)extlibs\glfw-3.3\include;$(SolutionDir)extlibs\glm-0.9.9.6\glm;$(SolutionDir)extlibs\glew-2.1.0\include;E:\Tools\boost\boost_1_64_0;E:\Tools\boost\boost_1_64_0\boost;$(SolutionDir)\extlibs\freetype\lib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)extlibs\imgui;$(SolutionDir)extlibs\stb;$(SolutionDir)extlibs\glfw-3.3\include;$(SolutionDir)extlibs\glm-0.9.9.6\glm;$(SolutionDir)extlibs\glew-2.1.0\include;E:\Tools\boost\boost_1_64_0;E:\Tools\boost\boost_1_64_0\boost;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>pch.h</ForcedIncludeFiles>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>

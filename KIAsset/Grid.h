@@ -1,3 +1,5 @@
+#ifndef GRID_H
+#define GRID_H
 namespace KI
 {
 namespace Asset
@@ -6,7 +8,9 @@ namespace Asset
 class DLL_EXPORT GridArgs
 {
 public:
-	GridArgs(const vec2& size, vec2 interval) { m_size = size, m_Interval = interval; }
+	GridArgs(const vec2& size, vec2 interval) :
+		m_size(size),
+		m_Interval(interval) {}
 	~GridArgs() {};
 	vec2 m_size;
 	vec2 m_Interval;
@@ -24,3 +28,5 @@ public:
 
 }
 }
+
+#endif GRID_H

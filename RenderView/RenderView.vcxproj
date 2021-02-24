@@ -92,15 +92,15 @@
       <PreprocessorDefinitions>_DEBUG;RENDERVIEW_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)extlibs\imgui;$(SolutionDir)extlibs\stb;$(SolutionDir)extlibs\glfw-3.3\include;$(SolutionDir)extlibs\glm-0.9.9.6\glm;$(SolutionDir)extlibs\glew-2.1.0\include;E:\Tools\boost\boost_1_64_0;E:\Tools\boost\boost_1_64_0\boost;$(SolutionDir)extlibs\freetype\include\freetype2;$(SolutionDir)extlibs\freetype\include2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)extlibs\imgui;$(SolutionDir)extlibs\stb;$(SolutionDir)extlibs\glfw-3.3\include;$(SolutionDir)extlibs\glm-0.9.9.6\glm;$(SolutionDir)extlibs\glew-2.1.0\include;E:\Tools\boost\boost_1_64_0;E:\Tools\boost\boost_1_64_0\boost;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>pch.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalLibraryDirectories>$(SolutionDir)extlibs\glfw-3.3\lib-vc2017;$(SolutionDir)extlibs\glew-2.1.0\lib\Release\x64;$(SolutionDir)$(Platform)\$(Configuration)\;$(SolutionDir)extlibs\freetype\lib;$(SolutionDir)extlibs\zlib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3dll.lib;glew32.lib;opengl32.lib;KIFoundation.lib;KIGfx.lib;KIRenderer.lib;KITopology.lib;KIShaderLib.lib;KIAlgorithm.lib;KIAsset.lib;RenderModel.lib;RenderLogic.lib;CGALAsset.lib;freetype.lib;zlib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)extlibs\glfw-3.3\lib-vc2017;$(SolutionDir)extlibs\glew-2.1.0\lib\Release\x64;$(SolutionDir)$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3dll.lib;glew32.lib;opengl32.lib;KIFoundation.lib;KIGfx.lib;KIRenderer.lib;KITopology.lib;KIShaderLib.lib;KIAlgorithm.lib;KIAsset.lib;RenderModel.lib;RenderLogic.lib;CGALAsset.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -150,7 +150,7 @@
       <PreprocessorDefinitions>NDEBUG;RENDERVIEW_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)extlibs\imgui;$(SolutionDir)extlibs\stb;$(SolutionDir)extlibs\glfw-3.3\include;$(SolutionDir)extlibs\glm-0.9.9.6\glm;$(SolutionDir)extlibs\glew-2.1.0\include;E:\Tools\boost\boost_1_64_0;E:\Tools\boost\boost_1_64_0\boost;$(SolutionDir)extlibs;$(SolutionDir)extlibs\freetype\include\freetype2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)extlibs\imgui;$(SolutionDir)extlibs\stb;$(SolutionDir)extlibs\glfw-3.3\include;$(SolutionDir)extlibs\glm-0.9.9.6\glm;$(SolutionDir)extlibs\glew-2.1.0\include;E:\Tools\boost\boost_1_64_0;E:\Tools\boost\boost_1_64_0\boost;$(SolutionDir)extlibs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>pch.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
@@ -160,7 +160,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
       <AdditionalLibraryDirectories>$(SolutionDir)extlibs\glfw-3.3\lib-vc2017;$(SolutionDir)extlibs\glew-2.1.0\lib\Release\x64;$(SolutionDir)$(Platform)\$(Configuration)\;$(SolutionDir)extlibs\freetype\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3dll.lib;glew32.lib;opengl32.lib;KIFoundation.lib;KIGfx.lib;KIRenderer.lib;KITopology.lib;KIShaderLib.lib;KIAlgorithm.lib;KIAsset.lib;RenderModel.lib;RenderLogic.lib;CGALAsset.lib;freetype.lib</AdditionalDependencies>
+      <AdditionalDependencies>glfw3dll.lib;glew32.lib;opengl32.lib;KIFoundation.lib;KIGfx.lib;KIRenderer.lib;KITopology.lib;KIShaderLib.lib;KIAlgorithm.lib;KIAsset.lib;RenderModel.lib;RenderLogic.lib;CGALAsset.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>

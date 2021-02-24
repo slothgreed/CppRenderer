@@ -81,12 +81,12 @@ bool PickPath::GetPickResult(const ivec2& position, PickResult* pickResult)
 
 	GetPickTexture()->GetPixels(pixelArgs);
 
-	vec3 value = pixelArgs.pixels.GetVector3(0);
+	ivec3 value = pixelArgs.pixels.GetVector3(0);
 	pickResult->objectID = value.x;
 	pickResult->primitiveID = value.y;
 	m_pRenderTarget->End();
 
-	Logger::Output(LOG_LEVEL::LOG_LEVEL_DEBUG, MathHelper::ToString(value) + "\n");
+	//Logger::Output(LOG_LEVEL::LOG_LEVEL_DEBUG, MathHelper::ToString(value) + "\n");
 	return true;
 }
 }
