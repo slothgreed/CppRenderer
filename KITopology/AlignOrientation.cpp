@@ -81,8 +81,6 @@ void AlignOrientation::SetRandomTangent()
 {
 	auto pResolution = m_pDownSampling->GetResolution(0);
 	auto pAdjancyMatrix = pResolution->GetAdjancyMatrix();
-	vec3 orient1;
-	vec3 orient2;
 	float sum = 0;
 	for (int i = 0; i < m_pHalfEdgeDS->VertexList().size(); i++)
 	{

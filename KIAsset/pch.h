@@ -58,7 +58,6 @@ using namespace KI::Topology;
 #include "Grid.h"
 #include "Axis.h"
 #include "CubeSpace.h"
-#include "TextObject.h"
 
 #include "KeyFrame.h"
 #include "IAnimation.h"
@@ -76,5 +75,8 @@ using namespace KI::Topology;
 #include "TextTextureGenerator.h"
 
 #include "DirectionalLightModel.h"
+
+#include "IHUD.h"
+#include "HUDText.h"
 
 #endif // !KI_ASSET_PCH_H

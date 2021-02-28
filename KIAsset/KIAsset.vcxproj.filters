@@ -76,6 +76,12 @@
     <Filter Include="ヘッダー ファイル\Model\Light">
       <UniqueIdentifier>{a68e590b-33ca-4efd-a132-f6971de44134}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\HUD">
+      <UniqueIdentifier>{06359807-3cc9-4e0b-84a7-75b6322ec3f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\HUD">
+      <UniqueIdentifier>{e2cbcfa4-02d3-4eb4-86f8-cc7fc89d546e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -162,11 +168,14 @@
     <ClInclude Include="CubeSpace.h">
       <Filter>ヘッダー ファイル\Model\BasicObject</Filter>
     </ClInclude>
-    <ClInclude Include="TextObject.h">
-      <Filter>ヘッダー ファイル\Model\BasicObject</Filter>
-    </ClInclude>
     <ClInclude Include="TextTextureGenerator.h">
       <Filter>ヘッダー ファイル\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="HUDText.h">
+      <Filter>ヘッダー ファイル\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="IHUD.h">
+      <Filter>ヘッダー ファイル\HUD</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -233,11 +242,14 @@
     <ClCompile Include="CubeSpace.cpp">
       <Filter>ソース ファイル\Model\BasicObject</Filter>
     </ClCompile>
-    <ClCompile Include="TextObject.cpp">
-      <Filter>ソース ファイル\Model\BasicObject</Filter>
-    </ClCompile>
     <ClCompile Include="TextTextureGenerator.cpp">
       <Filter>ソース ファイル\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="IHUD.cpp">
+      <Filter>ソース ファイル\HUD</Filter>
+    </ClCompile>
+    <ClCompile Include="HUDText.cpp">
+      <Filter>ソース ファイル\HUD</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

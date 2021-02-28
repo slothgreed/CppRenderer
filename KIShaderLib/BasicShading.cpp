@@ -64,6 +64,7 @@ void BasicFragCode::Bind(shared_ptr<IShaderChunk> pShaderChunk, shared_ptr<IUnif
 	}
 	else
 	{
+		assert(pShading->GetTexture() != nullptr);
 		pShading->GetTexture()->Begin();
 		IShaderCode::BindTexture(GL_TEXTURE0, m_uniformLocation[BASIC_SHADING_TYPE_TEXTURE]);
 	}

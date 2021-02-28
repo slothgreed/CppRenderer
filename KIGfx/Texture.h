@@ -48,6 +48,7 @@ public:
 	virtual void Generate() override;
 	virtual void Dispose() override;
 
+	void PixelStore(int i);
 	int Width() { return m_data.width; };
 	int Height() { return m_data.height; };
 	GLuint Format() { return m_data.format; };

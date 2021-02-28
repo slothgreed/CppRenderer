@@ -13,6 +13,7 @@ public:
 	TextTextureGenerator() {};
 	~TextTextureGenerator() {};
 	void Generate(const std::string& text, std::vector<vec3>* position, std::vector<int>* m_index, std::vector<vec2>* texcoord);
+	shared_ptr<Texture> GetTexture() { return m_texture; };
 private:
 	struct Charactor
 	{
@@ -33,7 +34,7 @@ private:
 	bool m_Initialize;
 	std::string m_textList;
 	std::map<char, Charactor*> m_charactos;
-	std::unique_ptr<Texture> m_texture;
+	std::shared_ptr<Texture> m_texture;
 };
 }
 }

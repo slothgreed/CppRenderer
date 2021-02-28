@@ -32,7 +32,8 @@ public:
 	virtual void Update(void* sender, IEventArgs* pArgs);
 private:
 	void SetIndexText(IModelNode* pModelNode, const ICamera* pCamera);
-	std::vector<NoWindowTextUI> m_indexText;
+	std::vector<HUDText> m_indexText;
+	std::vector<shared_ptr<RenderData>> m_pRenderDatas;
 };
 
 }

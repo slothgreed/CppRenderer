@@ -11,6 +11,7 @@ HalfEdgeDSNode::HalfEdgeDSNode(shared_ptr<HalfEdgeModel> model)
 	//pModel->CalcAlignOrientation();
 	//auto pProperty = GetProperty(PROPERTY_TYPE::PROPERTY_TYPE_VERTEX_TANGENT);
 	//pProperty->Update(this, nullptr);
+	VisibleProperty(PROPERTY_TYPE::PROPERTY_TYPE_VERTEX_INDEX, true);
 }
 
 HalfEdgeDSNode::~HalfEdgeDSNode()

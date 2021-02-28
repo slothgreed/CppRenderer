@@ -22,8 +22,8 @@ public:
 	};
 
 	// sourceType = GL_TRIANGLE_STRIP 
-	TriangleIterator(unsigned int sourceType, const vec3* positions, const int* indexs, int size);
-	TriangleIterator(TriangleType sourceType, const vec3* positions, const int* indexs, int size);
+	TriangleIterator(unsigned int sourceType, const vec3* positions, const int* indexs, size_t size);
+	TriangleIterator(TriangleType sourceType, const vec3* positions, const int* indexs, size_t size);
 	bool HasNext();
 	void Current(vec3* pos0, vec3* pos1, vec3* pos2);
 	void Next();

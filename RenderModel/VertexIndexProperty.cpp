@@ -5,8 +5,6 @@ namespace RenderModel
 {
 VertexIndexProperty::VertexIndexProperty()
 {
-	TextObjectArgs textArgs("012", vec2(0));
-	TextObject obj = TextObject(textArgs);
 }
 
 VertexIndexProperty::~VertexIndexProperty()
@@ -69,22 +67,43 @@ void VertexIndexProperty::SetIndexText(IModelNode* pModelNode, const ICamera* pC
 		assert(0);
 		return;
 	}
-	//mat4x4 matrix = pCamera->Projection()* pCamera->ViewMatrix() * pModelNode->GetModelMatrix();
-	//m_indexText.resize(pModel->GetHalfEdgeDS()->VertexList().size());
-	//for (int i = 0; i < m_indexText.size(); i++) {
-	//	auto pVertex = pModel->GetHalfEdgeDS()->VertexList()[i];
-	//	vec3 screenPos = MathHelper::WorldToScreenPos(pCamera->Projection(), pCamera->ViewMatrix(), pModelNode->GetModelMatrix(), pVertex->Position());
-	//	m_indexText[i].SetPosition(vec2(screenPos.x * 600,screenPos.y * 600));
-	//	m_indexText[i].SetValue(std::to_string(pVertex->Index()));
-	//}
+
+	mat4x4 matrix = pCamera->Projection()* pCamera->ViewMatrix() * pModelNode->GetModelMatrix();
+	if (m_indexText.size() == 0) {
+		m_indexText.resize(pModel->GetHalfEdgeDS()->VertexList().size());
+		m_pRenderDatas.resize(m_indexText.size());
+		auto pShading = make_shared<BasicShading>(BASIC_SHADING_TYPE_TEXTURE);
+		pShading->SetTexture(m_indexText[0].GetTexture());
+		for (int i = 0; i < m_indexText.size(); i++) {
+			auto pVertexBuffer = make_shared<DefaultVertexBuffer>();
+			auto pIndexBuffer = make_shared<IndexBuffer>();
+			auto pVertex = pModel->GetHalfEdgeDS()->VertexList()[i];
+			vec3 screenPos = MathHelper::WorldToScreenPos(pCamera->Projection(), pCamera->ViewMatrix(), pModelNode->GetModelMatrix(), pVertex->Position());
+			m_indexText[i].Build(HUDTextArgs(std::to_string(pVertex->Index()), screenPos.x, screenPos.y));
+			m_pRenderDatas[i] = make_shared<RenderData>();
+			m_pRenderDatas[i]->SetShading(pShading);
+			pVertexBuffer->SetPosition(m_indexText[i].Position());
+			pVertexBuffer->SetTexcoord(m_indexText[i].Texcoord());
+			pIndexBuffer->Set(m_indexText[i].Index());
+			m_pRenderDatas[i]->SetGeometryData(PRIM_TYPE::PRIM_TYPE_TRIANGLES, pVertexBuffer, pIndexBuffer);
+		}
+	}
+	else
+	{
+		for (int i = 0; i < m_indexText.size(); i++) {
+			auto pVertex = pModel->GetHalfEdgeDS()->VertexList()[i];
+			vec3 screenPos = MathHelper::WorldToScreenPos(pCamera->Projection(), pCamera->ViewMatrix(), pModelNode->GetModelMatrix(), pVertex->Position());
+			m_indexText[i].SetWindowPosition(screenPos.x, screenPos.y);
+		}
+	}
 }
 
 void VertexIndexProperty::Draw(shared_ptr<UniformStruct> pUniform)
 {
-	//for (int i = 0; i < m_indexText.size(); i++)
-	//{
-	//	m_indexText[i].ShowUI();
-	//}
+	for (int i = 0; i < m_pRenderDatas.size(); i++)
+	{
+		m_pRenderDatas[i]->Draw(pUniform);
+	}
 }
 
 }

@@ -90,7 +90,7 @@ void VertexTangentProperty::InitializeUI()
 	m_ui.offset.SetLabel("Offset Normal");
 	m_ui.offset.SetMin(0.0);
 	m_ui.offset.SetMax(1.0);
-	m_ui.offset.SetValue(0.1);
+	m_ui.offset.SetValue(0.1f);
 
 	m_ui.color.SetLabel("Color");
 	m_ui.color.SeValue(vec4(0, 0, 0, 0));

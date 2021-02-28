@@ -42,6 +42,10 @@ void Texture::UnBind()
 	Logger::GLError();
 }
 
+void Texture::PixelStore(int i)
+{
+	glPixelStorei(GL_UNPACK_ALIGNMENT, i);
+}
 void Texture::Resize(const TextureData& data)
 {
 	Begin();

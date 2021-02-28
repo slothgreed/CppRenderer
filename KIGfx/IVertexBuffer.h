@@ -18,7 +18,7 @@ public:
 	virtual void Add(GLuint location, shared_ptr<ArrayBuffer> arrayBuffer);
 	virtual void Remove(GLuint location);
 	virtual bool IsInstanceDraw() { return m_instanceNum > 1; };
-	virtual void SetInstanceNum(int num) { m_instanceNum = num; }
+	virtual void SetInstanceNum(size_t num) { m_instanceNum = num; }
 	virtual void BindAttribDivisor() { assert(0); };
 	virtual void UnBindAttribDivisor() { assert(0); };
 	virtual void DrawByIndexBuffer(GLuint primitiveType, IndexBuffer* pIndexbuffer, GLuint first = 0, GLuint count = 0);
