@@ -53,6 +53,7 @@ using namespace KI::Foundation;
 #include "AdjancyMatrixCSVIO.h"
 
 #include "DownSampling.h"
+#include "DownSamplingOperator.h"
 #include "AlignOrientation.h"
 #include "BVH.h"
 #include "HalfEdgeRepository.h"

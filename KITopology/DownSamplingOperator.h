@@ -1,0 +1,24 @@
+#ifndef DOWN_SAMPLING_OPERATOR_HPP
+#define DOWN_SAMPLING_OPERATOR_HPP
+
+namespace KI
+{
+namespace Topology
+{
+class DownSamplingOperator
+{
+public:
+	DownSamplingOperator(DownSampling* pInstance) :m_pInstance(pInstance) {};
+	~DownSamplingOperator() {};
+
+	void SetVertexOfCluster();
+	void GetCluster(int level, std::vector<int>& index);
+private:
+	void SetVertexOfClusterRecursive(int level, int upper, std::vector<DownSampling::SampleData>* index);
+	void GetClusterRecursive(int level, int upper, int clusterIndex, std::vector<int>& index);
+	DownSampling* m_pInstance;
+};
+
+}
+}
+#endif

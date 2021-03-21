@@ -52,7 +52,7 @@ using namespace KI::ImGuiEx;
 #include "HalfEdgeProperty.h"
 #include "VertexTangentProperty.h"
 #include "VertexIndexProperty.h"
-#include "HalfEdgeResolutionProperty.h"
+#include "ResolutionColorProperty.h"
 #include "BVHProperty.h"
 
 #include "IRenderModelNode.h"

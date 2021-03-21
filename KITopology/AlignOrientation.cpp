@@ -4,6 +4,7 @@ namespace Topology
 {
 AlignOrientation::AlignOrientation(HalfEdgeDS* pHalfEdgeDS, DownSampling* pDownSampling)
 {
+	m_error.resize(1);
 	m_pHalfEdgeDS = pHalfEdgeDS;
 	m_pDownSampling = pDownSampling;
 	SetRandomTangent();
@@ -18,7 +19,7 @@ void AlignOrientation::ClosestDirection(const vec3& tangent1, const vec3& normal
 										vec3* orient1, vec3* orient2)
 {
 	vec3 orients1[2] = { tangent1, glm::cross(tangent1,normal1) };
-	vec3 orients2[2] = { tangent1, glm::cross(tangent2,normal2) };
+	vec3 orients2[2] = { tangent2, glm::cross(tangent2,normal2) };
 
 	float maxInner = -0.0f;
 	int max1 = -1;
@@ -71,6 +72,7 @@ void AlignOrientation::AssignLowerByUpper(int upperIndex)
 			auto pSimpleData = pSimpleRes->GetData(j);
 			vec3 tangent = glm::normalize(pSimpleData->Tangent() - pDetailData->Normal() *
 					glm::dot(pSimpleData->Tangent(), pDetailData->Normal()));
+			float inner = glm::dot(pSimpleData->Tangent(), pDetailData->Normal());
 			pDetailData->SetTangent(tangent);
 		}
 	}
@@ -108,16 +110,16 @@ void AlignOrientation::Calculate(int localItrNum)
 	int resolutionIndex = m_pDownSampling->GetResolutionNum() - 1;
 	while (resolutionIndex >= 0)
 	{
-		for (int j = 0; j < localItrNum; j++)
+		for (int j = 0; j < 1; j++)
 		{
 			LocalAlignment(resolutionIndex);
 
-			int globalItr = resolutionIndex;
-			while (globalItr >= 0)
-			{
-				AssignLowerByUpper(globalItr);
-				globalItr--;
-			}
+			//int globalItr = resolutionIndex;
+			//while (globalItr >= 0)
+			//{
+			//	AssignLowerByUpper(globalItr);
+			//	globalItr--;
+			//}
 
 			CalcErrorValue();
 		}
@@ -125,22 +127,22 @@ void AlignOrientation::Calculate(int localItrNum)
 		resolutionIndex--;
 	}
 
-	auto pResolution = m_pDownSampling->GetResolution(0);
-	auto pAdjancyMatrix = pResolution->GetAdjancyMatrix();
-	vector<vec3> tangents;
-	for (int i = 0; i < m_pHalfEdgeDS->VertexList().size(); i++)
-	{
-		auto pVertex = m_pHalfEdgeDS->VertexList()[i];
-		pVertex->SetTangent(pResolution->GetData(i)->Tangent());
-		tangents.push_back(pVertex->Tangent());
-	}
-
-
-#ifdef _DEBUG
-	ArrayCSVIO csvio;
-	csvio.Output("C:\\Users\\stmnd\\Desktop\\Tmp\\output" + std::to_string(g_index) + ".txt", tangents);
-	g_index++;
-#endif
+//	auto pResolution = m_pDownSampling->GetResolution(0);
+//	auto pAdjancyMatrix = pResolution->GetAdjancyMatrix();
+//	vector<vec3> tangents;
+//	for (int i = 0; i < m_pHalfEdgeDS->VertexList().size(); i++)
+//	{
+//		auto pVertex = m_pHalfEdgeDS->VertexList()[i];
+//		pVertex->SetTangent(pResolution->GetData(i)->Tangent());
+//		tangents.push_back(pVertex->Tangent());
+//	}
+//
+//
+//#ifdef _DEBUG
+//	ArrayCSVIO csvio;
+//	csvio.Output("C:\\Users\\stmnd\\Desktop\\Tmp\\output" + std::to_string(g_index) + ".txt", tangents);
+//	g_index++;
+//#endif
 }
 
 void AlignOrientation::LocalAlignment(int resolution)
@@ -193,6 +195,7 @@ void AlignOrientation::CalcErrorValue()
 	vec3 orient1;
 	vec3 orient2; 
 	float sum = 0;
+	vector<vec3> tangents;
 	for (int i = 0; i < pAdjancyMatrix->RowNum(); i++)
 	{
 		auto pVertex1 = pResolution->GetData(i);
@@ -208,7 +211,7 @@ void AlignOrientation::CalcErrorValue()
 
 			float angle = 0;
 			float inner = glm::dot(orient1, orient2);
-			if (inner >= 1) {
+			if (abs(inner) + 0.0001 >= 1) {
 				angle = 0;
 			}
 			else
@@ -218,10 +221,19 @@ void AlignOrientation::CalcErrorValue()
 
 			sum += angle * angle;
 		}
+
+		tangents.push_back(pVertex1->Tangent());
+
 	}
 
 
 	m_error.push_back(sum);
+
+//#ifdef _DEBUG
+//	ArrayCSVIO csvio;
+//	csvio.Output("C:\\Users\\stmnd\\Desktop\\Tmp\\output" + std::to_string(g_index) + ".txt", tangents);
+//	g_index++;
+//#endif
 }
 }
 }

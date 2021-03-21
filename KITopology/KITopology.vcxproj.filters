@@ -123,6 +123,9 @@
     <ClInclude Include="Triangle.h">
       <Filter>ヘッダー ファイル\Primitive</Filter>
     </ClInclude>
+    <ClInclude Include="DownSamplingOperator.h">
+      <Filter>ヘッダー ファイル\HalfEdge\Operator</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -186,6 +189,9 @@
       <Filter>ソース ファイル\HalfEdge\Operator</Filter>
     </ClCompile>
     <ClCompile Include="BVH.cpp">
+      <Filter>ソース ファイル\HalfEdge\Operator</Filter>
+    </ClCompile>
+    <ClCompile Include="DownSamplingOperator.cpp">
       <Filter>ソース ファイル\HalfEdge\Operator</Filter>
     </ClCompile>
   </ItemGroup>

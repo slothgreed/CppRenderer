@@ -70,7 +70,8 @@ void VertexIndexProperty::SetIndexText(IModelNode* pModelNode, const ICamera* pC
 
 	mat4x4 matrix = pCamera->Projection()* pCamera->ViewMatrix() * pModelNode->GetModelMatrix();
 	if (m_indexText.size() == 0) {
-		m_indexText.resize(pModel->GetHalfEdgeDS()->VertexList().size());
+		//m_indexText.resize(pModel->GetHalfEdgeDS()->VertexList().size());
+		m_indexText.resize(1);
 		m_pRenderDatas.resize(m_indexText.size());
 		auto pShading = make_shared<BasicShading>(BASIC_SHADING_TYPE_TEXTURE);
 		pShading->SetTexture(m_indexText[0].GetTexture());

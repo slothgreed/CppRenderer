@@ -6,24 +6,24 @@ namespace KI
 namespace RenderModel
 {
 
-class DLL_EXPORT HalfEdgeResolutionPropertyArgs : public IRenderModelPropertyArgs
+class DLL_EXPORT ResolutionColorPropertyArgs : public IRenderModelPropertyArgs
 {
-	friend class HalfEdgeResolutionProperty;
+	friend class ResolutionColorProperty;
 public:
-	HalfEdgeResolutionPropertyArgs() :m_level(0) {};
-	HalfEdgeResolutionPropertyArgs(int level) :m_level(level) {};
-	~HalfEdgeResolutionPropertyArgs() {};
+	ResolutionColorPropertyArgs() :m_level(0) {};
+	ResolutionColorPropertyArgs(int level) :m_level(level) {};
+	~ResolutionColorPropertyArgs() {};
 	virtual PROPERTY_TYPE PropertyType() override { return PROPERTY_TYPE_RESOLUTION; }
 	int Level() { return m_level; }
 private:
 	int m_level;
 };
 
-class DLL_EXPORT HalfEdgeResolutionProperty : public IRenderModelProperty
+class DLL_EXPORT ResolutionColorProperty : public IRenderModelProperty
 {
 public:
-	HalfEdgeResolutionProperty();
-	~HalfEdgeResolutionProperty() {};
+	ResolutionColorProperty();
+	~ResolutionColorProperty() {};
 
 	virtual PROPERTY_TYPE PropertyType() override { return PROPERTY_TYPE_RESOLUTION; }
 	virtual void Draw(shared_ptr<UniformStruct> pUniform) override;
@@ -40,7 +40,7 @@ private:
 		SliderIntUI resolution;
 	};
 
-	static HalfEdgeResolutionPropertyArgs& DefaultArgs();
+	static ResolutionColorPropertyArgs& DefaultArgs();
 	void GetClusterColor(IPropertyArgs* pPropertyArgs, vector<vec3>& color);
 	UI m_ui;
 	shared_ptr<HalfEdgeModel> m_pModel;

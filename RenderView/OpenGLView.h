@@ -16,12 +16,20 @@ public:
 	virtual bool Run() override;
 	virtual void ProcessMouseEvent(const MouseInput& input) override;
 	virtual void ProcessWindowEvent(const WindowEvent& winEvent) override;
+
+	const GfxResource& GetGfxResource();
 private:
+	void InitLibrary();
+	void InitRenderLibrary();
+
+	void FreeLibrary();
+	void FreeRenderLibrary();
 
 	GLFWwindow* m_window;
 	shared_ptr<ViewViewModel> m_pViewModel;
 	shared_ptr<Viewport> m_pViewport;
 
+	GfxResource* m_pGfxResource;
 };
 
 static OpenGLView* TheApp();

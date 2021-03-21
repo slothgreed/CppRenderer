@@ -12,7 +12,7 @@ shared_ptr<IModelProperty> IRenderModelProperty::Create(PROPERTY_TYPE type)
 	case KI::RenderModel::PROPERTY_TYPE_HALFEDGE:
 		return make_shared<HalfEdgeProperty>();
 	case KI::RenderModel::PROPERTY_TYPE_RESOLUTION:
-		return make_shared<HalfEdgeResolutionProperty>();
+		return make_shared<ResolutionColorProperty>();
 	case KI::RenderModel::PROPERTY_TYPE_BDB:
 		return make_shared<BDBProperty>();
 	case KI::RenderModel::PROPERTY_TYPE_VERTEX_TANGENT:

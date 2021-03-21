@@ -2,17 +2,17 @@ namespace KI
 {
 namespace RenderModel
 {
-HalfEdgeResolutionPropertyArgs& HalfEdgeResolutionProperty::DefaultArgs()
+ResolutionColorPropertyArgs& ResolutionColorProperty::DefaultArgs()
 {
-	static HalfEdgeResolutionPropertyArgs defaultArgs(0);
+	static ResolutionColorPropertyArgs defaultArgs(0);
 
 	return defaultArgs;
 }
-HalfEdgeResolutionProperty::HalfEdgeResolutionProperty()
+ResolutionColorProperty::ResolutionColorProperty()
 {
 }
 
-void HalfEdgeResolutionProperty::BuildCore(IModelNode* pModelNode, IPropertyArgs* pPropertyArgs)
+void ResolutionColorProperty::BuildCore(IModelNode* pModelNode, IPropertyArgs* pPropertyArgs)
 {
 	assert(pModelNode != nullptr);
 	auto pRenderData = pModelNode->GetRenderData(0);
@@ -41,7 +41,7 @@ void HalfEdgeResolutionProperty::BuildCore(IModelNode* pModelNode, IPropertyArgs
 	m_pRenderData->SetShading(make_shared<VertexShading>(VERTEX_SHADING_COLOR));
 }
 
-void HalfEdgeResolutionProperty::Update(IModelNode* pModelNode, IPropertyArgs* pPropertyArgs)
+void ResolutionColorProperty::Update(IModelNode* pModelNode, IPropertyArgs* pPropertyArgs)
 {
 	vector<vec3> colors;
 	GetClusterColor(pPropertyArgs, colors);
@@ -58,7 +58,7 @@ void HalfEdgeResolutionProperty::Update(IModelNode* pModelNode, IPropertyArgs* p
 	}
 }
 
-void HalfEdgeResolutionProperty::SetModel(IModelNode* pModelNode)
+void ResolutionColorProperty::SetModel(IModelNode* pModelNode)
 {
 	if (pModelNode->GetModel()->Type() == MODEL_TYPE_HALF_EDGE)
 	{
@@ -70,9 +70,9 @@ void HalfEdgeResolutionProperty::SetModel(IModelNode* pModelNode)
 		return;
 	}
 }
-void HalfEdgeResolutionProperty::GetClusterColor(IPropertyArgs* pPropertyArgs, vector<vec3>& colors)
+void ResolutionColorProperty::GetClusterColor(IPropertyArgs* pPropertyArgs, vector<vec3>& colors)
 {
-	auto pArgs = dynamic_cast<HalfEdgeResolutionPropertyArgs*>(pPropertyArgs);
+	auto pArgs = dynamic_cast<ResolutionColorPropertyArgs*>(pPropertyArgs);
 	if (pArgs == nullptr)
 	{
 		pArgs = &DefaultArgs();
@@ -95,12 +95,12 @@ void HalfEdgeResolutionProperty::GetClusterColor(IPropertyArgs* pPropertyArgs, v
 		colors[i] = m_colorMap[clusterIndex[i]];
 	}
 }
-void HalfEdgeResolutionProperty::Draw(shared_ptr<UniformStruct> pUniform)
+void ResolutionColorProperty::Draw(shared_ptr<UniformStruct> pUniform)
 {
 	m_pRenderData->Draw(pUniform);
 }
 
-void HalfEdgeResolutionProperty::InitializeUI()
+void ResolutionColorProperty::InitializeUI()
 {
 	m_ui.resolution.SetLabel("Level");
 	m_ui.resolution.SetMin(0);
@@ -108,10 +108,10 @@ void HalfEdgeResolutionProperty::InitializeUI()
 	m_ui.resolution.SetMax(m_pModel->GetDownSampling()->GetResolutionNum() - 1);
 
 }
-void HalfEdgeResolutionProperty::ShowUI()
+void ResolutionColorProperty::ShowUI()
 {
 	if (m_ui.resolution.Show()) {
-		Update(nullptr, &HalfEdgeResolutionPropertyArgs(m_ui.resolution.Value()));
+		Update(nullptr, &ResolutionColorPropertyArgs(m_ui.resolution.Value()));
 	}
 }
 }

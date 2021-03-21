@@ -5,13 +5,13 @@ namespace RenderModel
 HalfEdgeDSNode::HalfEdgeDSNode(shared_ptr<HalfEdgeModel> model)
 	:PolygonModelNode(static_pointer_cast<IModel>(model))
 {
-	//VisibleProperty(PROPERTY_TYPE::PROPERTY_TYPE_RESOLUTION, true);
-	//VisibleProperty(PROPERTY_TYPE::PROPERTY_TYPE_VERTEX_TANGENT, true);
-	//auto pModel = ((HalfEdgeModel*)m_pModel.get());
-	//pModel->CalcAlignOrientation();
-	//auto pProperty = GetProperty(PROPERTY_TYPE::PROPERTY_TYPE_VERTEX_TANGENT);
-	//pProperty->Update(this, nullptr);
-	VisibleProperty(PROPERTY_TYPE::PROPERTY_TYPE_VERTEX_INDEX, true);
+	VisibleProperty(PROPERTY_TYPE::PROPERTY_TYPE_RESOLUTION, true);
+	VisibleProperty(PROPERTY_TYPE::PROPERTY_TYPE_VERTEX_TANGENT, true);
+	auto pModel = ((HalfEdgeModel*)m_pModel.get());
+	pModel->CalcAlignOrientation();
+	auto pProperty = GetProperty(PROPERTY_TYPE::PROPERTY_TYPE_VERTEX_TANGENT);
+	pProperty->Update(this, nullptr);
+	//VisibleProperty(PROPERTY_TYPE::PROPERTY_TYPE_VERTEX_INDEX, true);
 }
 
 HalfEdgeDSNode::~HalfEdgeDSNode()
@@ -57,7 +57,7 @@ void HalfEdgeDSNode::ShowUI()
 
 	auto pModel = ((HalfEdgeModel*)m_pModel.get());
 
-	//m_ui.plot.Show(pModel->GetOrientationError());
+	m_ui.plot.Show(pModel->GetOrientationError());
 }
 }
 }

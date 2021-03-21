@@ -116,11 +116,13 @@ OpenGLView* TheApp()
 }
 
 OpenGLView::OpenGLView()
+	:m_pGfxResource(nullptr)
 {
 }
 
 OpenGLView::~OpenGLView()
 {
+	FreeLibrary();
 }
 
 void DebugMessageCallback(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar* message, const void* userParam)
@@ -187,7 +189,40 @@ bool OpenGLView::Initialize()
 	m_pViewport->SetPosition(0, 0);
 	m_pViewport->Resize(640, 480);
 	theApp = this;
+
+	InitLibrary();
 	return true;
+}
+
+void OpenGLView::InitLibrary()
+{
+	InitRenderLibrary();
+}
+
+void OpenGLView::FreeLibrary()
+{
+	FreeRenderLibrary();
+}
+
+void OpenGLView::InitRenderLibrary()
+{
+	if (m_pGfxResource == nullptr) {
+		m_pGfxResource = new GfxResource();
+		m_pGfxResource->Initialize();
+	}
+}
+
+void OpenGLView::FreeRenderLibrary()
+{
+	if (m_pGfxResource) {
+		m_pGfxResource->Dispose();
+		RELEASE_INSTANCE(m_pGfxResource);
+	}
+}
+
+const GfxResource & OpenGLView::GetGfxResource()
+{
+	return *m_pGfxResource;
 }
 
 void OpenGLView::SetViewModel(shared_ptr<ViewViewModel> pViewModel)
@@ -224,9 +259,9 @@ bool OpenGLView::Run()
 
 	/* OTHER STUFF GOES HERE NEXT */
 
-	//ImGui::CreateContext();
-	//ImGui_ImplGlfw_InitForOpenGL(m_window, true);
-	//ImGui_ImplOpenGL3_Init("#version 400 core");
+	ImGui::CreateContext();
+	ImGui_ImplGlfw_InitForOpenGL(m_window, true);
+	ImGui_ImplOpenGL3_Init("#version 400 core");
 
 	Timer timer;
 	timer.Start();
@@ -240,32 +275,27 @@ bool OpenGLView::Run()
 		
 		m_pViewModel->Invoke();
 
-		//ImGui_ImplOpenGL3_NewFrame();
-		//ImGui_ImplGlfw_NewFrame();
-		//ImGui::NewFrame();
-		//m_pViewModel->ShowUI(ImGui::GetCurrentContext());
-		//ImGui::SetNextWindowBgAlpha(1.0f);
-		//bool flag;
-		//ImGui::Begin("Alpha Window", &flag, ImGuiWindowFlags_::ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_::ImGuiWindowFlags_NoResize);
-		//ImGui::TextColored(ImVec4(1, 0, 0, 1), "value");
-		//ImGui::End();
+		ImGui_ImplOpenGL3_NewFrame();
+		ImGui_ImplGlfw_NewFrame();
+		ImGui::NewFrame();
+		m_pViewModel->ShowUI(ImGui::GetCurrentContext());
 
-		//// Rendering
-		//ImGui::Render();
-		//int display_w, display_h;
-		//glfwGetFramebufferSize(m_window, &display_w, &display_h);
-		//glViewport(0, 0, display_w, display_h);
-		//ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+		// Rendering
+		ImGui::Render();
+		int display_w, display_h;
+		glfwGetFramebufferSize(m_window, &display_w, &display_h);
+		glViewport(0, 0, display_w, display_h);
+		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
 		glfwSwapBuffers(m_window);
 
 		timer.WaitForFPS(60);
 	}
 
-	//// Cleanup
-	//ImGui_ImplOpenGL3_Shutdown();
-	//ImGui_ImplGlfw_Shutdown();
-	//ImGui::DestroyContext();
+	// Cleanup
+	ImGui_ImplOpenGL3_Shutdown();
+	ImGui_ImplGlfw_Shutdown();
+	ImGui::DestroyContext();
 
 	timer.End();
 
@@ -285,5 +315,6 @@ void OpenGLView::ProcessWindowEvent(const WindowEvent& winEvent)
 	m_pViewport->Resize(winEvent.Size().x, winEvent.Size().y);
 	m_pViewModel->WindowResize(winEvent.Size().x, winEvent.Size().y);
 }
+
 }
 }

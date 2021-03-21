@@ -134,7 +134,9 @@ void DownSampling::Generate()
 			assert(0);
 		}
 	}
+
 }
+
 
 void DownSampling::CreateResolution(int level,
 	shared_ptr<DownSampling::Resolution> pOrgResolution,
@@ -304,52 +306,15 @@ shared_ptr<DownSampling::Resolution> DownSampling::GetResolution(int level)
 
 void DownSampling::GetCluster(int level, std::vector<int>& index)
 {
-	index.resize(m_pHalfEdgeDS->VertexList().size());
-	if (level == m_pResolution.size()) {
-		return;
-	}
-	if (level == 0) {
-		for (int i = 0; i < m_pHalfEdgeDS->VertexList().size(); i++) {
-			index[i] = i;
-		}
-	}
-	else
-	{
-		auto pCurrent = m_pResolution[level];	// ex : 1
-		if (pCurrent == NULL) {
-			return;
-		}
-		int clusterIndex = 0;
-		for (int i = 0; i < pCurrent->GetClusterNum(); i++)
-		{
-			for (int j = 0; j < pCurrent->GetBranchNum(); j++)
-			{
-				int _upper = pCurrent->GetToUpper(i, j);
-				if (AdjancyMatrix::Link::INVALID == _upper)
-					continue;
-				GetClusterRecursive(level - 1, _upper, clusterIndex, index);
-			}
-			clusterIndex++;
-		}
-	}
+	auto operate = DownSamplingOperator(this);
+	operate.GetCluster(level, index);
+}
+void DownSampling::SetVertexOfCluster()
+{
+	auto operate = DownSamplingOperator(this);
+	operate.SetVertexOfCluster();
 }
 
-void DownSampling::GetClusterRecursive(int level, int upper, int clusterIndex, std::vector<int>& index)
-{
-	if (level == 0) {
-		index[upper] = clusterIndex;
-	}
-	else
-	{
-		auto pCurrent = m_pResolution[level];	// ex : 0
-		for (int j = 0; j < pCurrent->GetBranchNum(); j++)
-		{
-			int _upper = pCurrent->GetToUpper(upper, j);
-			if (AdjancyMatrix::Link::INVALID == _upper)
-				continue;
-			GetClusterRecursive(level - 1, _upper, clusterIndex, index);
-		}
-	}
-}
+
 }
 }

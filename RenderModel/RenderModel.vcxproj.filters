@@ -72,9 +72,6 @@
     <ClInclude Include="VertexTangentProperty.h">
       <Filter>ヘッダー ファイル\Property</Filter>
     </ClInclude>
-    <ClInclude Include="HalfEdgeResolutionProperty.h">
-      <Filter>ヘッダー ファイル\Property</Filter>
-    </ClInclude>
     <ClInclude Include="BVHProperty.h">
       <Filter>ヘッダー ファイル\Property</Filter>
     </ClInclude>
@@ -126,6 +123,9 @@
     <ClInclude Include="TextUI.h">
       <Filter>ヘッダー ファイル\ImGuiEx</Filter>
     </ClInclude>
+    <ClInclude Include="ResolutionColorProperty.h">
+      <Filter>ヘッダー ファイル\Property</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -162,9 +162,6 @@
       <Filter>ソース ファイル\Node</Filter>
     </ClCompile>
     <ClCompile Include="VertexTangentProperty.cpp">
-      <Filter>ソース ファイル\Property</Filter>
-    </ClCompile>
-    <ClCompile Include="HalfEdgeResolutionProperty.cpp">
       <Filter>ソース ファイル\Property</Filter>
     </ClCompile>
     <ClCompile Include="..\extlibs\imgui\imgui.cpp">
@@ -214,6 +211,9 @@
     </ClCompile>
     <ClCompile Include="TextUI.cpp">
       <Filter>ソース ファイル\ImGuiEx</Filter>
+    </ClCompile>
+    <ClCompile Include="ResolutionColorProperty.cpp">
+      <Filter>ソース ファイル\Property</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

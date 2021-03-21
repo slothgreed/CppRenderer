@@ -71,4 +71,8 @@ using namespace KI::ShaderLib;
 #include "PickPath.h"
 #include "OutputPath.h"
 
+
+#include "TextureManager.h"
+#include "GfxResource.h"
+
 #endif KI_RENDERER_PCH_H

@@ -61,6 +61,12 @@
     <Filter Include="ヘッダー ファイル\Event">
       <UniqueIdentifier>{52030772-20c4-4e4b-808d-adfc0f3af378}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Resource">
+      <UniqueIdentifier>{d59da5ec-44ab-4789-95d9-07563565f18a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Resource">
+      <UniqueIdentifier>{9a38a00e-f189-4015-ba70-2805ebea5b33}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -150,6 +156,12 @@
     <ClInclude Include="RendererEventArgs.h">
       <Filter>ヘッダー ファイル\Event</Filter>
     </ClInclude>
+    <ClInclude Include="GfxResource.h">
+      <Filter>ヘッダー ファイル\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureManager.h">
+      <Filter>ヘッダー ファイル\Resource</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -208,6 +220,12 @@
     </ClCompile>
     <ClCompile Include="CameraUtility.cpp">
       <Filter>ソース ファイル\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="GfxResource.cpp">
+      <Filter>ソース ファイル\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureManager.cpp">
+      <Filter>ソース ファイル\Resource</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
