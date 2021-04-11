@@ -17,5 +17,6 @@ void ArrayCSVIO::Output(const std::string& filePath, const vector<vec3>& value)
 
 	writer.Close();
 }
+
 }
 }

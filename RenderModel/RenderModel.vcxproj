@@ -178,7 +178,8 @@
     <ClInclude Include="CheckBoxUI.h" />
     <ClInclude Include="ColorPickerUI.h" />
     <ClInclude Include="framework.h" />
-    <ClInclude Include="ResolutionColorProperty.h" />
+    <ClInclude Include="QuadPositionProperty.h" />
+    <ClInclude Include="ResolutionParameterProperty.h" />
     <ClInclude Include="HalfEdgeDSNode.h" />
     <ClInclude Include="HalfEdgeProperty.h" />
     <ClInclude Include="IRenderModelNode.h" />
@@ -209,7 +210,8 @@
     <ClCompile Include="CheckBoxUI.cpp" />
     <ClCompile Include="ColorPickerUI.cpp" />
     <ClCompile Include="dllmain.cpp" />
-    <ClCompile Include="ResolutionColorProperty.cpp" />
+    <ClCompile Include="QuadPositionProperty.cpp" />
+    <ClCompile Include="ResolutionParameterProperty.cpp" />
     <ClCompile Include="HalfEdgeDSNode.cpp" />
     <ClCompile Include="HalfEdgeProperty.cpp" />
     <ClCompile Include="IRenderModelNode.cpp" />

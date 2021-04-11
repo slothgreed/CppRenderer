@@ -42,6 +42,8 @@ public:
 	float Area() { return m_area; }
 	vec3 Tangent() { return m_tangent; }
 	void SetTangent(const vec3& value) { m_tangent = value; }
+	vec3 QuadPosition() { return m_quadPosition; }
+	void SetQuadPosition(const vec3& value) { m_quadPosition = value; }
 	bool Pick(const vec3& direction, float range, float& distance);
 	void Validate();
 private:
@@ -53,6 +55,7 @@ private:
 	vec3 m_position;
 	vec3 m_normal;
 	vec3 m_tangent;
+	vec3 m_quadPosition;
 	float m_area;
 
 	int m_Index;

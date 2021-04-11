@@ -23,13 +23,18 @@ public:
 		vec3 Position() { return m_position; }
 		vec3 Normal() { return m_normal; }
 		vec3 Tangent() { return m_tangent; }
+		vec3 QuadPosition() { return m_quadPosition; }
+		void SetQuadPosition(const vec3& value) { m_quadPosition = value; }
 		void SetOriginal(const std::vector<SampleData>& original) { m_original = std::move(original); }
+		int GetOriginalNum() { return (int)m_original.size(); }
+		SampleData* GetOriginal(int index) { return &m_original[index]; }
 	private:
 		int m_index;
 		float m_area;
-		vec3 m_position;
+		vec3 m_position;	// クラスターの位置の平均
 		vec3 m_normal;
 		vec3 m_tangent;
+		vec3 m_quadPosition;
 		std::vector<SampleData> m_original;	// おおもとの頂点データ
 	};
 
@@ -80,8 +85,9 @@ public:
 	shared_ptr<DownSampling::Resolution> GetResolution(int level);
 	int GetResolutionNum() { return (int)m_pResolution.size(); }
 	void GetCluster(int level, std::vector<int>& index);	// original 頂点の順番
-	void SetVertexOfCluster();	// 階層数×元頂点数分のデータが作成されるので重い
+	void GetOriginalVertexTangent(int level, std::vector<vec3>* tangents);
 private:
+	void SetVertexOfCluster();	// 階層数×元頂点数分のデータが作成されるので重い
 	void InitialResolution(shared_ptr<DownSampling::Resolution> pResolution, HalfEdgeDS* pHalfEdgeDS);
 	void CreateResolution(int level, shared_ptr<DownSampling::Resolution> pOrgResolution, shared_ptr<DownSampling::Resolution> pResolution);
 	HalfEdgeDS* m_pHalfEdgeDS;

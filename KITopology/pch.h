@@ -46,7 +46,7 @@ using namespace KI::Foundation;
 #include "HalfEdgeDS.h"
 
 #include "HalfEdgeOperator.h"
-
+#include "HalfEdgeParameterIO.h"
 
 #include "AdjancyMatrix.h"
 #include "HalfEdgeAdjancyMatrix.h"
@@ -57,5 +57,6 @@ using namespace KI::Foundation;
 #include "AlignOrientation.h"
 #include "BVH.h"
 #include "HalfEdgeRepository.h"
+#include "ArrangePoint.h"
 
 #endif // KI_TOPOLOGY_PCH_H

@@ -10,8 +10,9 @@ public:
 	FileWriter();
 	~FileWriter();
 
-	bool Open(const std::string& filePath);
+	bool Open(const std::string& filePath, bool binary = false);
 	void Write(const std::string& contents, bool endl = false);
+	void WriteBinary(void* contents, Format format, bool endl = false);
 	void Close();
 private:
 	std::ofstream m_fileStream;

@@ -26,6 +26,7 @@
 using namespace std;
 using namespace glm;
 
+#include "KIType.h"
 #include "Random.h"
 #include "MathHelper.h"
 
@@ -53,6 +54,7 @@ using namespace glm;
 
 #include "FileUtility.h"
 #include "FileWriter.h"
+#include "FileReader.h"
 #include "ArrayCSVIO.h"
 
 #include "TriangleIterator.h"

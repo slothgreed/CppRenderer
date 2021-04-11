@@ -125,5 +125,25 @@ void DownSamplingOperator::GetClusterRecursive(int level, int upper, int cluster
 		}
 	}
 }
+
+void DownSamplingOperator::GetOriginalVertexTangent(int level, std::vector<vec3>* tangents)
+{
+	assert(m_pInstance != nullptr);
+	assert(tangents != nullptr);
+	assert(m_pInstance->GetResolutionNum() > level);
+	auto pResolution = m_pInstance->GetResolution(level);
+	auto pHalfEdgeDS = m_pInstance->m_pHalfEdgeDS;
+
+	tangents->resize(pHalfEdgeDS->VertexList().size());
+	for (int i = 0; i < pResolution->GetClusterNum(); i++)
+	{
+		auto pData = pResolution->GetData(i);
+		for (int j = 0; j < pData->GetOriginalNum(); j++)
+		{
+			auto pOriginal = pData->GetOriginal(j);
+			(*tangents)[pOriginal->Index()] = pOriginal->Tangent();
+		}
+	}
+}
 }
 }

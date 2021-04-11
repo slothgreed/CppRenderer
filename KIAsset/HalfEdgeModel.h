@@ -29,6 +29,8 @@ public:
 	bool CalcBVH();
 	bool CalcDownSampling();
 	bool CalcAlignOrientation();
+	bool CalcArrangePosition();
+
 	const std::vector<float>& GetOrientationError();
 	void RaycastPick(RaycastPickInfo& result) override;
 
@@ -36,6 +38,7 @@ private:
 	shared_ptr<HalfEdgeDS> m_HalfEdgeDS;
 	DownSampling* m_pDownSampling;
 	AlignOrientation* m_pAlignOrientation;
+	ArrangePoint* m_pArrangePoint;
 	BVH*		  m_pBVH;
 };
 }

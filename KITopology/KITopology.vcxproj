@@ -168,6 +168,7 @@
     <ClInclude Include="AdjancyMatrix.h" />
     <ClInclude Include="AdjancyMatrixCSVIO.h" />
     <ClInclude Include="AlignOrientation.h" />
+    <ClInclude Include="ArrangePoint.h" />
     <ClInclude Include="BVH.h" />
     <ClInclude Include="DownSamplingOperator.h" />
     <ClInclude Include="HalfEdgeAdjancyMatrix.h" />
@@ -179,6 +180,7 @@
     <ClInclude Include="HalfEdgeDS.h" />
     <ClInclude Include="HalfEdgeFace.h" />
     <ClInclude Include="HalfEdgeOperator.h" />
+    <ClInclude Include="HalfEdgeParameterIO.h" />
     <ClInclude Include="HalfEdgeRepository.h" />
     <ClInclude Include="HalfEdgeVertex.h" />
     <ClInclude Include="Icosahedron.h" />
@@ -197,6 +199,7 @@
     <ClCompile Include="AdjancyMatrix.cpp" />
     <ClCompile Include="AdjancyMatrixCSVIO.cpp" />
     <ClCompile Include="AlignOrientation.cpp" />
+    <ClCompile Include="ArrangePoint.cpp" />
     <ClCompile Include="BVH.cpp" />
     <ClCompile Include="Cone.cpp" />
     <ClCompile Include="Cube.cpp" />
@@ -208,6 +211,7 @@
     <ClCompile Include="HalfEdgeDS.cpp" />
     <ClCompile Include="HalfEdgeFace.cpp" />
     <ClCompile Include="HalfEdgeOperator.cpp" />
+    <ClCompile Include="HalfEdgeParameterIO.cpp" />
     <ClCompile Include="HalfEdgeRepository.cpp" />
     <ClCompile Include="HalfEdgeVertex.cpp" />
     <ClCompile Include="Icosahedron.cpp" />

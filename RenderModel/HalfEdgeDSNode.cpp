@@ -8,7 +8,6 @@ HalfEdgeDSNode::HalfEdgeDSNode(shared_ptr<HalfEdgeModel> model)
 	VisibleProperty(PROPERTY_TYPE::PROPERTY_TYPE_RESOLUTION, true);
 	VisibleProperty(PROPERTY_TYPE::PROPERTY_TYPE_VERTEX_TANGENT, true);
 	auto pModel = ((HalfEdgeModel*)m_pModel.get());
-	pModel->CalcAlignOrientation();
 	auto pProperty = GetProperty(PROPERTY_TYPE::PROPERTY_TYPE_VERTEX_TANGENT);
 	pProperty->Update(this, nullptr);
 	//VisibleProperty(PROPERTY_TYPE::PROPERTY_TYPE_VERTEX_INDEX, true);
@@ -42,6 +41,13 @@ void HalfEdgeDSNode::ShowUI()
 		pModel->CalcAlignOrientation();
 		auto pProperty = GetProperty(PROPERTY_TYPE::PROPERTY_TYPE_VERTEX_TANGENT);
 		pProperty->Update(this, nullptr);
+	}
+
+	if (ImGui::SmallButton("Arrange Position")) {
+		auto pModel = ((HalfEdgeModel*)m_pModel.get());
+		if (pModel->CalcArrangePosition()) {
+			VisibleProperty(PROPERTY_TYPE::PROPERTY_TYPE_QUAD_POSITION, true);
+		}
 	}
 
 	if (ImGui::Checkbox("Vertex Index", &m_ui.visibleIndex)) {

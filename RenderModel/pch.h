@@ -52,8 +52,9 @@ using namespace KI::ImGuiEx;
 #include "HalfEdgeProperty.h"
 #include "VertexTangentProperty.h"
 #include "VertexIndexProperty.h"
-#include "ResolutionColorProperty.h"
+#include "ResolutionParameterProperty.h"
 #include "BVHProperty.h"
+#include "QuadPositionProperty.h"
 
 #include "IRenderModelNode.h"
 #include "PrimitiveNode.h"

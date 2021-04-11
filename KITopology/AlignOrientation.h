@@ -12,9 +12,11 @@ public:
 	~AlignOrientation();
 	const std::vector<float>& ErrorValue() { return m_error; }
 	void Calculate(int localItrNum);
+	void CalculateLocal_Debug(int level, int localItrNum);
+
 	void LocalAlignment(int resolution);
 private:
-	void SetRandomTangent();
+	void InitRandomTangent();
 	void AssignLowerByUpper(int upperIndex);
 	void ClosestDirection(
 		const vec3& tangent1, const vec3& normal1,

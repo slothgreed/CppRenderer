@@ -13,6 +13,7 @@ public:
 
 	void SetVertexOfCluster();
 	void GetCluster(int level, std::vector<int>& index);
+	void GetOriginalVertexTangent(int level, std::vector<vec3>* tangents);
 private:
 	void SetVertexOfClusterRecursive(int level, int upper, std::vector<DownSampling::SampleData>* index);
 	void GetClusterRecursive(int level, int upper, int clusterIndex, std::vector<int>& index);

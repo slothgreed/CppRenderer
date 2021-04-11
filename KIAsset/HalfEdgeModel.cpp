@@ -6,7 +6,8 @@ namespace Asset
 HalfEdgeModel::HalfEdgeModel()
 	:m_pDownSampling(NULL),
 	m_pBVH(NULL),
-	m_pAlignOrientation(NULL)
+	m_pAlignOrientation(NULL),
+	m_pArrangePoint(NULL)
 {
 }
 
@@ -15,6 +16,7 @@ HalfEdgeModel::~HalfEdgeModel()
 	RELEASE_INSTANCE(m_pDownSampling);
 	RELEASE_INSTANCE(m_pBVH);
 	RELEASE_INSTANCE(m_pAlignOrientation);
+	RELEASE_INSTANCE(m_pArrangePoint);
 }
 
 void HalfEdgeModel::Load(const string& filePath)
@@ -181,6 +183,24 @@ bool HalfEdgeModel::CalcAlignOrientation()
 	return true;
 }
 
+bool HalfEdgeModel::CalcArrangePosition()
+{
+	if (m_pDownSampling == nullptr) {
+		return false;
+	}
+
+	if (m_pAlignOrientation == nullptr) {
+		return false;
+	}
+
+	if (m_pArrangePoint == nullptr) {
+		m_pArrangePoint = new ArrangePoint(m_HalfEdgeDS.get(), m_pDownSampling);
+	}
+
+	m_pArrangePoint->Calculate(6);
+
+	return true;
+}
 const std::vector<float>& HalfEdgeModel::GetOrientationError()
 {
 	assert(m_pAlignOrientation != nullptr);

@@ -12,7 +12,7 @@ shared_ptr<IModelProperty> IRenderModelProperty::Create(PROPERTY_TYPE type)
 	case KI::RenderModel::PROPERTY_TYPE_HALFEDGE:
 		return make_shared<HalfEdgeProperty>();
 	case KI::RenderModel::PROPERTY_TYPE_RESOLUTION:
-		return make_shared<ResolutionColorProperty>();
+		return make_shared<ResolutionParameterProperty>();
 	case KI::RenderModel::PROPERTY_TYPE_BDB:
 		return make_shared<BDBProperty>();
 	case KI::RenderModel::PROPERTY_TYPE_VERTEX_TANGENT:
@@ -21,6 +21,8 @@ shared_ptr<IModelProperty> IRenderModelProperty::Create(PROPERTY_TYPE type)
 		return make_shared<BVHProperty>();
 	case KI::RenderModel::PROPERTY_TYPE_VERTEX_INDEX:
 		return make_shared<VertexIndexProperty>();
+	case KI::RenderModel::PROPERTY_TYPE_QUAD_POSITION:
+		return make_shared<QuadPositionProperty>();
 	default:
 		assert(0);
 		break;
@@ -31,7 +33,6 @@ shared_ptr<IModelProperty> IRenderModelProperty::Create(PROPERTY_TYPE type)
 
 void IRenderModelProperty::Build(IModelNode* pModelNode, IPropertyArgs* pPropertyArgs)
 {
-
 	SetModelNode(pModelNode);
 	BuildCore(pModelNode, pPropertyArgs);
 	InitializeUI();

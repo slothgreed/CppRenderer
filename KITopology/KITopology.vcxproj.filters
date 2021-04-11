@@ -126,6 +126,12 @@
     <ClInclude Include="DownSamplingOperator.h">
       <Filter>ヘッダー ファイル\HalfEdge\Operator</Filter>
     </ClInclude>
+    <ClInclude Include="ArrangePoint.h">
+      <Filter>ヘッダー ファイル\HalfEdge\Operator</Filter>
+    </ClInclude>
+    <ClInclude Include="HalfEdgeParameterIO.h">
+      <Filter>ヘッダー ファイル\HalfEdge\Operator</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -192,6 +198,12 @@
       <Filter>ソース ファイル\HalfEdge\Operator</Filter>
     </ClCompile>
     <ClCompile Include="DownSamplingOperator.cpp">
+      <Filter>ソース ファイル\HalfEdge\Operator</Filter>
+    </ClCompile>
+    <ClCompile Include="ArrangePoint.cpp">
+      <Filter>ソース ファイル\HalfEdge\Operator</Filter>
+    </ClCompile>
+    <ClCompile Include="HalfEdgeParameterIO.cpp">
       <Filter>ソース ファイル\HalfEdge\Operator</Filter>
     </ClCompile>
   </ItemGroup>
