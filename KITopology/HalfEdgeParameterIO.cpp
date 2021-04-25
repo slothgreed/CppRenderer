@@ -17,7 +17,6 @@ void HalfEdgeParameterIO::OutputTangent(const std::string& filePath, const vecto
 	FileWriter writer;
 	writer.Open(filePath,true);
 
-	float data;
 	for (int i = 0; i < tangents.size(); i++) {
 		float x = tangents[i].x;
 		float y = tangents[i].y;

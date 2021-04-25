@@ -101,11 +101,11 @@ void HalfEdgeOperator::MakeTriangle(shared_ptr<HalfEdgeFace> face,
 // face3 : (...)    => (v0,s,v1)
 void HalfEdgeOperator::EdgeSplit(HalfEdgeDS* halfEdgeDS, shared_ptr<HalfEdge> edge, vec3 position)
 {
-	int vertexIndex = halfEdgeDS->VertexList().size();
+	size_t vertexIndex = halfEdgeDS->VertexList().size();
 	auto v0 = make_shared<HalfEdgeVertex>(vertexIndex);
 	
 
-	int edgeIndex = halfEdgeDS->EdgeList().size();
+	size_t edgeIndex = halfEdgeDS->EdgeList().size();
 	auto opposite = edge->Opposite();
 	auto edge0 = make_shared<HalfEdge>(edgeIndex);
 	auto edge1 = make_shared<HalfEdge>(edgeIndex + 1);
@@ -114,7 +114,7 @@ void HalfEdgeOperator::EdgeSplit(HalfEdgeDS* halfEdgeDS, shared_ptr<HalfEdge> ed
 	auto edge4 = make_shared<HalfEdge>(edgeIndex + 4);
 	auto edge5 = make_shared<HalfEdge>(edgeIndex + 5);
 
-	int faceIndex = halfEdgeDS->FaceList().size();
+	size_t faceIndex = halfEdgeDS->FaceList().size();
 	auto face0 = edge->Face();
 	auto face1 = opposite->Face();
 	auto face2 = make_shared<HalfEdgeFace>(faceIndex);

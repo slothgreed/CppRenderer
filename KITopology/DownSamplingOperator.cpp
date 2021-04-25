@@ -45,7 +45,19 @@ void DownSamplingOperator::SetVertexOfCluster()
 	}
 }
 
-
+void DownSamplingOperator::GetData(int level, std::vector<vec3>* position, std::vector<vec3>* normal, std::vector<vec3>* tangent)
+{
+	auto pResolution = m_pInstance->m_pResolution[level];
+	position->clear();
+	normal->clear();
+	tangent->clear();
+	for (int i = 0; i < pResolution->GetClusterNum(); i++)
+	{
+		position->push_back(pResolution->GetData(i)->Position());
+		normal->push_back(pResolution->GetData(i)->Normal());
+		tangent->push_back(pResolution->GetData(i)->Tangent());
+	}
+}
 void DownSamplingOperator::SetVertexOfClusterRecursive(int level, int upper, std::vector<DownSampling::SampleData>* datas)
 {
 	assert(m_pInstance != nullptr);

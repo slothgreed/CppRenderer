@@ -97,7 +97,7 @@ DownSampling::DownSampling(HalfEdgeDS* pHalfEdgeDS)
 
 void DownSampling::InitialResolution(shared_ptr<DownSampling::Resolution> pResolution, HalfEdgeDS* pHalfEdgeDS)
 {
-	pResolution->NewData(pHalfEdgeDS->VertexList().size(), 0);
+	pResolution->NewData((int)pHalfEdgeDS->VertexList().size(), 0);
 	for (int i = 0; i < pResolution->GetClusterNum(); i++)
 	{
 		auto pVertex = pHalfEdgeDS->VertexList()[i];
@@ -114,7 +114,7 @@ void DownSampling::Generate()
 	m_pResolution.push_back(pOrgResolution);
 	int i = 1;
 	// ‘å‘Ì‚Ì”‚±‚êˆÈã‚É‚È‚é‚È‚ç•]‰¿•û–@‚ð•Ï‚¦‚½‚Ù‚¤‚ª—Ç‚¢
-	int maybeNum = std::log2(m_pHalfEdgeDS->VertexList().size()) * 2;
+	int maybeNum = (int)(std::log2(m_pHalfEdgeDS->VertexList().size()) * 2);
 	while (true)
 	{
 		auto pResolution = make_shared<DownSampling::Resolution>();
@@ -305,6 +305,11 @@ shared_ptr<DownSampling::Resolution> DownSampling::GetResolution(int level)
 	return m_pResolution[level];
 }
 
+void DownSampling::GetData(int level, std::vector<vec3>* position, std::vector<vec3>* normal, std::vector<vec3>* tangent)
+{
+	auto operate = DownSamplingOperator(this);
+	operate.GetData(level, position, normal, tangent);
+}
 void DownSampling::GetCluster(int level, std::vector<int>& index)
 {
 	auto operate = DownSamplingOperator(this);

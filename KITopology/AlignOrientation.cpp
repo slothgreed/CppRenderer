@@ -107,17 +107,27 @@ void AlignOrientation::InitRandomTangent()
 int g_index = 0;
 void AlignOrientation::Calculate(int localItrNum)
 {
-	if (FileUtility::IsExist("C:\\Users\\stmnd\\Desktop\\Tmp\\output.tangent")) {
+	if(false){
+	//if (FileUtility::IsExist("C:\\Users\\stmnd\\Desktop\\Tmp\\output.tangent")) {
 		HalfEdgeParameterIO io;
 		vector<vec3> input;
-		auto pResolution = m_pDownSampling->GetResolution(0);
-		auto pAdjancyMatrix = pResolution->GetAdjancyMatrix();
 		io.LoadTangent("C:\\Users\\stmnd\\Desktop\\Tmp\\output.tangent", &input);
-		for (int i = 0; i < input.size(); i++)
+
+		int counter = 0;
+		for (int i = 0; i < m_pDownSampling->GetResolutionNum(); i++) {
+			auto pResolution = m_pDownSampling->GetResolution(i);
+			for (int j = 0; j < pResolution->GetClusterNum(); j++)
+			{
+				auto pData = pResolution->GetData(j);
+				pData->SetTangent(input[counter]);
+				counter++;
+			}
+		}
+
+		for (int i = 0; i < m_pHalfEdgeDS->VertexList().size(); i++)
 		{
 			auto pVertex = m_pHalfEdgeDS->VertexList()[i];
 			pVertex->SetTangent(input[i]);
-			pResolution->GetData(i)->SetTangent(input[i]);
 		}
 		return;
 
@@ -147,18 +157,24 @@ void AlignOrientation::Calculate(int localItrNum)
 
 	auto pResolution = m_pDownSampling->GetResolution(0);
 	auto pAdjancyMatrix = pResolution->GetAdjancyMatrix();
-	vector<vec3> tangents;
 	for (int i = 0; i < m_pHalfEdgeDS->VertexList().size(); i++)
 	{
 		auto pVertex = m_pHalfEdgeDS->VertexList()[i];
 		pVertex->SetTangent(pResolution->GetData(i)->Tangent());
-		tangents.push_back(pVertex->Tangent());
 	}
 
-	HalfEdgeParameterIO io;
-	io.OutputTangent("C:\\Users\\stmnd\\Desktop\\Tmp\\output.tangent", tangents);
-	vector<vec3> input;
-	io.LoadTangent("C:\\Users\\stmnd\\Desktop\\Tmp\\output.tangent", &input);
+	vector<vec3> tangents;
+	for (int i = 0; i < m_pDownSampling->GetResolutionNum(); i++) {
+		auto pResolution = m_pDownSampling->GetResolution(i);
+		for (int j = 0; j < pResolution->GetClusterNum(); j++)
+		{
+			auto pData = pResolution->GetData(j);
+			tangents.push_back(pData->Tangent());
+		}
+	}
+
+//	HalfEdgeParameterIO io;
+//	io.OutputTangent("C:\\Users\\stmnd\\Desktop\\Tmp\\output.tangent", tangents);
 
 //
 //#ifdef _DEBUG

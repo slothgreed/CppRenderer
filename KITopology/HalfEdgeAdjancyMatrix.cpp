@@ -12,7 +12,7 @@ HalfEdgeAdjancyMatrix::HalfEdgeAdjancyMatrix(HalfEdgeDS* pHalfEdgeDS)
 void HalfEdgeAdjancyMatrix::New()
 {
 	assert(m_pHalfEdgeDS != NULL);
-	NewRow(m_pHalfEdgeDS->VertexList().size());
+	NewRow((int)m_pHalfEdgeDS->VertexList().size());
 	for (int i = 0; i < RowNum(); i++)
 	{
 		auto vertex = m_pHalfEdgeDS->VertexList()[i];

@@ -183,6 +183,12 @@ bool HalfEdgeModel::CalcAlignOrientation()
 	return true;
 }
 
+const std::vector<float>& HalfEdgeModel::GetOrientationError()
+{
+	assert(m_pAlignOrientation != nullptr);
+	return m_pAlignOrientation->ErrorValue();
+}
+
 bool HalfEdgeModel::CalcArrangePosition()
 {
 	if (m_pDownSampling == nullptr) {
@@ -201,10 +207,11 @@ bool HalfEdgeModel::CalcArrangePosition()
 
 	return true;
 }
-const std::vector<float>& HalfEdgeModel::GetOrientationError()
+
+const std::vector<float>& HalfEdgeModel::GetPositionError()
 {
-	assert(m_pAlignOrientation != nullptr);
-	return m_pAlignOrientation->ErrorValue();
+	assert(m_pArrangePoint != nullptr);
+	return m_pArrangePoint->ErrorValue();
 }
 
 

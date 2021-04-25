@@ -57,6 +57,7 @@ void QuadPositionProperty::SetVBOData(IModelNode* pModelNode)
 
 void QuadPositionProperty::Draw(shared_ptr<UniformStruct> pUniform)
 {
+	glPointSize(5);
 	m_pRenderData->Draw(pUniform);
 }
 

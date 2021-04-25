@@ -19,16 +19,8 @@ void IVertexBuffer::SetArrayBuffer(GLuint layout, shared_ptr<ArrayBuffer> pArray
 		return;
 	}
 
-	if (m_VertexInfo[layout] == nullptr)
-	{
-		Add(layout, pArrayBuffer);
-		BindToVAO(layout);
-	}
-	else
-	{
-		assert(0);
-		return; // debug;
-	}
+	Add(layout, pArrayBuffer);
+	BindToVAO(layout);
 }
 
 shared_ptr<ArrayBuffer> IVertexBuffer::GetArrayBuffer(GLuint location)

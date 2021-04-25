@@ -32,6 +32,8 @@ public:
 	bool CalcArrangePosition();
 
 	const std::vector<float>& GetOrientationError();
+	const std::vector<float>& GetPositionError();
+
 	void RaycastPick(RaycastPickInfo& result) override;
 
 private:

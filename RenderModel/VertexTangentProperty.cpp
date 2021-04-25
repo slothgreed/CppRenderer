@@ -21,56 +21,63 @@ void VertexTangentProperty::BuildCore(IModelNode* pModelNode, IPropertyArgs* pPr
 	m_pRenderData = make_shared<RenderData>();
 	m_pRenderData->SetShading(m_pShading);
 
-	SetVBOData(pModelNode);
+	Update(pModelNode, pPropertyArgs);
 }
 
 void VertexTangentProperty::Update(IModelNode* pModelNode, IPropertyArgs* pPropertyArgs)
 {
-	SetVBOData(pModelNode);
+	if (pPropertyArgs == nullptr) {
+		SetVBOData(pModelNode, &VertexTangentPropertyArgs(0));
+	}
+	else if (pPropertyArgs->Type() == PROPERTY_TYPE_VERTEX_TANGENT) {
+		SetVBOData(pModelNode, static_cast<VertexTangentPropertyArgs*>(pPropertyArgs));
+	}
 }
 
-void VertexTangentProperty::SetVBOData(IModelNode* pModelNode)
+shared_ptr<HalfEdgeModel> VertexTangentProperty::GetHalfEdgeModel()
 {
-	vector<Vertex> vertexList;
-	shared_ptr<HalfEdgeModel> pModel;
-	if (pModelNode->GetModel()->Type() == MODEL_TYPE_HALF_EDGE)
+	if (ModelNode()->GetModel()->Type() == MODEL_TYPE_HALF_EDGE)
 	{
-		pModel = static_pointer_cast<HalfEdgeModel>(pModelNode->GetModel());
+		return static_pointer_cast<HalfEdgeModel>(ModelNode()->GetModel());
 	}
 	else
 	{
 		assert(0);
-		return;
+		return nullptr;
 	}
+}
 
-	PolygonModelNode* pPolygonModel = nullptr;
-	if (IPolygonModel::IsPolygonModel(pModelNode->GetModel()->Type()))
-	{
-		pPolygonModel = (PolygonModelNode*)pModelNode;
-	}
-	else
-	{
-		assert(0);
-		return;
-	}
+void VertexTangentProperty::SetVBOData(IModelNode* pModelNode, VertexTangentPropertyArgs* pPropertyArgs)
+{
 	
+	vector<Vertex> vertexList;
+	shared_ptr<HalfEdgeModel> pModel = GetHalfEdgeModel();
 	if (m_pVertexBuffer == nullptr) {
+		m_ArrayBuffers.tangentBuffer = make_shared<ArrayBuffer>(GL_FLOAT, 3);
+		m_ArrayBuffers.positionBuffer = make_shared<ArrayBuffer>(GL_FLOAT, 3);
+		m_ArrayBuffers.normalBuffer = make_shared<ArrayBuffer>(GL_FLOAT, 3);
+
+		m_ArrayBuffers.tangentBuffer->Generate();
+		m_ArrayBuffers.positionBuffer->Generate();
+		m_ArrayBuffers.normalBuffer->Generate();
+
 		m_pVertexBuffer = make_shared<IVertexBuffer>("Tangent");
-		m_pVertexBuffer->SetArrayBuffer(TangentVisualizeVertexCode::ATTRIBUTE::POSITION, pPolygonModel->GetVertexBuffer()->GetArrayBuffer(VERTEX_ATTRIB_POSITION));
-		m_pVertexBuffer->SetArrayBuffer(TangentVisualizeVertexCode::ATTRIBUTE::NORMAL, pPolygonModel->GetVertexBuffer()->GetArrayBuffer(VERTEX_ATTRIB_NORMAL));
-		m_pVertexBuffer->SetVertexSize(pModel->GetHalfEdgeDS()->VertexList().size());
-		m_pTangentBuffer = make_shared<ArrayBuffer>(GL_FLOAT, 3);
-		m_pTangentBuffer->Generate();
-		m_pVertexBuffer->SetArrayBuffer(TangentVisualizeVertexCode::ATTRIBUTE::TANGENT, m_pTangentBuffer);
 	}
+	std::vector<vec3> position;
+	std::vector<vec3> normal;
+	std::vector<vec3> tangent;
 
-	std::vector<vec3> tangents;
-	tangents.resize(pModel->GetHalfEdgeDS()->VertexList().size());
-	for (int i = 0; i < tangents.size(); i++) {
-		tangents[i] = pModel->GetHalfEdgeDS()->VertexList()[i]->Tangent();
-	}
+	pModel->GetDownSampling()->GetData(pPropertyArgs->Level(), &position, &normal, &tangent);
 
-	m_pTangentBuffer->Set(tangents);
+	m_pVertexBuffer->SetArrayBuffer(TangentVisualizeVertexCode::ATTRIBUTE::POSITION, m_ArrayBuffers.positionBuffer);
+	m_pVertexBuffer->SetArrayBuffer(TangentVisualizeVertexCode::ATTRIBUTE::NORMAL, m_ArrayBuffers.normalBuffer);
+	m_pVertexBuffer->SetArrayBuffer(TangentVisualizeVertexCode::ATTRIBUTE::TANGENT, m_ArrayBuffers.tangentBuffer);
+	m_pVertexBuffer->SetVertexSize(position.size());
+
+	
+	m_ArrayBuffers.positionBuffer->Set(position);
+	m_ArrayBuffers.normalBuffer->Set(normal);
+	m_ArrayBuffers.tangentBuffer->Set(tangent);
 
 	m_pRenderData->SetGeometryData(PRIM_TYPE_POINTS, m_pVertexBuffer);
 }
@@ -92,8 +99,10 @@ void VertexTangentProperty::InitializeUI()
 	m_ui.offset.SetMax(1.0);
 	m_ui.offset.SetValue(0.1f);
 
-	m_ui.color.SetLabel("Color");
-	m_ui.color.SeValue(vec4(0, 0, 0, 0));
+	m_ui.level.SetLabel("Tangent Level");
+	m_ui.level.SetMin(0);
+	m_ui.level.SetMax(GetHalfEdgeModel()->GetDownSampling()->GetResolutionNum());
+	m_ui.level.SetValue(0);
 }
 
 void VertexTangentProperty::ShowUI()
@@ -106,9 +115,10 @@ void VertexTangentProperty::ShowUI()
 		m_pShading->SetOffset(m_ui.offset.Value());
 	}
 
-	if (m_ui.color.Show()) {
-		m_pShading->SetColor(m_ui.color.Value());
+	if (m_ui.level.Show()) {
+		SetVBOData(ModelNode(), &VertexTangentPropertyArgs(m_ui.level.Value()));
 	}
+
 }
 
 }
