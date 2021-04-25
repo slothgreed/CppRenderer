@@ -45,17 +45,28 @@ void DownSamplingOperator::SetVertexOfCluster()
 	}
 }
 
-void DownSamplingOperator::GetData(int level, std::vector<vec3>* position, std::vector<vec3>* normal, std::vector<vec3>* tangent)
+void DownSamplingOperator::GetData(int level, std::vector<vec3>* position, std::vector<vec3>* normal, std::vector<vec3>* tangent, std::vector<vec3>* quadPos)
 {
 	auto pResolution = m_pInstance->m_pResolution[level];
-	position->clear();
-	normal->clear();
-	tangent->clear();
+	if (position)
+		position->resize(pResolution->GetClusterNum());
+	if (normal)
+		normal->resize(pResolution->GetClusterNum());
+	if(tangent)
+		tangent->resize(pResolution->GetClusterNum());
+	if(quadPos)
+		quadPos->resize(pResolution->GetClusterNum());
+	
 	for (int i = 0; i < pResolution->GetClusterNum(); i++)
 	{
-		position->push_back(pResolution->GetData(i)->Position());
-		normal->push_back(pResolution->GetData(i)->Normal());
-		tangent->push_back(pResolution->GetData(i)->Tangent());
+		if (position)
+			(*(position))[i] = (pResolution->GetData(i)->Position());
+		if (normal)
+			(*(normal))[i] = (pResolution->GetData(i)->Normal());
+		if (tangent)
+			(*(tangent))[i] = (pResolution->GetData(i)->Tangent());
+		if(quadPos)
+			(*(quadPos))[i] = (pResolution->GetData(i)->QuadPosition());
 	}
 }
 void DownSamplingOperator::SetVertexOfClusterRecursive(int level, int upper, std::vector<DownSampling::SampleData>* datas)

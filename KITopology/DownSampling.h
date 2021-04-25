@@ -84,7 +84,7 @@ public:
 	void Generate();
 	shared_ptr<DownSampling::Resolution> GetResolution(int level);
 	int GetResolutionNum() { return (int)m_pResolution.size(); }
-	void GetData(int level, std::vector<vec3>* position, std::vector<vec3>* normal, std::vector<vec3>* tangent);
+	void GetData(int level, std::vector<vec3>* position, std::vector<vec3>* normal, std::vector<vec3>* tangent, std::vector<vec3>* quadPos = nullptr);
 	void GetCluster(int level, std::vector<int>& index);	// original í∏ì_ÇÃèáî‘
 	void GetOriginalVertexTangent(int level, std::vector<vec3>* tangents);
 private:

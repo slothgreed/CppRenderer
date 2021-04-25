@@ -101,7 +101,7 @@ void VertexTangentProperty::InitializeUI()
 
 	m_ui.level.SetLabel("Tangent Level");
 	m_ui.level.SetMin(0);
-	m_ui.level.SetMax(GetHalfEdgeModel()->GetDownSampling()->GetResolutionNum());
+	m_ui.level.SetMax(GetHalfEdgeModel()->GetDownSampling()->GetResolutionNum() - 1);
 	m_ui.level.SetValue(0);
 }
 

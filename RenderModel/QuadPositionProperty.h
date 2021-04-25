@@ -6,6 +6,17 @@ namespace KI
 namespace RenderModel
 {
 
+class QuadPositionPropertyArgs : public IRenderModelPropertyArgs
+{
+public:
+	QuadPositionPropertyArgs(int level) :m_level(level) {};
+	~QuadPositionPropertyArgs() {};
+	int Level() { return m_level; }
+	virtual PROPERTY_TYPE PropertyType() override { return PROPERTY_TYPE_QUAD_POSITION; }
+private:
+	int m_level;
+};
+
 class QuadPositionProperty : public IRenderModelProperty
 {
 public:
@@ -23,13 +34,14 @@ private:
 
 	struct UI
 	{
-		SliderFloatUI tangent;
-		SliderFloatUI offset;
-		ColorPicker4UI color;
+		SliderIntUI pointSize;
+		SliderIntUI level;
 	};
 
+	shared_ptr<HalfEdgeModel> GetHalfEdgeModel();
 	UI m_ui;
-	void SetVBOData(IModelNode* pModelNode);
+	void SetVBOData(IModelNode* pModelNode, QuadPositionPropertyArgs* pPropertyArgs);
+	int m_pointSize;
 	shared_ptr<DefaultVertexBuffer> m_pVertexBuffer;
 	shared_ptr<ArrayBuffer> m_pTangentBuffer;
 	shared_ptr<RenderData> m_pRenderData;

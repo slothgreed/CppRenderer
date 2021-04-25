@@ -36,7 +36,6 @@ private:
 		SliderFloatUI tangent;
 		SliderFloatUI offset;
 		SliderIntUI level;
-		ColorPicker4UI color;
 	};
 
 	struct GPUBuffer

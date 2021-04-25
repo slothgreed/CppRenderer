@@ -12,7 +12,7 @@ public:
 	~DownSamplingOperator() {};
 
 	void SetVertexOfCluster();
-	void GetData(int level, std::vector<vec3>* position, std::vector<vec3>* normal, std::vector<vec3>* tangent);
+	void GetData(int level, std::vector<vec3>* position, std::vector<vec3>* normal, std::vector<vec3>* tangent, std::vector<vec3>* quadPos = nullptr);
 	void GetCluster(int level, std::vector<int>& index);
 	void GetOriginalVertexTangent(int level, std::vector<vec3>* tangents);
 private:

@@ -305,10 +305,10 @@ shared_ptr<DownSampling::Resolution> DownSampling::GetResolution(int level)
 	return m_pResolution[level];
 }
 
-void DownSampling::GetData(int level, std::vector<vec3>* position, std::vector<vec3>* normal, std::vector<vec3>* tangent)
+void DownSampling::GetData(int level, std::vector<vec3>* position, std::vector<vec3>* normal, std::vector<vec3>* tangent, std::vector<vec3>* quadPos)
 {
 	auto operate = DownSamplingOperator(this);
-	operate.GetData(level, position, normal, tangent);
+	operate.GetData(level, position, normal, tangent, quadPos);
 }
 void DownSampling::GetCluster(int level, std::vector<int>& index)
 {
