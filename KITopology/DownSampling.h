@@ -17,6 +17,8 @@ public:
 		SampleData(int positionNum);
 		~SampleData();
 		void Set(int index, const vec3& position, const vec3& normal, float area);
+		void SetPosition(const vec3& position) { m_position = position; }
+		void SetNormal(const vec3& normal) { m_normal = normal; }
 		void SetTangent(const vec3& tangent) { m_tangent = tangent; }
 		int Index() { return m_index; }
 		float Area() { return m_area; }

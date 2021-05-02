@@ -58,25 +58,64 @@ void ArrangePoint::CalcErrorValue()
 
 		float weight = 0.0f;
 		vec3 quadPos = pVertex1->QuadPosition();
-		quadPos = glm::normalize(quadPos);
+		vec3 tangent = glm::normalize(pVertex1->Tangent());
 		for (int j = 0; j < pAdjancyMatrix->ColumnNum(i); j++)
 		{
 			auto pLink2 = pAdjancyMatrix->Get(i, j);
 			int vertexIndex2 = pLink2->GetEnd();
 			auto pVertex2 = pResolution->GetData(vertexIndex2);
 			vec3 quadPos1, quadPos2;
-			vec3 vertex2Quad = glm::normalize(pVertex2->QuadPosition());
 			CalcGridPosition(
-				pVertex1->Position(), pVertex1->Normal(), pVertex1->Tangent(), quadPos,
-				pVertex2->Position(), pVertex2->Normal(), pVertex2->Tangent(), vertex2Quad,
+				pVertex1->Position(), pVertex1->Normal(), tangent, quadPos,
+				pVertex2->Position(), pVertex2->Normal(), glm::normalize(pVertex2->Tangent()), pVertex2->QuadPosition(),
 				-1, &quadPos1, &quadPos2);
 
-			double error2 = glm::distance(quadPos1,quadPos2);
+			float error2 = (float)glm::distance(quadPos1,quadPos2);
 			error += error2;
 		}
 	}
 
 	m_error.push_back(error);
+}
+void InitQuadPosition_DebugCode(DownSampling* pDownSampling)
+{
+	FileReader reader;
+	float x, y, z;
+	reader.Open("C:\\Users\\stmnd\\Desktop\\Tmp\\instantOut.txt", true);
+
+	auto pResolution = pDownSampling->GetResolution(0);
+	for (int i = 0; i < pResolution->GetClusterNum(); i++)
+	{
+		auto pData = pResolution->GetData(i);
+		auto data = reader.ReadBinary(Format::FLOAT);
+		x = *(float *)(&data);
+		data = reader.ReadBinary(Format::FLOAT);
+		y = *(float *)(&data);
+		data = reader.ReadBinary(Format::FLOAT);
+		z = *(float *)(&data);
+		pData->SetPosition(vec3(x, y, z));
+		data = reader.ReadBinary(Format::FLOAT); 
+		x = *(float *)(&data);
+		data = reader.ReadBinary(Format::FLOAT);
+		y = *(float *)(&data);
+		data = reader.ReadBinary(Format::FLOAT);
+		z = *(float *)(&data);
+		pData->SetNormal(vec3(x, y, z));
+		data = reader.ReadBinary(Format::FLOAT); 
+		x = *(float *)(&data);
+		data = reader.ReadBinary(Format::FLOAT);
+		y = *(float *)(&data);
+		data = reader.ReadBinary(Format::FLOAT);
+		z = *(float *)(&data);
+		pData->SetTangent(vec3(x, y, z));
+		data = reader.ReadBinary(Format::FLOAT); 
+		x = *(float *)(&data);
+		data = reader.ReadBinary(Format::FLOAT);
+		y = *(float *)(&data);
+		data = reader.ReadBinary(Format::FLOAT);
+		z = *(float *)(&data);
+		pData->SetQuadPosition(vec3(x, y, z));
+	}
 }
 bool g_init = true;
 void ArrangePoint::Calculate(int localItrNum)
@@ -84,11 +123,12 @@ void ArrangePoint::Calculate(int localItrNum)
 	assert(m_pDownSampling != NULL);
 	if (g_init) {
 		InitQuadPosition();
+		//InitQuadPosition_DebugCode(m_pDownSampling);
 		g_init = false;
 	}
 
 	int resolutionIndex = m_pDownSampling->GetResolutionNum() - 1;
-	resolutionIndex = 0;
+	//resolutionIndex = 0;
 	while (resolutionIndex >= 0)
 	{
 		for (int j = 0; j < 6; j++)
@@ -118,6 +158,7 @@ void ArrangePoint::Calculate(int localItrNum)
 	}
 
 }
+
 
 void ArrangePoint::InitQuadPosition()
 {
@@ -207,13 +248,13 @@ void ArrangePoint::CalcGridPosition(
 	vec3 gridPos1 = CalcFloorPosition(quadPos1, tangent1, normal1, middlePos, scale);
 
 	vec3 candidate0[4]; 
-	candidate0[0] = gridPos0 * scale;
+	candidate0[0] = gridPos0;
 	candidate0[1] = gridPos0 + tangent0 * scale;
 	candidate0[2] = gridPos0 + orient0 * scale;
 	candidate0[3] = gridPos0 + (tangent0 + orient0)* scale;
 
 	vec3 candidate1[4];
-	candidate1[0] = gridPos1 * scale;
+	candidate1[0] = gridPos1;
 	candidate1[1] = gridPos1 + tangent1 * scale;
 	candidate1[2] = gridPos1 + orient1 * scale;
 	candidate1[3] = gridPos1 + (tangent1 + orient1)* scale;
@@ -252,8 +293,8 @@ void ArrangePoint::LocalArrange(int level)
 		auto pVertex1 = pResolution->GetData(vertexIndex1);
 
 		float weight = 0.0f;
+		vec3 tangent = glm::normalize(pVertex1->Tangent());
 		vec3 quadSum = pVertex1->QuadPosition();
-		quadSum = glm::normalize(quadSum);
 		for (int j = 0; j < pAdjancyMatrix->ColumnNum(i); j++)
 		{
 			auto pLink2 = pAdjancyMatrix->Get(i, j);
@@ -263,10 +304,9 @@ void ArrangePoint::LocalArrange(int level)
 			int vertexIndex2 = pLink2->GetEnd();
 			auto pVertex2 = pResolution->GetData(vertexIndex2);
 			vec3 quadPos1, quadPos2;
-			vec3 vertex2Quad = glm::normalize(pVertex2->QuadPosition());
 			CalcGridPosition(
-				pVertex1->Position(), pVertex1->Normal(), pVertex1->Tangent(), quadSum,
-				pVertex2->Position(), pVertex2->Normal(), pVertex2->Tangent(), vertex2Quad,
+				pVertex1->Position(), pVertex1->Normal(), tangent, quadSum,
+				pVertex2->Position(), pVertex2->Normal(), glm::normalize(pVertex2->Tangent()), pVertex2->QuadPosition(),
 				-1, &quadPos1, &quadPos2);
 
 			quadSum = quadPos1 * weight + quadPos2 * pLink2->GetWeight();

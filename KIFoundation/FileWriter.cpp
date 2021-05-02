@@ -19,7 +19,7 @@ bool FileWriter::Open(const std::string& filePath, bool binary)
 	//}
 
 	if (binary) {
-		m_fileStream.open(filePath.data(), std::ios::out | ios::binary);
+		m_fileStream.open(filePath.data(), std::ios::out | std::ios::binary);
 	}
 	else {
 		m_fileStream.open(filePath.data(), std::ios::out);
