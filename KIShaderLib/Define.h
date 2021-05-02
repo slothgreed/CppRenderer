@@ -31,7 +31,7 @@ namespace ShaderLib
 #define SHADER_PHONGSHADING "material/phongmaterial"
 #define SHADER_LAMBERTSHADING "material/lambertmaterial"
 #define SHADER_VERTEXSHADING "material/vertexmaterial"
-
+#define SHADER_MESH_PARAM	"MeshParameterization"
 
 #define GLSL_VERSION_400_CORE "#version 400 core\n"
 #define IN_NORMAL		"#define IN_NORMAL\n"

@@ -70,4 +70,5 @@ using namespace KI::Gfx;
 #include "PickShading.h"
 #include "TangentVisualizeShading.h"
 #include "NormalVisualizeShading.h"
+#include "MeshParameterizationShading.h"
 #endif //KI_SHADER_LIB_PCH_H

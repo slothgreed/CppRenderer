@@ -175,6 +175,7 @@
     <ClInclude Include="GrayScaleShading.h" />
     <ClInclude Include="IShading.h" />
     <ClInclude Include="LambertShading.h" />
+    <ClInclude Include="MeshParameterizationShading.h" />
     <ClInclude Include="NormalVisualizeShading.h" />
     <ClInclude Include="OutputShading.h" />
     <ClInclude Include="pch.h" />
@@ -205,6 +206,7 @@
     <ClCompile Include="GetColorCode.cpp" />
     <ClCompile Include="GrayScaleShading.cpp" />
     <ClCompile Include="LambertShading.cpp" />
+    <ClCompile Include="MeshParameterizationShading.cpp" />
     <ClCompile Include="NormalVisualizeShading.cpp" />
     <ClCompile Include="OutputShading.cpp" />
     <ClCompile Include="pch.cpp">
