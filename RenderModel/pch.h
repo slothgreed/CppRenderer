@@ -55,6 +55,7 @@ using namespace KI::ImGuiEx;
 #include "ResolutionParameterProperty.h"
 #include "BVHProperty.h"
 #include "QuadPositionProperty.h"
+#include "MeshParameterizationProperty.h"
 
 #include "IRenderModelNode.h"
 #include "PrimitiveNode.h"

@@ -26,14 +26,17 @@ MeshParameterizationGeomCode::MeshParameterizationGeomCode()
 {
 }
 
+void MeshParameterizationGeomCode::GetIncludeCode(vector<shared_ptr<IShaderCode>>& pShaderCodes)
+{
+	pShaderCodes.push_back(make_shared<ShaderStruct>());
+}
+
 MeshParameterizationGeomCode::~MeshParameterizationGeomCode()
 {
 }
 
 void MeshParameterizationGeomCode::Initialize(GLuint programId)
 {
-	m_uniformLocation.resize(NORMAL_VISUALIZE_UNIFORM_NUM);
-	m_uniformLocation[NORMAL_VISUALIZE_UNIFORM_LENGTH] = glGetUniformLocation(programId, "uLength");
 }
 
 void MeshParameterizationGeomCode::Bind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUniformStorage> pUniform)
@@ -44,19 +47,8 @@ void MeshParameterizationGeomCode::Bind(shared_ptr<IShaderChunk> pShaderChunk,sh
 		return;
 	}
 
-	BindLength(pShading->GetLength());
 }
 
-void MeshParameterizationGeomCode::BindLength(float length)
-{
-	if (m_uniformLocation[NORMAL_VISUALIZE_UNIFORM_LENGTH] == -1)
-	{
-		assert(0);
-		return;
-	}
-
-	IShaderCode::BindFloat(m_uniformLocation[NORMAL_VISUALIZE_UNIFORM_LENGTH], length);
-}
 
 bool MeshParameterizationGeomCode::Compare(IShaderCode* pShaderCode)
 {

@@ -178,6 +178,7 @@
     <ClInclude Include="CheckBoxUI.h" />
     <ClInclude Include="ColorPickerUI.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="MeshParameterizationProperty.h" />
     <ClInclude Include="QuadPositionProperty.h" />
     <ClInclude Include="ResolutionParameterProperty.h" />
     <ClInclude Include="HalfEdgeDSNode.h" />
@@ -210,6 +211,7 @@
     <ClCompile Include="CheckBoxUI.cpp" />
     <ClCompile Include="ColorPickerUI.cpp" />
     <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="MeshParameterizationProperty.cpp" />
     <ClCompile Include="QuadPositionProperty.cpp" />
     <ClCompile Include="ResolutionParameterProperty.cpp" />
     <ClCompile Include="HalfEdgeDSNode.cpp" />

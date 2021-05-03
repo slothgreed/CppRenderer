@@ -45,8 +45,10 @@ void HalfEdgeDSNode::ShowUI()
 
 	if (ImGui::SmallButton("Arrange Position")) {
 		auto pModel = ((HalfEdgeModel*)m_pModel.get());
-		if (pModel->CalcArrangePosition()) {
+		//if (pModel->CalcArrangePosition())
+		{
 			VisibleProperty(PROPERTY_TYPE::PROPERTY_TYPE_QUAD_POSITION, true);
+			VisibleProperty(PROPERTY_TYPE::PROPERTY_TYPE_MESH_PARAMETERIZATION, true);
 		}
 	}
 
@@ -66,8 +68,9 @@ void HalfEdgeDSNode::ShowUI()
 	m_ui.plot.Show(pModel->GetOrientationError());
 	auto pProperty = GetProperty(PROPERTY_TYPE::PROPERTY_TYPE_QUAD_POSITION);
 	if (pProperty != nullptr) {
-		m_ui.plot.Show(pModel->GetPositionError());
+		//m_ui.plot.Show(pModel->GetPositionError());
 	}
+
 
 }
 }

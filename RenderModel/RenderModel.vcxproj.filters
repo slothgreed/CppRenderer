@@ -129,6 +129,9 @@
     <ClInclude Include="QuadPositionProperty.h">
       <Filter>ヘッダー ファイル\Property</Filter>
     </ClInclude>
+    <ClInclude Include="MeshParameterizationProperty.h">
+      <Filter>ヘッダー ファイル\Property</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -219,6 +222,9 @@
       <Filter>ソース ファイル\Property</Filter>
     </ClCompile>
     <ClCompile Include="QuadPositionProperty.cpp">
+      <Filter>ソース ファイル\Property</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshParameterizationProperty.cpp">
       <Filter>ソース ファイル\Property</Filter>
     </ClCompile>
   </ItemGroup>

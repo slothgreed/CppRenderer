@@ -13,7 +13,7 @@ public:
 	class SampleData
 	{
 	public:
-		SampleData() : m_index(0),m_area(0),m_position(vec3(1)),m_normal(vec3(1)),m_tangent(vec3(1,0,0)) {};
+		SampleData() : m_index(0),m_area(0),m_position(vec3(1)),m_normal(vec3(1)),m_tangent(vec3(1,0,0)), m_quadPosition(vec3(1, 0, 0)) {};
 		SampleData(int positionNum);
 		~SampleData();
 		void Set(int index, const vec3& position, const vec3& normal, float area);

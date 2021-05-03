@@ -1,24 +1,22 @@
-#version 330
 precision lowp float;
 
 uniform vec3 edge_factor;
 uniform vec3 interior_factor;
-
-in fData {
+uniform vec3 fixColor;
+in Data {
 	vec2 texcoord;
-	vec4 color;
-} frag;
+} InData;
 
 out vec4 outColor;
 
 void main() {
-	vec3 finalColor = vec3(1,0,0) * (1-frag.color.a) + frag.color.rgb * frag.color.a;
-	bool a = abs(fract(frag.texcoord.x + 0.5) - 0.5) < 0.1;
-	bool b = abs(fract(frag.texcoord.y + 0.5) - 0.5) < 0.1;
-	if (a || b)
-		finalColor *= edge_factor;
-	else
-		finalColor *= interior_factor;
-
-	outColor = vec4(finalColor, 1.0);
+	bool a = abs(fract(InData.texcoord.x + 0.5) - 0.5) < 0.1;
+	bool b = abs(fract(InData.texcoord.y + 0.5) - 0.5) < 0.1;
+	if (a || b){
+		//outColor = fixColor * edge_factor;
+		outColor = vec4(0.5,0.5,0.5,1) * vec4(0,1,0,1);
+	}else{
+		//outColor = fixColor * interior_factor;
+		outColor = vec4(0.5,0.5,0.5,1) * vec4(0,0,1,1);
+	}
 }

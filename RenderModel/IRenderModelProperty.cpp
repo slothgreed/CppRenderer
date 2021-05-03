@@ -23,6 +23,8 @@ shared_ptr<IModelProperty> IRenderModelProperty::Create(PROPERTY_TYPE type)
 		return make_shared<VertexIndexProperty>();
 	case KI::RenderModel::PROPERTY_TYPE_QUAD_POSITION:
 		return make_shared<QuadPositionProperty>();
+	case KI::RenderModel::PROPERTY_TYPE_MESH_PARAMETERIZATION:
+		return make_shared<MeshParameterizationProperty>();
 	default:
 		assert(0);
 		break;

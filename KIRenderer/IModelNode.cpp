@@ -146,9 +146,8 @@ void IModelNode::FixedShaderDraw(shared_ptr<IShader> pShader, shared_ptr<IShadin
 			PostDraw(pUniform, i);
 		}
 
-		UnBindModel(pUniform, 0);
-
 		DrawProperty(pUniform);
+		UnBindModel(pUniform, 0);
 	}
 }
 
@@ -173,10 +172,11 @@ void IModelNode::Draw(shared_ptr<UniformStruct> pUniform)
 			PostDraw(pUniform, i);
 		}
 
-		UnBindModel(pUniform, 0);
 	}
 
+	BindModel(pUniform, 0);
 	DrawProperty(pUniform);
+	UnBindModel(pUniform, 0);
 }
 
 void IModelNode::SetVisible(int id, bool visible)
