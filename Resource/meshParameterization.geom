@@ -3,15 +3,16 @@
 layout(triangles) in;
 layout(triangle_strip, max_vertices = 3) out;
 
-in inData {
+in DataVert {
 	vec3 normal;
 	vec3 tangent;
 	vec3 uv;
-} InData[];
+} vert[];
 
-out outData {
+out DataFrag {
 	vec2 texcoord;
-} OutData;
+} frag;
+
 
 vec3 compat_orientation(vec3 q, vec3 ref, vec3 n) {
 	vec3 t = cross(n, q);
@@ -33,6 +34,21 @@ vec3 compat_position(vec3 o, vec3 ref, vec3 q, vec3 t, vec3 n) {
 	//  t * round(dot(t, d) * inv_scale) * scale;
 }
 
+void main2() {
+	frag.texcoord = vec2(1,0);
+	gl_Position = scene.Projection * scene.ViewMatrix * model.ModelMatrix * gl_in[0].gl_Position;
+	EmitVertex();
+	
+	frag.texcoord = vec2(1,0);
+
+	gl_Position = scene.Projection * scene.ViewMatrix * model.ModelMatrix * gl_in[1].gl_Position;
+	EmitVertex();
+	
+	frag.texcoord = vec2(1,0);
+	gl_Position = scene.Projection * scene.ViewMatrix * model.ModelMatrix * gl_in[2].gl_Position;
+	EmitVertex();
+	EndPrimitive();
+}
 
 void main() {
 	vec3 face_normal = normalize(cross(
@@ -43,21 +59,21 @@ void main() {
 	/* Step 1: Rotate everthing into the triangle plane */
 	vec3 tangents[3], uv[3];
 	for (int i=0; i<3; ++i) {
-		float cosTheta = dot(InData[i].normal, face_normal);
+		float cosTheta = dot(vert[i].normal, face_normal);
 
 		if (cosTheta < 0.9999f) {
-			vec3 axis = cross(InData[i].normal, face_normal);
+			vec3 axis = cross(vert[i].normal, face_normal);
 			float sinTheta2 = dot(axis, axis);
 			float factor = (1.0 - cosTheta) / sinTheta2;
 
-			vec3 v_tangent = InData[i].tangent;
+			vec3 v_tangent = vert[i].tangent;
 			tangents[i] = v_tangent * cosTheta + cross(axis, v_tangent)	+ axis * dot(axis, v_tangent) * factor;
 
-			vec3 v_uv = InData[i].uv - gl_in[i].gl_Position.xyz;
+			vec3 v_uv = vert[i].uv - gl_in[i].gl_Position.xyz;
 			uv[i] = v_uv * cosTheta + cross(axis, v_uv)	+ axis * dot(axis, v_uv) * factor + gl_in[i].gl_Position.xyz;
 		} else {
-			tangents[i] = InData[i].tangent;
-			uv[i] = InData[i].uv;
+			tangents[i] = vert[i].tangent;
+			uv[i] = vert[i].uv;
 		}
 	}
 
@@ -86,8 +102,7 @@ void main() {
 
 	for (int i=0; i<3; ++i) {
 		gl_Position = scene.Projection * scene.ViewMatrix * model.ModelMatrix * gl_in[i].gl_Position;
-		OutData.texcoord = texcoord[i];
-
+		frag.texcoord = texcoord[i];
 		EmitVertex();
 	}
 	EndPrimitive();

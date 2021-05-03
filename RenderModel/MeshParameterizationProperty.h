@@ -9,7 +9,8 @@ class DLL_EXPORT MeshParameterizationPropertyArgs : public IRenderModelPropertyA
 {
 public:
 
-	MeshParameterizationPropertyArgs() : m_level(0){};
+	MeshParameterizationPropertyArgs() : m_level(0) {};
+	MeshParameterizationPropertyArgs(int level) : m_level(level){};
 	~MeshParameterizationPropertyArgs() {};
 	virtual PROPERTY_TYPE PropertyType() { return PROPERTY_TYPE_MESH_PARAMETERIZATION; };
 
@@ -29,7 +30,13 @@ public:
 	virtual void Update(IModelNode* pModel, IPropertyArgs* pPropertyArgs) override;
 	virtual void Draw(shared_ptr<UniformStruct> pUniform);
 	virtual void Update(void* sender, IEventArgs* pArgs);
+	virtual void InitializeUI();
+	virtual void ShowUI();
 
+	struct UI
+	{
+		SliderIntUI level;
+	};
 private:
 	struct GPUBuffer
 	{
@@ -44,6 +51,9 @@ private:
 	shared_ptr<IVertexBuffer> m_pVertexBuffer;
 	shared_ptr<RenderData> m_pRenderData;
 	shared_ptr<TangentVisualizeShading> m_pShading;
+	shared_ptr<HalfEdgeModel> GetHalfEdgeModel();
+
+	UI m_ui;
 };
 
 }

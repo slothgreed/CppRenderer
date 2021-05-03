@@ -45,7 +45,7 @@ void HalfEdgeDSNode::ShowUI()
 
 	if (ImGui::SmallButton("Arrange Position")) {
 		auto pModel = ((HalfEdgeModel*)m_pModel.get());
-		//if (pModel->CalcArrangePosition())
+		if (pModel->CalcArrangePosition())
 		{
 			VisibleProperty(PROPERTY_TYPE::PROPERTY_TYPE_QUAD_POSITION, true);
 			VisibleProperty(PROPERTY_TYPE::PROPERTY_TYPE_MESH_PARAMETERIZATION, true);

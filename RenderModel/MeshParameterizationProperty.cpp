@@ -72,11 +72,37 @@ void MeshParameterizationProperty::BuildVBO(IModelNode* pModelNode, MeshParamete
 	m_pRenderData->SetGeometryData(PRIM_TYPE_TRIANGLES, m_pVertexBuffer);
 	m_pRenderData->SetIndexBuffer(PRIM_TYPE_TRIANGLES, pModelNode->GetRenderData(0)->GetIndexBuffer());
 }
+shared_ptr<HalfEdgeModel> MeshParameterizationProperty::GetHalfEdgeModel()
+{
+	if (ModelNode()->GetModel()->Type() == MODEL_TYPE_HALF_EDGE)
+	{
+		return static_pointer_cast<HalfEdgeModel>(ModelNode()->GetModel());
+	}
+	else
+	{
+		assert(0);
+		return nullptr;
+	}
+}
 
 void MeshParameterizationProperty::Draw(shared_ptr<UniformStruct> pUniform)
 {
 	m_pRenderData->Draw(pUniform);
 }
+void MeshParameterizationProperty::InitializeUI()
+{
+	m_ui.level.SetLabel("Mesh Paramerization Level");
+	m_ui.level.SetMin(0);
+	m_ui.level.SetMax(GetHalfEdgeModel()->GetDownSampling()->GetResolutionNum() - 1);
+	m_ui.level.SetValue(0);
+}
+void MeshParameterizationProperty::ShowUI()
+{
+	if (m_ui.level.Show()) {
+		BuildVBO(ModelNode(), &MeshParameterizationPropertyArgs(m_ui.level.Value()));
+	}
+}
+
 
 }
 }
