@@ -16,6 +16,7 @@ public:
 	virtual void SetViewport(shared_ptr<Viewport> pViewport) { m_pViewport = pViewport; }
 	shared_ptr<Viewport> GetViewport() { return m_pViewport; }
 	void SetController(CONTROLER_TYPE type, IController* value); 
+	virtual void Dispose();
 protected:
 	shared_ptr<Mouse> m_pMouse;
 	CONTROLER_TYPE m_CurrentController;

@@ -15,8 +15,8 @@ Grid::~Grid()
 void Grid::Build(const GridArgs& args)
 {
 	ivec2 num;
-	num.x = args.m_size.x / args.m_Interval.x;
-	num.y = args.m_size.y / args.m_Interval.y;
+	num.x = (int)(args.m_size.x / args.m_Interval.x);
+	num.y = (int)(args.m_size.y / args.m_Interval.y);
 
 	for (int i = 0; i <= num.x; i++)
 	{

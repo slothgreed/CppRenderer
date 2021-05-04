@@ -119,7 +119,7 @@ void DefaultVertexCode::GetIncludeCode(vector<shared_ptr<IShaderCode>>& pShaderC
 
 }
 
-shared_ptr<IShaderCode> DefaultVertexCode::GetVertexBufferCode(shared_ptr<IVertexBuffer> pVertexBuffer)
+shared_ptr<IShaderCode> DefaultVertexCode::GetVertexBufferCode(shared_ptr<VertexBuffer> pVertexBuffer)
 {
 	auto pCode =  make_shared<DefaultVBOCode>(pVertexBuffer.get());
 	pCode->SetPlaneGLPosition(m_planeGlPosition);

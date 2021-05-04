@@ -16,7 +16,7 @@ BVH::~BVH()
 
 void BVH::MakeTriangleList(const vector<vec3>& positions, const vector<int>& indexs)
 {
-	TriangleIterator itr(TriangleIterator::TriangleType::TRIANGLES, positions.data(), indexs.data(), indexs.size());
+	TriangleIterator itr(TriangleIterator::TriangleType::TRIANGLES, positions.data(), indexs.data(), (int32_t)indexs.size());
 	vec3 pos0, pos1, pos2;
 	m_triangles.resize(itr.TriangleSize());
 	while (itr.HasNext())

@@ -3,7 +3,7 @@ namespace KI
 namespace ShaderLib
 {
 DefaultVertexBuffer::DefaultVertexBuffer()
-	:IVertexBuffer("Default")
+	:VertexBuffer("Default")
 {
 	m_filePath = string(SHADER_DIRECTORY) +
 		string(SHADER_DEFAULT) +
@@ -11,7 +11,7 @@ DefaultVertexBuffer::DefaultVertexBuffer()
 }
 
 DefaultVertexBuffer::DefaultVertexBuffer(std::string name)
-	:IVertexBuffer(name)
+	:VertexBuffer(name)
 {
 	m_filePath = string(SHADER_DIRECTORY) +
 		string(SHADER_DEFAULT) +
@@ -38,7 +38,7 @@ void DefaultVertexBuffer::SetArrayBuffer(GLuint layout, shared_ptr<ArrayBuffer> 
 		assert(0);
 	}
 
-	IVertexBuffer::SetArrayBuffer(layout, pArrayBuffer);
+	VertexBuffer::SetArrayBuffer(layout, pArrayBuffer);
 }
 
 shared_ptr<ArrayBuffer> DefaultVertexBuffer::GetArrayBuffer(GLuint location)
@@ -57,7 +57,7 @@ shared_ptr<ArrayBuffer> DefaultVertexBuffer::GetArrayBuffer(GLuint location)
 		assert(0);
 	}
 
-	return IVertexBuffer::GetArrayBuffer(location);
+	return VertexBuffer::GetArrayBuffer(location);
 }
 void DefaultVertexBuffer::SetPosition(const vector<vec3>& position)
 {
@@ -248,7 +248,7 @@ VERTEX_LAYOUT DefaultVertexBuffer::Layout()
 	return (VERTEX_LAYOUT)layout;
 }
 
-bool DefaultVertexBuffer::NewShaderCompare(IVertexBuffer* pTarget)
+bool DefaultVertexBuffer::NewShaderCompare(VertexBuffer* pTarget)
 {
 	auto pTargetBuffer = dynamic_cast<DefaultVertexBuffer*>(pTarget);
 	if (pTargetBuffer == nullptr)

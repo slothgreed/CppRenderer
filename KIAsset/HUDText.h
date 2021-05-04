@@ -10,14 +10,14 @@ class DLL_EXPORT HUDTextArgs
 {
 public:
 	HUDTextArgs() {};
-	HUDTextArgs(const std::string& text, float left, float top)
+	HUDTextArgs(const std::string& text, int left, int top)
 		:m_text(text),
 		m_left(left),
 		m_top(top) {};
 	~HUDTextArgs() {};
 	std::string m_text;
-	float m_left;
-	float m_top;
+	int m_left;
+	int m_top;
 };
 
 class DLL_EXPORT HUDText : public IHUD

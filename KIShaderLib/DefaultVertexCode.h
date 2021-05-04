@@ -16,7 +16,7 @@ public:
 
 	virtual void Initialize(GLuint programId);
 	virtual void GetIncludeCode(vector<shared_ptr<IShaderCode>>& pShaderCodes) override;
-	virtual shared_ptr<IShaderCode> GetVertexBufferCode(shared_ptr<IVertexBuffer> pVertexBuffer) override;
+	virtual shared_ptr<IShaderCode> GetVertexBufferCode(shared_ptr<VertexBuffer> pVertexBuffer) override;
 	virtual void GetDefineCode(string& code) override;
 	virtual bool Compare(IShaderCode* pShaderCode) override;
 	virtual void Bind(shared_ptr<IShaderChunk> pShaderChunk,shared_ptr<IUniformStorage> pUniform) override;

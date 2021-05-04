@@ -114,6 +114,9 @@
     <ClInclude Include="FileReader.h">
       <Filter>ヘッダー ファイル\Core</Filter>
     </ClInclude>
+    <ClInclude Include="TriangleIterator.h">
+      <Filter>ヘッダー ファイル\Iterator</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -158,12 +161,6 @@
     <ClCompile Include="FileWriter.cpp">
       <Filter>ソース ファイル\Core</Filter>
     </ClCompile>
-    <ClCompile Include="TriangleIterator.h">
-      <Filter>ヘッダー ファイル\Iterator</Filter>
-    </ClCompile>
-    <ClCompile Include="TriangleIterator.cpp">
-      <Filter>ソース ファイル\Iterator</Filter>
-    </ClCompile>
     <ClCompile Include="BDBUtility.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
@@ -172,6 +169,9 @@
     </ClCompile>
     <ClCompile Include="FileReader.cpp">
       <Filter>ソース ファイル\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="TriangleIterator.cpp">
+      <Filter>ソース ファイル\Iterator</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

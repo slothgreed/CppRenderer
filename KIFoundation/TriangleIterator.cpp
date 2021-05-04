@@ -2,7 +2,7 @@ namespace KI
 {
 namespace Foundation
 {
-TriangleIterator::TriangleIterator(unsigned int sourceType, const vec3* position, const int* indexs, size_t size)
+TriangleIterator::TriangleIterator(unsigned int sourceType, const vec3* position, const int* indexs, int32_t size)
 {
 	if (sourceType == GL_TRIANGLES) {
 		m_sourceType = TriangleType::TRIANGLES;
@@ -16,7 +16,7 @@ TriangleIterator::TriangleIterator(unsigned int sourceType, const vec3* position
 	m_size = size;
 }
 
-TriangleIterator::TriangleIterator(TriangleType sourceType, const vec3* position, const int* indexs, size_t size)
+TriangleIterator::TriangleIterator(TriangleType sourceType, const vec3* position, const int* indexs, int32_t size)
 {
 	m_sourceType = sourceType;
 	m_position = position;
@@ -25,7 +25,7 @@ TriangleIterator::TriangleIterator(TriangleType sourceType, const vec3* position
 	m_size = size;
 }
 
-int TriangleIterator::TriangleSize()
+int32_t TriangleIterator::TriangleSize()
 {
 	if (m_sourceType == TRIANGLE_STRIP) {
 		return m_size - 2;

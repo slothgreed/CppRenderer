@@ -7,22 +7,6 @@
 
 #pragma warning( disable : 4251 )
 
-#include<memory>
-#include<string>
-#include <iostream>
-#include <vector>
-#include<iostream>
-#include<fstream>
-#include <stack>
-#include <assert.h>
-
-#include <GL\glew.h>
-#include <GLFW/glfw3.h>
-#include <GL/GL.h>
-#include <GL/GLU.h>
-#include <glm/glm.hpp>
-#include <glm/gtx/transform.hpp>
-
 #include "../KIFoundation/pch.h"
 using namespace KI::Foundation;
 using namespace std;
@@ -52,7 +36,7 @@ using namespace glm;
 #include "IShaderBuildInfo.h"
 #include "IShaderDefine.h"
 #include "IShader.h"
-#include "IVertexBuffer.h"
+#include "VertexBuffer.h"
 
 #include "IGLState.h"
 #include "BufferState.h"

@@ -202,6 +202,17 @@ void OpenGLView::InitLibrary()
 void OpenGLView::FreeLibrary()
 {
 	FreeRenderLibrary();
+
+	FreeContext();
+}
+
+void OpenGLView::FreeContext()
+{
+
+	// close GL context and any other GLFW resources
+	glfwDestroyWindow(m_window);
+	glfwTerminate();
+
 }
 
 void OpenGLView::InitRenderLibrary()
@@ -292,16 +303,14 @@ bool OpenGLView::Run()
 		timer.WaitForFPS(60);
 	}
 
+	timer.End();
+	
 	// Cleanup
 	ImGui_ImplOpenGL3_Shutdown();
 	ImGui_ImplGlfw_Shutdown();
 	ImGui::DestroyContext();
 
-	timer.End();
 
-	// close GL context and any other GLFW resources
-	glfwDestroyWindow(m_window);
-	glfwTerminate();
 	return true;
 }
 

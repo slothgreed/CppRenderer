@@ -15,7 +15,7 @@ public:
 	IPolygonModel* GetModel();
 
 	void VisibleNormal(bool visibility);
-	shared_ptr<IVertexBuffer> GetVertexBuffer();
+	shared_ptr<VertexBuffer> GetVertexBuffer();
 protected:
 	string m_name;
 

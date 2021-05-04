@@ -8,7 +8,7 @@ namespace ShaderLib
 class DLL_EXPORT DefaultVBOCode : public IShaderCode
 {
 public:
-	DefaultVBOCode(IVertexBuffer* pVertexBuffer);
+	DefaultVBOCode(VertexBuffer* pVertexBuffer);
 public:
 	virtual ~DefaultVBOCode();
 

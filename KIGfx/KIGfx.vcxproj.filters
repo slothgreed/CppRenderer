@@ -96,9 +96,6 @@
     <ClInclude Include="IUniform.h">
       <Filter>ヘッダー ファイル\Interface</Filter>
     </ClInclude>
-    <ClInclude Include="IVertexBuffer.h">
-      <Filter>ヘッダー ファイル\Interface</Filter>
-    </ClInclude>
     <ClInclude Include="IndexBuffer.h">
       <Filter>ヘッダー ファイル\GLObject</Filter>
     </ClInclude>
@@ -156,6 +153,9 @@
     <ClInclude Include="BlendState.h">
       <Filter>ヘッダー ファイル\GLState</Filter>
     </ClInclude>
+    <ClInclude Include="VertexBuffer.h">
+      <Filter>ヘッダー ファイル\Interface</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -206,9 +206,6 @@
     <ClCompile Include="ArrayBuffer.cpp">
       <Filter>ソース ファイル\GLObject</Filter>
     </ClCompile>
-    <ClCompile Include="IVertexBuffer.cpp">
-      <Filter>ソース ファイル\Interface</Filter>
-    </ClCompile>
     <ClCompile Include="IRenderTarget.cpp">
       <Filter>ソース ファイル\Interface</Filter>
     </ClCompile>
@@ -250,6 +247,9 @@
     </ClCompile>
     <ClCompile Include="BlendState.cpp">
       <Filter>ソース ファイル\GLState</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexBuffer.cpp">
+      <Filter>ソース ファイル\Interface</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

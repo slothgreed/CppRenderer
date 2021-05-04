@@ -2,7 +2,7 @@ namespace KI
 {
 namespace Renderer
 {
-RenderData::RenderData(PRIM_TYPE primitiveType, shared_ptr<IVertexBuffer> pVertexBuffer, shared_ptr<IndexBuffer> pIndexBuffer)
+RenderData::RenderData(PRIM_TYPE primitiveType, shared_ptr<VertexBuffer> pVertexBuffer, shared_ptr<IndexBuffer> pIndexBuffer)
 {
 	SetGeometryData(primitiveType, pVertexBuffer, pIndexBuffer);
 }
@@ -36,7 +36,7 @@ void RenderData::ClearRenderRegion()
 	m_pRenderRegion.clear();
 }
 
-void RenderData::SetGeometryData(PRIM_TYPE primitiveType, shared_ptr<IVertexBuffer> pVertexBuffer, shared_ptr<IndexBuffer> pIndexBuffer)
+void RenderData::SetGeometryData(PRIM_TYPE primitiveType, shared_ptr<VertexBuffer> pVertexBuffer, shared_ptr<IndexBuffer> pIndexBuffer)
 {
 	m_pPrimitiveType = primitiveType;
 	m_pVertexBuffer = pVertexBuffer;

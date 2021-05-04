@@ -41,7 +41,7 @@ private:
 	shared_ptr<HalfEdgeModel> GetHalfEdgeModel();
 	UI m_ui;
 	void SetVBOData(IModelNode* pModelNode, QuadPositionPropertyArgs* pPropertyArgs);
-	int m_pointSize;
+	float m_pointSize;
 	shared_ptr<DefaultVertexBuffer> m_pVertexBuffer;
 	shared_ptr<ArrayBuffer> m_pTangentBuffer;
 	shared_ptr<RenderData> m_pRenderData;

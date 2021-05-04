@@ -8,7 +8,7 @@ namespace KI
 namespace ShaderLib
 {
 
-DefaultVBOCode::DefaultVBOCode(IVertexBuffer* pVertexBuffer)
+DefaultVBOCode::DefaultVBOCode(VertexBuffer* pVertexBuffer)
 	:IShaderCode(
 		string(SHADER_DIRECTORY) +
 		string(SHADER_DEFAULT) +

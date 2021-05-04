@@ -7,15 +7,19 @@
 
 #pragma warning( disable : 4251 )
 #define USE_VAR(x) (void)x;
-#include<memory>
-#include<string>
+#include <memory>
+#include <string>
 #include <iostream>
 #include <vector>
-#include<iostream>
-#include<fstream>
+#include <iostream>
+#include <fstream>
 #include <stack>
 #include <assert.h>
+#include <stdint.h>
 
+#include <Windows.h>
+#undef near
+#undef far
 #include <GL\glew.h>
 #include <GLFW/glfw3.h>
 #include <GL/GL.h>

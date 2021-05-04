@@ -13,8 +13,8 @@ HalfEdgeOperator::~HalfEdgeOperator()
 
 void HalfEdgeOperator::SmoothingByGravity(HalfEdgeDS* halfEdgeDS, int loopNum)
 {
-	vector<vec3> gravitys(halfEdgeDS->VertexList().size());
-	for (int i = 0; i < halfEdgeDS->VertexList().size(); i++)
+	vector<vec3> gravitys((int)halfEdgeDS->VertexList().size());
+	for (size_t i = 0; i < halfEdgeDS->VertexList().size(); i++)
 	{
 		auto pVertex = halfEdgeDS->VertexList()[i];
 		VertexAroundEdgeIterator itr(pVertex.get());
@@ -34,7 +34,7 @@ void HalfEdgeOperator::SmoothingByGravity(HalfEdgeDS* halfEdgeDS, int loopNum)
 		gravitys[i].z = sum.z / counter;
 	}
 
-	for (int i = 0; i < halfEdgeDS->VertexList().size(); i++)
+	for (size_t i = 0; i < halfEdgeDS->VertexList().size(); i++)
 	{
 		halfEdgeDS->VertexList()[i]->SetPosition(gravitys[i]);
 	}
@@ -101,11 +101,11 @@ void HalfEdgeOperator::MakeTriangle(shared_ptr<HalfEdgeFace> face,
 // face3 : (...)    => (v0,s,v1)
 void HalfEdgeOperator::EdgeSplit(HalfEdgeDS* halfEdgeDS, shared_ptr<HalfEdge> edge, vec3 position)
 {
-	size_t vertexIndex = halfEdgeDS->VertexList().size();
+	int vertexIndex = (int)halfEdgeDS->VertexList().size();
 	auto v0 = make_shared<HalfEdgeVertex>(vertexIndex);
 	
 
-	size_t edgeIndex = halfEdgeDS->EdgeList().size();
+	int edgeIndex = (int)halfEdgeDS->EdgeList().size();
 	auto opposite = edge->Opposite();
 	auto edge0 = make_shared<HalfEdge>(edgeIndex);
 	auto edge1 = make_shared<HalfEdge>(edgeIndex + 1);
@@ -114,7 +114,7 @@ void HalfEdgeOperator::EdgeSplit(HalfEdgeDS* halfEdgeDS, shared_ptr<HalfEdge> ed
 	auto edge4 = make_shared<HalfEdge>(edgeIndex + 4);
 	auto edge5 = make_shared<HalfEdge>(edgeIndex + 5);
 
-	size_t faceIndex = halfEdgeDS->FaceList().size();
+	int faceIndex = (int)halfEdgeDS->FaceList().size();
 	auto face0 = edge->Face();
 	auto face1 = opposite->Face();
 	auto face2 = make_shared<HalfEdgeFace>(faceIndex);
@@ -322,7 +322,7 @@ void HalfEdgeOperator::SetRandomTangentForVertex(HalfEdgeDS* halfEdgeDS)
 			value1 = vec3(0.0, normal.z * invLength, -normal.y * invLength);
 		}
 
-		float random = Gaccho::rnd(0, 1);
+		float random = (float)Gaccho::rnd(0, 1);
 		value2 = glm::cross(value1, normal);
 		float angle = Gaccho::rnd(0, 1) * 2 * pi<float>();
 		vec3 tangent = glm::normalize(value1 * std::cos(angle) + value2 * std::sin(angle));

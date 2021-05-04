@@ -23,8 +23,12 @@ void Logger::Output(LOG_LEVEL level, string message)
 
 void Logger::GLError()
 {
-	//GLenum result = glGetError();
+#ifdef _DEBUG
+	GLenum result = glGetError();
+#else
 	GLenum result = GL_NO_ERROR;
+#endif // DEBUG
+
 	if (result == GL_NO_ERROR) {
 		return;
 	}

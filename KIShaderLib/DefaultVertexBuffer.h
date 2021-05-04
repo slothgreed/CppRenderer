@@ -4,7 +4,7 @@ namespace KI
 {
 namespace ShaderLib
 {
-class DLL_EXPORT DefaultVertexBuffer : public IVertexBuffer
+class DLL_EXPORT DefaultVertexBuffer : public VertexBuffer
 {
 public:
 	DefaultVertexBuffer();
@@ -23,7 +23,7 @@ public:
 	void SetInstanceMatrix(const vector<mat4>& matrix);
 	VERTEX_LAYOUT Layout();
 	bool HasAttribute(VERTEX_ATTRIB attribute);
-	virtual bool NewShaderCompare(IVertexBuffer* pTarget) override;
+	virtual bool NewShaderCompare(VertexBuffer* pTarget) override;
 
 private:
 	string m_filePath;

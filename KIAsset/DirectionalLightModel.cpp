@@ -20,7 +20,7 @@ void DirectionalLightModel::Build()
 	xMatrix = glm::translate(xMatrix, vec3(0, -1.1, 0));
 	cone.Multi(xMatrix);
 
-	Cube cube(cone.Position().size());
+	Cube cube((int)cone.Position().size());
 	cube.Build(CubeArgs(vec3(-0.5), vec3(0.5)));
 	
 	m_position.insert(m_position.end(), cone.Position().begin(), cone.Position().end());

@@ -25,6 +25,7 @@ private:
 	void FreeLibrary();
 	void FreeRenderLibrary();
 
+	void FreeContext();
 	GLFWwindow* m_window;
 	shared_ptr<ViewViewModel> m_pViewModel;
 	shared_ptr<Viewport> m_pViewport;

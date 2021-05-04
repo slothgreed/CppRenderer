@@ -192,7 +192,7 @@
     <ClInclude Include="IShaderCode.h" />
     <ClInclude Include="IShaderDefine.h" />
     <ClInclude Include="IUniform.h" />
-    <ClInclude Include="IVertexBuffer.h" />
+    <ClInclude Include="VertexBuffer.h" />
     <ClInclude Include="LineState.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="PointState.h" />
@@ -227,7 +227,7 @@
     <ClCompile Include="IShaderBuildInfo.cpp" />
     <ClCompile Include="IShaderCode.cpp" />
     <ClCompile Include="IUniform.cpp" />
-    <ClCompile Include="IVertexBuffer.cpp" />
+    <ClCompile Include="VertexBuffer.cpp" />
     <ClCompile Include="LineState.cpp" />
     <ClCompile Include="PointState.cpp" />
     <ClCompile Include="PolygonState.cpp" />

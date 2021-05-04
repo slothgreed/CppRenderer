@@ -22,18 +22,18 @@ public:
 	};
 
 	// sourceType = GL_TRIANGLE_STRIP 
-	TriangleIterator(unsigned int sourceType, const vec3* positions, const int* indexs, size_t size);
-	TriangleIterator(TriangleType sourceType, const vec3* positions, const int* indexs, size_t size);
+	TriangleIterator(unsigned int sourceType, const vec3* positions, const int* indexs, int32_t size);
+	TriangleIterator(TriangleType sourceType, const vec3* positions, const int* indexs, int32_t size);
 	bool HasNext();
 	void Current(vec3* pos0, vec3* pos1, vec3* pos2);
 	void Next();
-	int TriangleSize();
+	int32_t TriangleSize();
 	int Index() { return m_index; }
 	TriangleType m_sourceType;
 	const vec3* m_position;
 	const int* m_indexList;
 	int m_index;
-	int m_size;
+	int32_t m_size;
 };
 
 }

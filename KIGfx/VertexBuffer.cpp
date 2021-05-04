@@ -2,7 +2,7 @@ namespace KI
 {
 namespace Gfx
 {
-IVertexBuffer::IVertexBuffer(const string& name)
+VertexBuffer::VertexBuffer(const string& name)
 {
 	m_vaoId = 0;
 	m_VertexSize = 0;
@@ -10,7 +10,7 @@ IVertexBuffer::IVertexBuffer(const string& name)
 	m_name = name;
 }
 
-void IVertexBuffer::SetArrayBuffer(GLuint layout, shared_ptr<ArrayBuffer> pArrayBuffer)
+void VertexBuffer::SetArrayBuffer(GLuint layout, shared_ptr<ArrayBuffer> pArrayBuffer)
 {
 	if (pArrayBuffer->IsGenerated() == false)
 	{
@@ -23,12 +23,12 @@ void IVertexBuffer::SetArrayBuffer(GLuint layout, shared_ptr<ArrayBuffer> pArray
 	BindToVAO(layout);
 }
 
-shared_ptr<ArrayBuffer> IVertexBuffer::GetArrayBuffer(GLuint location)
+shared_ptr<ArrayBuffer> VertexBuffer::GetArrayBuffer(GLuint location)
 {
 	return m_VertexInfo[location];
 }
 
-void IVertexBuffer::Add(GLuint location, shared_ptr<ArrayBuffer> arrayBuffer)
+void VertexBuffer::Add(GLuint location, shared_ptr<ArrayBuffer> arrayBuffer)
 {
 	if (location > 16)
 	{
@@ -38,13 +38,13 @@ void IVertexBuffer::Add(GLuint location, shared_ptr<ArrayBuffer> arrayBuffer)
 	m_VertexInfo[location] = arrayBuffer;
 }
 
-void IVertexBuffer::Remove(GLuint location)
+void VertexBuffer::Remove(GLuint location)
 {
 	m_VertexInfo.erase(location);
 }
 
 
-void IVertexBuffer::DrawByIndexBuffer(GLuint primitiveType, IndexBuffer* pIndexbuffer, GLuint first, GLuint count)
+void VertexBuffer::DrawByIndexBuffer(GLuint primitiveType, IndexBuffer* pIndexbuffer, GLuint first, GLuint count)
 {
 	if (m_vaoId == 0)
 	{
@@ -69,7 +69,7 @@ void IVertexBuffer::DrawByIndexBuffer(GLuint primitiveType, IndexBuffer* pIndexb
 
 }
 
-void IVertexBuffer::Draw(GLuint primitiveType)
+void VertexBuffer::Draw(GLuint primitiveType)
 {
 	if (m_VertexInfo[0] == nullptr ||
 		m_VertexInfo[0]->Size() == 0)
@@ -79,7 +79,7 @@ void IVertexBuffer::Draw(GLuint primitiveType)
 
 	Draw(primitiveType, 0, GetVertexSize());
 }
-void IVertexBuffer::Draw(GLuint primitiveType, GLuint first, GLuint count)
+void VertexBuffer::Draw(GLuint primitiveType, GLuint first, GLuint count)
 {
 	if (m_vaoId == 0)
 	{
@@ -109,11 +109,11 @@ void IVertexBuffer::Draw(GLuint primitiveType, GLuint first, GLuint count)
 	Logger::GLError();
 }
 
-void IVertexBuffer::Dispose()
+void VertexBuffer::Dispose()
 {
 }
 
-void IVertexBuffer::BindToVAO(GLuint location)
+void VertexBuffer::BindToVAO(GLuint location)
 {
 	if (m_vaoId == 0)
 	{

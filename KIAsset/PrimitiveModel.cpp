@@ -32,7 +32,7 @@ void PrimitiveModel::RaycastPick(RaycastPickInfo& pickInfo)
 		if (pickInfo.Type() & PICK_TYPE_FACE)
 		{
 			TriangleIterator itr = TriangleIterator(
-				m_pPrimitive->GetDrawType(), positions.data(), indexs.data(), indexs.size());
+				m_pPrimitive->GetDrawType(), positions.data(), indexs.data(), (int32_t)indexs.size());
 
 			while (itr.HasNext())
 			{

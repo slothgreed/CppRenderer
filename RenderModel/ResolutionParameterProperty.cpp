@@ -159,7 +159,7 @@ void ResolutionParameterProperty::BuildTangent(IModelNode* pModelNode, Resolutio
 	auto pRenderData = pModelNode->GetRenderData(0);
 	auto pMeshBuffer = pRenderData->GetVertexBuffer();
 
-	auto pVertexBuffer = make_shared<IVertexBuffer>("Tangent");
+	auto pVertexBuffer = make_shared<VertexBuffer>("Tangent");
 	pVertexBuffer->SetArrayBuffer(TangentVisualizeVertexCode::ATTRIBUTE::POSITION, pMeshBuffer->GetArrayBuffer(VERTEX_ATTRIB_POSITION));
 	pVertexBuffer->SetArrayBuffer(TangentVisualizeVertexCode::ATTRIBUTE::NORMAL, pMeshBuffer->GetArrayBuffer(VERTEX_ATTRIB_NORMAL));
 	pVertexBuffer->SetVertexSize(pMeshBuffer->GetVertexSize());

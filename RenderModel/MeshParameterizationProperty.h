@@ -48,7 +48,7 @@ private:
 
 	void BuildVBO(IModelNode* pModelNode, MeshParameterizationPropertyArgs* pPropertyArgs);
 	GPUBuffer m_ArrayBuffers;
-	shared_ptr<IVertexBuffer> m_pVertexBuffer;
+	shared_ptr<VertexBuffer> m_pVertexBuffer;
 	shared_ptr<RenderData> m_pRenderData;
 	shared_ptr<TangentVisualizeShading> m_pShading;
 	shared_ptr<HalfEdgeModel> GetHalfEdgeModel();

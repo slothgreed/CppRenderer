@@ -79,7 +79,7 @@ void VertexIndexProperty::SetIndexText(IModelNode* pModelNode, const ICamera* pC
 			auto pVertexBuffer = make_shared<DefaultVertexBuffer>();
 			auto pIndexBuffer = make_shared<IndexBuffer>();
 			auto pVertex = pModel->GetHalfEdgeDS()->VertexList()[i];
-			vec3 screenPos = MathHelper::WorldToScreenPos(pCamera->Projection(), pCamera->ViewMatrix(), pModelNode->GetModelMatrix(), pVertex->Position());
+			ivec3 screenPos = MathHelper::WorldToScreenPos(pCamera->Projection(), pCamera->ViewMatrix(), pModelNode->GetModelMatrix(), pVertex->Position());
 			m_indexText[i].Build(HUDTextArgs(std::to_string(pVertex->Index()), screenPos.x, screenPos.y));
 			m_pRenderDatas[i] = make_shared<RenderData>();
 			m_pRenderDatas[i]->SetShading(pShading);
@@ -93,8 +93,8 @@ void VertexIndexProperty::SetIndexText(IModelNode* pModelNode, const ICamera* pC
 	{
 		for (int i = 0; i < m_indexText.size(); i++) {
 			auto pVertex = pModel->GetHalfEdgeDS()->VertexList()[i];
-			vec3 screenPos = MathHelper::WorldToScreenPos(pCamera->Projection(), pCamera->ViewMatrix(), pModelNode->GetModelMatrix(), pVertex->Position());
-			m_indexText[i].SetWindowPosition(screenPos.x, screenPos.y);
+			ivec3 screenPos = MathHelper::WorldToScreenPos(pCamera->Projection(), pCamera->ViewMatrix(), pModelNode->GetModelMatrix(), pVertex->Position());
+			m_indexText[i].SetWindowPosition((int)screenPos.x, (int)screenPos.y);
 		}
 	}
 }

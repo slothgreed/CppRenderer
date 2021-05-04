@@ -16,7 +16,7 @@ void VertexTangentProperty::BuildCore(IModelNode* pModelNode, IPropertyArgs* pPr
 {
 	m_pShading = make_shared<TangentVisualizeShading>(vec4(0, 0, 0, 1), false);
 	m_pShading->SetLength(1.0f);
-	m_pShading->SetOffset(0.1);
+	m_pShading->SetOffset(0.1f);
 
 	m_pRenderData = make_shared<RenderData>();
 	m_pRenderData->SetShading(m_pShading);
@@ -61,7 +61,7 @@ void VertexTangentProperty::SetVBOData(IModelNode* pModelNode, VertexTangentProp
 		m_ArrayBuffers.positionBuffer->Generate();
 		m_ArrayBuffers.normalBuffer->Generate();
 
-		m_pVertexBuffer = make_shared<IVertexBuffer>("Tangent");
+		m_pVertexBuffer = make_shared<VertexBuffer>("Tangent");
 	}
 	std::vector<vec3> position;
 	std::vector<vec3> normal;
@@ -72,7 +72,7 @@ void VertexTangentProperty::SetVBOData(IModelNode* pModelNode, VertexTangentProp
 	m_pVertexBuffer->SetArrayBuffer(TangentVisualizeVertexCode::ATTRIBUTE::POSITION, m_ArrayBuffers.positionBuffer);
 	m_pVertexBuffer->SetArrayBuffer(TangentVisualizeVertexCode::ATTRIBUTE::NORMAL, m_ArrayBuffers.normalBuffer);
 	m_pVertexBuffer->SetArrayBuffer(TangentVisualizeVertexCode::ATTRIBUTE::TANGENT, m_ArrayBuffers.tangentBuffer);
-	m_pVertexBuffer->SetVertexSize(position.size());
+	m_pVertexBuffer->SetVertexSize((GLuint)position.size());
 
 	
 	m_ArrayBuffers.positionBuffer->Set(position);

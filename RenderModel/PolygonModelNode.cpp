@@ -27,7 +27,7 @@ IPolygonModel* PolygonModelNode::GetModel()
 	}
 }
 
-shared_ptr<IVertexBuffer> PolygonModelNode::GetVertexBuffer()
+shared_ptr<VertexBuffer> PolygonModelNode::GetVertexBuffer()
 {
 	return GetRenderData(0)->GetVertexBuffer(); 
 }

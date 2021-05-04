@@ -5,20 +5,20 @@ namespace KI
 {
 namespace Gfx
 {
-class DLL_EXPORT IVertexBuffer : public IAttribute
+class DLL_EXPORT VertexBuffer : public IAttribute
 {
 public:
-	IVertexBuffer(const string& name);
-	virtual ~IVertexBuffer() {};
+	VertexBuffer(const string& name);
+	virtual ~VertexBuffer() {};
 
 	virtual VERTEX_BUFFER_TYPE Type() { return VERTEX_BUFFER_TYPE::VERTEX_BUFFER_TYPE_NONE; };
-	virtual bool NewShaderCompare(IVertexBuffer* pTarget) { return true; };
+	virtual bool NewShaderCompare(VertexBuffer* pTarget) { return true; };
 	virtual void SetArrayBuffer(GLuint location, shared_ptr<ArrayBuffer> pArrayBuffer);
 	virtual shared_ptr<ArrayBuffer> GetArrayBuffer(GLuint location);
 	virtual void Add(GLuint location, shared_ptr<ArrayBuffer> arrayBuffer);
 	virtual void Remove(GLuint location);
 	virtual bool IsInstanceDraw() { return m_instanceNum > 1; };
-	virtual void SetInstanceNum(size_t num) { m_instanceNum = num; }
+	virtual void SetInstanceNum(size_t num) { m_instanceNum = (GLuint)num; }
 	virtual void BindAttribDivisor() { assert(0); };
 	virtual void UnBindAttribDivisor() { assert(0); };
 	virtual void DrawByIndexBuffer(GLuint primitiveType, IndexBuffer* pIndexbuffer, GLuint first = 0, GLuint count = 0);

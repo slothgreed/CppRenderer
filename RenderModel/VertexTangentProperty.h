@@ -48,7 +48,7 @@ private:
 	shared_ptr<HalfEdgeModel> GetHalfEdgeModel();
 	UI m_ui;
 	void SetVBOData(IModelNode* pModelNode, VertexTangentPropertyArgs* pPropertyArgs);
-	shared_ptr<IVertexBuffer> m_pVertexBuffer;
+	shared_ptr<VertexBuffer> m_pVertexBuffer;
 	GPUBuffer m_ArrayBuffers;
 	shared_ptr<RenderData> m_pRenderData;
 	shared_ptr<TangentVisualizeShading> m_pShading;

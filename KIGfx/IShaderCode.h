@@ -6,7 +6,7 @@ namespace KI
 namespace Gfx
 {
 class IUniform;
-class IVertexBuffer;
+class VertexBuffer;
 class IShaderChunk;
 class DLL_EXPORT IShaderCode
 {
@@ -18,7 +18,7 @@ public:
 	void Load(string& code);
 
 	virtual void GetIncludeCode(vector<shared_ptr<IShaderCode>>& pShaderCodes) {};
-	virtual shared_ptr<IShaderCode> GetVertexBufferCode(shared_ptr<IVertexBuffer> pVertexBuffer) { return nullptr; };
+	virtual shared_ptr<IShaderCode> GetVertexBufferCode(shared_ptr<VertexBuffer> pVertexBuffer) { return nullptr; };
 	virtual void GetDefineCode(string& code) {};
 	virtual void Initialize(GLuint programId) = 0;
 	virtual bool Compare(IShaderCode* pShaderCode) = 0;

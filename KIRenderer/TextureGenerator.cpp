@@ -114,7 +114,7 @@ void TextureGenerator::RandomTexture(int size, int alpha, TextureData& texture)
 	}
 }
 
-void TextureGenerator::FillTexture(vec4 color, TextureData& texture)
+void TextureGenerator::FillTexture(const vec4& color, TextureData& texture)
 {
 	assert(texture.width != 0);
 	assert(texture.height != 0);
@@ -135,10 +135,10 @@ void TextureGenerator::FillTexture(vec4 color, TextureData& texture)
 		for (int j = 0; j < texture.height; j++)
 		{
 			height = j * 4;
-			pixel[width + height + 0] = color.x;
-			pixel[width + height + 1] = color.y;
-			pixel[width + height + 2] = color.z;
-			pixel[width + height + 3] = color.w;
+			pixel[width + height + 0] = (GLubyte)color.x;
+			pixel[width + height + 1] = (GLubyte)color.y;
+			pixel[width + height + 2] = (GLubyte)color.z;
+			pixel[width + height + 3] = (GLubyte)color.w;
 		}
 	}
 }

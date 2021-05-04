@@ -20,8 +20,9 @@ TextTextureGenerator& TextTextureGenerator::Instance()
 void TextTextureGenerator::Charactor::BufferCopy(unsigned char * buf)
 {
 	RELEASE_INSTANCE(m_buffer);
-	m_buffer = new unsigned char[m_size.x * m_size.y * sizeof(unsigned char)];
-	std::memcpy(m_buffer, buf, m_size.x * m_size.y * sizeof(unsigned char));
+	int size = int(m_size.x * m_size.y * sizeof(unsigned char));
+	m_buffer = new unsigned char[size];
+	std::memcpy(m_buffer, buf, size);
 }
 
 bool TextTextureGenerator::Initialize()
@@ -92,7 +93,7 @@ void TextTextureGenerator::GenerateTexture()
 	}
 
 	assert(width != 16392);	// TODO: •K—v‚É‚È‚Á‚½‚çŽÀ‘•
-	int pixelSize = width * height;
+	int pixelSize = int(width * height);
 	unsigned char* pixel = new unsigned char[pixelSize];
 	int counter = 0;
 	for (int i = 0; i < height; i++) {
@@ -100,7 +101,7 @@ void TextTextureGenerator::GenerateTexture()
 		{
 			for (int j = 0; j < itr->second->m_size.x; j++)
 			{
-				int index = i * itr->second->m_size.x + j;
+				int index = i * (int)itr->second->m_size.x + j;
 
 				if (index < itr->second->m_size.x * itr->second->m_size.y) {
 					pixel[counter] = itr->second->m_buffer[index];
@@ -114,8 +115,8 @@ void TextTextureGenerator::GenerateTexture()
 
 	TextureData data;
 	data.internalformat = GL_RED;
-	data.width = width;
-	data.height = height;
+	data.width = (GLsizei)width;
+	data.height = (GLsizei)height;
 	data.format = GL_RED;
 	data.type = GL_UNSIGNED_BYTE;
 	data.pixels = pixel;

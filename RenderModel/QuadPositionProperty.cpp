@@ -74,9 +74,9 @@ void QuadPositionProperty::InitializeUI()
 {
 
 	m_ui.pointSize.SetLabel("Quad Point Size");
-	m_ui.pointSize.SetMin(0.0);
-	m_ui.pointSize.SetMax(1.0);
-	m_ui.pointSize.SetValue(m_pointSize);
+	m_ui.pointSize.SetMin(0);
+	m_ui.pointSize.SetMax(5);
+	m_ui.pointSize.SetValue((int)m_pointSize);
 
 	m_ui.level.SetLabel("Quad Point Level");
 	m_ui.level.SetMin(0);
@@ -87,7 +87,7 @@ void QuadPositionProperty::InitializeUI()
 void QuadPositionProperty::ShowUI()
 {
 	if (m_ui.pointSize.Show()) {
-		m_pointSize = m_ui.pointSize.Value();
+		m_pointSize = (float)m_ui.pointSize.Value();
 	}
 
 	if (m_ui.level.Show()) {

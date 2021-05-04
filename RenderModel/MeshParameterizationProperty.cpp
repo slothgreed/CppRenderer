@@ -48,7 +48,7 @@ void MeshParameterizationProperty::BuildVBO(IModelNode* pModelNode, MeshParamete
 		m_ArrayBuffers.normalBuffer->Generate();
 		m_ArrayBuffers.uvBuffer->Generate();
 
-		m_pVertexBuffer = make_shared<IVertexBuffer>("Mesh Parameterization");
+		m_pVertexBuffer = make_shared<VertexBuffer>("Mesh Parameterization");
 	}
 	std::vector<vec3> position;
 	std::vector<vec3> normal;
@@ -61,7 +61,7 @@ void MeshParameterizationProperty::BuildVBO(IModelNode* pModelNode, MeshParamete
 	m_pVertexBuffer->SetArrayBuffer(MeshParameterizationVertCode::ATTRIBUTE::NORMAL, m_ArrayBuffers.normalBuffer);
 	m_pVertexBuffer->SetArrayBuffer(MeshParameterizationVertCode::ATTRIBUTE::TANGENT, m_ArrayBuffers.tangentBuffer);
 	m_pVertexBuffer->SetArrayBuffer(MeshParameterizationVertCode::ATTRIBUTE::UV, m_ArrayBuffers.uvBuffer);
-	m_pVertexBuffer->SetVertexSize(position.size());
+	m_pVertexBuffer->SetVertexSize((GLuint)position.size());
 
 
 	m_ArrayBuffers.positionBuffer->Set(position);

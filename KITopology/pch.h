@@ -7,23 +7,6 @@
 
 #pragma warning( disable : 4251 )
 
-#include<memory>
-#include<string>
-#include<algorithm>
-#include<vector>
-#include<iostream>
-#include<fstream>
-#include<stack>
-
-#include <GL\glew.h>
-#include <GLFW/glfw3.h>
-#include <GL/GL.h>
-#include <GL/GLU.h>
-#include <glm/glm.hpp>
-#include <glm/gtx/transform.hpp>
-using namespace std;
-using namespace glm;
-
 #include "../KIFoundation/pch.h"
 using namespace KI::Foundation;
 
