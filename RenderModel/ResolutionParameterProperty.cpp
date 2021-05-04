@@ -159,7 +159,7 @@ void ResolutionParameterProperty::UpdateColor(IModelNode* pModelNode, Resolution
 void ResolutionParameterProperty::BuildTangent(IModelNode* pModelNode, ResolutionParameterPropertyArgs* pPropertyArgs)
 {
 	
-	if (m_pTangentBuffer != nullptr) {
+	if (m_pTangentBuffer == nullptr) {
 		auto pRenderData = pModelNode->GetRenderData(0);
 		auto pMeshBuffer = pRenderData->GetVertexBuffer();
 		auto pVertexBuffer = make_shared<VertexBuffer>("Tangent");
@@ -174,6 +174,7 @@ void ResolutionParameterProperty::BuildTangent(IModelNode* pModelNode, Resolutio
 		m_pRenderData->SetShading(make_shared<TangentVisualizeShading>(vec4(0, 0, 0, 1), false));
 	}
 
+	m_pModel->CalcAlignOrientation();
 	UpdateTangent(pModelNode, pPropertyArgs);
 
 
@@ -184,7 +185,6 @@ void ResolutionParameterProperty::UpdateTangent(IModelNode* pModelNode, Resoluti
 	assert(m_pModel->GetAlignOrientation() != nullptr);
 
 	std::vector<vec3> tangent;
-	m_pModel->CalcAlignOrientation();
 	m_pModel->GetDownSampling()->GetData(pPropertyArgs->Level(), nullptr, nullptr, &tangent, nullptr);
 	m_pTangentBuffer->Set(tangent);
 }

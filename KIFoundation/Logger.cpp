@@ -13,6 +13,12 @@ Logger::~Logger()
 
 void Logger::Output(LOG_LEVEL level, string message)
 {
+#ifndef _DEBUG
+	if (level == LOG_LEVEL::LOG_LEVEL_DEBUG) {
+		return;
+	}
+#endif // _DEBUG
+
 	USE_VAR(level);
 	printf(message.data());
 	if (level == LOG_LEVEL::LOG_LEVEL_ERROR)

@@ -39,16 +39,8 @@ void HalfEdgeParameterIO::LoadTangent(const std::string& filePath, vector<vec3>*
 
 	while (!reader.EndOfFile())
 	{
-		void* data = reader.ReadBinary(Format::FLOAT);
-		x = *(float *)(&data);
-
-		data = reader.ReadBinary(Format::FLOAT);
-		y = *(float *)(&data);
-
-		data = reader.ReadBinary(Format::FLOAT);
-		z = *(float *)(&data);
 		if (!reader.EndOfFile()) {
-			(*tangents).push_back(vec3(x, y, z));
+			(*tangents).push_back(reader.ReadVec3());
 		}
 	}
 

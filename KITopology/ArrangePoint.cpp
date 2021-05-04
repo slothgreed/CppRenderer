@@ -77,58 +77,13 @@ void ArrangePoint::CalcErrorValue()
 
 	m_error.push_back(error);
 }
-void InitQuadPosition_DebugCode(DownSampling* pDownSampling)
-{
-	FileReader reader;
-	float x, y, z;
-	reader.Open("C:\\Users\\stmnd\\Desktop\\Tmp\\instantOut.txt", true);
 
-	auto pResolution = pDownSampling->GetResolution(0);
-	for (int i = 0; i < pResolution->GetClusterNum(); i++)
-	{
-		auto pData = pResolution->GetData(i);
-		auto data = reader.ReadBinary(Format::FLOAT);
-		x = *(float *)(&data);
-		data = reader.ReadBinary(Format::FLOAT);
-		y = *(float *)(&data);
-		data = reader.ReadBinary(Format::FLOAT);
-		z = *(float *)(&data);
-		pData->SetPosition(vec3(x, y, z));
-		data = reader.ReadBinary(Format::FLOAT); 
-		x = *(float *)(&data);
-		data = reader.ReadBinary(Format::FLOAT);
-		y = *(float *)(&data);
-		data = reader.ReadBinary(Format::FLOAT);
-		z = *(float *)(&data);
-		pData->SetNormal(vec3(x, y, z));
-		data = reader.ReadBinary(Format::FLOAT); 
-		x = *(float *)(&data);
-		data = reader.ReadBinary(Format::FLOAT);
-		y = *(float *)(&data);
-		data = reader.ReadBinary(Format::FLOAT);
-		z = *(float *)(&data);
-		pData->SetTangent(vec3(x, y, z));
-		data = reader.ReadBinary(Format::FLOAT); 
-		x = *(float *)(&data);
-		data = reader.ReadBinary(Format::FLOAT);
-		y = *(float *)(&data);
-		data = reader.ReadBinary(Format::FLOAT);
-		z = *(float *)(&data);
-		pData->SetQuadPosition(vec3(x, y, z));
-	}
-}
-bool g_init = true;
 void ArrangePoint::Calculate(int localItrNum)
 {
 	assert(m_pDownSampling != NULL);
-	if (g_init) {
-		InitQuadPosition();
-		//InitQuadPosition_DebugCode(m_pDownSampling);
-		g_init = false;
-	}
+	InitQuadPosition();
 
 	int resolutionIndex = m_pDownSampling->GetResolutionNum() - 1;
-	//resolutionIndex = 0;
 	while (resolutionIndex >= 0)
 	{
 		for (int j = 0; j < 6; j++)

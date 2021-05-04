@@ -12,7 +12,10 @@ public:
 
 	bool Open(const std::string& filePath, bool binary = false);
 	bool ReadLine(std::string& contents, bool endl = false);
-	void* ReadBinary(Format format);
+	float ReadFloat();
+	vec2 ReadVec2();
+	vec3 ReadVec3();
+	vec4 ReadVec4();
 	bool EndOfFile();
 	void Close();
 private:
