@@ -184,47 +184,6 @@ void AlignOrientation::Calculate(int localItrNum)
 //#endif
 }
 
-// ŠY“–ƒŒƒxƒ‹‚ÌŠK‘w‚ÉŠ„‚è“–‚Ä‚ç‚ê‚½’¸“_‚Å®—ñ‚·‚éB
-void AlignOrientation::CalculateLocal_Debug(int level, int localItrNum)
-{
-	assert(m_pDownSampling != nullptr);
-	assert(m_pDownSampling->GetResolutionNum() > level);
-	auto pResolution = m_pDownSampling->GetResolution(level);
-	auto pAdjancyMatrix = pResolution->GetAdjancyMatrix();
-	for (int i = 0; i < pResolution->GetClusterNum(); i++)
-	{
-		auto pData = pResolution->GetData(i);
-		for (int j = 0; j < pData->GetOriginalNum(); j++)
-		{
-			auto pOriginal = pData->GetOriginal(j);
-			auto pVertex1 = m_pHalfEdgeDS->VertexList()[pOriginal->Index()];
-
-			vec3 tangent = pVertex1->Tangent();
-			vec3 orient1, orient2;
-			float weight = 0;
-			VertexAroundEdgeIterator itr(pVertex1.get());
-			for (; itr.HasNext(); itr.Next()) 
-			{
-				auto pVertex2 = itr.Current()->End();
-				ClosestDirection(
-					tangent, pVertex1->Normal(),
-					pVertex2->Tangent(), pVertex2->Normal(),
-					&orient1, &orient2);
-
-				tangent = orient1 * weight + orient2;//1 *pLink2->GetWeight();
-				tangent = tangent - pVertex1->Normal() * glm::dot(pVertex1->Normal(), tangent);
-				weight += 1;// pLink2->GetWeight();
-
-				tangent = glm::normalize(tangent);
-			}
-
-			pVertex1->SetTangent(tangent);	// ’¸“_‚Ìtangent‚ð•Ï‚¦‚Ä‚¢‚éB
-			pOriginal->SetTangent(tangent);
-		}
-	}
-}
-
-
 void AlignOrientation::LocalAlignment(int level)
 {
 	auto pResolution = m_pDownSampling->GetResolution(level);

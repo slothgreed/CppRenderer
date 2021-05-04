@@ -10,6 +10,8 @@ ResolutionParameterPropertyArgs& ResolutionParameterProperty::DefaultArgs()
 }
 ResolutionParameterProperty::ResolutionParameterProperty()
 {
+	m_pRenderData = nullptr;
+	m_pTangentBuffer = nullptr;
 }
 
 void ResolutionParameterProperty::BuildCore(IModelNode* pModelNode, IPropertyArgs* pPropertyArgs)
@@ -156,36 +158,35 @@ void ResolutionParameterProperty::UpdateColor(IModelNode* pModelNode, Resolution
 
 void ResolutionParameterProperty::BuildTangent(IModelNode* pModelNode, ResolutionParameterPropertyArgs* pPropertyArgs)
 {
-	auto pRenderData = pModelNode->GetRenderData(0);
-	auto pMeshBuffer = pRenderData->GetVertexBuffer();
+	
+	if (m_pTangentBuffer != nullptr) {
+		auto pRenderData = pModelNode->GetRenderData(0);
+		auto pMeshBuffer = pRenderData->GetVertexBuffer();
+		auto pVertexBuffer = make_shared<VertexBuffer>("Tangent");
+		pVertexBuffer->SetArrayBuffer(TangentVisualizeVertexCode::ATTRIBUTE::POSITION, pMeshBuffer->GetArrayBuffer(VERTEX_ATTRIB_POSITION));
+		pVertexBuffer->SetArrayBuffer(TangentVisualizeVertexCode::ATTRIBUTE::NORMAL, pMeshBuffer->GetArrayBuffer(VERTEX_ATTRIB_NORMAL));
+		pVertexBuffer->SetVertexSize(pMeshBuffer->GetVertexSize());
+		m_pTangentBuffer = make_shared<ArrayBuffer>(GL_FLOAT, 3);
+		m_pTangentBuffer->Generate();
+		pVertexBuffer->SetArrayBuffer(TangentVisualizeVertexCode::ATTRIBUTE::TANGENT, m_pTangentBuffer);
+		m_pRenderData = make_shared<RenderData>();
+		m_pRenderData->SetGeometryData(PRIM_TYPE::PRIM_TYPE_POINTS, pVertexBuffer, pRenderData->GetIndexBuffer());
+		m_pRenderData->SetShading(make_shared<TangentVisualizeShading>(vec4(0, 0, 0, 1), false));
+	}
 
-	auto pVertexBuffer = make_shared<VertexBuffer>("Tangent");
-	pVertexBuffer->SetArrayBuffer(TangentVisualizeVertexCode::ATTRIBUTE::POSITION, pMeshBuffer->GetArrayBuffer(VERTEX_ATTRIB_POSITION));
-	pVertexBuffer->SetArrayBuffer(TangentVisualizeVertexCode::ATTRIBUTE::NORMAL, pMeshBuffer->GetArrayBuffer(VERTEX_ATTRIB_NORMAL));
-	pVertexBuffer->SetVertexSize(pMeshBuffer->GetVertexSize());
-	m_pTangentBuffer = make_shared<ArrayBuffer>(GL_FLOAT, 3);
-	m_pTangentBuffer->Generate();
-	pVertexBuffer->SetArrayBuffer(TangentVisualizeVertexCode::ATTRIBUTE::TANGENT, m_pTangentBuffer);
+	UpdateTangent(pModelNode, pPropertyArgs);
 
-	std::vector<vec3> tangent;
-	m_pModel->CalcAlignOrientation();
-	m_pModel->GetAlignOrientation()->CalculateLocal_Debug(pPropertyArgs->Level(), 10);
-	m_pModel->GetDownSampling()->GetOriginalVertexTangent(pPropertyArgs->Level(), &tangent);
-	m_pTangentBuffer->Set(tangent);
 
-	m_pRenderData = make_shared<RenderData>();
-	m_pRenderData->SetShading(make_shared<TangentVisualizeShading>(vec4(0, 0, 0, 1), false));
-	m_pRenderData->SetGeometryData(PRIM_TYPE::PRIM_TYPE_POINTS, pVertexBuffer, pRenderData->GetIndexBuffer());
 }
 void ResolutionParameterProperty::UpdateTangent(IModelNode* pModelNode, ResolutionParameterPropertyArgs* pPropertyArgs)
 {
 	assert(m_pModel != nullptr);
 	assert(m_pModel->GetAlignOrientation() != nullptr);
 
-	m_pModel->GetAlignOrientation()->CalculateLocal_Debug(pPropertyArgs->Level(), 6);
-	std::vector<vec3> tangents;
-	m_pModel->GetDownSampling()->GetOriginalVertexTangent(pPropertyArgs->Level(), &tangents);
-	m_pTangentBuffer->Set(tangents);
+	std::vector<vec3> tangent;
+	m_pModel->CalcAlignOrientation();
+	m_pModel->GetDownSampling()->GetData(pPropertyArgs->Level(), nullptr, nullptr, &tangent, nullptr);
+	m_pTangentBuffer->Set(tangent);
 }
 }
 }

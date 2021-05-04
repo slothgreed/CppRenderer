@@ -27,9 +27,6 @@ public:
 		vec3 Tangent() { return m_tangent; }
 		vec3 QuadPosition() { return m_quadPosition; }
 		void SetQuadPosition(const vec3& value) { m_quadPosition = value; }
-		void SetOriginal(const std::vector<SampleData>& original) { m_original = std::move(original); }
-		int GetOriginalNum() { return (int)m_original.size(); }
-		SampleData* GetOriginal(int index) { return &m_original[index]; }
 	private:
 		int m_index;
 		float m_area;
@@ -88,7 +85,6 @@ public:
 	int GetResolutionNum() { return (int)m_pResolution.size(); }
 	void GetData(int level, std::vector<vec3>* position, std::vector<vec3>* normal, std::vector<vec3>* tangent, std::vector<vec3>* quadPos = nullptr);
 	void GetCluster(int level, std::vector<int>& index);	// original 頂点の順番
-	void GetOriginalVertexTangent(int level, std::vector<vec3>* tangents);
 private:
 	void SetVertexOfCluster();	// 階層数×元頂点数分のデータが作成されるので重い
 	void InitialResolution(shared_ptr<DownSampling::Resolution> pResolution, HalfEdgeDS* pHalfEdgeDS);

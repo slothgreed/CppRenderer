@@ -12,7 +12,6 @@ public:
 	~AlignOrientation();
 	const std::vector<float>& ErrorValue() { return m_error; }
 	void Calculate(int localItrNum);
-	void CalculateLocal_Debug(int level, int localItrNum);
 
 	void LocalAlignment(int resolution);
 private:

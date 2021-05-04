@@ -316,11 +316,6 @@ void DownSampling::GetCluster(int level, std::vector<int>& index)
 	operate.GetCluster(level, index);
 }
 
-void DownSampling::GetOriginalVertexTangent(int level, std::vector<vec3>* tangents)
-{
-	auto operate = DownSamplingOperator(this);
-	operate.GetOriginalVertexTangent(level, tangents);
-}
 void DownSampling::SetVertexOfCluster()
 {
 	auto operate = DownSamplingOperator(this);
