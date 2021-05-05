@@ -22,8 +22,9 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{1C525E0F-D28F-498E-9418-0063A1120555}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>CGALRenderer</RootNamespace>
+    <RootNamespace>CppRenderer</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <ProjectName>CppRenderer</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
