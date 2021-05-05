@@ -5,7 +5,7 @@ namespace RenderModel
 PrimitiveNode::PrimitiveNode(shared_ptr<RenderData> pRenderData)
 {
 	m_name = "Primitive";
-	AddRenderData(0, pRenderData);
+	IModelNode::SetRenderData(pRenderData);
 	if (pRenderData->GetShading() == nullptr)
 	{
 		pRenderData->SetShading(make_shared<BasicShading>(vec4(1, 0, 0, 1)));
@@ -115,7 +115,7 @@ void PrimitiveNode::SetRenderData()
 		pRenderData->SetShading(make_shared<BasicShading>(vec4(1, 0, 0, 1)));
 	}
 
-	AddRenderData(0, pRenderData);
+	IModelNode::SetRenderData(pRenderData);
 }
 
 void PrimitiveNode::AddSelect(PICK_TYPE type, shared_ptr<IShading> pShading, int index, int first, int count)

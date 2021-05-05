@@ -42,7 +42,8 @@ void ManipulatorNode::SetRenderData()
 
 		GenManipulatorHandleVBO(pFaceDatas.get(), handle);
 
-		AddRenderData(i, pFaceDatas);
+		// TODO:
+		//IModelNode::SetRenderData(pFaceDatas);
 	}
 }
 

@@ -9,7 +9,7 @@ BezierLineNode::BezierLineNode(shared_ptr<RenderData> pRenderData)
 	m_pShading->SetPatchVertices(4);
 
 	pRenderData->SetShading(m_pShading);
-	AddRenderData(0, pRenderData);
+	SetRenderData(pRenderData);
 }
 
 BezierLineNode::~BezierLineNode()

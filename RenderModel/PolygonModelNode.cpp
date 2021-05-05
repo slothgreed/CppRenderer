@@ -56,7 +56,7 @@ void PolygonModelNode::SetRenderData()
 		pFaceBuffer->SetNormal(normal);
 		auto pFaceData = make_shared <RenderData>(PRIM_TYPE_TRIANGLES, pFaceBuffer);
 		pFaceData->SetShading(make_shared<BasicShading>(vec4(0.7f, 0.7f, 0.7f, 1)));
-		AddRenderData(0, pFaceData);
+		IModelNode::SetRenderData(pFaceData);
 
 	}
 	else
@@ -82,7 +82,7 @@ void PolygonModelNode::SetRenderData()
 		pFaceIndex->Set(index);
 		auto pFaceData = make_shared <RenderData>(PRIM_TYPE_TRIANGLES, pFaceBuffer, pFaceIndex);
 		pFaceData->SetShading(make_shared<BasicShading>(vec4(0.7f, 0.7f, 0.7f, 1)));
-		AddRenderData(0, pFaceData);
+		IModelNode::SetRenderData(pFaceData);
 	}
 
 }

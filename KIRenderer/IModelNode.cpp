@@ -179,14 +179,9 @@ void IModelNode::Draw(shared_ptr<UniformStruct> pUniform)
 	UnBindModel(pUniform);
 }
 
-void IModelNode::AddRenderData(int id, shared_ptr<RenderData> pRenderData)
+void IModelNode::SetRenderData(shared_ptr<RenderData> pRenderData)
 {
-	m_pRenderData[id] = RenderDataInfo(pRenderData);
-}
-
-void IModelNode::RemoveRenderData(int id, shared_ptr<RenderData> pRenderData)
-{
-	assert(0);
+	m_pRenderData[0] = RenderDataInfo(pRenderData);
 }
 
 shared_ptr<RenderData> IModelNode::GetRenderData(int id)
