@@ -21,6 +21,7 @@ public:
 		int m_first;
 		int m_count;
 	};
+	void SetState(shared_ptr<IGLState> pState) { m_pState = pState; }
 	void SetShading(shared_ptr<IShaderChunk> pShading);
 	void SetGeometryData(PRIM_TYPE primitiveType, shared_ptr<VertexBuffer> pVertexBuffer, shared_ptr<IndexBuffer> pIndexBuffer = nullptr);
 	void SetIndexBuffer(PRIM_TYPE primitiveType, shared_ptr<IndexBuffer> pIndexBuffer);
@@ -49,6 +50,7 @@ private:
 	shared_ptr<VertexBuffer> m_pVertexBuffer;
 	shared_ptr<IShaderChunk> m_pShading;
 	vector<RenderRegion> m_pRenderRegion;
+	shared_ptr<IGLState> m_pState;
 	int m_pickId;
 };
 }

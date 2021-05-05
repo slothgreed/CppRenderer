@@ -134,9 +134,7 @@ void IModelNode::FixedShaderDraw(shared_ptr<IShader> pShader, shared_ptr<IShadin
 	else
 	{
 		BindModel(pUniform);
-		PreDraw(pUniform);
 		m_pRenderData->Draw(pShader, pShading, pUniform);
-		PostDraw(pUniform);
 	}
 }
 
@@ -149,10 +147,8 @@ void IModelNode::Draw(shared_ptr<UniformStruct> pUniform)
 	else
 	{
 		BindModel(pUniform);
-		PreDraw(pUniform);
 		m_pRenderData->Draw(pUniform);
 		DrawProperty(pUniform);
-		PostDraw(pUniform);
 	}
 
 }
@@ -210,7 +206,7 @@ void IModelNode::UpdateProperty(void* sender, IEventArgs* args)
 	}
 }
 
-void IModelNode::AddPickID(int start, int* next)
+void IModelNode::SetPickID(int start, int* next)
 {
 	m_pRenderData->SetPickID(start);
 	start++;

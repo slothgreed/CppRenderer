@@ -37,26 +37,19 @@ void ManipulatorNode::SetRenderData()
 	for (int i = 0; i < MANIPULATOR_HANDLE_NUM; i++)
 	{
 		MANIPULATOR_HANDLE handle = (MANIPULATOR_HANDLE)i;
-		auto pFaceDatas = make_shared<RenderData>();
-		pFaceDatas->SetShading(m_pShading);
+		RenderData pFaceDatas;
+		pFaceDatas.SetShading(m_pShading);
 
-		GenManipulatorHandleVBO(pFaceDatas.get(), handle);
+		GenManipulatorHandleVBO(pFaceDatas, handle);
 
-		// TODO:
-		//IModelNode::SetRenderData(pFaceDatas);
+		m_pManipulatorData[i] = pFaceDatas;
 	}
 }
 
 void ManipulatorNode::GenManipulatorHandleVBO(
-	RenderData* pFaceData,
+	RenderData& pFaceData,
 	MANIPULATOR_HANDLE handle)
 {
-	if (pFaceData == nullptr)
-	{
-		assert(0);
-		return;
-	}
-
 	auto pFaceBuffer = make_shared<DefaultVertexBuffer>();
 	auto pFaceIndexBuffer = make_shared<IndexBuffer>();
 
@@ -65,27 +58,67 @@ void ManipulatorNode::GenManipulatorHandleVBO(
 	m_pManipulator->GetFaceList(facet, faceIndex, handle);
 	pFaceBuffer->SetPosition(facet);
 	pFaceIndexBuffer->Set(faceIndex);
-	pFaceData->SetGeometryData(PRIM_TYPE_TRIANGLES, pFaceBuffer, pFaceIndexBuffer);
+	pFaceData.SetGeometryData(PRIM_TYPE_TRIANGLES, pFaceBuffer, pFaceIndexBuffer);
 }
 
-void ManipulatorNode::PreDraw(shared_ptr<UniformStruct> pUniform)
+void ManipulatorNode::FixedShaderDraw(shared_ptr<IShader> pShader, shared_ptr<IShading> pShading, shared_ptr<UniformStruct> pUniform)
 {
-	int index = 0;
-	if (index == MANIPULATOR_HANDLE_X)
+	if (Visible() == false)
 	{
-		m_pShading->SetColor(vec4(1, 0, 0, 1));
-	}
-	else if (index == MANIPULATOR_HANDLE_Y)
-	{
-		m_pShading->SetColor(vec4(0, 1, 0, 1));
-	}
-	else if (index == MANIPULATOR_HANDLE_Z)
-	{
-		m_pShading->SetColor(vec4(0, 0, 1, 1));
+		return;
 	}
 	else
 	{
-		assert(0);
+		for (int i = 0; i < MANIPULATOR_HANDLE_NUM; i++) {
+			if (pUniform != NULL)
+			{
+				if (pUniform->GetModel() != NULL)
+				{
+					pUniform->GetModel()->SetModelMatrix(GetModelMatrix());
+					pUniform->GetModel()->SetObjectId(m_pManipulatorData[i].GetPickID());
+					pUniform->GetModel()->Bind();
+				}
+			}
+
+			m_pManipulatorData[i].Draw(pShader, pShading, pUniform);
+		}
+	}
+}
+
+void ManipulatorNode::Draw(shared_ptr<UniformStruct> pUniform)
+{
+	if (Visible() == false)
+	{
+		return;
+	}
+	else
+	{
+		for (int i = 0; i < MANIPULATOR_HANDLE_NUM; i++) {
+			if (i == MANIPULATOR_HANDLE_X)
+			{
+				m_pShading->SetColor(vec4(1, 0, 0, 1));
+			}
+			else if (i == MANIPULATOR_HANDLE_Y)
+			{
+				m_pShading->SetColor(vec4(0, 1, 0, 1));
+			}
+			else if (i == MANIPULATOR_HANDLE_Z)
+			{
+				m_pShading->SetColor(vec4(0, 0, 1, 1));
+			}
+
+			if (pUniform != NULL)
+			{
+				if (pUniform->GetModel() != NULL)
+				{
+					pUniform->GetModel()->SetModelMatrix(GetModelMatrix());
+					pUniform->GetModel()->SetObjectId(m_pManipulatorData[i].GetPickID());
+					pUniform->GetModel()->Bind();
+				}
+			}
+
+			m_pManipulatorData[i].Draw(pUniform);
+		}
 	}
 }
 
@@ -95,12 +128,15 @@ void ManipulatorNode::ClearSelect()
 		return;
 	}
 
-	if (GetRenderData()->HasRenderRegion())
-	{
-		GetRenderData()->ClearRenderRegion();
+
+	for (int i = 0; i < MANIPULATOR_HANDLE_NUM; i++) {
+		if (m_pManipulatorData[i].HasRenderRegion())
+		{
+			m_pManipulatorData[i].ClearRenderRegion();
+		}
 	}
 
-	GetRenderData()->SetShading(m_pShading);
+	m_pManipulatorData[m_SelectIndex].SetShading(m_pShading);
 	m_SelectIndex = -1;
 }
 void ManipulatorNode::AddSelect(PICK_TYPE type, shared_ptr<IShading> pShading, int pickId, int first, int count)
@@ -114,14 +150,37 @@ void ManipulatorNode::AddSelect(PICK_TYPE type, shared_ptr<IShading> pShading, i
 		assert(0);
 	}
 
-	if (GetRenderData()->GetPickID() == pickId)
-	{
-		GetRenderData()->SetShading(pShading);
-		m_SelectIndex = 0;
+	for (int i = 0; i < MANIPULATOR_HANDLE_NUM; i++) {
+		if (m_pManipulatorData[i].GetPickID() == pickId)
+		{
+			m_pManipulatorData[i].SetShading(pShading);
+			m_SelectIndex = i;
+		}
 	}
-
 }
 
+void ManipulatorNode::SetPickID(int start, int* next)
+{
+	for (int i = 0; i < MANIPULATOR_HANDLE_NUM; i++) {
+		m_pManipulatorData[i].SetPickID(start);
+		start++;
+	}
+
+
+	*next = start;
+}
+
+bool ManipulatorNode::HasPickID(int id)
+{
+	for (int i = 0; i < MANIPULATOR_HANDLE_NUM; i++) {
+		if (m_pManipulatorData[i].GetPickID() == id)
+		{
+			return true;
+		}
+	}
+
+	return false;
+}
 
 }
 }

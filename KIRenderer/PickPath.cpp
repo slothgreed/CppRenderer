@@ -53,7 +53,7 @@ void PickPath::ResetPickID(shared_ptr<Scene> pScene)
 	int next = 1;
 	for (int i = 0; i < pScene->ModelNodes().size(); i++)
 	{
-		pScene->ModelNodes()[i]->AddPickID(next, &next);
+		pScene->ModelNodes()[i]->SetPickID(next, &next);
 	}
 }
 

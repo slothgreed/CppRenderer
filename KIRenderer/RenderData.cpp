@@ -115,6 +115,10 @@ void RenderData::Draw(
 		count = GetVertexSize();
 	}
 
+	if (m_pState != nullptr) {
+		m_pState->Bind();
+	}
+
 	pShader->Use();
 	pShader->Bind(pShading, pUniform);
 

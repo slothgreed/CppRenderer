@@ -19,13 +19,13 @@ void PrimitiveScene::Initialize()
 
 	SetController(CONTROLER_TYPE::CAMERA_CONTROLER, new CameraController(make_shared<CameraControllerArgs>(pCamera)));
 
-	//// manipulator rendering
-	//{
-	//	auto pMoveManipulator = make_shared<MoveManipulator>();
-	//	pMoveManipulator->Build();
-	//	auto pManipulatorNode = make_shared<ManipulatorNode>(MANIPULATOR_TYPE_ROTATE);
-	//	m_pScene->AddModelNode(pManipulatorNode);
-	//}
+	// manipulator rendering
+	{
+		auto pMoveManipulator = make_shared<MoveManipulator>();
+		pMoveManipulator->Build();
+		auto pManipulatorNode = make_shared<ManipulatorNode>(MANIPULATOR_TYPE_ROTATE);
+		m_pScene->AddModelNode(pManipulatorNode);
+	}
 
 	//// sphere rendering
 	//{

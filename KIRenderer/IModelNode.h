@@ -31,7 +31,7 @@ public:
 	virtual ~IModelNode();
 
 	virtual void FixedShaderDraw(shared_ptr<IShader> pShader, shared_ptr<IShading> pShading, shared_ptr<UniformStruct> pUniformStorage);
-	void Draw(shared_ptr<UniformStruct> pUniform);
+	virtual void Draw(shared_ptr<UniformStruct> pUniform);
 	
 	virtual void ClearSelect() {};
 	virtual void AddSelect(PICK_TYPE type, shared_ptr<IShading> pShader, int index, int first, int count);
@@ -41,8 +41,8 @@ public:
 	const mat4x4& GetModelMatrix() const { return m_ModelMatrix; };
 	void SetVisible(bool value) { m_visible = value; }
 	bool Visible() { return m_visible; }
-	void AddPickID(int start, int* next);
-	bool HasPickID(int index);
+	virtual void SetPickID(int start, int* next);
+	virtual bool HasPickID(int index);
 	shared_ptr<RenderData> GetRenderData();
 protected:
 	void AddProperty(shared_ptr<IModelProperty> prop, IPropertyArgs* propArgs);
@@ -56,8 +56,6 @@ protected:
 	virtual void UnBindModel(shared_ptr<UniformStruct> pUniform);
 	void SetRenderData(shared_ptr<RenderData> pRenderData);
 
-	virtual void PreDraw(shared_ptr<UniformStruct> pUniform) {};
-	virtual void PostDraw(shared_ptr<UniformStruct> pUniform) {};
 private:
 
 	shared_ptr<RenderData> m_pRenderData;

@@ -18,15 +18,11 @@ public:
 	shared_ptr<DefaultVertexBuffer> GetVertexBuffer();
 	IndexBuffer* GetIndexBuffer();
 	void SetRenderData();
-	void SetState(shared_ptr<IGLState> pState) { m_pState = pState; };
 	virtual void AddSelect(PICK_TYPE type, shared_ptr<IShading> pShading, int index, int first, int count);
-	virtual void PreDraw(shared_ptr<UniformStruct> pUniform, int index);
-	virtual void PostDraw(shared_ptr<UniformStruct> pUniform, int index);
 
 private:
 	string m_name;
 	shared_ptr<IShading> m_pShading;
-	shared_ptr<IGLState> m_pState;
 };
 }
 }

@@ -23,7 +23,7 @@ void VoronoiScene::Initialize()
 		make_shared<DefaultVertexBuffer>());
 	pPointData->SetShading(pBasicShading);
 	m_pPointNode = make_shared<PrimitiveNode>(pPointData);
-	m_pPointNode->SetState(make_shared<PointState>(5.0f, false));
+	pRenderData->SetState(make_shared<PointState>(5.0f, false));
 	m_pScene->AddModelNode(m_pPointNode);
 
 	GenerateVoronoiDiagram();

@@ -29,26 +29,6 @@ PrimitiveNode::~PrimitiveNode()
 {
 }
 
-void PrimitiveNode::PreDraw(shared_ptr<UniformStruct> pUniform, int index)
-{
-	if (m_pState != nullptr)
-	{
-		m_pState->Bind();
-	}
-
-	Logger::GLError();
-}
-
-void PrimitiveNode::PostDraw(shared_ptr<UniformStruct> pUniform, int index)
-{
-	if (m_pState != nullptr)
-	{
-		m_pState->UnBind();
-	}
-
-	Logger::GLError();
-}
-
 IndexBuffer* PrimitiveNode::GetIndexBuffer()
 {
 	return GetRenderData()->GetIndexBuffer().get();
