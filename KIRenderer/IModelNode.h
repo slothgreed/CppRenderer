@@ -53,8 +53,8 @@ protected:
 	virtual void DrawProperty(shared_ptr<UniformStruct> pUniform);
 	virtual void UpdateProperty(void* sender, IEventArgs* args);
 	shared_ptr<IModel> m_pModel;
-	virtual void BindModel(shared_ptr<UniformStruct> pUniform, int index);
-	virtual void UnBindModel(shared_ptr<UniformStruct> pUniform, int index);
+	virtual void BindModel(shared_ptr<UniformStruct> pUniform);
+	virtual void UnBindModel(shared_ptr<UniformStruct> pUniform);
 	void AddRenderData(int id, shared_ptr<RenderData> pRenderData);
 	void RemoveRenderData(int id, shared_ptr<RenderData> pRenderData);
 

@@ -101,20 +101,20 @@ void IModelNode::RemoveProperty(shared_ptr<IModelProperty> prop)
 }
 
 
-void IModelNode::BindModel(shared_ptr<UniformStruct> pUniform, int index)
+void IModelNode::BindModel(shared_ptr<UniformStruct> pUniform)
 {
 	if (pUniform != NULL)
 	{
 		if (pUniform->GetModel() != NULL)
 		{
 			pUniform->GetModel()->SetModelMatrix(m_ModelMatrix);
-			pUniform->GetModel()->SetObjectId(m_pRenderData[index].pRenderData->GetPickID());
+			pUniform->GetModel()->SetObjectId(m_pRenderData[0].pRenderData->GetPickID());
 			pUniform->GetModel()->Bind();
 		}
 	}
 }
 
-void IModelNode::UnBindModel(shared_ptr<UniformStruct> pUniform, int index)
+void IModelNode::UnBindModel(shared_ptr<UniformStruct> pUniform)
 {
 	if (pUniform != NULL)
 	{
@@ -140,14 +140,14 @@ void IModelNode::FixedShaderDraw(shared_ptr<IShader> pShader, shared_ptr<IShadin
 				continue;
 			}
 
-			BindModel(pUniform, i);
+			BindModel(pUniform);
 			PreDraw(pUniform, i);
 			m_pRenderData[i].pRenderData->Draw(pShader, pShading, pUniform);
 			PostDraw(pUniform, i);
 		}
 
 		DrawProperty(pUniform);
-		UnBindModel(pUniform, 0);
+		UnBindModel(pUniform);
 	}
 }
 
@@ -166,7 +166,7 @@ void IModelNode::Draw(shared_ptr<UniformStruct> pUniform)
 				continue;
 			}
 
-			BindModel(pUniform, i);
+			BindModel(pUniform);
 			PreDraw(pUniform, i);
 			m_pRenderData[i].pRenderData->Draw(pUniform);
 			PostDraw(pUniform, i);
@@ -174,9 +174,9 @@ void IModelNode::Draw(shared_ptr<UniformStruct> pUniform)
 
 	}
 
-	BindModel(pUniform, 0);
+	BindModel(pUniform);
 	DrawProperty(pUniform);
-	UnBindModel(pUniform, 0);
+	UnBindModel(pUniform);
 }
 
 void IModelNode::AddRenderData(int id, shared_ptr<RenderData> pRenderData)
