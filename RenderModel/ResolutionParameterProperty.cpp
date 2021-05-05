@@ -124,7 +124,7 @@ void ResolutionParameterProperty::InitializeColorMap(int size)
 }
 void ResolutionParameterProperty::BuildColor(IModelNode* pModelNode, ResolutionParameterPropertyArgs* pPropertyArgs)
 {
-	auto pRenderData = pModelNode->GetRenderData(0);
+	auto pRenderData = pModelNode->GetRenderData();
 	auto pMeshBuffer = pRenderData->GetVertexBuffer();
 	m_pRenderData = make_shared<RenderData>();
 	InitializeColorMap(pMeshBuffer->GetVertexSize());
@@ -160,7 +160,7 @@ void ResolutionParameterProperty::BuildTangent(IModelNode* pModelNode, Resolutio
 {
 	
 	if (m_pTangentBuffer == nullptr) {
-		auto pRenderData = pModelNode->GetRenderData(0);
+		auto pRenderData = pModelNode->GetRenderData();
 		auto pMeshBuffer = pRenderData->GetVertexBuffer();
 		auto pVertexBuffer = make_shared<VertexBuffer>("Tangent");
 		pVertexBuffer->SetArrayBuffer(TangentVisualizeVertexCode::ATTRIBUTE::POSITION, pMeshBuffer->GetArrayBuffer(VERTEX_ATTRIB_POSITION));

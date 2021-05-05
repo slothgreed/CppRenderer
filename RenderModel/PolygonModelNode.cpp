@@ -29,7 +29,7 @@ IPolygonModel* PolygonModelNode::GetModel()
 
 shared_ptr<VertexBuffer> PolygonModelNode::GetVertexBuffer()
 {
-	return GetRenderData(0)->GetVertexBuffer(); 
+	return GetRenderData()->GetVertexBuffer(); 
 }
 
 void PolygonModelNode::VisibleNormal(bool visibility)

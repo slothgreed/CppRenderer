@@ -75,7 +75,7 @@ void SSLICEffect::SetModelNode(shared_ptr<IModelNode> pModelNode)
 	m_pBasicShading = make_shared<BasicShading>(m_pBlendTexture);
 
 	auto pBuildInfo = make_shared<IShaderBuildInfo>();
-	pBuildInfo->SetVertexBuffer(m_pModelNode->GetRenderData(0)->GetVertexBuffer());
+	pBuildInfo->SetVertexBuffer(m_pModelNode->GetRenderData()->GetVertexBuffer());
 	pBuildInfo->SetShaderChunk(m_pBasicShading);
 	m_pBasicShader = ShaderManager::Instance()->FindOrNew(pBuildInfo);
 }

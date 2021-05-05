@@ -22,7 +22,7 @@ PrimitiveNode::PrimitiveNode(shared_ptr<PrimitiveModel> pPrimitive, shared_ptr<I
 	: IRenderModelNode(pPrimitive)
 {
 	SetRenderData();
-	GetRenderData(0)->SetShading(pShading);
+	GetRenderData()->SetShading(pShading);
 }
 
 PrimitiveNode::~PrimitiveNode()
@@ -51,18 +51,18 @@ void PrimitiveNode::PostDraw(shared_ptr<UniformStruct> pUniform, int index)
 
 IndexBuffer* PrimitiveNode::GetIndexBuffer()
 {
-	return GetRenderData(0)->GetIndexBuffer().get();
+	return GetRenderData()->GetIndexBuffer().get();
 }
 
 shared_ptr<DefaultVertexBuffer> PrimitiveNode::GetVertexBuffer()
 {
-	if (GetRenderData(0)->GetVertexBuffer()->Type() != VERTEX_BUFFER_TYPE_DEFAULT)
+	if (GetRenderData()->GetVertexBuffer()->Type() != VERTEX_BUFFER_TYPE_DEFAULT)
 	{
 		assert(0);
 		return nullptr;
 	}
 
-	return static_pointer_cast<DefaultVertexBuffer>(GetRenderData(0)->GetVertexBuffer());
+	return static_pointer_cast<DefaultVertexBuffer>(GetRenderData()->GetVertexBuffer());
 }
 
 void PrimitiveNode::SetRenderData()
@@ -123,12 +123,12 @@ void PrimitiveNode::AddSelect(PICK_TYPE type, shared_ptr<IShading> pShading, int
 	if (type == PICK_TYPE::PICK_TYPE_OBJECT ||
 		type == PICK_TYPE::PICK_TYPE_FACE)
 	{
-		if (GetRenderData(0)->HasRenderRegion())
+		if (GetRenderData()->HasRenderRegion())
 		{
-			GetRenderData(0)->ClearRenderRegion();
+			GetRenderData()->ClearRenderRegion();
 		}
 
-		GetRenderData(0)->AddRenderRegion("Selection", pShading, first, count);
+		GetRenderData()->AddRenderRegion("Selection", pShading, first, count);
 	}
 	else
 	{

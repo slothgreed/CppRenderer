@@ -70,7 +70,7 @@ void MeshParameterizationProperty::BuildVBO(IModelNode* pModelNode, MeshParamete
 	m_ArrayBuffers.uvBuffer->Set(uv);
 
 	m_pRenderData->SetGeometryData(PRIM_TYPE_TRIANGLES, m_pVertexBuffer);
-	m_pRenderData->SetIndexBuffer(PRIM_TYPE_TRIANGLES, pModelNode->GetRenderData(0)->GetIndexBuffer());
+	m_pRenderData->SetIndexBuffer(PRIM_TYPE_TRIANGLES, pModelNode->GetRenderData()->GetIndexBuffer());
 }
 shared_ptr<HalfEdgeModel> MeshParameterizationProperty::GetHalfEdgeModel()
 {

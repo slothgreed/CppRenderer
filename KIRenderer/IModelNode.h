@@ -44,7 +44,7 @@ public:
 	void AddPickID(int start, int* next);
 	bool HasPickID(int index);
 	int GetRenderDataNum() { return (int)m_pRenderData.size(); }
-	shared_ptr<RenderData> GetRenderData(int id);
+	shared_ptr<RenderData> GetRenderData();
 protected:
 	void AddProperty(shared_ptr<IModelProperty> prop, IPropertyArgs* propArgs);
 	bool HasProperty(unsigned int type);

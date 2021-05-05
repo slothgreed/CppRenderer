@@ -184,14 +184,9 @@ void IModelNode::SetRenderData(shared_ptr<RenderData> pRenderData)
 	m_pRenderData[0] = RenderDataInfo(pRenderData);
 }
 
-shared_ptr<RenderData> IModelNode::GetRenderData(int id)
+shared_ptr<RenderData> IModelNode::GetRenderData()
 {
-	if (m_pRenderData[id].pRenderData == NULL) {
-		assert(0);
-		return nullptr;
-	}
-
-	return m_pRenderData[id].pRenderData;
+	return m_pRenderData[0].pRenderData;
 }
 
 void IModelNode::DrawProperty(shared_ptr<UniformStruct> pUniform)
@@ -210,12 +205,12 @@ void IModelNode::AddSelect(PICK_TYPE type, shared_ptr<IShading> pShader, int ind
 {
 	if (type == TOPOLOGY_TYPE::TOPOLOGY_TYPE_FACE)
 	{
-		if (GetRenderData(index)->HasRenderRegion())
+		if (GetRenderData()->HasRenderRegion())
 		{
-			GetRenderData(index)->ClearRenderRegion();
+			GetRenderData()->ClearRenderRegion();
 		}
 
-		GetRenderData(index)->AddRenderRegion("Selection", pShader, first, count);
+		GetRenderData()->AddRenderRegion("Selection", pShader, first, count);
 	}
 	else
 	{
