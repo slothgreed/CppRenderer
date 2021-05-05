@@ -13,10 +13,10 @@ class DLL_EXPORT ResolutionParameterPropertyArgs : public IRenderModelPropertyAr
 public:
 	enum RESOLUTION_PARAMETER
 	{
-		COLOR	 = 0x0,
-		TANGENT = 0x1,
-		NORMAL = 0x2,
-		AREA = 0x4
+		COLOR	= 0x1,
+		TANGENT = 0x2,
+		NORMAL	= 0x4,
+		AREA	= 0x8
 	};
 	ResolutionParameterPropertyArgs() :m_level(0), m_Type(COLOR) {};
 	ResolutionParameterPropertyArgs(int level) :m_level(level), m_Type(COLOR) {};

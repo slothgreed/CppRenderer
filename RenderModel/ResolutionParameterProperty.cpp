@@ -4,7 +4,10 @@ namespace RenderModel
 {
 ResolutionParameterPropertyArgs& ResolutionParameterProperty::DefaultArgs()
 {
-	static ResolutionParameterPropertyArgs defaultArgs(0);
+	static ResolutionParameterPropertyArgs defaultArgs(0,
+		(ResolutionParameterPropertyArgs::RESOLUTION_PARAMETER)(
+		ResolutionParameterPropertyArgs::RESOLUTION_PARAMETER::COLOR|
+		ResolutionParameterPropertyArgs::RESOLUTION_PARAMETER::TANGENT));
 
 	return defaultArgs;
 }
@@ -31,13 +34,10 @@ void ResolutionParameterProperty::BuildCore(IModelNode* pModelNode, IPropertyArg
 	{
 		BuildColor(pModelNode, pArgs);
 	}
-	else if (pArgs->ParameterType() & ResolutionParameterPropertyArgs::RESOLUTION_PARAMETER::TANGENT) {
+	if (pArgs->ParameterType() & ResolutionParameterPropertyArgs::RESOLUTION_PARAMETER::TANGENT) {
 
 		BuildTangent(pModelNode, pArgs);
 	}
-
-	BuildTangent(pModelNode, pArgs);
-
 }
 
 void ResolutionParameterProperty::Update(IModelNode* pModelNode, IPropertyArgs* pPropertyArgs)
