@@ -24,7 +24,7 @@ private:
 		RenderData& pFaceData,
 		MANIPULATOR_HANDLE handle);
 	void SetRenderData();
-	RenderData m_pManipulatorData[3];
+	RenderData m_pManipulatorData[MANIPULATOR_HANDLE_NUM];
 	MANIPULATOR_TYPE m_ManipulatorType;
 	shared_ptr<IManipulatorModel> m_pManipulator;
 	shared_ptr<BasicShading> m_pShading;

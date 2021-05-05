@@ -127,11 +127,7 @@ void IModelNode::UnBindModel(shared_ptr<UniformStruct> pUniform)
 
 void IModelNode::FixedShaderDraw(shared_ptr<IShader> pShader, shared_ptr<IShading> pShading, shared_ptr<UniformStruct> pUniform)
 {
-	if (m_visible == false)
-	{
-		return;
-	}
-	else
+	if (m_visible)
 	{
 		BindModel(pUniform);
 		m_pRenderData->Draw(pShader, pShading, pUniform);
@@ -140,17 +136,14 @@ void IModelNode::FixedShaderDraw(shared_ptr<IShader> pShader, shared_ptr<IShadin
 
 void IModelNode::Draw(shared_ptr<UniformStruct> pUniform)
 {
-	if (m_visible == false)
-	{
-		return;
-	}
-	else
+	if (m_visible)
 	{
 		BindModel(pUniform);
 		m_pRenderData->Draw(pUniform);
-		DrawProperty(pUniform);
 	}
 
+	BindModel(pUniform);
+	DrawProperty(pUniform);
 }
 
 void IModelNode::SetRenderData(shared_ptr<RenderData> pRenderData)
