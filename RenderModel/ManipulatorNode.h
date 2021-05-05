@@ -14,7 +14,7 @@ public:
 	virtual void ClearSelect() override;
 	virtual void AddSelect(PICK_TYPE type, shared_ptr<IShading> pShading, int index, int first, int count) override;
 protected:
-	virtual void PreDraw(shared_ptr<UniformStruct> pUniform, int index) override;
+	virtual void PreDraw(shared_ptr<UniformStruct> pUniform) override;
 private:
 	void GenManipulatorHandleVBO(
 		RenderData* pFaceData,

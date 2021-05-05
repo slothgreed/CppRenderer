@@ -43,7 +43,6 @@ public:
 	bool Visible() { return m_visible; }
 	void AddPickID(int start, int* next);
 	bool HasPickID(int index);
-	int GetRenderDataNum() { return (int)m_pRenderData.size(); }
 	shared_ptr<RenderData> GetRenderData();
 protected:
 	void AddProperty(shared_ptr<IModelProperty> prop, IPropertyArgs* propArgs);
@@ -57,20 +56,11 @@ protected:
 	virtual void UnBindModel(shared_ptr<UniformStruct> pUniform);
 	void SetRenderData(shared_ptr<RenderData> pRenderData);
 
-	virtual void PreDraw(shared_ptr<UniformStruct> pUniform, int index) {};
-	virtual void PostDraw(shared_ptr<UniformStruct> pUniform, int index) {};
+	virtual void PreDraw(shared_ptr<UniformStruct> pUniform) {};
+	virtual void PostDraw(shared_ptr<UniformStruct> pUniform) {};
 private:
 
-	struct RenderDataInfo
-	{
-		RenderDataInfo() :visible(true), pRenderData(nullptr) {}
-		RenderDataInfo(shared_ptr<RenderData> pData):visible(true),pRenderData(pData) {}
-		bool visible;
-		shared_ptr<RenderData> pRenderData;
-	};
-
-
-	map<int, RenderDataInfo> m_pRenderData;
+	shared_ptr<RenderData> m_pRenderData;
 	bool m_visible;
 	vector<shared_ptr<IModelProperty>> m_pProperty;
 	mat4x4 m_ModelMatrix;

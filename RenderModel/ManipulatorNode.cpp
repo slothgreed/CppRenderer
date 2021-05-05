@@ -68,8 +68,9 @@ void ManipulatorNode::GenManipulatorHandleVBO(
 	pFaceData->SetGeometryData(PRIM_TYPE_TRIANGLES, pFaceBuffer, pFaceIndexBuffer);
 }
 
-void ManipulatorNode::PreDraw(shared_ptr<UniformStruct> pUniform, int index)
+void ManipulatorNode::PreDraw(shared_ptr<UniformStruct> pUniform)
 {
+	int index = 0;
 	if (index == MANIPULATOR_HANDLE_X)
 	{
 		m_pShading->SetColor(vec4(1, 0, 0, 1));
@@ -94,12 +95,12 @@ void ManipulatorNode::ClearSelect()
 		return;
 	}
 
-	if (GetRenderData(m_SelectIndex)->HasRenderRegion())
+	if (GetRenderData()->HasRenderRegion())
 	{
-		GetRenderData(m_SelectIndex)->ClearRenderRegion();
+		GetRenderData()->ClearRenderRegion();
 	}
 
-	GetRenderData(m_SelectIndex)->SetShading(m_pShading);
+	GetRenderData()->SetShading(m_pShading);
 	m_SelectIndex = -1;
 }
 void ManipulatorNode::AddSelect(PICK_TYPE type, shared_ptr<IShading> pShading, int pickId, int first, int count)
@@ -113,15 +114,12 @@ void ManipulatorNode::AddSelect(PICK_TYPE type, shared_ptr<IShading> pShading, i
 		assert(0);
 	}
 
-	for (int i = 0; i < GetRenderDataNum(); i++)
+	if (GetRenderData()->GetPickID() == pickId)
 	{
-		if (GetRenderData(i)->GetPickID() == pickId)
-		{
-			GetRenderData(i)->SetShading(pShading);
-			m_SelectIndex = i;
-		}
+		GetRenderData()->SetShading(pShading);
+		m_SelectIndex = 0;
 	}
-	
+
 }
 
 

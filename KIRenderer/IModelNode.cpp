@@ -108,7 +108,7 @@ void IModelNode::BindModel(shared_ptr<UniformStruct> pUniform)
 		if (pUniform->GetModel() != NULL)
 		{
 			pUniform->GetModel()->SetModelMatrix(m_ModelMatrix);
-			pUniform->GetModel()->SetObjectId(m_pRenderData[0].pRenderData->GetPickID());
+			pUniform->GetModel()->SetObjectId(m_pRenderData->GetPickID());
 			pUniform->GetModel()->Bind();
 		}
 	}
@@ -133,21 +133,10 @@ void IModelNode::FixedShaderDraw(shared_ptr<IShader> pShader, shared_ptr<IShadin
 	}
 	else
 	{
-		for (int i = 0; i < m_pRenderData.size(); i++)
-		{
-			if (m_pRenderData[i].visible == false ||
-				m_pRenderData[i].pRenderData == nullptr) {
-				continue;
-			}
-
-			BindModel(pUniform);
-			PreDraw(pUniform, i);
-			m_pRenderData[i].pRenderData->Draw(pShader, pShading, pUniform);
-			PostDraw(pUniform, i);
-		}
-
-		DrawProperty(pUniform);
-		UnBindModel(pUniform);
+		BindModel(pUniform);
+		PreDraw(pUniform);
+		m_pRenderData->Draw(pShader, pShading, pUniform);
+		PostDraw(pUniform);
 	}
 }
 
@@ -159,34 +148,23 @@ void IModelNode::Draw(shared_ptr<UniformStruct> pUniform)
 	}
 	else
 	{
-		for (int i = 0; i < m_pRenderData.size(); i++)
-		{
-			if (m_pRenderData[i].visible == false ||
-				m_pRenderData[i].pRenderData == nullptr) {
-				continue;
-			}
-
-			BindModel(pUniform);
-			PreDraw(pUniform, i);
-			m_pRenderData[i].pRenderData->Draw(pUniform);
-			PostDraw(pUniform, i);
-		}
-
+		BindModel(pUniform);
+		PreDraw(pUniform);
+		m_pRenderData->Draw(pUniform);
+		DrawProperty(pUniform);
+		PostDraw(pUniform);
 	}
 
-	BindModel(pUniform);
-	DrawProperty(pUniform);
-	UnBindModel(pUniform);
 }
 
 void IModelNode::SetRenderData(shared_ptr<RenderData> pRenderData)
 {
-	m_pRenderData[0] = RenderDataInfo(pRenderData);
+	m_pRenderData = pRenderData;
 }
 
 shared_ptr<RenderData> IModelNode::GetRenderData()
 {
-	return m_pRenderData[0].pRenderData;
+	return m_pRenderData;
 }
 
 void IModelNode::DrawProperty(shared_ptr<UniformStruct> pUniform)
@@ -234,23 +212,17 @@ void IModelNode::UpdateProperty(void* sender, IEventArgs* args)
 
 void IModelNode::AddPickID(int start, int* next)
 {
-	for (int i = 0; i < m_pRenderData.size(); i++)
-	{
-		m_pRenderData[i].pRenderData->SetPickID(start);
-		start++;
-	}
+	m_pRenderData->SetPickID(start);
+	start++;
 
 	*next = start;
 }
 
 bool IModelNode::HasPickID(int id)
 {
-	for (int i = 0; i < m_pRenderData.size(); i++)
+	if (m_pRenderData->GetPickID() == id)
 	{
-		if (m_pRenderData[i].pRenderData->GetPickID() == id)
-		{
-			return true;
-		}
+		return true;
 	}
 
 	return false;
