@@ -25,6 +25,8 @@ shared_ptr<IModelProperty> IRenderModelProperty::Create(PROPERTY_TYPE type)
 		return make_shared<QuadPositionProperty>();
 	case KI::RenderModel::PROPERTY_TYPE_MESH_PARAMETERIZATION:
 		return make_shared<MeshParameterizationProperty>();
+	case KI::RenderModel::PROPERTY_TYPE_EDGE:
+		return make_shared<EdgeProperty>();
 	default:
 		assert(0);
 		break;

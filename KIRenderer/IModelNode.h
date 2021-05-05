@@ -41,8 +41,6 @@ public:
 	const mat4x4& GetModelMatrix() const { return m_ModelMatrix; };
 	void SetVisible(bool value) { m_visible = value; }
 	bool Visible() { return m_visible; }
-	void SetVisible(int id, bool visible);
-	bool Visible(int id);
 	void AddPickID(int start, int* next);
 	bool HasPickID(int index);
 	int GetRenderDataNum() { return (int)m_pRenderData.size(); }

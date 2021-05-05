@@ -20,11 +20,6 @@ protected:
 	string m_name;
 
 private:
-	enum RENDER_DATA
-	{
-		MESH = 0,
-		Edge = 1,
-	};
 
 	struct UI
 	{

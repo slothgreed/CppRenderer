@@ -177,6 +177,7 @@
     <ClInclude Include="CameraNode.h" />
     <ClInclude Include="CheckBoxUI.h" />
     <ClInclude Include="ColorPickerUI.h" />
+    <ClInclude Include="EdgeProperty.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="MeshParameterizationProperty.h" />
     <ClInclude Include="QuadPositionProperty.h" />
@@ -211,6 +212,7 @@
     <ClCompile Include="CheckBoxUI.cpp" />
     <ClCompile Include="ColorPickerUI.cpp" />
     <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="EdgeProperty.cpp" />
     <ClCompile Include="MeshParameterizationProperty.cpp" />
     <ClCompile Include="QuadPositionProperty.cpp" />
     <ClCompile Include="ResolutionParameterProperty.cpp" />

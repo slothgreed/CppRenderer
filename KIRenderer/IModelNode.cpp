@@ -179,15 +179,6 @@ void IModelNode::Draw(shared_ptr<UniformStruct> pUniform)
 	UnBindModel(pUniform, 0);
 }
 
-void IModelNode::SetVisible(int id, bool visible)
-{
-	m_pRenderData[id].visible = visible;
-}
-bool IModelNode::Visible(int id)
-{
-	return m_pRenderData[id].visible;
-}
-
 void IModelNode::AddRenderData(int id, shared_ptr<RenderData> pRenderData)
 {
 	m_pRenderData[id] = RenderDataInfo(pRenderData);
