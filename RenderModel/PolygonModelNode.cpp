@@ -50,7 +50,7 @@ shared_ptr<ArrayBuffer> PolygonModelNode::GetPositionBuffer()
 		return GetRenderData()->GetVertexBuffer()->GetArrayBuffer(VERTEX_ATTRIB_POSITION);
 	} else {
 		assert(0);
-		nullptr;
+		return nullptr;
 	}
 }
 shared_ptr<ArrayBuffer> PolygonModelNode::GetNormalBuffer()
@@ -60,7 +60,7 @@ shared_ptr<ArrayBuffer> PolygonModelNode::GetNormalBuffer()
 	}
 	else {
 		assert(0);
-		nullptr;
+		return nullptr;
 	}
 }
 shared_ptr<ArrayBuffer> PolygonModelNode::GetColorBuffer()
@@ -70,7 +70,7 @@ shared_ptr<ArrayBuffer> PolygonModelNode::GetColorBuffer()
 	}
 	else {
 		assert(0);
-		nullptr;
+		return nullptr;
 	}
 }
 shared_ptr<ArrayBuffer> PolygonModelNode::GetTexcoordBuffer()
@@ -80,7 +80,7 @@ shared_ptr<ArrayBuffer> PolygonModelNode::GetTexcoordBuffer()
 	}
 	else {
 		assert(0);
-		nullptr;
+		return nullptr;
 	}
 }
 

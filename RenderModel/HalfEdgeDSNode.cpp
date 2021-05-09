@@ -3,18 +3,56 @@ namespace KI
 namespace RenderModel
 {
 HalfEdgeDSNode::HalfEdgeDSNode(shared_ptr<HalfEdgeModel> model)
-	:PolygonModelNode(static_pointer_cast<IModel>(model))
+	:PolygonModelNode(static_pointer_cast<IModel>(model)),
+	m_pTangentBuffer(nullptr),
+	m_pQuadPositionBuffer(nullptr)
 {
 	VisibleProperty(PROPERTY_TYPE::PROPERTY_TYPE_RESOLUTION, true);
 	VisibleProperty(PROPERTY_TYPE::PROPERTY_TYPE_VERTEX_TANGENT, true);
-	auto pModel = ((HalfEdgeModel*)m_pModel.get());
-	auto pProperty = GetProperty(PROPERTY_TYPE::PROPERTY_TYPE_VERTEX_TANGENT);
-	pProperty->Update(this, nullptr);
 	//VisibleProperty(PROPERTY_TYPE::PROPERTY_TYPE_VERTEX_INDEX, true);
 }
 
 HalfEdgeDSNode::~HalfEdgeDSNode()
 {
+}
+
+HalfEdgeDSNode* HalfEdgeDSNode::IsHalfEdgeDSNode(IModelNode* pModelNode)
+{
+	return dynamic_cast<HalfEdgeDSNode*>(pModelNode);
+}
+
+
+shared_ptr<ArrayBuffer> HalfEdgeDSNode::GetTangentBuffer()
+{
+	if (m_pTangentBuffer == nullptr) {
+		m_pTangentBuffer = make_shared<ArrayBuffer>(GL_FLOAT, 3);
+	}
+	
+	return m_pTangentBuffer;
+}
+shared_ptr<ArrayBuffer> HalfEdgeDSNode::GetQuadBuffer()
+{
+	if (m_pQuadPositionBuffer == nullptr) {
+		m_pQuadPositionBuffer = make_shared<ArrayBuffer>(GL_FLOAT, 3);
+	}
+	
+	return m_pQuadPositionBuffer;
+}
+
+void HalfEdgeDSNode::BuildTangentBuffer(const std::vector<vec3>& tangent)
+{
+	if(!m_pTangentBuffer->IsGenerated()){
+		m_pTangentBuffer->Generate();
+	}
+	m_pTangentBuffer->Set(tangent);
+}
+
+void HalfEdgeDSNode::BuildQuadPositionBuffer(const std::vector<vec3>& quadPos)
+{
+	if (!m_pQuadPositionBuffer->IsGenerated()) {
+		m_pQuadPositionBuffer->Generate();
+	}
+	m_pQuadPositionBuffer->Set(quadPos);
 }
 
 void HalfEdgeDSNode::ShowUI()
