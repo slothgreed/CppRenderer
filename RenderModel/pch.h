@@ -50,12 +50,9 @@ using namespace KI::ImGuiEx;
 #include "BDBProperty.h"
 #include "NormalProperty.h"
 #include "HalfEdgeProperty.h"
-#include "VertexTangentProperty.h"
 #include "VertexIndexProperty.h"
 #include "ResolutionParameterProperty.h"
 #include "BVHProperty.h"
-#include "QuadPositionProperty.h"
-#include "MeshParameterizationProperty.h"
 #include "EdgeProperty.h"
 
 #include "IRenderModelNode.h"

@@ -69,9 +69,6 @@
     <ClInclude Include="CameraNode.h">
       <Filter>ヘッダー ファイル\Node</Filter>
     </ClInclude>
-    <ClInclude Include="VertexTangentProperty.h">
-      <Filter>ヘッダー ファイル\Property</Filter>
-    </ClInclude>
     <ClInclude Include="BVHProperty.h">
       <Filter>ヘッダー ファイル\Property</Filter>
     </ClInclude>
@@ -126,12 +123,6 @@
     <ClInclude Include="ResolutionParameterProperty.h">
       <Filter>ヘッダー ファイル\Property</Filter>
     </ClInclude>
-    <ClInclude Include="QuadPositionProperty.h">
-      <Filter>ヘッダー ファイル\Property</Filter>
-    </ClInclude>
-    <ClInclude Include="MeshParameterizationProperty.h">
-      <Filter>ヘッダー ファイル\Property</Filter>
-    </ClInclude>
     <ClInclude Include="EdgeProperty.h">
       <Filter>ヘッダー ファイル\Property</Filter>
     </ClInclude>
@@ -169,9 +160,6 @@
     </ClCompile>
     <ClCompile Include="CameraNode.cpp">
       <Filter>ソース ファイル\Node</Filter>
-    </ClCompile>
-    <ClCompile Include="VertexTangentProperty.cpp">
-      <Filter>ソース ファイル\Property</Filter>
     </ClCompile>
     <ClCompile Include="..\extlibs\imgui\imgui.cpp">
       <Filter>ヘッダー ファイル\ImGui</Filter>
@@ -222,12 +210,6 @@
       <Filter>ソース ファイル\ImGuiEx</Filter>
     </ClCompile>
     <ClCompile Include="ResolutionParameterProperty.cpp">
-      <Filter>ソース ファイル\Property</Filter>
-    </ClCompile>
-    <ClCompile Include="QuadPositionProperty.cpp">
-      <Filter>ソース ファイル\Property</Filter>
-    </ClCompile>
-    <ClCompile Include="MeshParameterizationProperty.cpp">
       <Filter>ソース ファイル\Property</Filter>
     </ClCompile>
     <ClCompile Include="EdgeProperty.cpp">

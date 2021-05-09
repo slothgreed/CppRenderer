@@ -12,7 +12,7 @@ public :
 	~HalfEdgeDSNode();
 	static HalfEdgeDSNode* IsHalfEdgeDSNode(IModelNode* pModelNode);
 	shared_ptr<ArrayBuffer> GetTangentBuffer();
-	shared_ptr<ArrayBuffer> GetQuadBuffer();
+	shared_ptr<ArrayBuffer> GetQuadPositionBuffer();
 	void BuildTangentBuffer(const std::vector<vec3>& tangentBuffer);
 	void BuildQuadPositionBuffer(const std::vector<vec3>& tangentBuffer);
 
@@ -20,12 +20,12 @@ public :
 private:
 	struct UI
 	{
-		UI() : visibleHalfEdge(false), visibleResolution(false), visibleBVH(false), visibleTangent(false), visibleIndex(false){}
+		UI() : visibleHalfEdge(false), visibleResolution(false), visibleBVH(false), visibleParameter(false), visibleIndex(false){}
 		bool visibleHalfEdge;
 		bool visibleResolution;
 		bool visibleBVH;
 		bool visibleIndex;
-		bool visibleTangent;
+		bool visibleParameter;
 		bool calcAlignment;
 		PlotLineUI plot;
 	};

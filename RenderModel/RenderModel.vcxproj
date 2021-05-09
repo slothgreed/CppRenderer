@@ -179,8 +179,6 @@
     <ClInclude Include="ColorPickerUI.h" />
     <ClInclude Include="EdgeProperty.h" />
     <ClInclude Include="framework.h" />
-    <ClInclude Include="MeshParameterizationProperty.h" />
-    <ClInclude Include="QuadPositionProperty.h" />
     <ClInclude Include="ResolutionParameterProperty.h" />
     <ClInclude Include="HalfEdgeDSNode.h" />
     <ClInclude Include="HalfEdgeProperty.h" />
@@ -195,7 +193,6 @@
     <ClInclude Include="SliderUI.h" />
     <ClInclude Include="TextUI.h" />
     <ClInclude Include="VertexIndexProperty.h" />
-    <ClInclude Include="VertexTangentProperty.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\extlibs\imgui\backends\imgui_impl_glfw.cpp" />
@@ -213,8 +210,6 @@
     <ClCompile Include="ColorPickerUI.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="EdgeProperty.cpp" />
-    <ClCompile Include="MeshParameterizationProperty.cpp" />
-    <ClCompile Include="QuadPositionProperty.cpp" />
     <ClCompile Include="ResolutionParameterProperty.cpp" />
     <ClCompile Include="HalfEdgeDSNode.cpp" />
     <ClCompile Include="HalfEdgeProperty.cpp" />
@@ -234,7 +229,6 @@
     <ClCompile Include="SliderUI.cpp" />
     <ClCompile Include="TextUI.cpp" />
     <ClCompile Include="VertexIndexProperty.cpp" />
-    <ClCompile Include="VertexTangentProperty.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

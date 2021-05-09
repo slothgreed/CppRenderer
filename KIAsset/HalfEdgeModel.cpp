@@ -162,10 +162,9 @@ bool HalfEdgeModel::CalcDownSampling()
 {
 	if (m_pDownSampling == nullptr) {
 		m_pDownSampling = new DownSampling(m_HalfEdgeDS.get());
-		return true;
 	}
 
-	return false;
+	return true;
 }
 
 bool HalfEdgeModel::CalcAlignOrientation()
@@ -176,9 +175,9 @@ bool HalfEdgeModel::CalcAlignOrientation()
 
 	if (m_pAlignOrientation == nullptr){
 		m_pAlignOrientation = new AlignOrientation(m_HalfEdgeDS.get(), m_pDownSampling);
+		m_pAlignOrientation->Calculate(6);
 	}
 
-	m_pAlignOrientation->Calculate(6);
 
 	return true;
 }
@@ -201,9 +200,9 @@ bool HalfEdgeModel::CalcArrangePosition()
 
 	if (m_pArrangePoint == nullptr) {
 		m_pArrangePoint = new ArrangePoint(m_HalfEdgeDS.get(), m_pDownSampling);
+		m_pArrangePoint->Calculate(6);
 	}
 
-	m_pArrangePoint->Calculate(6);
 
 	return true;
 }

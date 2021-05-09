@@ -13,10 +13,11 @@ class DLL_EXPORT ResolutionParameterPropertyArgs : public IRenderModelPropertyAr
 public:
 	enum RESOLUTION_PARAMETER
 	{
+		NONE	= 0x0,
 		COLOR	= 0x1,
 		TANGENT = 0x2,
-		NORMAL	= 0x4,
-		AREA	= 0x8
+		QUAD	= 0x4,
+		PARAM	= 0x8
 	};
 	ResolutionParameterPropertyArgs() :m_level(0), m_Type(COLOR) {};
 	ResolutionParameterPropertyArgs(int level) :m_level(level), m_Type(COLOR) {};
@@ -44,10 +45,8 @@ public:
 	virtual void InitializeUI() override;
 	virtual void ShowUI() override;
 private:
-	void BuildColor(IModelNode* pModelNode, ResolutionParameterPropertyArgs* pPropertyArgs);
-	void UpdateColor(IModelNode* pModelNode, ResolutionParameterPropertyArgs* pPropertyArgs);
-	void BuildTangent(IModelNode* pModelNode, ResolutionParameterPropertyArgs* pPropertyArgs);
-	void UpdateTangent(IModelNode* pModelNode, ResolutionParameterPropertyArgs* pPropertyArgs);
+	void BuildParameter(IModelNode* pModelNode, ResolutionParameterPropertyArgs* pPropertyArgs);
+	void UpdateParameter(IModelNode* pModelNode, ResolutionParameterPropertyArgs* pPropertyArgs);
 	void InitializeColorMap(int size);
 	void SetModel(IModelNode* pModelNode);
 
@@ -55,16 +54,36 @@ private:
 	{
 		UI(){}
 		SliderIntUI resolution;
+		CheckBoxUI color;
+		CheckBoxUI tangent;
+		CheckBoxUI quad;
+		CheckBoxUI parameterization;
 	};
 
+	struct GPUBuffer 
+	{
+		shared_ptr<DefaultVertexBuffer> colorVBO;
+		shared_ptr<VertexBuffer> tangentVBO;
+		shared_ptr<VertexBuffer> quadVBO;
+		shared_ptr<VertexBuffer> paramVBO;
+
+		shared_ptr<ArrayBuffer> positionBuffer;	// per level.
+		shared_ptr<ArrayBuffer> normalBuffer;
+		shared_ptr<ArrayBuffer> tangentBuffer;
+		shared_ptr<ArrayBuffer> quadBuffer;
+
+		shared_ptr<RenderData> colorData;
+		shared_ptr<RenderData> tangentData;
+		shared_ptr<RenderData> quadData;
+		shared_ptr<RenderData> paramData;
+
+	};
 	static ResolutionParameterPropertyArgs& DefaultArgs();
-	void GetClusterColor(ResolutionParameterPropertyArgs* pPropertyArgs, vector<vec3>& color);
+	void GetClusterColor(int level, vector<vec3>& color);
 	UI m_ui;
 	shared_ptr<HalfEdgeModel> m_pModel;
-	shared_ptr<IShader> m_pShader;
-	shared_ptr<RenderData> m_pRenderData;
-	shared_ptr<ArrayBuffer> m_pTangentBuffer;
 	std::vector<vec3> m_colorMap;
+	GPUBuffer m_buffers;
 
 };
 }

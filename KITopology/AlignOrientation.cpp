@@ -107,8 +107,8 @@ void AlignOrientation::InitRandomTangent()
 int g_index = 0;
 void AlignOrientation::Calculate(int localItrNum)
 {
-	//if(false){
-	if (FileUtility::IsExist("C:\\Users\\stmnd\\Desktop\\Tmp\\output.tangent")) {
+	if(false){
+	//if (FileUtility::IsExist("C:\\Users\\stmnd\\Desktop\\Tmp\\output.tangent")) {
 		HalfEdgeParameterIO io;
 		vector<vec3> input;
 		io.LoadTangent("C:\\Users\\stmnd\\Desktop\\Tmp\\output.tangent", &input);

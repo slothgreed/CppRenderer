@@ -44,6 +44,7 @@ void DownSamplingOperator::SetVertexOfCluster()
 
 void DownSamplingOperator::GetData(int level, std::vector<vec3>* position, std::vector<vec3>* normal, std::vector<vec3>* tangent, std::vector<vec3>* quadPos)
 {
+	assert(m_pInstance != nullptr);
 	auto pResolution = m_pInstance->m_pResolution[level];
 	if (position)
 		position->resize(pResolution->GetClusterNum());
