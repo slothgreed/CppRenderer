@@ -27,11 +27,6 @@ IPolygonModel* PolygonModelNode::GetModel()
 	}
 }
 
-shared_ptr<VertexBuffer> PolygonModelNode::GetVertexBuffer()
-{
-	return GetRenderData()->GetVertexBuffer(); 
-}
-
 void PolygonModelNode::VisibleNormal(bool visibility)
 {
 	if (GetModel()->HasVertexList())
@@ -42,6 +37,56 @@ void PolygonModelNode::VisibleNormal(bool visibility)
 	{
 		Logger::Output(LOG_LEVEL::LOG_LEVEL_DEBUG, "don't have vertex list");
 	}
+}
+
+shared_ptr<VertexBuffer> PolygonModelNode::GetVertexBuffer()
+{
+	return GetRenderData()->GetVertexBuffer();
+}
+
+shared_ptr<ArrayBuffer> PolygonModelNode::GetPositionBuffer()
+{
+	if (GetRenderData()->GetVertexBuffer()->Type() == VERTEX_BUFFER_TYPE_DEFAULT) {
+		return GetRenderData()->GetVertexBuffer()->GetArrayBuffer(VERTEX_ATTRIB_POSITION);
+	} else {
+		assert(0);
+		nullptr;
+	}
+}
+shared_ptr<ArrayBuffer> PolygonModelNode::GetNormalBuffer()
+{
+	if (GetRenderData()->GetVertexBuffer()->Type() == VERTEX_BUFFER_TYPE_DEFAULT) {
+		return GetRenderData()->GetVertexBuffer()->GetArrayBuffer(VERTEX_ATTRIB_NORMAL);
+	}
+	else {
+		assert(0);
+		nullptr;
+	}
+}
+shared_ptr<ArrayBuffer> PolygonModelNode::GetColorBuffer()
+{
+	if (GetRenderData()->GetVertexBuffer()->Type() == VERTEX_BUFFER_TYPE_DEFAULT) {
+		return GetRenderData()->GetVertexBuffer()->GetArrayBuffer(VERTEX_ATTRIB_COLOR);
+	}
+	else {
+		assert(0);
+		nullptr;
+	}
+}
+shared_ptr<ArrayBuffer> PolygonModelNode::GetTexcoordBuffer()
+{
+	if (GetRenderData()->GetVertexBuffer()->Type() == VERTEX_BUFFER_TYPE_DEFAULT) {
+		return GetRenderData()->GetVertexBuffer()->GetArrayBuffer(VERTEX_ATTRIB_TEXCOORD);
+	}
+	else {
+		assert(0);
+		nullptr;
+	}
+}
+
+shared_ptr<IndexBuffer> PolygonModelNode::GetIndexBuffer()
+{
+	return GetRenderData()->GetIndexBuffer();
 }
 
 void PolygonModelNode::SetRenderData()

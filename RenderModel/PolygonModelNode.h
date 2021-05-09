@@ -16,6 +16,12 @@ public:
 
 	void VisibleNormal(bool visibility);
 	shared_ptr<VertexBuffer> GetVertexBuffer();
+	shared_ptr<ArrayBuffer> GetPositionBuffer();
+	shared_ptr<ArrayBuffer> GetNormalBuffer();
+	shared_ptr<ArrayBuffer> GetColorBuffer();
+	shared_ptr<ArrayBuffer> GetTexcoordBuffer();
+	shared_ptr<IndexBuffer> GetIndexBuffer();
+
 protected:
 	string m_name;
 
