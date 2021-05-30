@@ -3,7 +3,7 @@
 namespace KI
 {
 
-namespace Topology
+namespace Foundation
 {
 	class Ray;
 };
@@ -14,11 +14,11 @@ namespace Asset
 class DLL_EXPORT RaycastPickInfo
 {
 public:
-	RaycastPickInfo(PICK_TYPE type, Topology::Ray* ray);
+	RaycastPickInfo(PICK_TYPE type, Foundation::Ray* ray);
 	~RaycastPickInfo() {};
 
 	PICK_TYPE Type() { return m_Type; }
-	const Topology::Ray& GetRay() { return *m_ray; };
+	const Ray& GetRay() { return *m_ray; };
 	float MinDistance() { return m_minDistance; };
 	void SetResult(PICK_TYPE type, const string& id, int first, int count, vec3 position, float distance);
 	bool Success();
@@ -29,7 +29,7 @@ private:
 	PICK_TYPE m_Type;
 
 	PICK_TYPE m_pickItemType;
-	Topology::Ray* m_ray;
+	Foundation::Ray* m_ray;
 	float m_minDistance;
 	int m_first;
 	int m_count;

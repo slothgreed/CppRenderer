@@ -21,6 +21,8 @@ shared_ptr<IModelProperty> IRenderModelProperty::Create(PROPERTY_TYPE type)
 		return make_shared<VertexIndexProperty>();
 	case KI::RenderModel::PROPERTY_TYPE_EDGE:
 		return make_shared<EdgeProperty>();
+	case KI::RenderModel::PROPERTY_TYPE_SDF:
+		return make_shared<SDFProperty>();
 	default:
 		assert(0);
 		break;

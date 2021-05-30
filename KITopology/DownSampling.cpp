@@ -1,4 +1,3 @@
-#include "DownSampling.h"
 namespace KI
 {
 namespace Topology

@@ -126,6 +126,9 @@
     <ClInclude Include="EdgeProperty.h">
       <Filter>ヘッダー ファイル\Property</Filter>
     </ClInclude>
+    <ClInclude Include="SDFProperty.h">
+      <Filter>ヘッダー ファイル\Property</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -213,6 +216,9 @@
       <Filter>ソース ファイル\Property</Filter>
     </ClCompile>
     <ClCompile Include="EdgeProperty.cpp">
+      <Filter>ソース ファイル\Property</Filter>
+    </ClCompile>
+    <ClCompile Include="SDFProperty.cpp">
       <Filter>ソース ファイル\Property</Filter>
     </ClCompile>
   </ItemGroup>

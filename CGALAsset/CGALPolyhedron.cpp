@@ -2,22 +2,31 @@
 #include <CGAL/Simple_cartesian.h>
 #include <CGAL/Polyhedron_3.h>
 #include <CGAL/normal_vector_newell_3.h>
+
+// sdf
+#include <CGAL/Polyhedron_items_with_id_3.h>
+#include <CGAL/Polyhedron_3.h>
+#include <CGAL/mesh_segmentation.h>
+#include <CGAL/property_map.h>
+// sdf end.
+
 #include <fstream>
 
-namespace KI
-{
-namespace Asset
-{
 
 typedef CGAL::Exact_predicates_inexact_constructions_kernel Local_Kernel;
 typedef Local_Kernel::Point_3 Local_Point;
 typedef Local_Kernel::Vector_3 Local_Vector;
-typedef CGAL::Polyhedron_3<Local_Kernel> Polyhedron;
+typedef CGAL::Polyhedron_3<Local_Kernel, CGAL::Polyhedron_items_with_id_3> Polyhedron;
 typedef Polyhedron::Halfedge_handle HalfEdge_handle;
 typedef typename Polyhedron::Traits Traits;
 typedef typename Polyhedron::Halfedge_const_handle Halfedge_const_handle;
 typedef typename Polyhedron::Vertex_const_handle Vertex_const_handle;
 typedef typename Polyhedron::Facet_const_handle Facet_const_handle;
+namespace KI
+{
+namespace Asset
+{
+
 class CGALPolyhedronImpl
 {
 public:
@@ -151,6 +160,25 @@ void CGALPolyhedron::GenSampleModel()
 	CGAL::set_ascii_mode(std::cout);
 }
 
+typedef boost::graph_traits<Polyhedron>::face_descriptor face_descriptor;
+template<class ValueType>
+struct Face_with_id_pmap
+	:public boost::put_get_helper<ValueType&, Face_with_id_pmap<ValueType>>
+{
+	typedef face_descriptor key_type;
+	typedef ValueType value_type;
+	typedef value_type& reference;
+	typedef boost::lvalue_property_map_tag category;
+	Face_with_id_pmap(
+		std::vector<ValueType>& internal_vector) :
+		internal_vector(internal_vector) {}
+	reference operator[](key_type key)const
+	{
+		return internal_vector[key->id()];
+	}
+private:
+	std::vector<ValueType>& internal_vector;
+};
 void CGALPolyhedron::Load(const string& filePath)
 {
 	ifstream input(filePath);
@@ -165,6 +193,21 @@ void CGALPolyhedron::Load(const string& filePath)
 	//{
 	//	Logger::Output(LOG_LEVEL::LOG_LEVEL_ERROR, "Failed Load CGALPolyhedron");
 	//}
+
+	int faceId = 0;
+	for (face_descriptor f : CGAL::faces(*m_pPrivate->m_model))
+	{
+		f->id() = faceId++;
+	}
+
+	std::vector<double> sdf_values(num_faces(*m_pPrivate->m_model));
+	Face_with_id_pmap<double> sdf_property_map(sdf_values);
+
+	CGAL::sdf_values(*m_pPrivate->m_model, sdf_property_map);
+
+	std::vector<int> segment_ids(CGAL::num_faces(*m_pPrivate->m_model));
+	Face_with_id_pmap<int> segment_property_map(segment_ids);
+	CGAL::segmentation_from_sdf_values(*m_pPrivate->m_model, sdf_property_map, segment_property_map);
 
 }
 

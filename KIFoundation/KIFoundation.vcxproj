@@ -176,6 +176,7 @@
     <ClInclude Include="IController.h" />
     <ClInclude Include="IEventArgs.h" />
     <ClInclude Include="Interface.h" />
+    <ClInclude Include="Intersect.h" />
     <ClInclude Include="IObserver.h" />
     <ClInclude Include="KIType.h" />
     <ClInclude Include="Logger.h" />
@@ -203,6 +204,7 @@
     <ClCompile Include="FileReader.cpp" />
     <ClCompile Include="FileUtility.cpp" />
     <ClCompile Include="FileWriter.cpp" />
+    <ClCompile Include="Intersect.cpp" />
     <ClCompile Include="KIFoundation.cpp" />
     <ClCompile Include="Logger.cpp" />
     <ClCompile Include="MathHelper.cpp" />

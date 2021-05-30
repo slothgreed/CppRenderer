@@ -28,7 +28,7 @@ bool CameraController::Move(const Mouse& mouse)
 	else if(mouse.Press(KI_MOUSE_BUTTON::MOUSE_BUTTON_MIDDLE))
 	{
 		vec2 move = mouse.Delta();
-		move.x *= 0.3f;
+		move.x *= -0.3f;
 		move.y *= 0.3f;
 		Translate(move);
 	}

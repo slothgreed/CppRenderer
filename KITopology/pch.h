@@ -12,7 +12,6 @@ using namespace KI::Foundation;
 
 
 #include "IPrimitive.h"
-#include "Ray.h"
 #include "Sphere.h"
 #include "Cone.h"
 #include "Cube.h"
@@ -41,5 +40,7 @@ using namespace KI::Foundation;
 #include "BVH.h"
 #include "HalfEdgeRepository.h"
 #include "ArrangePoint.h"
+
+#include "ShapeDiameterFunction.h"
 
 #endif // KI_TOPOLOGY_PCH_H

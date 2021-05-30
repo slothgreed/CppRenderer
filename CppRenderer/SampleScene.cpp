@@ -37,7 +37,10 @@ void SampleScene::Initialize()
 	auto model = make_shared<RenderData>();
 	SpecialUtility::LoadVectorFieldSphere(model.get());
 
-	auto pModelNode = make_shared<PrimitiveNode>(model);
+	//auto pModelNode = make_shared<PrimitiveNode>(model);
+	auto pModel = make_shared<CGALPolyhedron>();
+	pModel->Load("E://cgModel//StanfordBunny_750.off");
+	auto pModelNode = make_shared<PolygonModelNode>(pModel);
 	TextureData data;
 	TextureGenerator::RandomTexture(8, 15, data);
 	auto texture = make_shared<Texture>();
@@ -96,6 +99,7 @@ void SampleScene::Invoke()
 		m_pOutputPlane->Draw();
 	}
 	m_pBackTarget->End();
+
 }
 
 void SampleScene::ProcessMouseEvent(const MouseInput& input)

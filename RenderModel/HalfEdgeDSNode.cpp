@@ -70,7 +70,9 @@ void HalfEdgeDSNode::ShowUI()
 		VisibleProperty(PROPERTY_TYPE::PROPERTY_TYPE_BVH, m_ui.visibleBVH);
 	}
 
-
+	if (ImGui::Checkbox("Visible SDF", &m_ui.visibleSDF)) {
+		VisibleProperty(PROPERTY_TYPE::PROPERTY_TYPE_SDF, m_ui.visibleSDF);
+	}
 
 
 	if (ImGui::Checkbox("Vertex Index", &m_ui.visibleIndex)) {

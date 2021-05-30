@@ -3,7 +3,7 @@
 
 namespace KI
 {
-namespace Topology
+namespace Foundation
 {
 class Ray
 {

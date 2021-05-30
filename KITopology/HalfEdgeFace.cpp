@@ -109,8 +109,8 @@ bool HalfEdgeFace::Intersection(const Ray& ray, vec3& position, float& distance)
 		return false;
 	}
 
-	bool result = MathHelper::IntersectionRayToTriangle(
-		ray.Origin(), ray.Direction(),
+	bool result = Intersect::RayToTriangle(
+		ray,
 		m_Edge->End()->Position(),
 		m_Edge->Start()->Position(),
 		m_Edge->Before()->Start()->Position(),

@@ -42,9 +42,9 @@ public:
 	vec3 Normal() { return m_normal; }
 	float Area() { return m_area; }
 	void Validate();
+	void GetVertex(vec3* v1, vec3* v2, vec3* v3);
 private:
 
-	void GetVertex(vec3* v1, vec3* v2, vec3* v3);
 	vec3 CalcNormal();
 	float CalcArea();
 	vec3 CalcCentroid();

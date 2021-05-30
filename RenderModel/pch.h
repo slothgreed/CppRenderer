@@ -61,6 +61,7 @@ using namespace KI::ImGuiEx;
 #include "HalfEdgeDSNode.h"
 #include "ManipulatorNode.h"
 #include "BezierLineNode.h"
+#include "SDFProperty.h"
 #include "CameraNode.h"
 
 #endif //RENDER_MODEL_PCH_H

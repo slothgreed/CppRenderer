@@ -38,8 +38,8 @@ void PrimitiveModel::RaycastPick(RaycastPickInfo& pickInfo)
 			{
 				vec3 pos0, pos1, pos2;
 				itr.Current(&pos0, &pos1, &pos2);
-				bool result = MathHelper::IntersectionRayToTriangle(
-					pickInfo.GetRay().Origin(), pickInfo.GetRay().Direction(),
+				bool result = Intersect::RayToTriangle(
+					pickInfo.GetRay(),
 					pos0, pos1, pos2, position, distance);
 				if (result == true &&
 					pickInfo.MinDistance() > distance)

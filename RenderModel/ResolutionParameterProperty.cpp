@@ -267,24 +267,24 @@ void ResolutionParameterProperty::UpdateParameter(IModelNode* pModelNode, Resolu
 			m_buffers.quadBuffer->Set(quad);
 			m_buffers.quadVBO->SetVertexSize(position.size());
 		}
+	}
 
-		if (pPropertyArgs->ParameterType() & ResolutionParameterPropertyArgs::PARAM) {
-			if (m_buffers.paramVBO == nullptr) {
-				m_buffers.paramVBO = make_shared<VertexBuffer>("Parameterization");
-				auto pRenderData = pModelNode->GetRenderData();
-				m_buffers.paramVBO->SetVertexSize((GLuint)pRenderData->GetVertexBuffer()->GetVertexSize());
-				m_buffers.paramVBO->SetArrayBuffer(MeshParameterizationVertCode::ATTRIBUTE::POSITION, pNode->GetPositionBuffer());
-				m_buffers.paramVBO->SetArrayBuffer(MeshParameterizationVertCode::ATTRIBUTE::NORMAL, pNode->GetNormalBuffer());
-				m_buffers.paramVBO->SetArrayBuffer(MeshParameterizationVertCode::ATTRIBUTE::TANGENT, pNode->GetTangentBuffer());
-				m_buffers.paramVBO->SetArrayBuffer(MeshParameterizationVertCode::ATTRIBUTE::UV, pNode->GetQuadPositionBuffer());
+	if (pPropertyArgs->ParameterType() & ResolutionParameterPropertyArgs::PARAM) {
+		if (m_buffers.paramVBO == nullptr) {
+			m_buffers.paramVBO = make_shared<VertexBuffer>("Parameterization");
+			auto pRenderData = pModelNode->GetRenderData();
+			m_buffers.paramVBO->SetVertexSize((GLuint)pRenderData->GetVertexBuffer()->GetVertexSize());
+			m_buffers.paramVBO->SetArrayBuffer(MeshParameterizationVertCode::ATTRIBUTE::POSITION, pNode->GetPositionBuffer());
+			m_buffers.paramVBO->SetArrayBuffer(MeshParameterizationVertCode::ATTRIBUTE::NORMAL, pNode->GetNormalBuffer());
+			m_buffers.paramVBO->SetArrayBuffer(MeshParameterizationVertCode::ATTRIBUTE::TANGENT, pNode->GetTangentBuffer());
+			m_buffers.paramVBO->SetArrayBuffer(MeshParameterizationVertCode::ATTRIBUTE::UV, pNode->GetQuadPositionBuffer());
 
-				m_buffers.paramData = make_shared<RenderData>();
-				m_buffers.paramData->SetShading(make_shared<MeshParameterizationShading>());
-			}
-
-			m_buffers.paramData->SetGeometryData(PRIM_TYPE_TRIANGLES, m_buffers.paramVBO);
-			m_buffers.paramData->SetIndexBuffer(PRIM_TYPE_TRIANGLES, pModelNode->GetRenderData()->GetIndexBuffer());
+			m_buffers.paramData = make_shared<RenderData>();
+			m_buffers.paramData->SetShading(make_shared<MeshParameterizationShading>());
 		}
+
+		m_buffers.paramData->SetGeometryData(PRIM_TYPE_TRIANGLES, m_buffers.paramVBO);
+		m_buffers.paramData->SetIndexBuffer(PRIM_TYPE_TRIANGLES, pModelNode->GetRenderData()->GetIndexBuffer());
 	}
 }
 

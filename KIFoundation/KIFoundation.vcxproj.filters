@@ -117,6 +117,9 @@
     <ClInclude Include="TriangleIterator.h">
       <Filter>ヘッダー ファイル\Iterator</Filter>
     </ClInclude>
+    <ClInclude Include="Intersect.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -172,6 +175,9 @@
     </ClCompile>
     <ClCompile Include="TriangleIterator.cpp">
       <Filter>ソース ファイル\Iterator</Filter>
+    </ClCompile>
+    <ClCompile Include="Intersect.cpp">
+      <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

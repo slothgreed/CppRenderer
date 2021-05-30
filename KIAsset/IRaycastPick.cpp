@@ -3,7 +3,7 @@ namespace KI
 namespace Asset
 {
 
-RaycastPickInfo::RaycastPickInfo(PICK_TYPE type, Topology::Ray* ray) 
+RaycastPickInfo::RaycastPickInfo(PICK_TYPE type, Ray* ray) 
 { 
     m_minDistance = numeric_limits<float>::infinity();
     m_Type = type;

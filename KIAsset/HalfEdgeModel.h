@@ -25,8 +25,10 @@ public:
 	BVH* GetBVH() { return m_pBVH; }
 	AlignOrientation* GetAlignOrientation() { return m_pAlignOrientation; }
 	DownSampling* GetDownSampling() { return m_pDownSampling; }
-	
+	const std::vector<float>& GetShapeDiameterValue() { return m_sdfValue; }
+
 	bool CalcBVH();
+	void CalcShapeDiameter();
 	bool CalcDownSampling();
 	bool CalcAlignOrientation();
 	bool CalcArrangePosition();
@@ -41,6 +43,8 @@ private:
 	DownSampling* m_pDownSampling;
 	AlignOrientation* m_pAlignOrientation;
 	ArrangePoint* m_pArrangePoint;
+	ShapeDiameterFunction* m_pShapeDiameterFunction;
+	std::vector<float> m_sdfValue;
 	BVH*		  m_pBVH;
 };
 }

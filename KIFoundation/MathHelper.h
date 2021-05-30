@@ -24,10 +24,6 @@ public:
 	static string ToString(const ivec4& value);
 	static string ToString(const mat4x4& value);
 
-	static bool IntersectionRayToTriangle(
-		const vec3& origin, const vec3& direction,
-		const vec3& p0, const vec3& p1, const vec3& p2,
-		vec3& position, float& distance);
 
 private:
 

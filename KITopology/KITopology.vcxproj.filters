@@ -43,6 +43,12 @@
     <Filter Include="ヘッダー ファイル\Status">
       <UniqueIdentifier>{2439aa41-fd7b-4dd9-a862-8fea0defc001}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\HalfEdge\InstantMesh">
+      <UniqueIdentifier>{7c1af5b6-3420-462f-b0bb-b6a920dcd6c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\HalfEdge\InstantMesh">
+      <UniqueIdentifier>{cc031d0e-f482-4734-b0b2-d02048e7eb43}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -81,9 +87,6 @@
     <ClInclude Include="Sphere.h">
       <Filter>ヘッダー ファイル\Primitive</Filter>
     </ClInclude>
-    <ClInclude Include="Ray.h">
-      <Filter>ヘッダー ファイル\Primitive</Filter>
-    </ClInclude>
     <ClInclude Include="Icosahedron.h">
       <Filter>ヘッダー ファイル\Primitive</Filter>
     </ClInclude>
@@ -102,16 +105,10 @@
     <ClInclude Include="AdjancyMatrix.h">
       <Filter>ヘッダー ファイル\HalfEdge\Operator</Filter>
     </ClInclude>
-    <ClInclude Include="DownSampling.h">
-      <Filter>ヘッダー ファイル\HalfEdge\Operator</Filter>
-    </ClInclude>
     <ClInclude Include="HalfEdgeAdjancyMatrix.h">
       <Filter>ヘッダー ファイル\HalfEdge\Operator</Filter>
     </ClInclude>
     <ClInclude Include="AdjancyMatrixCSVIO.h">
-      <Filter>ヘッダー ファイル\HalfEdge\Operator</Filter>
-    </ClInclude>
-    <ClInclude Include="AlignOrientation.h">
       <Filter>ヘッダー ファイル\HalfEdge\Operator</Filter>
     </ClInclude>
     <ClInclude Include="BVH.h">
@@ -123,13 +120,22 @@
     <ClInclude Include="Triangle.h">
       <Filter>ヘッダー ファイル\Primitive</Filter>
     </ClInclude>
-    <ClInclude Include="DownSamplingOperator.h">
+    <ClInclude Include="HalfEdgeParameterIO.h">
       <Filter>ヘッダー ファイル\HalfEdge\Operator</Filter>
+    </ClInclude>
+    <ClInclude Include="DownSampling.h">
+      <Filter>ヘッダー ファイル\HalfEdge\InstantMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="DownSamplingOperator.h">
+      <Filter>ヘッダー ファイル\HalfEdge\InstantMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="AlignOrientation.h">
+      <Filter>ヘッダー ファイル\HalfEdge\InstantMesh</Filter>
     </ClInclude>
     <ClInclude Include="ArrangePoint.h">
-      <Filter>ヘッダー ファイル\HalfEdge\Operator</Filter>
+      <Filter>ヘッダー ファイル\HalfEdge\InstantMesh</Filter>
     </ClInclude>
-    <ClInclude Include="HalfEdgeParameterIO.h">
+    <ClInclude Include="ShapeDiameterFunction.h">
       <Filter>ヘッダー ファイル\HalfEdge\Operator</Filter>
     </ClInclude>
   </ItemGroup>
@@ -182,28 +188,31 @@
     <ClCompile Include="AdjancyMatrix.cpp">
       <Filter>ソース ファイル\HalfEdge\Operator</Filter>
     </ClCompile>
-    <ClCompile Include="DownSampling.cpp">
-      <Filter>ソース ファイル\HalfEdge\Operator</Filter>
-    </ClCompile>
     <ClCompile Include="HalfEdgeAdjancyMatrix.cpp">
       <Filter>ソース ファイル\HalfEdge\Operator</Filter>
     </ClCompile>
     <ClCompile Include="AdjancyMatrixCSVIO.cpp">
       <Filter>ソース ファイル\HalfEdge\Operator</Filter>
     </ClCompile>
-    <ClCompile Include="AlignOrientation.cpp">
-      <Filter>ソース ファイル\HalfEdge\Operator</Filter>
-    </ClCompile>
     <ClCompile Include="BVH.cpp">
       <Filter>ソース ファイル\HalfEdge\Operator</Filter>
     </ClCompile>
-    <ClCompile Include="DownSamplingOperator.cpp">
+    <ClCompile Include="HalfEdgeParameterIO.cpp">
       <Filter>ソース ファイル\HalfEdge\Operator</Filter>
+    </ClCompile>
+    <ClCompile Include="AlignOrientation.cpp">
+      <Filter>ソース ファイル\HalfEdge\InstantMesh</Filter>
     </ClCompile>
     <ClCompile Include="ArrangePoint.cpp">
-      <Filter>ソース ファイル\HalfEdge\Operator</Filter>
+      <Filter>ソース ファイル\HalfEdge\InstantMesh</Filter>
     </ClCompile>
-    <ClCompile Include="HalfEdgeParameterIO.cpp">
+    <ClCompile Include="DownSampling.cpp">
+      <Filter>ソース ファイル\HalfEdge\InstantMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="DownSamplingOperator.cpp">
+      <Filter>ソース ファイル\HalfEdge\InstantMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="ShapeDiameterFunction.cpp">
       <Filter>ソース ファイル\HalfEdge\Operator</Filter>
     </ClCompile>
   </ItemGroup>

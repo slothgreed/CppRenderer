@@ -213,6 +213,12 @@ const std::vector<float>& HalfEdgeModel::GetPositionError()
 	return m_pArrangePoint->ErrorValue();
 }
 
+void HalfEdgeModel::CalcShapeDiameter()
+{
+	ShapeDiameterFunction func;
+	func.Calculate(3, 40, m_HalfEdgeDS.get(), m_sdfValue);
+}
+
 
 }
 }

@@ -20,10 +20,11 @@ public :
 private:
 	struct UI
 	{
-		UI() : visibleHalfEdge(false), visibleResolution(false), visibleBVH(false), visibleParameter(false), visibleIndex(false){}
+		UI() : visibleHalfEdge(false), visibleResolution(false), visibleBVH(false), visibleParameter(false), visibleIndex(false),visibleSDF(false){}
 		bool visibleHalfEdge;
 		bool visibleResolution;
 		bool visibleBVH;
+		bool visibleSDF;
 		bool visibleIndex;
 		bool visibleParameter;
 		bool calcAlignment;

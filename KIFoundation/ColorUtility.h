@@ -12,8 +12,11 @@ public:
 	~ColorUtility();
 
 	static vec3 IndexToColor(int index);
+	static vec3 GetPseudoColor(float value, float min, float max);
 private:
+	static void InitializePseudoColor();
 
+	static std::vector<vec3> m_pseudoColor;
 };
 }
 }

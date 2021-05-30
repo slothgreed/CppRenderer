@@ -71,7 +71,6 @@ enum PRIM_TYPE
 	PRIM_TYPE_PATCHES			= 0xE
 };
 
-
 }
 }
 
