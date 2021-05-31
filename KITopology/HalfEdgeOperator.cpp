@@ -17,7 +17,7 @@ void HalfEdgeOperator::SmoothingByGravity(HalfEdgeDS* halfEdgeDS, int loopNum)
 	for (size_t i = 0; i < halfEdgeDS->VertexList().size(); i++)
 	{
 		auto pVertex = halfEdgeDS->VertexList()[i];
-		VertexAroundEdgeIterator itr(pVertex.get());
+		VertexAroundEdgeIterator itr(pVertex);
 		vec3 sum = vec3(0);
 		int counter = 0;
 		for (itr; itr.HasNext(); itr.Next())
@@ -41,18 +41,18 @@ void HalfEdgeOperator::SmoothingByGravity(HalfEdgeDS* halfEdgeDS, int loopNum)
 
 	halfEdgeDS->CalcElement();
 }
-void HalfEdgeOperator::FaceSplit(HalfEdgeDS* halfEdgeDS, shared_ptr<HalfEdgeFace> face, vec3 position)
+void HalfEdgeOperator::FaceSplit(HalfEdgeDS* halfEdgeDS, HalfEdgeFace* face, vec3 position)
 {
 
 }
 
-void HalfEdgeOperator::MakeTriangle(shared_ptr<HalfEdgeFace> face,
-	shared_ptr<HalfEdge> edge0,
-	shared_ptr<HalfEdge> edge1,
-	shared_ptr<HalfEdge> edge2,
-	shared_ptr<HalfEdge> oppo0,
-	shared_ptr<HalfEdge> oppo1,
-	shared_ptr<HalfEdge> oppo2)
+void HalfEdgeOperator::MakeTriangle(HalfEdgeFace* face,
+	HalfEdge* edge0,
+	HalfEdge* edge1,
+	HalfEdge* edge2,
+	HalfEdge* oppo0,
+	HalfEdge* oppo1,
+	HalfEdge* oppo2)
 {
 	//ÉeÉXÉgÇµÇƒÇ»Ç¢
 	assert(0);
@@ -99,26 +99,26 @@ void HalfEdgeOperator::MakeTriangle(shared_ptr<HalfEdgeFace> face,
 // face1 : (e,s,v1) => (e,v0,v1)
 // face2 : (...)    => (v2,v0,e)
 // face3 : (...)    => (v0,s,v1)
-void HalfEdgeOperator::EdgeSplit(HalfEdgeDS* halfEdgeDS, shared_ptr<HalfEdge> edge, vec3 position)
+void HalfEdgeOperator::EdgeSplit(HalfEdgeDS* halfEdgeDS, HalfEdge* edge, vec3 position)
 {
+	assert(0); // check memory leak;
 	int vertexIndex = (int)halfEdgeDS->VertexList().size();
-	auto v0 = make_shared<HalfEdgeVertex>(vertexIndex);
-	
+	auto v0 = new HalfEdgeVertex(vertexIndex);
 
 	int edgeIndex = (int)halfEdgeDS->EdgeList().size();
 	auto opposite = edge->Opposite();
-	auto edge0 = make_shared<HalfEdge>(edgeIndex);
-	auto edge1 = make_shared<HalfEdge>(edgeIndex + 1);
-	auto edge2 = make_shared<HalfEdge>(edgeIndex + 2);
-	auto edge3 = make_shared<HalfEdge>(edgeIndex + 3);
-	auto edge4 = make_shared<HalfEdge>(edgeIndex + 4);
-	auto edge5 = make_shared<HalfEdge>(edgeIndex + 5);
+	auto edge0 = new HalfEdge(edgeIndex);
+	auto edge1 = new HalfEdge(edgeIndex + 1);
+	auto edge2 = new HalfEdge(edgeIndex + 2);
+	auto edge3 = new HalfEdge(edgeIndex + 3);
+	auto edge4 = new HalfEdge(edgeIndex + 4);
+	auto edge5 = new HalfEdge(edgeIndex + 5);
 
 	int faceIndex = (int)halfEdgeDS->FaceList().size();
 	auto face0 = edge->Face();
 	auto face1 = opposite->Face();
-	auto face2 = make_shared<HalfEdgeFace>(faceIndex);
-	auto face3 = make_shared<HalfEdgeFace>(faceIndex + 1);
+	auto face2 = new HalfEdgeFace(faceIndex);
+	auto face3 = new HalfEdgeFace(faceIndex + 1);
 
 	auto s = edge->End();
 	auto e = edge->Start();
@@ -244,7 +244,7 @@ void HalfEdgeOperator::EdgeSplit(HalfEdgeDS* halfEdgeDS, shared_ptr<HalfEdge> ed
 //    Å@Å_ Å@ Å^	       Å@ Å_  |  Å^
 //      Å@Å_Å^		          Å@Å_|Å^
 //         v2		              v2
-void HalfEdgeOperator::EdgeFlips(HalfEdgeDS* halfEdgeDS, shared_ptr<HalfEdge> edge)
+void HalfEdgeOperator::EdgeFlips(HalfEdgeDS* halfEdgeDS, HalfEdge* edge)
 {
 	auto opposite = edge->Opposite();
 

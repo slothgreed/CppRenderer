@@ -20,8 +20,8 @@ private:
 
 	// 計算対象の面の抽出
 	void ExtractMesh(
-		const std::vector<shared_ptr<HalfEdgeFace>>& pFaceList,
-		std::vector<shared_ptr<HalfEdgeFace>>& extract);
+		const std::vector<HalfEdgeFace*>& pFaceList,
+		std::vector<HalfEdgeFace*>& extract);
 	
 	// 点をサンプリング
 	void CreateRandomPoint(std::vector<vec4>& position);
@@ -31,7 +31,7 @@ private:
 	
 	float CalculateSDF(
 		HalfEdgeFace* pTarget,
-		const std::vector<shared_ptr<HalfEdgeFace>>& pFaceList,
+		const std::vector<HalfEdgeFace*>& pFaceList,
 		const std::vector<vec3>& circlePos);
 
 	float m_radius;

@@ -12,11 +12,11 @@ HalfEdge::~HalfEdge()
 }
 
 void HalfEdge::Set(
-	shared_ptr<HalfEdgeVertex> end,
-	shared_ptr<HalfEdge> next,
-	shared_ptr<HalfEdge> before, 
-	shared_ptr<HalfEdge> opposite,
-	shared_ptr<HalfEdgeFace> face)
+	HalfEdgeVertex* end,
+	HalfEdge* next,
+	HalfEdge* before, 
+	HalfEdge* opposite,
+	HalfEdgeFace* face)
 {
 	m_End = end;
 	m_Next = next;
@@ -25,27 +25,27 @@ void HalfEdge::Set(
 	m_Face = face;
 }
 
-void HalfEdge::SetEnd(shared_ptr<HalfEdgeVertex> vertex)
+void HalfEdge::SetEnd(HalfEdgeVertex* vertex)
 {
 	m_End = vertex;
 }
 
-void HalfEdge::SetBefore(shared_ptr<HalfEdge> edge)
+void HalfEdge::SetBefore(HalfEdge* edge)
 {
 	m_Before = edge;
 }
 
-void HalfEdge::SetNext(shared_ptr<HalfEdge> edge)
+void HalfEdge::SetNext(HalfEdge* edge)
 {
 	m_Next = edge;
 }
 
-void HalfEdge::SetOpposite(shared_ptr<HalfEdge> edge)
+void HalfEdge::SetOpposite(HalfEdge* edge)
 {
 	m_Opposite = edge;
 }
 
-void HalfEdge::SetFace(shared_ptr<HalfEdgeFace> face)
+void HalfEdge::SetFace(HalfEdgeFace* face)
 {
 	m_Face = face;
 }
@@ -58,15 +58,15 @@ void HalfEdge::Validate()
 	assert(m_Opposite != NULL);
 	assert(m_Face != NULL);
 	
-	assert(m_Opposite->Opposite().get() == this);
+	assert(m_Opposite->Opposite() == this);
 	assert(m_Opposite->End() == Start());
 	assert(m_Opposite->Start() == End());
 
-	assert(m_Next->Before().get() == this);
+	assert(m_Next->Before() == this);
 	assert(m_Next->Start() == m_End); 
 	assert(m_Next->Face() == m_Face);
 
-	assert(m_Before->Next().get() == this);
+	assert(m_Before->Next() == this);
 	assert(m_Before->End() == Start());
 	assert(m_Before->Face() == m_Face);
 }

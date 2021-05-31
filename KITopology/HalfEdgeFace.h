@@ -18,7 +18,7 @@ public:
 
 private:
 	HalfEdgeFace*	m_pFace;
-	shared_ptr<HalfEdge> m_pEdgeItr;
+	HalfEdge* m_pEdgeItr;
 	bool m_init; // ‰‰ñ‚©‚Ç‚¤‚© next ‚ğŒÄ‚ñ‚¾‚ç false
 };
 
@@ -28,8 +28,8 @@ public:
 	HalfEdgeFace(int index);
 	~HalfEdgeFace();
 
-	void SetEdge(shared_ptr<HalfEdge> edge) { m_Edge = edge; };
-	shared_ptr<HalfEdge> Edge() { return m_Edge; }
+	void SetEdge(HalfEdge* edge) { m_Edge = edge; };
+	HalfEdge* Edge() { return m_Edge; }
 
 	int Index() { return m_Index; }
 
@@ -44,14 +44,15 @@ public:
 	void Validate();
 	void GetVertex(vec3* v1, vec3* v2, vec3* v3);
 private:
-
+	bool set = false;
+	vec3 pos[3];
 	vec3 CalcNormal();
 	float CalcArea();
 	vec3 CalcCentroid();
 	int CalcVertexNum();
 	void CalcGravity();
 
-	shared_ptr<HalfEdge> m_Edge;
+	HalfEdge* m_Edge;
 	int m_Index;
 	
 	vec3 m_gravity;

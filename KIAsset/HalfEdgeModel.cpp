@@ -37,7 +37,7 @@ void HalfEdgeModel::GetFacetList(vector<vec3>& facetList, vector<vec3>& normalLi
 	auto halfFaceList = m_HalfEdgeDS->FaceList();
 	for (int i = 0; i < halfFaceList.size(); i++)
 	{
-		auto itr = FaceAroundEdgeIterator(halfFaceList[i].get());
+		auto itr = FaceAroundEdgeIterator(halfFaceList[i]);
 		while (itr.HasNext()) 
 		{
 			facetList.push_back(
@@ -89,7 +89,7 @@ void HalfEdgeModel::GetFaceIndexList(vector<int>& index)
 	auto halfFaceList = m_HalfEdgeDS->FaceList();
 	for (int i = 0; i < halfFaceList.size(); i++)
 	{
-		auto itr = FaceAroundEdgeIterator(halfFaceList[i].get());
+		auto itr = FaceAroundEdgeIterator(halfFaceList[i]);
 		while (itr.HasNext())
 		{
 			index.push_back(

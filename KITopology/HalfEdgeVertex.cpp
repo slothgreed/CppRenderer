@@ -56,7 +56,7 @@ vec3 HalfEdgeVertex::CalcNormal()
 	int num = 0;
 	for (auto itr = VertexAroundEdgeIterator(this); itr.HasNext(); itr.Next())
 	{
-		face = ((HalfEdge*)itr.Current())->Face().get();
+		face = (itr.Current())->Face();
 		auto pEdge1 = itr.Current();
 		auto pEdge2 = itr.CurrentNext();
 		auto pVector1 = pEdge1->End()->Position() - pEdge1->Start()->Position();
@@ -111,7 +111,7 @@ bool HalfEdgeVertex::Pick(const vec3& direction, float range, float& distance)
 void HalfEdgeVertex::Validate()
 {
 	assert(m_Edge != NULL);
-	assert(m_Edge->Start().get() == this);
+	assert(m_Edge->Start() == this);
 	int i = 0;
 	for (auto itr = VertexAroundEdgeIterator(this); itr.HasNext(); itr.Next())
 	{
@@ -124,7 +124,7 @@ VertexAroundEdgeIterator::VertexAroundEdgeIterator(HalfEdgeVertex* pVertex)
 {
 	assert(pVertex->Edge() != nullptr);
 	m_pVertex = pVertex;
-	m_pEdgeItr = m_pVertex->Edge().get();
+	m_pEdgeItr = m_pVertex->Edge();
 	m_init = true;
 
 }
@@ -132,7 +132,7 @@ VertexAroundEdgeIterator::VertexAroundEdgeIterator(HalfEdgeVertex* pVertex)
 bool VertexAroundEdgeIterator::HasNext()
 {
 	assert(m_pVertex->Edge() != nullptr);
-	if (m_pEdgeItr == m_pVertex->Edge().get() && m_init == false)
+	if (m_pEdgeItr == m_pVertex->Edge() && m_init == false)
 	{
 		return false;
 	}
@@ -147,7 +147,7 @@ void VertexAroundEdgeIterator::Next()
 	assert(m_pEdgeItr != nullptr);
 	assert(m_pEdgeItr->Opposite() != nullptr);
 	assert(m_pEdgeItr->Opposite()->Next() != nullptr);
-	m_pEdgeItr = m_pEdgeItr->Opposite()->Next().get();
+	m_pEdgeItr = m_pEdgeItr->Opposite()->Next();
 	m_init = false;
 }
 
@@ -161,7 +161,7 @@ HalfEdge* VertexAroundEdgeIterator::CurrentNext()
 	assert(m_pEdgeItr != nullptr);
 	assert(m_pEdgeItr->Opposite() != nullptr);
 	assert(m_pEdgeItr->Opposite()->Next() != nullptr);
-	return m_pEdgeItr->Opposite()->Next().get();
+	return m_pEdgeItr->Opposite()->Next();
 }
 
 

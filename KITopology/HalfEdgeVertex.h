@@ -26,9 +26,9 @@ public:
 	HalfEdgeVertex(int index);
 	~HalfEdgeVertex();
 
-	void SetEdge(shared_ptr<HalfEdge> edge) { m_Edge = edge; };
+	void SetEdge(HalfEdge* edge) { m_Edge = edge; };
 
-	shared_ptr<HalfEdge> Edge() { return m_Edge; }
+	HalfEdge* Edge() { return m_Edge; }
 	void SetPosition(vec3 position);
 	void SetPosition(float x, float y, float z);
 	vec3 Position() { return m_position; };
@@ -51,7 +51,7 @@ private:
 	float CalcArea();
 	vec3 CalcNormal();
 
-	shared_ptr<HalfEdge> m_Edge;
+	HalfEdge* m_Edge;
 	vec3 m_position;
 	vec3 m_normal;
 	vec3 m_tangent;

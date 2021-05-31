@@ -14,21 +14,20 @@ ShapeDiameterFunction::~ShapeDiameterFunction()
 }
 
 void ShapeDiameterFunction::ExtractMesh(
-	const std::vector<shared_ptr<HalfEdgeFace>>& pFaceList,
-	std::vector < shared_ptr<HalfEdgeFace>>& extract)
+	const std::vector<HalfEdgeFace*>& pFaceList,
+	std::vector < HalfEdgeFace*>& extract)
 {
 	extract.clear();
 	for (int i = 0; i < pFaceList.size(); i++)
 	{
-		auto pFace = pFaceList[i];
 		vec3 position[3];
-		pFace->GetVertex(&position[0], &position[1], &position[2]);
+		pFaceList[i]->GetVertex(&position[0], &position[1], &position[2]);
 		for (int j = 0; j < 3; j++)
 		{
-			float inner = glm::dot(position[j], -pFace->Normal());
+			float inner = glm::dot(position[j], -pFaceList[i]->Normal());
 			if ((position[j] * sin(inner)).length() < m_radius)
 			{
-				extract.push_back(pFace);
+				extract.push_back(pFaceList[i]);
 				break;
 			}
 		}
@@ -58,14 +57,14 @@ void ShapeDiameterFunction::TransformPosition(const std::vector<vec4>& position,
 
 float ShapeDiameterFunction::CalculateSDF(
 	HalfEdgeFace* pTarget,
-	const std::vector<shared_ptr<HalfEdgeFace>>& pFaceList,
+	const std::vector<HalfEdgeFace*>& pFaceList,
 	const std::vector<vec3>& circlePos)
 {
 	float minLength = std::numeric_limits<float>::infinity();
 	vec3 pos0, pos1, pos2;
 	vec3 interPos;
 	float dist;
-	std::vector<shared_ptr<HalfEdgeFace>> extractFace;
+	std::vector<HalfEdgeFace*> extractFace;
 	ExtractMesh(pFaceList, extractFace);
 	if (extractFace.size() == 0)
 	{
@@ -93,6 +92,9 @@ void ShapeDiameterFunction::Calculate(
 	HalfEdgeDS* pHalfEdgeDS,
 	std::vector<float>& value)
 {
+	PeformanceProfiler profiler;
+
+	profiler.Start();
 	m_radius = radius;
 	m_samplingNum = samplingNum;
 	value.resize(pHalfEdgeDS->FaceList().size());
@@ -105,11 +107,13 @@ void ShapeDiameterFunction::Calculate(
 		Ray ray(pFace->Gravity(), -pFace->Normal());
 		TransformPosition(randomPos, ray.Origin() + ray.Direction(), ray.Direction(), circlePos);
 		value[i] = CalculateSDF(
-			pFace.get(),
+			pFace,
 			pHalfEdgeDS->FaceList(),
 			circlePos);
-		Logger::Output(LOG_LEVEL::LOG_LEVEL_WARNING, to_string(i) + ":" + to_string(value[i]) + "\n");
 	}
+
+	profiler.End();
+	profiler.Output();
 }
 }
 }

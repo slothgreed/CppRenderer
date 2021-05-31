@@ -13,25 +13,25 @@ public:
 	~HalfEdge();
 
 	void Set(
-		shared_ptr<HalfEdgeVertex> end,
-		shared_ptr<HalfEdge> next,
-		shared_ptr<HalfEdge> before,
-		shared_ptr<HalfEdge> opposite,
-		shared_ptr<HalfEdgeFace> face );
+		HalfEdgeVertex* end,
+		HalfEdge* next,
+		HalfEdge* before,
+		HalfEdge* opposite,
+		HalfEdgeFace* face );
 
-	void SetEnd(shared_ptr<HalfEdgeVertex> vertex);
-	void SetNext(shared_ptr<HalfEdge> end);
-	void SetBefore(shared_ptr<HalfEdge> end);
-	void SetOpposite(shared_ptr<HalfEdge> edge);
-	void SetFace(shared_ptr<HalfEdgeFace> face);
+	void SetEnd(HalfEdgeVertex* vertex);
+	void SetNext(HalfEdge* end);
+	void SetBefore(HalfEdge* end);
+	void SetOpposite(HalfEdge* edge);
+	void SetFace(HalfEdgeFace* face);
 
-	shared_ptr<HalfEdgeVertex> End() { return m_End; }
-	shared_ptr<HalfEdge> Next()		{ return m_Next; }
-	shared_ptr<HalfEdge> Before()	{ return m_Before; }
-	shared_ptr<HalfEdge> Opposite() { return m_Opposite; }
-	shared_ptr<HalfEdgeFace> Face() { return m_Face; }
+	HalfEdgeVertex* End() { return m_End; }
+	HalfEdge* Next()		{ return m_Next; }
+	HalfEdge* Before()	{ return m_Before; }
+	HalfEdge* Opposite() { return m_Opposite; }
+	HalfEdgeFace* Face() { return m_Face; }
 
-	shared_ptr<HalfEdgeVertex> Start() { return m_Opposite->End(); }
+	HalfEdgeVertex* Start() { return m_Opposite->End(); }
 
 	virtual string ToString();
 
@@ -44,11 +44,11 @@ private:
 
 	float CalcAngle();
 	float CalcLength();
-	shared_ptr<HalfEdgeVertex> m_End;
-	shared_ptr<HalfEdge> m_Next;
-	shared_ptr<HalfEdge> m_Before;
-	shared_ptr<HalfEdge> m_Opposite;
-	shared_ptr<HalfEdgeFace> m_Face;
+	HalfEdgeVertex* m_End;
+	HalfEdge* m_Next;
+	HalfEdge* m_Before;
+	HalfEdge* m_Opposite;
+	HalfEdgeFace* m_Face;
 	int m_Index;
 	float m_angle;
 	float m_length;

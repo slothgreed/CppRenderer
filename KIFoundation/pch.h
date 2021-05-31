@@ -60,6 +60,7 @@ using namespace glm;
 #include "FileWriter.h"
 #include "FileReader.h"
 #include "ArrayCSVIO.h"
+#include "PeformanceProfiler.h"
 
 #include "TriangleIterator.h"
 

@@ -31,7 +31,7 @@ void SDFProperty::BuildCore(IModelNode* pModel, IPropertyArgs* pPropertyArgs)
 	float maxValue = std::numeric_limits<float>::min();
 	float minValue = std::numeric_limits<float>::max();
 	std::vector<vec3> pseudoColor(sdfValue.size());
-	for (int i = 0; sdfValue.size(); i++) {
+	for (int i = 0; i < sdfValue.size(); i++) {
 		maxValue = std::max(maxValue, sdfValue[i]);
 		minValue = std::max(minValue, sdfValue[i]);
 	}

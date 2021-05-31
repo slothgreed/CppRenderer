@@ -70,12 +70,22 @@ vec3 HalfEdgeFace::CalcCentroid()
 void HalfEdgeFace::Validate()
 {
 	assert(m_Edge != NULL);
-	assert(m_Edge->Face().get() == this);
+	assert(m_Edge->Face() == this);
 	assert(CalcVertexNum() == 3);
 }
 
 void HalfEdgeFace::GetVertex(vec3* v1, vec3* v2, vec3* v3)
 {
+	//if (!set) {
+	//	pos[0] = Edge()->Start()->Position();
+	//	pos[1] = Edge()->End()->Position();
+	//	pos[2] = Edge()->Next()->End()->Position();
+	//	set = true;
+	//}
+	//*v1 = pos[0];
+	//*v2 = pos[1];
+	//*v3 = pos[2];
+
 	*v1 = Edge()->Start()->Position();
 	*v2 = Edge()->End()->Position();
 	*v3 = Edge()->Next()->End()->Position();
@@ -158,7 +168,7 @@ void FaceAroundEdgeIterator::Next()
 
 HalfEdge* FaceAroundEdgeIterator::Current()
 {
-	return m_pEdgeItr.get();
+	return m_pEdgeItr;
 }
 }
 }

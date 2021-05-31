@@ -14,18 +14,18 @@ public:
 	~HalfEdgeOperator();
 
 	void SmoothingByGravity(HalfEdgeDS* halfEdgeDS, int loopNum);
-	void FaceSplit(HalfEdgeDS* halfEdgeDS, shared_ptr<HalfEdgeFace> face, vec3 position);
-	void EdgeSplit(HalfEdgeDS* halfEdgeDS, shared_ptr<HalfEdge> edge, vec3 position);
-	void EdgeFlips(HalfEdgeDS* halfEdgeDS, shared_ptr<HalfEdge> edge);
+	void FaceSplit(HalfEdgeDS* halfEdgeDS, HalfEdgeFace* face, vec3 position);
+	void EdgeSplit(HalfEdgeDS* halfEdgeDS, HalfEdge* edge, vec3 position);
+	void EdgeFlips(HalfEdgeDS* halfEdgeDS, HalfEdge* edge);
 	void SetRandomTangentForVertex(HalfEdgeDS* halfEdgeDS);
 private:
-	void MakeTriangle(shared_ptr<HalfEdgeFace> face,
-		shared_ptr<HalfEdge> edge0,
-		shared_ptr<HalfEdge> edge1,
-		shared_ptr<HalfEdge> edge2,
-		shared_ptr<HalfEdge> oppo0,
-		shared_ptr<HalfEdge> oppo1,
-		shared_ptr<HalfEdge> oppo2);
+	void MakeTriangle(HalfEdgeFace* face,
+		HalfEdge* edge0,
+		HalfEdge* edge1,
+		HalfEdge* edge2,
+		HalfEdge* oppo0,
+		HalfEdge* oppo1,
+		HalfEdge* oppo2);
 };
 }
 }

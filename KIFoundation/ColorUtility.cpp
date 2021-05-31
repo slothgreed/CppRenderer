@@ -23,6 +23,7 @@ vec3 ColorUtility::IndexToColor(int index)
 
 void ColorUtility::InitializePseudoColor()
 {
+    m_pseudoColor.resize(256);
     float scale = 4;
     for (int i = 0; i < 256; i++)
     {

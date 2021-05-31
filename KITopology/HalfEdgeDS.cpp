@@ -8,20 +8,20 @@ HalfEdgeDS::HalfEdgeDS()
 
 HalfEdgeDS::~HalfEdgeDS()
 {
-	// èzä¬éQè∆ÇµÇƒÇ¢ÇÈÇΩÇﬂéQè∆ÇäOÇ∑
 	for (int i = 0; i < m_VertexList.size(); i++)
 	{
 		m_VertexList[i]->SetEdge(NULL);
+		delete m_VertexList[i];
 	}
 
 	for (int i = 0; i < m_EdgeList.size(); i++)
 	{
-		m_EdgeList[i]->Set(NULL, NULL, NULL, NULL, NULL);
+		delete m_EdgeList[i];
 	}
 
 	for (int i = 0; i < m_FaceList.size(); i++)
 	{
-		m_FaceList[i]->SetEdge(NULL);
+		delete m_FaceList[i];
 	}
 
 	m_VertexList.clear();
@@ -60,19 +60,19 @@ void HalfEdgeDS::Load(const string& filePath)
 	m_VertexList.resize(vertexSize);
 	for (int i = 0; i < vertexSize; i++)
 	{
-		m_VertexList[i] = make_shared<HalfEdgeVertex>(i);
+		m_VertexList[i] = new HalfEdgeVertex(i);
 	}
 
 	m_EdgeList.resize(edgeSize);
 	for (int i = 0; i < edgeSize; i++)
 	{
-		m_EdgeList[i] = make_shared<HalfEdge>(i);
+		m_EdgeList[i] = new HalfEdge(i);
 	}
 
 	m_FaceList.resize(faceSize);
 	for (int i = 0; i < faceSize; i++)
 	{
-		m_FaceList[i] = make_shared<HalfEdgeFace>(i);
+		m_FaceList[i] = new HalfEdgeFace(i);
 	}
 
 	float x = 0, y = 0, z = 0;
@@ -221,17 +221,17 @@ void HalfEdgeDS::Normalize()
 	}
 }
 
-void HalfEdgeDS::AddVertex(shared_ptr<HalfEdgeVertex> pVertex)
+void HalfEdgeDS::AddVertex(HalfEdgeVertex* pVertex)
 {
 	m_VertexList.push_back(pVertex);
 }
 
-void HalfEdgeDS::AddEdge(shared_ptr<HalfEdge> pEdge)
+void HalfEdgeDS::AddEdge(HalfEdge* pEdge)
 {
 	m_EdgeList.push_back(pEdge);
 }
 
-void HalfEdgeDS::AddFace(shared_ptr<HalfEdgeFace> pFace)
+void HalfEdgeDS::AddFace(HalfEdgeFace* pFace)
 {
 	m_FaceList.push_back(pFace);
 }

@@ -75,7 +75,7 @@ void HalfEdgeProperty::GetVBOData(HalfEdgeDS* model, vector<vec3>& position, vec
 	int counter = 0;
 	for (int i = 0; i < model->FaceList().size(); i++)
 	{
-		auto itr = FaceAroundEdgeIterator(model->FaceList()[i].get());
+		auto itr = FaceAroundEdgeIterator(model->FaceList()[i]);
 
 		while (itr.HasNext())
 		{

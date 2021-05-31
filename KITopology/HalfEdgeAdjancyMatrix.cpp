@@ -20,7 +20,7 @@ void HalfEdgeAdjancyMatrix::New()
 
 		NewColumn(i, sizeH);
 		int j = 0;
-		for (auto itr = VertexAroundEdgeIterator(vertex.get()); itr.HasNext(); itr.Next())
+		for (auto itr = VertexAroundEdgeIterator(vertex); itr.HasNext(); itr.Next())
 		{
 			Set(i, j, Link(vertex->Index(), itr.Current()->End()->Index(), 1.0));
 			j++;
