@@ -29,17 +29,17 @@ private:
 
 	struct UI
 	{
-		UI() {}
-		CheckBoxUI meshVisibility;
+		UI() : visibleMesh(true),visibleEdge(false),visibleBDB(false),visibleNormal(false) {}
+		CheckBoxUI visibleMesh;
 		ColorPicker4UI meshColor;
 
-		CheckBoxUI edgeVisibility;
+		CheckBoxUI visibleEdge;
 		ColorPicker4UI edgeColor;
 
-		CheckBoxUI bdbVisibility;
+		CheckBoxUI visibleBDB;
 		ColorPicker4UI bdbColor;
 		
-		CheckBoxUI normalVisibility;
+		CheckBoxUI visibleNormal;
 		ColorPicker4UI normalColor;
 	};
 

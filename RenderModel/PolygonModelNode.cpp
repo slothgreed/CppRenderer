@@ -134,26 +134,26 @@ void PolygonModelNode::SetRenderData()
 
 void PolygonModelNode::InitializeUI()
 {
-	m_ui.meshVisibility.SetLabel("Mesh Visibility");
-	m_ui.meshVisibility.SeValue(m_ui.meshVisibility.Value());
+	m_ui.visibleMesh.SetLabel("Mesh Visibility");
+	m_ui.visibleMesh.SeValue(m_ui.visibleMesh.Value());
 
 	m_ui.meshColor.SetLabel("Mesh Color");
 	m_ui.meshColor.SeValue(vec4(0.7f, 0.7f, 0.7f, 1.0f));
 
-	m_ui.edgeVisibility.SetLabel("Edge Visibility");
-	m_ui.edgeVisibility.SeValue(m_ui.edgeVisibility.Value());
+	m_ui.visibleEdge.SetLabel("Edge Visibility");
+	m_ui.visibleEdge.SeValue(m_ui.visibleEdge.Value());
 
 	m_ui.edgeColor.SetLabel("Edge Color");
 	m_ui.edgeColor.SeValue(vec4(0, 1, 0, 1));
 
-	m_ui.normalVisibility.SetLabel("Normal Visibility");
-	m_ui.normalVisibility.SeValue(m_ui.normalVisibility.Value());
+	m_ui.visibleNormal.SetLabel("Normal Visibility");
+	m_ui.visibleNormal.SeValue(m_ui.visibleNormal.Value());
 
 	m_ui.normalColor.SetLabel("Normal Color");
 	m_ui.normalColor.SeValue(vec4(0.7f, 0.7f, 0.7f, 1.0f));
 
-	m_ui.bdbVisibility.SetLabel("BDB Visibility");
-	m_ui.bdbVisibility.SeValue(m_ui.bdbVisibility.Value());
+	m_ui.visibleBDB.SetLabel("BDB Visibility");
+	m_ui.visibleBDB.SeValue(m_ui.visibleBDB.Value());
 
 	m_ui.bdbColor.SetLabel("BDB Color");
 	m_ui.bdbColor.SeValue(vec4(0.0f));
@@ -162,20 +162,20 @@ void PolygonModelNode::InitializeUI()
 
 void PolygonModelNode::ShowUI()
 {
-	if (m_ui.meshVisibility.Show()) {
-		SetVisible(m_ui.meshVisibility.Value());
+	if (m_ui.visibleMesh.Show()) {
+		SetVisible(m_ui.visibleMesh.Value());
 	}
 
-	if (m_ui.edgeVisibility.Show()) {
-		VisibleProperty(PROPERTY_TYPE::PROPERTY_TYPE_EDGE, m_ui.edgeVisibility.Value());
+	if (m_ui.visibleEdge.Show()) {
+		VisibleProperty(PROPERTY_TYPE::PROPERTY_TYPE_EDGE, m_ui.visibleEdge.Value());
 	}
 
-	if (m_ui.bdbVisibility.Show()) {
-		VisibleProperty(PROPERTY_TYPE::PROPERTY_TYPE_BDB, m_ui.bdbVisibility.Value());
+	if (m_ui.visibleBDB.Show()) {
+		VisibleProperty(PROPERTY_TYPE::PROPERTY_TYPE_BDB, m_ui.visibleBDB.Value());
 	}
 
-	if (m_ui.normalVisibility.Show()) {
-		VisibleNormal(m_ui.normalVisibility.Value());
+	if (m_ui.visibleNormal.Show()) {
+		VisibleNormal(m_ui.visibleNormal.Value());
 	}
 }
 

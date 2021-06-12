@@ -8,6 +8,8 @@ class CheckBoxUI
 {
 public:
 	CheckBoxUI() {};
+	CheckBoxUI(bool value):m_value(value) {};
+
 	~CheckBoxUI() {};
 
 	void SetLabel(const std::string& value) { m_label = value; }

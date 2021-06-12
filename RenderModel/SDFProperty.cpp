@@ -33,7 +33,7 @@ void SDFProperty::BuildCore(IModelNode* pModel, IPropertyArgs* pPropertyArgs)
 	std::vector<vec3> pseudoColor(sdfValue.size());
 	for (int i = 0; i < sdfValue.size(); i++) {
 		maxValue = std::max(maxValue, sdfValue[i]);
-		minValue = std::max(minValue, sdfValue[i]);
+		minValue = std::min(minValue, sdfValue[i]);
 	}
 
 	for (int i = 0; i < pseudoColor.size(); i++)
@@ -47,7 +47,7 @@ void SDFProperty::BuildCore(IModelNode* pModel, IPropertyArgs* pPropertyArgs)
 	}
 	m_sdfBuffer->SetArrayBuffer(VERTEX_ATTRIB_POSITION, pHalfEdgeNode->GetPositionBuffer());
 	m_sdfBuffer->SetColor(pseudoColor);
-
+	m_pRenderData->SetShading(make_shared<VertexShading>(VERTEX_SHADING_TYPE::VERTEX_SHADING_COLOR));
 	m_pRenderData->SetGeometryData(PRIM_TYPE::PRIM_TYPE_TRIANGLES, m_sdfBuffer, pHalfEdgeNode->GetIndexBuffer());
 }
 void SDFProperty::Update(IModelNode* pModel, IPropertyArgs* pPropertyArgs)
