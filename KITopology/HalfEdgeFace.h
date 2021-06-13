@@ -37,7 +37,6 @@ public:
 	void CalcElement();
 
 	bool Intersection(const Ray& ray, vec3& position, float& distance);
-	vec3 Gravity() { return m_gravity; }
 	vec3 Centroid() { return m_centroid; }
 	vec3 Normal() { return m_normal; }
 	float Area() { return m_area; }
@@ -48,9 +47,8 @@ private:
 	vec3 pos[3];
 	vec3 CalcNormal();
 	float CalcArea();
-	vec3 CalcCentroid();
 	int CalcVertexNum();
-	void CalcGravity();
+	vec3 CalcCentroid();
 
 	HalfEdge* m_Edge;
 	int m_Index;

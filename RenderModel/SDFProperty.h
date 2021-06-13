@@ -16,6 +16,13 @@ public:
 	virtual void Update(IModelNode* pModel, IPropertyArgs* pPropertyArgs) override;
 
 private:
+	shared_ptr<RenderData> m_pRayData;
+	shared_ptr<DefaultVertexBuffer> m_pRayBuffer;
+	shared_ptr<RenderData> m_pPointSampleData;
+	shared_ptr<DefaultVertexBuffer> m_pPointSampleBuffer;
+	shared_ptr<RenderData> m_pTriangleData;
+	shared_ptr<DefaultVertexBuffer> m_pTriangleBuffer;
+
 	shared_ptr<RenderData> m_pRenderData;
 	shared_ptr<DefaultVertexBuffer> m_sdfBuffer;
 };

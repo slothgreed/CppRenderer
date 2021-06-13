@@ -16,6 +16,9 @@ public:
 		HalfEdgeDS* pHalfEdgeDS,
 		std::vector<float>& value);
 
+	const std::vector<vec3>& GetTestPos() { return m_testPos; }
+	const Ray& GetRay() { return m_ray; }
+	const Triangle& GetTri() { return m_triangle; }
 private:
 
 	// ŒvZ‘ÎÛ‚Ì–Ê‚Ì’Šo
@@ -36,6 +39,10 @@ private:
 
 	float m_radius;
 	int m_samplingNum;
+
+	std::vector<vec3> m_testPos;
+	Ray m_ray;
+	Triangle m_triangle;
 };
 
 }

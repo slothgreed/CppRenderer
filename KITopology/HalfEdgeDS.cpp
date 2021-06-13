@@ -193,7 +193,7 @@ void HalfEdgeDS::CalcFaceParameter()
 	for (int i = 0; i < m_FaceList.size(); i++)
 	{
 		faceSum += m_FaceList[i]->Area();
-		waitedCenter += m_FaceList[i]->Area()* m_FaceList[i]->Gravity();
+		waitedCenter += m_FaceList[i]->Area()* m_FaceList[i]->Centroid();
 	}
 
 	m_allSurfaceArea = faceSum;

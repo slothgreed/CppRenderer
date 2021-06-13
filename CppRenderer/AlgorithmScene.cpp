@@ -25,7 +25,7 @@ void AlgorithmScene::Initialize()
 	m_CurrentController = CONTROLER_TYPE::CAMERA_CONTROLER;
 
 	auto pModel = make_shared<HalfEdgeModel>();
-	pModel->Load("E:\\cgModel\\bunny6000.half");
+	pModel->Load("E:\\cgModel\\bunny4000.half");
 	//pModel->Load("E:\\cgModel\\cube.half");
 	BDB bdb;
 	pModel->GetBDB(bdb);

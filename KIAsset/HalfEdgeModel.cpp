@@ -7,7 +7,8 @@ HalfEdgeModel::HalfEdgeModel()
 	:m_pDownSampling(NULL),
 	m_pBVH(NULL),
 	m_pAlignOrientation(NULL),
-	m_pArrangePoint(NULL)
+	m_pArrangePoint(NULL),
+	m_pShapeDiameterFunction(NULL)
 {
 }
 
@@ -17,6 +18,8 @@ HalfEdgeModel::~HalfEdgeModel()
 	RELEASE_INSTANCE(m_pBVH);
 	RELEASE_INSTANCE(m_pAlignOrientation);
 	RELEASE_INSTANCE(m_pArrangePoint);
+	RELEASE_INSTANCE(m_pShapeDiameterFunction);
+
 }
 
 void HalfEdgeModel::Load(const string& filePath)
@@ -215,8 +218,10 @@ const std::vector<float>& HalfEdgeModel::GetPositionError()
 
 void HalfEdgeModel::CalcShapeDiameter()
 {
-	ShapeDiameterFunction func;
-	func.Calculate(3, 40, m_HalfEdgeDS.get(), m_sdfValue);
+	if (m_pShapeDiameterFunction == nullptr) {
+		m_pShapeDiameterFunction = new ShapeDiameterFunction();
+	}
+	m_pShapeDiameterFunction->Calculate(3, 40, m_HalfEdgeDS.get(), m_sdfValue);
 }
 
 

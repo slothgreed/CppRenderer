@@ -26,6 +26,7 @@ public:
 	AlignOrientation* GetAlignOrientation() { return m_pAlignOrientation; }
 	DownSampling* GetDownSampling() { return m_pDownSampling; }
 	const std::vector<float>& GetShapeDiameterValue() { return m_sdfValue; }
+	ShapeDiameterFunction* GetShapeDiameterFunction() { return m_pShapeDiameterFunction; }
 
 	bool CalcBVH();
 	void CalcShapeDiameter();

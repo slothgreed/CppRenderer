@@ -23,7 +23,7 @@ public:
 		m_position2 = pos2;
 	}
 
-	inline void GetPosition(vec3* pos0, vec3* pos1, vec3* pos2) 
+	inline void GetPosition(vec3* pos0, vec3* pos1, vec3* pos2) const 
 	{
 		*pos0 = m_position0;
 		*pos1 = m_position1;
@@ -35,7 +35,7 @@ public:
 		m_Index = index;
 	}
 
-	int GetIndex()
+	int GetIndex() const
 	{
 		return m_Index;
 	}
