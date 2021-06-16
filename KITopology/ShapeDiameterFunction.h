@@ -19,6 +19,8 @@ public:
 	const std::vector<vec3>& GetTestPos() { return m_testPos; }
 	const Ray& GetRay() { return m_ray; }
 	const Triangle& GetTri() { return m_triangle; }
+	const std::vector<Triangle>& GetTarget() { return m_targetTri; }
+
 private:
 
 	// ŒvZ‘ÎÛ‚Ì–Ê‚Ì’Šo
@@ -43,6 +45,8 @@ private:
 	std::vector<vec3> m_testPos;
 	Ray m_ray;
 	Triangle m_triangle;
+	std::vector<Triangle> m_targetTri;
+
 };
 
 }

@@ -50,12 +50,23 @@ void ShapeDiameterFunction::CreateRandomPoint(std::vector<vec4>& position)
 void ShapeDiameterFunction::TransformPosition(const std::vector<vec4>& position, const vec3& center, const vec3& orient, std::vector<vec3>& circlePos)
 {
 	vec3 z = vec3(0, 0, 1.0);
-	quat axis = angleAxis(glm::angle(z, orient), glm::cross(z, orient));
+
+	vec3 cross1 = glm::cross(z, orient);
+	cross1 = glm::normalize(cross1);
+	quat axis = angleAxis(glm::angle(z, orient), cross1);
 	mat4 matrix = glm::toMat4(axis);
+	vec3 test = matrix* vec4(z, 1.0);
+	if (!(std::abs(test.x - orient.x) < 0.001 &&
+		std::abs(test.y - orient.y) < 0.001 &&
+		std::abs(test.z - orient.z) < 0.001))
+	{
+		assert(0);
+	}
+
 	vec3 movePos = center + orient;
 	for (int i = 0; i < position.size(); i++) {
 		circlePos[i] = matrix * position[i];
-		//m_testPos.push_back(circlePos[i] + movePos);
+		m_testPos.push_back(circlePos[i] + movePos);
 	}
 }
 
@@ -67,24 +78,39 @@ float ShapeDiameterFunction::CalculateSDF(
 	float minLength = std::numeric_limits<float>::infinity();
 	vec3 pos0, pos1, pos2;
 	vec3 interPos;
-	std::vector<HalfEdgeFace*> extractFace;
-	ExtractMesh(pFaceList, extractFace);
-	if (extractFace.size() == 0)
-	{
-		return 0;
-	}
 
 	float sumDist = 0;
 	float dist = 0;
 	int count = 0;
-	for (int i = 0; i < circlePos.size(); i++) {
-		Ray ray(pTarget->Centroid(), circlePos[i]);
-		for (int j = 0; j < extractFace.size(); j++)
+	vec3 position[3];
+	bool skip = false;
+	for (int i = 0; i < pFaceList.size(); i++)
+	{
+		pFaceList[i]->GetVertex(&position[0], &position[1], &position[2]);
+		for (int j = 0; j < 3; j++)
 		{
-			extractFace[j]->GetVertex(&pos0, &pos1, &pos2);
+			float inner = glm::dot(position[j], -pFaceList[i]->Normal());
+			float len = glm::length(position[j] * sin(inner));
+			if (len < m_radius)
+			{
+				skip = true;
+				break;
+			}
+		}
+		if (skip) 
+			continue;
+
+		bool first = true;
+		for (int j = 0; j < circlePos.size(); j++)
+		{
+			Ray ray(pTarget->Centroid(), circlePos[j]);
 			if (Intersect::RayToTriangle(ray, pos0, pos1, pos2, interPos, dist)) {
 				sumDist += dist;
 				count++;
+				if (first) {
+					m_targetTri.push_back(Triangle(pos0, pos1, pos2));
+					first = false;
+				}
 			}
 		}
 	}
@@ -112,7 +138,7 @@ void ShapeDiameterFunction::Calculate(
 	std::vector<vec4> randomPos;
 	CreateRandomPoint(randomPos);
 	std::vector<vec3> circlePos(randomPos.size());
-	for (int i = 0; i < pHalfEdgeDS->FaceList().size(); i++)
+	for (int i = pHalfEdgeDS->FaceList().size() - 1; i < pHalfEdgeDS->FaceList().size(); i++)
 	{
 		auto pFace = pHalfEdgeDS->FaceList()[i];
 		Ray ray(pFace->Centroid(), -pFace->Normal());
@@ -126,6 +152,8 @@ void ShapeDiameterFunction::Calculate(
 		vec3 pos1, pos2, pos3;
 		pFace->GetVertex(&pos1, &pos2, &pos3);
 		m_triangle = Triangle(pos1, pos2, pos3);
+
+		break;
 	}
 
 	profiler.End();

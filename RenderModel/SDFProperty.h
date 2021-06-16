@@ -22,6 +22,8 @@ private:
 	shared_ptr<DefaultVertexBuffer> m_pPointSampleBuffer;
 	shared_ptr<RenderData> m_pTriangleData;
 	shared_ptr<DefaultVertexBuffer> m_pTriangleBuffer;
+	shared_ptr<RenderData> m_pTargetData;
+	shared_ptr<DefaultVertexBuffer> m_pTargetBuffer;
 
 	shared_ptr<RenderData> m_pRenderData;
 	shared_ptr<DefaultVertexBuffer> m_sdfBuffer;

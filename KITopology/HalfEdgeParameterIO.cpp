@@ -34,7 +34,6 @@ void HalfEdgeParameterIO::LoadTangent(const std::string& filePath, vector<vec3>*
 {
 	FileReader reader;
 	reader.Open(filePath, true);
-	float x, y, z;
 	int count = 0;
 
 	while (!reader.EndOfFile())
