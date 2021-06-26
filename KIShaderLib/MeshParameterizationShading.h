@@ -47,10 +47,10 @@ public:
 
 	enum ATTRIBUTE
 	{
-		POSITION = 0,
-		NORMAL	= 1,
-		TANGENT = 2,
-		UV		= 3
+		ATTRIBUTE_POSITION = 0,
+		ATTRIBUTE_NORMAL	= 1,
+		ATTRIBUTE_TANGENT = 2,
+		ATTRIBUTE_UV		= 3
 	};
 
 

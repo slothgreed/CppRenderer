@@ -274,10 +274,10 @@ void ResolutionParameterProperty::UpdateParameter(IModelNode* pModelNode, Resolu
 			m_buffers.paramVBO = make_shared<VertexBuffer>("Parameterization");
 			auto pRenderData = pModelNode->GetRenderData();
 			m_buffers.paramVBO->SetVertexSize((GLuint)pRenderData->GetVertexBuffer()->GetVertexSize());
-			m_buffers.paramVBO->SetArrayBuffer(MeshParameterizationVertCode::ATTRIBUTE::POSITION, pNode->GetPositionBuffer());
-			m_buffers.paramVBO->SetArrayBuffer(MeshParameterizationVertCode::ATTRIBUTE::NORMAL, pNode->GetNormalBuffer());
-			m_buffers.paramVBO->SetArrayBuffer(MeshParameterizationVertCode::ATTRIBUTE::TANGENT, pNode->GetTangentBuffer());
-			m_buffers.paramVBO->SetArrayBuffer(MeshParameterizationVertCode::ATTRIBUTE::UV, pNode->GetQuadPositionBuffer());
+			m_buffers.paramVBO->SetArrayBuffer(MeshParameterizationVertCode::ATTRIBUTE_POSITION, pNode->GetPositionBuffer());
+			m_buffers.paramVBO->SetArrayBuffer(MeshParameterizationVertCode::ATTRIBUTE_NORMAL, pNode->GetNormalBuffer());
+			m_buffers.paramVBO->SetArrayBuffer(MeshParameterizationVertCode::ATTRIBUTE_TANGENT, pNode->GetTangentBuffer());
+			m_buffers.paramVBO->SetArrayBuffer(MeshParameterizationVertCode::ATTRIBUTE_UV, pNode->GetQuadPositionBuffer());
 
 			m_buffers.paramData = make_shared<RenderData>();
 			m_buffers.paramData->SetShading(make_shared<MeshParameterizationShading>());

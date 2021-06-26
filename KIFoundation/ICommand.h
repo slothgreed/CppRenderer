@@ -5,7 +5,7 @@ namespace KI
 namespace Foundation
 {
 
-enum CommandResult
+enum class CommandResult
 {
 	None,
 	Success,

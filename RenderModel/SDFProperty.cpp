@@ -47,17 +47,17 @@ void SDFProperty::BuildCore(IModelNode* pModel, IPropertyArgs* pPropertyArgs)
 	rayPositions.push_back(pSDF->GetRay().Origin() + dir);
 	m_pRayBuffer->SetPosition(rayPositions);
 	m_pRayData->SetShading(make_shared<BasicShading>(vec4(1.0, 0.0, 1.0,1.0)));
-	m_pRayData->SetGeometryData(PRIM_TYPE::PRIM_TYPE_LINES, m_pRayBuffer);
+	m_pRayData->SetGeometryData(PRIM_TYPE_LINES, m_pRayBuffer);
 
 	m_pPointSampleBuffer->SetPosition(pSDF->GetTestPos());
 	m_pPointSampleData->SetShading(make_shared<BasicShading>(vec4(1.0, 0.0, 0.0, 1.0)));
-	m_pPointSampleData->SetGeometryData(PRIM_TYPE::PRIM_TYPE_POINTS, m_pPointSampleBuffer);
+	m_pPointSampleData->SetGeometryData(PRIM_TYPE_POINTS, m_pPointSampleBuffer);
 
 	vector<vec3> pos(3);
 	pSDF->GetTri().GetPosition(&pos[0], &pos[1], &pos[2]);
 	m_pTriangleBuffer->SetPosition(pos);
 	m_pTriangleData->SetShading(make_shared<BasicShading>(vec4(1.0, 0.0, 1.0, 1.0)));
-	m_pTriangleData->SetGeometryData(PRIM_TYPE::PRIM_TYPE_TRIANGLES, m_pTriangleBuffer);
+	m_pTriangleData->SetGeometryData(PRIM_TYPE_TRIANGLES, m_pTriangleBuffer);
 
 
 
@@ -93,7 +93,7 @@ void SDFProperty::BuildCore(IModelNode* pModel, IPropertyArgs* pPropertyArgs)
 	m_sdfBuffer->SetArrayBuffer(VERTEX_ATTRIB_POSITION, pHalfEdgeNode->GetPositionBuffer());
 	m_sdfBuffer->SetColor(pseudoColor);
 	m_pRenderData->SetShading(make_shared<VertexShading>(VERTEX_SHADING_TYPE::VERTEX_SHADING_COLOR));
-	m_pRenderData->SetGeometryData(PRIM_TYPE::PRIM_TYPE_TRIANGLES, m_sdfBuffer, pHalfEdgeNode->GetIndexBuffer());
+	m_pRenderData->SetGeometryData(PRIM_TYPE_TRIANGLES, m_sdfBuffer, pHalfEdgeNode->GetIndexBuffer());
 }
 void SDFProperty::Update(IModelNode* pModel, IPropertyArgs* pPropertyArgs)
 {
