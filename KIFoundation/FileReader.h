@@ -12,6 +12,7 @@ public:
 
 	bool Open(const std::string& filePath, bool binary = false);
 	bool ReadLine(std::string& contents, bool endl = false);
+	void ReadAll(std::string& contents);
 	float ReadFloat();
 	vec2 ReadVec2();
 	vec3 ReadVec3();

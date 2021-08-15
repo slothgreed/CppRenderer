@@ -1,3 +1,6 @@
+#include <glm/gtc/quaternion.hpp>
+#include <glm/gtx/quaternion.hpp>
+#include <glm/gtx/vector_angle.hpp>
 namespace KI
 {
 namespace Foundation
@@ -77,6 +80,50 @@ ivec4 MathHelper::WorldToScreenPos(const mat4x4& proj, const mat4x4& view, const
 	vec4  result = proj * view * model * vec4(value.x, value.y, value.z, 1.0);
 
 	return result / result.w;
+}
+
+float MathHelper::Round(float value, float eps)
+{
+	if (1.0f - value < eps) {
+		return 1.0f;
+	}
+	else if (1.0 + value < eps) {
+		return -1.0f;
+	}
+
+	return value;
+}
+
+mat4 MathHelper::CreateRotateMatrix(const vec3& source, const vec3& target)
+{
+	float dot = Round(glm::dot(source, target));
+	if (dot == 1.0f) {
+		return mat4(1);
+	}
+
+	if (dot == -1.0f) {
+		if (source == vec3(0, 0, 1)) {
+			return glm::rotate(180.0f, vec3(0, 1, 0));
+		}
+		else {
+			return glm::rotate(180.0f, vec3(0, 0, 1));
+		}
+	}
+
+
+	vec3 cross1 = glm::cross(source, target);
+	cross1 = glm::normalize(cross1);
+	quat axis = angleAxis(glm::angle(source, target), cross1);
+	vec3 test = glm::toMat4(axis) * vec4(source, 1.0);
+	if (!(std::abs(test.x - target.x) < 0.001 &&
+		std::abs(test.y - target.y) < 0.001 &&
+		std::abs(test.z - target.z) < 0.001))
+	{
+		assert(0);
+	}
+
+	return glm::toMat4(axis);
+
 }
 
 string MathHelper::ToString(const vec2& value)

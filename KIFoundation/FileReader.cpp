@@ -27,6 +27,11 @@ bool FileReader::Open(const std::string& filePath, bool binary)
 	return true;
 }
 
+void FileReader::ReadAll(std::string& contents)
+{
+	contents = std::string(std::istreambuf_iterator<char>(m_fileStream), {});
+}
+
 bool FileReader::ReadLine(std::string& contents, bool endl)
 {
 	if (getline(m_fileStream, contents)) {

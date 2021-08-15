@@ -15,6 +15,8 @@ public:
 	static float CalcTriangleArea(const vec3& v1, const vec3& v2, const vec3& v3); // counter cloclk wise
 	static void CalcNormal(const vec3& v1, const vec3& v2, const vec3& v3, vec3& normal); // counter cloclk wise
 	static float CalcRadian(const vec3& v1, const vec3& v2);
+	static mat4 CreateRotateMatrix(const vec3& source, const vec3& target);
+	static float Round(float value, float eps = 0.0001f);
 	static float CramesDet(vec3 a, vec3 b, vec3 c);
 	static float ToRadian(float angle);
 	static float ToAngle(float rad);

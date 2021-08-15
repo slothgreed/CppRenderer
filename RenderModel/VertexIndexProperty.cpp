@@ -86,7 +86,7 @@ void VertexIndexProperty::SetIndexText(IModelNode* pModelNode, const ICamera* pC
 			pVertexBuffer->SetPosition(m_indexText[i].Position());
 			pVertexBuffer->SetTexcoord(m_indexText[i].Texcoord());
 			pIndexBuffer->Set(m_indexText[i].Index());
-			m_pRenderDatas[i]->SetGeometryData(PRIM_TYPE::PRIM_TYPE_TRIANGLES, pVertexBuffer, pIndexBuffer);
+			m_pRenderDatas[i]->SetGeometryData(PRIM_TYPE_TRIANGLES, pVertexBuffer, pIndexBuffer);
 		}
 	}
 	else

@@ -42,9 +42,15 @@ void SDFProperty::BuildCore(IModelNode* pModel, IPropertyArgs* pPropertyArgs)
 		m_pTargetBuffer = make_shared<DefaultVertexBuffer>();
 	}
 	vector<vec3> rayPositions;
-	vec3 dir = vec3(pSDF->GetRay().Direction().z * 10, pSDF->GetRay().Direction().y * 10, pSDF->GetRay().Direction().z * 10);
-	rayPositions.push_back(pSDF->GetRay().Origin() - dir);
+	vec3 dir = vec3(pSDF->GetRay().Direction()) * vec3(10);
+	rayPositions.push_back(pSDF->GetRay().Origin());
 	rayPositions.push_back(pSDF->GetRay().Origin() + dir);
+	for (int i = 0; i < pSDF->GetTestPos().size(); i++)
+	{
+		vec3 posDir = (pSDF->GetTestPos()[i] - pSDF->GetRay().Origin()) * vec3(100) + pSDF->GetRay().Origin();
+		rayPositions.push_back(pSDF->GetRay().Origin());
+		rayPositions.push_back(posDir);
+	}
 	m_pRayBuffer->SetPosition(rayPositions);
 	m_pRayData->SetShading(make_shared<BasicShading>(vec4(1.0, 0.0, 1.0,1.0)));
 	m_pRayData->SetGeometryData(PRIM_TYPE_LINES, m_pRayBuffer);
@@ -61,17 +67,17 @@ void SDFProperty::BuildCore(IModelNode* pModel, IPropertyArgs* pPropertyArgs)
 
 
 
-	//vector<vec3> target(pSDF->GetTarget().size() * 3);
-	//vec3 position[3];
-	//for (int i = 0; i < pSDF->GetTarget().size(); i++) {
-	//	pSDF->GetTarget()[i].GetPosition(&position[0], &position[1], &position[2]);
-	//	target[3 * i] = position[0];
-	//	target[3 * i + 1] = position[1];
-	//	target[3 * i + 2] = position[2];
-	//}
-	//m_pTargetBuffer->SetPosition(target);
-	//m_pTargetData->SetShading(make_shared<BasicShading>(vec4(1.0, 0.0, 1.0, 1.0)));
-	//m_pTargetData->SetGeometryData(PRIM_TYPE::PRIM_TYPE_TRIANGLES, m_pTriangleBuffer);
+	vector<vec3> target(pSDF->GetTarget().size() * 3);
+	vec3 position[3];
+	for (int i = 0; i < pSDF->GetTarget().size(); i++) {
+		pSDF->GetTarget()[i].GetPosition(&position[0], &position[1], &position[2]);
+		target[3 * i] = position[0];
+		target[3 * i + 1] = position[1];
+		target[3 * i + 2] = position[2];
+	}
+	m_pTargetBuffer->SetPosition(target);
+	m_pTargetData->SetShading(make_shared<BasicShading>(vec4(1.0, 0.0, 1.0, 1.0)));
+	m_pTargetData->SetGeometryData(PRIM_TYPE_TRIANGLES, m_pTriangleBuffer);
 
 	float maxValue = std::numeric_limits<float>::min();
 	float minValue = std::numeric_limits<float>::max();
@@ -92,7 +98,7 @@ void SDFProperty::BuildCore(IModelNode* pModel, IPropertyArgs* pPropertyArgs)
 	}
 	m_sdfBuffer->SetArrayBuffer(VERTEX_ATTRIB_POSITION, pHalfEdgeNode->GetPositionBuffer());
 	m_sdfBuffer->SetColor(pseudoColor);
-	m_pRenderData->SetShading(make_shared<VertexShading>(VERTEX_SHADING_TYPE::VERTEX_SHADING_COLOR));
+	m_pRenderData->SetShading(make_shared<VertexShading>(VERTEX_SHADING_COLOR));
 	m_pRenderData->SetGeometryData(PRIM_TYPE_TRIANGLES, m_sdfBuffer, pHalfEdgeNode->GetIndexBuffer());
 }
 void SDFProperty::Update(IModelNode* pModel, IPropertyArgs* pPropertyArgs)
@@ -103,11 +109,16 @@ void SDFProperty::Update(IModelNode* pModel, IPropertyArgs* pPropertyArgs)
 void SDFProperty::Draw(shared_ptr<UniformStruct> pUniform)
 {
 	glPointSize(5);
-	m_pPointSampleData->Draw(pUniform);
-	m_pRayData->Draw(pUniform);
-	m_pTriangleData->Draw(pUniform);
-	//m_pTargetData->Draw(pUniform);
-	//m_pRenderData->Draw(pUniform);
+	//if(m_pPointSampleData)
+	//	m_pPointSampleData->Draw(pUniform);
+	//if(m_pRayData)
+	//	m_pRayData->Draw(pUniform);
+	//if(m_pTriangleData)
+	//	m_pTriangleData->Draw(pUniform);
+	//if(m_pTargetData)
+	//	m_pTargetData->Draw(pUniform);
+	if(m_pRenderData)
+		m_pRenderData->Draw(pUniform);
 }
 }
 }
